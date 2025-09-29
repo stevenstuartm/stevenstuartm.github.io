@@ -1,0 +1,47 @@
+# Site settings
+title: Steven Stuart
+email: stevenstuartm@gmail.com
+description: Software architecture, coding, and technology insights by Steven Stuart.
+baseurl: ""
+url: "https://stevenstuartm.github.io"
+
+# Author information
+author:
+  name: Steven Stuart
+  email: stevenstuartm@gmail.com
+  github: stevenstuartm
+  linkedin: stevenstuartm
+
+# Social media links (add/remove as needed)
+social:
+  github: https://github.com/stevenstuartm
+  linkedin: https://linkedin.com/in/steven-stuart-2974978a
+
+# Build settings
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
