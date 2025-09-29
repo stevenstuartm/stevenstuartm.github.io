@@ -1,7 +1,7 @@
 ---
 layout: home
 title: Welcome
-subtitle: Software architecture, coding, and technology insights
+subtitle: Practical insights on software architecture, system design, and building scalable systems.
 ---
 
 Hey there! I'm Steven—a software architect who builds cloud systems and helps teams create software that scales.

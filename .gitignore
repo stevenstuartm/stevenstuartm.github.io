@@ -6,3 +6,6 @@ _site/
 .bundle/
 vendor/
 Gemfile.lock
+.claude/
+.DS_Store
+CLAUDE.md
