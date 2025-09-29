@@ -104,10 +104,19 @@ main {
 .site-title a {
     color: var(--color-text);
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
 
 .site-title a:hover {
     color: var(--color-primary);
+}
+
+.site-icon {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
 }
 
 .site-nav {

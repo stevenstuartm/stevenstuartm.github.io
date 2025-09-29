@@ -2,7 +2,10 @@
     <div class="container">
         <div class="header-content">
             <h1 class="site-title">
-                <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+                <a href="{{ '/' | relative_url }}">
+                    <img src="{{ '/assets/img/favicon-32x32.png' | relative_url }}" alt="" class="site-icon">
+                    {{ site.title }}
+                </a>
             </h1>
             <nav class="site-nav">
                 <a href="{{ '/' | relative_url }}">Home</a>
