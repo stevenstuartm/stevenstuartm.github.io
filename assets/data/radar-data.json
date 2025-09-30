@@ -1,0 +1,37 @@
+{
+  "quadrants": [
+    { "name": "Tools" },
+    { "name": "Techniques" },
+    { "name": "Platforms" },
+    { "name": "Languages & Frameworks" }
+  ],
+  "rings": [
+    { "name": "ADOPT", "color": "#5ba300" },
+    { "name": "TRIAL", "color": "#009eb0" },
+    { "name": "ASSESS", "color": "#c7ba00" },
+    { "name": "HOLD", "color": "#e09b96" }
+  ],
+  "entries": [
+    { "label": "TypeScript", "quadrant": 0, "ring": 0, "moved": 0, "description": "A strongly typed superset of JavaScript that compiles to plain JavaScript. Essential for large-scale applications with improved tooling and maintainability." },
+    { "label": "Vue", "quadrant": 0, "ring": 0, "moved": 0, "description": "Progressive JavaScript framework for building user interfaces. Approachable, versatile, and performant with excellent developer experience." },
+    { "label": "NUXT", "quadrant": 0, "ring": 1, "moved": 0, "description": "Meta-framework for Vue.js that provides server-side rendering, static site generation, and powerful routing out of the box." },
+    { "label": "Go", "quadrant": 0, "ring": 2, "moved": 0, "description": "Statically typed, compiled language designed for simplicity and efficiency. Excellent for building microservices and cloud-native applications." },
+    { "label": "Rust", "quadrant": 0, "ring": 2, "moved": 0, "description": "Systems programming language focused on safety, concurrency, and performance. Steep learning curve but valuable for performance-critical applications." },
+
+    { "label": "Domain-Driven Design", "quadrant": 1, "ring": 0, "moved": 0, "description": "Strategic approach to software design that focuses on modeling complex business domains. Essential for building maintainable enterprise systems." },
+    { "label": "Event Sourcing", "quadrant": 1, "ring": 0, "moved": 0, "description": "Pattern where state changes are stored as a sequence of events. Provides complete audit trail and enables temporal queries." },
+    { "label": "CQRS", "quadrant": 1, "ring": 1, "moved": 0, "description": "Command Query Responsibility Segregation separates read and write models. Useful for complex domains with different read/write patterns." },
+    { "label": "Microservices", "quadrant": 1, "ring": 0, "moved": 0, "description": "Architectural pattern that structures applications as loosely coupled services. Enables independent deployment and scaling." },
+    { "label": "Test-Driven Development", "quadrant": 1, "ring": 0, "moved": 0, "description": "Development approach where tests are written before implementation. Improves code quality and design through rapid feedback." },
+    { "label": "Trunk-Based Development", "quadrant": 1, "ring": 0, "moved": 0, "description": "Source control branching model where developers work on a single branch with short-lived feature branches. Enables continuous integration." },
+
+    { "label": "AWS", "quadrant": 2, "ring": 0, "moved": 0, "description": "Leading cloud platform with comprehensive suite of services. Industry standard with mature tooling and extensive documentation." },
+    { "label": "Kubernetes", "quadrant": 2, "ring": 3, "moved": -1, "description": "Container orchestration platform for automating deployment, scaling, and management. Powerful but complex; ensure you need it before adopting." },
+
+    { "label": "VS Code", "quadrant": 3, "ring": 0, "moved": 0, "description": "Lightweight but powerful code editor with excellent extension ecosystem. Great balance of features and performance." },
+    { "label": "Terraform", "quadrant": 3, "ring": 1, "moved": 0, "description": "Infrastructure as code tool for provisioning cloud resources. Declarative approach with good multi-cloud support." },
+    { "label": "MySQL", "quadrant": 3, "ring": 0, "moved": 0, "description": "Open-source relational database management system. Reliable, widely supported, and excellent for most applications." },
+    { "label": "Redis", "quadrant": 3, "ring": 3, "moved": -1, "description": "In-memory data store used for caching, message queuing, and real-time analytics. Fast and versatile." },
+    { "label": "Memcached", "quadrant": 3, "ring": 0, "moved": 0, "description": "High-performance, distributed memory caching system. Simple and fast but limited compared to Redis." }
+  ]
+}
