@@ -3,6 +3,7 @@ layout: post
 title: "Microservices or Monoliths? (Yeah, I Know...)"
 date: 2025-06-21
 tags: [architecture, microservices, monoliths, system-design]
+description: "Why monoliths are effective for discovery and microservices are optimizations—principles for choosing the right architecture for your context."
 ---
 
 It is an old and tired topic, and yet surprisingly it is still one that even I need to contemplate when starting a new project. Firstly, let's not be reductive: there is no one solution to any technological challenge. Much like there is no one way to best manage a team or a department. Leverage the responsible solution for the challenge at hand.

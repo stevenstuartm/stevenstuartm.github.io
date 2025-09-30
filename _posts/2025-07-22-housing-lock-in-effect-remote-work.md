@@ -3,6 +3,7 @@ layout: post
 title: "Will the Housing Market 'Lock-In Effect' Force Companies to Rethink Talent Acquisition?"
 date: 2025-07-22
 tags: [remote-work, career, industry, economics]
+description: "How high mortgage rates and the housing lock-in effect could force employers to embrace remote work as talent becomes unable to relocate."
 ---
 
 Seeing the record number of homes for sale in my city, looking more and more like a severe traffic jam, I am wondering if the Federal Reserve's decision to keep interest rates elevated could inadvertently create or is already creating a required increase in remote IT job opportunities.

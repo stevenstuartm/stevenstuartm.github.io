@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About
+description: "Software architect with 15+ years building cloud-native platforms, distributed systems, and scalable architectures on AWS and .NET."
 ---
 
 ## Hi, I'm Steven

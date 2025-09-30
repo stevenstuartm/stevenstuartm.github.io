@@ -21,6 +21,11 @@ social:
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
 
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
 # Collections
 collections:
   posts:

@@ -3,6 +3,7 @@ layout: post
 title: "The Ironies of Using AI Code Generation"
 date: 2025-07-17
 tags: [ai, coding, productivity, tools]
+description: "Lessons learned from using AI assistants for code generation—why you still need to learn the domain and maintain agency over decisions."
 ---
 
 This post is an encouragement to use AI for what it was always meant for: an augmentation of you. You are the only thing that is going to produce true value in this relationship.

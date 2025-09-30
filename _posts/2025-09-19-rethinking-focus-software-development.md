@@ -3,6 +3,7 @@ layout: post
 title: "Being Focused Is Not What I Thought It Was"
 date: 2025-09-19
 tags: [career, productivity, learning, software-engineering]
+description: "Rethinking focus in software development—it's not about exclusion, but about presence and intervals of development across multiple skill areas."
 ---
 
 I used to implicitly think that focus meant doing one thing at the exclusion of all others. As if building expertise was a simple learning machine you could feed single inputs into until you mastered a subject and then move on to the next.

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Resume
+description: "Resume of Steven Stuart—software architect specializing in cloud-native solutions, AWS, .NET, and scalable system design."
 ---
 
 # Steven Stuart

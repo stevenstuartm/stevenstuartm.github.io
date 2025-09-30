@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Blog
+description: "Blog posts on software architecture, cloud systems, system design patterns, AWS, .NET, microservices, and engineering leadership."
 ---
 
 {% if site.posts.size > 0 %}

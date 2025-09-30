@@ -3,6 +3,7 @@ layout: post
 title: "REST Is the Wrong Choice for Domain-Driven Architectures"
 date: 2025-09-27
 tags: [architecture, api-design, ddd, microservices]
+description: "Why REST's resource-centric design conflicts with domain-driven architectures and how RPC provides better alignment with business operations."
 ---
 
 Modern architectures are more often domain-driven, not entity-driven: modular monoliths, DDD implementations, and capability-based microservices.

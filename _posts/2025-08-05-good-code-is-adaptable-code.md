@@ -3,6 +3,7 @@ layout: post
 title: "The #1 Measure of Good Code Is Adaptability"
 date: 2025-08-05
 tags: [software-design, best-practices, architecture]
+description: "Why adaptability trumps cleverness and performance as the ultimate measure of code quality, with practical principles for building flexible systems."
 ---
 
 The #1 measure of good code isn't cleverness, performance, or even correctness—it's adaptability.

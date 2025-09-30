@@ -3,6 +3,7 @@ layout: post
 title: "What Does 'Hexagonal Architecture' Actually Mean in Modern Development?"
 date: 2025-09-29
 tags: [architecture, design-patterns, software-design]
+description: "Exploring the gap between hexagonal architecture's original goals and modern framework patterns, and why the distinction matters for software development."
 ---
 
 The pattern's goals sound like modern best practices, but the implementation is fundamentally different from what most people are doing.

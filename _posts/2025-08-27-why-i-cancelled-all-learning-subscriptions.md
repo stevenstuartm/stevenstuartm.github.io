@@ -3,6 +3,7 @@ layout: post
 title: "Why I Cancelled All My Learning Subscriptions"
 date: 2025-08-27
 tags: [learning, career, productivity, software-engineering]
+description: "Why building real projects beats passive learning platforms, and how to learn software development more effectively through practice and documentation."
 ---
 
 After years of collecting digital course subscriptions like Pokemon cards, I finally hit unsubscribe on all of them. Because learning is bad? No. Because deliverables will always trump "learning".

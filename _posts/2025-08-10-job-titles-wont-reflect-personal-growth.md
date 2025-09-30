@@ -3,6 +3,7 @@ layout: post
 title: "Semantics Matter, But Job Titles Won't Reflect Your Personal Growth"
 date: 2025-08-10
 tags: [career, software-engineering, personal-development]
+description: "Understanding the difference between coders, developers, and engineers for personal clarity—even when job titles don't reflect these distinctions."
 ---
 
 Companies use "coder," "developer," and "engineer" titles inconsistently—often as seniority proxies rather than role distinctions. Since workplace standardization isn't happening, the real value lies in understanding these categories for personal clarity.

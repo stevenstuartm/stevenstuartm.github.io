@@ -3,6 +3,7 @@ layout: post
 title: "I Think We Are Missing the Greater Value of Test-Driven Development"
 date: 2025-07-28
 tags: [tdd, testing, software-design, best-practices]
+description: "Reframing TDD as testing assumptions rather than just code—executable business hypotheses that prevent building the wrong thing."
 ---
 
 I've always struggled with TDD's theoretical promise versus practical reality. The constant test rewrites during discovery, mocking unknown contracts, building for domains you don't yet understand—it often feels wasteful. From my own work, I often get the same results but more quickly (or I think so anyway) by focusing on discovery and then leveraging personal discipline to write the correct tests. Beyond the time suck contention, I confess that it is somewhat self-evident that having assertions mocked upfront can help you maintain focus on all needs and to not get lost in the weeds of what you value the most as you develop one aspect of the code more than another. But even then, management often agrees with the skeptics and I do not blame them.
