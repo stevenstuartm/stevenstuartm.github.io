@@ -142,8 +142,8 @@ function renderListView() {
 
         items.forEach((item, itemIndex) => {
           let badge = '';
-          if (item.moved === 1) badge = '<span class="badge badge-new">New</span>';
-          else if (item.moved === -1) badge = '<span class="badge badge-out">↓</span>';
+          if (item.moved === 1) badge = '<span class="badge badge-up">▲</span>';
+          else if (item.moved === -1) badge = '<span class="badge badge-down">▼</span>';
           else if (item.moved === 2) badge = '<span class="badge badge-new">★</span>';
 
           const entryIndex = radarData.entries.indexOf(item);
@@ -246,57 +246,56 @@ function makeRadarBlipsClickable() {
   setTimeout(function() {
     const radarSvg = document.getElementById('radar');
 
-    // The Zalando library creates a legend/list with the actual technology names
-    // Let's find those and match them to our entries
-    const blipListItems = document.querySelectorAll('.blip-list li, .legend li');
+    // Add click handlers to legend items
+    // The Zalando library creates legend items with id="legendItem{id}"
+    radarData.entries.forEach(entry => {
+      const legendItem = document.getElementById('legendItem' + entry.id);
 
-    if (blipListItems.length > 0) {
-      blipListItems.forEach(item => {
-        const text = item.textContent.trim();
-        // Remove any numbers at the start (like "1. TypeScript" -> "TypeScript")
-        const cleanText = text.replace(/^\d+\.\s*/, '');
+      if (legendItem) {
+        legendItem.style.cursor = 'pointer';
 
-        const entry = radarData.entries.find(e => e.label === cleanText);
-
-        if (entry) {
-          item.style.cursor = 'pointer';
-          item.addEventListener('click', function(e) {
+        // Get the parent <a> element if it exists
+        const parentAnchor = legendItem.parentElement;
+        if (parentAnchor && parentAnchor.tagName === 'a') {
+          parentAnchor.style.cursor = 'pointer';
+          parentAnchor.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             showItemDetail(entry);
           });
         }
-      });
-    }
 
-    // For the circles themselves, use the blip numbers
-    const circles = radarSvg.querySelectorAll('circle');
+        legendItem.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showItemDetail(entry);
+        });
+      }
+    });
 
-    circles.forEach((circle, index) => {
-      const parent = circle.parentElement;
+    // For the blips themselves (circles, triangles, stars)
+    const blipGroups = radarSvg.querySelectorAll('.blip');
 
-      if (parent) {
-        // Look for the number text in this group
-        const textElement = parent.querySelector('text');
+    blipGroups.forEach((blipGroup) => {
+      // Look for the number text in this group
+      const textElement = blipGroup.querySelector('text');
 
-        if (textElement) {
-          const blipNumber = parseInt(textElement.textContent.trim());
+      if (textElement) {
+        const blipId = textElement.textContent.trim();
 
-          if (blipNumber > 0 && blipNumber <= radarData.entries.length) {
-            const entry = radarData.entries[blipNumber - 1];
+        // Find the entry with this ID
+        const entry = radarData.entries.find(e => e.id === blipId);
 
-            circle.style.cursor = 'pointer';
-            parent.style.cursor = 'pointer';
+        if (entry) {
+          blipGroup.style.cursor = 'pointer';
 
-            const clickHandler = function(e) {
-              e.preventDefault();
-              e.stopPropagation();
-              showItemDetail(entry);
-            };
+          const clickHandler = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            showItemDetail(entry);
+          };
 
-            circle.addEventListener('click', clickHandler, true);
-            parent.addEventListener('click', clickHandler, true);
-          }
+          blipGroup.addEventListener('click', clickHandler, true);
         }
       }
     });
@@ -494,8 +493,13 @@ function makeRadarBlipsClickable() {
   color: white;
 }
 
-.badge-out {
-  background-color: var(--color-accent);
+.badge-up {
+  background-color: #5ba300;
+  color: white;
+}
+
+.badge-down {
+  background-color: #e09b96;
   color: white;
 }
 
