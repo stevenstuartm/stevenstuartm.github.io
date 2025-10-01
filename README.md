@@ -91,7 +91,7 @@ Your content here...
 
 This site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
 
-Live site: [https://stevenstuartm.github.io](https://stevenstuartm.github.io)
+Live site: [https://stevenstuartm.com](https://stevenstuartm.com)
 
 ## License
 
