@@ -11,12 +11,6 @@ Stay tuned for new features and content I'm working on. Here's what's on the roa
   <!-- Content will be generated from JSON data -->
 </div>
 
----
-
-## Have Ideas?
-
-If you have suggestions for content or features you'd like to see, feel free to reach out via [LinkedIn]({{ site.social.linkedin }}) or [email](mailto:{{ site.author.email }}).
-
 <script>
 // Load upcoming items from JSON file
 fetch('{{ "/assets/data/upcoming-items.json" | relative_url }}')

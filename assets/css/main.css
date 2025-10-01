@@ -225,6 +225,28 @@ main {
     background-color: rgba(168, 213, 186, 0.1);
 }
 
+.header-social button {
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xs);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.header-social button:hover {
+    color: var(--color-primary);
+    background-color: rgba(168, 213, 186, 0.1);
+}
+
+.copy-email-btn-header.copied {
+    color: var(--color-primary);
+}
+
 /* ===== Footer ===== */
 .site-footer {
     background-color: var(--color-card-bg);
