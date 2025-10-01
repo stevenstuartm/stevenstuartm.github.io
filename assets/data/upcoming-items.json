@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Study Guide Catalog",
+    "description": "A comprehensive catalog of study guides covering software architecture patterns, cloud technologies, and system design principles. Searchable and organized by topic.",
+    "status": "cooking",
+    "deliveryDate": "2025-10-24"
+  },
+  {
+    "id": 2,
+    "title": "New Study Guide Topics",
+    "description": "Expanding study guides to cover architecture governance frameworks, total cost of ownership (TCO) analysis, and return on investment (ROI) methodologies for technical decisions.",
+    "status": "planned",
+    "deliveryDate": "2025-11-21"
+  },
+  {
+    "id": 3,
+    "title": "AAA Cycle",
+    "description": "Agree, Align, Apply. A review of my own initial and consolidated approach to system inception, design, and delivery.",
+    "status": "planned",
+    "deliveryDate": "2026-01-01"
+  },
+  {
+    "id": 4,
+    "title": "Latest Tech News Feed",
+    "description": "Curated feed of the latest technology news, industry trends, and architectural insights relevant to cloud-native development and system design.",
+    "status": "planned",
+    "deliveryDate": "2026-03-01"
+  }
+]
