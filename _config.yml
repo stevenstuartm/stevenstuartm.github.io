@@ -27,6 +27,12 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
 
+# Feed settings
+feed:
+  path: feed-blog.xml
+  collections:
+    - posts
+
 # Collections
 collections:
   posts:
