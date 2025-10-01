@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Welcome
+title: Software Architect
 subtitle: Practical insights on software architecture, system design, and building scalable systems.
 ---
 
