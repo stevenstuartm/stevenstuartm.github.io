@@ -5,21 +5,31 @@ description: "Software architect with proven expertise in AWS, .NET, microservic
 permalink: /resume/
 ---
 
-# Steven Stuart
-**Software Architect**
+<h1 style="text-align: center; margin-bottom: 5px;">Steven Stuart</h1>
+<p style="text-align: center; font-weight: bold; margin: 5px 0;">Software Architect</p>
+
+<p style="text-align: center; margin: 10px 0;">
+stevenstuartm@gmail.com | linkedin.com/in/steven-stuart-2974978a
+</p>
+
+<div style="margin: 20px 0; padding: 15px; background-color: #f5f5f5; border-left: 4px solid #333; border-radius: 4px;">
+  <strong>Download Resume:</strong>
+  <a href="{{ site.baseurl }}/assets/downloads/steven-stuart-resume.pdf" download style="margin: 0 10px; text-decoration: underline;">PDF</a> |
+  <a href="{{ site.baseurl }}/assets/downloads/steven-stuart-resume.docx" download style="margin: 0 10px; text-decoration: underline;">DOCX</a>
+</div>
 
 ---
 
 
 ## Professional Summary
 
-Software architect with 15+ years designing and building cloud-native platforms, distributed systems, and scalable architectures. Proven track record of reducing infrastructure costs, strengthening security posture, and leading technical teams. Expert in AWS, .NET, microservices, event-driven architecture, and DevOps practices across financial services, digital banking, and SaaS.
+Software architect with 15+ years designing and building cloud-native platforms, distributed systems, and scalable architectures. Proven track record of reducing infrastructure costs, strengthening security posture, and leading technical teams.
 
 ## Professional Experience
 
 ### System Architect | True Market Insiders — St. Petersburg, FL | Feb 2023 – Present
 
-Led complete modernization of cloud infrastructure and development operations for financial research platform serving investors. Directed architecture strategy, mentored engineering team, and delivered secure, scalable solutions aligned with business objectives.
+Led complete modernization of cloud infrastructure and development operations for a financial research platform serving investors. Directed architecture strategy, mentored engineering team, and delivered secure, scalable solutions aligned with business objectives.
 
 **Key Achievements:**
 - **Reduced cloud costs 80%** through infrastructure optimization and service consolidation
@@ -67,13 +77,3 @@ Led full-stack development for marketing technology SaaS platform. Architected s
 
 **B.S., Computer Information Systems**
 DeVry University — Irving, TX | Oct 2008 – Jun 2012
-
-## Core Competencies
-
-**Cloud & Infrastructure:** AWS (EKS, Lambda, Aurora, DynamoDB, S3, CloudFront, WAF, EventBridge, SQS), Infrastructure as Code, Cost Optimization, Security Architecture
-
-**Languages & Frameworks:** .NET / C#, ASP.NET Core, GraphQL, Vue.js, TypeScript, Entity Framework
-
-**Architecture & Design:** Microservices, Domain-Driven Design, Event-Driven Architecture, REST/RPC APIs, Serverless, Cloud-Native Patterns
-
-**Practices & Tools:** CI/CD, DevOps, Git, Agile/Scrum, TDD, Code Review, Technical Mentorship, System Design
