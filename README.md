@@ -1,15 +1,19 @@
-# stevenstuartm.github.io
+# Software Architecture & System Design Blog
 
-Personal website and blog for Steven Stuart, featuring articles on software architecture, system design, and technology insights.
+A practical resource for software architects and engineers, featuring real-world insights on cloud architecture, distributed systems, and modern development practices.
 
-## About
+## What You'll Find Here
 
-This is a Jekyll-based static site deployed on GitHub Pages. The site includes:
+- **Technical Articles**: In-depth posts on software architecture, system design patterns, Domain-Driven Design, AWS, .NET, microservices, and engineering leadership
+- **Tech Radar**: Interactive visualization exploring technology choices, assessments, and recommendations based on production experience
+- **Practical Lessons**: Real project learnings—architectural decisions that worked (and those that didn't), cloud optimization strategies, and team leadership insights
 
-- **Blog**: Technical articles on software architecture, design patterns, and engineering practices
-- **Tech Radar**: Interactive visualization of technologies and tools
-- **Resume**: Professional experience and skills
-- **About**: Background and contact information
+## Purpose
+
+This site exists to help developers level up to architects and teams build better production systems through:
+- Honest assessments of architectural patterns and technologies
+- Real-world examples from migrating monoliths to microservices, optimizing cloud infrastructure, and leading engineering teams
+- Actionable strategies backed by 15+ years of hands-on experience
 
 ## Local Development
 
@@ -87,18 +91,24 @@ tags: [architecture, design-patterns]
 Your content here...
 ```
 
+## Technology Stack
+
+- **Framework**: Jekyll (static site generator)
+- **Hosting**: GitHub Pages
+- **Frontend**: Custom CSS with D3.js for tech radar visualization
+- **Content**: Markdown-based blog posts with YAML front matter
+
 ## Deployment
 
-This site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
+Automatically deployed to GitHub Pages on push to `main` branch.
 
-Live site: [https://stevenstuartm.com](https://stevenstuartm.com)
+**Live site**: [https://stevenstuartm.com](https://stevenstuartm.com)
+
+## Contributing
+
+Found a typo or issue? Feel free to open an issue or submit a pull request.
 
 ## License
 
-© 2025 Steven Stuart. All rights reserved.
-
-## Contact
-
-- Email: stevenstuartm@gmail.com
-- GitHub: [@stevenstuartm](https://github.com/stevenstuartm)
-- LinkedIn: [steven-stuart-2974978a](https://www.linkedin.com/in/steven-stuart-2974978a)
+Content © 2025 Steven Stuart. All rights reserved.
+Code licensed under MIT.
