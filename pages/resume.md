@@ -8,10 +8,6 @@ permalink: /resume/
 <h1 style="text-align: center; margin-bottom: 5px;">Steven Stuart</h1>
 <p style="text-align: center; font-weight: bold; margin: 5px 0;">Software Architect</p>
 
-<p style="text-align: center; margin: 10px 0;">
-stevenstuartm@gmail.com | linkedin.com/in/steven-stuart-2974978a
-</p>
-
 <div style="margin: 20px 0; padding: 15px; background-color: #f5f5f5; border-left: 4px solid #333; border-radius: 4px;">
   <strong>Download Resume:</strong>
   <a href="{{ site.baseurl }}/assets/downloads/steven-stuart-resume.pdf" download style="margin: 0 10px; text-decoration: underline;">PDF</a> |
