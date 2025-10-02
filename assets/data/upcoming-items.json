@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "Study Guide Catalog",
+    "title": "Introduce Study Guides",
     "description": "A comprehensive catalog of study guides covering software architecture patterns, cloud technologies, and system design principles. Searchable and organized by topic.",
     "status": "cooking",
     "deliveryDate": "2025-10-24"
@@ -15,7 +15,7 @@
   },
   {
     "id": 3,
-    "title": "AAA Cycle",
+    "title": "Introduce AAA Cycle",
     "description": "Agree, Align, Apply. A review of my own initial and consolidated approach to system inception, design, and delivery.",
     "status": "planned",
     "deliveryDate": "2026-01-01"
@@ -26,5 +26,12 @@
     "description": "Curated feed of the latest technology news, industry trends, and architectural insights relevant to cloud-native development and system design.",
     "status": "planned",
     "deliveryDate": "2026-03-01"
+  },
+  {
+    "id": 5,
+    "title": "Introduce Tech Reviews",
+    "description": "A new section of the site linked with the tech radar which will show my process, progress, and conclusions while exploring individual technologies.",
+    "status": "cooking",
+    "deliveryDate": "2025-10-10"
   }
 ]
