@@ -6,11 +6,9 @@ tags: [ai, coding, productivity, tools]
 description: "Lessons learned from using AI assistants for code generation—why you still need to learn the domain and maintain agency over decisions."
 ---
 
-This post is an encouragement to use AI for what it was always meant for: an augmentation of you. You are the only thing that is going to produce true value in this relationship.
+AI code generation is powerful—but only when you maintain agency. After extensive use of Claude, Gemini, and Copilot, I've learned that AI is an assistant requiring constant validation, not a replacement for understanding.
 
-For clarity, I have mostly been using Claude, Gemini, and Copilot for generation and refinement.
-
-AI is my assistant, and it is an assistant that needs constant validation, will believe nearly anything, and will do anything in an attempt to keep its job. Here are some ironies I have experienced when working with my goofy but lovable assistant:
+Here are the ironies I've encountered:
 
 ## 1) I Need to Learn How to Make AI Learn How to Help Me
 

@@ -6,9 +6,9 @@ tags: [architecture, api-design, ddd, microservices]
 description: "Why REST's resource-centric design conflicts with domain-driven architectures and how RPC provides better alignment with business operations."
 ---
 
-Modern architectures are more often domain-driven, not entity-driven: modular monoliths, DDD implementations, and capability-based microservices.
+Modern systems favor domain-driven design: modular monoliths, bounded contexts, and capability-based microservices. REST's resource-centric model fundamentally conflicts with these architectures.
 
-REST's resource-centric design fundamentally conflicts with domain-driven architectures. While REST's technical mechanics remain useful, its conceptual framework breaks down in systems with bounded contexts. RPC approaches provide clearer, more maintainable APIs that align with business operations.
+When building DDD systems, RPC-style APIs provide clearer alignment with business operations and avoid the architectural contortions required to force-fit REST patterns onto bounded contexts.
 
 ## 1. The Architectural Incompatibility
 
@@ -42,4 +42,8 @@ REST's resource-centric design fundamentally conflicts with domain-driven archit
 
 ## Conclusion
 
-For domain-driven architectures, RPC is more honest about business operations. I prefer to embrace explicit, verb-based endpoints using POST as default. I prefer to maintain consistency within bounded contexts rather than forcing artificial global standards.
+For domain-driven architectures, RPC-style APIs honestly reflect business operations. Use explicit, verb-based endpoints (`/orders/cancel`, `/orders/refund`) that map directly to capabilities. Maintain consistency within bounded contexts rather than forcing artificial global resource models.
+
+**When to use REST:** Entity-driven systems with global resources (media libraries, inventory, configuration management).
+
+**When to use RPC:** Domain-driven systems with business operations and bounded contexts.

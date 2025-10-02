@@ -6,37 +6,39 @@ tags: [kubernetes, aws, architecture, lessons-learned]
 description: "A lesson in avoiding technology hype—how I wasted $2K/month on Kubernetes when simpler solutions like AWS ECS were a better fit."
 ---
 
-So I messed up...
+Two years ago, I adopted Kubernetes without proper evaluation. The result? $2K/month wasted and endless operational headaches.
 
-Over 2 years ago I threw Kubernetes into the "adopt" circle on our tech radar without really thinking it through. Everyone was talking about it, it looked cool, and honestly I wanted to play with it. I knew better, right?
+Last month I migrated to AWS ECS Fargate—immediately saving $2K/month while dramatically simplifying operations. This is my lesson in avoiding technology hype.
 
-Fast forward to last month—I finally moved everything to AWS ECS and immediately saved $2K/month while making my life waaaaaaaaaaaaay easier. Like, I can actually sleep again.
+## The Mistake
 
-## This One's on Me
+Kubernetes didn't fail—I did. As an architect, my job is evaluating tradeoffs before commitments. Instead, I got caught up in industry hype.
 
-Kubernetes didn't fail. I did. As a software architect, my job is to research this stuff properly and understand the tradeoffs before we commit. Instead I got caught up in the hype and made an expensive assumption. We did learn a lot about k8s best practices, but it was not enough to stop the bleeding.
+**Questions I should have asked:**
 
-I should have asked better questions and been more honest:
+- Do we need multi-cloud deployment? **(No)**
+- Are we running hundreds of microservices? **(We had ~20 containers)**
+- Do we have dedicated platform engineers? **(No)**
+- Is the operational overhead justified? **(No)**
+- Do we want non-cloud-native auth complexity? **(No)**
+- Do we want to constantly optimize node costs? **(No)**
 
-- Do we actually need multi-cloud deployment? **(No)**
-- Are we running hundreds of microservices? **(We had like 20 containers)**
-- Do we have platform engineers who want to manage this thing? **(No)**
-- Is the operational overhead worth it for our team size? **(No)**
-- Do we want to deal with an additional auth layer which is not cloud native? **(No)**
-- Do we want to constantly tweak our deployments to make the most of our node costs? **(No)**
-
-But I didn't, not really. I just saw everyone else doing it and figured we should too.
+I didn't ask these honestly. I saw others adopting K8s and assumed we should too.
 
 ## What Kubernetes Is Actually For
 
-Turns out K8s is built for companies with massive scale and dedicated platform teams. If you're Google running thousands of services, it's perfect. If you're a 20-person startup with a dozen containers, it's like buying a semi truck to deliver pizza.
+K8s is built for massive scale with dedicated platform teams. If you're running thousands of services like Google, it's perfect. For small teams with dozens of containers, it's overkill—like using a semi truck for pizza delivery.
 
-Most of us just need our apps to run reliably without babysitting a cluster every weekend.
+Most teams just need reliable deployments without weekend cluster maintenance.
 
-## What I Use Now
+## The Solution
 
-ECS Fargate. That's it. No cluster to manage, scales automatically, integrates with everything else on AWS. Of course, there are similar solutions; ECS is just what I determined was the most cost effective for me.
+**AWS ECS Fargate:** Fully managed, auto-scaling, native AWS integration. No cluster management, significantly lower costs, dramatically simpler operations.
+
+Similar managed container solutions exist across cloud providers. Evaluate what fits your actual needs, not industry trends.
 
 ## The Lesson
 
-When something looks shiny and new, actually dig into whether you need it before you put it on your roadmap. The boring and simple solution is usually the right solution.
+**Evaluate before adopting.** Ask hard questions about your specific context before committing to trendy technologies. The boring, simple solution is usually the right solution.
+
+As architects, we must protect our organizations from expensive assumptions—even when (especially when) the entire industry seems to be moving in one direction.

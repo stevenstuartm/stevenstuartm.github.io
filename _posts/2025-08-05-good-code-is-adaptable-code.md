@@ -6,11 +6,9 @@ tags: [software-design, best-practices, architecture]
 description: "Why adaptability trumps cleverness and performance as the ultimate measure of code quality, with practical principles for building flexible systems."
 ---
 
-The #1 measure of good code isn't cleverness, performance, or even correctness—it's adaptability.
+The #1 measure of good code isn't cleverness, performance, or even correctness—**it's adaptability.**
 
-The code that survives and thrives is the code that bends without breaking.
-
-In a previous post, I discussed how monolithic design and Domain Driven Design can help you discover the architecture and infrastructure you need without breaking the bank by building the wrong thing quickly. I've rarely been the most talented or knowledgeable developer in the room, but one thing I consistently bring is architecture and code built for change. (With the occasional learning moment, I'll admit)
+Code that survives and thrives bends without breaking. Throughout my career, I've consistently prioritized building for change over premature optimization. (With occasional learning moments, I'll admit.)
 
 ## "Getting It Right First" Is The Wrong Goal
 

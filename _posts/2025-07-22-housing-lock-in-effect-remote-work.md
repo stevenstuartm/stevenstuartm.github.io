@@ -6,9 +6,9 @@ tags: [remote-work, career, industry, economics]
 description: "How high mortgage rates and the housing lock-in effect could force employers to embrace remote work as talent becomes unable to relocate."
 ---
 
-Seeing the record number of homes for sale in my city, looking more and more like a severe traffic jam, I am wondering if the Federal Reserve's decision to keep interest rates elevated could inadvertently create or is already creating a required increase in remote IT job opportunities.
+High mortgage rates create a housing lock-in effect—homeowners with low rates can't afford to move. Could this force employers to embrace remote work as talent becomes geographically immobile?
 
-As someone who's been watching the housing market due to trying to sell my own property, I have found myself unable to make any significant permanent geographic change. For many, moving means losing a massive chunk of money in current investments and future payments. Going from a lower rate to a high one loses you a lot of money. Selling your home far below market value in order to make the sale feasible for those who can't afford the current rate loses you even more money.
+Trying to sell my own property, I've experienced this firsthand. Moving means either accepting a significantly higher mortgage rate or selling below market value—both representing massive financial losses.
 
 ## The Numbers
 

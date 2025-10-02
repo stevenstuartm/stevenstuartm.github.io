@@ -6,9 +6,9 @@ tags: [industry, innovation, technical-debt, career]
 description: "Exploring the switching cost trap—why better technologies remain unused while we maintain legacy systems and build migration bridges."
 ---
 
-Programming language diversity gave us incredible breakthroughs—Rust's memory safety, modern type systems, superior runtimes. Competition did its job and we have the results (at least on paper). We now have objectively far better tools than what runs most production systems.
+We've innovated incredible technologies—Rust's memory safety, modern type systems, superior runtimes. On paper, we have objectively better tools than what runs most production systems.
 
-But can we afford to use them? Can we afford to rebuild our bridges once there are no more rivers to cross? Or at least, no more money and incentive to cross the few rivers that remain.
+But can we afford to adopt them? The switching cost trap may leave optimal technologies unused while we maintain legacy systems indefinitely.
 
 ## The Timing Problem
 

@@ -6,20 +6,38 @@ tags: [architecture, microservices, monoliths, system-design]
 description: "Why monoliths are effective for discovery and microservices are optimizations—principles for choosing the right architecture for your context."
 ---
 
-It is an old and tired topic, and yet surprisingly it is still one that even I need to contemplate when starting a new project. Firstly, let's not be reductive: there is no one solution to any technological challenge. Much like there is no one way to best manage a team or a department. Leverage the responsible solution for the challenge at hand.
+An old debate, yet I contemplate it with every new project. There's no universal answer—choose the architecture that fits your context, constraints, and discovery needs.
 
-## Key Principles
+## Core Principles
 
-**Microservicing is an optimization** (a series of them actually) driven by discovery, and monolithic design is an effective way to discover what you do not yet know. For the same reason why, as an architect, I rely on developing my thoughts through a working proof of concept, so do monolithic components point the way to something potentially better.
+**1. Microservices Are Optimizations, Monoliths Enable Discovery**
 
-**Monolith does not mean you get to write garbage code.** Monoliths often have a stigma that has nothing to do with architecture. Simply put, with poor leadership comes an avalanche of garbage. The same code quality of a well crafted set of SOLID services can be implemented identically in a monolith.
+Microservices solve specific problems: team scaling, independent deployment, technology diversity. Monoliths accelerate discovery—learning boundaries, understanding domains, validating assumptions quickly.
 
-**Being first to market is overrated,** yet there is no need to block product development because you have not yet decided on the perfect ecosystem.
+Start with what helps you learn fastest. Optimize when you understand what needs optimizing.
 
-**Have well defined data boundaries from the start.** It is not wrong to share a database between microservices, but when things do need to change make sure it is not a tangled mess.
+**2. Monoliths Don't Excuse Poor Code Quality**
 
-**Use those API Gateways to abstract paths and access.** This is not a must-have, but it can be a prudent step that you can take before you need to know much of anything about your targeted future infrastructure.
+The monolith stigma stems from poor practices, not architecture. Apply SOLID principles, clear boundaries, and good design regardless of deployment strategy. Poor leadership produces garbage code in any architecture.
 
-## My Preference
+**3. Speed to Market vs. Perfect Architecture**
 
-With that all said... my typical preference, if time allows, is something in between: minimal Domain services. Start developing along the naturally occurring logical or categorical boundaries.
+Ship and learn. Don't block product development waiting for the "perfect" architecture. Make reversible decisions, establish clear boundaries, iterate based on real usage.
+
+**4. Data Boundaries Matter From Day One**
+
+Define data ownership early. Sharing databases between services isn't wrong initially, but ensure clean boundaries for future separation. Tangled data models block evolution.
+
+**5. Abstract Infrastructure Early**
+
+API gateways and service abstractions provide flexibility before you know your final infrastructure. Small upfront investment, significant future optionality.
+
+## My Approach
+
+Start with **domain-based services**—modular monoliths organized along natural business boundaries (bounded contexts). This provides:
+- Clear separation of concerns
+- Team autonomy within domains
+- Easy path to microservices when needed
+- Faster initial development than distributed systems
+
+Split into microservices when you have evidence: independent scaling needs, team coordination bottlenecks, or technology requirements that justify operational complexity.

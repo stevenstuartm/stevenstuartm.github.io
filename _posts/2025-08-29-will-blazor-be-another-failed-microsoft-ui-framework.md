@@ -6,42 +6,52 @@ tags: [blazor, dotnet, microsoft, web-development]
 description: "Examining whether Blazor will follow Microsoft's pattern of abandoned UI frameworks or if it's a strategic WebAssembly hedge bet for the future."
 ---
 
-After gaining experience with .NET Blazor, I'm left with big picture questions.
+Blazor offers a solid development experience—C# for web UIs with full JavaScript interop when needed. But Microsoft's UI framework graveyard raises an obvious question: Is this different, or are we repeating history?
 
-I like the Blazor development experience. It doesn't prevent you from doing anything critical in JS; it starts you with a .NET wrapper and ecosystem and lets you build stable products quickly. But where is this going? Haven't we seen this before?
+## Microsoft's UI Framework Graveyard
 
-## The Pattern
+- **Web Forms** — Hide HTML complexity (abandoned)
+- **WPF** — The desktop future (niche)
+- **Silverlight** — (we don't talk about it)
+- **Universal Apps** — Run everywhere (dead)
+- **MAUI** — Unify mobile/desktop (struggling)
 
-Web Forms promised to hide HTML complexity (abandoned). WPF was the future of desktop (niche). Universal Apps would run everywhere (dead). MAUI would unify mobile/desktop (struggling). Each promised to simplify cross-platform development. Let's not even talk about Silverlight.
+Each promised cross-platform simplicity. Each followed the same trajectory.
 
 ## What's Different This Time?
 
-Microsoft's official Blazor pitch is remarkably humble—just "C# for web UIs" with zero grand promises. No "write once, run everywhere" hype.
+**Humility.** Blazor's pitch is simply "C# for web UIs"—no grand promises, no "write once, run everywhere" hype.
 
-Microsoft learned from TypeScript's success and is running dual plays:
-- **TypeScript:** Make JavaScript better
-- **Blazor:** Provide WebAssembly alternative for .NET teams
+Microsoft learned from TypeScript and is running dual strategies:
+- **TypeScript** — Improve JavaScript for everyone
+- **Blazor** — WebAssembly option for .NET teams
 
-Who's using Blazor? 40k websites (growing 200%+ but still tiny). Mostly enterprise internal apps. Even Microsoft doesn't use it for flagship web properties.
+**Adoption reality:** ~40k websites (growing 200%+ but still tiny). Mostly enterprise internal apps. Even Microsoft doesn't use Blazor for flagship properties.
 
-This isn't about replacing JavaScript. It's Microsoft positioning for when performance-critical web apps need WebAssembly. They may be playing the long game while letting JavaScript dominate today.
+**The real strategy:** This isn't about replacing JavaScript. It's positioning for when performance-critical web apps need WebAssembly—AI interfaces, data visualization, browser-based tools. Let JavaScript dominate today; be ready for tomorrow's performance tier.
 
-## What This Actually Means
+## Decision Framework
 
-- **If you're .NET-heavy:** Blazor currently makes sense for specific internal and computational scenarios
-- **If you're web-first:** TypeScript is their real gift to you
-- **If you believe AI/gaming will drive WebAssembly adoption:** Blazor positions you early
+**Use Blazor if:**
+- .NET-heavy organization needing internal tools
+- Performance-critical web computations (data processing, visualizations)
+- Betting on WebAssembly's future for AI/computational interfaces
 
-Microsoft finally stopped fighting the web and started complementing it. Blazor might not be just another experiment—but a hedge bet on the performance tier of tomorrow's web.
+**Stick with TypeScript/JavaScript if:**
+- Web-first organization
+- Need broad ecosystem and hiring pool
+- Building standard web applications
 
-## But Do We Have Evidence Blazor Will Survive?
+## Will It Survive?
 
-It depends on what people need. People need faster UX; they don't care how we got them there. So what's the motivation for dev teams to introduce WebAssembly apps or portions of apps?
+**The uncertainty:** Microsoft's track record speaks for itself. Decades of abandoned UI frameworks create justified skepticism.
 
-WebAssembly does prevent the tech from becoming unusable even if MS stops supporting it, but that's not much comfort.
+**The difference:** WebAssembly isn't Microsoft-specific. Even if Microsoft abandons Blazor, the compiled output remains usable. That's more durability than previous frameworks offered—but still not a guarantee.
 
-Microsoft's UI framework graveyard spans decades. The pattern is too consistent to ignore.
+**The reality:** Users need performance, not specific technologies. WebAssembly adoption depends on whether the web demands it. AI interfaces and browser-based tools might drive that demand. Or they might not.
 
 ## The Verdict
 
-Use Blazor where it adds value. But don't bet on it lasting forever.
+Use Blazor where it delivers clear value today. Don't architect long-term systems assuming it will be supported forever.
+
+Microsoft stopped fighting the web and started complementing it—that's progress. Whether Blazor is a hedge bet or another experiment remains to be seen.
