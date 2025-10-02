@@ -1,7 +1,7 @@
 ---
 layout: radar
 title: Tech Radar
-description: "Interactive visualization of my technology preferences and recommendations across tools, techniques, platforms, and frameworks."
+description: "My technology recommendations and assessments: tools, techniques, platforms, and frameworks I adopt, trial, assess, or avoid—and why."
 permalink: /tech-radar/
 ---
 
@@ -28,22 +28,22 @@ permalink: /tech-radar/
       <button class="modal-close" id="closeModal" aria-label="Close modal">&times;</button>
     </div>
     <div class="modal-body">
-      <p>This is my personal technology radar. It represents my current perspective on tools, techniques, platforms, and frameworks.</p>
+      <p>My personal technology radar reflecting current assessments based on real-world experience. These recommendations evolve as technologies mature and new options emerge.</p>
 
       <h3>The Rings</h3>
       <ul>
-        <li><strong>ADOPT</strong> — Technologies I use confidently and recommend</li>
-        <li><strong>TRIAL</strong> — Technologies I'm actively using and validating</li>
-        <li><strong>ASSESS</strong> — Technologies I'm exploring and learning about</li>
-        <li><strong>HOLD</strong> — Technologies I'm cautious about or moving away from</li>
+        <li><strong>ADOPT</strong> — Technologies I use in production and confidently recommend</li>
+        <li><strong>TRIAL</strong> — Technologies I'm actively testing in real projects</li>
+        <li><strong>ASSESS</strong> — Technologies I'm evaluating for specific use cases</li>
+        <li><strong>HOLD</strong> — Technologies I recommend caution with or avoid</li>
       </ul>
 
       <h3>The Quadrants</h3>
       <ul>
-        <li><strong>Languages & Frameworks</strong> — Programming languages and software frameworks</li>
-        <li><strong>Platforms</strong> — Infrastructure and cloud platforms</li>
-        <li><strong>Techniques</strong> — Development approaches, patterns, and practices</li>
-        <li><strong>Tools</strong> — Development and operations tools</li>
+        <li><strong>Languages & Frameworks</strong> — Programming languages and development frameworks</li>
+        <li><strong>Platforms</strong> — Cloud platforms, databases, and infrastructure services</li>
+        <li><strong>Techniques</strong> — Architectural patterns, methodologies, and practices</li>
+        <li><strong>Tools</strong> — Development tools, CI/CD, and operational software</li>
       </ul>
     </div>
   </div>

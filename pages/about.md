@@ -1,20 +1,26 @@
 ---
 layout: page
 title: About
-description: "Software architect with 15+ years building cloud-native platforms, distributed systems, and scalable architectures with cloud and .NET."
+description: "Software architect with 15+ years designing cloud-native platforms, distributed systems, and scalable solutions using AWS, .NET, and modern practices."
 permalink: /about/
 ---
 
 ## Hi, I'm Steven
 
-I'm a software architect who's spent 15+ years building cloud-native platforms, distributed systems, and scalable architectures. I focus on solving real problems with pragmatic solutions—cutting costs, improving security, and helping teams ship reliable software.
+I'm a software architect with 15+ years designing and building cloud-native platforms, distributed systems, and scalable solutions. I specialize in pragmatic architecture that delivers measurable results: reduced costs, enhanced security, and systems that teams can confidently maintain and evolve.
 
 ### What I Do
 
-I design modern cloud architectures, mentor developers, and help teams balance velocity with stability. My stack centers on .NET and cloud technologies, with experience across financial services, digital banking, and SaaS.
+**Architecture & Design** — I design cloud-based systems on AWS, focusing on resilience, security, and cost optimization. From migrating monoliths to microservices to implementing event-driven architectures, I help organizations make smart technical decisions.
 
-I believe good architecture is about thoughtful tradeoffs—building systems that evolve with your business while keeping security and performance as first-class citizens.
+**Technical Leadership** — I mentor developers, establish best practices, and guide teams through architectural transitions. I believe great architecture requires collaboration between business goals and technical reality.
+
+**Technology Stack** — .NET (C#), AWS (EKS, Lambda, Aurora, DynamoDB), GraphQL, Vue.js, and modern DevOps practices. I've worked across financial services, digital banking, and SaaS platforms.
+
+### Philosophy
+
+Good architecture balances tradeoffs: performance vs. complexity, flexibility vs. simplicity, velocity vs. stability. I prioritize evolutionary design—systems that adapt as your business grows while maintaining security and performance.
 
 ### This Blog
 
-I write about software architecture, cloud systems, and lessons learned from building and modernizing platforms. Topics include system design patterns, AWS and .NET practices, microservices, DevOps, and engineering leadership.
+I share lessons from real projects: architectural patterns that work (and those that don't), cloud optimization strategies, Domain-Driven Design in practice, and insights on engineering leadership. If you're building production systems or growing as an architect, you'll find practical value here.
