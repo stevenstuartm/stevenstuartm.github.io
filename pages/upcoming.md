@@ -34,8 +34,9 @@ function renderUpcomingItems(items) {
   let html = '';
 
   sortedItems.forEach(item => {
-    // Format the date for display
-    const date = new Date(item.deliveryDate);
+    // Format the date for display (parse as local date to avoid timezone issues)
+    const [year, month, day] = item.deliveryDate.split('-');
+    const date = new Date(year, month - 1, day);
     const formattedDate = date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',

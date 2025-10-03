@@ -2,10 +2,13 @@
 layout: page
 title: About
 description: "Software architect with 15+ years designing cloud-native platforms, distributed systems, and scalable solutions using AWS, .NET, and modern practices."
+image: /assets/img/profile-steven-stuart.jpeg
 permalink: /about/
 ---
 
 ## Hi, I'm Steven
+
+![Steven Stuart - Software Architect specializing in cloud-native platforms and distributed systems](/assets/img/profile-steven-stuart.jpeg){: .profile-image}
 
 I'm a software architect with 15+ years designing and building cloud-native platforms, distributed systems, and scalable solutions. I specialize in pragmatic architecture that delivers measurable results: reduced costs, enhanced security, and systems that teams can confidently maintain and evolve.
 

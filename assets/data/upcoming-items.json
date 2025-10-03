@@ -8,30 +8,51 @@
   },
   {
     "id": 2,
-    "title": "New Study Guide Topics",
-    "description": "Expanding study guides to cover architecture governance frameworks, total cost of ownership (TCO) analysis, and return on investment (ROI) methodologies for technical decisions.",
+    "title": "Study Guide: architecture governance frameworks",
+    "description": "",
     "status": "planned",
     "deliveryDate": "2025-11-21"
   },
-  {
+    {
     "id": 3,
+    "title": "Study Guide: total cost of ownership and return on investment",
+    "description": "",
+    "status": "planned",
+    "deliveryDate": "2025-11-27"
+  },
+  {
+    "id": 4,
     "title": "Introduce AAA Cycle",
     "description": "Agree, Align, Apply. A review of my own initial and consolidated approach to system inception, design, and delivery.",
     "status": "planned",
     "deliveryDate": "2026-01-01"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "Latest Tech News Feed",
     "description": "Curated feed of the latest technology news, industry trends, and architectural insights relevant to cloud-native development and system design.",
     "status": "planned",
     "deliveryDate": "2026-03-01"
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "Introduce Tech Reviews",
     "description": "A new section of the site linked with the tech radar which will show my process, progress, and conclusions while exploring individual technologies.",
-    "status": "cooking",
+    "status": "planned",
     "deliveryDate": "2025-10-17"
+  },
+  {
+    "id": 7,
+    "title": "Study Guide: Architecture Foundations",
+    "description": "From inception to delivery, a series of study guides covering foundational architecture concepts and practices",
+    "status": "cooking",
+    "deliveryDate": "2025-10-31"
+  },
+  {
+    "id": 8,
+    "title": "Blog: The more I learn about Software Architecture, the more I disagree with myself",
+    "description": "",
+    "status": "planned",
+    "deliveryDate": "2025-10-31"
   }
 ]
