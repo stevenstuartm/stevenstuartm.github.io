@@ -30,7 +30,7 @@ layout: default
         <nav class="breadcrumb">
             <a href="{{ '/guides' | relative_url }}">Guides</a>
             <span class="separator">/</span>
-            <a href="{{ '/guides' | relative_url }}?category={{ page.category | uri_escape }}" class="category">{{ page.category }}</a>
+            <a href="{{ '/guides' | relative_url }}?category={{ page.category | url_encode }}" class="category">{{ page.category }}</a>
         </nav>
         <h1 class="guide-title">{{ page.title }}</h1>
         {% if page.category %}

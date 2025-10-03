@@ -67,11 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const categoryParam = urlParams.get('category');
     if (categoryParam) {
-        currentCategory = categoryParam;
+        // Decode the category parameter to handle special characters like &
+        currentCategory = decodeURIComponent(categoryParam);
         // Update active button
         filterBtns.forEach(btn => {
             btn.classList.remove('active');
-            if (btn.dataset.category === categoryParam) {
+            if (btn.dataset.category === currentCategory) {
                 btn.classList.add('active');
             }
         });
