@@ -11,19 +11,20 @@ layout: default
         {{ content }}
     </section>
 
-    <div class="guides-controls">
-        <input type="text" id="searchBox" placeholder="Search guides..." class="search-box">
+    <div class="guides-container">
+        <aside class="guides-sidebar">
+            <h3>Categories</h3>
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">All Guides</button>
+                {% assign categories = site.guides | map: "category" | uniq | sort %}
+                {% for category in categories %}
+                <button class="filter-btn" data-category="{{ category }}">{{ category }}</button>
+                {% endfor %}
+            </div>
+        </aside>
 
-        <div class="category-filters">
-            <button class="filter-btn active" data-category="all">All</button>
-            {% assign categories = site.guides | map: "category" | uniq | sort %}
-            {% for category in categories %}
-            <button class="filter-btn" data-category="{{ category }}">{{ category }}</button>
-            {% endfor %}
-        </div>
-    </div>
-
-    <div class="guides-grid" id="guidesGrid">
+        <div class="guides-main">
+            <div class="guides-grid" id="guidesGrid">
         {% assign guides_by_category = site.guides | group_by: "category" | sort: "name" %}
         {% for category_group in guides_by_category %}
         <section class="category-section" data-category="{{ category_group.name }}">
@@ -44,40 +45,36 @@ layout: default
             </div>
         </section>
         {% endfor %}
-    </div>
+            </div>
 
-    <div id="noResults" class="no-results" style="display: none;">
-        <p>No guides found matching your search.</p>
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No guides found.</p>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const searchBox = document.getElementById('searchBox');
     const filterBtns = document.querySelectorAll('.filter-btn');
     const guidesGrid = document.getElementById('guidesGrid');
     const categorySections = document.querySelectorAll('.category-section');
-    const guideCards = document.querySelectorAll('.guide-card');
     const noResults = document.getElementById('noResults');
-
-    let currentCategory = 'all';
-    let currentSearch = '';
 
     // Check for category parameter in URL
     const urlParams = new URLSearchParams(window.location.search);
     const categoryParam = urlParams.get('category');
     if (categoryParam) {
         // Decode the category parameter to handle special characters like &
-        currentCategory = decodeURIComponent(categoryParam);
+        const decodedCategory = decodeURIComponent(categoryParam);
         // Update active button
         filterBtns.forEach(btn => {
             btn.classList.remove('active');
-            if (btn.dataset.category === currentCategory) {
+            if (btn.dataset.category === decodedCategory) {
                 btn.classList.add('active');
             }
         });
-        // Apply filter
-        filterGuides();
+        filterGuides(decodedCategory);
     }
 
     // Category filtering
@@ -85,43 +82,23 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             filterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            currentCategory = this.dataset.category;
-            filterGuides();
+            filterGuides(this.dataset.category);
         });
     });
 
-    // Search filtering
-    searchBox.addEventListener('input', function() {
-        currentSearch = this.value.toLowerCase();
-        filterGuides();
-    });
-
-    function filterGuides() {
+    function filterGuides(category) {
         let visibleCount = 0;
 
         categorySections.forEach(section => {
             const sectionCategory = section.dataset.category;
-            const cards = section.querySelectorAll('.guide-card');
-            let sectionHasVisible = false;
+            const matchesCategory = category === 'all' || sectionCategory === category;
 
-            cards.forEach(card => {
-                const cardCategory = card.dataset.category;
-                const cardTitle = card.dataset.title;
-
-                const matchesCategory = currentCategory === 'all' || cardCategory === currentCategory;
-                const matchesSearch = currentSearch === '' || cardTitle.includes(currentSearch);
-
-                if (matchesCategory && matchesSearch) {
-                    card.style.display = 'block';
-                    sectionHasVisible = true;
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            // Show/hide section heading based on whether it has visible cards
-            section.style.display = sectionHasVisible ? 'block' : 'none';
+            if (matchesCategory) {
+                section.style.display = 'block';
+                visibleCount += section.querySelectorAll('.guide-card').length;
+            } else {
+                section.style.display = 'none';
+            }
         });
 
         // Show "no results" message
