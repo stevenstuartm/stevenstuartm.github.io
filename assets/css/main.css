@@ -522,11 +522,11 @@ main {
     display: grid;
     grid-template-columns: 350px 1fr;
     gap: var(--spacing-xl);
-    align-items: start;
+    align-items: stretch;
 }
 
 .home-summary {
-    height: 600px;
+    display: flex;
 }
 
 .home-intro {
@@ -535,10 +535,9 @@ main {
     border-radius: var(--border-radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     border-left: 4px solid var(--color-primary);
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
 .home-intro p {
@@ -553,7 +552,8 @@ main {
 
 .home-content {
     min-width: 0;
-    height: 600px;
+    display: flex;
+    padding: 0;
 }
 
 /* ===== Content Cards ===== */
@@ -563,7 +563,7 @@ main {
     border-radius: var(--border-radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     border-left: 4px solid var(--color-primary);
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
