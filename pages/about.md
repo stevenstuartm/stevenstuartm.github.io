@@ -21,6 +21,14 @@ I'm a software architect with 15+ years designing and building cloud-native plat
 
 Good architecture balances tradeoffs: performance vs. complexity, flexibility vs. simplicity, velocity vs. stability. I prioritize evolutionary design—systems that adapt as your business grows while maintaining security and performance.
 
-### This Blog
+### This Site
 
-I share lessons from real projects: architectural patterns that work (and those that don't), cloud optimization strategies, Domain-Driven Design in practice, and insights on engineering leadership. If you're building production systems or growing as an architect, you'll find practical value here.
+This site is my platform for sharing knowledge and experience across multiple formats:
+
+**Blog** — Insights from real projects: architectural patterns, cloud optimization strategies, Domain-Driven Design in practice, and engineering leadership lessons learned from production systems.
+
+**Study Guides** — Comprehensive reference materials on software fundamentals: data structures & algorithms, design patterns, system architecture, security, and modern development practices. These are living documents I continuously refine based on hands-on experience.
+
+**Tech Radar** — My current technology landscape showing what tools and practices I'm actively using (Adopt), experimenting with (Trial), evaluating (Assess), or moving away from (Hold).
+
+Whether you're building production systems, preparing for technical interviews, or growing as an architect, you'll find practical, battle-tested knowledge here.

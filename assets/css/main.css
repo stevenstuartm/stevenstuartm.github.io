@@ -16,7 +16,7 @@
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
 
-    --max-width: 800px;
+    --max-width: 1200px;
     --border-radius: 8px;
 }
 
@@ -200,6 +200,143 @@ main {
     color: white;
 }
 
+/* Navigation Dropdowns */
+.nav-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.nav-dropdown-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: var(--spacing-sm);
+    text-align: left;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: inherit;
+}
+
+.nav-dropdown-toggle:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.dropdown-arrow {
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.nav-dropdown.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding-left: var(--spacing-md);
+    margin-top: var(--spacing-xs);
+}
+
+.nav-dropdown.active .nav-dropdown-menu {
+    display: flex;
+}
+
+.nav-dropdown-menu a {
+    padding: var(--spacing-sm);
+    padding-left: var(--spacing-md);
+    font-size: 0.95rem;
+}
+
+/* Desktop Navigation Styles */
+@media (min-width: 1024px) {
+    .hamburger {
+        display: none;
+    }
+
+    .header-content {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+
+    .header-right {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        min-width: auto;
+        box-shadow: none;
+        align-items: center;
+        gap: 0;
+        justify-content: center;
+    }
+
+    .site-nav {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.25rem;
+        width: auto;
+    }
+
+    .site-nav > a,
+    .nav-dropdown-toggle {
+        padding: 0.5rem 0.75rem;
+        white-space: nowrap;
+        font-size: 0.95rem;
+    }
+
+    .nav-dropdown {
+        position: relative;
+        width: auto;
+    }
+
+    .nav-dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin-top: var(--spacing-xs);
+        background: var(--color-card-bg);
+        border: 2px solid var(--color-primary);
+        border-radius: var(--border-radius);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: var(--spacing-xs);
+        min-width: 160px;
+        z-index: 1000;
+    }
+
+    .nav-dropdown-menu a {
+        padding: 0.625rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .header-social {
+        padding-top: 0;
+        border-top: none;
+        padding-left: 0;
+        width: auto;
+        gap: 0.75rem;
+    }
+
+    .header-social svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
 .header-social {
     display: flex;
     gap: var(--spacing-md);
@@ -236,11 +373,41 @@ main {
     background: none;
     border: none;
     cursor: pointer;
+    position: relative;
 }
 
 .header-social button:hover {
     color: var(--color-primary);
     background-color: rgba(168, 213, 186, 0.1);
+}
+
+/* Custom tooltip for copy button */
+.copy-email-btn-header::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-text);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    margin-bottom: 0.5rem;
+    z-index: 1001;
+}
+
+.copy-email-btn-header:hover::after {
+    opacity: 1;
+}
+
+.copy-email-btn-header.copied::after {
+    content: 'Copied!';
+    opacity: 1;
 }
 
 .copy-email-btn-header.copied {
@@ -282,6 +449,39 @@ main {
 .social-links a:hover,
 .social-links button:hover {
     color: var(--color-secondary);
+}
+
+/* Custom tooltip for footer copy button */
+.copy-email-btn {
+    position: relative;
+}
+
+.copy-email-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-text);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    margin-bottom: 0.5rem;
+    z-index: 1001;
+}
+
+.copy-email-btn:hover::after {
+    opacity: 1;
+}
+
+.copy-email-btn.copied::after {
+    content: 'Copied!';
+    opacity: 1;
 }
 
 .copy-email-btn.copied {
@@ -709,6 +909,354 @@ main {
 
     .delivery-date {
         align-self: flex-start;
+    }
+}
+
+/* ===== Guides Page ===== */
+.guides-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.guides-hero {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.guides-hero h1 {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.guides-hero .subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+.guides-controls {
+    margin-bottom: var(--spacing-xl);
+}
+
+.search-box {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+    background: var(--color-card-bg);
+    transition: border-color 0.3s ease;
+}
+
+.search-box:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: var(--spacing-xs) var(--spacing-md);
+    border: 2px solid var(--color-border);
+    background: var(--color-card-bg);
+    color: var(--color-text);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: white;
+}
+
+.filter-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.category-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.category-heading {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.guide-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.guide-card {
+    background: var(--color-card-bg);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    transition: all 0.3s ease;
+}
+
+.guide-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.guide-card h3 {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.25rem;
+}
+
+.guide-card h3 a {
+    color: var(--color-text);
+}
+
+.guide-card h3 a:hover {
+    color: var(--color-primary);
+}
+
+.guide-card-meta {
+    margin-bottom: var(--spacing-sm);
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-secondary);
+    color: white;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.guide-excerpt {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.guide-card .read-more {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.guide-card .read-more:hover {
+    color: var(--color-hover);
+}
+
+.no-results {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text-light);
+}
+
+/* ===== Individual Guide Page ===== */
+.guide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.guide-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.breadcrumb a {
+    color: var(--color-primary);
+}
+
+.breadcrumb .separator {
+    margin: 0 var(--spacing-xs);
+}
+
+.guide-title {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.guide-meta {
+    margin-bottom: var(--spacing-md);
+}
+
+.guide-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+.guide-toc {
+    position: sticky;
+    top: var(--spacing-md);
+}
+
+.toc-wrapper {
+    background: var(--color-card-bg);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+}
+
+.toc-wrapper h3 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+}
+
+.toc-list {
+    list-style: none;
+}
+
+.toc-item {
+    margin-bottom: var(--spacing-xs);
+}
+
+.toc-item a {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    display: block;
+    padding: 0.25rem 0;
+    transition: color 0.3s ease;
+}
+
+.toc-item a:hover,
+.toc-item a.active {
+    color: var(--color-primary);
+}
+
+.toc-sublist {
+    list-style: none;
+    margin-left: var(--spacing-md);
+}
+
+.toc-subitem {
+    margin-bottom: var(--spacing-xs);
+}
+
+.toc-subitem a {
+    font-size: 0.85rem;
+}
+
+.guide-content {
+    background: var(--color-card-bg);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    min-height: 400px;
+}
+
+.guide-content h2 {
+    color: var(--color-text);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.guide-content h3 {
+    color: var(--color-text);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.guide-content code {
+    background: var(--color-bg);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.guide-content pre {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    overflow-x: auto;
+    margin-bottom: var(--spacing-md);
+}
+
+.guide-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.guide-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--spacing-md);
+}
+
+.guide-content th,
+.guide-content td {
+    border: 1px solid var(--color-border);
+    padding: var(--spacing-sm);
+    text-align: left;
+}
+
+.guide-content th {
+    background: var(--color-bg);
+    font-weight: 600;
+}
+
+.guide-footer {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: 2px solid var(--color-border);
+}
+
+.guide-footer .back-link {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+/* ===== Responsive Guides ===== */
+@media (max-width: 1024px) {
+    .guide-container {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-toc {
+        position: static;
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .guides-page {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .guide-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .guide {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .guide-content {
+        padding: var(--spacing-md);
     }
 }
 

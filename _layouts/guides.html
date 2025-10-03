@@ -1,0 +1,136 @@
+---
+layout: default
+---
+
+<div class="guides-page">
+    <section class="guides-hero">
+        <h1>{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <p class="subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+        {{ content }}
+    </section>
+
+    <div class="guides-controls">
+        <input type="text" id="searchBox" placeholder="Search guides..." class="search-box">
+
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            {% assign categories = site.guides | map: "category" | uniq | sort %}
+            {% for category in categories %}
+            <button class="filter-btn" data-category="{{ category }}">{{ category }}</button>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="guides-grid" id="guidesGrid">
+        {% assign guides_by_category = site.guides | group_by: "category" | sort: "name" %}
+        {% for category_group in guides_by_category %}
+        <section class="category-section" data-category="{{ category_group.name }}">
+            <h2 class="category-heading">{{ category_group.name }}</h2>
+            <div class="guide-cards">
+                {% for guide in category_group.items %}
+                <article class="guide-card" data-title="{{ guide.title | downcase }}" data-category="{{ guide.category }}">
+                    <h3><a href="{{ guide.url | relative_url }}">{{ guide.title }}</a></h3>
+                    <div class="guide-card-meta">
+                        <span class="category-badge">{{ guide.category }}</span>
+                    </div>
+                    {% if guide.excerpt %}
+                    <p class="guide-excerpt">{{ guide.excerpt | strip_html | truncatewords: 30 }}</p>
+                    {% endif %}
+                    <a href="{{ guide.url | relative_url }}" class="read-more">Read guide →</a>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+        {% endfor %}
+    </div>
+
+    <div id="noResults" class="no-results" style="display: none;">
+        <p>No guides found matching your search.</p>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchBox = document.getElementById('searchBox');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const guidesGrid = document.getElementById('guidesGrid');
+    const categorySections = document.querySelectorAll('.category-section');
+    const guideCards = document.querySelectorAll('.guide-card');
+    const noResults = document.getElementById('noResults');
+
+    let currentCategory = 'all';
+    let currentSearch = '';
+
+    // Check for category parameter in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    if (categoryParam) {
+        currentCategory = categoryParam;
+        // Update active button
+        filterBtns.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.category === categoryParam) {
+                btn.classList.add('active');
+            }
+        });
+        // Apply filter
+        filterGuides();
+    }
+
+    // Category filtering
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentCategory = this.dataset.category;
+            filterGuides();
+        });
+    });
+
+    // Search filtering
+    searchBox.addEventListener('input', function() {
+        currentSearch = this.value.toLowerCase();
+        filterGuides();
+    });
+
+    function filterGuides() {
+        let visibleCount = 0;
+
+        categorySections.forEach(section => {
+            const sectionCategory = section.dataset.category;
+            const cards = section.querySelectorAll('.guide-card');
+            let sectionHasVisible = false;
+
+            cards.forEach(card => {
+                const cardCategory = card.dataset.category;
+                const cardTitle = card.dataset.title;
+
+                const matchesCategory = currentCategory === 'all' || cardCategory === currentCategory;
+                const matchesSearch = currentSearch === '' || cardTitle.includes(currentSearch);
+
+                if (matchesCategory && matchesSearch) {
+                    card.style.display = 'block';
+                    sectionHasVisible = true;
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Show/hide section heading based on whether it has visible cards
+            section.style.display = sectionHasVisible ? 'block' : 'none';
+        });
+
+        // Show "no results" message
+        if (visibleCount === 0) {
+            guidesGrid.style.display = 'none';
+            noResults.style.display = 'block';
+        } else {
+            guidesGrid.style.display = 'block';
+            noResults.style.display = 'none';
+        }
+    }
+});
+</script>

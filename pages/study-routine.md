@@ -30,6 +30,7 @@ Building a strong foundation requires deliberate study of fundamentals and moder
 - [InfoQ](https://www.infoq.com/){:target="_blank" rel="noopener noreferrer"} - Software development news and deep dives
 - [AWS Architecture Blog](https://aws.amazon.com/blogs/architecture/){:target="_blank" rel="noopener noreferrer"} - Cloud architecture patterns
 - [.NET Blog](https://devblogs.microsoft.com/dotnet/){:target="_blank" rel="noopener noreferrer"} - Latest from the .NET team
+- [.Microsoft Learning](https://learn.microsoft.com/en-us/training/){:target="_blank" rel="noopener noreferrer"} - Explore Microsoft product documentation and training
 
 ---
 

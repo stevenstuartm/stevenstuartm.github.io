@@ -1,0 +1,122 @@
+---
+layout: default
+---
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{ page.title }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.author.name }}",
+    "url": "{{ site.url }}"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "{{ site.author.name }}"
+  },
+  "description": "{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  }
+}
+</script>
+
+<article class="guide">
+    <header class="guide-header">
+        <nav class="breadcrumb">
+            <a href="{{ '/guides' | relative_url }}">Guides</a>
+            <span class="separator">/</span>
+            <a href="{{ '/guides' | relative_url }}?category={{ page.category | uri_escape }}" class="category">{{ page.category }}</a>
+        </nav>
+        <h1 class="guide-title">{{ page.title }}</h1>
+        {% if page.category %}
+        <div class="guide-meta">
+            <span class="category-badge">{{ page.category }}</span>
+        </div>
+        {% endif %}
+    </header>
+
+    <div class="guide-container">
+        <!-- Table of Contents (auto-generated from headings) -->
+        <aside class="guide-toc">
+            <div class="toc-wrapper">
+                <h3>Table of Contents</h3>
+                <nav id="TableOfContents"></nav>
+            </div>
+        </aside>
+
+        <div class="guide-content">
+            {{ content }}
+        </div>
+    </div>
+
+    <footer class="guide-footer">
+        <a href="{{ '/guides' | relative_url }}" class="back-link">← Back to all guides</a>
+    </footer>
+</article>
+
+<script>
+// Auto-generate table of contents from h2 and h3 headings
+document.addEventListener('DOMContentLoaded', function() {
+    const content = document.querySelector('.guide-content');
+    const toc = document.getElementById('TableOfContents');
+
+    if (!content || !toc) return;
+
+    const headings = content.querySelectorAll('h2, h3');
+
+    if (headings.length === 0) {
+        document.querySelector('.guide-toc').style.display = 'none';
+        return;
+    }
+
+    let tocHTML = '<ul class="toc-list">';
+    let currentLevel = 2;
+
+    headings.forEach((heading, index) => {
+        const level = parseInt(heading.tagName.charAt(1));
+        const text = heading.textContent;
+        const id = heading.id || 'heading-' + index;
+
+        if (!heading.id) {
+            heading.id = id;
+        }
+
+        if (level > currentLevel) {
+            tocHTML += '<ul class="toc-sublist">';
+        } else if (level < currentLevel) {
+            tocHTML += '</ul>';
+        }
+
+        const itemClass = level === 2 ? 'toc-item' : 'toc-subitem';
+        tocHTML += `<li class="${itemClass}"><a href="#${id}">${text}</a></li>`;
+
+        currentLevel = level;
+    });
+
+    tocHTML += '</ul>';
+    toc.innerHTML = tocHTML;
+
+    // Highlight current section on scroll
+    const tocLinks = toc.querySelectorAll('a');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const id = entry.target.id;
+            const tocLink = toc.querySelector(`a[href="#${id}"]`);
+
+            if (entry.isIntersecting) {
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (tocLink) tocLink.classList.add('active');
+            }
+        });
+    }, {
+        rootMargin: '-80px 0px -80% 0px'
+    });
+
+    headings.forEach(heading => observer.observe(heading));
+});
+</script>

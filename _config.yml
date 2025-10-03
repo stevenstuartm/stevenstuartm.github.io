@@ -38,6 +38,9 @@ collections:
   posts:
     output: true
     permalink: /blog/:year/:month/:day/:title/
+  guides:
+    output: true
+    permalink: /guides/:path/
 
 # Defaults
 defaults:
@@ -46,6 +49,11 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "guides"
+    values:
+      layout: "guide"
   - scope:
       path: ""
     values:
