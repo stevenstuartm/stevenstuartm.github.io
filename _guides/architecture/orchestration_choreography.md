@@ -1,9 +1,9 @@
 ---
+layout: guide
 title: "Orchestration and Choreography Patterns"
 category: Architecture
 ---
 
-← [Back to Architecture Patterns Index](./README.md)
 
 ## Overview
 
@@ -48,7 +48,7 @@ These patterns define how multiple services coordinate to complete complex busin
 - Want maximum decoupling between services
 - Building event-driven architectures
 
-**Challenges:**
+**Considerations:**
 - Difficult to monitor and debug workflows
 - Complex error handling and compensation
 - No central view of the business process
@@ -75,4 +75,3 @@ These patterns define how multiple services coordinate to complete complex busin
 
 ---
 
-← [Back to Architecture Patterns Index](./README.md)

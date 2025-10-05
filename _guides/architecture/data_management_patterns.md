@@ -3,7 +3,6 @@ title: "Data Management Patterns"
 category: Architecture
 ---
 
-← [Back to Architecture Patterns Index](./README.md)
 
 ## Overview
 
@@ -114,4 +113,3 @@ Data management patterns address how distributed systems handle data storage, ac
 
 ---
 
-← [Back to Architecture Patterns Index](./README.md)

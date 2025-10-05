@@ -3,7 +3,6 @@ title: "Performance and Scalability Patterns"
 category: Architecture
 ---
 
-← [Back to Architecture Patterns Index](./README.md)
 
 ## Overview
 
@@ -95,4 +94,3 @@ These patterns focus on optimizing system performance, handling increased load, 
 
 ---
 
-← [Back to Architecture Patterns Index](./README.md)

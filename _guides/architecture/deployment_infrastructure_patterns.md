@@ -3,7 +3,6 @@ title: "Deployment and Infrastructure Patterns"
 category: Architecture
 ---
 
-← [Back to Architecture Patterns Index](./README.md)
 
 ## Overview
 
@@ -86,4 +85,3 @@ These patterns address how applications are deployed, managed, and operated in d
 
 ---
 
-← [Back to Architecture Patterns Index](./README.md)

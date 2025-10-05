@@ -22,6 +22,9 @@ social:
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
 
+# Data files location
+data_dir: assets/data
+
 # Plugins
 plugins:
   - jekyll-sitemap
@@ -40,7 +43,7 @@ collections:
     permalink: /blog/:year/:month/:day/:title/
   guides:
     output: true
-    permalink: /guides/:path/
+    permalink: /study-guides/:path/
 
 # Defaults
 defaults:

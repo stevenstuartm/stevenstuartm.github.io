@@ -3,7 +3,6 @@ title: "Reliability Patterns"
 category: Architecture
 ---
 
-← [Back to Architecture Patterns Index](./README.md)
 
 ## Overview
 
@@ -90,4 +89,3 @@ Reliability patterns help systems handle failures gracefully, maintain availabil
 
 ---
 
-← [Back to Architecture Patterns Index](./README.md)

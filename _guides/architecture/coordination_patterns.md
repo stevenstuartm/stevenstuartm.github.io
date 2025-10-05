@@ -3,7 +3,6 @@ title: "Coordination Patterns"
 category: Architecture
 ---
 
-← [Back to Architecture Patterns Index](./README.md)
 
 ## Overview
 
@@ -70,4 +69,3 @@ Coordination patterns enable multiple distributed nodes to work together effecti
 
 ---
 
-← [Back to Architecture Patterns Index](./README.md)

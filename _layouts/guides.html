@@ -15,40 +15,57 @@ layout: default
         <aside class="guides-sidebar">
             <h3>Categories</h3>
             <div class="category-filters">
-                <button class="filter-btn active" data-category="all">All Guides</button>
-                {% assign categories = site.guides | map: "category" | uniq | sort %}
-                {% for category in categories %}
-                <button class="filter-btn" data-category="{{ category }}">{{ category }}</button>
+                {% assign configured_categories = site.data.study_guides_config.categories %}
+                {% for category_pair in configured_categories %}
+                    {% assign category_name = category_pair[0] %}
+                <button class="filter-btn{% if forloop.first %} active{% endif %}" data-category="{{ category_name }}">{{ category_name }}</button>
                 {% endfor %}
             </div>
         </aside>
 
         <div class="guides-main">
             <div class="guides-grid" id="guidesGrid">
-        {% assign guides_by_category = site.guides | group_by: "category" | sort: "name" %}
-        {% for category_group in guides_by_category %}
-        <section class="category-section" data-category="{{ category_group.name }}">
-            <h2 class="category-heading">{{ category_group.name }}</h2>
-            <div class="guide-cards">
-                {% for guide in category_group.items %}
-                <article class="guide-card" data-title="{{ guide.title | downcase }}" data-category="{{ guide.category }}">
-                    <h3><a href="{{ guide.url | relative_url }}">{{ guide.title }}</a></h3>
-                    <div class="guide-card-meta">
-                        <span class="category-badge">{{ guide.category }}</span>
-                    </div>
-                    {% if guide.excerpt %}
-                    <p class="guide-excerpt">{{ guide.excerpt | strip_html | truncatewords: 30 }}</p>
+        {% comment %} Only display categories that are defined in the config {% endcomment %}
+        {% for category_pair in site.data.study_guides_config.categories %}
+            {% assign category_name = category_pair[0] %}
+            {% assign category_config = category_pair[1] %}
+
+        <section class="category-section" data-category="{{ category_name }}">
+            <h2 class="category-heading">{{ category_name }}</h2>
+
+            {% comment %} Display guides organized by subcategories {% endcomment %}
+            {% for subcategory in category_config.subcategories %}
+                <div class="subcategory-group">
+                    <h3 class="subcategory-title">{{ subcategory.name }}</h3>
+                    {% if subcategory.description %}
+                        <p class="subcategory-desc">{{ subcategory.description }}</p>
                     {% endif %}
-                    <a href="{{ guide.url | relative_url }}" class="read-more">Read guide →</a>
-                </article>
-                {% endfor %}
-            </div>
+                    <div class="guide-cards">
+                        {% for guide_ref in subcategory.guides %}
+                            {% assign guide = site.guides | where_exp: "item", "item.path contains guide_ref.file" | first %}
+                            {% if guide %}
+                                <article class="guide-card" data-title="{{ guide.title | downcase }}" data-category="{{ guide.category }}">
+                                    <h3><a href="{{ guide.url | relative_url }}">{{ guide.title }}</a></h3>
+                                    <div class="guide-card-meta">
+                                        <span class="category-badge">{{ guide.category }}</span>
+                                        <span class="subcategory-badge">{{ subcategory.name }}</span>
+                                    </div>
+                                    {% if guide.excerpt %}
+                                    <p class="guide-excerpt">{{ guide.excerpt | strip_html | truncatewords: 30 }}</p>
+                                    {% endif %}
+                                    <a href="{{ guide.url | relative_url }}" class="read-more">Read study guide →</a>
+                                </article>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
         </section>
         {% endfor %}
             </div>
 
             <div id="noResults" class="no-results" style="display: none;">
-                <p>No guides found.</p>
+                <p>No study guides found.</p>
             </div>
         </div>
     </div>
@@ -91,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         categorySections.forEach(section => {
             const sectionCategory = section.dataset.category;
-            const matchesCategory = category === 'all' || sectionCategory === category;
+            const matchesCategory = sectionCategory === category;
 
             if (matchesCategory) {
                 section.style.display = 'block';

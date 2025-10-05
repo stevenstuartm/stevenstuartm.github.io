@@ -3,7 +3,6 @@ title: "Messaging Patterns"
 category: Architecture
 ---
 
-← [Back to Architecture Patterns Index](./README.md)
 
 ## Overview
 
@@ -96,4 +95,3 @@ Messaging patterns ensure reliable, consistent, and efficient message handling i
 
 ---
 
-← [Back to Architecture Patterns Index](./README.md)

@@ -3,8 +3,6 @@ title: "Communication Patterns"
 category: Architecture
 ---
 
-← [Back to Architecture Patterns Index](./README.md)
-
 ## Overview
 
 Communication patterns define how services and components interact with each other in distributed systems. These patterns are fundamental to building scalable and reliable architectures.
@@ -86,4 +84,3 @@ Communication patterns define how services and components interact with each oth
 
 ---
 
-← [Back to Architecture Patterns Index](./README.md)

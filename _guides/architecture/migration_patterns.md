@@ -3,7 +3,6 @@ title: "Migration Patterns"
 category: Architecture
 ---
 
-← [Back to Architecture Patterns Index](./README.md)
 
 ## Overview
 
@@ -67,4 +66,3 @@ Migration patterns help organizations modernize legacy systems gradually and saf
 
 ---
 
-← [Back to Architecture Patterns Index](./README.md)

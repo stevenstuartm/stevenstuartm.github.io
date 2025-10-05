@@ -3,7 +3,6 @@ title: "Integration Patterns"
 category: Architecture
 ---
 
-← [Back to Architecture Patterns Index](./README.md)
 
 ## Overview
 
@@ -83,4 +82,3 @@ Integration patterns define how different systems and services work together, en
 
 ---
 
-← [Back to Architecture Patterns Index](./README.md)

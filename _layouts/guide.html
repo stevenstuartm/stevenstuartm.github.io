@@ -28,9 +28,9 @@ layout: default
 <article class="guide">
     <header class="guide-header">
         <nav class="breadcrumb">
-            <a href="{{ '/guides' | relative_url }}">Guides</a>
+            <a href="{{ '/study-guides' | relative_url }}">Study Guides</a>
             <span class="separator">/</span>
-            <a href="{{ '/guides' | relative_url }}?category={{ page.category | url_encode }}" class="category">{{ page.category }}</a>
+            <a href="{{ '/study-guides' | relative_url }}?category={{ page.category | url_encode }}" class="category">{{ page.category }}</a>
         </nav>
         <h1 class="guide-title">{{ page.title }}</h1>
         {% if page.category %}
@@ -54,10 +54,18 @@ layout: default
         </div>
     </div>
 
+    {% comment %} Add prev/next navigation {% endcomment %}
+    {% include guide_navigation.html %}
+
     <footer class="guide-footer">
-        <a href="{{ '/guides' | relative_url }}" class="back-link">← Back to all guides</a>
+        <a href="{{ '/study-guides' | relative_url }}" class="back-link">← Back to all study guides</a>
     </footer>
 </article>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+    ↑
+</button>
 
 <script>
 // Auto-generate table of contents from h2 and h3 headings
@@ -119,4 +127,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
     headings.forEach(heading => observer.observe(heading));
 });
+
+// Scroll to Top Button
+(function() {
+    const scrollBtn = document.getElementById('scrollToTop');
+    const scrollThreshold = window.innerHeight;
+
+    function toggleScrollButton() {
+        if (window.scrollY > scrollThreshold) {
+            scrollBtn.classList.add('visible');
+        } else {
+            scrollBtn.classList.remove('visible');
+        }
+    }
+
+    window.addEventListener('scroll', toggleScrollButton);
+
+    scrollBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Initial check
+    toggleScrollButton();
+})();
 </script>

@@ -52,3 +52,35 @@ layout: default
         <a href="{{ '/blog' | relative_url }}" class="back-link">← Back to all posts</a>
     </footer>
 </article>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+    ↑
+</button>
+
+<script>
+(function() {
+    const scrollBtn = document.getElementById('scrollToTop');
+    const scrollThreshold = window.innerHeight;
+
+    function toggleScrollButton() {
+        if (window.scrollY > scrollThreshold) {
+            scrollBtn.classList.add('visible');
+        } else {
+            scrollBtn.classList.remove('visible');
+        }
+    }
+
+    window.addEventListener('scroll', toggleScrollButton);
+
+    scrollBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Initial check
+    toggleScrollButton();
+})();
+</script>
