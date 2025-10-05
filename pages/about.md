@@ -30,7 +30,7 @@ This site is my platform for sharing knowledge and experience across multiple fo
 
 **Blog** — Insights from real projects: architectural patterns, cloud optimization strategies, Domain-Driven Design in practice, and engineering leadership lessons learned from production systems.
 
-**Study Guides** — Comprehensive reference materials on software fundamentals: data structures & algorithms, design patterns, system architecture, security, and modern development practices. These are living documents I continuously refine based on hands-on experience.
+**Study Guides** — Comprehensive reference materials and collected notes on software fundamentals.
 
 **Tech Radar** — My current technology landscape showing what tools and practices I'm actively using (Adopt), experimenting with (Trial), evaluating (Assess), or moving away from (Hold).
 
