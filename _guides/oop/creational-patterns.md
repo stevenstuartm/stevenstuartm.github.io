@@ -446,4 +446,65 @@ var clone1 = original.Clone(); // Using interface
 var clone2 = original.DeepClone(); // Using JSON serialization
 ```
 
+## Quick Reference
+
+### Creational Pattern Comparison
+
+| Pattern | Intent | Problem Solved | When to Use | When to Avoid |
+|---------|--------|----------------|-------------|---------------|
+| **Factory Method** | Define object creation interface | Multiple ways to create objects | Subclasses determine which class to instantiate | Simple constructor is sufficient |
+| **Abstract Factory** | Create families of related objects | Need consistent object families | Cross-platform UIs, themed components | Only one product family |
+| **Builder** | Construct complex objects step-by-step | Objects with many optional parameters | Immutable objects, fluent APIs, complex construction | Simple objects with few properties |
+| **Prototype** | Clone existing objects | Expensive object creation | Object templates, reducing initialization cost | Objects are cheap to create |
+| **Singleton** | Single instance globally | Shared resource access | Config, logging - **prefer DI instead** | Almost always - use DI |
+
+### Pattern Selection Guide
+
+**Choose Factory Method when:**
+- You have multiple construction approaches
+- Subclasses should decide what to instantiate
+- Example: `Person.NewCustomer()`, `Person.NewEmployee()`
+
+**Choose Abstract Factory when:**
+- You need families of related objects
+- Products must be used together
+- Example: UI controls for Windows vs Mac
+
+**Choose Builder when:**
+- Object has many optional parameters (>3)
+- Object construction is complex
+- Creating immutable objects
+- Example: Building complex queries, HTML elements
+
+**Choose Prototype when:**
+- Object creation is expensive (database loads, complex initialization)
+- You need independent copies with similar state
+- Example: Cloning configuration templates
+
+**Avoid Singleton when:**
+- Testing is important (hard to mock)
+- You need multiple instances later
+- **Use dependency injection instead**
+
+### Modern C# Alternatives
+
+```csharp
+// Instead of Singleton - use DI
+services.AddSingleton<IConfigurationManager, ConfigurationManager>();
+
+// Instead of Factory Method - use static factory methods
+public static User CreateCustomer(string name) => new User { Name = name, Role = "Customer" };
+
+// Instead of Builder - use object initializers for simple cases
+var user = new User
+{
+    Name = "John",
+    Email = "john@example.com",
+    Age = 30
+};
+
+// Instead of Prototype - use with expressions for records
+var clone = original with { Name = "NewName" };
+```
+
 ---

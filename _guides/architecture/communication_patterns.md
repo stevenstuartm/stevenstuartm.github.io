@@ -1,86 +1,118 @@
 ---
+layout: guide
 title: "Communication Patterns"
 category: Architecture
+subcategory: Patterns
 ---
 
-## Overview
+# Communication Patterns
 
-Communication patterns define how services and components interact with each other in distributed systems. These patterns are fundamental to building scalable and reliable architectures.
-
-## Table of Contents
-
-- [Load Balancing](#load-balancing)
-- [Publisher-Subscriber (Pub/Sub)](#publisher-subscriber-pubsub)
-- [Request-Response](#request-response)
-- [Event Streaming](#event-streaming)
-
----
+Communication patterns define how services and components interact in distributed systems.
 
 ## Load Balancing
 
-**What it is:** A pattern that distributes incoming requests across multiple service instances to prevent any single instance from becoming overwhelmed.
+Distributes incoming requests across multiple service instances to prevent any single instance from becoming overwhelmed.
 
-**Why use it:** Improves system availability, distributes load evenly, and enables horizontal scaling.
-
-**When to use:**
+**Use When**:
 - Multiple instances of the same service exist
 - Need to distribute traffic to prevent bottlenecks
-- Want to achieve high availability through redundancy
+- Want high availability through redundancy
 
-**Common algorithms:**
-- **Round Robin:** Distributes requests sequentially across instances
-- **Least Connections:** Routes to the instance with fewest active connections
-- **Weighted Round Robin:** Assigns different weights to instances based on capacity
-- **Sticky Sessions:** Routes requests from the same client to the same instance
-- **Geographic:** Routes based on client location
+**Common Algorithms**:
 
-**Example:** An e-commerce application with three web server instances. The load balancer receives requests and distributes them evenly, ensuring no single server is overloaded during peak shopping periods.
+- **Round Robin**: Distributes requests sequentially across instances
+- **Least Connections**: Routes to the instance with fewest active connections
+- **Weighted Round Robin**: Assigns different weights to instances based on capacity
+- **Sticky Sessions**: Routes requests from the same client to the same instance
+- **Geographic**: Routes based on client location
+
+**Example**: E-commerce with three web server instances. Load balancer receives requests and distributes them evenly, ensuring no single server is overloaded during peak shopping.
+
+```
+Client → Load Balancer → [Server 1, Server 2, Server 3]
+```
+
+---
 
 ## Publisher-Subscriber (Pub/Sub)
 
-**What it is:** An asynchronous messaging pattern where publishers send messages to topics without knowing who will receive them, and subscribers listen to topics without knowing who sent the messages.
+Asynchronous messaging pattern where publishers send messages to topics without knowing who will receive them, and subscribers listen to topics without knowing who sent messages.
 
-**Why use it:** Decouples message producers from consumers, enables event-driven architectures, and supports scalable communication.
-
-**When to use:**
+**Use When**:
 - Need asynchronous communication between services
 - Want to broadcast events to multiple consumers
 - Building event-driven architectures
 - Need to scale message processing independently
 
-**Delivery mechanisms:**
-- **Competing Consumers:** Each message is consumed by only one subscriber
-- **Fanout:** Each message is delivered to all subscribers
+**Delivery Mechanisms**:
 
-**Example:** An order processing system where placing an order publishes an event. Multiple services (inventory, payment, shipping, notifications) subscribe to order events and react accordingly.
+- **Competing Consumers**: Each message consumed by only one subscriber
+- **Fanout**: Each message delivered to all subscribers
+
+**Example**: Order processing where placing an order publishes an event. Multiple services (inventory, payment, shipping, notifications) subscribe to order events and react accordingly.
+
+```
+Order Service → Order Topic → [Inventory Service, Payment Service, Shipping Service, Notification Service]
+```
+
+---
 
 ## Request-Response
 
-**What it is:** A synchronous communication pattern where a client sends a request and waits for a response from the server.
+Synchronous communication pattern where a client sends a request and waits for a response from the server.
 
-**Why use it:** Simple to implement and understand, provides immediate feedback, and works well for operations requiring immediate results.
-
-**When to use:**
+**Use When**:
 - Need immediate response from the server
 - Operation requires confirmation before proceeding
 - Implementing CRUD operations
 - User interface needs real-time feedback
 
-**Example:** A user authentication service where a login request must return success/failure immediately to determine if the user can proceed.
+**Example**: User authentication service where a login request must return success/failure immediately to determine if the user can proceed.
+
+```
+Client → [Request] → Auth Service → [Response] → Client
+```
+
+**Trade-offs**: Simple to implement and understand, but tight coupling and potential for cascading failures.
+
+---
 
 ## Event Streaming
 
-**What it is:** Continuous flow of events that can be processed in real-time or stored for later processing.
+Continuous flow of events that can be processed in real-time or stored for later processing.
 
-**Why use it:** Enables real-time processing, supports event replay, and provides a complete audit trail.
-
-**When to use:**
+**Use When**:
 - Need real-time data processing
 - Want to maintain event history
 - Building analytics platforms
 - Implementing event sourcing
 
-**Example:** Financial trading platform where stock price changes are streamed continuously to update displays and trigger automated trading rules.
+**Example**: Financial trading platform where stock price changes are streamed continuously to update displays and trigger automated trading rules.
+
+```
+Stock Exchange → Event Stream → [Display Service, Trading Engine, Analytics Service]
+```
+
+**Key Characteristics**: Ordered events | Event replay capability | Multiple consumers | Durability
 
 ---
 
+## Quick Reference
+
+### Pattern Comparison
+
+| Pattern | Sync/Async | Coupling | Use Case |
+|---------|-----------|----------|----------|
+| **Load Balancing** | Sync | Medium | Distribute traffic across instances |
+| **Pub/Sub** | Async | Low | Broadcast events to multiple services |
+| **Request-Response** | Sync | High | Immediate feedback required |
+| **Event Streaming** | Async | Low | Real-time processing, event history |
+
+### When to Choose
+
+**Load Balancing**: Already using request-response, need to scale horizontally
+**Pub/Sub**: Multiple services need to react to same event
+**Request-Response**: User needs immediate confirmation
+**Event Streaming**: Need event history and real-time processing
+
+---

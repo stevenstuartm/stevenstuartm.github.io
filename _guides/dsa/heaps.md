@@ -668,16 +668,34 @@ Console.WriteLine($"Minimum intervals: {result}");
 
 ---
 
-## Modern Usage
+## Quick Reference
 
-**C#:**
-- Use `PriorityQueue<TElement, TPriority>` (.NET 6+)
+### Heap Operations
+| Operation | Time | Notes |
+|-----------|------|-------|
+| Insert | O(log n) | Bubble up |
+| Extract min/max | O(log n) | Bubble down |
+| Peek min/max | O(1) | Root element |
+| Build heap | O(n) | Heapify from array |
+| Heapify | O(log n) | Restore heap property |
+
+### Heap Types
+- **Min Heap:** Root is minimum, children ≥ parent
+- **Max Heap:** Root is maximum, children ≤ parent
+- **Binary Heap:** Complete binary tree in array
+
+### Common Use Cases
+✓ Priority queues
+✓ Heap sort (O(n log n))
+✓ Top K elements
+✓ Median in stream (two heaps)
+✓ Dijkstra's algorithm
+
+### C# Implementation
+- `.NET 6+:` `PriorityQueue<TElement, TPriority>`
 - `SortedSet<T>` for ordered operations
-- Custom implementation for older versions or specific requirements
+- Array-based for custom needs
 
-**Key Takeaways:**
-- Heaps are perfect for "find extremes repeatedly" problems
-- Building heap from array is O(n), not O(n log n)
-- Priority queues are heaps with application-specific semantics  
-- Two-heap technique useful for streaming statistics
-- Essential for graph algorithms and scheduling systems
+**Key Insight:** Heaps excel when you need repeated access to extremes (min/max)
+
+---

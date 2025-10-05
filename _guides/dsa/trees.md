@@ -762,10 +762,24 @@ public class AutoComplete
 
 ---
 
-## Modern Usage
+## Quick Reference
 
-**C#:** Use `SortedDictionary<K,V>` or `SortedSet<T>` (implemented as Red-Black trees) for production code
+### BST Operations Complexity
+| Operation | Average | Worst Case | Balanced |
+|-----------|---------|------------|----------|
+| Search | O(log n) | O(n) | O(log n) |
+| Insert | O(log n) | O(n) | O(log n) |
+| Delete | O(log n) | O(n) | O(log n) |
+| Min/Max | O(log n) | O(n) | O(log n) |
 
-**Interview focus:** Understand BST properties, implement basic operations, know common problems like validation and traversals
+### Key Properties
+- **In-order traversal** of BST gives sorted order
+- **Worst case** O(n) occurs when tree becomes skewed (like a linked list)
+- **Balanced BST** (AVL, Red-Black) guarantees O(log n)
 
-**Production reality:** Language built-ins are usually better than custom BST implementations unless you have very specific requirements.
+### C# Built-ins
+- `SortedDictionary<K,V>` - Red-Black tree implementation
+- `SortedSet<T>` - Balanced tree set
+- Use these in production unless specific requirements demand custom implementation
+
+---

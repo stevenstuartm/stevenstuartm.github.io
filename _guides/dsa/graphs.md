@@ -877,16 +877,30 @@ public static Node CloneGraph(Node node)
 
 **Social Networks:** Friend recommendations, influence analysis, community detection
 **Maps & Navigation:** Shortest path, traffic routing, location services  
-**Web:** PageRank, link analysis, web crawling
-**Compilers:** Dependency analysis, optimization, register allocation
-**Biology:** Protein interactions, gene networks, phylogenetic trees
-**Finance:** Risk analysis, fraud detection, market networks
-**Games:** AI pathfinding, state space search, decision trees
+## Quick Reference
 
-## Modern Usage
+### Graph Representation
+| Method | Space | Add Edge | Check Edge | Best For |
+|--------|-------|----------|------------|----------|
+| Adjacency List | O(V + E) | O(1) | O(degree) | Sparse graphs |
+| Adjacency Matrix | O(V²) | O(1) | O(1) | Dense graphs, quick lookups |
 
-**C#:** Use specialized graph libraries for complex operations or implement custom structures for specific needs
-**Databases:** Neo4j, Amazon Neptune for large-scale graph data
-**Libraries:** Consider using Microsoft.Msagl for visualization or custom implementations for specific algorithms
+### Search Algorithms
+| Algorithm | Time | Space | Use Case |
+|-----------|------|-------|----------|
+| **DFS** | O(V + E) | O(V) | Cycle detection, topological sort, connected components |
+| **BFS** | O(V + E) | O(V) | Shortest path (unweighted), level-order traversal |
 
-**Interview focus:** Understand BFS/DFS deeply, know when to use each, implement basic graph operations, recognize graph problems in disguise (trees, 2D grids, state spaces)
+### Key Patterns
+- **Tree** = Connected acyclic graph with V-1 edges
+- **Cycle detection:** DFS with visited tracking
+- **Shortest path (unweighted):** BFS
+- **Shortest path (weighted):** Dijkstra, Bellman-Ford
+- **All pairs shortest path:** Floyd-Warshall
+
+### C# Libraries
+- Microsoft.Msagl for visualization
+- Neo4j, Amazon Neptune for graph databases
+- QuikGraph for advanced algorithms
+
+---

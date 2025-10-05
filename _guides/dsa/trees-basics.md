@@ -607,13 +607,22 @@ public class FileSystemNode
 
 ---
 
-## Next Steps
+## Quick Reference
 
-Once you understand basic trees:
+### Traversal Summary
+| Traversal | Order | Use Case |
+|-----------|-------|----------|
+| **Pre-order** | Root → Left → Right | Copy tree, prefix notation |
+| **In-order** | Left → Root → Right | BST sorted output |
+| **Post-order** | Left → Right → Root | Delete tree, postfix notation |
+| **Level-order** | Level by level | Find shortest path, serialize |
 
-1. **Learn balanced trees** (AVL, Red-Black trees)
-2. **Study tree applications** (heaps, tries, segment trees)
-3. **Explore tree algorithms** (LCA, tree diameter, path problems)
-4. **Practice tree problems** to recognize patterns
+### Time Complexity
+| Operation | Binary Tree | BST (balanced) |
+|-----------|-------------|----------------|
+| Search | O(n) | O(log n) |
+| Insert | O(n) | O(log n) |
+| Delete | O(n) | O(log n) |
+| Traversal | O(n) | O(n) |
 
-**Remember:** Trees are about efficient organization of hierarchical data. Master the traversals and basic operations before moving to advanced tree structures.
+---

@@ -489,13 +489,25 @@ public static class DependencyResolver
 
 ---
 
-## Next Steps
+## Quick Reference
 
-Once you understand basic graphs:
+### Graph Basics Summary
+| Concept | Definition | Example |
+|---------|------------|---------|
+| **Vertex** | Node in graph | Person in social network |
+| **Edge** | Connection between vertices | Friendship link |
+| **Directed** | One-way connection | Twitter follow |
+| **Undirected** | Two-way connection | Facebook friend |
+| **Weighted** | Edge has cost/distance | Road with distance |
 
-1. **Learn shortest path algorithms** (Dijkstra, A*)
-2. **Study minimum spanning trees** (Prim's, Kruskal's)
-3. **Explore advanced graph algorithms** (Floyd-Warshall, network flow)
-4. **Practice graph problems** to recognize patterns
+### Traversal Comparison
+| Algorithm | Order | Use Case | Implementation |
+|-----------|-------|----------|----------------|
+| **DFS** | Depth-first | Pathfinding, cycle detection | Stack (or recursion) |
+| **BFS** | Level-by-level | Shortest path, nearest neighbor | Queue |
 
-**Remember:** Graphs are about modeling relationships. Master the fundamentals of traversal and representation before moving to complex algorithms.
+**Key Insight:**
+- DFS explores as far as possible before backtracking
+- BFS explores all neighbors before going deeper
+
+---

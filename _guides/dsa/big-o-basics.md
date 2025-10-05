@@ -252,13 +252,21 @@ function recursiveFunction(n) {
 
 ---
 
-## Next Steps
+## Quick Reference
 
-Now that you understand the basics:
+| Complexity | Growth Rate | Max Practical Input | Common Examples |
+|------------|-------------|---------------------|-----------------|
+| O(1) | Constant | Any size | Array access, hash lookup |
+| O(log n) | Logarithmic | Billions | Binary search, balanced trees |
+| O(n) | Linear | Millions | Single loop, linear search |
+| O(n log n) | Linearithmic | Millions | Merge sort, heap sort |
+| O(n²) | Quadratic | Thousands | Nested loops, bubble sort |
+| O(2ⁿ) | Exponential | ~20 | Naive recursion, subsets |
 
-1. **Practice identifying** Big O in real code
-2. **Learn specific algorithms** and their complexities
-3. **Understand when** to optimize vs when "good enough" is fine
-4. **Study advanced concepts** like amortized analysis and space-time tradeoffs
+**Pattern Recognition:**
+- Single loop → O(n)
+- Nested same-size loops → O(n²)
+- Halving each iteration → O(log n)
+- Divide and conquer → Often O(n log n)
 
-**Remember:** Big O is a tool for making informed decisions, not a rigid rule. Understanding the patterns helps you choose the right approach for your specific situation.
+---

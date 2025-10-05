@@ -7,23 +7,13 @@ subcategory: Styles
 
 # Architecture Styles
 
-## Understanding Styles
-
 An architecture style describes a system's topology and characteristics (both pros and cons).
 
-**Styles define:**
-
-- Component topology & organization
-- Physical architecture (monolithic/distributed)
-- Deployment patterns
-- Communication methods
-- Data topology
+**Styles define**: Component topology | Physical architecture (monolithic/distributed) | Deployment patterns | Communication methods | Data topology
 
 ## Choosing a Style
 
-### Decision Factors
-
-**Understand first:**
+**Understand first**:
 
 - Domain requirements & workflows
 - Architecture characteristics needed
@@ -32,7 +22,7 @@ An architecture style describes a system's topology and characteristics (both pr
 - Organizational factors (budget, politics, maturity)
 - Team structure & capabilities
 
-### Key Questions
+**Key Questions**:
 
 1. **Monolith or distributed?** Single quantum vs multiple?
 2. **Where should data live?** Single DB, domain DBs, or per-service?
@@ -48,94 +38,59 @@ An architecture style describes a system's topology and characteristics (both pr
 
 **Topology**: Presentation → Business → Persistence → Database
 
-**Key Concepts:**
+**Key Concepts**:
 
 - Technical partitioning by role
 - Layers of isolation (closed layers)
 - **Sinkhole antipattern**: Requests pass through without logic
 
-**Use When:**
-
-Small apps, tight budgets, starting point
-
-**Avoid When:**
-
-Large apps, high scalability needed
-
----
+**Use When**: Small apps, tight budgets, starting point
+**Avoid When**: Large apps, high scalability needed
 
 ### Pipeline Architecture
 
 **Topology**: Pipes (communication) + Filters (processing)
 
-**Filters:**
+**Filters**: Producer → Transformer → Tester → Consumer
 
-Producer → Transformer → Tester → Consumer
-
-**Key Concepts:**
+**Key Concepts**:
 
 - Unidirectional flow
 - Compositional reuse
 - Stateless, single-purpose filters
 
-**Use When:**
-
-ETL, ordered one-way processing, tight budgets
-
-**Avoid When:**
-
-Complex workflows, high scale, bidirectional communication
-
----
+**Use When**: ETL, ordered one-way processing, tight budgets
+**Avoid When**: Complex workflows, high scale, bidirectional communication
 
 ### Microkernel Architecture
 
 **Topology**: Core system + Plug-ins
 
-**Key Concepts:**
+**Key Concepts**:
 
 - **Core**: Minimal functionality (happy path)
 - **Plug-ins**: Specialized processing, extensions
 - **Registry**: Tracks available plug-ins
 - Point-to-point or remote communication
 
-**Risks:**
+**Risks**: Volatile core (should be stable), Plug-in dependencies (should only talk to core)
 
-- Volatile core (should be stable)
-- Plug-in dependencies (should only talk to core)
-
-**Use When:**
-
-Product-based apps, customization needed, domain variations
-
-**Avoid When:**
-
-High scalability required
-
----
+**Use When**: Product-based apps, customization needed, domain variations
+**Avoid When**: High scalability required
 
 ### Modular Monolith
 
 **Topology**: Single deployment, domain-partitioned modules
 
-**Communication:**
+**Communication**:
 
 - **Peer-to-peer**: Direct invocation (simple but risky)
 - **Mediator**: Abstraction layer (decoupled)
 
-**Risks:**
+**Risks**: Getting too big, excessive code reuse blurring boundaries, too much intermodule communication
 
-- Getting too big
-- Excessive code reuse blurring boundaries
-- Too much intermodule communication
-
-**Use When:**
-
-Tight budgets, new systems, domain-focused teams, DDD
-
-**Avoid When:**
-
-High operational characteristics needed, frequent technical changes
+**Use When**: Tight budgets, new systems, domain-focused teams, DDD
+**Avoid When**: High operational characteristics needed, frequent technical changes
 
 ---
 
@@ -145,47 +100,27 @@ High operational characteristics needed, frequent technical changes
 
 **Topology**: UI + Coarse-grained domain services (4-12) + Database
 
-**Key Concepts:**
+**Key Concepts**:
 
 - Domain services with API facade → Business → Persistence
 - Remote access via REST/messaging/RPC
 - Flexible database topologies
 - Can use API Gateway
 
-**Data Options:**
+**Data Options**: Monolithic database (most common) | Domain databases | Service-specific databases
 
-- Monolithic database (most common)
-- Domain databases
-- Service-specific databases
-- Use logical partitioning for schema changes
+**Risks**: Too much interservice communication, too many services (>12), excessive data sharing
 
-**Risks:**
-
-- Too much interservice communication
-- Too many services (>12)
-- Excessive data sharing
-
-**Use When:**
-
-Pragmatic distributed architecture, domain teams
-
-**Avoid When:**
-
-Transactions across services needed
-
----
+**Use When**: Pragmatic distributed architecture, domain teams
+**Avoid When**: Transactions across services needed
 
 ### Event-Driven Architecture
 
-**Topology:**
+**Topology**: Event broker + Event processors
 
-Event broker + Event processors
+**Flow**: Initiating event → Processor → Derived events → More processors
 
-**Flow:**
-
-Initiating event → Processor → Derived events → More processors
-
-**Key Concepts:**
+**Key Concepts**:
 
 - **Events vs Messages**: "I did this" vs "do this"
 - **Choreographed**: No central coordinator (broadcast)
@@ -193,42 +128,21 @@ Initiating event → Processor → Derived events → More processors
 - Asynchronous fire-and-forget
 - Broadcast one-to-many
 
-**Event Payloads:**
+**Event Payloads**:
 
 - **Data-based**: All data in event (faster, brittle)
 - **Key-based**: Only ID in event (consistent, slower)
-- Avoid anemic events & Swarm of Gnats
 
-**Data Topologies:**
+**Risks**: Nondeterministic side effects, static coupling via contracts, too much synchronous communication, difficult state management
 
-- Monolithic (easiest, single point of failure)
-- Domain databases (better fault tolerance)
-- Dedicated per service (best isolation)
-
-**Risks:**
-
-- Nondeterministic side effects
-- Static coupling via contracts
-- Too much synchronous communication
-- Difficult state management
-
-**Use When:**
-
-Flexible action-based events, high responsiveness, complex workflows
-
-**Avoid When:**
-
-Well-structured data requests, need certainty and control
-
----
+**Use When**: Flexible action-based events, high responsiveness, complex workflows
+**Avoid When**: Well-structured data requests, need certainty and control
 
 ### Microservices Architecture
 
-**Topology:**
+**Topology**: Fine-grained services + API layer + Distributed data
 
-Fine-grained services + API layer + Distributed data
-
-**Key Concepts:**
+**Key Concepts**:
 
 - **Bounded context**: DDD-inspired "share nothing"
 - **Granularity**: Purpose, transactions, choreography guide sizing
@@ -236,140 +150,98 @@ Fine-grained services + API layer + Distributed data
 - **Sidecar pattern**: Operational concerns (monitoring, circuit breakers)
 - **Service mesh**: Unified control across sidecars
 
-**Communication:**
-
-- Protocol-aware heterogeneous interoperability
-- Choreography (no mediator) or Orchestration (mediator)
-
-**Transactions:**
+**Transactions**:
 
 - Avoid distributed transactions
 - Fix granularity instead
 - **Saga pattern**: Mediator with compensating transactions
 
-**Risks:**
+**Risks**: **Grains of Sand** (services too fine-grained), too much interservice communication, excessive data sharing, code reuse breaking bounded contexts
 
-- **Grains of Sand**: Services too fine-grained
-- Too much interservice communication
-- Excessive data sharing
-- Code reuse breaking bounded contexts
-
-**Use When:**
-
-High modularity/scalability/evolvability, domain teams, independent deployment
-
-**Avoid When:**
-
-Transactions across services needed, simple domains, small teams
-
----
+**Use When**: High modularity/scalability/evolvability, domain teams, independent deployment
+**Avoid When**: Transactions across services needed, simple domains, small teams
 
 ### Orchestration-Driven SOA
 
-**Topology:**
+**Topology**: Service taxonomy + ESB/Orchestration engine
 
-Service taxonomy + ESB/Orchestration engine
-
-**Service Taxonomy:**
+**Service Taxonomy**:
 
 1. **Business**: Coarse-grained entry points
 2. **Enterprise**: Fine-grained reusable building blocks
 3. **Application**: One-off implementations
 4. **Infrastructure**: Operational concerns
 
-**Key Concepts:**
+**Key Concepts**:
 
 - Orchestration engine stitches services
 - Message bus for integration
 - Reuse philosophy (caused coupling problems)
 
-**Historical Context:**
+**Modern Use**: ESBs for integration only (not full architecture)
 
-- Expensive resources led to reuse-at-all-costs
-- Technical partitioning taken to extreme
-- Mostly failed; lessons learned influenced modern styles
-
-**Modern Use:**
-
-ESBs for integration only (not full architecture)
-
-**Risk:**
-
-Accidental SOA antipattern
-
----
+**Risk**: Accidental SOA antipattern
 
 ### Space-Based Architecture
 
-**Topology:**
+**Topology**: Processing units + Virtualized middleware + Data pumps/writers/readers
 
-Processing units + Virtualized middleware + Data pumps/writers/readers
-
-**Key Concepts:**
+**Key Concepts**:
 
 - **Removes database bottleneck**: In-memory data grids
 - **Processing units**: App logic + in-memory cache
-- **Virtualized middleware**:
-  - Messaging grid: Routes requests
-  - Data grid: Synchronizes caches
-  - Processing grid: Orchestrates multi-unit requests
-  - Deployment manager: Elastic scaling
+- **Virtualized middleware**: Messaging grid | Data grid | Processing grid | Deployment manager
 - **Data pumps**: Async DB updates via messaging
 
-**Caching Models:**
+**Caching Models**:
 
 - **Replicated**: Fast, fault-tolerant, limited by size
 - **Distributed**: Consistent, slower, single point of failure
 - **Near-cache**: Hybrid (not recommended)
 
-**Data Synchronization:**
+**Risks**: Frequent database reads, data collisions during replication, high data volumes, synchronization bottlenecks
 
-- Eventual consistency
-- Asynchronous updates
-- Potential collisions with high update rates
-
-**Risks:**
-
-- Frequent database reads
-- Data collisions during replication
-- High data volumes
-- Synchronization bottlenecks
-
-**Use When:**
-
-Extreme scalability/elasticity, variable unpredictable load
-
-**Avoid When:**
-
-Frequent cold starts, heavy archived data reads, low tolerance for eventual consistency
----
-
-## Quick Comparison
-
-| Style | Best For | Avoid When
-|-------|----------|------------|------|-------------|
-| **Layered** | Small apps, tight budgets | Large scalable systems
-| **Pipeline** | ETL, one-way processing | Complex workflows
-| **Microkernel** | Customizable products | High scalability
-| **Modular Monolith** | Domain teams, DDD | High operational demands
-| **Service-Based** | Pragmatic distributed | Cross-service transactions
-| **Event-Driven** | Responsiveness, scale | Deterministic workflows
-| **Microservices** | Evolvability, independence | Simple domains, small teams
-| **SOA** | Legacy integration | New architectures
-| **Space-Based** | Extreme scale, elasticity | Frequent DB reads
+**Use When**: Extreme scalability/elasticity, variable unpredictable load
+**Avoid When**: Frequent cold starts, heavy archived data reads, low tolerance for eventual consistency
 
 ---
 
-## Summary
+## Quick Reference
 
-**Remember:**
+### Style Comparison
 
-Every style has trade-offs. Choose based on your context, constraints, and priorities.
+| Style | Monolith/Distributed | Best For | Avoid When |
+|-------|---------------------|----------|------------|
+| **Layered** | Monolith | Small apps, tight budgets | Large scalable systems |
+| **Pipeline** | Monolith | ETL, one-way processing | Complex workflows |
+| **Microkernel** | Monolith | Customizable products | High scalability |
+| **Modular Monolith** | Monolith | Domain teams, DDD | High operational demands |
+| **Service-Based** | Distributed | Pragmatic distributed | Cross-service transactions |
+| **Event-Driven** | Distributed | Responsiveness, scale | Deterministic workflows |
+| **Microservices** | Distributed | Evolvability, independence | Simple domains, small teams |
+| **SOA** | Distributed | Legacy integration | New architectures |
+| **Space-Based** | Distributed | Extreme scale, elasticity | Frequent DB reads |
 
-**Decision Flow:**
+### Decision Flow
 
 1. Understand domain & characteristics
 2. Determine monolith vs distributed
 3. Choose data topology
 4. Select communication pattern
 5. Validate against constraints
+
+### Data Topology Options
+
+**Monolithic Database**: Single shared database
+- **Pros**: Simple, ACID transactions
+- **Cons**: Tight coupling, bottleneck
+
+**Domain Databases**: Database per domain
+- **Pros**: Domain autonomy
+- **Cons**: Cross-domain queries complex
+
+**Service-Specific**: Database per service
+- **Pros**: Maximum independence
+- **Cons**: Most complex, no distributed transactions
+
+---

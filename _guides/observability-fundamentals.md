@@ -1,6 +1,8 @@
 ---
 title: "Observability Fundamentals"
+layout: guide
 category: Observability
+subcategory: Fundamentals
 ---
 
 ## Table of Contents
@@ -16,18 +18,7 @@ category: Observability
 7. [Tools and Platforms](#tools-and-platforms)
 8. [Common Challenges](#common-challenges)
 
-## Overview
-
-Observability is the ability to understand a system's internal state based on its external outputs. In distributed systems, observability enables developers and operations teams to understand what's happening across complex architectures, identify performance bottlenecks, troubleshoot issues, and ensure system reliability.
-
-**Core Definition**: Observability uses three pillars of telemetry data—metrics, logs and traces—to make vast computing networks easier to visualize and understand.
-
-**Key Benefits:**
-- **Faster Problem Resolution**: Identify and fix issues before they impact users
-- **Proactive Monitoring**: Detect problems before they become critical
-- **System Understanding**: Gain insights into complex distributed system behavior
-- **Performance Optimization**: Identify bottlenecks and optimization opportunities
-- **Incident Response**: Reduce mean time to resolution (MTTR) during outages
+Observability is the ability to understand a system's internal state based on its external outputs using three pillars of telemetry data: metrics, logs, and traces.
 
 ## Observability vs Monitoring
 
@@ -310,5 +301,3 @@ When choosing an observability platform, consider:
 - **Best Practice**: Implement privacy by design in observability strategy
 
 ---
-
-*Remember: Effective observability is not just about implementing the three pillars—it requires a holistic approach that includes the right tools, processes, team skills, and organizational culture to transform raw telemetry data into actionable insights.*

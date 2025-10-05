@@ -7,38 +7,453 @@ category: Object-Oriented Programming
 
 ## Core OOP Pillars
 
-**Abstraction**
-- Hide complex implementation details while exposing a simple interface
+Object-Oriented Programming is built on four fundamental pillars that work together to create maintainable, scalable software systems.
+
+### Abstraction
+
+**Definition**: Hide complex implementation details while exposing a simple, clear interface.
+
+**Key Principles**:
 - Focus on what an object does rather than how it does it
-- Use abstract classes and interfaces to define contracts
+- Define contracts through interfaces and abstract classes
+- Reduce complexity by hiding unnecessary details
 
-**Encapsulation**
-- Bundle data and methods that operate on that data within a single unit
-- Control access through visibility modifiers (private, protected, public)
-- Protect internal state from external interference
+**Example**:
+```csharp
+// Abstract interface - defines what, not how
+public interface IPaymentProcessor
+{
+    Task<PaymentResult> ProcessPayment(decimal amount);
+    Task<bool> RefundPayment(string transactionId);
+}
 
-**Inheritance**
-- Create new classes based on existing classes
-- Enables code reuse and establishes "is-a" relationships
-- Use composition over inheritance when possible (modern best practice)
+// Concrete implementation - defines how
+public class StripePaymentProcessor : IPaymentProcessor
+{
+    private readonly string apiKey;
 
-**Polymorphism**
-- Objects of different types can be treated as instances of the same type
-- Method overriding enables runtime behavior selection
-- Interfaces enable compile-time polymorphism
+    public StripePaymentProcessor(string apiKey)
+    {
+        this.apiKey = apiKey;
+    }
 
-## Key Concepts
+    public async Task<PaymentResult> ProcessPayment(decimal amount)
+    {
+        // Complex Stripe API logic hidden from caller
+        var charge = await CreateStripeCharge(amount, apiKey);
+        return new PaymentResult { Success = true, TransactionId = charge.Id };
+    }
 
-**Covariance**
-- Use a more derived type than originally specified
-- Example: `IEnumerable<Derived>` can be assigned to `IEnumerable<Base>`
+    public async Task<bool> RefundPayment(string transactionId)
+    {
+        // Complex refund logic abstracted away
+        await ProcessStripeRefund(transactionId);
+        return true;
+    }
 
-**Contravariance**
-- Use a more generic type than originally specified
-- Example: `Action<Base>` can be assigned to `Action<Derived>`
+    private async Task<StripeCharge> CreateStripeCharge(decimal amount, string key) { /* ... */ }
+    private async Task ProcessStripeRefund(string id) { /* ... */ }
+}
 
-**Invariance**
-- Use only the originally specified type
-- Example: `List<Base>` cannot be assigned to `List<Derived>` or vice versa
+// Consumer doesn't need to know implementation details
+public class OrderService
+{
+    private readonly IPaymentProcessor paymentProcessor;
+
+    public OrderService(IPaymentProcessor paymentProcessor)
+    {
+        this.paymentProcessor = paymentProcessor;
+    }
+
+    public async Task CompleteOrder(Order order)
+    {
+        // Simple interface - complexity is abstracted
+        var result = await paymentProcessor.ProcessPayment(order.Total);
+        if (result.Success)
+        {
+            order.MarkAsPaid(result.TransactionId);
+        }
+    }
+}
+```
+
+### Encapsulation
+
+**Definition**: Bundle data and methods that operate on that data within a single unit, controlling access through visibility modifiers.
+
+**Key Principles**:
+- Keep internal state private
+- Expose behavior through public methods
+- Use properties for controlled access to data
+- Protect object invariants
+
+**Example**:
+```csharp
+public class BankAccount
+{
+    // Private fields - internal state is hidden
+    private decimal balance;
+    private readonly List<Transaction> transactions = new();
+
+    // Public property with controlled access
+    public string AccountNumber { get; }
+    public decimal Balance => balance; // Read-only access
+
+    public BankAccount(string accountNumber, decimal initialBalance)
+    {
+        if (initialBalance < 0)
+            throw new ArgumentException("Initial balance cannot be negative");
+
+        AccountNumber = accountNumber;
+        balance = initialBalance;
+    }
+
+    // Public methods control how state can be modified
+    public void Deposit(decimal amount)
+    {
+        if (amount <= 0)
+            throw new ArgumentException("Deposit amount must be positive");
+
+        balance += amount;
+        transactions.Add(new Transaction(TransactionType.Deposit, amount));
+    }
+
+    public bool Withdraw(decimal amount)
+    {
+        if (amount <= 0)
+            throw new ArgumentException("Withdrawal amount must be positive");
+
+        if (amount > balance)
+            return false; // Insufficient funds
+
+        balance -= amount;
+        transactions.Add(new Transaction(TransactionType.Withdrawal, amount));
+        return true;
+    }
+
+    // Encapsulated business logic
+    public IReadOnlyList<Transaction> GetRecentTransactions(int count)
+    {
+        return transactions.TakeLast(count).ToList().AsReadOnly();
+    }
+}
+```
+
+### Inheritance
+
+**Definition**: Create new classes based on existing classes, establishing "is-a" relationships and enabling code reuse.
+
+**Key Principles**:
+- Use inheritance for true "is-a" relationships
+- Prefer composition over inheritance when possible
+- Follow the Liskov Substitution Principle
+- Avoid deep inheritance hierarchies (3+ levels)
+
+**Example**:
+```csharp
+// Base class with common functionality
+public abstract class Employee
+{
+    public string Name { get; set; }
+    public string EmployeeId { get; set; }
+    public decimal BaseSalary { get; set; }
+
+    // Virtual method can be overridden
+    public virtual decimal CalculateMonthlyPay()
+    {
+        return BaseSalary / 12;
+    }
+
+    // Abstract method must be implemented
+    public abstract string GetEmployeeType();
+
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"{GetEmployeeType()}: {Name} ({EmployeeId})");
+        Console.WriteLine($"Monthly Pay: ${CalculateMonthlyPay():F2}");
+    }
+}
+
+// Derived class - SalariedEmployee "is-an" Employee
+public class SalariedEmployee : Employee
+{
+    public override string GetEmployeeType() => "Salaried Employee";
+}
+
+// Derived class with additional behavior
+public class HourlyEmployee : Employee
+{
+    public decimal HourlyRate { get; set; }
+    public int HoursWorked { get; set; }
+
+    // Override to change behavior
+    public override decimal CalculateMonthlyPay()
+    {
+        return HourlyRate * HoursWorked;
+    }
+
+    public override string GetEmployeeType() => "Hourly Employee";
+}
+
+// Derived class with bonus structure
+public class CommissionEmployee : Employee
+{
+    public decimal CommissionRate { get; set; }
+    public decimal Sales { get; set; }
+
+    public override decimal CalculateMonthlyPay()
+    {
+        return base.CalculateMonthlyPay() + (Sales * CommissionRate);
+    }
+
+    public override string GetEmployeeType() => "Commission Employee";
+}
+```
+
+**Modern Alternative - Composition Over Inheritance**:
+```csharp
+// Interface defines capability
+public interface IPayCalculator
+{
+    decimal CalculatePay();
+}
+
+// Different calculation strategies
+public class SalaryCalculator : IPayCalculator
+{
+    private readonly decimal annualSalary;
+
+    public SalaryCalculator(decimal annualSalary)
+    {
+        this.annualSalary = annualSalary;
+    }
+
+    public decimal CalculatePay() => annualSalary / 12;
+}
+
+public class HourlyCalculator : IPayCalculator
+{
+    private readonly decimal hourlyRate;
+    private readonly int hoursWorked;
+
+    public HourlyCalculator(decimal hourlyRate, int hoursWorked)
+    {
+        this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
+    }
+
+    public decimal CalculatePay() => hourlyRate * hoursWorked;
+}
+
+// Employee uses composition instead of inheritance
+public class ModernEmployee
+{
+    public string Name { get; set; }
+    public string EmployeeId { get; set; }
+
+    // Composition - has-a relationship
+    private readonly IPayCalculator payCalculator;
+
+    public ModernEmployee(string name, string employeeId, IPayCalculator payCalculator)
+    {
+        Name = name;
+        EmployeeId = employeeId;
+        this.payCalculator = payCalculator;
+    }
+
+    public decimal GetMonthlyPay() => payCalculator.CalculatePay();
+}
+```
+
+### Polymorphism
+
+**Definition**: Objects of different types can be treated as instances of the same type, with behavior determined at runtime.
+
+**Key Principles**:
+- Enable flexible, extensible code
+- Support method overriding (runtime polymorphism)
+- Support method overloading (compile-time polymorphism)
+- Work with abstractions, not concrete types
+
+**Runtime Polymorphism Example**:
+```csharp
+public interface IShape
+{
+    double CalculateArea();
+    void Draw();
+}
+
+public class Circle : IShape
+{
+    public double Radius { get; set; }
+
+    public double CalculateArea() => Math.PI * Radius * Radius;
+
+    public void Draw() => Console.WriteLine($"Drawing circle with radius {Radius}");
+}
+
+public class Rectangle : IShape
+{
+    public double Width { get; set; }
+    public double Height { get; set; }
+
+    public double CalculateArea() => Width * Height;
+
+    public void Draw() => Console.WriteLine($"Drawing rectangle {Width}x{Height}");
+}
+
+public class Triangle : IShape
+{
+    public double Base { get; set; }
+    public double Height { get; set; }
+
+    public double CalculateArea() => 0.5 * Base * Height;
+
+    public void Draw() => Console.WriteLine($"Drawing triangle with base {Base} and height {Height}");
+}
+
+// Polymorphic usage - treat all shapes uniformly
+public class ShapeProcessor
+{
+    public void ProcessShapes(IEnumerable<IShape> shapes)
+    {
+        foreach (var shape in shapes)
+        {
+            // Polymorphism - actual method called depends on runtime type
+            shape.Draw();
+            Console.WriteLine($"Area: {shape.CalculateArea():F2}\n");
+        }
+    }
+
+    public double CalculateTotalArea(IEnumerable<IShape> shapes)
+    {
+        return shapes.Sum(s => s.CalculateArea());
+    }
+}
+
+// Usage
+var shapes = new List<IShape>
+{
+    new Circle { Radius = 5 },
+    new Rectangle { Width = 10, Height = 20 },
+    new Triangle { Base = 8, Height = 6 }
+};
+
+var processor = new ShapeProcessor();
+processor.ProcessShapes(shapes);
+Console.WriteLine($"Total area: {processor.CalculateTotalArea(shapes):F2}");
+```
+
+## Advanced OOP Concepts
+
+### Covariance
+
+**Definition**: Use a more derived type than originally specified (out parameters, return types).
+
+```csharp
+// Covariance with IEnumerable<out T>
+IEnumerable<string> strings = new List<string> { "hello", "world" };
+IEnumerable<object> objects = strings; // Valid - string is derived from object
+
+// Covariance with delegates
+Func<string> funcString = () => "Hello";
+Func<object> funcObject = funcString; // Valid - returns more specific type
+```
+
+### Contravariance
+
+**Definition**: Use a more generic type than originally specified (in parameters).
+
+```csharp
+// Contravariance with Action<in T>
+Action<object> actionObject = (obj) => Console.WriteLine(obj);
+Action<string> actionString = actionObject; // Valid - can accept more general parameter
+
+// Contravariance with comparison
+IComparer<object> objectComparer = Comparer<object>.Default;
+IComparer<string> stringComparer = objectComparer; // Valid with contravariant interface
+```
+
+### Invariance
+
+**Definition**: Use only the originally specified type (mutable collections).
+
+```csharp
+// Invariance with List<T>
+List<string> strings = new List<string>();
+// List<object> objects = strings; // ERROR - List is invariant
+
+// Why? Because we could add any object to the list, breaking type safety
+// objects.Add(new Employee()); // Would add Employee to List<string>!
+```
+
+## Quick Reference
+
+### When to Use Each Pillar
+
+| Pillar | Use When | Avoid When |
+|--------|----------|------------|
+| **Abstraction** | Hiding complex implementation, defining contracts | Simple, straightforward code |
+| **Encapsulation** | Protecting internal state, enforcing invariants | Data transfer objects (DTOs) |
+| **Inheritance** | True "is-a" relationships, minimal hierarchy | Code reuse alone - use composition |
+| **Polymorphism** | Working with families of related types | Single concrete implementation |
+
+### Common Anti-Patterns
+
+**Anemic Domain Model**:
+```csharp
+// BAD - Data without behavior
+public class Order
+{
+    public int Id { get; set; }
+    public decimal Total { get; set; }
+    public List<OrderItem> Items { get; set; }
+}
+
+// GOOD - Encapsulated behavior
+public class Order
+{
+    private readonly List<OrderItem> items = new();
+    public int Id { get; }
+    public decimal Total => items.Sum(i => i.Subtotal);
+    public IReadOnlyList<OrderItem> Items => items.AsReadOnly();
+
+    public void AddItem(OrderItem item)
+    {
+        if (item == null)
+            throw new ArgumentNullException(nameof(item));
+        items.Add(item);
+    }
+}
+```
+
+**Inappropriate Intimacy**:
+```csharp
+// BAD - Classes too tightly coupled
+public class Customer
+{
+    public List<Order> Orders { get; set; }
+}
+
+public class OrderProcessor
+{
+    public void Process(Customer customer)
+    {
+        // Direct manipulation of internal collections
+        customer.Orders.RemoveAll(o => o.IsCancelled);
+    }
+}
+
+// GOOD - Proper encapsulation
+public class Customer
+{
+    private readonly List<Order> orders = new();
+
+    public void RemoveCancelledOrders()
+    {
+        orders.RemoveAll(o => o.IsCancelled);
+    }
+}
+```
 
 ---

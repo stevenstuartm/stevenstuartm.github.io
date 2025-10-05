@@ -629,4 +629,162 @@ var data1 = await proxy.GetData("user123"); // Database call
 var data2 = await proxy.GetData("user123"); // Cache hit
 ```
 
+## Quick Reference
+
+### Structural Pattern Comparison
+
+| Pattern | Intent | Problem Solved | When to Use | When to Avoid |
+|---------|--------|----------------|-------------|---------------|
+| **Adapter** | Make incompatible interfaces compatible | Legacy code integration, third-party library mismatch | Wrapping existing classes with incompatible interfaces | You control both interfaces - fix design |
+| **Bridge** | Separate abstraction from implementation | Cartesian product explosion (N × M classes) | Multiple dimensions of variation | Single dimension of variation |
+| **Composite** | Treat individual and composite objects uniformly | Tree structures, hierarchies | File systems, UI components, organizational charts | Flat structures |
+| **Decorator** | Add behavior dynamically without subclassing | Static inheritance limitations | Runtime behavior modification, multiple combinations | Behavior known at compile time |
+| **Facade** | Simplify complex subsystem interfaces | Too many dependencies, complex APIs | Hide complexity, reduce coupling | Subsystem is already simple |
+| **Flyweight** | Share common state to reduce memory | Memory constraints with many similar objects | Large number of fine-grained objects | Few objects or mostly unique state |
+| **Proxy** | Control access to objects | Expensive object creation, access control | Lazy loading, caching, access control, logging | Direct access is simpler |
+
+### Pattern Selection Guide
+
+**Choose Adapter when:**
+- Integrating legacy code
+- Working with third-party libraries with incompatible interfaces
+- Example: Adapting legacy data access to modern repository pattern
+
+**Choose Bridge when:**
+- Abstraction and implementation vary independently
+- Avoiding N × M class explosion
+- Example: Shapes (Circle, Square) × Renderers (Vector, Raster)
+
+**Choose Composite when:**
+- Building tree structures
+- Treating individual and groups uniformly
+- Example: File system (files and folders), UI components (controls and panels)
+
+**Choose Decorator when:**
+- Need to add responsibilities dynamically
+- Subclassing is impractical (too many combinations)
+- Example: Stream decorators (BufferedStream, GZipStream), middleware pipeline
+
+**Choose Facade when:**
+- Simplifying a complex subsystem
+- Decoupling clients from subsystem components
+- Example: Library initialization, complex API simplification
+
+**Choose Flyweight when:**
+- Application uses many similar objects
+- Memory is a concern
+- Extrinsic state can be separated from intrinsic state
+- Example: Text editors (character rendering), game objects (particles)
+
+**Choose Proxy when:**
+- Lazy initialization needed
+- Access control required
+- Caching results
+- Example: ORM lazy loading, image loading, remote service calls
+
+### Modern C# Examples
+
+```csharp
+// Adapter - Common with third-party libraries
+public class LegacySystemAdapter : IModernInterface
+{
+    private readonly LegacySystem legacy = new();
+
+    public void ModernMethod()
+    {
+        legacy.OldMethod();
+    }
+}
+
+// Bridge - Separate concerns
+public abstract class DataSource
+{
+    protected IDataRenderer renderer;
+    protected DataSource(IDataRenderer renderer) => this.renderer = renderer;
+}
+
+// Composite - ASP.NET Core middleware
+public class CompositeMiddleware
+{
+    private readonly List<RequestDelegate> middlewares = new();
+
+    public void Add(RequestDelegate middleware) => middlewares.Add(middleware);
+
+    public async Task Invoke(HttpContext context)
+    {
+        foreach (var middleware in middlewares)
+        {
+            await middleware(context);
+        }
+    }
+}
+
+// Decorator - Extension methods act as lightweight decorators
+public static class StringExtensions
+{
+    public static string ToTitleCase(this string str) => /* ... */;
+    public static string Truncate(this string str, int length) => /* ... */;
+}
+
+// Facade - Simplify complex operations
+public class OrderProcessingFacade
+{
+    private readonly IInventoryService inventory;
+    private readonly IPaymentService payment;
+    private readonly IShippingService shipping;
+    private readonly INotificationService notification;
+
+    public async Task ProcessOrder(Order order)
+    {
+        await inventory.Reserve(order.Items);
+        await payment.Process(order.Total);
+        await shipping.Schedule(order);
+        await notification.SendConfirmation(order.CustomerEmail);
+    }
+}
+
+// Proxy - Entity Framework lazy loading
+public class Order
+{
+    public virtual ICollection<OrderItem> Items { get; set; } // Proxy created on access
+}
+```
+
+### Anti-Patterns to Avoid
+
+**Over-Decoration**:
+```csharp
+// BAD: Too many decorators make code hard to understand
+var stream = new BufferedStream(
+    new GZipStream(
+        new CryptoStream(
+            new FileStream("data.txt", FileMode.Open),
+            encryptor, CryptoStreamMode.Write),
+        CompressionMode.Compress));
+
+// BETTER: Create a facade or pipeline builder
+var stream = new StreamBuilder()
+    .WithFile("data.txt")
+    .WithEncryption(encryptor)
+    .WithCompression()
+    .WithBuffering()
+    .Build();
+```
+
+**Leaky Facade**:
+```csharp
+// BAD: Facade exposes internal complexity
+public class PaymentFacade
+{
+    public CreditCardProcessor GetCreditCardProcessor() { } // Leaking internals
+    public PayPalGateway GetPayPalGateway() { }
+}
+
+// GOOD: Hide implementation details
+public class PaymentFacade
+{
+    public Task<PaymentResult> ProcessPayment(PaymentMethod method, decimal amount) { }
+}
+```
+
 ---

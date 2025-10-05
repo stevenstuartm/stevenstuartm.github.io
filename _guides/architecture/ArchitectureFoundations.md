@@ -7,24 +7,20 @@ subcategory: Foundations
 
 # Architecture Foundations
 
-## What is Architecture?
-
-Architecture is a structured solution that fulfills requirements, addresses challenges, and satisfies quality attributes. It consists of:
-
-- **Structure**: System components and relationships
-- **Characteristics**: Capabilities and success criteria (what the system should accomplish)
-- **Components**: Behavioral building blocks (how the system behaves)
-- **Style**: Implementation pattern and topology
-- **Decisions**: Rules and constraints guiding construction
-
 ## Core Laws
 
-> 1. **"Everything in software architecture is a trade-off**
+> 1. **Everything in software architecture is a trade-off**
 > 2. **Why is more important than how**
-> 3. **Most decisions exist on a spectrum, not binary choices"**
+> 3. **Most decisions exist on a spectrum, not binary choices**
 > -- Mark Richards & Neal Ford
 
----
+**Architecture** consists of:
+
+- **Structure**: System components and relationships
+- **Characteristics**: Capabilities the system must deliver
+- **Components**: Behavioral building blocks
+- **Style**: Implementation pattern and topology
+- **Decisions**: Rules and constraints guiding construction
 
 ## Architectural Thinking
 
@@ -33,11 +29,7 @@ Architecture is a structured solution that fulfills requirements, addresses chal
 **Architecture** = Strategic, long-term, hard to change, significant trade-offs
 **Design** = Tactical, short-term, easier to change, fewer trade-offs
 
-Ask yourself:
-
-- How much planning is involved?
-- How many people are affected?
-- Long-term vision or short-term action?
+Ask yourself: How much planning? How many people affected? Long-term vision or short-term action?
 
 ### Technical Breadth vs Depth
 
@@ -45,7 +37,7 @@ Architects need **breadth** (knowing a little about many things) over **depth** 
 
 **Goal**: Move things from "unknown unknowns" → "known unknowns" → "knowns" (when needed)
 
-**Common Dysfunctions:**
+**Common Dysfunctions**:
 
 - Trying to maintain expertise in too many areas → burnout
 - **Stale expertise**: Outdated knowledge treated as current
@@ -53,19 +45,19 @@ Architects need **breadth** (knowing a little about many things) over **depth** 
 
 ### Core Skills
 
-**Trade-Off Analysis:**
+**Trade-Off Analysis**:
 
-> "Programmers know the benefits of everything and the trade-offs of nothing. Architects need to understand both."   -- Rich Hickey
+> "Programmers know the benefits of everything and the trade-offs of nothing. Architects need to understand both." -- Rich Hickey
 
-Everything has trade-offs. The answer is often "it depends" on: environment, business drivers, culture, budgets, timelines, skills, etc.
+Everything has trade-offs. The answer is often "it depends" on: environment, business drivers, culture, budgets, timelines, skills.
 
-**Business Translation:**
+**Business Translation**:
 
 Translate business requirements → architecture characteristics (scalability, performance, availability)
 
 Common business justifications: **Cost** | **Time to market** | **User satisfaction** | **Strategic positioning**
 
-**Hands-On Coding Balance:**
+**Hands-On Coding Balance**:
 
 Avoid the **Bottleneck Trap**: Don't own critical-path code. Delegate framework code; focus on minor features 1-3 iterations ahead.
 
@@ -90,7 +82,7 @@ Stay hands-on via: POCs | Technical debt | Bug fixes | Automation | Code reviews
 **Afferent (incoming)**: Dependencies on this component
 **Efferent (outgoing)**: This component's dependencies
 
-**Key Metrics:**
+**Key Metrics**:
 
 - **Abstractness**: Abstract / Concrete ratio
 - **Instability**: Efferent / (Efferent + Afferent)
@@ -102,28 +94,28 @@ Stay hands-on via: POCs | Technical debt | Bug fixes | Automation | Code reviews
 
 Describes coupling types more precisely than simple metrics.
 
-**Static (source-code):**
+**Static (source-code)**:
 
-- Name: Agree on names
-- Type: Agree on types
-- Meaning: Agree on value meanings
-- Position: Agree on parameter order
-- Algorithm: Agree on algorithms
+- **Name**: Agree on names
+- **Type**: Agree on types
+- **Meaning**: Agree on value meanings
+- **Position**: Agree on parameter order
+- **Algorithm**: Agree on algorithms
 
-**Dynamic (runtime):**
+**Dynamic (runtime)**:
 
-- Execution: Order matters
-- Timing: Timing matters (race conditions)
-- Values: Multiple values change together
-- Identity: Reference same entity
+- **Execution**: Order matters
+- **Timing**: Timing matters (race conditions)
+- **Values**: Multiple values change together
+- **Identity**: Reference same entity
 
-**Properties:**
+**Properties**:
 
 - **Strength**: Ease of refactoring
 - **Locality**: How close modules are
 - **Degree**: Size of impact
 
-**Improvement Strategy:**
+**Improvement Strategy**:
 
 1. Minimize overall connascence
 2. Minimize across boundaries
@@ -143,23 +135,15 @@ Must meet three criteria:
 
 ### Categories
 
-**Operational:**
+**Operational**: Availability | Continuity | Performance | Recoverability | Reliability | Robustness | Scalability
 
-Availability | Continuity | Performance | Recoverability | Reliability | Robustness | Scalability
+**Structural**: Configurability | Extensibility | Maintainability | Portability | Upgradeability
 
-**Structural:**
+**Cloud**: On-demand scalability | On-demand elasticity | Zone-based availability | Region-based privacy
 
-Configurability | Extensibility | Maintainability | Portability | Upgradeability
+**Cross-Cutting**: Accessibility | Authentication | Authorization | Legal | Privacy | Security | Supportability
 
-**Cloud:**
-
-On-demand scalability | On-demand elasticity | Zone-based availability | Region-based privacy
-
-**Cross-Cutting:**
-
-Accessibility | Authentication | Authorization | Legal | Privacy | Security | Supportability
-
-### Selection Process:
+### Selection Process
 
 1. Start with explicit requirements
 2. Identify implicit needs
@@ -168,13 +152,9 @@ Accessibility | Authentication | Authorization | Legal | Privacy | Security | Su
 
 ### Measuring & Governing
 
-**Challenges:**
+**Challenges**: Vague definitions, varying interpretations, too composite
 
-- Vague definitions (not physics)
-- Varying interpretations
-- Too composite (break them down)
-
-**Solutions:**
+**Solutions**:
 
 - **Operational**: Performance metrics, response times
 - **Structural**: Cyclomatic complexity (target: <5, acceptable: <10), code metrics
@@ -185,17 +165,15 @@ Accessibility | Authentication | Authorization | Legal | Privacy | Security | Su
 
 ## Architecture Quantum
 
-The smallest part of the system that runs independently
+The smallest part of the system that runs independently.
 
-**Requirements:**
+**Requirements**:
 
 - Independent deployment
 - High functional cohesion (does something purposeful)
 - Synchronous connascence within boundaries
 
-**Determines:**
-
-Single quantum (monolith) vs multiple quanta (distributed)
+**Determines**: Single quantum (monolith) vs multiple quanta (distributed)
 
 ---
 
@@ -203,19 +181,17 @@ Single quantum (monolith) vs multiple quanta (distributed)
 
 ### Technical Partitioning
 
-Organized by technical capabilities (presentation, business, persistence)
+Organized by technical capabilities (presentation, business, persistence).
 
-**Pros:** Clear technical separation, aligns with layered patterns
-
-**Cons:** High global coupling, scattered domain concepts, difficult data migration
+**Pros**: Clear technical separation, aligns with layered patterns
+**Cons**: High global coupling, scattered domain concepts, difficult data migration
 
 ### Domain Partitioning
 
-Organized by business domains/workflows (DDD approach)
+Organized by business domains/workflows (DDD approach).
 
-**Pros:** Models business, easier cross-functional teams, simpler distributed migration
-
-**Cons:** Customization appears in multiple places
+**Pros**: Models business, easier cross-functional teams, simpler distributed migration
+**Cons**: Customization appears in multiple places
 
 ### Conway's Law
 
@@ -227,7 +203,7 @@ Team structure influences architecture. Domain-partitioned works best with cross
 
 ## Distributed Computing
 
-### Fallacies to Avoid:
+### Fallacies to Avoid
 
 1. Network is reliable → Plan for failures
 2. Latency is zero → Measure and optimize
@@ -243,14 +219,14 @@ Team structure influences architecture. Domain-partitioned works best with cross
 
 ### Monolith vs Distributed Decision
 
-**Choose Distributed when:**
+**Choose Distributed when**:
 
 - Different parts need different characteristics
 - High scalability/availability required
 - Teams need independent deployment
 - Domain boundaries are clear
 
-**Choose Monolithic when:**
+**Choose Monolithic when**:
 
 - Single characteristic set suffices
 - Simpler deployment preferred
@@ -261,33 +237,40 @@ Team structure influences architecture. Domain-partitioned works best with cross
 
 ## Team Topologies
 
-**Stream-Aligned Teams:**
+**Stream-Aligned Teams**: Focus on single business domains. Move quickly delivering discrete value.
 
-Focus on single business domains. Move quickly delivering discrete value.
+**Enabling Teams**: Bridge capability gaps. Provide research, learning, specialized knowledge.
 
-**Enabling Teams:**
+**Complicated-Subsystem Teams**: Handle highly specialized systems requiring deep expertise. Reduce cognitive load.
 
-Bridge capability gaps. Provide research, learning, specialized knowledge.
-
-**Complicated-Subsystem Teams:**
-
-Handle highly specialized systems requiring deep expertise. Reduce cognitive load.
-
-**Platform Teams:**
-
-Provide self-service APIs, tools, services as internal product foundation.
+**Platform Teams**: Provide self-service APIs, tools, services as internal product foundation.
 
 ---
 
-## Summary
+## Quick Reference
 
-Architecture is about making informed trade-off decisions that serve both technical and business goals.
+### Decision Framework
 
-**Key Takeaways:**
+| Question | Monolith | Distributed |
+|----------|----------|-------------|
+| Different characteristics per part? | No | Yes |
+| Scalability critical? | Low-Medium | High |
+| Deployment independence? | No | Yes |
+| Clear domain boundaries? | No | Yes |
+| Team size | Small | Multiple teams |
 
-- Everything is a trade-off
-- Breadth over depth
-- Business value drives decisions
-- Measure what matters
-- Team structure shapes architecture
-- Distributed isn't always better
+### Coupling Reduction Checklist
+
+- [ ] Minimize connascence across service boundaries
+- [ ] Maximize cohesion within components
+- [ ] Prefer domain partitioning for distributed systems
+- [ ] Limit architecture characteristics to 3-7
+- [ ] Measure coupling with afferent/efferent metrics
+
+### Key Metrics
+
+**Cyclomatic Complexity**: Target <5, Acceptable <10
+**Architecture Characteristics**: Limit to 3-7
+**Connascence**: Minimize across boundaries, maximize within
+
+---

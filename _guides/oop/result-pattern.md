@@ -5,7 +5,9 @@ category: Object-Oriented Programming
 
 ---
 
-**Purpose**: Provide a functional alternative to throwing exceptions for error handling, making failure cases explicit in the return type.
+**Intent**: Provide a functional alternative to throwing exceptions for error handling, making failure cases explicit in the return type.
+
+**Problem Solved**: Expensive exception handling, unclear error paths, and unpredictable control flow.
 
 ## Basic Result Pattern
 
@@ -319,5 +321,114 @@ public Result<string> ProcessOrder(CreateOrderRequest request)
 - Unrecoverable errors
 - Third-party library integration where exceptions are expected
 - When integrating with existing exception-based codebases
+
+## Quick Reference
+
+### Result Pattern vs Exceptions
+
+| Aspect | Result Pattern | Exceptions |
+|--------|----------------|------------|
+| **Performance** | Fast (no stack unwinding) | Slow (stack unwinding overhead) |
+| **Explicitness** | Explicit in return type | Implicit, can be missed |
+| **Control Flow** | Normal flow (if/switch) | Jumps out of normal flow |
+| **Discoverability** | Clear from signature | Requires documentation |
+| **Testing** | Easy to test both paths | Requires try/catch in tests |
+| **Best For** | Expected failures (validation) | Unexpected failures (system errors) |
+
+### When to Choose Result Pattern
+
+**Use Result Pattern when:**
+- Failure is part of normal business flow (validation errors, not found)
+- You want explicit error handling in API signatures
+- Performance is critical (hot paths)
+- Working with functional programming patterns
+- Building libraries with clear error contracts
+
+**Example scenarios:**
+- User input validation
+- Business rule violations
+- Optional operations (search, lookup)
+- Parsing operations
+- Authentication/authorization
+
+**Avoid Result Pattern when:**
+- Truly exceptional conditions (out of memory, file system full)
+- Third-party libraries throw exceptions
+- Existing codebase uses exceptions extensively
+- Team unfamiliar with functional patterns
+
+### Modern C# Result Pattern Libraries
+
+**Popular libraries:**
+- **FluentResults**: Full-featured with value and error handling
+- **ErrorOr**: Discriminated union for results
+- **LanguageExt**: Functional programming library with Result types
+- **OneOf**: General discriminated unions
+
+**Example with FluentResults**:
+```csharp
+public Result<User> CreateUser(CreateUserRequest request)
+{
+    if (string.IsNullOrEmpty(request.Email))
+        return Result.Fail<User>("Email is required");
+
+    if (EmailExists(request.Email))
+        return Result.Fail<User>("Email already exists");
+
+    var user = new User { Email = request.Email };
+    return Result.Ok(user);
+}
+```
+
+### Pattern Variations
+
+**Result with Multiple Errors**:
+```csharp
+public class ValidationResult
+{
+    public bool IsValid => !Errors.Any();
+    public List<string> Errors { get; } = new();
+
+    public void AddError(string error) => Errors.Add(error);
+}
+```
+
+**Result with Status Codes**:
+```csharp
+public class Result<T>
+{
+    public bool IsSuccess { get; init; }
+    public T Value { get; init; }
+    public string Error { get; init; }
+    public int StatusCode { get; init; }
+
+    public static Result<T> Success(T value) => new() { IsSuccess = true, Value = value, StatusCode = 200 };
+    public static Result<T> NotFound(string error) => new() { IsSuccess = false, Error = error, StatusCode = 404 };
+    public static Result<T> BadRequest(string error) => new() { IsSuccess = false, Error = error, StatusCode = 400 };
+}
+```
+
+**Discriminated Union (OneOf)**:
+```csharp
+public OneOf<User, NotFound, ValidationError> GetUser(int id)
+{
+    if (id <= 0)
+        return new ValidationError("ID must be positive");
+
+    var user = repository.Find(id);
+    if (user == null)
+        return new NotFound();
+
+    return user;
+}
+
+// Pattern matching usage
+var result = GetUser(id);
+result.Switch(
+    user => Console.WriteLine($"Found: {user.Name}"),
+    notFound => Console.WriteLine("User not found"),
+    error => Console.WriteLine($"Error: {error.Message}")
+);
+```
 
 ---

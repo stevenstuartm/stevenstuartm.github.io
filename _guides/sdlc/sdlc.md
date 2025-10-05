@@ -1,6 +1,8 @@
 ---
 title: "Software Development Lifecycle (SDLC) Study Guide"
+layout: guide
 category: Software Development Lifecycle
+subcategory: SDLC
 ---
 
 ## Table of Contents
@@ -543,5 +545,3 @@ Most legacy SDLC methodologies aren't even taught in University or bootcamp clas
 - [ ] Incident response plan documented
 
 ---
-
-*This study guide integrates traditional SDLC practices with modern DevSecOps and agile methodologies. Use it as both a quick reference and comprehensive learning resource for software development lifecycle management.*

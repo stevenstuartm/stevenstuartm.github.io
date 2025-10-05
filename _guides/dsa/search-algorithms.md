@@ -207,17 +207,28 @@ Console.WriteLine($"Search for 8: {BinarySearch.SearchIterative(testArray, 8)}")
 ## Key Interview Points
 
 1. **Always ask if data is sorted** - determines algorithm choice
-2. **Handle edge cases** - empty array, single element, target not found
-3. **Explain the logarithmic improvement** - binary search eliminates half the search space each iteration
-4. **Know the variations** - first/last occurrence, insert position, rotated arrays
-5. **Time/space trade-offs** - sorting takes O(n log n) but enables O(log n) searches
+## Quick Reference
 
-## Quick Decision Tree
+### Search Algorithm Comparison
+| Algorithm | Time | Space | Prerequisites | Best For |
+|-----------|------|-------|---------------|----------|
+| Linear Search | O(n) | O(1) | None | Small/unsorted data |
+| Binary Search | O(log n) | O(1) | Sorted array | Large sorted data |
+| Hash Table | O(1) avg | O(n) | Good hash function | Key-value lookups |
 
+### Decision Flow
 ```
 Is data sorted?
-├─ Yes → Use binary search O(log n)
-└─ No → Can you sort it?
-   ├─ Yes → Sort once O(n log n), then binary search for multiple queries
-   └─ No → Use linear search O(n) or Dictionary<K,V> O(1) for multiple queries
+├─ Yes → Binary Search O(log n)
+└─ No → Multiple searches?
+   ├─ Yes → Hash Table O(1) per search
+   └─ No → Linear Search O(n)
 ```
+
+### Binary Search Variants
+- **Standard:** Find any occurrence
+- **First/Last:** Find boundary of duplicates
+- **Insert Position:** Where to insert to maintain sort
+- **Rotated Array:** Find in sorted-rotated array
+
+---

@@ -1,24 +1,27 @@
 ---
-title: "Data Architecture & Processing Guide"
+layout: guide
+title: "Data Architecture & Processing"
 category: Architecture
+subcategory: Data & Infrastructure
 ---
+
+# Data Architecture & Processing
 
 ## Table of Contents
 
-- [1. Database Fundamentals](#1-database-fundamentals)
-- [2. ETL (Extract, Transform, Load)](#2-etl-extract-transform-load)
-- [3. Big Data Processing](#3-big-data-processing)
-- [4. Modern Data Architectures](#4-modern-data-architectures)
-- [5. Current Trends & Best Practices](#5-current-trends--best-practices)
-- [6. Quick Reference Glossary](#6-quick-reference-glossary)
+- [Database Fundamentals](#database-fundamentals)
+- [ETL (Extract, Transform, Load)](#etl-extract-transform-load)
+- [Big Data Processing](#big-data-processing)
+- [Modern Data Architectures](#modern-data-architectures)
+- [Quick Reference](#quick-reference)
 
 ---
 
-## 1. Database Fundamentals
+## Database Fundamentals
 
 ### ACID Properties
 
-**Why this matters**: These properties ensure your database doesn't lose or corrupt data when multiple operations happen at once.
+ACID properties ensure your database doesn't lose or corrupt data when multiple operations happen at once.
 
 **Atomicity** - All or nothing. If you're transferring $100 between bank accounts, either both the deduction AND addition happen, or neither does. No money disappears into thin air.
 
@@ -28,11 +31,10 @@ category: Architecture
 
 **Durability** - Once confirmed, it's permanent. When the system says your order went through, it survives even if the server crashes five minutes later.
 
-**Practical takeaway**: ACID properties are why you can trust databases with critical business data. Non-ACID systems (like basic file storage) are fine for logs or backups, but not for anything important.
 
 ---
 
-## 2. ETL (Extract, Transform, Load)
+## ETL (Extract, Transform, Load)
 
 ### Overview
 ETL is how you get data from where it lives (your CRM, website, spreadsheets) into where you can analyze it (your data warehouse). Most companies pull from 10+ different systems, each with different formats and quirks.
@@ -71,11 +73,10 @@ This is where messy real-world data becomes clean, consistent data you can actua
 
 **Performance**: What works for 1,000 records might be painfully slow for 1 million records.
 
-**Quick win**: Start with incremental loading and automated error handling from day one, even if it seems like overkill initially.
 
 ---
 
-## 3. Big Data Processing
+## Big Data Processing
 
 ### When You Need Big Data Approaches
 - **Volume**: More data than fits comfortably in memory or processes in reasonable time
@@ -108,7 +109,7 @@ Break big problems into smaller pieces that can run in parallel, then combine th
 
 ---
 
-## 4. Modern Data Architectures
+## Modern Data Architectures
 
 ### Data Warehouse vs Data Lake vs Data Lakehouse
 
@@ -163,75 +164,48 @@ Break big problems into smaller pieces that can run in parallel, then combine th
 
 ---
 
-## 5. Current Trends & Best Practices
+## Quick Reference
 
-### 2025 Best Practices
+### Architecture Patterns
 
-**Start with governance**: Define data ownership, quality standards, and access policies before you build complex pipelines.
+| Architecture | Best For | Trade-off |
+|--------------|----------|-----------|
+| **Data Warehouse** | Business reporting, structured data | Less flexible, structured only |
+| **Data Lake** | Data science, ML, exploration | Can become "data swamp" |
+| **Data Lakehouse** | Both structured & unstructured | More complex |
+| **Data Mesh** | Large orgs with domain expertise | Requires mature teams |
 
-**Automate data quality**: Use tools like dbt tests or Great Expectations to catch data issues automatically rather than manual checking.
+### ETL vs ELT
 
-**Design for scale**: Even if you're small now, use cloud-native tools and patterns that can grow with you.
+**ETL** (Extract, Transform, Load): Transform before loading
+- **Good for**: Resource-constrained environments, complex transformations
+- **Bad for**: Cloud warehouses with cheap compute
 
-**Monitor everything**: Data pipelines fail in creative ways. Set up monitoring and alerts from the beginning.
+**ELT** (Extract, Load, Transform): Load raw data, transform in warehouse
+- **Good for**: Cloud warehouses, flexibility, modern data stack
+- **Bad for**: Limited warehouse resources
 
-**Document as you go**: Future you (and your teammates) will thank you for documenting what each dataset means and how it's used.
+### Processing Models
 
-### Key Trends
+**Batch Processing**:
+- Scheduled intervals (hourly, daily, weekly)
+- High latency, comprehensive analysis
+- Lower cost, simpler
 
-**AI Integration**: 
-- GenAI helps write SQL transformations and documentation
-- Automated data quality checking using ML
-- Natural language interfaces for querying data
+**Stream Processing**:
+- Real-time as data arrives
+- Low latency, immediate insights
+- Higher cost, more complex
 
-**Real-time Everything**:
-- Businesses want insights immediately, not overnight
-- Streaming data platforms becoming standard
-- Real-time dashboards and alerts
+**Lambda Architecture**: Both batch and streaming (high complexity)
 
-**Data Contracts**:
-- Formal agreements between data producers and consumers
-- Define expectations for data quality, freshness, schema
-- Prevent breaking changes from propagating downstream
+### Key Concepts
 
-**Composable Architecture**:
-- Mix and match tools rather than monolithic platforms
-- API-first design enables flexibility
-- Easier to adopt new technologies as they emerge
-
-**Data Observability**:
-- Monitor data pipelines like you monitor applications
-- Detect data quality issues before they impact business decisions
-- Understand data lineage and dependencies
-
----
-
-## 6. Quick Reference Glossary
-
-**CDC (Change Data Capture)**: Technology that tracks changes in databases and sends them to other systems in real-time.
-
-**Data Contract**: Agreement between data producer and consumer defining quality, schema, and delivery expectations.
-
-**Data Lineage**: Map showing where data comes from, how it's transformed, and where it goes.
-
-**Data Observability**: Monitoring data pipelines and quality the way you monitor applications - tracking uptime, performance, and errors.
-
-**dbt (data build tool)**: The standard tool for transforming data in warehouses using SQL and software engineering best practices.
-
-**ELT vs ETL**: ELT loads raw data first, then transforms it in the warehouse. ETL transforms data before loading. Modern systems mostly use ELT.
-
-**Lakehouse**: Architecture combining data warehouse performance with data lake flexibility in one system.
-
-**Modern Data Stack**: Collection of cloud-native, specialized tools connected by APIs rather than one monolithic platform.
-
-**Reverse ETL**: Moving data FROM your warehouse back TO operational systems (like your CRM or email platform).
-
-**Schema-on-Read vs Schema-on-Write**: Schema-on-write (warehouses) requires defining structure before loading data. Schema-on-read (lakes) stores raw data and applies structure when querying.
-
-**Slowly Changing Dimensions (SCD)**: Techniques for handling data that changes over time while preserving history (like customer addresses or product prices).
-
-**Streaming vs Batch**: Streaming processes data as it arrives. Batch processes accumulated data at scheduled intervals.
+**ACID**: Atomicity, Consistency, Isolation, Durability - database transaction guarantees
+**CDC**: Change Data Capture - track database changes in real-time
+**Data Contract**: Agreement defining data quality, schema, delivery expectations
+**Data Lineage**: Map of data origin, transformations, and destinations
+**dbt**: Data build tool - SQL-based transformation framework
+**Slowly Changing Dimensions**: Techniques for tracking historical changes
 
 ---
-
-*Last Updated: September 2025*

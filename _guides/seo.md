@@ -1,6 +1,8 @@
 ---
 title: "SEO Guide & Checklist for 2025"
+layout: guide
 category: Web Development
+subcategory: SEO
 ---
 
 ## Table of Contents
@@ -369,6 +371,3 @@ category: Web Development
 - Attend SEO conferences and webinars
 
 ---
-
-*Last Updated: September 2025*  
-*This guide reflects the latest SEO best practices and Google algorithm updates as of September 2025. SEO is constantly evolving - regular updates to your strategy are essential for continued success.*

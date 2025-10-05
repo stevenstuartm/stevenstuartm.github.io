@@ -1,6 +1,8 @@
 ---
+layout: guide
 title: "Disaster Recovery Patterns"
 category: Architecture
+subcategory: Data & Infrastructure
 ---
 
 ## Table of Contents
@@ -317,5 +319,3 @@ Many organizations implement multiple strategies:
 5. **Forensics**: Preserve logs and evidence during disaster recovery
 
 ---
-
-*Remember: Disaster recovery is not just about technology—it requires organizational commitment, regular testing, and clear communication procedures to be truly effective.*

@@ -1,95 +1,11 @@
 ---
 title: "UML Diagrams Guide"
+layout: guide
 category: Software Development Lifecycle
+subcategory: SDLC
 ---
 
-← [Back to SDLC Study Guide](./README.md)
-
-## Overview
-
-Unified Modeling Language (UML) diagrams are standardized visual representations used throughout the software development lifecycle to model system architecture, behavior, and structure. This guide covers the most useful and common UML diagrams, when to use them, and how they fit into the development process.
-
-## 📋 How to View Diagram Examples
-
-All diagram examples in this guide use **PlantUML syntax** - a text-based approach that ensures diagrams are version-controllable and easily maintainable.
-
-**To render these diagrams:**
-1. **Online**: Copy any PlantUML code and paste it at [PlantUML Web Server](http://www.plantuml.com/plantuml/uml/)
-2. **VS Code**: Install the "PlantUML" extension for live preview
-3. **IntelliJ**: Built-in PlantUML support in Ultimate edition
-4. **Command Line**: Install PlantUML locally for batch processing
-
-**Export Options**: PNG, SVG, PDF for documentation
-
-## 🛠️ Recommended UML Tools
-
-### Free & Open Source (Highly Recommended)
-
-**1. PlantUML** ⭐⭐⭐⭐⭐
-- **Type**: Text-based diagramming
-- **Pros**: Version controllable, scriptable, supports all UML types
-- **Cons**: Learning curve for syntax
-- **Best for**: Developers, CI/CD integration, documentation
-- **Platform**: Cross-platform, web-based, IDE plugins
-
-**2. Draw.io (now Diagrams.net)** ⭐⭐⭐⭐⭐
-- **Type**: Visual drag-and-drop editor
-- **Pros**: Intuitive interface, no registration required, saves to Google Drive/GitHub
-- **Cons**: Less precise than text-based tools
-- **Best for**: Quick prototyping, non-technical stakeholders
-- **Platform**: Web-based, desktop app available
-
-**3. StarUML** ⭐⭐⭐⭐
-- **Type**: Traditional UML modeling tool
-- **Pros**: Professional interface, code generation, reverse engineering
-- **Cons**: Some advanced features require payment
-- **Best for**: Comprehensive UML modeling projects
-- **Platform**: Windows, macOS, Linux
-
-### Commercial (Free Tiers Available)
-
-**4. Lucidchart** ⭐⭐⭐⭐⭐
-- **Type**: Collaborative diagramming
-- **Pros**: Real-time collaboration, professional templates, integrations
-- **Cons**: Limited free tier, subscription required for teams
-- **Best for**: Team collaboration, business stakeholders
-- **Platform**: Web-based
-
-**5. Visual Paradigm Online** ⭐⭐⭐⭐
-- **Type**: Comprehensive modeling platform
-- **Pros**: Full UML support, free community edition, templates
-- **Cons**: Interface can be overwhelming
-- **Best for**: Academic use, comprehensive modeling
-- **Platform**: Web-based, desktop versions available
-
-**6. Creately** ⭐⭐⭐⭐
-- **Type**: Visual collaboration platform
-- **Pros**: Templates, real-time collaboration, easy sharing
-- **Cons**: Limited free tier
-- **Best for**: Team workshops, brainstorming sessions
-- **Platform**: Web-based
-
-### IDE Integrations (Free)
-
-**7. IntelliJ IDEA** (Ultimate Edition)
-- Built-in UML support with class diagram generation
-- Reverse engineering from code
-
-**8. Eclipse UML Plugins**
-- Papyrus UML (free, comprehensive)
-- UMLet (simple, effective)
-
-**9. VS Code Extensions**
-- PlantUML extension (most popular)
-- Draw.io Integration extension
-
-### Tool Selection Guide
-
-**For Developers**: PlantUML + VS Code/IntelliJ
-**For Architects**: Visual Paradigm or StarUML
-**For Teams**: Lucidchart or Draw.io
-**For Students**: StarUML or Visual Paradigm Community
-**For Documentation**: PlantUML (version controllable)
+UML diagrams are standardized visual representations used throughout the software development lifecycle to model system architecture, behavior, and structure.
 
 ## Table of Contents
 
@@ -171,10 +87,16 @@ Class diagrams show the static structure of a system by modeling classes, their 
 
 ### Illustrations
 
-![alt text](images/ClassDiagram_perspectives.png)
-![alt text](images/ClassDiagram_Parameters.png)
-![alt text](images/ClassDiagram_Relationships.png)
-![alt text](images//ClassDiagram_Full.png)
+![alt text](/assets/img/ClassDiagram_perspectives.png)
+
+
+![alt text](/assets/img/ClassDiagram_Parameters.png)
+
+
+![alt text](/assets/img/ClassDiagram_Relationships.png)
+
+
+![alt text](/assets/img//ClassDiagram_Full.png)
 
 ### Best Practices
 - Keep diagrams focused on specific subsystems
@@ -205,7 +127,7 @@ Sequence diagrams show how objects interact over time, focusing on the order of 
 
 ### Illustrations
 
-![alt text](images/SequenceDiagram_Full.png)
+![alt text](/assets/img/SequenceDiagram_Full.png)
 
 ### Best Practices
 - Focus on one scenario per diagram
@@ -234,8 +156,11 @@ Use case diagrams capture functional requirements by showing how users (actors) 
 
 ### Illustrations
 
-![alt text](images/UseCase_Summary.png)
-![alt text](images/UseCase_Full.png)
+![alt text](/assets/img/UseCase_Summary.png)
+
+
+![alt text](/assets/img/UseCase_Full.png)
+
 
 ### Best Practices
 - Keep use cases at appropriate level of detail
@@ -264,9 +189,14 @@ Activity diagrams model workflows, business processes, and complex algorithms sh
 
 ### Illustrations
 
-![alt text](images/ActivityDiagram_Summary.png)
-![alt text](images/ActivityDiagram_Full.png)
-![alt text](images/ActivityDiagram_Swimlane_Full.png)
+![alt text](/assets/img/ActivityDiagram_Summary.png)
+
+
+![alt text](/assets/img/ActivityDiagram_Full.png)
+
+
+![alt text](/assets/img/ActivityDiagram_Swimlane_Full.png)
+
 
 ### Best Practices
 - Start with high-level activities, then refine
@@ -295,8 +225,11 @@ Component diagrams show how a system is organized into components and their depe
 
 ### Illustrations
 
-![alt text](images/ComponentDiagram_Summary.png)
-![alt text](images/ComponentDiagram_Full.png)
+![alt text](/assets/img/ComponentDiagram_Summary.png)
+
+
+![alt text](/assets/img/ComponentDiagram_Full.png)
+
 
 ### Best Practices
 - Group related components into packages
@@ -325,8 +258,11 @@ Deployment diagrams show the physical deployment of software components on hardw
 
 ### Illustrations
 
-![alt text](images/DeploymentDiagram_Summary.png)
-![alt text](images/DeploymentDiagram_Full.png)
+![alt text](/assets/img/DeploymentDiagram_Summary.png)
+
+
+![alt text](/assets/img/DeploymentDiagram_Full.png)
+
 
 ### Best Practices
 - Show actual deployment topology
@@ -363,18 +299,6 @@ Deployment diagrams show the physical deployment of software components on hardw
 - Don't try to model every detail upfront
 - Focus on areas of high complexity or risk
 
-### Tool Recommendations
-
-**Free Tools**:
-- PlantUML (text-based, version controllable)
-- Draw.io (web-based, easy to use)
-- StarUML (desktop application)
-
-**Commercial Tools**:
-- Lucidchart (web-based, collaborative)
-- Visual Paradigm (comprehensive UML suite)
-- Enterprise Architect (full-featured modeling tool)
-
 ### Integration with Development
 
 1. **Version Control**: Store diagram sources in Git
@@ -382,6 +306,39 @@ Deployment diagrams show the physical deployment of software components on hardw
 3. **Code Generation**: Use tools that generate code from models
 4. **Reverse Engineering**: Generate diagrams from existing code
 
----
+## Quick Reference
 
-← [Back to SDLC Study Guide](./README.md)
+### Tool Selection Guide
+- **Developers**: PlantUML + VS Code/IntelliJ
+- **Architects**: Visual Paradigm or StarUML
+- **Teams**: Lucidchart or Draw.io
+- **Documentation**: PlantUML (version controllable)
+
+### Diagram Usage Matrix
+
+| Diagram Type | Usage % | Best For | Phase |
+|--------------|---------|----------|-------|
+| **Class** | 80% | Static structure, relationships | Design, Implementation |
+| **Sequence** | 70% | Object interactions, API flows | Design, Testing |
+| **Use Case** | 60% | Functional requirements | Requirements |
+| **Activity** | 50% | Workflows, business processes | Requirements, Design |
+| **Component** | 40% | System modules, architecture | Architecture |
+| **Deployment** | 30% | Physical deployment | Architecture |
+
+### When to Create UML Diagrams
+
+**Always Create:**
+- Class diagrams for core domain models
+- Sequence diagrams for complex interactions
+- Use case diagrams for requirement validation
+
+**Create When Needed:**
+- Activity diagrams for complex business processes
+- Component diagrams for modular architectures
+- Deployment diagrams for distributed systems
+
+**Avoid Over-Modeling:**
+- Don't diagram simple, well-understood concepts
+- Focus on areas of high complexity or risk
+
+---

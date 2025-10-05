@@ -1,9 +1,11 @@
 ---
 title: "System Networking Guide for Developers"
+layout: guide
 category: Networking
+subcategory: Fundamentals
 ---
 
-A comprehensive guide to networking fundamentals for software developers and system architects.
+Networking fundamentals for software developers and system architects.
 
 ## Table of Contents
 
@@ -438,5 +440,3 @@ SFTP: 22         LDAP: 389        Elasticsearch: 9200
 ```
 
 ---
-
-*This guide covers the essential networking concepts for software developers and system architects. For deeper understanding of specific topics, consult official RFCs and vendor documentation.*

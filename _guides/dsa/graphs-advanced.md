@@ -654,12 +654,24 @@ public static class GraphColoring
 
 ---
 
-## Advanced Topics to Explore
+## Quick Reference
 
-- **All-Pairs Shortest Path:** Floyd-Warshall algorithm
-- **Bipartite Matching:** Hungarian algorithm, maximum bipartite matching
-- **Network Flow Variants:** Min-cost max-flow, circulation problems
-- **Graph Databases:** Neo4j, graph query languages
-- **Parallel Graph Algorithms:** GPU-accelerated graph processing
+### Advanced Algorithm Comparison
+| Algorithm | Time | Space | Use Case |
+|-----------|------|-------|----------|
+| **Dijkstra** | O((V+E) log V) | O(V) | Shortest path, non-negative weights |
+| **Bellman-Ford** | O(VE) | O(V) | Shortest path, negative edges allowed |
+| **Floyd-Warshall** | O(V³) | O(V²) | All-pairs shortest paths |
+| **Kruskal's MST** | O(E log E) | O(V) | Minimum spanning tree |
+| **Prim's MST** | O((V+E) log V) | O(V) | Minimum spanning tree (dense) |
+| **Ford-Fulkerson** | O(E × max_flow) | O(V) | Maximum flow |
 
-**Remember:** Advanced graph algorithms solve specific optimization problems. Choose the right algorithm based on your constraints (time, space, problem structure) rather than trying to memorize every possible approach.
+### Algorithm Selection Guide
+- **Single-source shortest path, no negative edges:** Dijkstra
+- **Single-source, negative edges:** Bellman-Ford
+- **All-pairs shortest path:** Floyd-Warshall
+- **Minimum spanning tree (sparse):** Kruskal's
+- **Minimum spanning tree (dense):** Prim's
+- **Maximum flow:** Ford-Fulkerson or Edmonds-Karp
+
+---

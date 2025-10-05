@@ -673,15 +673,36 @@ Console.WriteLine(IsPalindrome("hello"));   // False
 
 ## Performance Considerations
 
-**Space Complexity:** O(d) where d is maximum recursion depth
-**Stack Overflow:** Deep recursion can exhaust call stack
-**Optimization:** Tail call optimization (limited in C#)
+## Quick Reference
 
-**Best Practices:**
-1. Always define clear base cases
-2. Ensure progress toward base case
-3. Consider iterative alternatives for performance
-4. Use memoization for overlapping subproblems
-5. Be mindful of stack depth limits
+### Recursion Checklist
+✓ **Base case** - When to stop
+✓ **Progress** - Move toward base case
+✓ **Recursive call** - Solve smaller problem
+✓ **Combine** - Use subproblem results
 
-**Modern Usage:** Essential for tree/graph algorithms, divide-and-conquer, and backtracking. Often preferred in functional programming languages with tail call optimization.
+### Time Complexity Patterns
+| Pattern | Complexity | Example |
+|---------|------------|---------|
+| Single recursive call | O(n) | Factorial, sum |
+| Two calls (binary) | O(2ⁿ) | Fibonacci (naive) |
+| Divide & conquer | O(n log n) | Merge sort |
+| With memoization | O(n) often | Fibonacci (cached) |
+
+### Space Complexity
+- **Recursion depth:** O(d) stack space
+- **Each call:** Variables stored on stack
+- **Risk:** Stack overflow with deep recursion
+
+### When to Use Recursion
+✓ Tree/graph traversals
+✓ Divide and conquer
+✓ Backtracking
+✓ Mathematical sequences
+
+### When to Avoid
+✗ Simple loops suffice
+✗ Deep recursion (use iteration)
+✗ Performance critical (unless tail-optimized)
+
+---

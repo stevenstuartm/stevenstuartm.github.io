@@ -417,19 +417,27 @@ Array.Sort(numbers, (x, y) => y.CompareTo(x)); // Reverse sort
 var stableArray = numbers.OrderBy(x => x).ToArray(); // LINQ - stable
 ```
 
-## Interview Focus Points
+## Quick Reference
 
-1. **Know the trade-offs** - time vs space, stable vs unstable, best vs worst case
-2. **Implement merge sort and quicksort** - most commonly asked
-3. **Understand partitioning** - key concept in quicksort and selection algorithms
-4. **Recognize when to use each** - based on data characteristics and requirements
-5. **Always mention built-ins** - acknowledge that production code uses optimized library functions
+### Sorting Algorithm Comparison
+| Algorithm | Best | Average | Worst | Space | Stable |
+|-----------|------|---------|-------|-------|--------|
+| Bubble Sort | O(n) | O(n²) | O(n²) | O(1) | Yes |
+| Insertion Sort | O(n) | O(n²) | O(n²) | O(1) | Yes |
+| Merge Sort | O(n log n) | O(n log n) | O(n log n) | O(n) | Yes |
+| Quick Sort | O(n log n) | O(n log n) | O(n²) | O(log n) | No |
+| Heap Sort | O(n log n) | O(n log n) | O(n log n) | O(1) | No |
 
-## Quick Decision Guide
+### Selection Guide
+- **Small data (<50):** Built-in or Insertion Sort
+- **Need stability:** Merge Sort
+- **Memory limited:** Quick Sort or Heap Sort
+- **Worst-case guarantee:** Merge Sort or Heap Sort
+- **Production:** Use `Array.Sort()` or `List<T>.Sort()` (optimized hybrids)
 
-**Small datasets (<50):** Use built-in sort or insertion sort
-**Need stability:** Merge sort or built-in stable sort
-**Memory constrained:** Quicksort or heap sort  
-**Worst-case guarantees:** Merge sort or heap sort
-**General purpose:** Use language built-ins (they're hybrid algorithms)
-**Educational:** Implement merge sort and quicksort to understand divide-and-conquer
+### Key Concepts
+- **Stable:** Preserves relative order of equal elements
+- **In-place:** Uses O(1) extra space
+- **Divide & Conquer:** Merge/Quick sort pattern
+
+---

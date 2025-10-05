@@ -1,6 +1,8 @@
 ---
 title: "Analytics and Statistics Study Guide"
+layout: guide
 category: Data & Analytics
+subcategory: Analytics
 ---
 
 ## Table of Contents
@@ -18,11 +20,9 @@ category: Data & Analytics
 
 ---
 
-## Introduction to Analytics
+Analytics is the process of examining data to draw conclusions, make predictions, and support decision-making.
 
-Analytics is the process of examining data to draw conclusions, make predictions, and support decision-making. It transforms raw data into meaningful patterns and insights that drive business value.
-
-### Four Types of Analytics (in order of complexity):
+### Four Types of Analytics
 1. **Descriptive**: What happened?
 2. **Diagnostic**: Why did it happen?
 3. **Predictive**: What will happen?
@@ -373,5 +373,3 @@ Think of a distribution as the "shape" your data makes when you plot it. Underst
 - **For proportions**: np ≥ 5 and n(1-p) ≥ 5
 
 ---
-
-*Remember: The goal of analytics is to turn data into actionable insights that drive better decisions. Start simple, validate your approach, and always consider the business context of your analysis.*

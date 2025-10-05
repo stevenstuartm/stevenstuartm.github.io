@@ -1,6 +1,8 @@
 ---
 title: "Comprehensive Generative AI Study Guide"
+layout: guide
 category: AI & Machine Learning
+subcategory: Generative AI
 ---
 
 ## Table of Contents
@@ -469,42 +471,36 @@ Great prompt engineering can reduce costs while improving performance by making 
 
 ---
 
-## Resources and Further Learning
+## Quick Reference
 
-### **Prompt Engineering Databases**
-- [Brightpool Notion Database](https://brightpool.notion.site/fe947b16fe894c3e8a8a19a6b81aec2c?v=9b1d189283d54b6bba80882239ecbb1a)
-- [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering)
-- [Anthropic Prompt Engineering Documentation](https://docs.anthropic.com/)
+### Tool Selection by Use Case
 
-### **Official Documentation**
-- **OpenAI**: API documentation and best practices
-- **Anthropic**: Claude usage guidelines and safety considerations
-- **Google AI**: Gemini and Bard integration guides
-- **Model Context Protocol**: https://modelcontextprotocol.io/introduction
+| Use Case | Recommended Tool | Alternative |
+|----------|------------------|-------------|
+| **General Conversation** | ChatGPT, Claude | Gemini |
+| **Code Generation** | GitHub Copilot, Cursor | Claude, DeepSeek |
+| **Image Creation** | DALL-E 3, Midjourney | Leonardo AI |
+| **Video Generation** | Runway ML, Synthesia | Google Veo 2 |
+| **Audio/Music** | ElevenLabs, Suno | - |
+| **Local/Private** | Ollama + Llama 3 | LM Studio, Jan |
+| **Marketing Content** | Jasper | ChatGPT |
+| **Cost-Effective** | DeepSeek | Local models |
 
-### **Industry Research and Updates**
-- Track latest AI news and breakthroughs through reputable tech publications
-- Follow official blogs from AI companies for product updates
-- Participate in AI conferences and workshops
-- Join professional communities and forums
+### Prompt Engineering Quick Tips
 
-### **Practical Application**
-1. **Start Small**: Begin with simple prompts and gradually increase complexity
-2. **Experiment Regularly**: Test different approaches and measure results
-3. **Document Learnings**: Keep records of effective prompts and techniques
-4. **Stay Updated**: AI tools and best practices evolve rapidly
-5. **Focus on Ethics**: Always consider the responsible use of AI technologies
+1. **Be Specific**: Clear instructions beat clever wording
+2. **Provide Context**: Give the AI role and background information
+3. **Show Examples**: Few-shot prompting improves consistency
+4. **Structure Output**: Define the format you need
+5. **Iterate**: Test and refine prompts based on results
+
+### Local AI Hardware Requirements
+
+| Model Size | VRAM | Use Case |
+|------------|------|----------|
+| **7B** | 8-12GB | General tasks, code assistance |
+| **13B** | 16-20GB | Advanced reasoning |
+| **70B** | 24GB+ (quantized) | Near-commercial quality |
+| **SDXL Images** | 10GB+ | High-quality image generation |
 
 ---
-
-## Key Takeaways
-
-1. **Generative AI is rapidly evolving**: New tools and capabilities emerge regularly, requiring continuous learning
-2. **Prompt engineering is crucial**: Well-crafted prompts can dramatically improve AI output quality and reduce costs
-3. **Different tools excel in different areas**: Choose the right tool for your specific use case
-4. **Local AI is increasingly viable**: Self-hosted options offer privacy, cost savings, and customization while reducing dependency on cloud services
-5. **Security and ethics matter**: Implement responsible AI practices from the beginning
-6. **Integration is key**: Success comes from thoughtfully integrating AI into existing workflows
-7. **Experimentation drives improvement**: Regular testing and refinement lead to better results
-
-*Last updated: September 2025*

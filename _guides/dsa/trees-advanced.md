@@ -657,12 +657,29 @@ public static class TreeSerialization
 
 ---
 
-## Best Practices
+## Quick Reference
 
-1. **Use built-in collections first** - `SortedDictionary<K,V>` for most balanced tree needs
-2. **Profile before optimizing** - Don't assume you need advanced structures
-3. **Consider memory patterns** - Trees can have poor cache locality
-4. **Balance complexity vs benefit** - Simple solutions often perform better
-5. **Know your access patterns** - Random vs sequential access affects choice
+### Advanced Tree Comparison
+| Structure | Best For | Time (Insert/Search) | Space |
+|-----------|----------|---------------------|-------|
+| **Trie** | String prefix operations | O(m) where m = key length | O(ALPHABET_SIZE × n × m) |
+| **Segment Tree** | Range queries, updates | O(log n) | O(4n) |
+| **Fenwick Tree** | Range sum queries | O(log n) | O(n) |
 
-**Remember:** Advanced tree structures solve specific performance problems. Understand the problem you're solving before choosing the data structure.
+### When to Use
+- **Trie:** Autocomplete, spell check, IP routing, dictionary operations
+- **Segment Tree:** Range min/max/sum with updates
+- **Fenwick (BIT):** Simple range sums, frequency queries
+
+### C# Patterns
+```csharp
+// Trie for autocomplete
+var trie = new Trie();
+trie.Insert("apple");
+trie.GetWordsWithPrefix("app");  // ["apple", "application", ...]
+
+// Use SortedDictionary for most needs
+var sorted = new SortedDictionary<string, int>();
+```
+
+---

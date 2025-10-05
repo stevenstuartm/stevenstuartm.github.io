@@ -9,85 +9,14 @@ category: Object-Oriented Programming
 
 ## Observer Pattern
 
-**Purpose**: Define one-to-many dependency between objects so that state changes are automatically communicated.
+**Intent**: Define one-to-many dependency so state changes are automatically communicated to dependents.
 
-**Traditional Observer**
+**Problem Solved**: Maintaining consistency between related objects without tight coupling.
+
+**Modern C# Implementation**:
 ```csharp
-public interface IObserver
-{
-    void Update(string message);
-}
-
-public interface ISubject
-{
-    void Attach(IObserver observer);
-    void Detach(IObserver observer);
-    void Notify(string message);
-}
-
-public class NewsAgency : ISubject
-{
-    private readonly List<IObserver> observers = new();
-    private string news;
-
-    public string News
-    {
-        get => news;
-        set
-        {
-            news = value;
-            Notify(news);
-        }
-    }
-
-    public void Attach(IObserver observer)
-    {
-        observers.Add(observer);
-    }
-
-    public void Detach(IObserver observer)
-    {
-        observers.Remove(observer);
-    }
-
-    public void Notify(string message)
-    {
-        foreach (var observer in observers)
-        {
-            observer.Update(message);
-        }
-    }
-}
-
-public class NewsChannel : IObserver
-{
-    private string channelName;
-
-    public NewsChannel(string channelName)
-    {
-        this.channelName = channelName;
-    }
-
-    public void Update(string message)
-    {
-        Console.WriteLine($"{channelName} received news: {message}");
-    }
-}
-
-// Usage:
-var agency = new NewsAgency();
-var cnn = new NewsChannel("CNN");
-var bbc = new NewsChannel("BBC");
-
-agency.Attach(cnn);
-agency.Attach(bbc);
-
-agency.News = "Breaking news: New technology announced!";
-```
-
-**Modern Event-Based Observer**
-```csharp
-public class ModernNewsAgency
+// Using built-in events
+public class NewsAgency
 {
     public event Action<string> NewsPublished;
 
@@ -103,102 +32,100 @@ public class ModernNewsAgency
     }
 }
 
-public class ModernNewsChannel
+// Subscribers
+public class NewsChannel
 {
-    private string channelName;
+    private readonly string name;
 
-    public ModernNewsChannel(string channelName, ModernNewsAgency agency)
+    public NewsChannel(string name, NewsAgency agency)
     {
-        this.channelName = channelName;
+        this.name = name;
         agency.NewsPublished += HandleNews;
     }
 
     private void HandleNews(string news)
     {
-        Console.WriteLine($"{channelName} received news: {news}");
+        Console.WriteLine($"{name} received: {news}");
     }
 }
 
-// Usage:
-var agency = new ModernNewsAgency();
-var cnn = new ModernNewsChannel("CNN", agency);
-var bbc = new ModernNewsChannel("BBC", agency);
+// Usage
+var agency = new NewsAgency();
+var cnn = new NewsChannel("CNN", agency);
+var bbc = new NewsChannel("BBC", agency);
 
-agency.News = "Breaking news: Modern events working!";
+agency.News = "Breaking news!";
 ```
+
+**When to Use**: Event-driven systems, pub/sub architectures, MVC/MVVM data binding.
+**When to Avoid**: Simple callbacks suffice, one-to-one relationships.
 
 ## Strategy Pattern
 
-**Purpose**: Define algorithms as interchangeable objects, enabling runtime selection.
+**Intent**: Define family of algorithms, make them interchangeable at runtime.
 
-**Dynamic Strategy**
+**Problem Solved**: Eliminating conditional logic for selecting algorithms.
+
+**Example**:
 ```csharp
-public enum OutputFormat
+public interface ICompressionStrategy
 {
-    Html,
-    Markdown
+    byte[] Compress(byte[] data);
 }
 
-public interface IListStrategy
+public class GzipCompression : ICompressionStrategy
 {
-    void Start(StringBuilder sb);
-    void End(StringBuilder sb);
-    void AddListItem(StringBuilder sb, string item);
-}
-
-public class HtmlListStrategy : IListStrategy
-{
-    public void Start(StringBuilder sb) => sb.AppendLine("<ul>");
-    public void End(StringBuilder sb) => sb.AppendLine("</ul>");
-    public void AddListItem(StringBuilder sb, string item) => sb.AppendLine($"  <li>{item}</li>");
-}
-
-public class MarkdownListStrategy : IListStrategy
-{
-    public void Start(StringBuilder sb) { } // No special start for markdown
-    public void End(StringBuilder sb) { }   // No special end for markdown
-    public void AddListItem(StringBuilder sb, string item) => sb.AppendLine($"- {item}");
-}
-
-public class TextProcessor
-{
-    private readonly StringBuilder sb = new();
-    private IListStrategy listStrategy;
-
-    public void SetOutputFormat(OutputFormat format)
+    public byte[] Compress(byte[] data)
     {
-        listStrategy = format switch
+        using var output = new MemoryStream();
+        using (var gzip = new GZipStream(output, CompressionMode.Compress))
         {
-            OutputFormat.Html => new HtmlListStrategy(),
-            OutputFormat.Markdown => new MarkdownListStrategy(),
-            _ => throw new ArgumentException("Invalid format")
-        };
-    }
-
-    public void AppendList(IEnumerable<string> items)
-    {
-        listStrategy.Start(sb);
-        foreach (var item in items)
-        {
-            listStrategy.AddListItem(sb, item);
+            gzip.Write(data, 0, data.Length);
         }
-        listStrategy.End(sb);
+        return output.ToArray();
     }
-
-    public override string ToString() => sb.ToString();
 }
 
-// Usage:
-var processor = new TextProcessor();
-processor.SetOutputFormat(OutputFormat.Html);
-processor.AppendList(new[] { "Item 1", "Item 2", "Item 3" });
-Console.WriteLine(processor.ToString());
+public class ZipCompression : ICompressionStrategy
+{
+    public byte[] Compress(byte[] data)
+    {
+        // ZIP implementation
+        return data; // Simplified
+    }
+}
+
+public class FileCompressor
+{
+    private ICompressionStrategy strategy;
+
+    public void SetStrategy(ICompressionStrategy strategy)
+    {
+        this.strategy = strategy;
+    }
+
+    public byte[] CompressFile(byte[] data)
+    {
+        return strategy.Compress(data);
+    }
+}
+
+// Usage
+var compressor = new FileCompressor();
+compressor.SetStrategy(new GzipCompression());
+var compressed = compressor.CompressFile(data);
 ```
+
+**When to Use**: Multiple algorithms for same task, runtime selection needed.
+**When to Avoid**: Single algorithm, no variation needed.
 
 ## Command Pattern
 
-**Purpose**: Encapsulate requests as objects, enabling queuing, logging, and undo operations.
+**Intent**: Encapsulate requests as objects to support undo/redo, queuing, and logging.
 
+**Problem Solved**: Decoupling request sender from receiver, enabling operation history.
+
+**Example**:
 ```csharp
 public interface ICommand
 {
@@ -206,521 +133,347 @@ public interface ICommand
     void Undo();
 }
 
-public class BankAccount
+public class TransferMoneyCommand : ICommand
 {
-    public int Balance { get; private set; }
+    private readonly BankAccount from;
+    private readonly BankAccount to;
+    private readonly decimal amount;
+    private bool executed = false;
 
-    public void Deposit(int amount)
+    public TransferMoneyCommand(BankAccount from, BankAccount to, decimal amount)
     {
-        Balance += amount;
-        Console.WriteLine($"Deposited ${amount}, balance is now ${Balance}");
-    }
-
-    public void Withdraw(int amount)
-    {
-        if (Balance >= amount)
-        {
-            Balance -= amount;
-            Console.WriteLine($"Withdrew ${amount}, balance is now ${Balance}");
-        }
-        else
-        {
-            Console.WriteLine("Insufficient funds");
-        }
-    }
-}
-
-public enum Action
-{
-    Deposit,
-    Withdraw
-}
-
-public class BankAccountCommand : ICommand
-{
-    private BankAccount account;
-    private Action action;
-    private int amount;
-    private bool succeeded;
-
-    public BankAccountCommand(BankAccount account, Action action, int amount)
-    {
-        this.account = account;
-        this.action = action;
+        this.from = from;
+        this.to = to;
         this.amount = amount;
     }
 
     public void Execute()
     {
-        switch (action)
-        {
-            case Action.Deposit:
-                account.Deposit(amount);
-                succeeded = true;
-                break;
-            case Action.Withdraw:
-                int balanceBefore = account.Balance;
-                account.Withdraw(amount);
-                succeeded = account.Balance != balanceBefore;
-                break;
-        }
+        from.Withdraw(amount);
+        to.Deposit(amount);
+        executed = true;
     }
 
     public void Undo()
     {
-        if (!succeeded) return;
-
-        switch (action)
+        if (executed)
         {
-            case Action.Deposit:
-                account.Withdraw(amount);
-                break;
-            case Action.Withdraw:
-                account.Deposit(amount);
-                break;
+            to.Withdraw(amount);
+            from.Deposit(amount);
+            executed = false;
         }
     }
 }
 
-// Command processor with undo/redo
-public class CommandProcessor
+// Command invoker with undo/redo
+public class CommandManager
 {
-    private readonly List<ICommand> commands = new();
-    private int current = 0;
+    private readonly Stack<ICommand> undoStack = new();
+    private readonly Stack<ICommand> redoStack = new();
 
     public void Execute(ICommand command)
     {
-        // Remove any commands after current position
-        if (current < commands.Count)
-        {
-            commands.RemoveRange(current, commands.Count - current);
-        }
-
-        commands.Add(command);
         command.Execute();
-        current++;
+        undoStack.Push(command);
+        redoStack.Clear();
     }
 
     public void Undo()
     {
-        if (current > 0)
+        if (undoStack.Count > 0)
         {
-            current--;
-            commands[current].Undo();
+            var command = undoStack.Pop();
+            command.Undo();
+            redoStack.Push(command);
         }
     }
 
     public void Redo()
     {
-        if (current < commands.Count)
+        if (redoStack.Count > 0)
         {
-            commands[current].Execute();
-            current++;
+            var command = redoStack.Pop();
+            command.Execute();
+            undoStack.Push(command);
         }
     }
 }
-
-// Usage:
-var account = new BankAccount();
-var processor = new CommandProcessor();
-
-processor.Execute(new BankAccountCommand(account, Action.Deposit, 100));
-processor.Execute(new BankAccountCommand(account, Action.Withdraw, 50));
-processor.Execute(new BankAccountCommand(account, Action.Withdraw, 25));
-
-Console.WriteLine($"Final balance: ${account.Balance}");
-
-processor.Undo(); // Undo last withdrawal
-processor.Undo(); // Undo second withdrawal
-processor.Redo(); // Redo second withdrawal
 ```
+
+**When to Use**: Undo/redo functionality, operation queuing, macro recording.
+**When to Avoid**: Simple method calls suffice.
 
 ## State Pattern
 
-**Purpose**: Allow objects to alter behavior when internal state changes.
+**Intent**: Allow object to alter behavior when internal state changes.
 
-**Modern Switch Expression Approach**
+**Problem Solved**: Eliminating complex state-based conditionals.
+
+**Modern Switch Expression**:
 ```csharp
-public enum LightState
-{
-    Off,
-    Low,
-    High
-}
+public enum OrderState { Pending, Confirmed, Shipped, Delivered, Cancelled }
+public enum OrderAction { Confirm, Ship, Deliver, Cancel }
 
-public enum LightAction
+public class Order
 {
-    TurnOn,
-    TurnOff,
-    Brighten
-}
+    public OrderState State { get; private set; } = OrderState.Pending;
 
-public class ModernLight
-{
-    public LightState State { get; private set; } = LightState.Off;
-
-    public void PerformAction(LightAction action)
+    public void ProcessAction(OrderAction action)
     {
         var previousState = State;
 
         State = (State, action) switch
         {
-            (LightState.Off, LightAction.TurnOn) => LightState.Low,
-            (LightState.Low, LightAction.TurnOff) => LightState.Off,
-            (LightState.Low, LightAction.Brighten) => LightState.High,
-            (LightState.High, LightAction.TurnOff) => LightState.Off,
-            (LightState.High, LightAction.Brighten) => LightState.High, // Stay high
-            _ => State // No state change
+            (OrderState.Pending, OrderAction.Confirm) => OrderState.Confirmed,
+            (OrderState.Pending, OrderAction.Cancel) => OrderState.Cancelled,
+            (OrderState.Confirmed, OrderAction.Ship) => OrderState.Shipped,
+            (OrderState.Confirmed, OrderAction.Cancel) => OrderState.Cancelled,
+            (OrderState.Shipped, OrderAction.Deliver) => OrderState.Delivered,
+            _ => State // Invalid transition - maintain state
         };
 
         if (previousState != State)
         {
-            Console.WriteLine($"Light state changed from {previousState} to {State}");
+            Console.WriteLine($"Order state: {previousState} -> {State}");
         }
     }
 }
-
-// Usage:
-var light = new ModernLight();
-light.PerformAction(LightAction.TurnOn);  // Off -> Low
-light.PerformAction(LightAction.Brighten); // Low -> High
-light.PerformAction(LightAction.TurnOff);  // High -> Off
 ```
 
-## Template Method Pattern
-
-**Purpose**: Define algorithm skeleton in base class, allowing subclasses to override specific steps.
-
-```csharp
-public abstract class Game
-{
-    protected readonly int NumberOfPlayers;
-    protected int CurrentPlayer = 0;
-
-    protected Game(int numberOfPlayers)
-    {
-        NumberOfPlayers = numberOfPlayers;
-    }
-
-    // Template method
-    public void Run()
-    {
-        Start();
-        while (!HasWinner)
-        {
-            TakeTurn();
-            CurrentPlayer = (CurrentPlayer + 1) % NumberOfPlayers;
-        }
-        Console.WriteLine($"Player {WinningPlayer} wins!");
-    }
-
-    protected abstract void Start();
-    protected abstract void TakeTurn();
-    protected abstract bool HasWinner { get; }
-    protected abstract int WinningPlayer { get; }
-}
-
-public class Chess : Game
-{
-    private int turn = 1;
-    private const int maxTurns = 10; // Simplified for example
-
-    public Chess() : base(2) { }
-
-    protected override void Start()
-    {
-        Console.WriteLine($"Starting a game of chess with {NumberOfPlayers} players");
-    }
-
-    protected override void TakeTurn()
-    {
-        Console.WriteLine($"Turn {turn++}: Player {CurrentPlayer} is thinking...");
-    }
-
-    protected override bool HasWinner => turn >= maxTurns;
-
-    protected override int WinningPlayer => CurrentPlayer;
-}
-
-// Usage:
-var chess = new Chess();
-chess.Run();
-```
+**When to Use**: Complex state-dependent behavior, state machines.
+**When to Avoid**: Simple if/switch statements suffice.
 
 ## Chain of Responsibility Pattern
 
-**Purpose**: Pass requests along a chain of handlers until one processes it.
+**Intent**: Pass request along chain of handlers until one processes it.
 
+**Problem Solved**: Decoupling sender from receiver, dynamic handler composition.
+
+**Example**:
 ```csharp
-public abstract class Handler
+public abstract class Handler<T>
 {
-    protected Handler nextHandler;
+    protected Handler<T> next;
 
-    public Handler SetNext(Handler handler)
+    public Handler<T> SetNext(Handler<T> handler)
     {
-        nextHandler = handler;
+        next = handler;
         return handler;
     }
 
-    public virtual string Handle(string request)
+    public virtual T Handle(T request)
     {
-        if (nextHandler != null)
-        {
-            return nextHandler.Handle(request);
-        }
-
-        return null;
+        return next?.Handle(request) ?? request;
     }
 }
 
-public class AuthenticationHandler : Handler
+public class ValidationHandler : Handler<HttpRequest>
 {
-    public override string Handle(string request)
+    public override HttpRequest Handle(HttpRequest request)
     {
-        if (request == "authenticate")
+        if (string.IsNullOrEmpty(request.Body))
         {
-            return "Authentication handled";
+            request.AddError("Body is required");
+            return request;
         }
 
         return base.Handle(request);
     }
 }
 
-public class AuthorizationHandler : Handler
+public class AuthenticationHandler : Handler<HttpRequest>
 {
-    public override string Handle(string request)
+    public override HttpRequest Handle(HttpRequest request)
     {
-        if (request == "authorize")
+        if (!request.Headers.ContainsKey("Authorization"))
         {
-            return "Authorization handled";
+            request.AddError("Unauthorized");
+            return request;
         }
 
         return base.Handle(request);
     }
 }
 
-public class ValidationHandler : Handler
+public class LoggingHandler : Handler<HttpRequest>
 {
-    public override string Handle(string request)
+    public override HttpRequest Handle(HttpRequest request)
     {
-        if (request == "validate")
-        {
-            return "Validation handled";
-        }
-
+        Console.WriteLine($"Processing request: {request.Path}");
         return base.Handle(request);
     }
 }
 
-// Usage:
-var auth = new AuthenticationHandler();
-var authz = new AuthorizationHandler();
-var validation = new ValidationHandler();
+// Usage - ASP.NET Core middleware is a real-world example
+var chain = new LoggingHandler();
+chain.SetNext(new AuthenticationHandler())
+     .SetNext(new ValidationHandler());
 
-auth.SetNext(authz).SetNext(validation);
-
-Console.WriteLine(auth.Handle("authenticate")); // "Authentication handled"
-Console.WriteLine(auth.Handle("authorize"));    // "Authorization handled"
-Console.WriteLine(auth.Handle("validate"));     // "Validation handled"
-Console.WriteLine(auth.Handle("unknown"));      // null
+var result = chain.Handle(request);
 ```
+
+**When to Use**: Multiple handlers, handler order matters, middleware pipelines.
+**When to Avoid**: Single handler, static handler selection.
+
+## Template Method Pattern
+
+**Intent**: Define algorithm skeleton, let subclasses override specific steps.
+
+**Problem Solved**: Code reuse while allowing variation in algorithm steps.
+
+**Example**:
+```csharp
+public abstract class DataProcessor
+{
+    // Template method
+    public void Process()
+    {
+        var data = ReadData();
+        var processed = TransformData(data);
+        ValidateData(processed);
+        SaveData(processed);
+    }
+
+    protected abstract string ReadData();
+    protected abstract string TransformData(string data);
+    protected abstract void SaveData(string data);
+
+    // Hook method with default implementation
+    protected virtual void ValidateData(string data)
+    {
+        if (string.IsNullOrEmpty(data))
+            throw new InvalidDataException("Data cannot be empty");
+    }
+}
+
+public class CsvDataProcessor : DataProcessor
+{
+    protected override string ReadData() => File.ReadAllText("data.csv");
+
+    protected override string TransformData(string data)
+    {
+        // CSV-specific transformation
+        return data.ToUpper();
+    }
+
+    protected override void SaveData(string data)
+    {
+        File.WriteAllText("output.csv", data);
+    }
+}
+
+public class JsonDataProcessor : DataProcessor
+{
+    protected override string ReadData() => File.ReadAllText("data.json");
+
+    protected override string TransformData(string data)
+    {
+        // JSON-specific transformation
+        return JsonSerializer.Serialize(JsonSerializer.Deserialize<object>(data));
+    }
+
+    protected override void SaveData(string data)
+    {
+        File.WriteAllText("output.json", data);
+    }
+}
+```
+
+**When to Use**: Common algorithm structure with varying steps.
+**When to Avoid**: No variation in steps, composition is more flexible.
 
 ## Mediator Pattern
 
-**Purpose**: Define how objects interact through a mediator, reducing direct dependencies.
+**Intent**: Centralize complex communications between objects.
 
+**Problem Solved**: Reducing many-to-many relationships to many-to-one.
+
+**Example**:
 ```csharp
-public interface IChatRoom
+public interface IChatMediator
 {
-    void SendMessage(string message, User user);
+    void SendMessage(string message, User sender);
     void AddUser(User user);
-    void RemoveUser(User user);
 }
 
-public class ChatRoom : IChatRoom
+public class ChatRoom : IChatMediator
 {
     private readonly List<User> users = new();
 
     public void AddUser(User user)
     {
         users.Add(user);
-        Console.WriteLine($"{user.Name} joined the chat");
-    }
-
-    public void RemoveUser(User user)
-    {
-        users.Remove(user);
-        Console.WriteLine($"{user.Name} left the chat");
+        user.SetMediator(this);
     }
 
     public void SendMessage(string message, User sender)
     {
         foreach (var user in users.Where(u => u != sender))
         {
-            user.Receive(message, sender.Name);
+            user.ReceiveMessage(message, sender.Name);
         }
     }
 }
 
-public abstract class User
+public class User
 {
-    protected IChatRoom chatRoom;
     public string Name { get; }
+    private IChatMediator mediator;
 
-    protected User(IChatRoom chatRoom, string name)
+    public User(string name)
     {
-        this.chatRoom = chatRoom;
         Name = name;
     }
 
-    public abstract void Send(string message);
-    public abstract void Receive(string message, string senderName);
-}
-
-public class ConcreteUser : User
-{
-    public ConcreteUser(IChatRoom chatRoom, string name) : base(chatRoom, name) { }
-
-    public override void Send(string message)
+    public void SetMediator(IChatMediator mediator)
     {
-        Console.WriteLine($"{Name} sends: {message}");
-        chatRoom.SendMessage(message, this);
+        this.mediator = mediator;
     }
 
-    public override void Receive(string message, string senderName)
+    public void Send(string message)
+    {
+        Console.WriteLine($"{Name} sends: {message}");
+        mediator.SendMessage(message, this);
+    }
+
+    public void ReceiveMessage(string message, string senderName)
     {
         Console.WriteLine($"{Name} receives from {senderName}: {message}");
     }
 }
 
-// Usage:
+// Usage
 var chatRoom = new ChatRoom();
-var john = new ConcreteUser(chatRoom, "John");
-var jane = new ConcreteUser(chatRoom, "Jane");
-var bob = new ConcreteUser(chatRoom, "Bob");
+var john = new User("John");
+var jane = new User("Jane");
 
 chatRoom.AddUser(john);
 chatRoom.AddUser(jane);
-chatRoom.AddUser(bob);
 
-john.Send("Hello everyone!");
-jane.Send("Hi John!");
+john.Send("Hello!");
 ```
 
-## Iterator Pattern
-
-**Purpose**: Provide a way to access elements of a collection sequentially without exposing its underlying representation.
-
-```csharp
-// Custom collection
-public class WordCollection : IEnumerable<string>
-{
-    private readonly List<string> words = new();
-
-    public void Add(string word) => words.Add(word);
-
-    // Standard IEnumerable implementation
-    public IEnumerator<string> GetEnumerator() => words.GetEnumerator();
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-    // Custom iterator methods
-    public IEnumerable<string> GetWordsStartingWith(char letter)
-    {
-        foreach (var word in words)
-        {
-            if (word.StartsWith(letter))
-                yield return word;
-        }
-    }
-
-    public IEnumerable<string> GetWordsInReverse()
-    {
-        for (int i = words.Count - 1; i >= 0; i--)
-        {
-            yield return words[i];
-        }
-    }
-}
-
-// Usage:
-var collection = new WordCollection();
-collection.Add("Apple");
-collection.Add("Banana");
-collection.Add("Cherry");
-collection.Add("Avocado");
-
-// Standard iteration
-foreach (var word in collection)
-{
-    Console.WriteLine(word);
-}
-
-// Custom iterations
-Console.WriteLine("Words starting with 'A':");
-foreach (var word in collection.GetWordsStartingWith('A'))
-{
-    Console.WriteLine(word);
-}
-```
-
-## Visitor Pattern
-
-**Purpose**: Define operations on object hierarchies without modifying the objects themselves.
-
-**⚠️ Complexity Warning**: Often indicates design issues that could be solved with simpler approaches.
-
-**Modern Pattern Matching Approach (C# 8+)**
-```csharp
-public abstract record Expression;
-public record Number(double Value) : Expression;
-public record Addition(Expression Left, Expression Right) : Expression;
-
-public static class ExpressionExtensions
-{
-    public static string Print(this Expression expression) =>
-        expression switch
-        {
-            Number n => n.Value.ToString(),
-            Addition a => $"({a.Left.Print()} + {a.Right.Print()})",
-            _ => throw new ArgumentException("Unknown expression type")
-        };
-
-    public static double Evaluate(this Expression expression) =>
-        expression switch
-        {
-            Number n => n.Value,
-            Addition a => a.Left.Evaluate() + a.Right.Evaluate(),
-            _ => throw new ArgumentException("Unknown expression type")
-        };
-}
-
-// Usage:
-var expression = new Addition(
-    new Number(2),
-    new Addition(new Number(3), new Number(4))
-);
-
-Console.WriteLine($"Expression: {expression.Print()}"); // (2 + (3 + 4))
-Console.WriteLine($"Result: {expression.Evaluate()}");  // 9
-```
+**When to Use**: Many-to-many object relationships, MediatR library for CQRS.
+**When to Avoid**: Simple one-to-one or one-to-many relationships.
 
 ## Memento Pattern
 
-**Purpose**: Capture object state to enable rollback without violating encapsulation.
+**Intent**: Capture and restore object state without violating encapsulation.
 
+**Problem Solved**: Implementing undo/redo while keeping internal state private.
+
+**Example**:
 ```csharp
 // Memento
 public class EditorMemento
 {
     public string Content { get; }
     public int CursorPosition { get; }
-    public DateTime Timestamp { get; }
 
     internal EditorMemento(string content, int cursorPosition)
     {
         Content = content;
         CursorPosition = cursorPosition;
-        Timestamp = DateTime.Now;
     }
 }
 
@@ -736,17 +489,9 @@ public class TextEditor
         CursorPosition += text.Length;
     }
 
-    public void MoveCursor(int position)
-    {
-        CursorPosition = Math.Max(0, Math.Min(position, Content.Length));
-    }
+    public EditorMemento Save() => new(Content, CursorPosition);
 
-    public EditorMemento CreateMemento()
-    {
-        return new EditorMemento(Content, CursorPosition);
-    }
-
-    public void RestoreFromMemento(EditorMemento memento)
+    public void Restore(EditorMemento memento)
     {
         Content = memento.Content;
         CursorPosition = memento.CursorPosition;
@@ -757,233 +502,161 @@ public class TextEditor
 public class EditorHistory
 {
     private readonly Stack<EditorMemento> history = new();
-    private readonly Stack<EditorMemento> redoStack = new();
 
-    public void Save(EditorMemento memento)
-    {
-        history.Push(memento);
-        redoStack.Clear(); // Clear redo stack when new state is saved
-    }
+    public void Save(EditorMemento memento) => history.Push(memento);
 
     public EditorMemento Undo()
     {
-        if (history.Count > 1) // Keep at least one state
-        {
-            var current = history.Pop();
-            redoStack.Push(current);
-            return history.Peek();
-        }
-        return null;
+        return history.Count > 1 ? history.Pop() : null;
     }
-
-    public EditorMemento Redo()
-    {
-        if (redoStack.Count > 0)
-        {
-            var memento = redoStack.Pop();
-            history.Push(memento);
-            return memento;
-        }
-        return null;
-    }
-}
-
-// Usage:
-var editor = new TextEditor();
-var history = new EditorHistory();
-
-// Save initial state
-history.Save(editor.CreateMemento());
-
-editor.Write("Hello ");
-history.Save(editor.CreateMemento());
-
-editor.Write("World");
-history.Save(editor.CreateMemento());
-
-editor.Write("!");
-Console.WriteLine($"Current: '{editor.Content}'"); // Current: 'Hello World!'
-
-// Undo
-var previousState = history.Undo();
-if (previousState != null)
-{
-    editor.RestoreFromMemento(previousState);
-    Console.WriteLine($"After undo: '{editor.Content}'"); // After undo: 'Hello World'
 }
 ```
 
-## Interpreter Pattern
+**When to Use**: Undo/redo functionality, snapshots, transaction rollback.
+**When to Avoid**: State is simple enough to store directly.
 
-**Purpose**: Define a grammar for a language and provide an interpreter to process sentences in that language.
+## Visitor Pattern
+
+**Intent**: Add operations to object hierarchies without modifying them.
+
+**Problem Solved**: Adding new operations without changing existing classes.
+
+**Modern Pattern Matching (Preferred)**:
+```csharp
+public abstract record Expression;
+public record Number(double Value) : Expression;
+public record Addition(Expression Left, Expression Right) : Expression;
+public record Multiplication(Expression Left, Expression Right) : Expression;
+
+public static class ExpressionExtensions
+{
+    public static string Print(this Expression expr) => expr switch
+    {
+        Number n => n.Value.ToString(),
+        Addition a => $"({a.Left.Print()} + {a.Right.Print()})",
+        Multiplication m => $"({m.Left.Print()} * {m.Right.Print()})",
+        _ => throw new ArgumentException("Unknown expression")
+    };
+
+    public static double Evaluate(this Expression expr) => expr switch
+    {
+        Number n => n.Value,
+        Addition a => a.Left.Evaluate() + a.Right.Evaluate(),
+        Multiplication m => m.Left.Evaluate() * m.Right.Evaluate(),
+        _ => throw new ArgumentException("Unknown expression")
+    };
+}
+
+// Usage
+var expr = new Addition(new Number(2), new Multiplication(new Number(3), new Number(4)));
+Console.WriteLine(expr.Print());     // (2 + (3 * 4))
+Console.WriteLine(expr.Evaluate());  // 14
+```
+
+**When to Use**: Operations on complex object structures, expression trees.
+**When to Avoid**: Simple structures - use pattern matching instead.
+
+## Quick Reference
+
+### Behavioral Pattern Comparison
+
+| Pattern | Intent | Problem Solved | When to Use | When to Avoid |
+|---------|--------|----------------|-------------|---------------|
+| **Observer** | Notify dependents of state changes | Maintaining consistency between objects | Event systems, data binding, pub/sub | Simple callbacks work |
+| **Strategy** | Interchangeable algorithms | Eliminating algorithm conditionals | Runtime algorithm selection | Single algorithm |
+| **Command** | Encapsulate requests as objects | Undo/redo, operation queuing | Macro recording, transaction systems | Simple method calls |
+| **State** | Behavior changes with state | Complex state conditionals | State machines, workflow | Simple if/switch suffices |
+| **Chain of Responsibility** | Pass request along handler chain | Decoupling sender from receiver | Middleware pipelines, request processing | Single handler |
+| **Template Method** | Algorithm skeleton in base class | Code reuse with variation | Common workflow with varying steps | No variation needed |
+| **Mediator** | Centralize object communications | Many-to-many complexity | Chat systems, CQRS (MediatR) | Simple relationships |
+| **Memento** | Capture/restore state | Undo/redo while maintaining encapsulation | Snapshots, transaction rollback | Simple state storage |
+| **Visitor** | Add operations to hierarchies | Adding operations without modification | Expression trees, AST processing | Pattern matching is simpler |
+| **Iterator** | Sequential access to elements | Collection traversal | Custom iteration logic | `foreach` works |
+| **Interpreter** | Define language grammar | Domain-specific languages | Simple DSLs | Complex grammars - use parser |
+
+### Pattern Selection Guide
+
+**Choose Observer when:**
+- One-to-many dependencies
+- Automatic notification of changes
+- Example: Event-driven architectures, MVVM data binding
+
+**Choose Strategy when:**
+- Multiple algorithms for same operation
+- Algorithm varies at runtime
+- Example: Payment processing (credit card, PayPal, crypto)
+
+**Choose Command when:**
+- Need to parameterize operations
+- Queue, log, or undo operations
+- Example: Text editor operations, transaction systems
+
+**Choose State when:**
+- Behavior depends on complex state
+- Many state transitions
+- Example: Order lifecycle, TCP connection states
+
+**Choose Chain of Responsibility when:**
+- Multiple objects can handle request
+- Handler not known in advance
+- Example: ASP.NET Core middleware, exception handling
+
+**Choose Template Method when:**
+- Algorithm structure is fixed
+- Steps vary by subclass
+- Example: Data import workflows (CSV, JSON, XML)
+
+**Choose Mediator when:**
+- Complex object interactions
+- Decoupling communicating objects
+- Example: MediatR for CQRS, chat applications
+
+**Choose Memento when:**
+- Need to save/restore state
+- Encapsulation must be maintained
+- Example: Game save states, document revision history
+
+**Avoid Visitor - use pattern matching instead** in modern C#
+
+### Modern C# Alternatives
 
 ```csharp
-// Abstract expression
-public interface IExpression
+// Instead of Observer - use events
+public event EventHandler<DataChangedEventArgs> DataChanged;
+
+// Instead of Strategy - use delegates/Func
+public void Process(Func<Data, Result> strategy) => strategy(data);
+
+// Instead of State - use switch expressions
+var nextState = (currentState, action) switch
 {
-    int Interpret(Dictionary<char, int> variables);
-}
-
-// Terminal expressions
-public class NumberExpression : IExpression
-{
-    private readonly int number;
-
-    public NumberExpression(int number)
-    {
-        this.number = number;
-    }
-
-    public int Interpret(Dictionary<char, int> variables) => number;
-}
-
-public class VariableExpression : IExpression
-{
-    private readonly char variable;
-
-    public VariableExpression(char variable)
-    {
-        this.variable = variable;
-    }
-
-    public int Interpret(Dictionary<char, int> variables) =>
-        variables.ContainsKey(variable) ? variables[variable] : 0;
-}
-
-// Non-terminal expressions
-public class AddExpression : IExpression
-{
-    private readonly IExpression left;
-    private readonly IExpression right;
-
-    public AddExpression(IExpression left, IExpression right)
-    {
-        this.left = left;
-        this.right = right;
-    }
-
-    public int Interpret(Dictionary<char, int> variables) =>
-        left.Interpret(variables) + right.Interpret(variables);
-}
-
-public class SubtractExpression : IExpression
-{
-    private readonly IExpression left;
-    private readonly IExpression right;
-
-    public SubtractExpression(IExpression left, IExpression right)
-    {
-        this.left = left;
-        this.right = right;
-    }
-
-    public int Interpret(Dictionary<char, int> variables) =>
-        left.Interpret(variables) - right.Interpret(variables);
-}
-
-// Usage:
-var variables = new Dictionary<char, int>
-{
-    { 'x', 10 },
-    { 'y', 5 }
+    (State.A, Action.X) => State.B,
+    (State.B, Action.Y) => State.C,
+    _ => currentState
 };
 
-// Create expression: x + y - 3
-var expression = new SubtractExpression(
-    new AddExpression(
-        new VariableExpression('x'),
-        new VariableExpression('y')
-    ),
-    new NumberExpression(3)
-);
-
-var result = expression.Interpret(variables);
-Console.WriteLine($"Result: {result}"); // Result: 12 (10 + 5 - 3)
-```
-
-## Null Object Pattern
-
-**Purpose**: Provide a default object that exhibits neutral behavior instead of using null references.
-
-```csharp
-// Abstract interface
-public interface ILogger
+// Instead of Template Method - use composition
+public class DataProcessor
 {
-    void Log(string message);
-    void LogError(string error);
-}
+    private readonly IReader reader;
+    private readonly ITransformer transformer;
+    private readonly IWriter writer;
 
-// Real implementation
-public class FileLogger : ILogger
-{
-    private readonly string filePath;
-
-    public FileLogger(string filePath)
+    public void Process()
     {
-        this.filePath = filePath;
-    }
-
-    public void Log(string message)
-    {
-        File.AppendAllText(filePath, $"{DateTime.Now}: {message}\n");
-    }
-
-    public void LogError(string error)
-    {
-        File.AppendAllText(filePath, $"{DateTime.Now} ERROR: {error}\n");
+        var data = reader.Read();
+        var transformed = transformer.Transform(data);
+        writer.Write(transformed);
     }
 }
 
-// Null object implementation
-public class NullLogger : ILogger
+// Instead of Visitor - use pattern matching
+public string Process(Expression expr) => expr switch
 {
-    public void Log(string message)
-    {
-        // Do nothing
-    }
-
-    public void LogError(string error)
-    {
-        // Do nothing
-    }
-}
-
-// Service that uses logger
-public class UserService
-{
-    private readonly ILogger logger;
-
-    public UserService(ILogger logger = null)
-    {
-        // Use null object instead of null checks
-        this.logger = logger ?? new NullLogger();
-    }
-
-    public void CreateUser(string userName)
-    {
-        // No null checks needed
-        logger.Log($"Creating user: {userName}");
-
-        try
-        {
-            // User creation logic
-            Console.WriteLine($"User {userName} created");
-            logger.Log($"User {userName} created successfully");
-        }
-        catch (Exception ex)
-        {
-            logger.LogError($"Failed to create user {userName}: {ex.Message}");
-            throw;
-        }
-    }
-}
-
-// Usage:
-var userServiceWithLogger = new UserService(new FileLogger("app.log"));
-userServiceWithLogger.CreateUser("John");
-
-var userServiceWithoutLogger = new UserService(); // Uses NullLogger
-userServiceWithoutLogger.CreateUser("Jane");
+    Number n => ProcessNumber(n),
+    Addition a => ProcessAddition(a),
+    _ => throw new NotSupportedException()
+};
 ```
 
 ---

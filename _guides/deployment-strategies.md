@@ -1,6 +1,8 @@
 ---
 title: "Deployment Strategies"
+layout: guide
 category: DevOps
+subcategory: Deployment
 ---
 
 ## Table of Contents
@@ -259,5 +261,3 @@ Start by clearly setting the objectives and goals for the chaos tests. It's impo
 - **Post-Mortem Culture**: Learn from deployment issues without blame
 
 ---
-
-*Remember: The most successful organizations often employ multiple strategies, selecting the most appropriate approach based on specific requirements of each application and deployment scenario.*

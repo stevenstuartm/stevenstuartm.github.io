@@ -1,6 +1,8 @@
 ---
 title: "Machine Learning Study Guide"
+layout: guide
 category: AI & Machine Learning
+subcategory: Machine Learning
 ---
 
 ## Table of Contents
@@ -494,15 +496,4 @@ MLOps (Machine Learning Operations) combines DevOps practices with the unique ch
 - **Resource Usage**: CPU, memory, storage costs
 - **Data Quality**: Completeness, consistency, freshness
 
-### Future-Proofing Your ML Strategy
-
-1. **Stay Current**: Follow ML trends, research papers, industry developments
-2. **Build Flexible Infrastructure**: Cloud-agnostic, containerized solutions
-3. **Invest in Education**: Continuous learning for teams, cross-functional skills
-4. **Emphasize Ethics**: Build responsible AI practices from the start
-5. **Plan for Scale**: Design systems that can grow with your needs
-6. **Focus on Business Value**: Align ML initiatives with business objectives
-
 ---
-
-*This study guide provides a comprehensive foundation for understanding machine learning concepts, current trends, and best practices for successful implementation in 2025 and beyond.*

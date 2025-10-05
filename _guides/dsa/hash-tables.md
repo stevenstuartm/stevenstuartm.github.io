@@ -207,16 +207,24 @@ Console.WriteLine(hashMap.Retrieve("missing")); // null or default
 3. Explain time complexity trade-offs
 4. Solve problems using hash tables (two-sum, anagrams, etc.)
 
-**Key Points to Mention:**
-- Average O(1) operations vs O(n) worst case
-- Trade memory for time
-- Critical for many algorithms (counting, lookups, caching)
-- Foundation of modern databases and caches
+## Quick Reference
 
-## Modern Usage
+### Hash Table Operations
+| Operation | Average | Worst Case | Notes |
+|-----------|---------|------------|-------|
+| Insert | O(1) | O(n) | Amortized with resizing |
+| Search | O(1) | O(n) | Depends on collisions |
+| Delete | O(1) | O(n) | Same as search |
 
-**C#:** Use `Dictionary<K,V>` - generic, fast, well-tested with excellent performance
-**Collections:** Also consider `ConcurrentDictionary<K,V>` for thread-safe scenarios
-**When to implement custom:** Almost never in production, but common interview topic
+### Collision Handling
+- **Chaining:** Use linked lists at each bucket (flexible, handles any load)
+- **Open Addressing:** Find next empty slot (better cache, fixed size)
 
-The implementations above are educational - they show the core concepts but lack optimizations like dynamic resizing, better hash functions, and robust error handling found in production hash tables.
+### C# Built-ins
+- `Dictionary<K,V>` - Standard hash table
+- `HashSet<T>` - Set operations, unique values
+- `ConcurrentDictionary<K,V>` - Thread-safe
+
+**Key Trade-off:** Memory for speed - O(1) operations at cost of O(n) space
+
+---
