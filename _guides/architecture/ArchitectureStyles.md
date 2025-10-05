@@ -62,10 +62,6 @@ Small apps, tight budgets, starting point
 
 Large apps, high scalability needed
 
-**Rating:**
-
-Cost $ | Quanta 1 | Simplicity 5 | Modularity 1 | Scalability 1
-
 ---
 
 ### Pipeline Architecture
@@ -89,10 +85,6 @@ ETL, ordered one-way processing, tight budgets
 **Avoid When:**
 
 Complex workflows, high scale, bidirectional communication
-
-**Rating:**
-
-Cost $ | Quanta 1 | Simplicity 5 | Modularity 2 | Scalability 1
 
 ---
 
@@ -120,10 +112,6 @@ Product-based apps, customization needed, domain variations
 
 High scalability required
 
-**Rating:**
-
-Cost $ | Quanta 1 | Simplicity 5 | Modularity 3 | Scalability 1
-
 ---
 
 ### Modular Monolith
@@ -148,10 +136,6 @@ Tight budgets, new systems, domain-focused teams, DDD
 **Avoid When:**
 
 High operational characteristics needed, frequent technical changes
-
-**Rating:**
-
-Cost $ | Quanta 1 | Simplicity 5 | Modularity 2 | Scalability 1
 
 ---
 
@@ -188,10 +172,6 @@ Pragmatic distributed architecture, domain teams
 **Avoid When:**
 
 Transactions across services needed
-
-**Rating:**
-
-Cost $$ | Quanta 1-many | Simplicity 3 | Modularity 3 | Scalability 3
 
 ---
 
@@ -240,10 +220,6 @@ Flexible action-based events, high responsiveness, complex workflows
 
 Well-structured data requests, need certainty and control
 
-**Rating:**
-
-Cost $$$ | Quanta 1-many | Simplicity 2 | Responsiveness 5 | Scalability 4 | Fault Tolerance 5
-
 ---
 
 ### Microservices Architecture
@@ -286,10 +262,6 @@ High modularity/scalability/evolvability, domain teams, independent deployment
 
 Transactions across services needed, simple domains, small teams
 
-**Rating:**
-
-Cost $$$$$ | Quanta 1-many | Simplicity 1 | Modularity 5 | Scalability 5 | Evolvability 5
-
 ---
 
 ### Orchestration-Driven SOA
@@ -324,10 +296,6 @@ ESBs for integration only (not full architecture)
 **Risk:**
 
 Accidental SOA antipattern
-
-**Rating:**
-
-Cost $$$$ | Quanta 1-many | Simplicity 1 | Maintainability 1 | Evolvability 1
 
 ---
 
@@ -374,11 +342,6 @@ Extreme scalability/elasticity, variable unpredictable load
 **Avoid When:**
 
 Frequent cold starts, heavy archived data reads, low tolerance for eventual consistency
-
-**Rating:**
-
-Cost $$$$ | Quanta 1-many | Simplicity 1 | Responsiveness 5 | Scalability 5 | Elasticity 5
-
 ---
 
 ## Quick Comparison
