@@ -55,7 +55,7 @@ Architects need **breadth** (knowing a little about many things) over **depth** 
 
 **Trade-Off Analysis:**
 
-> "Programmers know the benefits of everything and the trade-offs of nothing. Architects need to understand both."
+> "Programmers know the benefits of everything and the trade-offs of nothing. Architects need to understand both."   -- Rich Hickey
 
 Everything has trade-offs. The answer is often "it depends" on: environment, business drivers, culture, budgets, timelines, skills, etc.
 
@@ -185,7 +185,7 @@ Accessibility | Authentication | Authorization | Legal | Privacy | Security | Su
 
 ## Architecture Quantum
 
-> "The smallest part of the system that runs independently"
+The smallest part of the system that runs independently
 
 **Requirements:**
 

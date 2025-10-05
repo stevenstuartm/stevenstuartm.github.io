@@ -203,18 +203,6 @@ No matter how brilliant your ideas, if you can't convince managers to fund and d
 
 Show relationships before changing views. Show context before details.
 
-### Tools
-
-**Low-fidelity (Early):**
-
-- Whiteboard + phone photo
-- Tablet + projector (unlimited canvas, copy/paste, digitized)
-
-**High-fidelity (Final):**
-
-- OmniGraffle, Visio, Lucidchart, Draw.io
-- Look for: Layers | Stencils | Magnets (connection points)
-
 **Avoid Irrational Artifact Attachment:**
 
 Time spent ∝ attachment. Use low-fidelity early to enable iteration.
@@ -245,37 +233,6 @@ Active community, templates, keeps up with ecosystem
 **ArchiMate:**
 
 Open source from The Open Group. "As small as possible" for enterprise ecosystems.
-
-### Diagram Guidelines
-
-**Titles:**
-
-Title all elements unless very well-known
-
-**Lines:**
-
-- Thick enough to see
-- **Solid = synchronous** | **Dotted = asynchronous**
-- Arrows show direction
-
-**Shapes:**
-
-- No universal standards (create your own)
-- Common: 3D boxes (deployables), rectangles (containers), cylinders (databases)
-
-**Labels:**
-
-Label everything—avoid ambiguity
-
-**Color:**
-
-- Use when it helps distinguish artifacts
-- **Accessibility**: Use iconography + color (not color alone)
-- Example: Traffic lights use shapes too
-
-**Keys:**
-
-Include if shapes ambiguous. Misinterpreted diagram > no diagram
 
 ---
 

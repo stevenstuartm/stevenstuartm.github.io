@@ -346,17 +346,17 @@ Frequent cold starts, heavy archived data reads, low tolerance for eventual cons
 
 ## Quick Comparison
 
-| Style | Best For | Avoid When | Cost | Scalability |
+| Style | Best For | Avoid When
 |-------|----------|------------|------|-------------|
-| **Layered** | Small apps, tight budgets | Large scalable systems | $ | 1 |
-| **Pipeline** | ETL, one-way processing | Complex workflows | $ | 1 |
-| **Microkernel** | Customizable products | High scalability | $ | 1 |
-| **Modular Monolith** | Domain teams, DDD | High operational demands | $ | 1 |
-| **Service-Based** | Pragmatic distributed | Cross-service transactions | $$ | 3 |
-| **Event-Driven** | Responsiveness, scale | Deterministic workflows | $$$ | 4 |
-| **Microservices** | Evolvability, independence | Simple domains, small teams | $$$$$ | 5 |
-| **SOA** | Legacy integration | New architectures | $$$$ | 4 |
-| **Space-Based** | Extreme scale, elasticity | Frequent DB reads | $$$$ | 5 |
+| **Layered** | Small apps, tight budgets | Large scalable systems
+| **Pipeline** | ETL, one-way processing | Complex workflows
+| **Microkernel** | Customizable products | High scalability
+| **Modular Monolith** | Domain teams, DDD | High operational demands
+| **Service-Based** | Pragmatic distributed | Cross-service transactions
+| **Event-Driven** | Responsiveness, scale | Deterministic workflows
+| **Microservices** | Evolvability, independence | Simple domains, small teams
+| **SOA** | Legacy integration | New architectures
+| **Space-Based** | Extreme scale, elasticity | Frequent DB reads
 
 ---
 
