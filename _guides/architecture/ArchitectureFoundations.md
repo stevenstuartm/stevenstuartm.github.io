@@ -19,9 +19,10 @@ Architecture is a structured solution that fulfills requirements, addresses chal
 
 ## Core Laws
 
-1. **Everything in software architecture is a trade-off**
-2. **Why is more important than how**
-3. **Most decisions exist on a spectrum, not binary choices**
+> 1. **"Everything in software architecture is a trade-off**
+> 2. **Why is more important than how**
+> 3. **Most decisions exist on a spectrum, not binary choices"**
+> -- Mark Richards & Neal Ford
 
 ---
 
