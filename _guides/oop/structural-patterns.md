@@ -1,6 +1,7 @@
 ---
 title: "Structural Patterns"
 category: Object-Oriented Programming
+description: "Structural design patterns including Adapter, Bridge, Composite, Decorator, Facade, Flyweight, and Proxy for flexible object composition."
 ---
 
 ---

@@ -1,6 +1,7 @@
 ---
 title: "Heaps & Priority Queues"
 category: Data Structures & Algorithms
+description: "Learn heap data structure properties, heapify operations, priority queue implementations, and applications from task scheduling to finding top-K elements."
 ---
 
 ## Why Heaps Exist

@@ -3,6 +3,7 @@ title: "Software Development Lifecycle (SDLC) Study Guide"
 layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC
+description: "Complete SDLC guide covering methodologies like Agile and Shape Up, SMART goals, DevSecOps integration, CI/CD practices, and modern team architecture."
 ---
 
 ## Table of Contents

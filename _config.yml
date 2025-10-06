@@ -21,6 +21,7 @@ social:
 # Build settings
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
+excerpt_separator: "<!--more-->"
 
 # Data files location
 data_dir: assets/data

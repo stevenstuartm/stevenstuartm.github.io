@@ -3,6 +3,7 @@ layout: guide
 title: "Data Management Patterns"
 category: Architecture
 subcategory: Patterns
+description: "Database patterns for distributed systems including database-per-service, CQRS, event sourcing, saga pattern, and handling data consistency challenges."
 ---
 
 # Data Management Patterns

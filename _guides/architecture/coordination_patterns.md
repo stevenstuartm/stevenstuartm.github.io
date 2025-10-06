@@ -3,6 +3,7 @@ layout: guide
 title: "Coordination Patterns"
 category: Architecture
 subcategory: Patterns
+description: "Distributed coordination patterns including leader election, distributed locks, consensus algorithms, and managing shared resources across multiple nodes."
 ---
 
 # Coordination Patterns

@@ -1,6 +1,7 @@
 ---
 title: "Best Practices and Quick Reference"
 category: Security
+description: "Practical security best practices covering network segmentation, endpoint protection, IAM, data encryption, application security, and 2025 security trends."
 ---
 
 ## Table of Contents

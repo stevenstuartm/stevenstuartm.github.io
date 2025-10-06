@@ -1,6 +1,7 @@
 ---
 title: "Modern Best Practices"
 category: Object-Oriented Programming
+description: "Modern OOP practices including composition over inheritance, dependency injection, immutability, functional programming concepts, and avoiding common antipatterns."
 ---
 
 ---

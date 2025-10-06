@@ -3,6 +3,7 @@ layout: guide
 title: "Orchestration and Choreography Patterns"
 category: Architecture
 subcategory: Patterns
+description: "Compare centralized orchestration vs distributed choreography for coordinating complex business processes across multiple services with trade-offs and implementation patterns."
 ---
 
 # Orchestration and Choreography Patterns

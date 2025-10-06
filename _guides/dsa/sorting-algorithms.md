@@ -1,6 +1,7 @@
 ---
 title: "Sorting Algorithms"
 category: Data Structures & Algorithms
+description: "Comprehensive guide to sorting algorithms from bubble sort to quick sort, with complexity comparisons, stability analysis, and practical selection criteria."
 ---
 
 ## Why Sorting Exists

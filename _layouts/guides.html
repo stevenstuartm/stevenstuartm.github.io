@@ -45,15 +45,20 @@ layout: default
                             {% assign guide = site.guides | where_exp: "item", "item.path contains guide_ref.file" | first %}
                             {% if guide %}
                                 <article class="guide-card" data-title="{{ guide.title | downcase }}" data-category="{{ guide.category }}">
-                                    <h3><a href="{{ guide.url | relative_url }}">{{ guide.title }}</a></h3>
-                                    <div class="guide-card-meta">
-                                        <span class="category-badge">{{ guide.category }}</span>
-                                        <span class="subcategory-badge">{{ subcategory.name }}</span>
-                                    </div>
-                                    {% if guide.excerpt %}
-                                    <p class="guide-excerpt">{{ guide.excerpt | strip_html | truncatewords: 30 }}</p>
-                                    {% endif %}
-                                    <a href="{{ guide.url | relative_url }}" class="read-more">Read study guide →</a>
+                                    <a href="{{ guide.url | relative_url }}" class="guide-link">
+                                        <h3>{{ guide.title }}</h3>
+                                        <div class="guide-card-meta">
+                                            <span class="category-badge">{{ guide.category }}</span>
+                                            <span class="subcategory-badge">{{ subcategory.name }}</span>
+                                        </div>
+                                        {% if guide.description %}
+                                        <p class="guide-excerpt">{{ guide.description }}</p>
+                                        {% elsif guide.excerpt %}
+                                        {% assign clean_excerpt = guide.excerpt | strip_html | remove: 'Table of Contents' | remove: 'Overview' | remove: '[' | remove: ']' | remove: '(' | remove: ')' | remove: '#' %}
+                                        <p class="guide-excerpt">{{ clean_excerpt | truncatewords: 30 }}</p>
+                                        {% endif %}
+                                        <span class="read-more">Read study guide →</span>
+                                    </a>
                                 </article>
                             {% endif %}
                         {% endfor %}
@@ -92,6 +97,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         filterGuides(decodedCategory);
+    } else {
+        // No URL parameter, filter to first category by default
+        const firstBtn = filterBtns[0];
+        if (firstBtn) {
+            filterGuides(firstBtn.dataset.category);
+        }
     }
 
     // Category filtering

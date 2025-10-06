@@ -1,6 +1,7 @@
 ---
 title: "Recursion"
 category: Data Structures & Algorithms
+description: "Master recursive thinking with base cases, recursive cases, common patterns, memoization techniques, and converting between recursive and iterative solutions."
 ---
 
 ## Why Recursion Exists

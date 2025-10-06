@@ -1,6 +1,7 @@
 ---
 title: "SOLID Principles"
 category: Object-Oriented Programming
+description: "Deep dive into SOLID principles: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion with practical examples."
 ---
 
 ---

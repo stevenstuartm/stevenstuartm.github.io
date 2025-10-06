@@ -1,6 +1,7 @@
 ---
 title: "Security Testing"
 category: Security
+description: "Master security testing methodologies including SAST, DAST, IAST, penetration testing phases, and vulnerability assessment techniques for comprehensive application security."
 ---
 
 ---

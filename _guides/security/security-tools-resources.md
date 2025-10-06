@@ -1,6 +1,7 @@
 ---
 title: "Tools and Resources"
 category: Security
+description: "Comprehensive catalog of security assessment tools, vulnerability scanners, SIEM platforms, threat intelligence resources, and compliance automation tools."
 ---
 
 ---

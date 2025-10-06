@@ -3,6 +3,7 @@ layout: guide
 title: "Migration Patterns"
 category: Architecture
 subcategory: Patterns
+description: "Safely modernize legacy systems with strangler fig pattern, anti-corruption layer, branch by abstraction, and gradual migration strategies."
 ---
 
 # Migration Patterns

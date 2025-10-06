@@ -1,6 +1,7 @@
 ---
 title: "Linked Lists"
 category: Data Structures & Algorithms
+description: "Learn singly and doubly linked lists with implementations, time complexity analysis, and common interview problems including cycle detection and reversal."
 ---
 
 ## Why Linked Lists Exist

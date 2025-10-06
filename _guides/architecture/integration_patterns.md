@@ -3,6 +3,7 @@ layout: guide
 title: "Integration Patterns"
 category: Architecture
 subcategory: Patterns
+description: "Essential integration patterns for connecting systems including pipes and filters, API gateway, service mesh, and data transformation strategies."
 ---
 
 # Integration Patterns

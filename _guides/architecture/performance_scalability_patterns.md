@@ -3,6 +3,7 @@ layout: guide
 title: "Performance and Scalability Patterns"
 category: Architecture
 subcategory: Patterns
+description: "Optimize system performance and scale with patterns for caching, throttling, load shedding, horizontal/vertical scaling, and partitioning strategies."
 ---
 
 # Performance and Scalability Patterns

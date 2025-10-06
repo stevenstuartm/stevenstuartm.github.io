@@ -1,6 +1,7 @@
 ---
 title: "Complexity Cheat Sheet"
 category: Data Structures & Algorithms
+description: "Quick reference for time and space complexity of common data structures, algorithms, and operations with practical guidelines for algorithm selection and performance optimization."
 ---
 
 ## Why Complexity Analysis Matters

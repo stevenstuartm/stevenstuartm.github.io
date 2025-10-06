@@ -606,12 +606,23 @@ main {
     border-radius: var(--border-radius);
     border-left: 3px solid var(--color-secondary);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .post-preview:hover {
     transform: translateX(4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-left-color: var(--color-primary);
+}
+
+.post-preview a.post-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.post-preview a.post-link:hover {
+    color: inherit;
 }
 
 .post-preview h3 {
@@ -1131,12 +1142,23 @@ main {
     border-radius: var(--border-radius);
     padding: var(--spacing-md);
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .guide-card:hover {
     border-color: var(--color-primary);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.guide-card a.guide-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.guide-card a.guide-link:hover {
+    color: inherit;
 }
 
 .guide-card h3 {
@@ -1288,6 +1310,17 @@ main {
     min-height: 400px;
 }
 
+/* Hide manual Table of Contents in guide content since we have sidebar TOC */
+.guide-content h2:has(+ ol li a[href^="#"]),
+.guide-content h2:has(+ ul li a[href^="#"]) {
+    display: none;
+}
+
+.guide-content h2 + ol:has(li a[href^="#"]),
+.guide-content h2 + ul:has(li a[href^="#"]) {
+    display: none;
+}
+
 .guide-content h2 {
     color: var(--color-text);
     margin-top: var(--spacing-lg);
@@ -1389,6 +1422,15 @@ main {
 
 .guide-content blockquote li {
     margin-bottom: var(--spacing-sm);
+}
+
+.guide-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: var(--spacing-md) auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .guide-footer {

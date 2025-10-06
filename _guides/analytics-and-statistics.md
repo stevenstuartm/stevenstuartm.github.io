@@ -3,6 +3,7 @@ title: "Analytics and Statistics Study Guide"
 layout: guide
 category: Data & Analytics
 subcategory: Analytics
+description: "Essential statistics covering descriptive/inferential analytics, probability distributions, hypothesis testing, data visualization, and modern analytics trends for 2025."
 ---
 
 ## Table of Contents

@@ -31,7 +31,8 @@
           "order": 4,
           "description": "Component design, risk analysis, and diagramming",
           "guides": [
-            { "file": "DesignImplementation.md", "order": 1 }
+            { "file": "DesignImplementation.md", "order": 1 },
+            { "file": "uml-diagrams.md", "order": 2 }
           ]
         },
         {
@@ -57,7 +58,8 @@
           "description": "Data architecture and disaster recovery",
           "guides": [
             { "file": "data-architecture.md", "order": 1 },
-            { "file": "disaster-recovery-patterns.md", "order": 2 }
+            { "file": "disaster-recovery-patterns.md", "order": 2 },
+            { "file": "deployment-strategies.md", "order": 3 }
           ]
         }
       ]
@@ -198,8 +200,7 @@
           "order": 1,
           "description": "Development methodologies and system modeling",
           "guides": [
-            { "file": "sdlc.md", "order": 1 },
-            { "file": "uml-diagrams.md", "order": 2 }
+            { "file": "sdlc/sdlc.md", "order": 1 }
           ]
         }
       ]
@@ -225,18 +226,6 @@
           "description": "Statistics and data analysis",
           "guides": [
             { "file": "analytics-and-statistics.md", "order": 1 }
-          ]
-        }
-      ]
-    },
-    "DevOps": {
-      "subcategories": [
-        {
-          "name": "Deployment & Operations",
-          "order": 1,
-          "description": "Deployment strategies and operational practices",
-          "guides": [
-            { "file": "deployment-strategies.md", "order": 1 }
           ]
         }
       ]

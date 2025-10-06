@@ -1,6 +1,7 @@
 ---
 title: "Algorithm Design Paradigms"
 category: Data Structures & Algorithms
+description: "Master four fundamental algorithm design approaches: dynamic programming, greedy algorithms, divide-and-conquer, and backtracking with practical examples and complexity analysis."
 ---
 
 ## Overview

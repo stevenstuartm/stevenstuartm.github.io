@@ -1,6 +1,7 @@
 ---
 title: "Tree Fundamentals"
 category: Data Structures & Algorithms
+description: "Learn tree fundamentals including terminology, types, traversal methods, and why trees enable logarithmic time operations for hierarchical data structures."
 ---
 
 ## Why Trees Exist

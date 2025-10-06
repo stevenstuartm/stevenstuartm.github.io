@@ -3,6 +3,7 @@ layout: guide
 title: "Messaging Patterns"
 category: Architecture
 subcategory: Patterns
+description: "Reliable messaging patterns including transactional outbox/inbox, saga pattern, event sourcing, and message versioning for distributed systems."
 ---
 
 # Messaging Patterns

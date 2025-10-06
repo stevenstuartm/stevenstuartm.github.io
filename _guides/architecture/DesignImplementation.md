@@ -3,6 +3,7 @@ layout: guide
 title: "Design & Implementation"
 category: Architecture
 subcategory: Design
+description: "Learn component design principles, bounded contexts, coupling types, logical vs physical architecture, and practical implementation strategies for distributed systems."
 ---
 
 # Design & Implementation

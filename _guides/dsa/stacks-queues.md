@@ -1,6 +1,7 @@
 ---
 title: "Stacks & Queues"
 category: Data Structures & Algorithms
+description: "Master stack (LIFO) and queue (FIFO) data structures with implementations, common applications like BFS, and variations including priority queues and circular queues."
 ---
 
 ## Overview

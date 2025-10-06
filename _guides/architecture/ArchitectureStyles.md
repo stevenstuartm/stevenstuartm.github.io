@@ -3,6 +3,7 @@ layout: guide
 title: "Architecture Styles"
 category: Architecture
 subcategory: Styles
+description: "Comprehensive guide to architectural styles from monolithic layered and pipeline to distributed microservices, event-driven, and space-based architectures."
 ---
 
 # Architecture Styles

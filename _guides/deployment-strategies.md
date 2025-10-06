@@ -1,8 +1,9 @@
 ---
 title: "Deployment Strategies"
 layout: guide
-category: DevOps
-subcategory: Deployment
+category: Architecture
+subcategory: Data & Infrastructure
+description: "Deployment strategies define how new versions of applications are released to production environments. Learn about Rolling, Blue-Green, Canary, A/B Testing deployments, and Chaos Engineering."
 ---
 
 ## Table of Contents

@@ -3,6 +3,7 @@ title: "Comprehensive Generative AI Study Guide"
 layout: guide
 category: AI & Machine Learning
 subcategory: Generative AI
+description: "Master generative AI including popular tools, prompt engineering techniques, transformer architectures, RAG systems, and practical integration strategies for 2025."
 ---
 
 ## Table of Contents

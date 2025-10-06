@@ -1,6 +1,7 @@
 ---
 title: "Security Controls and Defense"
 category: Security
+description: "Implement defense-in-depth strategies, zero trust architecture principles, access control models, and network security fundamentals for comprehensive protection."
 ---
 
 ---

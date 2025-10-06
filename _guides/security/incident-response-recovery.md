@@ -1,6 +1,7 @@
 ---
 title: "Incident Response and Recovery"
 category: Security
+description: "Learn the NIST incident response lifecycle including preparation, detection, containment, eradication, recovery, and post-incident analysis with team structure and communication strategies."
 ---
 
 ---

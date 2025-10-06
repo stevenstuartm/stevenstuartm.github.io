@@ -1,6 +1,7 @@
 ---
 title: "Security Foundations"
 category: Security
+description: "Master fundamental security concepts including the CIA triad, defense-in-depth principles, trust models, and security-by-design practices for building secure systems."
 ---
 
 ## Table of Contents

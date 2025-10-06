@@ -1,6 +1,7 @@
 ---
 title: "Threats and Vulnerabilities"
 category: Security
+description: "Explore threat actor classifications from script kiddies to nation-states, vulnerability management with CVE and CVSS, and risk assessment methodologies."
 ---
 
 ---

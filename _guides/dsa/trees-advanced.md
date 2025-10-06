@@ -1,6 +1,7 @@
 ---
 title: "Advanced Tree Structures"
 category: Data Structures & Algorithms
+description: "Master advanced tree structures including tries for prefix matching, segment trees, balanced trees like AVL and Red-Black, and specialized applications."
 ---
 
 ## Tries (Prefix Trees)

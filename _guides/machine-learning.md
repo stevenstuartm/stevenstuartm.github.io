@@ -3,6 +3,7 @@ title: "Machine Learning Study Guide"
 layout: guide
 category: AI & Machine Learning
 subcategory: Machine Learning
+description: "Comprehensive ML fundamentals covering supervised/unsupervised learning, model training, neural networks, MLOps practices, and 2025 industry trends."
 ---
 
 ## Table of Contents

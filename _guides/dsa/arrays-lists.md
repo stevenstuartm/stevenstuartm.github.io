@@ -1,6 +1,7 @@
 ---
 title: "Arrays & Dynamic Arrays"
 category: Data Structures & Algorithms
+description: "Master static and dynamic arrays with O(1) access, amortized analysis, common techniques like two pointers and sliding window, and essential interview problems."
 ---
 
 ## Why Arrays Exist

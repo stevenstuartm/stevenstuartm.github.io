@@ -1,6 +1,7 @@
 ---
 title: "Graph Fundamentals"
 category: Data Structures & Algorithms
+description: "Foundation of graph theory covering terminology, representations, graph types, and basic traversal concepts for modeling complex relationships and networks."
 ---
 
 ## Why Graphs Exist
