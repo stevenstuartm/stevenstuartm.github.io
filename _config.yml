@@ -23,6 +23,11 @@ markdown: kramdown
 permalink: /blog/:year/:month/:day/:title.html
 excerpt_separator: "<!--more-->"
 
+# Sass/CSS settings
+sass:
+  style: compressed
+  sass_dir: _sass
+
 # Data files location
 data_dir: assets/data
 

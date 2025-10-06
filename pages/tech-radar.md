@@ -70,10 +70,10 @@ permalink: /tech-radar.html
   </div>
 </div>
 
-<script src="{{ '/assets/js/d3.v7.min.js' | relative_url }}"></script>
-<script src="{{ '/assets/js/radar.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/d3.v7.min.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/radar.js' | relative_url }}"></script>
 
-<script>
+<script defer>
 // Load radar data from JSON file
 let radarData = null;
 
