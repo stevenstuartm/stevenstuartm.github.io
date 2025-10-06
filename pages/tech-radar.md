@@ -2,7 +2,7 @@
 layout: radar
 title: Tech Radar
 description: "My technology recommendations and assessments: tools, techniques, platforms, and frameworks I adopt, trial, assess, or avoid—and why."
-permalink: /tech-radar/
+permalink: /tech-radar.html
 ---
 
 <div class="view-toggle">

@@ -20,7 +20,7 @@ social:
 
 # Build settings
 markdown: kramdown
-permalink: /blog/:year/:month/:day/:title/
+permalink: /blog/:year/:month/:day/:title.html
 excerpt_separator: "<!--more-->"
 
 # Data files location
@@ -30,6 +30,7 @@ data_dir: assets/data
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-redirect-from
 
 # Feed settings
 feed:
@@ -41,10 +42,10 @@ feed:
 collections:
   posts:
     output: true
-    permalink: /blog/:year/:month/:day/:title/
+    permalink: /blog/:year/:month/:day/:title.html
   guides:
     output: true
-    permalink: /study-guides/:path/
+    permalink: /study-guides/:path.html
 
 # Defaults
 defaults:

@@ -2,7 +2,7 @@
 layout: page
 title: Blog
 description: "Learn from real-world software architecture challenges: system design patterns, AWS optimization, Domain-Driven Design, microservices, and engineering leadership insights."
-permalink: /blog/
+permalink: /blog.html
 ---
 
 {% if site.posts.size > 0 %}

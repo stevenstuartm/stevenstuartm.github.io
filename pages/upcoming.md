@@ -2,7 +2,7 @@
 layout: page
 title: Upcoming Content
 description: "Planned features and content coming to stevenstuartm.com"
-permalink: /upcoming/
+permalink: /upcoming.html
 ---
 
 Stay tuned for new features and content I'm working on. Here's what's on the roadmap:

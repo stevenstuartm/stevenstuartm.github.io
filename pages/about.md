@@ -3,7 +3,7 @@ layout: page
 title: About
 description: "Software architect with 15+ years designing cloud-native platforms, distributed systems, and scalable solutions using AWS, .NET, and modern practices."
 image: /assets/img/profile-steven-stuart.jpeg
-permalink: /about/
+permalink: /about.html
 ---
 
 ## Hi, I'm Steven

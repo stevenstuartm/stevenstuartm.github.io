@@ -2,7 +2,7 @@
 layout: page
 title: Study Routine
 description: "A continuous learning framework for software architects and engineers—my approach to staying sharp and growing in the field."
-permalink: /study-routine/
+permalink: /study-routine.html
 ---
 
 Continuous learning isn't optional in software engineering—it's essential. This is my framework for enriching skills, staying current with technology, and advancing as a software architect. I share it as a practical example for others looking to build their own learning routine.

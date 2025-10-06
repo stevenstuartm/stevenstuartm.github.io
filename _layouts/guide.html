@@ -28,9 +28,9 @@ layout: default
 <article class="guide">
     <header class="guide-header">
         <nav class="breadcrumb">
-            <a href="{{ '/study-guides' | relative_url }}">Study Guides</a>
+            <a href="{{ '/study-guides.html' | relative_url }}">Study Guides</a>
             <span class="separator">/</span>
-            <a href="{{ '/study-guides' | relative_url }}?category={{ page.category | url_encode }}" class="category">{{ page.category }}</a>
+            <a href="{{ '/study-guides.html' | relative_url }}?category={{ page.category | url_encode }}" class="category">{{ page.category }}</a>
         </nav>
         <h1 class="guide-title">{{ page.title }}</h1>
         {% if page.category %}
@@ -58,7 +58,7 @@ layout: default
     {% include guide_navigation.html %}
 
     <footer class="guide-footer">
-        <a href="{{ '/study-guides' | relative_url }}" class="back-link">← Back to all study guides</a>
+        <a href="{{ '/study-guides.html' | relative_url }}" class="back-link">← Back to all study guides</a>
     </footer>
 </article>
 

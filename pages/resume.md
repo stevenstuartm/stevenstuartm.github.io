@@ -2,7 +2,7 @@
 layout: page
 title: Resume
 description: "Software architect with proven expertise in AWS, .NET, microservices, and cloud infrastructure—delivering scalable, cost-effective solutions."
-permalink: /resume/
+permalink: /resume.html
 ---
 
 <h1 style="text-align: center; margin-bottom: 5px;">Steven Stuart</h1>
