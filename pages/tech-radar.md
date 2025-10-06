@@ -73,7 +73,9 @@ permalink: /tech-radar.html
 <script defer src="{{ '/assets/js/d3.v7.min.js' | relative_url }}"></script>
 <script defer src="{{ '/assets/js/radar.js' | relative_url }}"></script>
 
-<script defer>
+<script>
+// Wait for DOM and deferred scripts to load
+document.addEventListener('DOMContentLoaded', function() {
 // Load radar data from JSON file
 let radarData = null;
 
@@ -301,6 +303,7 @@ function makeRadarBlipsClickable() {
     });
   }, 1000);
 }
+}); // End DOMContentLoaded
 
 </script>
 
