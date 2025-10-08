@@ -29,7 +29,9 @@ layout: default
                             <p class="post-meta">
                                 <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
                             </p>
-                            {% if post.excerpt %}
+                            {% if post.description %}
+                            <p class="post-excerpt">{{ post.description }}</p>
+                            {% elsif post.excerpt %}
                             <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
                             {% endif %}
                             <span class="read-more">Read more →</span>
