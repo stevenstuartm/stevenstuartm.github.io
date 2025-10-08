@@ -2,6 +2,7 @@
 layout: post
 title: "I Think We Are Missing the Greater Value of Test-Driven Development"
 date: 2025-07-28
+series: "Development Practice"
 tags: [tdd, testing, software-design, best-practices]
 description: "Reframing TDD as testing assumptions rather than just code—executable business hypotheses that prevent building the wrong thing."
 ---

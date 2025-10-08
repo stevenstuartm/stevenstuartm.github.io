@@ -2,6 +2,7 @@
 layout: post
 title: "Agile Methodologies Can Work Consistently If We Humans Work and Plan Consistently"
 date: 2025-07-03
+series: "Development Practice"
 tags: [agile, project-management, software-engineering, teams]
 description: "Why Agile works when teams align, agree, and deliver consistently—identifying common failure points and how to avoid them."
 ---

@@ -2,6 +2,7 @@
 layout: post
 title: "Are We Innovating Ourselves Into a Corner?"
 date: 2025-09-09
+series: "Development Practice"
 tags: [industry, innovation, technical-debt, career]
 description: "Exploring the switching cost trap—why better technologies remain unused while we maintain legacy systems and build migration bridges."
 ---

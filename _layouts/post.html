@@ -30,23 +30,37 @@ layout: default
 
 <article class="post">
     <header class="post-header">
+        <nav class="breadcrumb">
+            <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+            <span class="separator">/</span>
+            <a href="{{ '/blog.html' | relative_url }}?series={{ page.series | url_encode }}" class="category">{{ page.series }}</a>
+        </nav>
         <h1 class="post-title">{{ page.title }}</h1>
+        {% if page.description %}
+        <p class="post-description">{{ page.description }}</p>
+        {% endif %}
         <div class="post-meta">
             <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
             {% if page.author %} • <span>{{ page.author }}</span>{% endif %}
-            {% if page.tags %}
-            <div class="post-tags">
-                {% for tag in page.tags %}
-                <span class="tag">{{ tag }}</span>
-                {% endfor %}
-            </div>
+            {% if page.series %}
+            <span class="category-badge">{{ page.series }}</span>
             {% endif %}
         </div>
+        {% if page.tags %}
+        <div class="post-tags">
+            {% for tag in page.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
     </header>
 
     <div class="post-content">
         {{ content }}
     </div>
+
+    {% comment %} Add prev/next navigation {% endcomment %}
+    {% include post_navigation.html %}
 
     <footer class="post-footer">
         <a href="{{ '/blog.html' | relative_url }}" class="back-link">← Back to all posts</a>

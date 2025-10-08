@@ -41,8 +41,8 @@ layout: default
                         <p class="subcategory-desc">{{ subcategory.description }}</p>
                     {% endif %}
                     <div class="guide-cards">
-                        {% for guide_ref in subcategory.guides %}
-                            {% assign guide = site.guides | where_exp: "item", "item.path contains guide_ref.file" | first %}
+                        {% for guide_filename in subcategory.guides %}
+                            {% assign guide = site.guides | where_exp: "item", "item.path contains guide_filename" | first %}
                             {% if guide %}
                                 <article class="guide-card" data-title="{{ guide.title | downcase }}" data-category="{{ guide.category }}">
                                     <a href="{{ guide.url | relative_url }}" class="guide-link">

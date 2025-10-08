@@ -2,6 +2,7 @@
 layout: post
 title: "Being Focused Is Not What I Thought It Was"
 date: 2025-09-19
+series: "Development Practice"
 tags: [career, productivity, learning, software-engineering]
 description: "Rethinking focus in software development—it's not about exclusion, but about presence and intervals of development across multiple skill areas."
 ---

@@ -4,62 +4,56 @@
       "subcategories": [
         {
           "name": "Foundations",
-          "order": 1,
           "description": "Core concepts and principles of software architecture",
           "guides": [
-            { "file": "ArchitectureFoundations.md", "order": 1 }
+            "ArchitectureFoundations.md"
           ]
         },
         {
           "name": "Styles",
-          "order": 2,
           "description": "Architectural styles from monolithic to distributed",
           "guides": [
-            { "file": "ArchitectureStyles.md", "order": 1 }
+            "ArchitectureStyles.md"
           ]
         },
         {
           "name": "Leadership",
-          "order": 3,
           "description": "Decision-making, leadership, and team management",
           "guides": [
-            { "file": "ArchitectureDecisionsLeadership.md", "order": 1 }
+            "ArchitectureDecisionsLeadership.md"
           ]
         },
         {
           "name": "Design",
-          "order": 4,
           "description": "Component design, risk analysis, and diagramming",
           "guides": [
-            { "file": "DesignImplementation.md", "order": 1 },
-            { "file": "uml-diagrams.md", "order": 2 }
+            "DesignImplementation.md",
+            "uml-diagrams.md"
           ]
         },
         {
           "name": "Patterns",
-          "order": 5,
           "description": "Architectural and design patterns for distributed systems",
           "guides": [
-            { "file": "communication_patterns.md", "order": 1 },
-            { "file": "messaging_patterns.md", "order": 2 },
-            { "file": "coordination_patterns.md", "order": 3 },
-            { "file": "orchestration_choreography.md", "order": 4 },
-            { "file": "integration_patterns.md", "order": 5 },
-            { "file": "data_management_patterns.md", "order": 6 },
-            { "file": "performance_scalability_patterns.md", "order": 7 },
-            { "file": "reliability_patterns.md", "order": 8 },
-            { "file": "deployment_infrastructure_patterns.md", "order": 9 },
-            { "file": "migration_patterns.md", "order": 10 }
+            "communication_patterns.md",
+            "messaging_patterns.md",
+            "coordination_patterns.md",
+            "orchestration_choreography.md",
+            "integration_patterns.md",
+            "data_management_patterns.md",
+            "performance_scalability_patterns.md",
+            "reliability_patterns.md",
+            "deployment_infrastructure_patterns.md",
+            "migration_patterns.md"
           ]
         },
         {
           "name": "Data & Infrastructure",
-          "order": 6,
           "description": "Data architecture and disaster recovery",
           "guides": [
-            { "file": "data-architecture.md", "order": 1 },
-            { "file": "disaster-recovery-patterns.md", "order": 2 },
-            { "file": "deployment-strategies.md", "order": 3 }
+            "data-architecture.md",
+            "disaster-recovery-patterns.md",
+            "deployment-strategies.md"
           ]
         }
       ]
@@ -68,56 +62,51 @@
       "subcategories": [
         {
           "name": "Fundamentals",
-          "order": 1,
           "description": "Core data structures and complexity analysis",
           "guides": [
-            { "file": "big-o-basics.md", "order": 1 },
-            { "file": "asymptotic-notation.md", "order": 2 },
-            { "file": "complexity-cheatsheet.md", "order": 3 },
-            { "file": "decision-guide.md", "order": 4 },
-            { "file": "algorithm-design.md", "order": 5 }
+            "big-o-basics.md",
+            "asymptotic-notation.md",
+            "complexity-cheatsheet.md",
+            "decision-guide.md",
+            "algorithm-design.md"
           ]
         },
         {
           "name": "Linear Data Structures",
-          "order": 2,
           "description": "Arrays, lists, stacks, and queues",
           "guides": [
-            { "file": "arrays-lists.md", "order": 1 },
-            { "file": "linked-lists.md", "order": 2 },
-            { "file": "stacks-queues.md", "order": 3 }
+            "arrays-lists.md",
+            "linked-lists.md",
+            "stacks-queues.md"
           ]
         },
         {
           "name": "Trees & Heaps",
-          "order": 3,
           "description": "Tree structures and heap-based data structures",
           "guides": [
-            { "file": "trees-basics.md", "order": 1 },
-            { "file": "trees.md", "order": 2 },
-            { "file": "trees-advanced.md", "order": 3 },
-            { "file": "heaps.md", "order": 4 }
+            "trees-basics.md",
+            "trees.md",
+            "trees-advanced.md",
+            "heaps.md"
           ]
         },
         {
           "name": "Graphs",
-          "order": 4,
           "description": "Graph structures and algorithms",
           "guides": [
-            { "file": "graphs-basics.md", "order": 1 },
-            { "file": "graphs.md", "order": 2 },
-            { "file": "graphs-advanced.md", "order": 3 }
+            "graphs-basics.md",
+            "graphs.md",
+            "graphs-advanced.md"
           ]
         },
         {
           "name": "Hash Tables & Algorithms",
-          "order": 5,
           "description": "Hashing, searching, sorting, and recursion",
           "guides": [
-            { "file": "hash-tables.md", "order": 1 },
-            { "file": "search-algorithms.md", "order": 2 },
-            { "file": "sorting-algorithms.md", "order": 3 },
-            { "file": "recursion.md", "order": 4 }
+            "hash-tables.md",
+            "search-algorithms.md",
+            "sorting-algorithms.md",
+            "recursion.md"
           ]
         }
       ]
@@ -126,24 +115,22 @@
       "subcategories": [
         {
           "name": "OOP Foundations",
-          "order": 1,
           "description": "Core OOP concepts and principles",
           "guides": [
-            { "file": "oop-fundamentals.md", "order": 1 },
-            { "file": "solid-principles.md", "order": 2 },
-            { "file": "modern-best-practices.md", "order": 3 },
-            { "file": "oop-quick-reference.md", "order": 4 }
+            "oop-fundamentals.md",
+            "solid-principles.md",
+            "modern-best-practices.md",
+            "oop-quick-reference.md"
           ]
         },
         {
           "name": "Design Patterns",
-          "order": 2,
           "description": "Common design patterns and their applications",
           "guides": [
-            { "file": "creational-patterns.md", "order": 1 },
-            { "file": "structural-patterns.md", "order": 2 },
-            { "file": "behavioral-patterns.md", "order": 3 },
-            { "file": "result-pattern.md", "order": 4 }
+            "creational-patterns.md",
+            "structural-patterns.md",
+            "behavioral-patterns.md",
+            "result-pattern.md"
           ]
         }
       ]
@@ -152,43 +139,39 @@
       "subcategories": [
         {
           "name": "Security Fundamentals",
-          "order": 1,
           "description": "Core security concepts and principles",
           "guides": [
-            { "file": "security-foundations.md", "order": 1 },
-            { "file": "frameworks-standards.md", "order": 2 },
-            { "file": "security-best-practices.md", "order": 3 }
+            "security-foundations.md",
+            "frameworks-standards.md",
+            "security-best-practices.md"
           ]
         },
         {
           "name": "Threats & Defense",
-          "order": 2,
           "description": "Understanding and defending against security threats",
           "guides": [
-            { "file": "threats-and-vulnerabilities.md", "order": 1 },
-            { "file": "modern-attack-vectors.md", "order": 2 },
-            { "file": "security-controls-defense.md", "order": 3 }
+            "threats-and-vulnerabilities.md",
+            "modern-attack-vectors.md",
+            "security-controls-defense.md"
           ]
         },
         {
           "name": "Application Security",
-          "order": 3,
           "description": "Securing applications and data",
           "guides": [
-            { "file": "application-security.md", "order": 1 },
-            { "file": "data-protection.md", "order": 2 },
-            { "file": "security-testing.md", "order": 3 }
+            "application-security.md",
+            "data-protection.md",
+            "security-testing.md"
           ]
         },
         {
           "name": "Governance & Response",
-          "order": 4,
           "description": "Compliance, incident response, and governance",
           "guides": [
-            { "file": "compliance-governance.md", "order": 1 },
-            { "file": "incident-response-recovery.md", "order": 2 },
-            { "file": "emerging-technologies.md", "order": 3 },
-            { "file": "security-tools-resources.md", "order": 4 }
+            "compliance-governance.md",
+            "incident-response-recovery.md",
+            "emerging-technologies.md",
+            "security-tools-resources.md"
           ]
         }
       ]
@@ -197,10 +180,9 @@
       "subcategories": [
         {
           "name": "SDLC & Modeling",
-          "order": 1,
           "description": "Development methodologies and system modeling",
           "guides": [
-            { "file": "sdlc/sdlc.md", "order": 1 }
+            "sdlc/sdlc.md"
           ]
         }
       ]
@@ -209,11 +191,10 @@
       "subcategories": [
         {
           "name": "Machine Learning",
-          "order": 1,
           "description": "Core ML concepts and techniques",
           "guides": [
-            { "file": "machine-learning.md", "order": 1 },
-            { "file": "generative-ai.md", "order": 2 }
+            "machine-learning.md",
+            "generative-ai.md"
           ]
         }
       ]
@@ -222,10 +203,9 @@
       "subcategories": [
         {
           "name": "Analytics",
-          "order": 1,
           "description": "Statistics and data analysis",
           "guides": [
-            { "file": "analytics-and-statistics.md", "order": 1 }
+            "analytics-and-statistics.md"
           ]
         }
       ]
@@ -234,10 +214,9 @@
       "subcategories": [
         {
           "name": "Monitoring & Observability",
-          "order": 1,
           "description": "System monitoring and observability fundamentals",
           "guides": [
-            { "file": "observability-fundamentals.md", "order": 1 }
+            "observability-fundamentals.md"
           ]
         }
       ]
@@ -246,10 +225,9 @@
       "subcategories": [
         {
           "name": "Network Fundamentals",
-          "order": 1,
           "description": "Core networking concepts for developers",
           "guides": [
-            { "file": "networking.md", "order": 1 }
+            "networking.md"
           ]
         }
       ]
@@ -258,10 +236,9 @@
       "subcategories": [
         {
           "name": "SEO & Web",
-          "order": 1,
           "description": "Search engine optimization and web best practices",
           "guides": [
-            { "file": "seo.md", "order": 1 }
+            "seo.md"
           ]
         }
       ]

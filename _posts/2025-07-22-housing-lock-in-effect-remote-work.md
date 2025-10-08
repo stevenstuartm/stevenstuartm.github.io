@@ -2,6 +2,7 @@
 layout: post
 title: "Will the Housing Market 'Lock-In Effect' Force Companies to Rethink Talent Acquisition?"
 date: 2025-07-22
+series: "Industry & Culture"
 tags: [remote-work, career, industry, economics]
 description: "How high mortgage rates and the housing lock-in effect could force employers to embrace remote work as talent becomes unable to relocate."
 ---

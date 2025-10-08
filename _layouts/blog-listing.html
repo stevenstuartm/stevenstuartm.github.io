@@ -1,0 +1,134 @@
+---
+layout: default
+---
+
+<div class="guides-page">
+    <section class="guides-hero">
+        <h1>{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <p class="subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+        {{ content }}
+    </section>
+
+    <div class="guides-container">
+        <aside class="guides-sidebar">
+            <h3>Series</h3>
+            <div class="category-filters">
+                {% assign configured_series = site.data.blog_series_config.series %}
+                {% for series_pair in configured_series %}
+                    {% assign series_name = series_pair[0] %}
+                <button class="filter-btn{% if forloop.first %} active{% endif %}" data-category="{{ series_name }}">{{ series_name }}</button>
+                {% endfor %}
+            </div>
+        </aside>
+
+        <div class="guides-main">
+            <div class="guides-grid" id="guidesGrid">
+        {% comment %} Only display series that are defined in the config {% endcomment %}
+        {% for series_pair in site.data.blog_series_config.series %}
+            {% assign series_name = series_pair[0] %}
+            {% assign series_config = series_pair[1] %}
+
+        <section class="category-section" data-category="{{ series_name }}">
+            <h2 class="category-heading">{{ series_name }}</h2>
+            {% if series_config.description %}
+                <p class="series-description">{{ series_config.description }}</p>
+            {% endif %}
+
+            <div class="guide-cards">
+                {% for post_filename in series_config.posts %}
+                    {% assign post = site.posts | where_exp: "item", "item.path contains post_filename" | first %}
+                    {% if post %}
+                        <article class="guide-card" data-title="{{ post.title | downcase }}" data-category="{{ post.series }}">
+                            <a href="{{ post.url | relative_url }}" class="guide-link">
+                                <h3>{{ post.title }}</h3>
+                                <div class="guide-card-meta">
+                                    <span class="category-badge">{{ post.series }}</span>
+                                </div>
+                                {% if post.description %}
+                                <p class="guide-excerpt">{{ post.description }}</p>
+                                {% elsif post.excerpt %}
+                                <p class="guide-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+                                {% endif %}
+                                <span class="read-more">Read post →</span>
+                            </a>
+                        </article>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        {% endfor %}
+            </div>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No blog posts found.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const guidesGrid = document.getElementById('guidesGrid');
+    const categorySections = document.querySelectorAll('.category-section');
+    const noResults = document.getElementById('noResults');
+
+    // Check for series parameter in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const seriesParam = urlParams.get('series');
+    if (seriesParam) {
+        // Decode the series parameter to handle special characters like &
+        const decodedSeries = decodeURIComponent(seriesParam);
+        // Update active button
+        filterBtns.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.category === decodedSeries) {
+                btn.classList.add('active');
+            }
+        });
+        filterPosts(decodedSeries);
+    } else {
+        // No URL parameter, filter to first series by default
+        const firstBtn = filterBtns[0];
+        if (firstBtn) {
+            filterPosts(firstBtn.dataset.category);
+        }
+    }
+
+    // Series filtering
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            filterPosts(this.dataset.category);
+        });
+    });
+
+    function filterPosts(series) {
+        let visibleCount = 0;
+
+        categorySections.forEach(section => {
+            const sectionSeries = section.dataset.category;
+            const matchesSeries = sectionSeries === series;
+
+            if (matchesSeries) {
+                section.style.display = 'block';
+                visibleCount += section.querySelectorAll('.guide-card').length;
+            } else {
+                section.style.display = 'none';
+            }
+        });
+
+        // Show "no results" message
+        if (visibleCount === 0) {
+            guidesGrid.style.display = 'none';
+            noResults.style.display = 'block';
+        } else {
+            guidesGrid.style.display = 'block';
+            noResults.style.display = 'none';
+        }
+    }
+});
+</script>

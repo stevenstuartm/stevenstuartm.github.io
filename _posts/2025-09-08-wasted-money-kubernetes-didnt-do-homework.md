@@ -2,6 +2,7 @@
 layout: post
 title: "I Wasted $$$ on Kubernetes Because I Didn't Do My Homework"
 date: 2025-09-08
+series: "Technology & Tools"
 tags: [kubernetes, aws, architecture, lessons-learned]
 description: "A lesson in avoiding technology hype—how I wasted $2K/month on Kubernetes when simpler solutions like AWS ECS were a better fit."
 ---

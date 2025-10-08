@@ -2,6 +2,7 @@
 layout: post
 title: "LeetCode Interviews Represent a Categorical Error in Hiring"
 date: 2025-08-19
+series: "Industry & Culture"
 tags: [hiring, interviews, career, industry]
 description: "Why algorithm interviews optimize for the wrong signals and systematically exclude engineers who excel at actual software development work."
 ---

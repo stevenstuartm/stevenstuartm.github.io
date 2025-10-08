@@ -2,6 +2,7 @@
 layout: post
 title: "What Does 'Hexagonal Architecture' Actually Mean in Modern Development?"
 date: 2025-09-29
+series: "Architecture Insights"
 tags: [architecture, design-patterns, software-design]
 description: "Understanding the difference between hexagonal architecture's structural pattern and achieving testability through modern frameworks—and why it matters."
 ---

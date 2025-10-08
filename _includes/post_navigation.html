@@ -1,0 +1,63 @@
+{% comment %}
+  Generate prev/next navigation for blog posts based on blog_series_config.json
+{% endcomment %}
+
+{% assign current_series = page.series %}
+{% assign current_path = page.path %}
+{% assign series_config = site.data.blog_series_config.series[current_series] %}
+
+{% if series_config %}
+  {% comment %} Build list of all posts in this series {% endcomment %}
+  {% assign all_posts = "" | split: "" %}
+  {% for post_filename in series_config.posts %}
+    {% assign post = site.posts | where_exp: "item", "item.path contains post_filename" | first %}
+    {% if post %}
+      {% assign all_posts = all_posts | push: post %}
+    {% endif %}
+  {% endfor %}
+
+  {% comment %} Find current post index {% endcomment %}
+  {% assign current_index = -1 %}
+  {% for post in all_posts %}
+    {% if post.url == page.url %}
+      {% assign current_index = forloop.index0 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if current_index >= 0 %}
+    <nav class="guide-navigation">
+      <div class="guide-nav-container">
+        {% comment %} Previous post {% endcomment %}
+        {% if current_index > 0 %}
+          {% assign prev_index = current_index | minus: 1 %}
+          {% assign prev_post = all_posts[prev_index] %}
+          <a href="{{ prev_post.url | relative_url }}" class="guide-nav-link guide-nav-prev">
+            <span class="nav-arrow">←</span>
+            <div class="nav-content">
+              <span class="nav-label">Previous</span>
+              <span class="nav-guide-title">{{ prev_post.title }}</span>
+            </div>
+          </a>
+        {% else %}
+          <div class="guide-nav-spacer"></div>
+        {% endif %}
+
+        {% comment %} Next post {% endcomment %}
+        {% assign next_index = current_index | plus: 1 %}
+        {% if next_index < all_posts.size %}
+          {% assign next_post = all_posts[next_index] %}
+          <a href="{{ next_post.url | relative_url }}" class="guide-nav-link guide-nav-next">
+            <div class="nav-content">
+              <span class="nav-label">Next</span>
+              <span class="nav-guide-title">{{ next_post.title }}</span>
+            </div>
+            <span class="nav-arrow">→</span>
+          </a>
+        {% else %}
+          <div class="guide-nav-spacer"></div>
+        {% endif %}
+      </div>
+    </nav>
+  {% endif %}
+{% endif %}

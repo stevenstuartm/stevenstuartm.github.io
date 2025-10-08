@@ -2,6 +2,7 @@
 layout: post
 title: "Will Blazor Be Another Failed Microsoft UI Framework?"
 date: 2025-08-29
+series: "Technology & Tools"
 tags: [blazor, dotnet, microsoft, web-development]
 description: "Examining whether Blazor will follow Microsoft's pattern of abandoned UI frameworks or if it's a strategic WebAssembly hedge bet for the future."
 ---

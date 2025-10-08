@@ -2,6 +2,7 @@
 layout: post
 title: "What Defines Leaders and Mentors in Software Development?"
 date: 2025-06-11
+series: "Industry & Culture"
 tags: [leadership, mentorship, career, software-engineering]
 description: "Key characteristics that define effective leaders and mentors in software development—accountability, continuous learning, and building others."
 ---
