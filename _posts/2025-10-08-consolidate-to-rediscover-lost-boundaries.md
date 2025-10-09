@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "Consolidate Architecture to Rediscover Lost Boundaries"
+title: "Consolidate Architecture to Rediscover Lost Agility"
 date: 2025-10-08
 series: "Architecture Insights"
 tags: [architecture, distributed-systems, refactoring, system-design, technical-debt, microservices]
-description: "When distributed systems lose their rationale through team churn, strategic consolidation can reveal true boundaries. A pragmatic approach to fixing distributed monoliths by merging tightly-coupled components to rediscover appropriate service boundaries."
+description: "When distributed systems lose their rationale through team churn, strategic consolidation can reveal true boundaries and regain agility. A pragmatic approach to fixing distributed monoliths by merging tightly-coupled components to rediscover appropriate service boundaries."
 ---
 
 ## The Inheritance Problem
 
-You inherit a distributed system: multiple paradigms, components distributed early, databases fragmented across service boundaries. Team churn erased why boundaries exist. Deployments coordinate across services and migrations. Distributed complexity without distributed benefits.
+So you inherit a distributed system with components distributed early, databases fragmented, team churn erasing why boundaries exist, deployments coordinating across services and migrations, distributed complexity without distributed benefits.
 
 A **distributed monolith**.
 
