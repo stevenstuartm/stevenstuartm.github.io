@@ -30,10 +30,14 @@ bundle exec jekyll build
   - `post.html`: Blog post template with metadata and tags
   - `page.html`: Generic page template
   - `radar.html`: Tech radar page template with D3.js visualization
+  - `guide.html`: Study guide template with table of contents
+  - `guides.html`: Study guides listing page template
+  - `blog-listing.html`: Blog listing page template
 - **_includes/**: Reusable HTML partials (header.html, footer.html)
 - **_posts/**: Blog posts in Markdown with YAML front matter (format: YYYY-MM-DD-title.md)
+- **_guides/**: Study guides in Markdown organized by topic
 - **_site/**: Generated static site (excluded from git)
-- **pages/**: Site pages (blog, resume, about, tech-radar)
+- **pages/**: Site pages (blog, resume, about, tech-radar, study-guides)
 - **assets/**: Static assets
   - `css/main.css`: Custom stylesheets with CSS variables for theming
   - `js/`: JavaScript files including D3.js and radar visualization
@@ -46,6 +50,9 @@ bundle exec jekyll build
 - **pages/resume.md**: Resume/CV page
 - **pages/about.md**: About page
 - **pages/tech-radar.md**: Interactive tech radar visualization (uses radar layout)
+- **pages/study-guides.md**: Study guides listing page
+- **pages/study-routine.md**: Study routine and learning methodology page
+- **pages/upcoming.md**: Upcoming blog posts and content
 
 ### Permalinks
 Posts use the permalink structure: `/blog/:year/:month/:day/:title/`
@@ -65,6 +72,26 @@ date: 2025-09-29
 tags: [architecture, design-patterns]
 ---
 ```
+
+### Study Guide Format
+All study guides must:
+- Be placed in `_guides/` directory (can be organized in subdirectories by topic)
+- Include YAML front matter with: layout, title, category, subcategory, and description
+- Use `layout: guide`
+- Include proper markdown formatting with blank lines before tables
+
+Example:
+```yaml
+---
+title: "Guide Title"
+layout: guide
+category: Main Category
+subcategory: Subcategory
+description: "Brief description of the guide content"
+---
+```
+
+**Important**: Tables in Markdown must have a blank line before them to render correctly in Jekyll/Kramdown.
 
 ## Tech Radar
 
@@ -106,3 +133,12 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - Blog posts should include meaningful tags for discoverability
 - Use descriptive titles and ensure proper front matter
 - Include meta descriptions for better SEO
+- Study guides should have comprehensive table of contents
+- Ensure proper markdown formatting, especially blank lines before tables
+- Organize study guides by category and subcategory for better navigation
+
+### Markdown Formatting Requirements
+- **Tables**: Always include a blank line before markdown tables
+- **Headers**: Use proper header hierarchy (H1 → H2 → H3)
+- **Code blocks**: Use triple backticks with language specification
+- **Links**: Use markdown link syntax for internal references

@@ -156,6 +156,7 @@ Allows different subnet sizes within the same network:
 - **Dynamic/Private ports**: 49152-65535 (temporary/ephemeral)
 
 ### Essential Well-Known Ports
+
 | Port | Protocol | Service |
 |------|----------|---------|
 | 20/21 | FTP | File Transfer Protocol |
@@ -171,6 +172,7 @@ Allows different subnet sizes within the same network:
 | 995 | POP3S | POP3 over TLS/SSL |
 
 ### Database Ports
+
 | Port | Database |
 |------|----------|
 | 3306 | MySQL |
@@ -181,6 +183,7 @@ Allows different subnet sizes within the same network:
 | 6379 | Redis |
 
 ### Application Server Ports
+
 | Port | Service |
 |------|---------|
 | 8080 | HTTP Alternative/Tomcat |
@@ -399,6 +402,7 @@ wireshark  # GUI packet analyzer
 ## Quick Reference Tables
 
 ### Subnet Mask Quick Reference
+
 | CIDR | Subnet Mask | Hosts | Networks |
 |------|-------------|-------|-----------|
 | /30 | 255.255.255.252 | 2 | 64 |
@@ -410,6 +414,7 @@ wireshark  # GUI packet analyzer
 | /24 | 255.255.255.0 | 254 | 1 |
 
 ### HTTP Status Codes
+
 | Code | Category | Meaning |
 |------|----------|---------|
 | 200 | Success | OK |
@@ -425,6 +430,7 @@ wireshark  # GUI packet analyzer
 | 503 | Server Error | Service Unavailable |
 
 ### RFC 1918 Private Address Ranges
+
 | Network | Range | Addresses | Typical Use |
 |---------|-------|-----------|-------------|
 | 10.0.0.0/8 | 10.0.0.0 - 10.255.255.255 | 16,777,216 | Large organizations |
