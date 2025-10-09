@@ -55,42 +55,49 @@ Multiple services access the same database, sharing data directly.
 
 ## Event Sourcing
 
-Stores all changes to application state as a sequence of events rather than storing current state directly.
+*Pattern popularized by Martin Fowler and Greg Young in early 2000s*
+
+Stores all changes to application state as an immutable sequence of events rather than storing only current state. The current state is derived by replaying events from the beginning.
 
 **Use When**:
 - Need complete audit trail of all changes
 - Want to replay events for testing or analytics
-- Implementing complex business domains
-- Building systems that benefit from temporal queries
+- Implementing complex business domains (especially with Domain-Driven Design)
+- Building systems that benefit from temporal queries ("what was the state at time X?")
 
 **Considerations**:
-- Event store grows continuously
-- Complex queries may require rebuilding state
-- Need to handle event schema evolution
+- Event store grows continuously (implement snapshotting for performance)
+- Complex queries may require rebuilding state from events
+- Need to handle event schema evolution carefully
+- Deleting data is complex (GDPR compliance requires special handling)
 
 **Example**: Banking system that stores all account transactions as events (deposit, withdrawal, transfer) and calculates current balance by replaying events.
 
 ```
 Events: [Deposit($100), Withdrawal($30), Deposit($50)]
 Current Balance = Sum of events = $120
+Can also query: "What was balance on March 1st?" by replaying events up to that date
 ```
 
 ---
 
 ## CQRS (Command Query Responsibility Segregation)
 
-Separates read and write operations into different models, often with separate databases optimized for each operation type.
+*Pattern introduced by Greg Young (2010), based on Bertrand Meyer's Command-Query Separation principle (1988)*
+
+Separates read (query) and write (command) operations into different models, often with separate databases optimized for each operation type. Goes beyond CQS by using separate data models, not just separate methods.
 
 **Use When**:
 - Read and write patterns are significantly different
 - Need to scale reads and writes independently
 - Complex reporting requirements
 - Different consistency requirements for reads and writes
+- Working with Event Sourcing (natural fit)
 
 **Implementation Options**:
-- Separate models, same database
-- Separate databases for reads and writes
-- Event sourcing for writes, projections for reads
+- **Simple**: Separate models, same database
+- **Advanced**: Separate databases for reads and writes
+- **Full**: Event sourcing for writes, materialized projections for reads
 
 **Example**: Social media platform with write-optimized database for posts and read-optimized database with denormalized data for feeds and searches.
 
@@ -99,6 +106,8 @@ Write: Post Service → Command DB (normalized)
 Read: Feed Service → Query DB (denormalized, optimized for feeds)
 Sync: Command DB → Events → Update Query DB
 ```
+
+**Warning**: CQRS adds complexity. Don't use unless you have a specific problem it solves.
 
 ---
 

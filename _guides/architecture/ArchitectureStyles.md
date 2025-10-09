@@ -65,16 +65,20 @@ An architecture style describes a system's topology and characteristics (both pr
 
 ### Microkernel Architecture
 
+*Also known as Plug-in Architecture*
+
 **Topology**: Core system + Plug-ins
 
 **Key Concepts**:
 
-- **Core**: Minimal functionality (happy path)
-- **Plug-ins**: Specialized processing, extensions
-- **Registry**: Tracks available plug-ins
-- Point-to-point or remote communication
+- **Core**: Minimal functionality implementing the "happy path" or baseline behavior
+- **Plug-ins**: Specialized processing, extensions, custom variations
+- **Registry**: Tracks available plug-ins (can be simple as config file or runtime discovery)
+- Communication: Point-to-point (in-process) or remote (separate deployment)
 
-**Risks**: Volatile core (should be stable), Plug-in dependencies (should only talk to core)
+**Examples**: Eclipse IDE (plug-in based), product customization platforms, tax software with state-specific plug-ins
+
+**Risks**: Volatile core (should be stable), Plug-in dependencies (should only talk to core, not each other)
 
 **Use When**: Product-based apps, customization needed, domain variations
 **Avoid When**: High scalability required
@@ -141,23 +145,25 @@ An architecture style describes a system's topology and characteristics (both pr
 
 ### Microservices Architecture
 
+*Popularized by Martin Fowler and James Lewis (2014), building on SOA and Domain-Driven Design principles*
+
 **Topology**: Fine-grained services + API layer + Distributed data
 
 **Key Concepts**:
 
-- **Bounded context**: DDD-inspired "share nothing"
-- **Granularity**: Purpose, transactions, choreography guide sizing
-- **Data isolation**: Each service owns data (Database-per-Service required)
-- **Sidecar pattern**: Operational concerns (monitoring, circuit breakers)
-- **Service mesh**: Unified control across sidecars
+- **Bounded context** (from DDD): Services follow "share nothing" philosophy within business boundaries
+- **Granularity**: Purpose, transactions, choreography guide sizing (no magic formula)
+- **Data isolation**: Each service owns its data (Database-per-Service pattern required)
+- **Sidecar pattern**: Operational concerns (monitoring, circuit breakers) deployed alongside service
+- **Service mesh**: Unified control plane managing sidecars (e.g., Istio, Linkerd)
 
 **Transactions**:
 
-- Avoid distributed transactions
-- Fix granularity instead
-- **Saga pattern**: Mediator with compensating transactions
+- Avoid distributed transactions (2PC, XA) - they break independence
+- Fix granularity if you need cross-service transactions
+- **Saga pattern**: Use compensating transactions when needed (see Orchestration patterns)
 
-**Risks**: **Grains of Sand** (services too fine-grained), too much interservice communication, excessive data sharing, code reuse breaking bounded contexts
+**Risks**: **Grains of Sand antipattern** (services too fine-grained), too much interservice communication, excessive data sharing, code reuse breaking bounded contexts
 
 **Use When**: High modularity/scalability/evolvability, domain teams, independent deployment
 **Avoid When**: Transactions across services needed, simple domains, small teams
@@ -185,20 +191,28 @@ An architecture style describes a system's topology and characteristics (both pr
 
 ### Space-Based Architecture
 
+*Also called Tuple Space or Cloud Architecture Pattern*
+
 **Topology**: Processing units + Virtualized middleware + Data pumps/writers/readers
 
 **Key Concepts**:
 
-- **Removes database bottleneck**: In-memory data grids
-- **Processing units**: App logic + in-memory cache
-- **Virtualized middleware**: Messaging grid | Data grid | Processing grid | Deployment manager
-- **Data pumps**: Async DB updates via messaging
+- **Removes database bottleneck**: All active data in replicated in-memory data grids
+- **Processing units**: Self-contained app logic + in-memory cache replica
+- **Virtualized middleware**:
+  - Messaging grid: Manages input requests and sessions
+  - Data grid: Manages data replication across processing units
+  - Processing grid: Manages distributed request processing
+  - Deployment manager: Handles elasticity (spins up/down units)
+- **Data pumps**: Async database updates via messaging (eventual consistency)
 
 **Caching Models**:
 
-- **Replicated**: Fast, fault-tolerant, limited by size
-- **Distributed**: Consistent, slower, single point of failure
-- **Near-cache**: Hybrid (not recommended)
+- **Replicated**: All data copied to every processing unit (fast reads, fault-tolerant, limited by memory)
+- **Distributed**: Data partitioned across units (consistent, slower, single point of failure if not replicated)
+- **Near-cache**: Hybrid approach (adds complexity, generally not recommended)
+
+**Examples**: Concert ticket sales, online auctions, financial trading platforms with variable load
 
 **Risks**: Frequent database reads, data collisions during replication, high data volumes, synchronization bottlenecks
 

@@ -12,26 +12,40 @@ Communication patterns define how services and components interact in distribute
 
 ## Load Balancing
 
-Distributes incoming requests across multiple service instances to prevent any single instance from becoming overwhelmed.
+Distributes incoming requests across multiple service instances to prevent any single instance from becoming overwhelmed, improving availability, reliability, and scalability.
 
 **Use When**:
 - Multiple instances of the same service exist
 - Need to distribute traffic to prevent bottlenecks
 - Want high availability through redundancy
+- Horizontal scaling required
 
 **Common Algorithms**:
 
-- **Round Robin**: Distributes requests sequentially across instances
-- **Least Connections**: Routes to the instance with fewest active connections
+- **Round Robin**: Distributes requests sequentially across instances in circular order
+  - *Simple, no state required, assumes equal capacity*
 - **Weighted Round Robin**: Assigns different weights to instances based on capacity
-- **Sticky Sessions**: Routes requests from the same client to the same instance
-- **Geographic**: Routes based on client location
+  - *Example*: 2x capacity server gets 2x traffic
+- **Least Connections**: Routes to the instance with fewest active connections
+  - *Better for long-lived connections or varying request durations*
+- **Least Response Time**: Routes to instance with fastest response time
+  - *Requires health monitoring, adapts to performance*
+- **IP Hash/Sticky Sessions**: Routes requests from the same client to the same instance
+  - *Maintains session state, but can cause imbalance*
+- **Geographic/Latency-based**: Routes based on client location or proximity
+  - *Optimizes for network latency*
+
+**Load Balancer Types**:
+- **Layer 4 (Transport)**: Routes based on IP/port (TCP/UDP) - fast but limited routing logic
+- **Layer 7 (Application)**: Routes based on HTTP headers, URLs, cookies - slower but flexible
 
 **Example**: E-commerce with three web server instances. Load balancer receives requests and distributes them evenly, ensuring no single server is overloaded during peak shopping.
 
 ```
 Client → Load Balancer → [Server 1, Server 2, Server 3]
 ```
+
+**Common implementations**: NGINX, HAProxy, AWS ELB/ALB, Envoy
 
 ---
 
@@ -80,21 +94,34 @@ Client → [Request] → Auth Service → [Response] → Client
 
 ## Event Streaming
 
-Continuous flow of events that can be processed in real-time or stored for later processing.
+Continuous flow of events that can be processed in real-time or stored for later processing. Unlike Pub/Sub, event streams maintain a persistent, ordered log of events.
 
 **Use When**:
 - Need real-time data processing
-- Want to maintain event history
+- Want to maintain event history and replay capability
 - Building analytics platforms
 - Implementing event sourcing
+- Multiple consumers need to process same events at different rates
+
+**Key Characteristics**:
+- **Ordered events**: Events maintain sequence within partitions
+- **Event replay**: Can reprocess events from any point in time
+- **Multiple consumers**: Each consumer tracks own position independently
+- **Durability**: Events persisted to disk, not just in-memory
+- **Retention**: Events stored for configurable time period (hours to forever)
+
+**Stream vs Pub/Sub**:
+- Pub/Sub: Message deleted after delivery to all subscribers (ephemeral)
+- Event Streaming: Events retained and can be replayed (durable log)
 
 **Example**: Financial trading platform where stock price changes are streamed continuously to update displays and trigger automated trading rules.
 
 ```
-Stock Exchange → Event Stream → [Display Service, Trading Engine, Analytics Service]
+Stock Exchange → Event Stream (Kafka) → [Display Service, Trading Engine, Analytics Service]
+                                       Each consumer maintains own offset
 ```
 
-**Key Characteristics**: Ordered events | Event replay capability | Multiple consumers | Durability
+**Common implementations**: Apache Kafka, Amazon Kinesis, Apache Pulsar, Azure Event Hubs
 
 ---
 

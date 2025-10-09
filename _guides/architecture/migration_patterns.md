@@ -12,20 +12,22 @@ Migration patterns help organizations modernize legacy systems gradually and saf
 
 ## Strangler Fig Pattern
 
-Gradually replaces legacy system functionality by routing traffic to new services while keeping the old system running.
+*Named and popularized by Martin Fowler (2004), inspired by strangler fig trees that gradually envelop and replace host trees*
+
+Gradually replaces legacy system functionality by routing traffic to new services while keeping the old system running. The new system "strangles" the old one incrementally until it can be safely removed.
 
 **Use When**:
-- Migrating large legacy systems
+- Migrating large legacy systems ("big rewrite" is too risky)
 - Cannot replace entire system at once
-- Need to maintain business continuity
-- Want to reduce migration risk
+- Need to maintain business continuity during migration
+- Want to reduce migration risk through incremental changes
 
 **How It Works**:
 
-1. Place facade in front of legacy system
+1. Place facade/proxy in front of legacy system
 2. Implement new functionality in new services
-3. Route new requests to new services
-4. Gradually migrate existing functionality
+3. Route new requests to new services via facade
+4. Gradually migrate existing functionality piece by piece
 5. Remove legacy system when fully replaced
 
 **Example**: Migrating monolithic order system by implementing new order processing service and routing new orders there while keeping legacy system for existing orders.
@@ -33,20 +35,25 @@ Gradually replaces legacy system functionality by routing traffic to new service
 ```
 Phase 1: All traffic → Legacy System
 Phase 2: Facade → {New orders → New Service, Existing orders → Legacy}
-Phase 3: Facade → New Service only
-Phase 4: Remove facade and legacy system
+Phase 3: Facade → New Service only (all functionality migrated)
+Phase 4: Remove facade and decommission legacy system
 ```
+
+**Key advantage**: Can stop and reverse migration at any point if issues arise
 
 ---
 
 ## Anti-Corruption Layer
 
-A translation layer that isolates new systems from legacy systems by converting between different data models and protocols.
+*Pattern from Eric Evans' Domain-Driven Design (2003)*
+
+A translation layer that isolates new systems from legacy systems by converting between different data models and protocols. Prevents the "corruption" of the new system's clean domain model by legacy concepts.
 
 **Use When**:
 - Integrating with legacy systems that cannot be changed
-- Legacy and new systems have very different models
-- Want to prevent legacy complexity from affecting new code
+- Legacy and new systems have very different domain models
+- Want to prevent legacy complexity and technical debt from affecting new code
+- Working across bounded contexts with different ubiquitous languages
 
 **Example**: New customer management system with anti-corruption layer that translates between modern REST/JSON APIs and legacy SOAP/XML services.
 

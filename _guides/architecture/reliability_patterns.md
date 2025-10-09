@@ -12,24 +12,27 @@ Reliability patterns help systems handle failures gracefully, maintain availabil
 
 ## Circuit Breaker
 
-Prevents cascading failures by stopping requests to a failing service and providing fallback responses.
+*Pattern described by Michael Nygard in "Release It!" (2007)*
+
+Prevents cascading failures by monitoring failures and "opening the circuit" to stop requests to a failing service, similar to an electrical circuit breaker. Provides fast failure and fallback responses instead of waiting for timeouts.
 
 **States**:
 
-- **Closed**: Normal operation, requests pass through
-- **Open**: Service is failing, requests are blocked
-- **Half-Open**: Testing if service has recovered
+- **Closed**: Normal operation, requests pass through (circuit is complete)
+- **Open**: Service is failing, requests immediately fail without calling service
+- **Half-Open**: After timeout, allows test requests to check if service recovered
 
 **Use When**:
 - Calling external services that may be unreliable
 - Want to prevent cascading failures
 - Need to provide fallback behavior during outages
+- Timeouts alone aren't sufficient (service takes long to respond even when healthy)
 
 **Example**: Payment service that stops calling external payment gateway when it's down and returns cached "payment pending" responses instead of timing out.
 
 ```
 Closed: Request → Payment Gateway (success rate > 90%)
-↓ (failures exceed threshold)
+↓ (failures exceed threshold, e.g., 50% failures in 10 requests)
 Open: Request → Immediate failure with fallback (60 seconds)
 ↓ (timeout expires)
 Half-Open: Test request → Payment Gateway
@@ -37,36 +40,45 @@ Half-Open: Test request → Payment Gateway
   If failure → Open (reset timer)
 ```
 
+**Common implementations**: Resilience4j, Hystrix (deprecated), Polly (.NET)
+
 ---
 
 ## Retry Pattern
 
-Automatically retries failed operations with appropriate delays and limits.
+Automatically retries failed operations with appropriate delays and limits. Essential for handling transient failures in distributed systems.
 
 **Use When**:
-- Operations may fail due to temporary issues
+- Operations may fail due to temporary issues (network blips, momentary overload)
 - Network calls that might timeout
-- Operations are idempotent (safe to retry)
+- Operations are idempotent (safe to retry without side effects)
 
 **Retry Strategies**:
 
-- **Fixed Delay**: Wait same amount between retries
-- **Exponential Backoff**: Increase delay exponentially
-- **Random Jitter**: Add randomness to prevent thundering herd
+- **Fixed Delay**: Wait same amount between retries (simple, but can cause thundering herd)
+- **Exponential Backoff**: Increase delay exponentially (1s, 2s, 4s, 8s, ...)
+  - *Recommended for most scenarios*
+- **Exponential Backoff with Jitter**: Add randomness to prevent synchronized retries
+  - *Best practice - prevents thundering herd problem*
+  - Formula: `delay = base_delay * (2^attempt) + random(0, jitter)`
 
 **Considerations**:
-- Only retry transient failures
-- Implement maximum retry limits
+- **Only retry transient failures** (don't retry 400/401/403 HTTP errors)
+- Implement maximum retry limits (typically 3-5 attempts)
 - Ensure operations are idempotent
+- Consider using circuit breaker alongside retries
+- **Thundering herd problem**: Many clients retrying simultaneously can overwhelm recovering service
 
 **Example**: API client retrying failed HTTP requests with exponential backoff.
 
 ```
-Attempt 1: Immediate → Fail
+Attempt 1: Immediate → Fail (503 Service Unavailable)
 Attempt 2: Wait 1s → Fail
 Attempt 3: Wait 2s → Fail
-Attempt 4: Wait 4s → Success
+Attempt 4: Wait 4s → Success (200 OK)
 ```
+
+**Common implementations**: Resilience4j, Polly, AWS SDK built-in retries
 
 ---
 

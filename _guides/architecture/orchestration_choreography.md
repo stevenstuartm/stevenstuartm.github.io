@@ -74,17 +74,26 @@ Order Service → OrderCreated event → Event Bus
 
 ## Saga Pattern
 
-Manages distributed transactions by breaking them into a series of local transactions, each with a compensating action to undo changes if needed.
+*Pattern introduced by Hector Garcia-Molina and Kenneth Salem (1987), popularized for microservices by Chris Richardson and others*
+
+Manages distributed transactions by breaking them into a series of local transactions, each with a compensating transaction to undo changes if the saga fails. Provides eventual consistency without requiring distributed ACID transactions.
 
 **Use When**:
 - Need to maintain consistency across multiple services
-- Services have separate databases
-- Cannot use distributed transactions
+- Services have separate databases (Database-per-Service pattern)
+- Cannot use distributed transactions (2PC/XA)
 - Long-running business processes
+- Microservices architecture
+
+**Key Concepts**:
+
+- **Compensating transactions**: Actions that semantically undo previous steps (not always true rollback)
+- **Semantic lock**: Resources are locked for the saga duration through business logic, not database locks
+- **Trade-off**: Eventual consistency instead of immediate consistency
 
 **Implementation Approaches**:
 
-**Orchestration-based**: Central coordinator manages the saga
+**Orchestration-based Saga**: Central coordinator (saga orchestrator) manages the saga
 
 ```
 Saga Orchestrator:
@@ -93,9 +102,13 @@ Saga Orchestrator:
   3. Reserve car → Failed
   4. Compensate: Cancel hotel reservation
   5. Compensate: Cancel flight reservation
+  6. Return failure to user
 ```
 
-**Choreography-based**: Services coordinate through events
+*Pros*: Centralized logic, easy to monitor, clear workflow
+*Cons*: Orchestrator is single point of coupling
+
+**Choreography-based Saga**: Services coordinate through events
 
 ```
 Book Flight → FlightReserved event
@@ -105,7 +118,12 @@ Book Flight → FlightReserved event
                                  → FlightCancelled event
 ```
 
+*Pros*: Loose coupling, no central coordinator
+*Cons*: Hard to understand workflow, difficult to debug
+
 **Example**: Travel booking saga that reserves flight, hotel, and car rental. If any step fails, compensating transactions cancel previous reservations.
+
+**Important**: Compensating transactions must be idempotent since they may be retried.
 
 ---
 

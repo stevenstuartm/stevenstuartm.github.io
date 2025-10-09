@@ -12,28 +12,52 @@ These patterns optimize system performance, handle increased load, and ensure sy
 
 ## Throttling and Rate Limiting
 
-Controls the rate of requests to prevent system overload and ensure fair resource usage.
+Controls the rate of requests to prevent system overload and ensure fair resource usage. Essential for API protection and multi-tenant systems.
 
 **Use When**:
 - Protecting against traffic spikes
 - Ensuring fair usage among clients
 - Preventing abuse or DDoS attacks
-- Managing resource costs
+- Managing resource costs (e.g., cloud API calls)
+- Implementing tiered pricing (free vs paid tiers)
 
 **Implementation Strategies**:
 
-- **Token Bucket**: Allows bursts up to bucket capacity
-- **Fixed Window**: Limits requests per time window
-- **Sliding Window**: More accurate than fixed window
-- **Leaky Bucket**: Smooth request rate
+**Token Bucket Algorithm**:
+- Bucket holds tokens, refilled at fixed rate
+- Each request consumes a token
+- **Pros**: Allows bursts up to bucket capacity, smooth long-term rate
+- **Cons**: Burst at start of period possible
+- **Used by**: AWS, Google Cloud, Stripe
 
-**Example**: API gateway limiting each API key to 1000 requests per hour, with burst allowance of 100 requests per minute.
+**Leaky Bucket Algorithm**:
+- Requests enter queue (bucket), processed at fixed rate
+- Overflow requests rejected
+- **Pros**: Smooth, predictable output rate
+- **Cons**: No burst allowance, can delay requests
+
+**Fixed Window Counter**:
+- Count requests per fixed time window (e.g., per minute)
+- **Pros**: Simple, low memory
+- **Cons**: Burst at window boundaries (2x rate possible at edges)
+
+**Sliding Window Log**:
+- Track timestamp of each request
+- **Pros**: Most accurate, no boundary issues
+- **Cons**: High memory usage
+
+**Sliding Window Counter**:
+- Hybrid approach: fixed windows with weighted count
+- **Pros**: Good accuracy, lower memory than log
+- **Used by**: CloudFlare, Redis
+
+**Example**: API gateway limiting each API key to 1000 requests per hour, with burst allowance of 100 requests per minute using token bucket.
 
 ```
 Client → API Gateway (Rate Limiter) → Backend
-  Request 1-100: ALLOWED (burst)
+  Request 1-100: ALLOWED (burst using bucket tokens)
   Request 101-1000: ALLOWED (within hourly limit)
-  Request 1001: REJECTED (429 Too Many Requests)
+  Request 1001: REJECTED (429 Too Many Requests, Retry-After: 3600)
 ```
 
 ---

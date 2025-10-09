@@ -12,24 +12,38 @@ Integration patterns define how different systems and services work together, en
 
 ## Pipes and Filters
 
-Processes data through a series of processing steps (filters) connected by channels (pipes), where each filter transforms the data and passes it to the next stage.
+*Pattern from Enterprise Integration Patterns by Gregor Hohpe and Bobby Woolf (2003), with roots in Unix philosophy*
+
+Processes data through a series of processing steps (filters) connected by channels (pipes), where each filter transforms the data and passes it to the next stage. Each filter is independent and single-purpose.
 
 **Use When**:
 - Data needs to pass through multiple transformation steps
-- Want to reuse processing components
+- Want to reuse processing components (compositional design)
 - Need to enable parallel processing
 - Building ETL (Extract, Transform, Load) pipelines
+- Stream processing applications
+
+**Filter Types**:
+- **Producer**: Generates data (e.g., file reader, API poller)
+- **Transformer**: Modifies data (e.g., format converter, enricher)
+- **Tester**: Filters/validates data (e.g., validator, filter)
+- **Consumer**: Terminal point (e.g., database writer, file writer)
 
 **Limitations**:
 - Not suitable for interactive applications requiring low latency
 - Cannot handle transactions across multiple filters
 - Debugging can be complex in long pipelines
+- No built-in error handling across pipeline
 
 **Example**: Image processing pipeline where an uploaded image passes through filters for resizing, watermarking, format conversion, and thumbnail generation.
 
 ```
-Upload → Resize Filter → Watermark Filter → Format Filter → Thumbnail Filter → Store
+Upload (Producer) → Resize Filter (Transformer) → Watermark Filter (Transformer)
+                 → Format Filter (Transformer) → Thumbnail Filter (Transformer)
+                 → Store (Consumer)
 ```
+
+**Common implementations**: Unix pipes, Apache Camel, Spring Integration, AWS Step Functions
 
 ---
 

@@ -12,11 +12,18 @@ description: "Learn component design principles, bounded contexts, coupling type
 
 ### Bounded Contexts (DDD)
 
-Everything related to a domain portion is visible internally but opaque to other contexts.
+*Core concept from Eric Evans' Domain-Driven Design (2003)*
 
-Instead of unified entities across the organization (causing coupling), each context creates its own entities and reconciles differences at communication points.
+A bounded context is an explicit boundary within which a domain model is defined and applicable. Everything related to a domain portion is visible internally but opaque to other contexts.
 
-**Example**: Each domain has its own Customer class rather than shared organization-wide.
+Instead of unified entities across the organization (causing tight coupling), each context creates its own entities and reconciles differences at communication points through translation.
+
+**Example**: Each domain has its own Customer class rather than shared organization-wide
+- Sales context: Customer (name, credit limit, account manager)
+- Support context: Customer (name, support tier, open tickets)
+- Shipping context: Customer (name, shipping addresses, delivery preferences)
+
+Each context's Customer model serves its specific needs without forcing a bloated shared model.
 
 ### Coupling Types
 
@@ -88,9 +95,21 @@ Don't create components based on entities (Customer Manager, Order Manager).
 
 ### Law of Demeter
 
-Components should have limited knowledge of others.
+*Principle from Ian Holland (1987), also called "Principle of Least Knowledge"*
 
-*Note: Doesn't reduce system-wide coupling; redistributes it*
+A component should only interact with its immediate dependencies, not their dependencies.
+
+**Rule**: An object's method should only call methods on:
+- Itself
+- Its parameters
+- Objects it creates
+- Its direct dependencies
+
+**Example**:
+- Bad: `customer.getWallet().getMoney()` (reaching through wallet)
+- Good: `customer.getMoney()` (wallet encapsulated)
+
+*Note: Doesn't reduce system-wide coupling; redistributes it to more appropriate locations*
 
 ---
 

@@ -84,34 +84,61 @@ IoT Device → IoT BFF (product IDs only, no images)
 
 ## Service Mesh
 
-Infrastructure layer that handles service-to-service communication, providing observability, security, and traffic management.
+*Popularized by Buoyant's Linkerd (2016) and later Istio (2017)*
+
+Dedicated infrastructure layer that handles service-to-service communication, providing observability, security, and traffic management without requiring code changes. Implements the sidecar pattern at scale.
 
 **Use When**:
-- Large number of microservices
-- Need consistent security and observability
-- Complex traffic management requirements
-- Multiple teams developing services
+- Large number of microservices (typically >10-20 services)
+- Need consistent security and observability across all services
+- Complex traffic management requirements (canary, A/B testing, retries, timeouts)
+- Multiple teams developing services in different languages
+- Want to extract networking concerns from application code
 
 **Components**:
 
-- **Data Plane**: Sidecar proxies handling traffic
-- **Control Plane**: Configures and manages proxies
+**Data Plane** (per-service sidecar proxies):
+- Intercepts all network traffic for the service
+- Implements routing, load balancing, retries, circuit breaking
+- Collects metrics and traces
+- Common proxy: **Envoy** (high-performance C++ proxy)
+
+**Control Plane** (centralized management):
+- Configures all data plane proxies
+- Manages certificates for mTLS
+- Collects telemetry and distributes policies
+- Provides service discovery
 
 **Example**: Kubernetes cluster with Istio service mesh providing mTLS encryption, traffic splitting for canary deployments, and distributed tracing.
 
 ```
-Service Mesh:
-  Control Plane (Istio):
-    - Policy configuration
-    - Telemetry collection
-    - Service discovery
+Service Mesh Architecture:
 
-  Data Plane (Envoy Sidecars):
-    - Traffic routing
-    - Load balancing
-    - Circuit breaking
-    - Observability
+Control Plane (Istio Components):
+  - Pilot: Traffic management, service discovery
+  - Citadel: Certificate management, mTLS
+  - Galley: Configuration management
+  - Telemetry: Metrics collection
+
+Data Plane (Envoy Sidecars):
+  Each microservice pod contains:
+    - Application Container (business logic)
+    - Envoy Sidecar Proxy (networking)
+      - Mutual TLS encryption
+      - Traffic routing & load balancing
+      - Circuit breaking & retries
+      - Metrics & distributed tracing
 ```
+
+**Popular Service Meshes**:
+- **Istio**: Feature-rich, complex, large footprint
+- **Linkerd**: Lightweight, simpler, Rust-based
+- **Consul Connect**: HashiCorp, multi-platform
+- **AWS App Mesh**: Managed service mesh for AWS
+
+**Trade-offs**:
+- **Pros**: Zero code changes, consistent policies, powerful traffic management
+- **Cons**: Operational complexity, resource overhead (CPU/memory for sidecars), latency increase (~1-5ms per hop)
 
 ---
 

@@ -125,15 +125,30 @@ How involved should you be? Consider:
 
 ### Team Warning Signs
 
-**Process Loss (Brooks's Law)**: "More people = more time"
+**Process Loss (Brooks's Law)**:
+
+> "Adding manpower to a late software project makes it later."
+>
+> -- Fred Brooks, *The Mythical Man-Month* (1975)
+
+When communication overhead exceeds productivity gains from additional people.
+
 - **Indicators**: Frequent merge conflicts, working on same code, getting in each other's way
-- **Solution**: Find parallelism; avoid adding people without parallel work
+- **Solution**: Find parallelism; avoid adding people without parallel work available
 
-**Pluralistic Ignorance**: Everyone privately rejects a norm but publicly agrees
-- **Solution**: Smaller teams where people feel safe to speak
+**Pluralistic Ignorance** (*social psychology concept*):
 
-**Diffusion of Responsibility**: Large teams → unclear responsibilities → dropped work
-- **Solution**: Clear roles, right-sized teams
+Everyone privately rejects a norm but assumes others accept it, so publicly goes along.
+
+- **Example**: Team thinks daily standups are waste of time but nobody speaks up, assuming others find them valuable
+- **Solution**: Smaller teams where people feel psychologically safe to speak up
+
+**Diffusion of Responsibility** (*social psychology concept*):
+
+Large teams → unclear ownership → everyone assumes someone else will handle it → work gets dropped
+
+- **Example**: Bug report in shared channel with 20 people; nobody picks it up
+- **Solution**: Clear roles, explicit ownership, right-sized teams
 
 ---
 
@@ -166,6 +181,8 @@ Ask for business value to increase awareness and enable better decisions.
 
 ## Leveraging Checklists
 
+*Inspired by Atul Gawande's "The Checklist Manifesto" (2009)*
+
 **When to Use**: Processes without set order | Frequently skipped steps | Common error-prone tasks
 
 **Guidelines**: Keep small | Automate what you can | Don't overdo it
@@ -178,7 +195,7 @@ Ask for business value to increase awareness and enable better decisions.
 
 **Getting Buy-In**: Explain reasoning | Collaborative creation (ownership)
 
-**Hawthorne Effect**: Perception of monitoring encourages compliance
+**Hawthorne Effect** (*observational psychology concept*): Perception of monitoring encourages compliance - people perform better when they know they're being observed or measured
 
 ---
 

@@ -12,78 +12,115 @@ Messaging patterns ensure reliable, consistent, and efficient message handling i
 
 ## Transactional Outbox
 
-Ensures reliable message publishing by storing messages in the same database transaction as business data, then publishing them separately.
+*Pattern from Chris Richardson's Microservices Patterns (2018), solving the dual-write problem*
+
+Ensures reliable message publishing by storing messages in the same database transaction as business data, then publishing them separately. Guarantees atomicity between database updates and message publishing.
+
+**Problem Solved**: The dual-write problem - writing to database AND message broker atomically isn't possible without distributed transactions.
 
 **Use When**:
 - Need to guarantee message publishing after data changes
 - Cannot afford to lose messages
 - Database and message broker are separate systems
+- Want to avoid distributed transactions (2PC)
 
 **How It Works**:
 
-1. Store business data and message in same transaction
-2. Separate process reads outbox table and publishes messages
+1. Store business data and message in same database transaction (atomicity guaranteed)
+2. Separate process (Message Relay) reads outbox table and publishes messages
 3. Mark messages as published after successful delivery
+4. Optional: Delete or archive old published messages
 
 **Example**: Order service saves new orders and outbox events in same transaction, ensuring order notifications are always sent.
 
 ```sql
 BEGIN TRANSACTION
   INSERT INTO orders (id, customer_id, total) VALUES (...)
-  INSERT INTO outbox (message_type, payload) VALUES ('OrderCreated', {...})
+  INSERT INTO outbox (message_type, payload, created_at) VALUES ('OrderCreated', {...}, NOW())
 COMMIT
 
--- Separate process
-SELECT * FROM outbox WHERE published = false
+-- Separate Message Relay process (polling or CDC)
+SELECT * FROM outbox WHERE published = false ORDER BY created_at
 PUBLISH to message broker
-UPDATE outbox SET published = true WHERE id = ...
+UPDATE outbox SET published = true, published_at = NOW() WHERE id = ...
 ```
+
+**Implementation Options**:
+- **Polling**: Periodically query outbox table (simple, adds latency)
+- **Change Data Capture (CDC)**: Stream database changes (lower latency, more complex)
+
+**Tools**: Debezium (CDC), custom polling service
 
 ---
 
 ## Transactional Inbox
 
-Ensures idempotent message processing by tracking processed messages in the database.
+*Complementary pattern to Transactional Outbox, ensuring idempotent message consumption*
+
+Ensures idempotent message processing by tracking processed messages in the database. Prevents duplicate message processing even when messages are delivered multiple times (at-least-once delivery guarantee).
+
+**Problem Solved**: Message brokers typically provide at-least-once delivery, meaning duplicates are possible. Without deduplication, the same message could be processed multiple times.
 
 **Use When**:
-- Messages might be delivered multiple times
+- Messages might be delivered multiple times (at-least-once delivery)
 - Processing must be idempotent
-- Cannot afford duplicate processing
+- Cannot afford duplicate processing (e.g., charging customer twice)
+- Message broker doesn't guarantee exactly-once processing
+
+**How It Works**:
+
+1. Check if message_id exists in inbox table
+2. If exists, skip processing (duplicate)
+3. If new, process message and record in inbox atomically
+4. Use unique constraint to prevent race conditions
 
 **Example**: Inventory service tracks processed order messages to prevent double inventory reduction if the same order message is delivered twice.
 
 ```sql
 BEGIN TRANSACTION
-  INSERT INTO inbox (message_id, processed_at) VALUES (...)
-  -- If duplicate, INSERT fails
-  UPDATE inventory SET quantity = quantity - order.quantity WHERE ...
+  -- This INSERT fails if duplicate (UNIQUE constraint on message_id)
+  INSERT INTO inbox (message_id, processed_at) VALUES ('msg-12345', NOW())
+
+  -- Only executes if INSERT succeeded (no duplicate)
+  UPDATE inventory SET quantity = quantity - order.quantity WHERE product_id = ...
 COMMIT
 ```
+
+**Best Practice**: Keep inbox records for some retention period (days/weeks), then archive/delete to manage table size
 
 ---
 
 ## Claim Check
 
-Stores large message payloads separately and sends only a reference (claim check) through the messaging system.
+*Pattern from Enterprise Integration Patterns by Gregor Hohpe and Bobby Woolf (2003)*
+
+Stores large message payloads separately and sends only a reference (claim check) through the messaging system. Named after the claim check system at coat check counters.
 
 **Use When**:
-- Message payloads are large (images, documents)
-- Messaging system has size limitations
-- Want to optimize message broker performance
+- Message payloads are large (images, documents, videos)
+- Messaging system has size limitations (e.g., Kafka default 1MB, SQS 256KB)
+- Want to optimize message broker performance and reduce network traffic
+- Large payloads would slow down message processing
 
 **How It Works**:
 
-1. Store large payload in external storage (S3, database)
-2. Send message with reference ID
-3. Receiver uses reference to retrieve actual payload
+1. Store large payload in external storage (S3, blob storage, database)
+2. Send lightweight message with reference ID through message broker
+3. Receiver uses reference to retrieve actual payload from storage
+4. Optional: Delete payload after processing
 
 **Example**: Document processing system stores uploaded files in S3 and sends processing messages containing only the S3 key.
 
 ```
 1. Upload document → S3 → returns key "doc-12345"
-2. Send message: {type: "ProcessDocument", s3Key: "doc-12345"}
-3. Receiver gets message → retrieves document from S3 using key
+2. Send message: {type: "ProcessDocument", s3Key: "doc-12345", bucket: "documents"}
+3. Receiver gets message → retrieves document from S3 using key → processes
+4. Optional: Delete S3 object after processing
 ```
+
+**Trade-offs**:
+- **Pros**: Keeps messages small, works around broker limits, reduces memory usage
+- **Cons**: Extra retrieval step, external storage dependency, consistency challenges (what if message succeeds but payload deleted?)
 
 ---
 
