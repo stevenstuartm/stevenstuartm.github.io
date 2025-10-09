@@ -7,7 +7,16 @@ description: "Advanced graph algorithms including Dijkstra's shortest path, topo
 ## Shortest Path Algorithms
 
 ### Dijkstra's Algorithm
+
+*Conceived by Edsger W. Dijkstra in 1956, published in 1959. Dijkstra reportedly designed it in 20 minutes while shopping with his fiancée.*
+
 **When to use:** Finding shortest path in weighted graphs with non-negative weights
+
+**Key properties:**
+- Greedy algorithm that always selects nearest unvisited vertex
+- Guarantees shortest path when all edge weights are non-negative
+- Time: O((V + E) log V) with priority queue, O(V²) with array
+- Cannot handle negative edge weights (use Bellman-Ford instead)
 
 ```csharp
 public static class ShortestPath
@@ -106,7 +115,17 @@ public static class ShortestPath
 ```
 
 ### A* Search Algorithm
-**When to use:** Pathfinding with heuristic knowledge (like games, GPS navigation)
+
+*Developed by Peter Hart, Nils Nilsson, and Bertram Raphael at Stanford Research Institute in 1968*
+
+**When to use:** Pathfinding with heuristic knowledge (games, GPS navigation, robotics)
+
+**Key properties:**
+- Extension of Dijkstra that uses heuristic to guide search toward goal
+- f(n) = g(n) + h(n), where g = actual cost from start, h = estimated cost to goal
+- Optimal if heuristic is admissible (never overestimates) and consistent
+- Much faster than Dijkstra when good heuristic available
+- Common heuristics: Manhattan distance (grid), Euclidean distance (2D/3D space)
 
 ```csharp
 public static class AStar

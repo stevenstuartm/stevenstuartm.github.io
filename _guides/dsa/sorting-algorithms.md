@@ -99,28 +99,37 @@ Console.WriteLine($"Sorted: [{string.Join(", ", sortedNumbers)}]");
 
 ## Merge Sort
 
+*Invented by John von Neumann in 1945 for the EDVAC computer*
+
 ### When to Use Merge Sort
 
 **Use when:**
 - Need stable sort (maintains relative order of equal elements)
-- Guaranteed O(n log n) performance required
-- Working with linked lists (natural fit)
-- External sorting (data doesn't fit in memory)
-- Parallel processing available
+- Guaranteed O(n log n) performance required (no worst case degradation)
+- Working with linked lists (natural fit, can be done in-place)
+- External sorting (data doesn't fit in memory - can merge disk-based chunks)
+- Parallel processing available (divide-and-conquer parallelizes well)
 
 **Don't use when:**
-- Memory is severely constrained (uses O(n) extra space)
+- Memory is severely constrained (uses O(n) extra space for arrays)
 - In-place sorting required
-- Small datasets (overhead not worth it)
+- Small datasets (overhead not worth it, use insertion sort for n < 10-20)
 
-**Modern reality:** Often the algorithm behind language built-ins. Use `Array.Sort()` and `List<T>.Sort()` instead of implementing.
+**Modern reality:** Often the algorithm behind language built-ins (Python's Timsort is derived from merge sort). Use `Array.Sort()` and `List<T>.Sort()` instead of implementing.
 
 ### Time Complexity
-- **All cases:** O(n log n)
-- **Space complexity:** O(n)
+- **Best case:** O(n log n)
+- **Average case:** O(n log n)
+- **Worst case:** O(n log n) - **always consistent!**
+- **Space complexity:** O(n) for arrays, O(log n) for linked lists
 
 ### How It Works
-Divide-and-conquer: recursively divide array into halves until single elements, then merge back together in sorted order.
+Classic divide-and-conquer algorithm:
+1. **Divide:** Split array into two halves recursively until single elements
+2. **Conquer:** Single elements are already sorted
+3. **Combine:** Merge sorted halves back together in order
+
+**Key insight:** Merging two sorted arrays into one sorted array is O(n) and simple.
 
 ### C# Implementation
 ```csharp
@@ -202,30 +211,41 @@ Console.WriteLine($"Final sorted: [{string.Join(", ", orderedList)}]");
 
 ## Quick Sort
 
+*Developed by Tony Hoare in 1959, published in 1961. One of the most important algorithms of the 20th century*
+
 ### When to Use Quick Sort
 
 **Use when:**
-- Average case performance is critical
+- Average case performance is critical (fastest in practice despite O(n²) worst case)
 - In-place sorting needed (minimal memory usage)
 - General-purpose sorting
-- Memory is constrained
+- Memory is constrained (only O(log n) stack space)
+- Cache efficiency matters (excellent locality of reference)
 
 **Don't use when:**
 - Worst-case guarantees needed (can degrade to O(n²))
-- Stability required (doesn't maintain relative order)
-- Data is already sorted or reverse sorted (worst case)
+- Stability required (doesn't maintain relative order of equal elements)
+- Data is already sorted or reverse sorted without random pivot selection
 
-**Modern reality:** Default sort in many languages, but they use hybrid approaches (introsort = quicksort + heapsort).
+**Modern reality:** Default sort in many languages, but production implementations use hybrid approaches:
+- **Introsort** (C++ std::sort): QuickSort + HeapSort fallback when recursion depth exceeds threshold
+- **Tim Sort** (Python, Java): Merge sort variant optimized for real-world data
+- Modern QuickSort uses **median-of-three** or **random pivot** to avoid worst case
 
 ### Time Complexity
-- **Best/Average case:** O(n log n)
-- **Worst case:** O(n²) - when pivot is always smallest/largest
-- **Space complexity:** O(log n) for recursion stack
+- **Best case:** O(n log n) - pivot always splits array evenly
+- **Average case:** O(n log n) - with random pivot, highly likely
+- **Worst case:** O(n²) - pivot is always smallest/largest (sorted input with poor pivot selection)
+- **Space complexity:** O(log n) for recursion stack (average), O(n) worst case
 
 ### How It Works
-1. Choose a pivot element
-2. Partition array: elements < pivot go left, > pivot go right
-3. Recursively sort left and right subarrays
+Divide-and-conquer with in-place partitioning:
+1. **Choose pivot:** Select element (random, median-of-three, or last element)
+2. **Partition:** Rearrange so elements < pivot are left, > pivot are right
+3. **Recursively sort:** Apply QuickSort to left and right partitions
+4. **Base case:** Arrays of size 0 or 1 are already sorted
+
+**Key insight:** After each partition, the pivot is in its final sorted position.
 
 ### C# Implementation
 ```csharp

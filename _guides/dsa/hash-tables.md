@@ -5,7 +5,10 @@ description: "Master hash tables with O(1) average lookups, collision resolution
 ---
 
 ## Why Hash Tables Exist
-Provides average O(1) lookups by trading space for time using mathematical hashing. This is the fundamental trade-off that powers most modern software.
+
+*Concept pioneered by Hans Peter Luhn at IBM (1953), formalized as "hash tables" in the 1960s*
+
+Provides average O(1) lookups by trading space for time using mathematical hashing. This is the fundamental trade-off that powers most modern software - from database indexes to compiler symbol tables.
 
 ## When to Use Hash Tables
 
@@ -37,13 +40,24 @@ Provides average O(1) lookups by trading space for time using mathematical hashi
 
 ## Collision Resolution Strategies
 
-### Open Addressing (Linear Probing)
-- When collision occurs, check next available slot
-- Simple but can cause clustering
+**The Problem:** Multiple keys may hash to the same index. With n items and m slots, by the pigeonhole principle, collisions are inevitable when n > m.
 
-### Separate Chaining  
-- Each array slot holds a list of key-value pairs
-- More complex but handles collisions gracefully
+### Separate Chaining (Most Common)
+- Each array slot holds a linked list (or dynamic array) of key-value pairs
+- **Pros:** Simple, never "full", handles high load factors (even > 1.0)
+- **Cons:** Extra memory for pointers, poor cache locality
+- **Used by:** Java's HashMap, Python's dict (historically)
+
+### Open Addressing (Linear Probing)
+- When collision occurs, probe next slot(s) until finding empty space
+- **Pros:** Better cache performance, no pointer overhead, all data in one array
+- **Cons:** Clustering issues, table can become full, deletions tricky
+- **Variants:** Linear probing (check i+1, i+2...), Quadratic probing (check i+1², i+2²...), Double hashing
+
+### Modern Approach
+Many modern implementations use hybrid strategies or sophisticated open addressing:
+- **Robin Hood Hashing:** Minimizes variance in probe lengths
+- **Cuckoo Hashing:** Uses multiple hash functions and tables for guaranteed O(1) worst-case lookup
 
 
 ## C# Implementation

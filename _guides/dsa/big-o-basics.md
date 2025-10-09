@@ -14,7 +14,11 @@ Understanding Big O isn't about memorizing formulas—it's about developing intu
 
 ## What is Big O Notation?
 
+*Mathematical notation introduced by Paul Bachmann (1894) and popularized by Edmund Landau (1909) for analyzing algorithm complexity*
+
 Big O notation describes how an algorithm's runtime or space requirements grow as input size increases. It gives us a way to compare algorithms without getting bogged down in implementation details or hardware differences.
+
+The "O" stands for "Order of" (as in "order of magnitude"). Formally, f(n) = O(g(n)) means f(n) grows no faster than g(n) as n approaches infinity, ignoring constant factors.
 
 **Key insight:** We care about the *pattern* of growth, not exact timing.
 
@@ -47,6 +51,10 @@ public static int GetFirst(int[] array)
 **What it means:** Performance grows slowly even with massive input
 **Examples:** Binary search, balanced tree operations
 **Real world:** Finding a word in a dictionary (flip to middle, eliminate half, repeat)
+
+**Why it's so efficient:** Logarithmic algorithms eliminate half (or a fraction) of remaining possibilities with each step. With 1 million items, log₂(1,000,000) ≈ 20 steps. With 1 billion items, only ≈ 30 steps!
+
+**The logarithm base:** In Big O, we write O(log n) without specifying the base because all logarithms differ only by a constant factor (log₂ n = log₁₀ n / log₁₀ 2), and Big O ignores constants.
 
 ```csharp
 public static int BinarySearch(int[] sortedArray, int target)
@@ -106,9 +114,11 @@ public static void MergeSort(int[] array, int left, int right)
 ```
 
 ### O(n²) - Quadratic Time
-**What it means:** Performance grows exponentially with input
-**Examples:** Nested loops, bubble sort, naive algorithms
-**Real world:** Comparing every person in a room to every other person
+**What it means:** Performance grows quadratically with input (not exponentially - that's O(2ⁿ))
+**Examples:** Nested loops, bubble sort, selection sort, naive algorithms
+**Real world:** Comparing every person in a room to every other person (handshakes problem)
+
+**The scaling problem:** If n doubles, runtime quadruples. With 1,000 items = 1 million operations. With 10,000 items = 100 million operations.
 
 ```csharp
 public static List<(int, int)> FindAllPairs(int[] array)

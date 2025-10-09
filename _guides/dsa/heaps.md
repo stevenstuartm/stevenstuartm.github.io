@@ -5,7 +5,10 @@ description: "Learn heap data structure properties, heapify operations, priority
 ---
 
 ## Why Heaps Exist
-Efficiently maintain the minimum or maximum element while allowing dynamic insertions and deletions. Heaps solve the problem of quickly accessing the "most important" element in a changing dataset without maintaining full sorted order.
+
+*Binary heap data structure introduced by J.W.J. Williams in 1964 for heapsort. Robert W. Floyd later improved the heap construction algorithm in 1964.*
+
+Efficiently maintain the minimum or maximum element while allowing dynamic insertions and deletions. Heaps solve the problem of quickly accessing the "most important" element in a changing dataset without maintaining full sorted order - achieving O(1) peek and O(log n) insert/delete.
 
 ## When to Use Heaps
 

@@ -191,6 +191,15 @@ public static class TrieApplications
 ## Balanced Binary Search Trees
 
 ### AVL Trees (Self-Balancing BST)
+
+*Invented by Soviet mathematicians Georgy Adelson-Velsky and Evgenii Landis in 1962. Named from their initials: AVL*
+
+**Key properties:**
+- Strictly balanced: height difference between left and right subtrees ≤ 1
+- Guarantees O(log n) for search, insert, delete
+- More strictly balanced than Red-Black trees (faster lookups, slower insertions)
+- Uses rotations (single and double) to maintain balance
+- **Trade-off:** Faster reads, slower writes compared to Red-Black trees
 ```csharp
 public class AVLNode<T> where T : IComparable<T>
 {

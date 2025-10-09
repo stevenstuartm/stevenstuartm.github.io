@@ -19,18 +19,32 @@ Four fundamental approaches to algorithm design, each suited for different probl
 
 ## Dynamic Programming
 
-**Core idea:** Solve each subproblem once, store result for reuse.
+*Term coined by Richard Bellman in the 1950s. "Programming" refers to optimization, not coding. Bellman chose "dynamic" to sound impressive to government funders who might not fund "mathematical" research.*
+
+**Core idea:** Solve each subproblem once, store result for reuse. Transform exponential brute-force into polynomial time by caching.
 
 ### When to Use
-- Overlapping subproblems (same calculation repeated)
-- Optimal substructure (optimal solution built from optimal subsolutions)
-- Need optimal value (min/max cost, count ways)
+- **Overlapping subproblems**: Same calculation repeated many times (unlike divide-and-conquer where subproblems are independent)
+- **Optimal substructure**: Optimal solution built from optimal subsolutions
+- Need optimal value (min/max cost, count ways, longest/shortest)
+
+**Key insight:** If you find yourself solving the same subproblem repeatedly in recursion, DP can help.
 
 ### Two Approaches
-**Memoization (Top-down):** Recursive with caching
-**Tabulation (Bottom-up):** Iterative table filling
 
-**Complexity:** O(states × transitions)
+**Memoization (Top-down):**
+- Start with recursive solution
+- Add caching (hash map/array) to store results
+- **Pros**: Only computes needed subproblems, easier to code from recursion
+- **Cons**: Recursion overhead, stack space
+
+**Tabulation (Bottom-up):**
+- Build table iteratively from base cases
+- **Pros**: No recursion overhead, often faster, predictable space
+- **Cons**: Computes all subproblems, harder to visualize
+
+**Complexity:** O(number of states × transitions per state)
+- Example: 2D DP table = O(m × n) states, O(1) per transition = O(m × n) total
 
 ### Classic DP Patterns
 
