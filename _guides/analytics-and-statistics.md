@@ -1,5 +1,5 @@
 ---
-title: "Analytics and Statistics Study Guide"
+title: "Analytics and Statistics"
 layout: guide
 category: Data & Analytics
 subcategory: Analytics

@@ -1,5 +1,5 @@
 ---
-title: "Asymptotic Notation Study Guide"
+title: "Asymptotic Notation"
 category: Data Structures & Algorithms
 description: "Deep dive into mathematical foundations of algorithm analysis covering Big O, Omega, and Theta notations with detailed examples and practical analysis techniques."
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Machine Learning Study Guide"
+title: "Machine Learning"
 layout: guide
 category: AI & Machine Learning
 subcategory: Machine Learning

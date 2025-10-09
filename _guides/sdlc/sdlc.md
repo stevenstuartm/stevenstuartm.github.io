@@ -1,5 +1,5 @@
 ---
-title: "Software Development Lifecycle (SDLC) Study Guide"
+title: "Software Development Lifecycle (SDLC)"
 layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC
