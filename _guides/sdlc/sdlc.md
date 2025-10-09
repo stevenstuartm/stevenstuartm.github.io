@@ -82,6 +82,8 @@ A personal framework for consistent agile execution that maintains focus on deli
 
 ## Shape Up Development Methodology
 
+*Developed by Basecamp (Ryan Singer, 2019) as an alternative to Scrum. Documented in "Shape Up: Stop Running in Circles and Ship Work that Matters"*
+
 ### Shaping Process
 1. **Set Boundaries**: Define time appetite and problem scope
 2. **Rough Out Elements**: High-level solution sketching without detailed wireframes
@@ -110,6 +112,9 @@ Most legacy SDLC methodologies aren't even taught in University or bootcamp clas
 ### Traditional Methodologies
 
 #### Waterfall Model
+
+*Formalized by Winston W. Royce in 1970 paper "Managing the Development of Large Software Systems." Ironically, Royce actually argued against the pure waterfall approach, but it became the dominant methodology anyway.*
+
 **What it is:** A stricter, more linear methodology that limits a team's ability to diverge from the project plan at different stages in the SDLC. Each phase must be completed before moving to the next.
 
 **Key Characteristics:**
@@ -141,7 +146,18 @@ Most legacy SDLC methodologies aren't even taught in University or bootcamp clas
 
 ### Agile Family of Methodologies
 
+*Agile Manifesto created by 17 software developers in 2001 (Kent Beck, Martin Fowler, Robert C. Martin, and others) emphasizing individuals, working software, customer collaboration, and responding to change.*
+
+**Core Agile Principles:**
+- **Individuals and interactions** over processes and tools
+- **Working software** over comprehensive documentation
+- **Customer collaboration** over contract negotiation
+- **Responding to change** over following a plan
+
 #### Scrum Framework
+
+*Developed by Jeff Sutherland and Ken Schwaber in early 1990s, formalized in 1995. Based on empirical process control theory and influenced by Takeuchi & Nonaka's "The New New Product Development Game" (1986).*
+
 **What it is:** An Agile methodology that uses an incremental approach to work in order to complete projects more quickly. Scrum uses two-week sprints to get work done.
 
 **Key Characteristics:**
@@ -169,6 +185,9 @@ Most legacy SDLC methodologies aren't even taught in University or bootcamp clas
 - May struggle with changing priorities mid-sprint
 
 #### Kanban Method
+
+*Originated at Toyota in the 1940s as part of the Toyota Production System (Taiichi Ohno). Adapted to software development by David J. Anderson in the mid-2000s.*
+
 **What it is:** A scheduling system framework for the Agile-eque Lean methodology. It uses cards to track and support the production system by visually showing the steps within the process.
 
 **Key Characteristics:**
@@ -196,6 +215,9 @@ Most legacy SDLC methodologies aren't even taught in University or bootcamp clas
 - Requires discipline to maintain WIP limits
 
 #### Extreme Programming (XP)
+
+*Created by Kent Beck in the mid-1990s while working on the Chrysler Comprehensive Compensation System. Formalized in "Extreme Programming Explained" (1999).*
+
 **What it is:** An Agile project management methodology that targets speed and simplicity with short development cycles. XP uses five guiding values, five rules, and 12 practices for programming.
 
 **Key Characteristics:**

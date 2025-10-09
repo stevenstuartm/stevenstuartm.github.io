@@ -6,7 +6,16 @@ description: "Deep dive into SOLID principles: Single Responsibility, Open/Close
 
 ---
 
+*SOLID principles introduced and popularized by Robert C. Martin ("Uncle Bob") in the early 2000s, with the acronym coined by Michael Feathers*
+
 > **SOLID** principles create maintainable, scalable, and flexible software systems that are easier to understand, modify, and extend over time.
+
+**Historical context**: While Martin popularized these under the SOLID acronym, the individual principles have earlier origins:
+- Single Responsibility: Tom DeMarco & Meilir Page-Jones (cohesion concepts, 1970s-80s)
+- Open-Closed: Bertrand Meyer (1988, "Object-Oriented Software Construction")
+- Liskov Substitution: Barbara Liskov (1987, data abstraction keynote)
+- Interface Segregation: Robert C. Martin (1990s)
+- Dependency Inversion: Robert C. Martin (1990s)
 
 ## S - Single Responsibility Principle (SRP)
 
@@ -213,7 +222,11 @@ public class Hexagon : IShape
 
 ## L - Liskov Substitution Principle (LSP)
 
+*Introduced by Barbara Liskov in her 1987 keynote "Data Abstraction and Hierarchy" at OOPSLA. Formalized with Jeannette Wing in 1994.*
+
 **Definition**: Objects of a superclass should be replaceable with objects of a subclass without altering the correctness of the program.
+
+**Formal definition** (Liskov & Wing): If S is a subtype of T, then objects of type T may be replaced with objects of type S without breaking the program.
 
 **Intent**: Subtypes must be substitutable for their base types without breaking functionality.
 

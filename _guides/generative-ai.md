@@ -284,7 +284,26 @@ The fundamental units of text that AI models use to process and understand langu
 AI models trained on vast amounts of text data to understand and generate human-like language. Examples include GPT-4, Claude, and Gemini.
 
 ### **Transformers**
+
+*Revolutionary architecture introduced by Vaswani et al. in "Attention Is All You Need" (Google, 2017). This paper fundamentally changed NLP and enabled the current AI revolution.*
+
 The underlying neural network architecture that enables modern generative AI models to handle large amounts of data efficiently and generate complex outputs. The "T" in GPT stands for Transformer.
+
+**Key innovation**: The **attention mechanism** allows the model to focus on relevant parts of input when generating each output, similar to how humans focus on important words when understanding a sentence.
+
+**Why transformers revolutionized AI**:
+- **Parallelization**: Unlike RNNs, can process entire sequences simultaneously (enabling GPU acceleration)
+- **Long-range dependencies**: Captures relationships between distant words effectively
+- **Scalability**: Performance improves with more data and compute (no apparent ceiling yet)
+- **Transfer learning**: Pre-trained transformers can be fine-tuned for specific tasks
+
+**Architecture components**:
+- **Self-attention layers**: Allow each position to attend to all positions
+- **Feed-forward networks**: Process attention outputs
+- **Positional encoding**: Provides sequence order information
+- **Multi-head attention**: Multiple attention mechanisms in parallel
+
+**Impact**: Enabled GPT series, BERT, Claude, Gemini, and virtually all modern LLMs. Estimated to save billions in research costs by providing a proven, scalable architecture.
 
 ### **Hallucination**
 When AI models generate information that appears plausible but is actually false or fabricated. This is a key limitation to understand when working with generative AI.

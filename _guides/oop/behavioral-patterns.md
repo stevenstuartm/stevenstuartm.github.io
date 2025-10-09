@@ -6,6 +6,8 @@ description: "Behavioral design patterns for object communication including Obse
 
 ---
 
+*Behavioral patterns from the Gang of Four's "Design Patterns" (1994). Observer pattern predates GoF, originating in Smalltalk's Model-View-Controller (MVC) architecture (1979).*
+
 > Behavioral patterns focus on communication between objects and define how objects interact and distribute responsibilities.
 
 ## Observer Pattern

@@ -6,7 +6,11 @@ description: "Creational design patterns including Builder, Factory Method, Abst
 
 ---
 
+*Design patterns from "Design Patterns: Elements of Reusable Object-Oriented Software" by the Gang of Four (Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides), published 1994*
+
 > Creational patterns focus on object creation mechanisms, providing flexibility in how objects are instantiated.
+
+**Historical note**: While the Gang of Four catalog formalized these patterns, many existed in practice before 1994. The patterns book itself was inspired by Christopher Alexander's "A Pattern Language" (1977) for architecture.
 
 ## Builder Pattern
 
@@ -269,7 +273,15 @@ var connection = await DatabaseConnection.CreateAsync("localhost", "MyDB");
 
 ## Singleton Pattern
 
-**⚠️ Modern Warning**: Traditional singleton implementations are difficult to test and violate dependency inversion.
+*One of the original Gang of Four patterns (1994), but now controversial in modern software development*
+
+**⚠️ Modern Warning**: Traditional singleton implementations are difficult to test and violate dependency inversion. Many consider Singleton an anti-pattern in modern development due to:
+- Global state (hidden dependencies)
+- Testing difficulties (can't mock easily)
+- Violates Single Responsibility (manages own lifecycle + business logic)
+- Thread-safety complexity in some languages
+
+**Modern consensus**: Use dependency injection with singleton lifetime instead of static Singleton pattern.
 
 **Traditional Singleton (Avoid)**
 ```csharp

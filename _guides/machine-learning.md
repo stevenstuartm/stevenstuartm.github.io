@@ -36,9 +36,14 @@ A subset of machine learning that uses multilayered neural networks (called deep
 **Architecture concept**: "Deep" refers to multiple layers (often 10-100+ layers) where each layer processes and transforms information before passing it to the next layer, similar to how human brain processes information through multiple stages.
 
 ### Neural Networks
+
+*Concept originated with McCulloch-Pitts neuron model (1943), first practical implementation as Perceptron by Frank Rosenblatt (1958). Modern deep learning enabled by backpropagation algorithm (Rumelhart, Hinton, Williams 1986).*
+
 Machine learning programs that make decisions in a manner similar to the human brain, using processes that mimic how biological neurons work together to identify phenomena, weigh options, and arrive at conclusions.
 
 **Basic structure**: Consists of interconnected nodes (neurons) that receive inputs, apply mathematical transformations, and pass outputs to other nodes. The "learning" happens by adjusting the strength of connections between neurons based on training data.
+
+**Historical milestone**: The "AI Winter" (1970s-1980s) occurred partly because single-layer perceptrons couldn't solve certain problems (XOR problem). Deep learning renaissance began in 2000s with GPUs enabling training of multi-layer networks.
 
 ### AI Classification by Capability
 
@@ -207,10 +212,23 @@ Machine learning programs that make decisions in a manner similar to the human b
 - **Regression**: Predicting continuous values (prices, temperatures, stock values)
 
 ### Key Algorithms
-- **Support Vector Machines (SVM)**: Effective for classification with clear margins
-- **Decision Trees**: Interpretable models for both classification and regression
-- **Random Forests**: Ensemble method combining multiple decision trees
-- **Neural Networks**: Powerful for complex pattern recognition
+
+- **Support Vector Machines (SVM)** (*Vladimir Vapnik & Alexey Chervonenkis, 1960s; practical implementation by Vapnik, 1990s*):
+  - Effective for classification with clear margins
+  - Finds optimal hyperplane separating classes
+  - Uses "kernel trick" for non-linear boundaries
+
+- **Decision Trees** (*Originated in 1960s, popularized by ID3 algorithm (Quinlan, 1986) and CART (Breiman et al., 1984)*):
+  - Interpretable models for both classification and regression
+  - Learns hierarchical decision rules from data
+  - Easy to visualize and explain to non-technical stakeholders
+
+- **Random Forests** (*Leo Breiman, 2001*):
+  - Ensemble method combining multiple decision trees
+  - Each tree trained on random subset of data and features
+  - Reduces overfitting through "wisdom of crowds" approach
+
+- **Neural Networks**: Powerful for complex pattern recognition (see attribution above)
 
 ### Regression Types
 - **Linear Regression**: Models linear relationships between variables
@@ -273,10 +291,15 @@ Machine learning programs that make decisions in a manner similar to the human b
 ### Key Concepts
 
 #### Bellman Equation
+
+*Named after Richard Bellman, who developed dynamic programming in the 1950s. The Bellman equation is foundational to modern reinforcement learning.*
+
 - **Purpose**: Expresses relationship between current state value and expected future rewards
-- **Principle**: Long-term reward = current reward + expected future rewards
-- **Forms**: State value functions and action value functions (Q-functions)
+- **Principle**: Long-term reward = current reward + expected future rewards (discounted)
+- **Mathematical insight**: V(s) = max[R(s,a) + γ * V(s')], where γ is discount factor (0-1)
+- **Forms**: State value functions (V) and action value functions (Q-functions)
 - **Importance**: Fundamental to most RL algorithms and optimal decision-making
+- **Modern applications**: Powers AlphaGo, autonomous vehicle navigation, resource allocation
 
 #### Modern RL Developments
 - **Deep Reinforcement Learning**: Combines RL with deep neural networks

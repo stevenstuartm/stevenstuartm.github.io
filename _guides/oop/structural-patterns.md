@@ -6,6 +6,8 @@ description: "Structural design patterns including Adapter, Bridge, Composite, D
 
 ---
 
+*Structural patterns from the Gang of Four's "Design Patterns" (1994): Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides*
+
 > Structural patterns deal with object composition and relationships, helping form larger structures while maintaining flexibility.
 
 ## Adapter Pattern

@@ -27,6 +27,8 @@ Networking fundamentals for software developers and system architects.
 
 ## OSI Model & Network Layers
 
+*OSI Model developed by the International Organization for Standardization (ISO) in 1977-1984. Created as a universal standard for network communication protocols.*
+
 The OSI (Open Systems Interconnection) model provides a framework for understanding network communications through seven layers:
 
 ### The 7 Layers
@@ -40,6 +42,8 @@ The OSI (Open Systems Interconnection) model provides a framework for understand
 7. **Application Layer** - HTTP, FTP, SMTP, DNS
 
 ### Practical TCP/IP Model (4 Layers)
+
+*TCP/IP protocol suite developed by DARPA in the 1970s (Vint Cerf and Bob Kahn). Became the foundation of the Internet. TCP/IP predates OSI but is less formal.*
 
 Most developers work with the simplified TCP/IP model:
 
