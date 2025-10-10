@@ -1,37 +1,32 @@
 [
   {
-    "id": 2,
-    "title": "Study Guide: architecture governance frameworks",
+    "title": "Blog: Unhealthy Team Management Practices",
+    "description": "",
+    "status": "planned",
+    "deliveryDate": "2025-10-31"
+  },
+  {
+    "title": "Study Guide: Architecture governance frameworks",
     "description": "",
     "status": "planned",
     "deliveryDate": "2025-11-21"
   },
   {
-    "id": 3,
-    "title": "Study Guide: total cost of ownership and return on investment",
+    "title": "Study Guide: Total cost of ownership and return on investment",
     "description": "",
     "status": "planned",
     "deliveryDate": "2025-11-27"
   },
   {
-    "id": 4,
     "title": "Introduce AAA Cycle",
     "description": "Agree, Align, Apply. A review of my own initial and consolidated approach to system inception, design, and delivery.",
     "status": "planned",
     "deliveryDate": "2026-01-01"
   },
   {
-    "id": 5,
     "title": "Latest Tech News Feed",
     "description": "Curated feed of the latest technology news, industry trends, and architectural insights relevant to cloud-native development and system design.",
     "status": "planned",
     "deliveryDate": "2026-03-01"
-  },
-  {
-    "id": 8,
-    "title": "Blog: The more I learn about Software Architecture, the more I disagree with myself",
-    "description": "",
-    "status": "planned",
-    "deliveryDate": "2025-10-31"
   }
 ]
