@@ -1,14 +1,14 @@
 /* ===== CSS Variables - Pastel Color Scheme ===== */
 :root {
     --color-bg: #FDFBF7;           /* Off-white background */
-    --color-primary: #2D8659;      /* Accessible green (WCAG AA compliant) */
-    --color-secondary: #3A6EA5;    /* Accessible blue (WCAG AA compliant) */
-    --color-accent: #C5689C;       /* Accessible pink (WCAG AA compliant) */
+    --color-primary: #1F6B43;      /* Darker accessible green (WCAG AA compliant 4.5:1) */
+    --color-secondary: #2D5A85;    /* Darker accessible blue (WCAG AA compliant 4.5:1) */
+    --color-accent: #A5486E;       /* Darker accessible pink (WCAG AA compliant 4.5:1) */
     --color-text: #2C3E50;         /* Dark blue-grey text */
-    --color-text-light: #566573;   /* Darker grey text for better contrast */
+    --color-text-light: #4A5568;   /* Darker grey text for better contrast (WCAG AA 7:1) */
     --color-border: #E0DED9;       /* Light border */
     --color-card-bg: #FFFFFF;      /* White for cards */
-    --color-hover: #236B47;        /* Darker green for hover */
+    --color-hover: #185236;        /* Even darker green for hover */
 
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
@@ -500,7 +500,7 @@ main {
 
 .site-version {
     font-size: 0.8rem;
-    opacity: 0.7;
+    color: var(--color-text-light);
     margin-left: 0.5rem;
 }
 
@@ -943,7 +943,7 @@ main {
 }
 
 .upcoming-item.status-cooking {
-    border-left-color: #F4A460; /* Sandy brown - work in progress */
+    border-left-color: #C87A3C; /* Darker sandy brown - work in progress (WCAG AA compliant) */
 }
 
 .upcoming-item.status-refining {
@@ -995,7 +995,7 @@ main {
 }
 
 .status-badge.status-cooking {
-    background-color: #F4A460;
+    background-color: #C87A3C;
     color: white;
 }
 
