@@ -3,6 +3,7 @@
     "Architecture Insights": {
       "description": "Deep dives into architectural patterns, code quality, and system design principles",
       "posts": [
+        "2025-10-10-jwts-are-for-authentication-not-authorization.md",
         "2025-10-08-consolidate-to-rediscover-lost-boundaries.md",
         "2025-09-29-hexagonal-architecture-modern-development.md",
         "2025-09-27-rest-vs-rpc-domain-driven-architectures.md",
