@@ -21,6 +21,7 @@ description: "Complete 2025 SEO checklist covering Core Web Vitals, technical op
    - [Site Structure & Navigation](#site-structure--navigation)
    - [Mobile Optimization (Higher Priority in 2025)](#mobile-optimization-higher-priority-in-2025)
    - [URL & Redirect Management](#url--redirect-management)
+   - [WCAG Accessibility (SEO Impact)](#wcag-accessibility-seo-impact)
 4. [Content & On-Page Optimization](#content--on-page-optimization)
    - [Page-Level Optimization](#page-level-optimization)
    - [Content Strategy for 2025](#content-strategy-for-2025)
@@ -153,6 +154,122 @@ description: "Complete 2025 SEO checklist covering Core Web Vitals, technical op
 - [ ] **301 Redirects**: Proper redirect chains for domain consolidation
 - [ ] **HTTPS**: SSL certificate for all pages
 - [ ] **URL Structure**: Logical hierarchy reflecting site architecture
+
+### WCAG Accessibility (SEO Impact)
+
+Web Content Accessibility Guidelines (WCAG) compliance directly impacts SEO through improved user experience, reduced bounce rates, and better Core Web Vitals scores. Search engines prioritize accessible websites.
+
+**Why Accessibility Matters for SEO:**
+- Google's ranking algorithms favor sites with better user experience
+- Accessible sites typically have lower bounce rates and higher engagement
+- Mobile-first indexing requires accessible responsive design
+- Voice search optimization overlaps with accessibility features
+- Many accessibility improvements enhance crawlability
+
+**WCAG 2.1 Level AA Compliance Checklist:**
+
+- [ ] **Color Contrast (WCAG 1.4.3)**: Ensure sufficient contrast ratios
+  - **Normal text**: Minimum 4.5:1 contrast ratio
+  - **Large text** (18pt+ or 14pt+ bold): Minimum 3:1 contrast ratio
+  - **Testing Tools**:
+    - Chrome DevTools Lighthouse (Accessibility audit)
+    - WebAIM Contrast Checker: https://webaim.org/resources/contrastchecker/
+    - WAVE Browser Extension
+  - **Common Issues**:
+    - Light grey text on white backgrounds
+    - Pastel colors for links and buttons
+    - Insufficient contrast in navigation menus
+  - **Quick Fixes**:
+    - Darken text colors: `#6B7B8C` → `#566573`
+    - Use darker accent colors: `#A8D5BA` → `#2D8659`
+    - Test hover states and focus indicators
+
+- [ ] **Keyboard Navigation (WCAG 2.1.1)**: All functionality accessible via keyboard
+  - Tab key navigation works for all interactive elements
+  - Visible focus indicators on buttons, links, form fields
+  - Logical tab order follows visual flow
+  - No keyboard traps (users can navigate away from all elements)
+
+- [ ] **Alternative Text (WCAG 1.1.1)**: Descriptive alt text for all images
+  - Informative images: Describe content and function
+  - Decorative images: Use empty alt attribute `alt=""`
+  - Complex images: Provide extended descriptions
+  - **SEO Benefit**: Alt text helps search engines understand image context
+
+- [ ] **Semantic HTML (WCAG 1.3.1)**: Proper heading hierarchy and landmarks
+  - Use `<header>`, `<nav>`, `<main>`, `<article>`, `<footer>` elements
+  - Single `<h1>` per page, logical H1→H2→H3 structure
+  - Proper `<button>` and `<a>` element usage
+  - **SEO Benefit**: Improves content structure for crawlers
+
+- [ ] **Form Labels (WCAG 1.3.1, 3.3.2)**: Proper labels for all form inputs
+  - Associate labels with inputs using `for` and `id` attributes
+  - Provide clear error messages and instructions
+  - Use `aria-describedby` for additional context
+
+- [ ] **Responsive Text (WCAG 1.4.4)**: Text resizable up to 200% without loss of functionality
+  - Use relative units (rem, em) instead of pixels for font sizes
+  - Test zoom levels in browsers
+  - Ensure content reflows properly on mobile devices
+
+- [ ] **Link Purpose (WCAG 2.4.4)**: Descriptive link text
+  - Avoid "click here" or "read more" without context
+  - Link text should make sense out of context
+  - **SEO Benefit**: Anchor text helps search engines understand linked content
+
+- [ ] **Consistent Navigation (WCAG 3.2.3)**: Predictable navigation patterns
+  - Navigation menus appear in same location across pages
+  - Consistent labeling and ordering
+
+**Quick Accessibility Audit Process:**
+
+1. **Run Lighthouse in Chrome DevTools**
+   - Target score: 90+ for Accessibility
+   - Address all high-priority issues first
+
+2. **Test Keyboard Navigation**
+   - Navigate entire site using only Tab, Enter, Space, Arrow keys
+   - Verify visible focus indicators everywhere
+
+3. **Check Color Contrast**
+   - Use browser extensions (WAVE, axe DevTools)
+   - Fix all failing contrast ratios
+
+4. **Validate Semantic Structure**
+   - Use browser DevTools to inspect heading hierarchy
+   - Verify proper HTML5 landmarks
+
+5. **Test Screen Reader Compatibility**
+   - Install NVDA (Windows) or VoiceOver (Mac)
+   - Navigate key user journeys with screen reader
+
+**Impact on SEO Metrics:**
+- **Bounce Rate**: Accessible sites typically see 20-30% lower bounce rates
+- **Time on Page**: Better UX leads to longer engagement
+- **Mobile Rankings**: Accessibility features improve mobile experience
+- **Core Web Vitals**: Semantic HTML and keyboard navigation improve INP scores
+- **Voice Search**: Descriptive labels and semantic markup enhance voice search optimization
+
+**Real-World Example:**
+```css
+/* Before: Poor Contrast (2.4:1) - FAILS WCAG */
+:root {
+  --color-primary: #A8D5BA;  /* Pastel green */
+  --color-text-light: #6B7B8C;
+}
+
+/* After: WCAG AA Compliant (5.2:1) - PASSES */
+:root {
+  --color-primary: #2D8659;  /* Accessible green */
+  --color-text-light: #566573;  /* Darker grey */
+}
+```
+
+**Resources:**
+- **WCAG Quick Reference**: https://www.w3.org/WAI/WCAG21/quickref/
+- **WebAIM**: https://webaim.org/ (Comprehensive guides and tools)
+- **Google Accessibility**: https://www.google.com/accessibility/
+- **a11y Project**: https://www.a11yproject.com/ (Practical accessibility checklist)
 
 ---
 

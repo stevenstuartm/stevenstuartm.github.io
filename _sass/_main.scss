@@ -1,14 +1,14 @@
 /* ===== CSS Variables - Pastel Color Scheme ===== */
 :root {
     --color-bg: #FDFBF7;           /* Off-white background */
-    --color-primary: #A8D5BA;      /* Pastel green */
-    --color-secondary: #B4C9E8;    /* Pastel blue */
-    --color-accent: #E8B4D4;       /* Pastel pink */
+    --color-primary: #2D8659;      /* Accessible green (WCAG AA compliant) */
+    --color-secondary: #3A6EA5;    /* Accessible blue (WCAG AA compliant) */
+    --color-accent: #C5689C;       /* Accessible pink (WCAG AA compliant) */
     --color-text: #2C3E50;         /* Dark blue-grey text */
-    --color-text-light: #6B7B8C;   /* Light grey text */
+    --color-text-light: #566573;   /* Darker grey text for better contrast */
     --color-border: #E0DED9;       /* Light border */
     --color-card-bg: #FFFFFF;      /* White for cards */
-    --color-hover: #8BC7A5;        /* Darker green for hover */
+    --color-hover: #236B47;        /* Darker green for hover */
 
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;

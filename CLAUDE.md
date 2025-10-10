@@ -55,7 +55,10 @@ bundle exec jekyll build
 - **pages/upcoming.md**: Upcoming blog posts and content
 
 ### Permalinks
-Posts use the permalink structure: `/blog/:year/:month/:day/:title/`
+- Posts use the permalink structure: `/blog/:year/:month/:day/:title.html`
+- Study guides use the permalink structure: `/study-guides/:path.html`
+
+**Important for SEO**: All URLs end with `.html` extension. When generating blog post URLs, always include the `.html` suffix.
 
 ### Blog Post Format
 All blog posts must:
