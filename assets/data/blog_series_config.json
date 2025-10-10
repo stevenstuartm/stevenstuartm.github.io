@@ -33,6 +33,7 @@
     "Industry & Culture": {
       "description": "Perspectives on hiring practices, leadership, and industry trends",
       "posts": [
+        "2025-10-10-build-slow-to-go-fast.md",
         "2025-09-09-innovating-ourselves-into-corner.md",
         "2025-08-19-leetcode-interviews-categorical-error.md",
         "2025-07-22-housing-lock-in-effect-remote-work.md",
