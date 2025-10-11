@@ -1,5 +1,9 @@
 {
   "series": {
+    "All": {
+      "description": "All blog posts sorted by publish date",
+      "posts": []
+    },
     "Architecture Insights": {
       "description": "Deep dives into architectural patterns, code quality, and system design principles",
       "posts": [
