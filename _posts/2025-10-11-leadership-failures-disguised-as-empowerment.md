@@ -2,7 +2,7 @@
 layout: post
 title: "Leadership Failures Disguised as Empowerment"
 date: 2025-10-11
-description: "When organizations lack clear vision, accountability, and trust, they disguise these failures as employee empowerment—creating ambiguity, emotional manipulation, and blame-shifting that undermines genuine performance. But it is not gloom and doom. There are ways to avoid this drama from both sides and to repair the damage."
+description: "When organizations lack clear vision, accountability, and trust, they disguise these failures as employee empowerment—creating ambiguity, emotional manipulation, and blame-shifting that undermines genuine performance. But it is not all gloom and doom. There are ways to avoid this drama from both sides and to repair the damage."
 series: "Industry & Culture"
 tags: [leadership, management, culture, organizational-health]
 ---
