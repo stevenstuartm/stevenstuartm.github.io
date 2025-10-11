@@ -145,3 +145,34 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - **Headers**: Use proper header hierarchy (H1 → H2 → H3)
 - **Code blocks**: Use triple backticks with language specification
 - **Links**: Use markdown link syntax for internal references
+
+## Maintaining This File
+
+**IMPORTANT**: Claude Code should proactively keep this CLAUDE.md file up to date during conversations.
+
+### When to Update CLAUDE.md
+
+Update this file whenever:
+1. **New patterns emerge** - If architectural patterns, naming conventions, or project-specific approaches are discovered during a session
+2. **Project structure changes** - New directories, major file reorganizations, or build process changes
+3. **Common tasks are repeated** - If the same task is performed multiple times, document it as a standard procedure
+4. **Important decisions are made** - Architecture choices, technology selections, or design patterns adopted
+5. **Gotchas are discovered** - Edge cases, quirks, or common mistakes to avoid
+6. **Dependencies change** - New gems, plugins, or significant configuration updates
+7. **Content patterns established** - New blog series, content organization methods, or writing conventions
+
+### Session Management
+
+At the end of substantial work sessions:
+1. Review what was accomplished
+2. Identify any new patterns or learnings that would benefit future sessions
+3. Proactively ask if CLAUDE.md should be updated with these learnings
+4. Update CLAUDE.md with relevant information
+5. Commit the changes if significant
+
+### What NOT to Include
+
+- Temporary or session-specific information
+- Highly detailed implementation notes (use code comments instead)
+- User-specific preferences (unless they're project standards)
+- Duplicate information already covered elsewhere in the file
