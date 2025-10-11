@@ -11,7 +11,7 @@ JSON Web Tokens (JWTs) have become ubiquitous in modern web applications, but th
 
 ## The Problem: Immutability Meets Reality
 
-JWTs are immutable by design. Once signed and issued, the claims inside cannot be changed until expiration. This works for authentication—your identity doesn't change mid-session. But it creates significant problems for authorization.
+JWTs are immutable by design. Once signed and issued, the claims inside cannot be changed until expiration. This works for authentication; your identity doesn't change mid-session. But it creates significant problems for authorization.
 
 Real-world scenarios:
 
@@ -20,7 +20,7 @@ Real-world scenarios:
 - A security breach requires immediate permission revocation across a role
 - A customer upgrades their plan, but doesn't see new features until token refresh
 
-The immutability creates a window of risk or poor user experience—minutes to hours depending on token TTL.
+The immutability creates a window of risk or poor user experience, minutes to hours depending on token TTL.
 
 ## The Common "Solution" That Doesn't Work
 
@@ -74,7 +74,7 @@ If a JWT is leaked:
 - Next refresh can be denied if session is invalidated
 - Session ID enables tracking token usage
 
-The refresh mechanism isn't about keeping authorization current—it's about minimizing the window where a compromised token remains useful.
+The refresh mechanism isn't about keeping authorization current; it's about minimizing the window where a compromised token remains useful.
 
 ## Microservices and Shared State
 
@@ -87,11 +87,11 @@ This is legitimate, but the authentication vs. authorization distinction still a
 
 Patterns that preserve service autonomy:
 
-- **Shared session store**: DynamoDB, Postgres—fast reads, externalized state
+- **Shared session store**: DynamoDB, Postgres with fast reads and externalized state
 - **Authorization service/API**: Centralized grant logic, cacheable at the edge
 - **API gateway enrichment**: Gateway fetches grants once, enriches downstream requests
 
-You're not adding stateful sessions to individual services—you're externalizing authorization to a shared, scalable data layer that services query independently.
+You're not adding stateful sessions to individual services; you're externalizing authorization to a shared, scalable data layer that services query independently.
 
 ## Hybrid Approaches and Their Complexity
 
@@ -124,7 +124,7 @@ Embedding these in JWTs means your product is always out of sync with reality.
 
 ## Internal Systems Need This More
 
-It's tempting to think: "For internal systems, we can put roles in the JWT—employees don't change roles often."
+It's tempting to think: "For internal systems, we can put roles in the JWT; employees don't change roles often."
 
 But internal systems have:
 
@@ -161,7 +161,7 @@ As systems grow, simple role checks evolve into feature flags, subscription tier
 
 ## Conclusion
 
-JWTs are excellent for authentication—cryptographically signed, time-limited proof of identity. But they're a poor fit for authorization because authorization is inherently dynamic.
+JWTs are excellent for authentication: cryptographically signed, time-limited proof of identity. But they're a poor fit for authorization because authorization is inherently dynamic.
 
 The 5ms latency cost of real-time grant checking is negligible compared to the security risks, user experience problems, and operational complexity of making immutable tokens carry mutable authorization data.
 

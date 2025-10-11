@@ -35,13 +35,13 @@ The session's job ends at the boundary. Everything beyond that point operates wi
 
 When you propagate user sessions through internal components, common failure patterns emerge regardless of your architecture:
 
-**Session expiration mid-flow**: Event processors run minutes later—session expired. Background jobs run hours later—session gone. Async processors retry—session invalid. You build workarounds: token refresh in queues, session persistence in metadata, "system sessions" for background work.
+**Session expiration mid-flow**: Event processors run minutes later; session expired. Background jobs run hours later; session gone. Async processors retry; session invalid. You build workarounds: token refresh in queues, session persistence in metadata, "system sessions" for background work.
 
-**Missing sessions entirely**: Scheduled reports run at 3 AM—no user logged in. Webhooks arrive from Stripe—no user session. System maintenance tasks—no user context. You duplicate logic: one path for user requests, one for non-user operations.
+**Missing sessions entirely**: Scheduled reports run at 3 AM; no user logged in. Webhooks arrive from Stripe; no user session. System maintenance tasks; no user context. You duplicate logic: one path for user requests, one for non-user operations.
 
 **Context across time and actors**: Multi-step workflows span hours. Original user's session expires. Different actors have different sessions. Background processors have none. The workflow breaks without explicit context that persists.
 
-**The Solution:** Boundaries validate external trust artifacts and convert them to internal context. The API Gateway validates the user session, extracts explicit context (user_id, tenant_id, correlation_id), and passes it forward—not the session. Each component uses service credentials (database connections, API keys, queue permissions) for technical capability and performs explicit authorization checks using the context. This works identically whether triggered by user requests, webhooks, scheduled jobs, or system events.
+**The Solution:** Boundaries validate external trust artifacts and convert them to internal context. The API Gateway validates the user session, extracts explicit context (user_id, tenant_id, correlation_id), and passes it forward, not the session. Each component uses service credentials (database connections, API keys, queue permissions) for technical capability and performs explicit authorization checks using the context. This works identically whether triggered by user requests, webhooks, scheduled jobs, or system events.
 
 ## Common Objections
 
@@ -55,7 +55,7 @@ This context flows explicitly through every component. Relying on session tokens
 
 ### "Compliance Requires User Identity Throughout the System"
 
-Compliance frameworks (SOC2, HIPAA, GDPR) require knowing **who** performed an action and **when**. User sessions are for authentication—proving identity at the boundary. Passing user_id in explicit context satisfies compliance. Passing the session token does not improve compliance—it couples your compliance logging to your auth mechanism.
+Compliance frameworks (SOC2, HIPAA, GDPR) require knowing **who** performed an action and **when**. User sessions are for authentication, proving identity at the boundary. Passing user_id in explicit context satisfies compliance. Passing the session token does not improve compliance; it couples your compliance logging to your auth mechanism.
 
 ### "Service Roles Create Privilege Escalation Risks"
 
@@ -77,7 +77,7 @@ If you rely on session tokens for tracing, non-user-initiated requests fail. Cor
 
 Using a monolith does not exempt you from these principles. You still must avoid global user session context and pass user context within structures appropriate to the needs of each module.
 
-Treating the session as globally accessible state makes distribution impossible when you eventually need to scale. It makes unit testing a nightmare—every test requires mocking session context. It couples your service layer to your web layer, preventing reuse from background jobs, CLI tools, or internal scripts.
+Treating the session as globally accessible state makes distribution impossible when you eventually need to scale. It makes unit testing a nightmare; every test requires mocking session context. It couples your service layer to your web layer, preventing reuse from background jobs, CLI tools, or internal scripts.
 
 The same principles apply: modules accept explicit context, operate with their own credentials, and perform explicit authorization. Whether those modules are in separate processes or the same codebase is irrelevant to the design.
 
@@ -85,7 +85,7 @@ The same principles apply: modules accept explicit context, operate with their o
 
 User authentication sessions serve one purpose: validating identity at a security boundary. Once validated, the session has done its job. Extract the necessary context, discard the session, and operate with service roles internally.
 
-The alternative—propagating sessions through internal flows—treats authentication as global state, couples components to auth mechanisms, wastes resources on redundant validation, and fundamentally breaks in event-driven architectures, background jobs, approval workflows, webhook integrations, and async processing.
+The alternative, propagating sessions through internal flows, treats authentication as global state, couples components to auth mechanisms, wastes resources on redundant validation, and fundamentally breaks in event-driven architectures, background jobs, approval workflows, webhook integrations, and async processing.
 
 This isn't about microservices vs. monoliths. It's about recognizing architectural boundaries and respecting them:
 

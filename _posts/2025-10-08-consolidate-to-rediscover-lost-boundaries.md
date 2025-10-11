@@ -19,7 +19,7 @@ Aging systems can suffer from architectural amnesia. Boundaries reflect old org 
 
 Standard advice: add abstraction layers or apply domain-driven design.
 
-Abstraction over poorly understood systems is expensive. You build scaffolding around structures you haven't examined, often abstracting over wrong boundaries and encoding coupling into new interfaces. This leads to the sinkhole anti-pattern—layers passing data without adding value, becoming maintenance burdens. Do you know where true boundaries are before committing?
+Abstraction over poorly understood systems is expensive. You build scaffolding around structures you haven't examined, often abstracting over wrong boundaries and encoding coupling into new interfaces. This leads to the sinkhole anti-pattern: layers passing data without adding value, becoming maintenance burdens. Do you know where true boundaries are before committing?
 
 DDD requires visibility you may lack: systems predating your team, fragmented databases with unclear ownership, knowledge living only in production incidents, missing Architecture Decision Records, team topologies shifted without architectural adjustment.
 
@@ -39,7 +39,7 @@ Consolidate services and databases with high cohesion and coupling. This creates
 
 ## How to Consolidate
 
-**Identify candidates** through temporal coupling—services changing together in version history are one logical component. Measure coupling (inter-service calls, cross-database queries), cohesion (related data and functions), and database relationships (shared tables, replication).
+**Identify candidates** through temporal coupling; services changing together in version history are one logical component. Measure coupling (inter-service calls, cross-database queries), cohesion (related data and functions), and database relationships (shared tables, replication).
 
 **Consolidate selectively.** Merge high-cohesion, high-coupling components. Keep independent services separate. Database consolidation eliminates network calls for joins and makes relationships explicit.
 
@@ -57,4 +57,4 @@ Architecture Decision Records preserve rationale across team changes. Team topol
 
 "Monolith first" works for greenfield. "Consolidate to rediscover boundaries" works for inherited complexity.
 
-Not universal. Some systems benefit from current distribution. Some teams can refactor in place. For many facing unclear boundaries and knowledge loss, consolidation provides a pragmatic path to appropriate boundaries informed by reality—measured coupling and cohesion, aligned topologies, documented rationale.
+Not universal. Some systems benefit from current distribution. Some teams can refactor in place. For many facing unclear boundaries and knowledge loss, consolidation provides a pragmatic path to appropriate boundaries informed by reality: measured coupling and cohesion, aligned topologies, documented rationale.

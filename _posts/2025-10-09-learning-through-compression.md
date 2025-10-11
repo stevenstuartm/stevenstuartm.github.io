@@ -15,19 +15,19 @@ The intermediate knows more but explains worse. More knowledge produces less cla
 
 **The intermediate lacks compression.** They accumulated information without discovering the underlying pattern. When explaining, they dump everything they know because they haven't identified what matters.
 
-The expert compressed. They found the core principle that regenerates the details. Their brief explanation isn't incomplete—it's **completely compressed**.
+The expert compressed. They found the core principle that regenerates the details. Their brief explanation isn't incomplete; it's **completely compressed**.
 
 ## Understanding as Compression
 
 Raw information is verbose. Understanding is discovering the pattern that compresses it.
 
 - **Novice**: Oversimplified (incomplete without knowing)
-- **Intermediate**: Verbose (no compression—reports all facts)
-- **Expert**: Concise (complete compression—brief but precise)
+- **Intermediate**: Verbose (no compression, reports all facts)
+- **Expert**: Concise (complete compression, brief but precise)
 
-Compression isn't eliminating details. It's internalizing them deeply enough to regenerate them from core principles. The expert knows more facts than the intermediate—they've just organized those facts around fewer, more powerful concepts.
+Compression isn't eliminating details. It's internalizing them deeply enough to regenerate them from core principles. The expert knows more facts than the intermediate; they've just organized those facts around fewer, more powerful concepts.
 
-You cannot compress what you don't realize is verbose. This requires **acknowledged ignorance**—recognizing the gap between what you know and what you understand.
+You cannot compress what you don't realize is verbose. This requires **acknowledged ignorance**, recognizing the gap between what you know and what you understand.
 
 ## The Cycle
 
@@ -46,16 +46,16 @@ This creates your learning target. You cannot compress effectively without knowi
 
 **Phase 2: Expand Through Research**
 
-Study the details. Accumulate facts. Read deeply. The information expands—becomes verbose, complex, overwhelming. This is necessary.
+Study the details. Accumulate facts. Read deeply. The information expands, becomes verbose, complex, overwhelming. This is necessary.
 
-Learning with intent to teach changes how you process this expansion. You're not just collecting information—you're preparing to articulate it. This makes you notice:
+Learning with intent to teach changes how you process this expansion. You're not just collecting information; you're preparing to articulate it. This makes you notice:
 - What surprises you (challenges assumptions)
 - What patterns emerge across details
 - What questions remain unanswered
 
 **Phase 3: Compress Through Teaching**
 
-Teaching forces externalization—converting internal understanding to external communication. Write, explain, document. Constrain brevity. Avoid jargon.
+Teaching forces externalization, converting internal understanding to external communication. Write, explain, document. Constrain brevity. Avoid jargon.
 
 This reveals compression failures:
 - Where explanation becomes verbose (pattern unclear)
@@ -66,7 +66,7 @@ When you can explain briefly while maintaining precision, compression occurred.
 
 **The Feedback: New Ignorance Emerges**
 
-Teaching reveals what you couldn't explain, questions you couldn't answer, edge cases you hadn't considered. This new ignorance is more specific than your starting ignorance—it's informed by the expansion and compression you just completed.
+Teaching reveals what you couldn't explain, questions you couldn't answer, edge cases you hadn't considered. This new ignorance is more specific than your starting ignorance; it's informed by the expansion and compression you just completed.
 
 This new ignorance becomes the next cycle's starting point. Each iteration:
 - Improves compression (better understanding)
