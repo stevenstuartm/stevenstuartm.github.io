@@ -750,6 +750,21 @@ main {
     font-style: italic;
 }
 
+.post-share {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: var(--color-bg);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-primary);
+    text-align: center;
+}
+
+.post-share p {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+    font-weight: 500;
+}
+
 .post-footer {
     margin-top: var(--spacing-xl);
     padding-top: var(--spacing-md);
@@ -1443,6 +1458,21 @@ main {
     margin: var(--spacing-md) auto;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.guide-share {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: var(--color-bg);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-primary);
+    text-align: center;
+}
+
+.guide-share p {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+    font-weight: 500;
 }
 
 .guide-footer {

@@ -10,6 +10,11 @@ permalink: /tech-radar.html
   <button id="listViewBtn" class="toggle-btn">List View</button>
 </div>
 
+<div style="text-align: center; margin: 1rem 0;">
+  <p style="margin-bottom: 0.5rem; color: var(--color-text-light); font-size: 0.9rem;">Find this tech radar useful?</p>
+  {% include share-linkedin.html %}
+</div>
+
 <div id="radar-container" class="view-section">
   <svg id="radar"></svg>
 </div>

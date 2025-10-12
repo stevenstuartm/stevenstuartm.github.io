@@ -15,7 +15,9 @@
             <div class="header-right">
                 <nav class="site-nav">
                     <a href="{{ '/' | relative_url }}">Home</a>
-
+                    <a href="{{ '/about.html' | relative_url }}">About</a>
+                    <a href="{{ '/resume.html' | relative_url }}">Resume</a>
+                    
                     <div class="nav-dropdown">
                         <button class="nav-dropdown-toggle" aria-expanded="false">
                             Insights <span class="dropdown-arrow">▾</span>
@@ -38,8 +40,6 @@
                     </div>
 
                     <a href="{{ '/upcoming.html' | relative_url }}">Upcoming</a>
-                    <a href="{{ '/about.html' | relative_url }}">About</a>
-                    <a href="{{ '/resume.html' | relative_url }}">Resume</a>
                 </nav>
                 <div class="header-social">
                     {% include social-links.html modifier="-header" %}
