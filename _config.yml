@@ -51,6 +51,9 @@ collections:
   guides:
     output: true
     permalink: /study-guides/:path.html
+  case_studies:
+    output: true
+    permalink: /case-studies/:title.html
 
 # Defaults
 defaults:
@@ -64,6 +67,11 @@ defaults:
       type: "guides"
     values:
       layout: "guide"
+  - scope:
+      path: ""
+      type: "case_studies"
+    values:
+      layout: "case-study"
   - scope:
       path: ""
     values:
