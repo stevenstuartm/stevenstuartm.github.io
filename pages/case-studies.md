@@ -7,11 +7,6 @@ permalink: /case-studies.html
 
 Deep dives into real projects: the problems faced, architectural decisions made, tradeoffs considered, and measurable outcomes achieved.
 
-<div style="text-align: center; margin: 1.5rem 0;">
-  <p style="margin-bottom: 0.75rem; color: var(--color-text-light); font-size: 0.9rem;">Find these case studies valuable?</p>
-  {% include share-linkedin.html %}
-</div>
-
 ---
 
 <div class="case-studies-list">

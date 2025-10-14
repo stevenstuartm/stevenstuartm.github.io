@@ -50,10 +50,3 @@ I regularly share insights on software architecture, system design, and engineer
 *VP of Engineering*
 
 "Steven is a very talented engineer I have had the pleasure to work with, his attention to detail and quality of code delivered has always been of exemplary levels. He has tackled some impressive projects and provided great results. It was a pleasure working with him during my time in Cottonwood."
-
----
-
-<div style="text-align: center; margin-top: 2rem;">
-  <p style="margin-bottom: 1rem; color: var(--color-text); font-weight: 500;">Know someone who might benefit from connecting?</p>
-  {% include share-linkedin.html %}
-</div>
