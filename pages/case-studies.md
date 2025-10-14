@@ -19,41 +19,43 @@ Deep dives into real projects: the problems faced, architectural decisions made,
 {% assign sorted_case_studies = site.case_studies | sort: 'date' | reverse %}
   {% for case_study in sorted_case_studies %}
   <article class="case-study-card">
-    <div class="case-study-card-header">
-      <h2><a href="{{ case_study.url | relative_url }}">{{ case_study.title }}</a></h2>
-      {% if case_study.subtitle %}
-      <p class="case-study-card-subtitle">{{ case_study.subtitle }}</p>
-      {% endif %}
-    </div>
+    <a href="{{ case_study.url | relative_url }}" class="case-study-link">
+      <div class="case-study-card-header">
+        <h2>{{ case_study.title }}</h2>
+        {% if case_study.subtitle %}
+        <p class="case-study-card-subtitle">{{ case_study.subtitle }}</p>
+        {% endif %}
+      </div>
 
-    <div class="case-study-card-meta">
-      {% if case_study.company %}
-      <span class="meta-item"><strong>Company:</strong> {{ case_study.company }}</span>
-      {% endif %}
-      {% if case_study.role %}
-      <span class="meta-item"><strong>Role:</strong> {{ case_study.role }}</span>
-      {% endif %}
-      {% if case_study.date %}
-      <span class="meta-item"><strong>Year:</strong> {{ case_study.date | date: "%Y" }}</span>
-      {% endif %}
-    </div>
+      <div class="case-study-card-meta">
+        {% if case_study.company %}
+        <span class="meta-item"><strong>Company:</strong> {{ case_study.company }}</span>
+        {% endif %}
+        {% if case_study.role %}
+        <span class="meta-item"><strong>Role:</strong> {{ case_study.role }}</span>
+        {% endif %}
+        {% if case_study.date %}
+        <span class="meta-item"><strong>Year:</strong> {{ case_study.date | date: "%Y" }}</span>
+        {% endif %}
+      </div>
 
-    {% if case_study.excerpt %}
-    <p class="case-study-card-excerpt">{{ case_study.excerpt | strip_html | truncatewords: 40 }}</p>
-    {% endif %}
-
-    {% if case_study.technologies %}
-    <div class="case-study-card-technologies">
-      {% for tech in case_study.technologies limit:5 %}
-      <span class="tech-tag">{{ tech }}</span>
-      {% endfor %}
-      {% if case_study.technologies.size > 5 %}
-      <span class="tech-tag-more">+{{ case_study.technologies.size | minus: 5 }} more</span>
+      {% if case_study.excerpt %}
+      <p class="case-study-card-excerpt">{{ case_study.excerpt | strip_html | truncatewords: 40 }}</p>
       {% endif %}
-    </div>
-    {% endif %}
 
-    <a href="{{ case_study.url | relative_url }}" class="read-more">Read case study →</a>
+      {% if case_study.technologies %}
+      <div class="case-study-card-technologies">
+        {% for tech in case_study.technologies limit:5 %}
+        <span class="tech-tag">{{ tech }}</span>
+        {% endfor %}
+        {% if case_study.technologies.size > 5 %}
+        <span class="tech-tag-more">+{{ case_study.technologies.size | minus: 5 }} more</span>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <span class="read-more">Read case study →</span>
+    </a>
   </article>
   {% endfor %}
 {% else %}
@@ -90,17 +92,20 @@ Deep dives into real projects: the problems faced, architectural decisions made,
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
+.case-study-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .case-study-card-header h2 {
   margin: 0 0 var(--spacing-xs) 0;
   font-size: 1.5rem;
-}
-
-.case-study-card-header h2 a {
   color: var(--color-text);
-  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.case-study-card-header h2 a:hover {
+.case-study-link:hover .case-study-card-header h2 {
   color: var(--color-primary);
 }
 

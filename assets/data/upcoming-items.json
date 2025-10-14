@@ -1,21 +1,15 @@
 [
   {
-    "title": "Case Study: 80% AWS cloud hosting cost reduction",
+    "title": "Study Guide: Total cost of ownership and return on investment",
     "description": "",
     "status": "planned",
-    "deliveryDate": "2025-10-31"
+    "deliveryDate": "2025-10-25"
   },
   {
     "title": "Study Guide: Architecture governance frameworks",
     "description": "",
     "status": "planned",
     "deliveryDate": "2025-11-21"
-  },
-  {
-    "title": "Study Guide: Total cost of ownership and return on investment",
-    "description": "",
-    "status": "planned",
-    "deliveryDate": "2025-11-27"
   },
   {
     "title": "Introduce AAA Cycle",
