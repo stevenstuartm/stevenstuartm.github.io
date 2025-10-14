@@ -96,6 +96,34 @@ description: "Brief description of the guide content"
 
 **Important**: Tables in Markdown must have a blank line before them to render correctly in Jekyll/Kramdown.
 
+### Study Guides Configuration
+
+**Critical**: When adding or removing study guide files, ALWAYS update the configuration file:
+- **Configuration file**: `assets/data/study_guides_config.json`
+- This JSON file controls which guides appear on the study guides listing page
+- Structure: Categories → Subcategories → Guides array
+
+**Standard procedure for adding a new study guide**:
+1. Create the markdown file in `_guides/` (organized by category subdirectory)
+2. Include proper YAML front matter with category, subcategory, and description
+3. **Immediately update** `assets/data/study_guides_config.json`:
+   - Add new subcategory if needed (with name and description)
+   - Add the guide filename to the appropriate subcategory's `guides` array
+4. Test locally to verify the guide appears on the study guides page
+
+**Example configuration entry**:
+```json
+{
+  "name": "Business & Economics",
+  "description": "Cost analysis, ROI, and financial aspects of architecture",
+  "guides": [
+    "tco-roi.md"
+  ]
+}
+```
+
+**Common gotcha**: Creating a guide file without updating the config will result in the guide existing but not being discoverable on the website. Always modify both files together.
+
 ## Tech Radar
 
 The site includes an interactive tech radar feature built with D3.js:
@@ -139,6 +167,51 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - Study guides should have comprehensive table of contents
 - Ensure proper markdown formatting, especially blank lines before tables
 - Organize study guides by category and subcategory for better navigation
+
+### Study Guide Content Philosophy
+
+**Focus on actionable knowledge over reference material**:
+- Avoid generic "Further Reading" sections with book lists and external links
+- Avoid template sections with fill-in-the-blank structures (readers can create their own)
+- Avoid extensive checklists that become reference cards rather than learning material
+
+**Do include**:
+- Core concepts, definitions, and formulas
+- Decision frameworks and comparison models
+- Real-world examples that demonstrate practical application
+- Common pitfalls and how to avoid them
+- Best practices derived from experience
+- Key takeaways that summarize actionable insights
+
+**Guiding principle**: Readers should learn things they didn't know and understand what they can and should do with that knowledge, without being overwhelmed by supplementary reference material.
+
+### Study Guide Organization Patterns
+
+**Existing category structure**:
+- **Architecture**: Foundations, Styles, Leadership, Design, Patterns, Data & Infrastructure, Business & Economics
+- **Data Structures & Algorithms**: Fundamentals, Linear Data Structures, Trees & Heaps, Graphs, Hash Tables & Algorithms
+- **Object-Oriented Programming**: OOP Foundations, Design Patterns
+- **Security**: Security Fundamentals, Threats & Defense, Application Security, Governance & Response
+- **Software Development Lifecycle**: SDLC & Modeling
+- **AI & Machine Learning**: Machine Learning
+- **Data & Analytics**: Analytics
+- **Observability**: Monitoring & Observability
+- **Networking**: Network Fundamentals
+- **Web Development**: SEO & Web
+
+**File organization conventions**:
+- Architecture guides live in `_guides/architecture/` subdirectory
+- DSA guides live in `_guides/dsa/` subdirectory
+- OOP guides live in `_guides/oop/` subdirectory
+- Security guides live in `_guides/security/` subdirectory
+- SDLC guides live in `_guides/sdlc/` subdirectory
+- Top-level guides (observability, networking, etc.) live directly in `_guides/`
+
+**When to create new subcategories**:
+- Group related guides under a coherent theme
+- Subcategory should have clear, descriptive name and purpose
+- Include helpful description that explains the content scope
+- Consider if the subcategory will have multiple guides (avoid single-guide subcategories unless it's a starting point for planned expansion)
 
 ### Markdown Formatting Requirements
 - **Tables**: Always include a blank line before markdown tables

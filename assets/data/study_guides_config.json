@@ -55,6 +55,14 @@
             "disaster-recovery-patterns.md",
             "deployment-strategies.md"
           ]
+        },
+        {
+          "name": "Business & Economics",
+          "description": "Cost analysis, ROI, and financial aspects of architecture",
+          "guides": [
+            "total-cost-of-ownership.md",
+            "return-on-investment.md"
+          ]
         }
       ]
     },
