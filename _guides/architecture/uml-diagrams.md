@@ -1,5 +1,5 @@
 ---
-title: "UML Diagrams Guide"
+title: "UML Diagrams"
 layout: guide
 category: Architecture
 subcategory: Design

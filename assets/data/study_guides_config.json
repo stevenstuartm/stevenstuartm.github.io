@@ -17,10 +17,13 @@
           ]
         },
         {
-          "name": "Leadership",
-          "description": "Decision-making, leadership, and team management",
+          "name": "Leadership & Governance",
+          "description": "Decision-making, leadership, and architecture governance",
           "guides": [
-            "ArchitectureDecisionsLeadership.md"
+            "ArchitectureDecisionsLeadership.md",
+            "governance.md",
+            "governance-frameworks.md",
+            "governance-tools.md"
           ]
         },
         {

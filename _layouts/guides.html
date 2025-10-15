@@ -44,8 +44,21 @@ layout: default
                         {% for guide_filename in subcategory.guides %}
                             {% assign guide = site.guides | where_exp: "item", "item.path contains guide_filename" | first %}
                             {% if guide %}
+                                {% comment %} Calculate reading order from array position (1-indexed) {% endcomment %}
+                                {% assign reading_order = forloop.index %}
+                                {% comment %} Only show order badges if subcategory has multiple guides {% endcomment %}
+                                {% assign show_order = false %}
+                                {% if subcategory.guides.size > 1 %}
+                                    {% assign show_order = true %}
+                                {% endif %}
+
                                 <article class="guide-card" data-title="{{ guide.title | downcase }}" data-category="{{ guide.category }}">
                                     <a href="{{ guide.url | relative_url }}" class="guide-link">
+                                        {% if show_order %}
+                                        <div class="reading-order-badge">
+                                            <span class="order-number">{{ reading_order }}</span>
+                                        </div>
+                                        {% endif %}
                                         <h3>{{ guide.title }}</h3>
                                         <div class="guide-card-meta">
                                             <span class="category-badge">{{ guide.category }}</span>

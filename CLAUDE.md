@@ -185,6 +185,41 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 
 **Guiding principle**: Readers should learn things they didn't know and understand what they can and should do with that knowledge, without being overwhelmed by supplementary reference material.
 
+### Study Guide Content Quality Standards
+
+**CRITICAL: Explain before prescribing**:
+- Always provide substantive explanations of what concepts, frameworks, and tools actually ARE before describing when/how to use them
+- Don't jump straight to "When to use" without first explaining the fundamentals
+- Readers need to understand the subject matter before they can make informed decisions about applying it
+- Example: When documenting a framework, explain its structure, components, and how it works BEFORE listing use cases
+
+**CRITICAL: Link to mentioned resources**:
+- If you reference a specific tool, framework, organization, website, or resource in the content, ALWAYS provide a link to it
+- Add a "Resources" or "Resources and References" section for each major topic with official documentation links
+- Include links to:
+  - Official homepages and documentation
+  - Tools and web consoles mentioned in the text
+  - Standards bodies and certification programs
+  - Key whitepapers and reference materials
+- Organize resources logically (by framework, by topic, etc.)
+- Use descriptive link text so readers know what they're clicking on
+
+**Example of proper structure**:
+```markdown
+### Framework Name
+
+**What it is:**
+[Detailed explanation of the framework, its components, structure, and how it works]
+
+**When to use:**
+[Use cases and decision criteria]
+
+**Resources:**
+- [Official Homepage](https://example.com)
+- [Documentation](https://docs.example.com)
+- [Tool or Console](https://console.example.com)
+```
+
 ### Study Guide Organization Patterns
 
 **Existing category structure**:

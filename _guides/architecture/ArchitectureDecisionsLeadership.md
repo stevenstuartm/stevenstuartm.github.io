@@ -2,7 +2,7 @@
 layout: guide
 title: "Architecture Decisions & Leadership"
 category: Architecture
-subcategory: Leadership
+subcategory: Leadership & Governance
 description: "Master architect responsibilities, decision-making frameworks, ADRs, risk management, team leadership, and navigating organizational politics for effective technical leadership."
 ---
 

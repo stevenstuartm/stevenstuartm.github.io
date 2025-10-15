@@ -1170,10 +1170,52 @@ main {
     display: block;
     color: inherit;
     text-decoration: none;
+    position: relative;
 }
 
 .guide-card a.guide-link:hover {
     color: inherit;
+}
+
+.reading-order-badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: var(--color-primary);
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+}
+
+.prerequisites-notice {
+    background: #f0f7ff;
+    border-left: 3px solid var(--color-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+}
+
+.prereq-icon {
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+.prereq-text {
+    color: #2c5aa0;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 .guide-card h3 {
