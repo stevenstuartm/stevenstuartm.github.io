@@ -1,5 +1,21 @@
 {
   "categories": {
+    "Software Development Lifecycle": {
+      "subcategories": [
+        {
+          "name": "SDLC & Modeling",
+          "description": "Development methodologies and system modeling",
+          "guides": [
+            "sdlc/sdlc.md",
+            "sdlc/sdlc-methodologies.md",
+            "sdlc/shape-up.md",
+            "sdlc/team-organization.md",
+            "sdlc/devsecops.md",
+            "sdlc/aaa-cycle.md"
+          ]
+        }
+      ]
+    },
     "Architecture": {
       "subcategories": [
         {
@@ -65,6 +81,47 @@
           "guides": [
             "total-cost-of-ownership.md",
             "return-on-investment.md"
+          ]
+        }
+      ]
+    },
+    "Security": {
+      "subcategories": [
+        {
+          "name": "Security Fundamentals",
+          "description": "Core security concepts and principles",
+          "guides": [
+            "security-foundations.md",
+            "frameworks-standards.md",
+            "security-best-practices.md"
+          ]
+        },
+        {
+          "name": "Threats & Defense",
+          "description": "Understanding and defending against security threats",
+          "guides": [
+            "threats-and-vulnerabilities.md",
+            "modern-attack-vectors.md",
+            "security-controls-defense.md"
+          ]
+        },
+        {
+          "name": "Application Security",
+          "description": "Securing applications and data",
+          "guides": [
+            "application-security.md",
+            "data-protection.md",
+            "security-testing.md"
+          ]
+        },
+        {
+          "name": "Governance & Response",
+          "description": "Compliance, incident response, and governance",
+          "guides": [
+            "compliance-governance.md",
+            "incident-response-recovery.md",
+            "emerging-technologies.md",
+            "security-tools-resources.md"
           ]
         }
       ]
@@ -146,81 +203,6 @@
         }
       ]
     },
-    "Security": {
-      "subcategories": [
-        {
-          "name": "Security Fundamentals",
-          "description": "Core security concepts and principles",
-          "guides": [
-            "security-foundations.md",
-            "frameworks-standards.md",
-            "security-best-practices.md"
-          ]
-        },
-        {
-          "name": "Threats & Defense",
-          "description": "Understanding and defending against security threats",
-          "guides": [
-            "threats-and-vulnerabilities.md",
-            "modern-attack-vectors.md",
-            "security-controls-defense.md"
-          ]
-        },
-        {
-          "name": "Application Security",
-          "description": "Securing applications and data",
-          "guides": [
-            "application-security.md",
-            "data-protection.md",
-            "security-testing.md"
-          ]
-        },
-        {
-          "name": "Governance & Response",
-          "description": "Compliance, incident response, and governance",
-          "guides": [
-            "compliance-governance.md",
-            "incident-response-recovery.md",
-            "emerging-technologies.md",
-            "security-tools-resources.md"
-          ]
-        }
-      ]
-    },
-    "Software Development Lifecycle": {
-      "subcategories": [
-        {
-          "name": "SDLC & Modeling",
-          "description": "Development methodologies and system modeling",
-          "guides": [
-            "sdlc/sdlc.md"
-          ]
-        }
-      ]
-    },
-    "AI & Machine Learning": {
-      "subcategories": [
-        {
-          "name": "Machine Learning",
-          "description": "Core ML concepts and techniques",
-          "guides": [
-            "machine-learning.md",
-            "generative-ai.md"
-          ]
-        }
-      ]
-    },
-    "Data & Analytics": {
-      "subcategories": [
-        {
-          "name": "Analytics",
-          "description": "Statistics and data analysis",
-          "guides": [
-            "analytics-and-statistics.md"
-          ]
-        }
-      ]
-    },
     "Observability": {
       "subcategories": [
         {
@@ -250,6 +232,29 @@
           "description": "Search engine optimization and web best practices",
           "guides": [
             "seo.md"
+          ]
+        }
+      ]
+    },
+    "Data & Analytics": {
+      "subcategories": [
+        {
+          "name": "Analytics",
+          "description": "Statistics and data analysis",
+          "guides": [
+            "analytics-and-statistics.md"
+          ]
+        }
+      ]
+    },
+    "AI & Machine Learning": {
+      "subcategories": [
+        {
+          "name": "Machine Learning",
+          "description": "Core ML concepts and techniques",
+          "guides": [
+            "machine-learning.md",
+            "generative-ai.md"
           ]
         }
       ]
