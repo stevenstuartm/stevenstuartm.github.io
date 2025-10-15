@@ -7,16 +7,6 @@ tags: [learning, teaching, knowledge-management, personal-growth]
 description: "Understanding emerges from acknowledged ignorance expanded through research and compressed through teaching. A methodology for accelerated learning."
 ---
 
-## The Paradox
-
-Experts explain complex ideas simply. Intermediates cannot.
-
-The intermediate knows more but explains worse. More knowledge produces less clarity. Why?
-
-**The intermediate lacks compression.** They accumulated information without discovering the underlying pattern. When explaining, they dump everything they know because they haven't identified what matters.
-
-The expert compressed. They found the core principle that regenerates the details. Their brief explanation isn't incomplete; it's **completely compressed**.
-
 ## Understanding as Compression
 
 Raw information is verbose. Understanding is discovering the pattern that compresses it.
