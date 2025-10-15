@@ -26,6 +26,9 @@ layout: default
 </script>
 
 <article class="guide">
+    {% comment %} Add prev/next navigation at top {% endcomment %}
+    {% include guide_navigation.html %}
+
     <header class="guide-header">
         <nav class="breadcrumb">
             <a href="{{ '/study-guides.html' | relative_url }}">Study Guides</a>

@@ -10,6 +10,15 @@ layout: default
         {% endif %}
     </section>
 
+    {% if page.featured_guide %}
+    <section class="featured-content">
+        <div class="featured-label">Featured Today</div>
+        <h3 class="featured-title">{{ page.featured_guide.title }}</h3>
+        <p class="featured-description">{{ page.featured_guide.description }}</p>
+        <a href="{{ page.featured_guide.url | relative_url }}" class="featured-link">Explore the Framework →</a>
+    </section>
+    {% endif %}
+
     <div class="home-grid">
         <aside class="home-summary">
             <div class="home-intro">

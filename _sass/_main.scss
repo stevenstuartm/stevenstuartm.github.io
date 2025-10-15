@@ -508,7 +508,7 @@ main {
 .hero {
     text-align: center;
     padding: var(--spacing-xl) 0;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-xs);
 }
 
 .hero h2 {
@@ -520,6 +520,76 @@ main {
 .subtitle {
     font-size: 1.25rem;
     color: var(--color-text-light);
+}
+
+/* Featured Content Section */
+.featured-content {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.featured-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    opacity: 0.9;
+    margin-bottom: var(--spacing-xs);
+}
+
+.featured-title {
+    font-size: 1.75rem;
+    color: white;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.3;
+}
+
+.featured-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.95;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.featured-link {
+    display: inline-block;
+    background: white;
+    color: var(--color-primary);
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.featured-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .featured-content {
+        padding: var(--spacing-md);
+    }
+
+    .featured-title {
+        font-size: 1.35rem;
+    }
+
+    .featured-description {
+        font-size: 1rem;
+    }
 }
 
 .home-grid {
@@ -1937,28 +2007,28 @@ main {
 
 /* Guide prev/next navigation */
 .guide-navigation {
-  margin: 3rem 0 2rem 0;
-  padding-top: 2rem;
-  border-top: 2px solid var(--border-color, #e0e0e0);
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--border-color, #e0e0e0);
 }
 
 .guide-nav-container {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .guide-nav-link {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
-  background: var(--card-bg, #f8f9fa);
-  border-radius: 8px;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--color-card-bg, #FFFFFF);
+  border-radius: 6px;
   text-decoration: none;
   color: var(--text-color, #333);
   transition: all 0.2s ease;
-  border: 1px solid transparent;
+  border: 2px solid var(--color-border, #E0DED9);
   flex: 1;
   max-width: 45%;
 }

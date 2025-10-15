@@ -37,10 +37,7 @@
           {% assign prev_guide = all_guides[prev_index] %}
           <a href="{{ prev_guide.url | relative_url }}" class="guide-nav-link guide-nav-prev">
             <span class="nav-arrow">←</span>
-            <div class="nav-content">
-              <span class="nav-label">Previous</span>
-              <span class="nav-guide-title">{{ prev_guide.title }}</span>
-            </div>
+            <span class="nav-guide-title">{{ prev_guide.title }}</span>
           </a>
         {% else %}
           <div class="guide-nav-spacer"></div>
@@ -51,10 +48,7 @@
         {% if next_index < all_guides.size %}
           {% assign next_guide = all_guides[next_index] %}
           <a href="{{ next_guide.url | relative_url }}" class="guide-nav-link guide-nav-next">
-            <div class="nav-content">
-              <span class="nav-label">Next</span>
-              <span class="nav-guide-title">{{ next_guide.title }}</span>
-            </div>
+            <span class="nav-guide-title">{{ next_guide.title }}</span>
             <span class="nav-arrow">→</span>
           </a>
         {% else %}

@@ -3,16 +3,31 @@
     "Software Development Lifecycle": {
       "subcategories": [
         {
-          "name": "SDLC & Modeling",
-          "description": "Development methodologies and system modeling",
+          "name": "SDLC Fundamentals",
+          "description": "Core SDLC concepts and methodologies",
           "guides": [
             "sdlc/sdlc.md",
             "sdlc/sdlc-methodologies.md",
             "sdlc/shape-up.md",
-            "sdlc/team-organization.md",
+            "sdlc/team-organization.md"
+          ]
+        },
+        {
+          "name": "DevOps & Delivery",
+          "description": "CI/CD, deployment automation, and security integration",
+          "guides": [
             "sdlc/cicd.md",
-            "sdlc/devsecops.md",
-            "sdlc/aaa-cycle.md"
+            "sdlc/devsecops.md"
+          ]
+        },
+        {
+          "name": "AAA Cycle Framework",
+          "description": "Comprehensive framework for architects: Align-Agree-Apply",
+          "guides": [
+            "sdlc/aaa-cycle.md",
+            "sdlc/aaa-phase1-align.md",
+            "sdlc/aaa-phase2-agree.md",
+            "sdlc/aaa-phase3-apply.md"
           ]
         }
       ]
@@ -45,9 +60,15 @@
         },
         {
           "name": "Design",
-          "description": "Component design, risk analysis, and diagramming",
+          "description": "Component design and risk analysis",
           "guides": [
-            "DesignImplementation.md",
+            "DesignImplementation.md"
+          ]
+        },
+        {
+          "name": "Modeling",
+          "description": "Visual modeling and diagramming techniques",
+          "guides": [
             "uml-diagrams.md"
           ]
         },

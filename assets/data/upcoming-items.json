@@ -2,13 +2,13 @@
   {
     "title": "Introduce AAA Cycle",
     "description": "Agree, Align, Apply. A review of my own initial and consolidated approach to system inception and delivery.",
-    "status": "cooking",
-    "deliveryDate": "2026-12-01"
+    "status": "refining",
+    "deliveryDate": "2025-10-31"
   },
   {
     "title": "Latest Tech News Feed",
     "description": "Curated feed of the latest technology news, industry trends, and architectural insights relevant to cloud-native development and system design.",
     "status": "planned",
-    "deliveryDate": "2026-03-01"
+    "deliveryDate": "2026-12-01"
   }
 ]
