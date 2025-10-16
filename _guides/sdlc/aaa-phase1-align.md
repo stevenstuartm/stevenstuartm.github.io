@@ -12,13 +12,27 @@ description: "Understand the problem before committing to a solution."
 
 **Understand the problem space before making commitments.** Build trust with stakeholders, surface constraints, and establish shared understanding of success.
 
-### What You Accomplish
+### The Universal Pattern
 
-- Identify all stakeholders and understand their perspectives
-- Define the business problem and success criteria
-- Surface constraints, assumptions, and risks early
-- Provide realistic initial estimates
-- Secure formal commitment through project charter approval
+Regardless of project size or methodology, alignment follows these steps:
+
+1. **Understand the need** - What problem? Why now?
+2. **Identify stakeholders** - Who cares? Who decides?
+3. **Surface constraints** - What limits our options?
+4. **Assess risk** - What could go wrong?
+5. **Estimate effort** - How much work?
+6. **Get agreement** - Are we aligned to proceed?
+
+The depth and formality scale with scope and risk, but these questions remain constant.
+
+### Recursive Application
+
+Align applies at every level of work:
+
+- **Program Level** (months): Full depth with comprehensive charter
+- **Project Level** (weeks): Medium depth with focused discovery
+- **Sprint Level** (days): Lightweight with story grooming
+- **Feature Level** (hours): Quick alignment on acceptance criteria
 
 ### Entry & Exit
 
@@ -41,12 +55,17 @@ description: "Understand the problem before committing to a solution."
 - What are the hard constraints (timeline, budget, technology, compliance)?
 - What keeps you up at night about this project?
 
-**Core Principle**: Listen more than you talk. Don't jump to solutions. Build trust by demonstrating genuine interest in their needs.
+**How to Do This Well**:
+- Listen more than you talk—take notes, ask clarifying questions, observe dynamics
+- Don't jump to solutions yet—stay neutral and build trust first
+- Demonstrate genuine interest in stakeholder needs, not just their requirements
+- In every meeting, ask "Who else should be involved?"
 
 **Red Flags**:
-- Missing key stakeholders (operations, security, compliance)
+- Missing key stakeholders (operations, security, compliance, end users)
 - Vague success criteria ("make it faster")
 - Stakeholders who don't understand what alignment involves
+- Pressure to "start coding" without proper discovery
 
 ---
 
@@ -71,13 +90,19 @@ description: "Understand the problem before committing to a solution."
 - MVP scope vs. future enhancements
 - Force-rank if everything is "critical"
 
-**Core Principle**: Ask "why" repeatedly. Probe for non-functionals explicitly—stakeholders often forget to mention them. Push for measurable, testable requirements.
+**How to Do This Well**:
+- Ask "why" repeatedly to get to root needs
+- Probe for non-functionals explicitly—stakeholders often forget them
+- Push for measurable, testable criteria (not "it should be fast" but "page loads < 2 seconds")
+- Document acceptance criteria clearly so there's no ambiguity later
+- Think holistically about how requirements impact architecture
 
 **Red Flags**:
 - Gold plating (collecting every nice-to-have)
-- Vague non-functionals ("it should be fast")
+- Vague, unmeasurable requirements ("fast," "scalable," "user-friendly")
 - No prioritization or everything is P0
 - Analysis paralysis (too long in discovery)
+- Accepting vague requirements without pushing for specifics
 
 ---
 
@@ -104,13 +129,20 @@ description: "Understand the problem before committing to a solution."
 - **Transfer**: Use vendors/insurance to shift risk
 - **Accept**: Acknowledge and plan contingency
 
-**Core Principle**: Extract implicit constraints—stakeholders often assume you know their limitations. Challenge "requirements" that are actually preferences. Quantify risks with likelihood and impact scoring.
+**How to Do This Well**:
+- Extract implicit constraints—stakeholders often assume you know their limitations
+- Challenge "requirements" that are actually preferences
+- Quantify risks with likelihood and impact scoring
+- Map dependencies on other teams/systems explicitly
+- Budget time for organizational overhead (approvals, procurement, access delays)
+- Be honest about uncertainties—don't sugarcoat risks
 
 **Red Flags**:
 - Treating preferences as constraints
 - Missing organizational/political risks
 - Risk lists without mitigation strategies
 - Assuming assumptions are validated without testing them
+- Underestimating non-technical delays (approvals, access provisioning)
 
 ---
 
@@ -135,13 +167,19 @@ description: "Understand the problem before committing to a solution."
 - No-Go: Not feasible, recommend cancellation
 - Pivot: Adjust scope/timeline/approach to make feasible
 
-**Core Principle**: Be realistic, not optimistic. Involve the team—engineers doing the work should validate estimates. Show your work and include contingency explicitly.
+**How to Do This Well**:
+- Be realistic, not optimistic—frame alignment as risk mitigation
+- Involve the team—engineers doing the work should validate estimates
+- Show your work and include contingency explicitly
+- Provide ranges ("4-6 months") not false precision ("4.3 months")
+- Explain methodology and assumptions clearly
+- Flag high-uncertainty areas for stakeholder awareness
 
 **Red Flags**:
 - False precision ("4.3 months")
 - Anchoring bias (stakeholder suggests timeline, skews your estimate)
-- Ignoring non-development work
-- No contingency buffer
+- Ignoring non-development work (testing, deployment, documentation)
+- No contingency buffer (typically 20-30%)
 - Estimating without team input
 
 ---
@@ -235,73 +273,13 @@ Success =
 - ❌ Budget "to be determined"
 - ❌ Key stakeholders not present for approval
 - ❌ Rushed approval without real review
+- ❌ Rubber-stamp approval without understanding
 
-**Core Principle**: Present charter in person. Walk through key sections. Ask stakeholders to explain it back to you. Get formal written sign-off, not just verbal agreement.
+**How to Do This Well**:
+- Present the charter in person—don't just email it
+- Walk through key sections together
+- Ask stakeholders to explain it back to you—test their understanding
+- Make the charter scannable with headings, bullets, and tables
+- Get formal written sign-off, not just verbal agreement
+- Ensure real commitment before proceeding to the Agree phase
 
----
-
-## Essential Principles
-
-### The Universal Pattern
-
-Regardless of project size or methodology:
-
-1. **Understand the need** - What problem? Why now?
-2. **Identify stakeholders** - Who cares? Who decides?
-3. **Surface constraints** - What limits our options?
-4. **Assess risk** - What could go wrong?
-5. **Estimate effort** - How much work?
-6. **Get agreement** - Are we aligned to proceed?
-
-**The depth and formality scale with scope and risk, but these questions remain constant.**
-
-### Recursive Application
-
-Align applies at every level:
-
-**Program Level** (months): Full depth with comprehensive charter
-**Project Level** (weeks): Medium depth with focused discovery
-**Sprint Level** (days): Lightweight with story grooming
-**Feature Level** (hours): Quick alignment on acceptance criteria
-
-### Common Failure Modes
-
-**Rushing Through Alignment**:
-- Pressure to "start coding" leads to skipped discovery
-- Results in misalignment, scope creep, rework, failure
-- Solution: Frame alignment as risk mitigation, not bureaucracy
-
-**Missing Key Stakeholders**:
-- Forgetting operations, security, compliance, end users
-- Results in late requirements, deployment blockers
-- Solution: Ask "Who else?" in every meeting. Involve security/ops from day one
-
-**Accepting Vague Requirements**:
-- "Make it fast" without measurable criteria
-- Results in disputes over whether requirements were met
-- Solution: Push for specific targets. Document acceptance criteria.
-
-**No Real Prioritization**:
-- Everything is critical or no prioritization at all
-- Results in scope creep, missed deadlines
-- Solution: Force-rank features. Show trade-offs explicitly.
-
-**Underestimating Organizational Friction**:
-- Estimates ignore approvals, procurement, access delays
-- Results in blown timelines from non-technical delays
-- Solution: Map dependencies. Budget time for organizational overhead.
-
-**Rubber-Stamp Approval**:
-- Stakeholders approve without understanding
-- Results in "That's not what I thought we agreed to"
-- Solution: Present in person. Get stakeholders to explain it back to you.
-
-### What Matters Most
-
-**Build trust**: Demonstrate genuine interest in stakeholder needs
-**Listen actively**: Take notes, ask clarifying questions, observe dynamics
-**Stay neutral**: Don't jump to solutions yet
-**Be honest**: Don't sugarcoat risks or uncertainties
-**Think holistically**: Consider how requirements impact architecture
-**Document clearly**: Make it scannable with headings, bullets, tables
-**Get real commitment**: Formal sign-off, not just verbal agreement

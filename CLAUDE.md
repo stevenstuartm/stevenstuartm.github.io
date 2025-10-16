@@ -151,6 +151,29 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - GitHub: stevenstuartm
 - LinkedIn: steven-stuart-2974978a
 
+### Link Behavior
+
+**Links that should open in new tabs must be explicitly marked** using Kramdown's inline attribute syntax:
+
+**For external links** (or any link that should open in a new tab):
+```markdown
+[Link Text](https://example.com){:target="_blank" rel="noopener noreferrer"}
+```
+
+**For internal links** (default behavior, stays in same tab):
+```markdown
+[Link Text](/study-guides/some-guide.html)
+```
+
+**Why this approach**:
+- Explicit and clear in the source markdown
+- Developers can see intent directly in the content
+- No hidden JavaScript magic that could confuse maintainers
+- Full control over which links open in new tabs vs. same tab
+- Follows Kramdown's standard inline attribute list (IAL) syntax
+
+**Security note**: Always include `rel="noopener noreferrer"` with `target="_blank"` to prevent potential security vulnerabilities
+
 ## Best Practices
 
 ### When Working with Code
@@ -219,6 +242,39 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - [Documentation](https://docs.example.com)
 - [Tool or Console](https://console.example.com)
 ```
+
+### Architecture Terminology Standards
+
+**CRITICAL: Use correct architecture terminology**
+
+When writing about software architecture, always use proper terminology:
+
+**Architectural Characteristics (NOT "Non-Functional Requirements")**:
+- Correct term: **Architectural Characteristics**
+- Also acceptable: Quality attributes, "-ilities"
+- ❌ Avoid: "Non-functional requirements" (outdated term)
+- Reference: [Architecture Foundations](/study-guides/architecture/ArchitectureFoundations.html#architecture-characteristics)
+
+**Selection process for architectural characteristics**:
+1. Identify **7 characteristics** that are critical to the project's success
+2. Prioritize the **top 3** characteristics—these drive architecture style selection
+3. Use structured worksheets to evaluate and select: [Developer to Architect Worksheets](https://developertoarchitect.com/downloads/worksheets.html)
+
+**Characteristics must meet three criteria**:
+- Specify non-domain consideration
+- Influence structural design
+- Be critical to success
+
+**Common categories**:
+- **Operational**: Availability, Performance, Scalability, Reliability, Recoverability
+- **Structural**: Maintainability, Extensibility, Portability, Upgradeability
+- **Cross-Cutting**: Security, Privacy, Supportability, Accessibility
+
+**When writing AAA Phase 2 (Agree) content**:
+- List "Architectural Characteristics" as the FIRST design decision
+- Emphasize that the top 3 characteristics drive the architecture style choice
+- Reference the worksheets for systematic evaluation
+- Link to Architecture Foundations guide for detailed explanations
 
 ### Study Guide Organization Patterns
 
@@ -327,6 +383,42 @@ When featuring AAA on the homepage, always emphasize:
 3. How it transcends methodologies
 4. The three core values explicitly
 5. Its role as providing guardrails
+
+### AAA Cycle Guide Structure Pattern
+
+**CRITICAL: Eliminate redundant summaries**
+
+AAA guides (and all study guides) should NOT have final summary sections that repeat content. Instead:
+
+**Standard structure for AAA phase guides**:
+
+1. **Phase Overview** (upfront context)
+   - Purpose statement
+   - The Universal Pattern (numbered steps for this phase)
+   - Recursive Application (how it scales from hours to months)
+   - Entry & Exit (what you start with, what you deliver)
+
+2. **Core Activities** (detailed sections)
+   - Each activity has: description, key points, "How to Do This Well", and "Red Flags"
+   - **"How to Do This Well"** replaces "Core Principles" - provides actionable guidance
+   - **Red Flags** include both obvious issues and common failure modes
+   - Integrate principles directly where they apply rather than listing separately
+
+3. **Supporting Sections** (as needed)
+   - Detailed breakdowns (e.g., Project Charter, Cost Analysis)
+   - Each with its own actionable guidance embedded
+
+**What to avoid**:
+- ❌ "Essential Principles" section at the end
+- ❌ "What Matters Most" summary lists
+- ❌ "Common Failure Modes" as separate section (integrate into Red Flags)
+- ❌ Repeating the Universal Pattern at the end (it's already in Overview)
+
+**Why this works**:
+- Readers get context upfront with the Universal Pattern
+- Main content is comprehensive and actionable on its own
+- No need to re-read a summary if the main content is clear
+- Prevents redundancy and maintains focus throughout
 
 ## Maintaining This File
 

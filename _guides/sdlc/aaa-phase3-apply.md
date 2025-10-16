@@ -12,15 +12,27 @@ description: "Execute with discipline while maintaining alignment."
 
 **Execute the agreed plan with discipline while maintaining continuous alignment.** This is sustained execution with governance, quality assurance, stakeholder communication, and value delivery.
 
-### What You Accomplish
+### The Universal Pattern
 
-- Implement the solution incrementally and iteratively
-- Maintain architectural integrity through governance
-- Ensure quality through continuous testing and validation
-- Keep stakeholders aligned with regular communication
-- Deploy reliably with proven strategies
-- Deliver value that meets business objectives
-- Transition to operations smoothly
+Regardless of project size or methodology, application follows these steps:
+
+1. **Implement incrementally** - Build in small batches
+2. **Maintain quality** - Test continuously, don't compromise
+3. **Govern architecture** - Ensure integrity through reviews
+4. **Keep stakeholders aligned** - Regular communication and demos
+5. **Deploy reliably** - Automate and practice
+6. **Reflect and improve** - Learn from experience
+
+The frequency and formality scale with methodology, but the principles remain constant.
+
+### Recursive Application
+
+Apply applies at every level of work:
+
+- **Program Level** (months): Multiple projects, portfolio governance, quarterly reviews
+- **Project Level** (weeks): Team executing sprints, regular demos, project retrospective
+- **Sprint Level** (days): Daily development, sprint review, sprint retro
+- **Feature Level** (hours): Code, test, review, merge with continuous integration
 
 ### Entry & Exit
 
@@ -69,13 +81,20 @@ description: "Execute with discipline while maintaining alignment."
 4. Update architecture documentation
 5. Communicate change to team
 
-**Core Principle**: Review early and often—catch issues when they're easy to fix. Balance governance and autonomy—don't become a bottleneck. Make ADRs lightweight—don't let documentation become burden. Treat technical debt as backlog items—track and prioritize like features.
+**How to Do This Well**:
+- Review early and often—catch issues when they're easy to fix
+- Balance governance and autonomy—don't become a bottleneck
+- Make ADRs lightweight—don't let documentation become a burden
+- Treat technical debt as backlog items—track and prioritize like features
+- Work in small, releasable increments to reduce risk
+- Continuously integrate and test changes
+- Gather feedback early and adapt based on learnings
 
 **Red Flags**:
 - Architecture astronauts (over-governing, creating bottlenecks)
-- No governance (inconsistent implementation)
+- No governance (inconsistent implementation, architectural drift)
 - Ignoring technical debt until unmanageable
-- Not documenting decisions
+- Not documenting decisions with ADRs
 - Rigid adherence to plan when reality differs
 - Late architectural reviews (finding issues after merge)
 
@@ -105,7 +124,14 @@ description: "Execute with discipline while maintaining alignment."
 5. Update plan and communicate
 6. May cycle back to Align or Agree phases if needed
 
-**Core Principle**: Communicate proactively—share status, risks, issues early. Translate technical to business—help stakeholders understand progress. Show working software—demos more powerful than status reports. Be transparent—share good and bad news. Respond to feedback quickly—show stakeholder input matters.
+**How to Do This Well**:
+- Communicate proactively—share status, risks, issues early
+- Translate technical to business—help stakeholders understand progress
+- Show working software—demos are more powerful than status reports
+- Be transparent—share good and bad news honestly
+- Respond to feedback quickly—show stakeholder input matters
+- Hold regular sprint/iteration reviews with working software
+- Monitor risks continuously and implement mitigations
 
 **Red Flags**:
 - Communication vacuum (no updates until the end)
@@ -113,6 +139,8 @@ description: "Execute with discipline while maintaining alignment."
 - Ignoring feedback (stakeholders give input but team doesn't respond)
 - No retrospectives (team doesn't reflect or improve)
 - Hiding problems (not escalating risks/issues early)
+- Losing stakeholder alignment during execution
+- Team stops communicating, stakeholders surprised at delivery
 
 ---
 
@@ -157,15 +185,25 @@ description: "Execute with discipline while maintaining alignment."
 - ✅ Documentation complete
 - ✅ Monitoring and alerting configured
 
-**Core Principle**: Test early, test often—shift left on quality. Automate everything practical—free humans for exploratory testing. Make tests fast and reliable—invest in test infrastructure. Fail fast—run quickest tests first. Don't compromise on quality gates—they exist for good reasons. Test in production—use feature flags, canaries, synthetic monitoring.
+**How to Do This Well**:
+- Test early, test often—shift left on quality
+- Automate everything practical—free humans for exploratory testing
+- Make tests fast and reliable—invest in test infrastructure
+- Fail fast—run quickest tests first in the pipeline
+- Don't compromise on quality gates—they exist for good reasons
+- Test in production—use feature flags, canaries, synthetic monitoring
+- Integrate security testing throughout development, not at the end
+- Ensure quality relentlessly—maintain standards under pressure
 
 **Red Flags**:
 - Testing as afterthought
-- Low test coverage
-- Slow or flaky tests
+- Low test coverage or no coverage tracking
+- Slow or flaky tests that developers ignore
 - Ignoring security until the end
 - No UAT before deploying
 - Lowering quality bar to ship faster
+- Compromising quality for speed
+- Pressure to deliver leading to cut corners on testing
 
 ---
 
@@ -231,15 +269,24 @@ description: "Execute with discipline while maintaining alignment."
 - Establish on-call rotation
 - Define escalation paths
 
-**Core Principle**: Automate everything—deployments, rollbacks, monitoring. Deploy frequently—small, frequent deployments reduce risk. Use feature flags—decouple deployment from feature release. Monitor proactively—don't wait for users to report issues. Test rollback regularly—it should be routine. Practice chaos engineering—test resilience in production.
+**How to Do This Well**:
+- Automate everything—deployments, rollbacks, monitoring
+- Deploy frequently—small, frequent deployments reduce risk
+- Use feature flags—decouple deployment from feature release
+- Monitor proactively—don't wait for users to report issues
+- Test rollback regularly—it should be routine, not exceptional
+- Practice chaos engineering—test resilience in production
+- Involve operations early—engage them from Phase 2 onwards
+- Deploy reliably with proven automation strategies
 
 **Red Flags**:
 - Manual deployments (error-prone, slow)
-- No rollback plan
-- Insufficient monitoring (flying blind)
+- No rollback plan or untested rollback procedure
+- Insufficient monitoring (flying blind in production)
 - Deploying on Fridays (no one around to fix issues)
 - Big bang releases (too much at once, high risk)
-- Not testing rollback procedure
+- No operations handoff plan
+- Dev team owns production indefinitely or abrupt handoff
 
 ---
 
@@ -297,80 +344,22 @@ description: "Execute with discipline while maintaining alignment."
 - **Ongoing Maintenance**: Who owns the system long-term?
 - **Success Metrics**: How will we measure ongoing success?
 
-**Core Principle**: Define "done" clearly with acceptance criteria from Phase 1. Document as you go—don't leave all documentation for the end. Involve operations early—engaged throughout project. Run blameless retrospectives—focus on learning, not blame. Celebrate wins—recognize contributions. Plan for ongoing support—warranty period, enhancement backlog.
+**How to Do This Well**:
+- Define "done" clearly with acceptance criteria from Phase 1
+- Document as you go—don't leave all documentation for the end
+- Involve operations early—engage them throughout the project
+- Run blameless retrospectives—focus on learning, not blame
+- Celebrate wins—recognize team effort and accomplishments
+- Plan for ongoing support—warranty period, enhancement backlog
+- Implement incrementally throughout the project
+- Reflect on the entire project and capture lessons learned
 
 **Red Flags**:
-- No clear acceptance (project drags on)
-- Poor documentation (operations struggles)
+- No clear acceptance criteria (project drags on indefinitely)
+- Poor documentation (operations struggles to support)
 - No retrospective (missing opportunity to learn)
-- Ghosting operations team (dev team disappears)
+- Ghosting operations team (dev team disappears after launch)
 - Skipping celebration (not acknowledging effort)
-
----
-
-## Essential Principles
-
-### The Universal Pattern
-
-Regardless of project size or methodology:
-
-1. **Implement incrementally** - Build in small batches
-2. **Maintain quality** - Test continuously, don't compromise
-3. **Govern architecture** - Ensure integrity through reviews
-4. **Keep stakeholders aligned** - Regular communication and demos
-5. **Deploy reliably** - Automate and practice
-6. **Reflect and improve** - Learn from experience
-
-**The frequency and formality scale with methodology, but the principles remain constant.**
-
-### Recursive Application
-
-Apply applies at every level:
-
-**Program Level** (months): Multiple projects, portfolio governance, quarterly reviews
-**Project Level** (weeks): Team executing sprints, regular demos, project retrospective
-**Sprint Level** (days): Daily development, sprint review, sprint retro
-**Feature Level** (hours): Code, test, review, merge with continuous integration
-
-### Common Failure Modes
-
-**Implementation Without Governance**:
-- No architectural oversight, codebase becomes inconsistent
-- Results in architectural drift, technical debt, unmaintainable system
-- Solution: Regular architecture reviews. Document decisions with ADRs. Monitor health metrics.
-
-**Losing Stakeholder Alignment**:
-- Team stops communicating, stakeholders surprised at the end
-- Results in mismatch between expectations and delivery
-- Solution: Regular demos and reviews. Transparent communication. Involve stakeholders in priorities.
-
-**Compromising Quality for Speed**:
-- Pressure to deliver fast, cutting corners on testing
-- Results in bugs in production, security issues, technical debt
-- Solution: Maintain quality gates. Automate testing. Make quality non-negotiable.
-
-**Manual Deployment Processes**:
-- Deployments are manual, error-prone, stressful
-- Results in slow releases, production incidents, fear of deploying
-- Solution: Invest in CI/CD automation early. Practice deployments. Test rollback.
-
-**No Operations Handoff Plan**:
-- Dev team owns production indefinitely or abrupt handoff
-- Results in developer burnout, poor support, system neglect
-- Solution: Involve operations from Phase 2. Create runbooks. Train thoroughly.
-
-**Skipping the Retrospective**:
 - No reflection on what went well or poorly
-- Results in repeating mistakes, no improvement, team frustration
-- Solution: Make retrospectives mandatory. Create actionable items. Follow through.
+- Repeating mistakes from project to project
 
-### What Matters Most
-
-**Implement incrementally**: Small batches reduce risk
-**Maintain architectural integrity**: Reviews and governance prevent drift
-**Communicate continuously**: Show progress, be transparent
-**Ensure quality relentlessly**: Don't compromise on testing
-**Automate deployments**: Make releases routine and safe
-**Keep stakeholders engaged**: Regular demos and updates
-**Learn and improve**: Retrospectives with action items
-**Celebrate success**: Recognize effort and accomplishment
