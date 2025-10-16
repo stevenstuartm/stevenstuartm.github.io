@@ -1,14 +1,14 @@
 [
   {
-    "title": "Introduce AAA Cycle",
-    "description": "Align, Agree, Apply. A review of my own initial and consolidated approach to system inception and delivery.",
-    "status": "refining",
-    "deliveryDate": "2025-10-31"
+    "title": "Cloud-Native IaC vs Cloud-Agnostic IaC",
+    "description": "Comparing infrastructure-as-code strategies: leveraging cloud-specific services for optimization versus maintaining portability across providers, and when each approach makes sense",
+    "status": "planned",
+    "deliveryDate": "2025-11-01"
   },
   {
-    "title": "Latest Tech News Feed",
-    "description": "Curated feed of the latest technology news, industry trends, and architectural insights relevant to cloud-native development and system design.",
+    "title": "Spec-Driven and Test-Driven Code Generation",
+    "description": "Exploring how AI code generation tools transform development workflows when paired with specifications and test suites, and the architectural implications of treating code as ephemeral",
     "status": "planned",
-    "deliveryDate": "2026-12-01"
+    "deliveryDate": "2025-12-01"
   }
 ]
