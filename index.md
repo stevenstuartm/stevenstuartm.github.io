@@ -3,8 +3,8 @@ layout: home
 title: Software Architect
 subtitle: Learn from real-world architecture challenges and proven solutions for scalable systems.
 featured_guide:
-  title: "The AAA Cycle: A Complete SDLC Framework for Architects"
-  description: "A comprehensive, methodology-agnostic framework that guides you through every step from initial stakeholder meeting to delivery. Learn how to Align with needs, Agree on solutions, and Apply with discipline—recursively at any scale."
+  title: "The AAA Cycle: A Guiding Discipline for Architects"
+  description: "Not a framework, but a way of valuing. AAA transcends SDLC methodologies by instilling what matters: human connection through Align, shared commitment through Agree, and honoring agreements through Apply. Learn the discipline that provides guardrails against the most common failures."
   url: "/study-guides/sdlc/aaa-cycle.html"
 ---
 

@@ -254,6 +254,80 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - **Code blocks**: Use triple backticks with language specification
 - **Links**: Use markdown link syntax for internal references
 
+### Writing Style and Voice
+
+**CRITICAL: Avoid AI-tell phrases**:
+These phrases are obvious indicators of AI-generated content and must be avoided:
+- ❌ "The key insight"
+- ❌ "It's important to note"
+- ❌ "It's worth noting"
+- ❌ "It should be noted"
+- ❌ "In conclusion" / "In summary"
+- ❌ "Ultimately" / "Essentially" / "Fundamentally" (when used as filler)
+- ❌ "At the end of the day"
+- ❌ "The bottom line is"
+
+**Write naturally instead**:
+- ✅ State insights directly without meta-commentary
+- ✅ Use active voice and direct statements
+- ✅ Let the content speak for itself without labeling it as "key" or "important"
+
+**Example transformations**:
+```markdown
+❌ The key insight: AAA applies at any scale
+✅ AAA applies at any scale
+
+❌ It's important to note that alignment comes first
+✅ Alignment comes first
+
+❌ AAA is fundamentally about how we value
+✅ AAA is about how we value
+```
+
+### AAA Cycle Content Philosophy
+
+The AAA Cycle represents a specific philosophical approach that must be maintained consistently:
+
+**What AAA Is**:
+- A guiding discipline and principle, NOT a framework or methodology
+- A way of valuing before a way of working
+- A philosophy that transcends SDLC methodologies (Agile, Waterfall, etc.)
+- Guardrails against common failures, not a rigid checklist
+
+**Core AAA Values (always present in this order)**:
+1. **Align** = Human connection comes first (understanding needs before solutions)
+2. **Agree** = Shared commitment (genuine agreement before execution)
+3. **Apply** = Honoring agreements (applying what was agreed, not just "delivering")
+
+**Critical positioning**:
+- Never compare AAA to SDLC methodologies as if it's competing with them
+- Emphasize that "delivery" is NOT the goal - applying the agreement is
+- Focus on preventing failures through broken values, not broken processes
+- Present concrete activities as "examples of the discipline in practice" rather than required steps
+- Frame strict frameworks (like Scrum) as often becoming defensive/political rather than trust-based
+- Distinguish "agile" (principle) from "Agile" (branded methodology with ceremonies)
+- AAA is about being flexible on *how* while unwavering on *what matters* (values)
+
+**When updating AAA content**:
+- Lead with the philosophical value, then show practical application
+- Use "The Core Value" headings to reinforce the discipline aspect
+- Emphasize human connection and relationships throughout
+- Avoid language that makes AAA sound like just another process framework
+
+**Consistent terminology**:
+- "Guiding discipline" or "principle" (not "framework" or "methodology")
+- "Living this discipline" (not "steps to follow" or "tasks to complete")
+- "What [Phase] Produces" (not "what you deliver")
+- "Guards against failure" (not "ensures success")
+
+**Featured guide description pattern** (for homepage):
+When featuring AAA on the homepage, always emphasize:
+1. What it is NOT (not a framework)
+2. That it's a way of valuing
+3. How it transcends methodologies
+4. The three core values explicitly
+5. Its role as providing guardrails
+
 ## Maintaining This File
 
 **IMPORTANT**: Claude Code should proactively keep this CLAUDE.md file up to date during conversations.
