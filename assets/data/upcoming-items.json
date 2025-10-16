@@ -1,11 +1,5 @@
 [
   {
-    "title": "Cloud-Native IaC vs Cloud-Agnostic IaC",
-    "description": "Comparing infrastructure-as-code strategies: leveraging cloud-specific services for optimization versus maintaining portability across providers, and when each approach makes sense",
-    "status": "planned",
-    "deliveryDate": "2025-11-01"
-  },
-  {
     "title": "Spec-Driven and Test-Driven Code Generation",
     "description": "Exploring how AI code generation tools transform development workflows when paired with specifications and test suites, and the architectural implications of treating code as ephemeral",
     "status": "planned",

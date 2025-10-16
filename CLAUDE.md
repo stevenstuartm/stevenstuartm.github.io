@@ -63,7 +63,7 @@ bundle exec jekyll build
 ### Blog Post Format
 All blog posts must:
 - Be placed in `_posts/` with filename format `YYYY-MM-DD-title.md`
-- Include YAML front matter with: layout, title, date, and optional tags
+- Include YAML front matter with: layout, title, date, description, series, and tags
 - Use `layout: post` (set by default in config)
 
 Example:
@@ -72,9 +72,33 @@ Example:
 layout: post
 title: "Your Post Title"
 date: 2025-09-29
+description: "Concise summary that captures the core thesis and key points of the post"
+series: "Technology & Tools"
 tags: [architecture, design-patterns]
 ---
 ```
+
+**CRITICAL: Required front matter fields**:
+- **description**: A 1-2 sentence summary that captures the core thesis. Used for SEO and post previews.
+- **series**: Must match one of the existing series names in `assets/data/blog_series_config.json`
+
+**Standard procedure for creating a new blog post**:
+1. Create the markdown file in `_posts/` with correct date format
+2. Include complete YAML front matter (layout, title, date, description, series, tags)
+3. **Immediately update** `assets/data/blog_series_config.json`:
+   - Add the post filename to the appropriate series' `posts` array
+   - Posts are listed in reverse chronological order (newest first)
+4. Update `assets/data/upcoming-items.json` if the post was planned:
+   - Change status from "planned" to "completed"
+   - Update deliveryDate to actual publish date
+
+**Existing blog series** (from blog_series_config.json):
+- **Architecture Insights**: Deep dives into architectural patterns, code quality, and system design principles
+- **Technology & Tools**: Practical lessons from infrastructure, frameworks, and development tools
+- **Development Practice**: Insights on agile methodologies, learning strategies, and career growth
+- **Industry & Culture**: Perspectives on hiring practices, leadership, and industry trends
+
+**Common gotcha**: Creating a blog post without updating blog_series_config.json will result in the post not appearing in the series listing on the blog page. Always modify both files together.
 
 ### Study Guide Format
 All study guides must:
@@ -190,6 +214,33 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - Study guides should have comprehensive table of contents
 - Ensure proper markdown formatting, especially blank lines before tables
 - Organize study guides by category and subcategory for better navigation
+
+### Blog Post Writing Standards
+
+**CRITICAL: Clarity through brevity**:
+When writing blog posts, prioritize clarity over verbosity:
+- Cut unnecessary words that obscure the point
+- Use bullet points and lists instead of dense paragraphs for structural advantages
+- Break long sections into digestible subsections with clear headers
+- Ensure section titles accurately reflect their content
+- If a point can be made in fewer words, do so
+
+**Data and claims require sources**:
+- Any market statistics, survey results, or industry data MUST include the source
+- Format: "62% of users (Source: Company Name Report 2024)"
+- Data without sources is meaningless and damages credibility
+- Link to sources when possible
+
+**Formatting for readability**:
+- Headers must have blank lines before them (Jekyll/Kramdown requirement)
+- Use tables for comparisons instead of prose when appropriate
+- Bulleted lists for advantages/disadvantages, not paragraph form
+- Keep sections focused - if a section is too long, break it up
+
+**Title-content alignment**:
+- Section titles should clearly indicate what the section contains
+- Avoid generic titles like "The Problem" - be specific
+- Readers should understand the section's purpose from the title alone
 
 ### Study Guide Content Philosophy
 

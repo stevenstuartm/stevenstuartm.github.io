@@ -20,6 +20,7 @@
     "Technology & Tools": {
       "description": "Practical lessons from infrastructure, frameworks, and development tools",
       "posts": [
+        "2025-10-16-why-cloud-native-iac-was-always-going-to-win.md",
         "2025-09-08-wasted-money-kubernetes-didnt-do-homework.md",
         "2025-08-29-will-blazor-be-another-failed-microsoft-ui-framework.md",
         "2025-07-17-ironies-of-ai-code-generation.md"
