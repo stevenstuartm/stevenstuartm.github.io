@@ -12,17 +12,15 @@ permalink: /about.html
 
 I'm a software architect with 15+ years designing and building cloud-native platforms, distributed systems, and scalable solutions. I specialize in pragmatic architecture that delivers measurable results: reduced costs, enhanced security, and systems that teams can confidently maintain and evolve.
 
+I believe architecture starts with human connection, thrives on genuine commitment, and succeeds by honoring agreements. Good architecture balances technical tradeoffs. Great solutions start with trust and maintain that trust through principled execution.
+
 ### What I Do
 
-**Architecture & Design** — I design cloud-based systems on AWS, focusing on resilience, security, and cost optimization. From migrating monoliths to microservices to implementing event-driven architectures, I help organizations make smart technical decisions.
+**Architecture & Design** — I design cloud-based systems on AWS, focusing on resilience, security, and cost optimization. From migrating monoliths to microservices to implementing event-driven architectures, I help organizations make smart technical decisions. But first, I invest time understanding the people behind the problems - their needs, constraints, and context. Technical elegance means nothing if it doesn't solve the real problem.
 
-**Technical Leadership** — I mentor developers, establish best practices, and guide teams through architectural transitions. I believe great architecture requires collaboration between business goals and technical reality.
+**Technical Leadership** — I mentor developers, establish best practices, and guide teams through architectural transitions. Great architecture requires more than technical skill - it requires building trust, securing genuine commitment from stakeholders and teams, and maintaining that alignment throughout delivery. I don't just hand down designs; I collaborate to create solutions people believe in.
 
 **Technology Stack** — .NET (C#), AWS (EKS, Lambda, Aurora, DynamoDB), GraphQL, Vue.js, and modern DevOps practices. I've worked across financial services, digital banking, and SaaS platforms.
-
-### Philosophy
-
-Good architecture balances tradeoffs: performance vs. complexity, flexibility vs. simplicity, velocity vs. stability. I prioritize evolutionary design—systems that adapt as your business grows while maintaining security and performance.
 
 ## Let's Connect
 
