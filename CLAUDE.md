@@ -215,6 +215,11 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - Ensure proper markdown formatting, especially blank lines before tables
 - Organize study guides by category and subcategory for better navigation
 
+### Code Examples
+- **Default to C# for programming examples** unless the subject is language-specific
+- Use the appropriate language when the topic requires it (e.g., Terraform uses HCL, CloudFormation uses YAML/JSON, Python for data science)
+- For general programming concepts, algorithms, or patterns, prefer C# examples
+
 ### Blog Post Writing Standards
 
 **CRITICAL: Clarity through brevity**:
@@ -248,6 +253,9 @@ When writing blog posts, prioritize clarity over verbosity:
 - Avoid generic "Further Reading" sections with book lists and external links
 - Avoid template sections with fill-in-the-blank structures (readers can create their own)
 - Avoid extensive checklists that become reference cards rather than learning material
+- **DO NOT add "Resources" sections** unless explicitly requested by the user
+- **DO NOT add "Next Steps" sections** - study guides should be self-contained
+- Links to tools/frameworks should be inline where mentioned, not collected in a separate section
 
 **Do include**:
 - Core concepts, definitions, and formulas
@@ -256,8 +264,9 @@ When writing blog posts, prioritize clarity over verbosity:
 - Common pitfalls and how to avoid them
 - Best practices derived from experience
 - Key takeaways that summarize actionable insights
+- Inline links using `{:target="_blank" rel="noopener noreferrer"}` for external resources when mentioned
 
-**Guiding principle**: Readers should learn things they didn't know and understand what they can and should do with that knowledge, without being overwhelmed by supplementary reference material.
+**Guiding principle**: Readers should learn things they didn't know and understand what they can and should do with that knowledge, without being overwhelmed by supplementary reference material. Study guides must be effective on their own.
 
 ### Study Guide Content Quality Standards
 
@@ -267,32 +276,11 @@ When writing blog posts, prioritize clarity over verbosity:
 - Readers need to understand the subject matter before they can make informed decisions about applying it
 - Example: When documenting a framework, explain its structure, components, and how it works BEFORE listing use cases
 
-**CRITICAL: Link to mentioned resources**:
-- If you reference a specific tool, framework, organization, website, or resource in the content, ALWAYS provide a link to it
-- Add a "Resources" or "Resources and References" section for each major topic with official documentation links
-- Include links to:
-  - Official homepages and documentation
-  - Tools and web consoles mentioned in the text
-  - Standards bodies and certification programs
-  - Key whitepapers and reference materials
-- Organize resources logically (by framework, by topic, etc.)
+**CRITICAL: Link inline, not in separate sections**:
+- If you reference a specific tool, framework, organization, website, or resource in the content, provide an inline link where it's mentioned
 - Use descriptive link text so readers know what they're clicking on
-
-**Example of proper structure**:
-```markdown
-### Framework Name
-
-**What it is:**
-[Detailed explanation of the framework, its components, structure, and how it works]
-
-**When to use:**
-[Use cases and decision criteria]
-
-**Resources:**
-- [Official Homepage](https://example.com)
-- [Documentation](https://docs.example.com)
-- [Tool or Console](https://console.example.com)
-```
+- Format: `[Tool Name](https://example.com){:target="_blank" rel="noopener noreferrer"}`
+- Do NOT create separate "Resources" or "Further Reading" sections
 
 ### Architecture Terminology Standards
 

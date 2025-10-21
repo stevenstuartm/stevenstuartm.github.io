@@ -89,12 +89,10 @@
           ]
         },
         {
-          "name": "Data & Infrastructure",
-          "description": "Data architecture and disaster recovery",
+          "name": "Data Architecture",
+          "description": "Database fundamentals, data processing, and modern data architectures",
           "guides": [
-            "data-architecture.md",
-            "disaster-recovery-patterns.md",
-            "deployment-strategies.md"
+            "data-architecture.md"
           ]
         },
         {
@@ -243,6 +241,40 @@
           "description": "Core networking concepts for developers",
           "guides": [
             "networking.md"
+          ]
+        }
+      ]
+    },
+    "Infrastructure & Cloud": {
+      "subcategories": [
+        {
+          "name": "Infrastructure as Code",
+          "description": "IaC fundamentals, tools, patterns, and best practices",
+          "guides": [
+            "infrastructure/iac-fundamentals.md",
+            "infrastructure/iac-tools-comparison.md",
+            "infrastructure/iac-implementation-patterns.md",
+            "infrastructure/iac-state-management.md",
+            "infrastructure/iac-testing.md",
+            "infrastructure/iac-governance.md"
+          ]
+        },
+        {
+          "name": "AWS",
+          "description": "AWS CloudFormation for infrastructure as code",
+          "guides": [
+            "infrastructure/cloudformation-fundamentals.md",
+            "infrastructure/cloudformation-templates.md",
+            "infrastructure/cloudformation-advanced.md",
+            "infrastructure/cloudformation-migration.md"
+          ]
+        },
+        {
+          "name": "Cloud Operations",
+          "description": "Deployment strategies, disaster recovery, and operational resilience",
+          "guides": [
+            "infrastructure/deployment-strategies.md",
+            "infrastructure/disaster-recovery-patterns.md"
           ]
         }
       ]

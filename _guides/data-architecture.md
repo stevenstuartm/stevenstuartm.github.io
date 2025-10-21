@@ -2,7 +2,7 @@
 layout: guide
 title: "Data Architecture & Processing"
 category: Architecture
-subcategory: Data & Infrastructure
+subcategory: Data Architecture
 description: "Comprehensive data architecture covering database fundamentals, ACID properties, ETL pipelines, big data processing, and modern data lakehouse architectures."
 ---
 

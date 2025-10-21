@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: "Disaster Recovery Patterns"
-category: Architecture
-subcategory: Data & Infrastructure
+category: Infrastructure & Cloud
+subcategory: Cloud Operations
 description: "Business continuity strategies from backup-and-restore to multi-site hot-standby, comparing RTO/RPO requirements, costs, and implementation approaches for disaster recovery."
 ---
 
