@@ -27,14 +27,31 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon-32x32.png' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
-    <!-- Google Analytics 4 (Production only) -->
+    <!-- Google Analytics 4 (Production only, delayed load for performance) -->
     {% if jekyll.environment == 'production' %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMG6YPYSB6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-RMG6YPYSB6');
+
+        // Delay GA4 loading until page is interactive
+        function loadGA() {
+            var script = document.createElement('script');
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-RMG6YPYSB6';
+            script.async = true;
+            document.head.appendChild(script);
+
+            script.onload = function() {
+                gtag('js', new Date());
+                gtag('config', 'G-RMG6YPYSB6');
+            };
+        }
+
+        // Load after page is interactive
+        if (document.readyState === 'complete') {
+            loadGA();
+        } else {
+            window.addEventListener('load', loadGA);
+        }
     </script>
     {% endif %}
 </head>
