@@ -255,6 +255,7 @@
             "infrastructure/iac-tools-comparison.md",
             "infrastructure/iac-implementation-patterns.md",
             "infrastructure/iac-state-management.md",
+            "infrastructure/iac-environment-lifecycle.md",
             "infrastructure/iac-testing.md",
             "infrastructure/iac-governance.md"
           ]
