@@ -362,7 +362,7 @@ This section provides a detailed view of security activities, deliverables, and 
 ### 3. Development & Implementation
 
 **Security Activities:**
-- Follow secure coding standards (OWASP guidelines, language-specific best practices)
+- Follow secure coding standards ([OWASP](https://owasp.org/){:target="_blank" rel="noopener noreferrer"} guidelines, language-specific best practices)
 - Use IDE security plugins for real-time feedback
 - Implement pre-commit hooks for secret detection
 - Conduct security-focused code reviews

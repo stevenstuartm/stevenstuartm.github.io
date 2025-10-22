@@ -496,22 +496,18 @@ Release Tag → Production Pipeline (deploy to prod)
 - CWE (Common Weakness Enumeration) violations
 
 **Popular tools:**
-- SonarQube / SonarCloud
-- Checkmarx
-- Veracode
-- Semgrep
-- CodeQL (GitHub Advanced Security)
+- [SonarQube](https://www.sonarsource.com/products/sonarqube/){:target="_blank" rel="noopener noreferrer"} / [SonarCloud](https://www.sonarsource.com/products/sonarcloud/){:target="_blank" rel="noopener noreferrer"}
+- [Checkmarx](https://checkmarx.com/){:target="_blank" rel="noopener noreferrer"}
+- [Veracode](https://www.veracode.com/){:target="_blank" rel="noopener noreferrer"}
+- [Semgrep](https://semgrep.dev/){:target="_blank" rel="noopener noreferrer"}
+- [CodeQL](https://codeql.github.com/){:target="_blank" rel="noopener noreferrer"} (GitHub Advanced Security)
 
 **Pipeline integration:**
-```yaml
-sast:
-  stage: security
-  script:
-    - sonar-scanner -Dsonar.projectKey=myproject
-  allow_failure: false
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-```
+- Run SAST scanner with project configuration
+- Configure to run on pull requests and commits
+- Fail pipeline if critical vulnerabilities found
+- Report results as pipeline artifacts or comments
+- Track findings over time to measure improvement
 
 **2. Dynamic Application Security Testing (DAST)**
 
@@ -530,21 +526,18 @@ sast:
 - OWASP Top 10 vulnerabilities
 
 **Popular tools:**
-- OWASP ZAP
-- Burp Suite
-- Acunetix
-- AppScan
-- Nikto
+- [OWASP ZAP](https://www.zaproxy.org/){:target="_blank" rel="noopener noreferrer"}
+- [Burp Suite](https://portswigger.net/burp){:target="_blank" rel="noopener noreferrer"}
+- [Acunetix](https://www.acunetix.com/){:target="_blank" rel="noopener noreferrer"}
+- [AppScan](https://www.hcl-software.com/appscan){:target="_blank" rel="noopener noreferrer"}
+- [Nikto](https://github.com/sullo/nikto){:target="_blank" rel="noopener noreferrer"}
 
 **Pipeline integration:**
-```yaml
-dast:
-  stage: security
-  script:
-    - docker run -t owasp/zap2docker-stable zap-baseline.py -t https://staging.example.com
-  only:
-    - main
-```
+- Run DAST scanner against staging environment URL
+- Configure scan scope and authentication
+- Execute on main branch deployments or scheduled scans
+- Report vulnerabilities found in running application
+- Fail deployment if critical issues discovered
 
 **3. Software Composition Analysis (SCA)**
 
@@ -563,21 +556,18 @@ dast:
 - Transitive dependency vulnerabilities
 
 **Popular tools:**
-- Snyk
-- Dependabot (GitHub)
-- WhiteSource / Mend
-- Black Duck
-- npm audit / pip-audit / cargo audit
+- [Snyk](https://snyk.io/){:target="_blank" rel="noopener noreferrer"}
+- [Dependabot](https://github.com/dependabot){:target="_blank" rel="noopener noreferrer"} (GitHub)
+- [Mend](https://www.mend.io/){:target="_blank" rel="noopener noreferrer"} (formerly WhiteSource)
+- [Black Duck](https://www.blackduck.com/){:target="_blank" rel="noopener noreferrer"}
+- Built-in package manager audits (npm audit, pip-audit, cargo audit)
 
 **Pipeline integration:**
-```yaml
-dependency_scan:
-  stage: security
-  script:
-    - npm audit --audit-level=high
-    - snyk test --severity-threshold=high
-  allow_failure: false
-```
+- Run dependency scanner on every build
+- Check for known vulnerabilities (CVEs)
+- Set severity threshold for failures (e.g., fail on high/critical)
+- Generate Software Bill of Materials (SBOM)
+- Create automated PRs for dependency updates
 
 **4. Secret Detection**
 
@@ -598,20 +588,18 @@ dependency_scan:
 - Hardcoded passwords
 
 **Popular tools:**
-- GitGuardian
-- TruffleHog
-- git-secrets
-- detect-secrets
-- GitHub Secret Scanning
+- [GitGuardian](https://www.gitguardian.com/){:target="_blank" rel="noopener noreferrer"}
+- [TruffleHog](https://github.com/trufflesecurity/trufflehog){:target="_blank" rel="noopener noreferrer"}
+- [git-secrets](https://github.com/awslabs/git-secrets){:target="_blank" rel="noopener noreferrer"}
+- [detect-secrets](https://github.com/Yelp/detect-secrets){:target="_blank" rel="noopener noreferrer"}
+- [GitHub Secret Scanning](https://docs.github.com/en/code-security/secret-scanning){:target="_blank" rel="noopener noreferrer"}
 
 **Pipeline integration:**
-```yaml
-secret_scan:
-  stage: security
-  script:
-    - trufflehog filesystem . --json
-  allow_failure: false
-```
+- Scan code and commit history for secrets
+- Run on every commit and pull request
+- Fail pipeline if secrets detected
+- Use pre-commit hooks to prevent secret commits
+- Monitor and alert on secret exposure
 
 **5. Container Image Scanning**
 
@@ -630,21 +618,18 @@ secret_scan:
 - Exposed secrets in images
 
 **Popular tools:**
-- Trivy
-- Snyk Container
-- Aqua Security
-- Clair
-- Docker Scan
+- [Trivy](https://trivy.dev/){:target="_blank" rel="noopener noreferrer"}
+- [Snyk Container](https://snyk.io/product/container-vulnerability-management/){:target="_blank" rel="noopener noreferrer"}
+- [Aqua Security](https://www.aquasec.com/){:target="_blank" rel="noopener noreferrer"}
+- [Clair](https://github.com/quay/clair){:target="_blank" rel="noopener noreferrer"}
+- [Docker Scan](https://docs.docker.com/engine/scan/){:target="_blank" rel="noopener noreferrer"}
 
 **Pipeline integration:**
-```yaml
-container_scan:
-  stage: security
-  script:
-    - docker build -t myapp:latest .
-    - trivy image --severity HIGH,CRITICAL myapp:latest
-  allow_failure: false
-```
+- Build container images
+- Scan images for vulnerabilities before pushing to registry
+- Set severity threshold for failures
+- Block deployment of vulnerable images
+- Rescan images periodically in registry
 
 **6. Infrastructure as Code (IaC) Scanning**
 
@@ -663,20 +648,18 @@ container_scan:
 - Non-compliant configurations
 
 **Popular tools:**
-- Checkov
-- tfsec
-- Terrascan
-- Bridgecrew
-- Snyk IaC
+- [Checkov](https://www.checkov.io/){:target="_blank" rel="noopener noreferrer"}
+- [tfsec](https://aquasecurity.github.io/tfsec/){:target="_blank" rel="noopener noreferrer"}
+- [Terrascan](https://runterrascan.io/){:target="_blank" rel="noopener noreferrer"}
+- [Bridgecrew](https://www.bridgecrew.io/){:target="_blank" rel="noopener noreferrer"}
+- [Snyk IaC](https://snyk.io/product/infrastructure-as-code-security/){:target="_blank" rel="noopener noreferrer"}
 
 **Pipeline integration:**
-```yaml
-iac_scan:
-  stage: security
-  script:
-    - checkov -d terraform/ --framework terraform
-  allow_failure: false
-```
+- Scan IaC files when they change
+- Run before infrastructure is applied
+- Validate security policies and compliance rules
+- Fail pipeline on critical misconfigurations
+- Provide remediation guidance in results
 
 ### Security Gate Strategy
 

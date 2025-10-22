@@ -297,22 +297,14 @@ resource "aws_ssm_parameter" "db_endpoint" {
 ### Benefits
 
 **Faster iteration:**
-
-```bash
-# Recreate only application layer (2 minutes)
-cd application/
-terraform apply
-
-# vs. recreating everything (20 minutes)
-```
+- Deploy only the layer that changed (application: ~2 minutes)
+- No need to wait for unchanged layers (data, foundation)
+- Much faster than deploying all layers together (~20+ minutes)
 
 **Reduced blast radius:**
-
-```bash
-# Application mistake doesn't affect data
-cd application/
-terraform destroy && terraform apply  # Data intact
-```
+- Application layer changes don't risk data layer resources
+- Can destroy and recreate application layer without affecting databases
+- Data remains intact during application experimentation
 
 **Independent ownership:**
 - Platform team: Foundation + Data
@@ -467,15 +459,12 @@ resource "aws_ecs_service" "app" {
 
 **Workflow:**
 
-```bash
-# Developers create/destroy only their app layer
-terraform workspace new alice
-terraform apply -var="developer_name=alice"
-
-# Later - destroy without losing data
-terraform destroy
-terraform apply  # Reconnects to shared DB
-```
+Developers create/destroy only their application layer:
+1. Create workspace or use separate state for their environment
+2. Deploy with developer-specific variables (e.g., developer_name=alice)
+3. Application connects to shared data resources
+4. Can destroy application infrastructure without losing data
+5. Redeploy application layer and reconnects to same shared database
 
 **Best for:** Cost-effective, fast iteration, stable schema
 

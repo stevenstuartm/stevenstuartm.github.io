@@ -742,67 +742,30 @@ Infrastructure Updated
 
 ### Implementation
 
-**GitHub Actions example:**
+**CI/CD Pipeline Stages:**
 
-```yaml
-name: Terraform CI/CD
+**On Pull Request:**
+1. Checkout code
+2. Initialize IaC tool
+3. Validate syntax
+4. Generate plan
+5. Comment plan output on PR for review
+6. Run security/compliance scans
 
-on:
-  pull_request:
-    paths:
-      - 'infrastructure/**'
-  push:
-    branches:
-      - main
-    paths:
-      - 'infrastructure/**'
+**On Merge to Main:**
+1. Checkout code
+2. Initialize IaC tool
+3. Generate plan (verify it matches approved PR plan)
+4. Require approval gate for production changes
+5. Apply infrastructure changes
+6. Report results
 
-jobs:
-  plan:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-
-      - name: Terraform Init
-        run: terraform init
-        working-directory: ./infrastructure
-
-      - name: Terraform Validate
-        run: terraform validate
-        working-directory: ./infrastructure
-
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan
-        working-directory: ./infrastructure
-
-      - name: Comment Plan on PR
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            // Post plan output as comment
-
-  apply:
-    runs-on: ubuntu-latest
-    needs: plan
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    environment: production  # Requires approval
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-
-      - name: Terraform Init
-        run: terraform init
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
-        working-directory: ./infrastructure
-```
+**Key implementation considerations:**
+- Trigger pipelines only when infrastructure code changes
+- Use separate jobs for plan vs. apply (plan runs on PR, apply runs on merge)
+- Store IaC tool state remotely, not in pipeline
+- Use environment protection rules for production deployments
+- Implement approval gates before applying to sensitive environments
 
 ### Benefits
 
@@ -812,13 +775,10 @@ jobs:
 - Easy to see change history
 
 **Easy Rollback:**
-```bash
-# Revert to previous version
-git revert <commit-hash>
-git push
-
-# CI/CD applies the revert
-```
+- Revert Git commits to previous infrastructure version
+- Push the revert commit
+- CI/CD automatically applies the rollback
+- Full audit trail of what was rolled back and why
 
 **Collaborative:**
 - Code review process enforced
@@ -827,15 +787,16 @@ git push
 
 ### Tools
 
-**Atlantis:**
+**[Atlantis](https://www.runatlantis.io/){:target="_blank" rel="noopener noreferrer"}:**
 - Terraform automation via pull requests
 - Plan on PR, apply on merge
 - Locks to prevent conflicts
+- Self-hosted GitOps for Terraform
 
-**Flux/ArgoCD:**
+**[Flux](https://fluxcd.io/){:target="_blank" rel="noopener noreferrer"} / [ArgoCD](https://argo-cd.readthedocs.io/){:target="_blank" rel="noopener noreferrer"}:**
 - GitOps for Kubernetes
 - Continuous deployment from Git
-- Automatic drift detection
+- Automatic drift detection and reconciliation
 
 ---
 

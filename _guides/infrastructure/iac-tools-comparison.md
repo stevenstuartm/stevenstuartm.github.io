@@ -402,7 +402,7 @@ pulumi.export("website_url", bucket.website_endpoint)
 
 ### Chef & Puppet
 
-**What they are:** Configuration management tools for defining infrastructure state using code.
+[Chef](https://www.chef.io/){:target="_blank" rel="noopener noreferrer"} and [Puppet](https://www.puppet.com/){:target="_blank" rel="noopener noreferrer"} are configuration management tools for defining infrastructure state using code.
 
 **Key features:**
 - Mature ecosystems
