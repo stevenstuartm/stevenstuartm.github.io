@@ -368,10 +368,10 @@ Resources:
 
 **Don't pass secrets as plain text - retrieve them from secure stores:**
 
-- **AWS Secrets Manager / Parameter Store**: Native AWS secret storage
-- **HashiCorp Vault**: Multi-cloud secret management
-- **Azure Key Vault**: Native Azure secret storage
-- **GCP Secret Manager**: Native GCP secret storage
+- [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/){:target="_blank" rel="noopener noreferrer"} / [Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html){:target="_blank" rel="noopener noreferrer"}: Native AWS secret storage
+- [HashiCorp Vault](https://www.vaultproject.io/){:target="_blank" rel="noopener noreferrer"}: Multi-cloud secret management
+- [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault){:target="_blank" rel="noopener noreferrer"}: Native Azure secret storage
+- [GCP Secret Manager](https://cloud.google.com/secret-manager){:target="_blank" rel="noopener noreferrer"}: Native GCP secret storage
 
 ### State Files Contain Secrets
 
@@ -384,21 +384,14 @@ Resources:
 
 ### Scan IaC Before Applying
 
-**Static analysis tools catch security issues before deployment:**
+Static analysis tools catch security issues before deployment:
 
-- **Checkov**: Multi-framework scanner (Terraform, CloudFormation, Kubernetes)
-- **tfsec**: Terraform-focused security scanner
-- **cfn-lint**: CloudFormation linter with security checks
-- **Terrascan**: Policy-as-code scanner
+- [Checkov](https://www.checkov.io/){:target="_blank" rel="noopener noreferrer"}: Multi-framework scanner (Terraform, CloudFormation, Kubernetes)
+- [tfsec](https://aquasecurity.github.io/tfsec/){:target="_blank" rel="noopener noreferrer"}: Terraform-focused security scanner
+- [cfn-lint](https://github.com/aws-cloudformation/cfn-lint){:target="_blank" rel="noopener noreferrer"}: CloudFormation linter with security checks
+- [Terrascan](https://runterrascan.io/){:target="_blank" rel="noopener noreferrer"}: Policy-as-code scanner
 
-**Example:**
-```bash
-# Scan before applying
-checkov -d . --framework terraform
-tfsec .
-```
-
-**Integrate into CI/CD** to automatically fail builds with security issues.
+Run security scans before deployment and integrate them into your CI/CD pipeline to automatically fail builds with security issues.
 
 ---
 
@@ -407,40 +400,39 @@ tfsec .
 ### Choosing Your First IaC Tool
 
 **For AWS-only projects:**
-- Start with AWS CloudFormation (native, free, deep integration)
+- Start with [AWS CloudFormation](https://aws.amazon.com/cloudformation/){:target="_blank" rel="noopener noreferrer"} (native, free, deep integration)
 
 **For multi-cloud or flexibility:**
-- Start with Terraform (most popular, broad ecosystem, declarative)
+- Start with [Terraform](https://www.terraform.io/){:target="_blank" rel="noopener noreferrer"} (most popular, broad ecosystem, declarative)
 
 **For developers who prefer code:**
-- AWS CDK (AWS-focused, TypeScript/Python/Java/C#/.NET, generates CloudFormation)
-- Pulumi (multi-cloud, TypeScript/Python/Go/C#/Java, own state management)
+- [AWS CDK](https://aws.amazon.com/cdk/){:target="_blank" rel="noopener noreferrer"} (AWS-focused, TypeScript/Python/Java/C#/.NET, generates CloudFormation)
+- [Pulumi](https://www.pulumi.com/){:target="_blank" rel="noopener noreferrer"} (multi-cloud, TypeScript/Python/Go/C#/Java, own state management)
 
 **For configuration management:**
-- Start with Ansible (agentless, easy to learn, YAML-based)
+- Start with [Ansible](https://www.ansible.com/){:target="_blank" rel="noopener noreferrer"} (agentless, easy to learn, YAML-based)
 
 ### Learning Path
 
 **1. Start Small**
 - Deploy a single resource (S3 bucket, EC2 instance)
-- Understand the workflow (write → plan → apply)
+- Understand the workflow: write configuration, preview changes, apply
 - Practice with non-production resources
 
 **2. Add Complexity Gradually**
 - Multiple resources with dependencies
 - Variables and outputs
-- Modules/reusable components
+- Modules and reusable components
 
 **3. Implement Best Practices**
-- Remote state management
-- Version control
-- Code review process
-- Automated testing
+- Remote state management (covered in [IaC State Management](/study-guides/infrastructure/iac-state-management.html))
+- Version control and code review process
+- Automated testing (covered in [IaC Testing](/study-guides/infrastructure/iac-testing.html))
 
 **4. Production Readiness**
-- Security scanning
+- Security scanning integration
 - Multi-environment management
-- CI/CD integration
+- CI/CD pipeline integration
 - Disaster recovery procedures
 
 ---

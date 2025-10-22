@@ -103,80 +103,28 @@ Ensure all resources have required tags (environment, layer, domain) using AWS O
 
 **Attach tag policy to organization:**
 
-```bash
-# Create tag policy
-aws organizations create-policy \
-  --name RequiredTags \
-  --description "Enforce environment, layer, domain tags" \
-  --content file://tag-policy.json \
-  --type TAG_POLICY
-
-# Attach to organization root (applies to all accounts)
-aws organizations attach-policy \
-  --policy-id p-xxxxxxxxx \
-  --target-id r-xxxx
-```
+Create and attach tag policies using [AWS Organizations](https://aws.amazon.com/organizations/){:target="_blank" rel="noopener noreferrer"} console or APIs. Attach policies to your organization root (applies to all accounts), organizational units (OUs), or specific accounts depending on scope needs.
 
 ### AWS Config Rules for Tag Compliance
 
-**What they do:** Continuously check resources for required tags and report violations.
+[AWS Config](https://aws.amazon.com/config/){:target="_blank" rel="noopener noreferrer"} continuously checks resources for required tags and reports violations.
 
 **Enable required-tags config rule:**
 
-```bash
-# Using AWS CLI
-aws configservice put-config-rule \
-  --config-rule '{
-    "ConfigRuleName": "required-tags",
-    "Source": {
-      "Owner": "AWS",
-      "SourceIdentifier": "REQUIRED_TAGS"
-    },
-    "InputParameters": "{\"tag1Key\":\"environment\",\"tag2Key\":\"layer\",\"tag3Key\":\"domain\"}",
-    "Scope": {
-      "ComplianceResourceTypes": [
-        "AWS::EC2::Instance",
-        "AWS::RDS::DBInstance",
-        "AWS::S3::Bucket",
-        "AWS::Lambda::Function"
-      ]
-    }
-  }'
-```
+Use the AWS-managed `REQUIRED_TAGS` config rule to check for presence of specific tags. Configure the rule with:
+- Tag keys to require (e.g., environment, layer, domain)
+- Resource types to check (EC2, RDS, S3, Lambda, etc.)
+- Compliance scope (all resources or specific types)
 
-**Using CloudFormation:**
-
-```yaml
-RequiredTagsRule:
-  Type: AWS::Config::ConfigRule
-  Properties:
-    ConfigRuleName: required-tags
-    Source:
-      Owner: AWS
-      SourceIdentifier: REQUIRED_TAGS
-    InputParameters:
-      tag1Key: environment
-      tag2Key: layer
-      tag3Key: domain
-    Scope:
-      ComplianceResourceTypes:
-        - AWS::EC2::Instance
-        - AWS::RDS::DBInstance
-        - AWS::S3::Bucket
-        - AWS::Lambda::Function
-```
+Deploy Config rules via IaC (CloudFormation, Terraform) for consistency across accounts.
 
 **Query non-compliant resources:**
 
-```bash
-# Get compliance summary
-aws configservice get-compliance-summary-by-config-rule
-
-# Get non-compliant resources
-aws configservice get-compliance-details-by-config-rule \
-  --config-rule-name required-tags \
-  --compliance-types NON_COMPLIANT
-```
+Use AWS Config console or APIs to:
+- View compliance summary by rule
+- List non-compliant resources
+- Export compliance reports
+- Trigger remediation for violations
 
 ### Tag on Create (EventBridge + Lambda)
 

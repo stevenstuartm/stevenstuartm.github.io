@@ -62,27 +62,6 @@ Find all existing resources in your AWS account before migrating them.
 - Resource types and IDs
 - Dependencies between resources
 
-### Query via CLI
-
-```bash
-# Find all S3 buckets
-aws s3 ls
-
-# Find all EC2 instances with details
-aws ec2 describe-instances \
-  --query 'Reservations[].Instances[].[InstanceId,Tags[?Key==`Name`].Value|[0],State.Name]' \
-  --output table
-
-# Find all RDS instances
-aws rds describe-db-instances \
-  --query 'DBInstances[].[DBInstanceIdentifier,Engine,DBInstanceStatus]' \
-  --output table
-
-# Find resources by existing tags
-aws resourcegroupstaggingapi get-resources \
-  --tag-filters Key=Environment,Values=Production
-```
-
 ---
 
 ## Step 2: Tag Resources
@@ -162,13 +141,32 @@ aws resourcegroupstaggingapi get-resources \
 
 ### Resource Groups (Optional)
 
-**What they are:** Save tag queries as named groups for reuse.
+**What they are:** Named, saved queries that filter resources by tags. Think of them as bookmarks for specific sets of resources.
 
-**Are they required?** No. You can use tags directly without creating groups.
+**Why they're useful during migration:**
 
-**When to use:** Large migrations where you repeatedly query the same sets of resources.
+1. **IaC Generator filtering** (Step 4): When generating templates, IaC Generator lets you filter by resource group. Instead of manually selecting resources each time, you select the group and get all matching resources automatically.
 
-**Create a group:**
+2. **Bulk operations**: Query a group once, get all matching resource ARNs for batch tagging or validation.
+
+3. **Team coordination**: Share named groups across team members ("everyone use the `migration-batch-1` group for this sprint").
+
+4. **Console visibility**: View all resources in a group through the Resource Groups console.
+
+**When you can skip them:**
+
+- Small migrations (fewer than 20 resources)
+- One-time operations where writing the tag query directly is faster
+- You're comfortable with CLI tag filters
+
+**When to create them:**
+
+- Large migrations with multiple batches over weeks/months
+- Repeatedly generating templates for the same resource sets
+- Multiple team members working on the migration
+- You want visual tracking in the AWS Console
+
+**How to create groups:**
 
 ```bash
 # Production foundation layer
@@ -187,6 +185,10 @@ aws resource-groups create-group \
     "Query": "{\"ResourceTypeFilters\":[\"AWS::AllSupported\"],\"TagFilters\":[{\"Key\":\"MigrationBatch\",\"Values\":[\"1\"]}]}"
   }'
 ```
+
+**Using groups in later steps:**
+
+In Step 4 (Generate Templates), IaC Generator Console allows you to filter by resource group when selecting which resources to include in the generated template. This saves time versus manually selecting resources or writing tag filter queries.
 
 ---
 

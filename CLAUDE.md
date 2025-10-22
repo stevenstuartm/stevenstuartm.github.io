@@ -282,6 +282,15 @@ When writing blog posts, prioritize clarity over verbosity:
 - Format: `[Tool Name](https://example.com){:target="_blank" rel="noopener noreferrer"}`
 - Do NOT create separate "Resources" or "Further Reading" sections
 
+**CRITICAL: Concepts over code syntax**:
+- Unless the guide's topic is directly coupled to code and how to code, remain conceptual
+- Avoid CLI examples, API syntax, or implementation code that rapidly becomes outdated
+- Focus on the WHY and WHEN, not the exact HOW
+- Describe operations conceptually (e.g., "use the CLI to create a change set")
+- Link to official documentation inline where relevant for current syntax
+- CLI syntax, API endpoints, and tool-specific commands are reference material, not learning material
+- Exception: Include code when the guide teaches coding concepts (algorithms, design patterns, language features)
+
 ### Architecture Terminology Standards
 
 **CRITICAL: Use correct architecture terminology**

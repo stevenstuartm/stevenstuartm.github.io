@@ -65,7 +65,7 @@ description: "Understanding infrastructure state, remote backends, state locking
 
 ### When State Management Is Your Responsibility
 
-**Terraform and Pulumi** require you to manage state explicitly:
+[Terraform](https://www.terraform.io/){:target="_blank" rel="noopener noreferrer"} and [Pulumi](https://www.pulumi.com/){:target="_blank" rel="noopener noreferrer"} require you to manage state explicitly (unless using [Terraform Cloud](https://cloud.hashicorp.com/products/terraform){:target="_blank" rel="noopener noreferrer"} or [Pulumi Cloud](https://www.pulumi.com/product/pulumi-cloud/){:target="_blank" rel="noopener noreferrer"}):
 - You must configure remote backends
 - You must implement locking mechanisms
 - You must secure sensitive data in state
@@ -263,19 +263,17 @@ terraform {
 
 ### Force Unlock (Use Carefully)
 
-```bash
-# Only use if lock is stuck
-terraform force-unlock <lock-id>
-```
+Most IaC tools provide a force-unlock operation for stuck locks. Use with extreme caution.
 
 **When to force unlock:**
-- Process crashed and left lock
-- Lock is stale
-- You're certain no one else is running operations
+- Process crashed and left lock orphaned
+- Lock is demonstrably stale (check lock timestamp)
+- You've confirmed no one else is running operations
 
 **Never force unlock if:**
 - Someone else might be running operations
 - Uncertain about lock state
+- During normal business hours without team communication
 
 ---
 
@@ -385,14 +383,11 @@ s3://terraform-state-prod/terraform.tfstate
 
 ### 5. Review Plans Before Applying
 
-```bash
-# Always plan first
-terraform plan -out=tfplan
-
-# Review carefully
-# Then apply
-terraform apply tfplan
-```
+Always preview changes before applying them:
+- Generate a plan showing what will change
+- Review the plan carefully for unexpected changes
+- Save the plan and apply exactly what was reviewed
+- Never skip the preview step, especially in production
 
 ### 6. State File Security Checklist
 
@@ -409,90 +404,55 @@ terraform apply tfplan
 
 ## Common State Operations
 
+IaC tools provide commands for viewing and managing state. Consult your tool's documentation for current syntax:
+- [Terraform State Command](https://developer.hashicorp.com/terraform/cli/commands/state){:target="_blank" rel="noopener noreferrer"}
+- [AWS CloudFormation Stack Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-view-stack-data-resources.html){:target="_blank" rel="noopener noreferrer"}
+- [Pulumi State and Backends](https://www.pulumi.com/docs/concepts/state/){:target="_blank" rel="noopener noreferrer"}
+
 ### Viewing State
 
-```bash
-# List all resources in state
-terraform state list
-
-# Show details of specific resource
-terraform state show aws_instance.web
-
-# Get output values
-terraform output
-```
+You can:
+- List all resources tracked in state
+- Show details of specific resources
+- View output values
+- Inspect resource metadata and dependencies
 
 ### Modifying State
 
-**Move resource:**
-```bash
-# Rename resource in state
-terraform state mv aws_instance.web aws_instance.web_server
+**Move operations:**
+- Rename resources in state (update reference without recreating)
+- Move resources between modules
+- Reorganize infrastructure code without destroying resources
 
-# Move to different module
-terraform state mv aws_instance.web module.compute.aws_instance.web
-```
+**Remove operations:**
+- Remove resources from state tracking (doesn't delete the actual resource)
+- Useful when manually deleting resources or transferring ownership
 
-**Remove resource:**
-```bash
-# Remove from state (doesn't delete actual resource)
-terraform state rm aws_instance.old
-
-# Now you can delete or import elsewhere
-```
-
-**Import existing resource:**
-```bash
-# Import existing AWS instance into state
-terraform import aws_instance.existing i-1234567890abcdef0
-```
+**Import operations:**
+- Import existing infrastructure into state management
+- Add resources created outside IaC to your state
+- Essential for brownfield infrastructure adoption
 
 ### Recovering from State Issues
 
-**Pull remote state:**
-```bash
-# Download current remote state
-terraform state pull > backup.tfstate
-```
+**Backup and restore:**
+- Download current state as backup before risky operations
+- Restore from backup if state becomes corrupted
+- Use versioning features (S3 versioning) for automatic backups
 
-**Push state:**
-```bash
-# Upload state (use with caution!)
-terraform state push backup.tfstate
-```
-
-**Replace corrupted state:**
-```bash
-# 1. Download backup from S3
-aws s3 cp s3://terraform-state/prod/terraform.tfstate backup.tfstate
-
-# 2. Push backup
-terraform state push backup.tfstate
-```
+**State recovery process:**
+1. Download backup from remote backend
+2. Verify backup integrity
+3. Restore backup to remote backend
+4. Validate infrastructure matches restored state
 
 ### Migrating State
 
-**Change backend:**
-```hcl
-# Old backend
-terraform {
-  backend "local" {}
-}
-
-# New backend
-terraform {
-  backend "s3" {
-    bucket = "terraform-state"
-    key    = "terraform.tfstate"
-    region = "us-east-1"
-  }
-}
-```
-
-```bash
-# Migrate state
-terraform init -migrate-state
-```
+**Backend migration:**
+- Change state storage location (local → remote, or remote → different remote)
+- Tool-specific migration commands handle data transfer
+- Always backup state before migration
+- Verify state after migration completes
 
 ---
 
