@@ -240,11 +240,13 @@ When writing blog posts, prioritize clarity over verbosity:
 - Headers must have blank lines before them (Jekyll/Kramdown requirement)
 - Use tables for comparisons instead of prose when appropriate
 - Bulleted lists for advantages/disadvantages, not paragraph form
-- Keep sections focused - if a section is too long, break it up
+- Keep sections focused; if a section is too long, break it up
+- **Avoid em-dashes in sentences**; use semicolons, commas, or new sentences instead
+- **Include articles ("a", "the") for clarity**; avoid ambiguous grammar like "masquerading as process" (use "masquerading as a process") or "reconsolidate agreement" (use "reconsolidate the agreement")
 
 **Title-content alignment**:
 - Section titles should clearly indicate what the section contains
-- Avoid generic titles like "The Problem" - be specific
+- Avoid generic titles like "The Problem"; be specific
 - Readers should understand the section's purpose from the title alone
 
 ### Study Guide Content Philosophy
