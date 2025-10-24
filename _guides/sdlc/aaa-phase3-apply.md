@@ -42,6 +42,52 @@ Apply applies at every level of work:
 
 ---
 
+## The Core Value: Honoring the Agreement While Learning
+
+**Apply is not blind execution.** It's disciplined delivery that honors what was agreed in Phase 2 while maintaining the courage to pause and realign when discovery demands it.
+
+Discovery during implementation is inevitable:
+- Implementation reveals hidden complexity
+- Building the first version surfaces better approaches
+- Edge cases emerge that invalidate assumptions
+- Dependencies appear that change timelines
+- User feedback shifts priorities
+
+**This is not failure. This is the inevitable outcome of doing real work.**
+
+The discipline of Apply is knowing when to:
+- **Continue**: Discovery confirms the approach; keep executing
+- **Adapt**: Minor adjustments within the agreed scope and architecture
+- **Pause and Realign**: Discovery invalidates core assumptions; cycle back to Align or Agree
+
+### Triggers for Reconsideration
+
+**When to pause and reconsolidate the agreement**:
+
+- **Technical discovery**: Assumed approach won't work; fundamentally different solution needed
+- **Scope discovery**: Original scope misunderstood; what was agreed doesn't match what's actually needed
+- **Dependency discovery**: Critical dependencies emerge that change timeline or feasibility
+- **Value discovery**: Building the feature reveals a better problem to solve
+- **Risk discovery**: Unforeseen risks make the agreed approach unacceptable
+
+**When NOT to pause** (adapt instead):
+- Minor technical adjustments within the architecture
+- Small scope clarifications that don't change the core agreement
+- Implementation details that don't affect stakeholders
+- Performance optimizations within agreed SLOs
+
+**How to handle discovery**:
+1. Document what you learned (what assumption broke, what's now understood)
+2. Assess impact (timeline, cost, scope, quality, risk)
+3. Present options to stakeholders (continue as-is, adapt, or realign)
+4. If realignment needed, cycle back to Align or Agree phases
+5. Update the agreement and communicate changes
+6. Resume execution with the new understanding
+
+**The key insight**: Realignment isn't scope creep or project failure. It's the discipline to incorporate learning and maintain integrity with stakeholders. Teams that ship based on broken assumptions, just to avoid "changing the plan," deliver work that misses the mark.
+
+---
+
 ## Core Activities
 
 ### 1. Implementation & Architecture Governance
@@ -102,7 +148,9 @@ Apply applies at every level of work:
 
 ### 2. Continuous Stakeholder Alignment
 
-**Maintain alignment throughout implementation—prevent surprises.**
+**Maintain alignment throughout implementation as discovery happens.**
+
+Alignment isn't achieved once in Phase 2 and then frozen. It's maintained continuously as implementation reveals new information. The team and stakeholders must stay aligned on what's being built, why it matters, and what trade-offs are being made.
 
 **Regular Touchpoints**:
 - **Sprint/Iteration Reviews**: Demo working software, gather feedback, validate direction
