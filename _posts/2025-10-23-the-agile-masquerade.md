@@ -31,13 +31,13 @@ Estimating based on untested assumptions is not planning. It's guessing. And whe
 
 The pattern is familiar: estimate based on assumptions, commit to the estimate, discover during implementation that the assumptions were wrong, then ship anyway because the timebox ends. Discovery gets reframed as scope creep rather than learning. The timebox becomes more important than the outcome.
 
-**This is not failure. This is the inevitable outcome of doing real work.** Implementation reveals hidden complexity. Edge cases emerge. Dependencies appear. The question is: do you have the discipline to pause and realign when discovery changes everything?
+In the real world, implementation reveals hidden complexity. Edge cases emerge. Dependencies appear. The question is: do you have the discipline to pause and realign when discovery changes everything?
 
 ### The Missing Discipline
 
 Architects know better. An architect's first step is to identify stakeholders, understand general intent, **identify assumptions, and test assumptions before committing**. Developers and product owners should do the same.
 
-Isaac Carter's Catalyst Framework emphasizes this: test assumptions to gain alignment. Not alignment on what we assume, but alignment on what we've validated.
+{% include linkedin-link.html url="https://www.linkedin.com/in/isaac-carter/" %} Isaac Carter emphasizes this in his Catalyst Framework: test assumptions to gain alignment. Not alignment on what we assume, but alignment on what we've validated.
 
 What does testing assumptions look like?
 
@@ -107,7 +107,7 @@ The framework isn't the enemy. The lack of discipline is. **The point is simpler
 
 ## What Real Agreement Requires
 
-The AAA Cycle provides the discipline:
+The [AAA Cycle](/study-guides/sdlc/aaa-cycle.html) provides the discipline:
 
 **Align** = Understand the problem before proposing solutions
 - What are we trying to accomplish?
@@ -156,7 +156,7 @@ Interval-based frameworks make alignment harder. The timebox becomes the commitm
 
 This doesn't mean interval-based frameworks doom teams to misalignment. But they require extra discipline to maintain focus on outcomes over bureaucracy. Teams must consciously resist the pressure to ship incomplete work just because the calendar says so, and actively work to stay aligned on actual value delivery.
 
-The SDLC landscape offers many approaches: Shape Up prioritizes shaping work before betting on it. Kanban focuses on flow and continuous delivery. Lean emphasizes eliminating waste by validating assumptions early. Each has strengths.
+The SDLC landscape offers many approaches: [Shape Up](/study-guides/sdlc/shape-up.html) prioritizes shaping work before betting on it. Kanban focuses on flow and continuous delivery. Lean emphasizes eliminating waste by validating assumptions early. Each has strengths.
 
 But no framework can prevent organizational dysfunction. Leadership that demands certainty over understanding will corrupt any approach. What matters isn't the framework. It's the discipline of real agreement: identify assumptions, test them, commit to quantifiable outcomes, realign when discovery demands it.
 
