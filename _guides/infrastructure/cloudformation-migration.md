@@ -3,7 +3,7 @@ title: "AWS CloudFormation: Migrating Existing Resources"
 layout: guide
 category: Infrastructure & Cloud
 subcategory: AWS
-description: "Step-by-step guide for bringing existing manually-created AWS resources under CloudFormation management."
+description: "Complete guide for migrating resources to CloudFormation: importing unmanaged resources, moving resources between stacks, and stack refactoring with the latest AWS solutions."
 ---
 
 ## Table of Contents
@@ -21,7 +21,12 @@ description: "Step-by-step guide for bringing existing manually-created AWS reso
 
 ## Overview
 
-**Goal:** Bring manually-created AWS resources under CloudFormation management.
+**Goal:** Bring AWS resources under CloudFormation management.
+
+**Two migration scenarios:**
+
+1. **Importing unmanaged resources** - Resources created manually or outside CloudFormation
+2. **Moving resources between stacks** - Resources already in CloudFormation but need to move to different stacks
 
 **Why migrate:**
 - Version control for infrastructure
@@ -33,7 +38,7 @@ description: "Step-by-step guide for bringing existing manually-created AWS reso
 **Migration process:**
 1. Discover what resources exist
 2. Tag resources for organization
-3. Choose import vs recreate strategy
+3. Choose migration strategy
 4. Generate CloudFormation templates
 5. Import resources into stacks
 6. Verify with drift detection
@@ -194,9 +199,65 @@ In Step 4 (Generate Templates), IaC Generator Console allows you to filter by re
 
 ## Step 3: Choose Migration Strategy
 
+Choose your migration approach based on whether resources are already managed by CloudFormation or not.
+
+### Scenario 1: Moving Resources Between Existing Stacks
+
+**When:** Resources are already in CloudFormation Stack A, need to move to Stack B.
+
+**Common reasons:**
+- Refactoring monolithic stacks into smaller stacks by layer
+- Reorganizing stacks by team ownership or domain
+- Moving resources created in the wrong stack
+- Consolidating duplicate infrastructure
+
+**Two methods available:**
+
+#### Method 1: Stack Refactoring (NEW - February 2025)
+
+**What it is:** Native AWS solution that automates moving resources between stacks atomically.
+
+**Advantages:**
+- Single atomic operation (all-or-nothing)
+- Preview changes before execution
+- No manual DeletionPolicy management
+- Safer for production environments
+
+**Limitations:**
+- Resources must have `FULLY_MUTABLE` provisioning type
+- Cannot create, delete, or modify resources during refactor
+- Source stacks cannot have stack policies attached
+- CLI/SDK only (no Console support yet)
+- Not all resource types supported
+
+**When to use:** Supported resources in production where safety is critical.
+
+See [Step 5: Import Resources](#step-5-import-resources) for detailed stack refactoring procedure.
+
+#### Method 2: Manual DeletionPolicy + Import
+
+**What it is:** Traditional method using `DeletionPolicy: Retain` and resource import.
+
+**Advantages:**
+- Broader resource type support
+- More control over the process
+- Can modify properties during migration
+- Works in AWS Console
+
+**Disadvantages:**
+- Multi-step manual process
+- Higher risk of mistakes
+- Must match properties exactly
+
+**When to use:** Resources not supported by stack refactoring, or when you need to modify properties.
+
+See [Step 5: Import Resources](#step-5-import-resources) for detailed manual import procedure.
+
+### Scenario 2: Importing Unmanaged Resources
+
 Decide whether to import resources as-is or recreate them from scratch.
 
-### Option A: Import (No Downtime)
+#### Option A: Import (No Downtime)
 
 **What it does:** Brings existing resources under CloudFormation without recreating them.
 
@@ -222,7 +283,7 @@ Decide whether to import resources as-is or recreate them from scratch.
 - Platform layer (shared databases, queues, registries)
 - Any stateful resources with data
 
-### Option B: Recreate (Clean Start)
+#### Option B: Recreate (Clean Start)
 
 **What it does:** Create new resources via CloudFormation, migrate data, delete old resources.
 
@@ -249,7 +310,7 @@ Decide whether to import resources as-is or recreate them from scratch.
 - Application layer compute (EC2, Lambda - can recreate)
 - Non-critical resources
 
-### Option C: Hybrid (Phased Approach)
+#### Option C: Hybrid (Phased Approach)
 
 **What it does:** Import critical resources, recreate others, migrate gradually.
 
@@ -362,7 +423,224 @@ cfn-lint template.yaml
 
 Bring existing resources under CloudFormation management using the import operation.
 
-### Prepare Import File
+### Procedure A: Stack Refactoring (Moving Between Stacks)
+
+Use this when moving resources from one CloudFormation stack to another.
+
+**1. Prepare updated templates**
+
+Create the desired end-state templates for both source and destination stacks:
+
+```yaml
+# source-stack-updated.yaml (resource removed)
+Resources:
+  # Other resources remain, DataBucket removed
+
+# destination-stack.yaml (resource added)
+Resources:
+  DataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: my-data-bucket
+      VersioningConfiguration:
+        Status: Enabled
+```
+
+**2. Create the refactor operation**
+
+```bash
+aws cloudformation create-stack-refactor \
+  --description "Move data bucket to new stack" \
+  --enable-stack-creation \
+  --resource-mappings \
+    Source={StackName=SourceStack,LogicalResourceId=DataBucket},Destination={StackName=DestinationStack,LogicalResourceId=DataBucket} \
+  --stack-definitions \
+    StackName=SourceStack,TemplateBody=file://source-stack-updated.yaml \
+    StackName=DestinationStack,TemplateBody=file://destination-stack.yaml
+```
+
+Returns:
+```json
+{
+  "StackRefactorId": "arn:aws:cloudformation:us-east-1:123456789012:stackrefactor/abc-123"
+}
+```
+
+**3. Check status and preview changes**
+
+```bash
+# Check refactor status
+aws cloudformation describe-stack-refactor \
+  --stack-refactor-id arn:aws:cloudformation:us-east-1:123456789012:stackrefactor/abc-123
+
+# Preview the changes
+aws cloudformation list-stack-refactor-actions \
+  --stack-refactor-id arn:aws:cloudformation:us-east-1:123456789012:stackrefactor/abc-123
+```
+
+**4. Execute the refactor**
+
+```bash
+aws cloudformation execute-stack-refactor \
+  --stack-refactor-id arn:aws:cloudformation:us-east-1:123456789012:stackrefactor/abc-123
+```
+
+**JSON input format (alternative):**
+
+```json
+{
+  "Description": "Move data bucket to new stack",
+  "EnableStackCreation": true,
+  "ResourceMappings": [
+    {
+      "Source": {
+        "StackName": "SourceStack",
+        "LogicalResourceId": "DataBucket"
+      },
+      "Destination": {
+        "StackName": "DestinationStack",
+        "LogicalResourceId": "DataBucket"
+      }
+    }
+  ],
+  "StackDefinitions": [
+    {
+      "StackName": "SourceStack",
+      "TemplateBody": "..."
+    },
+    {
+      "StackName": "DestinationStack",
+      "TemplateBody": "..."
+    }
+  ]
+}
+```
+
+**Limitations:**
+- Resources must have `FULLY_MUTABLE` provisioning type
+- Cannot create, delete, or modify resources during refactor
+- Maximum 2-5 destination stacks per refactor
+- Unsupported resource types include: AWS::Lambda::EventInvokeConfig, AWS::Route53::RecordSet, AWS::DynamoDB::GlobalTable
+- Check [full list of unsupported resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-refactoring.html){:target="_blank" rel="noopener noreferrer"}
+
+### Procedure B: Manual DeletionPolicy + Import (Moving Between Stacks)
+
+Use this when stack refactoring doesn't support your resource type.
+
+**1. Add DeletionPolicy to source stack**
+
+```yaml
+Resources:
+  DataBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain  # Add this
+    Properties:
+      BucketName: my-data-bucket
+      VersioningConfiguration:
+        Status: Enabled
+```
+
+**2. Update source stack to apply the policy**
+
+```bash
+aws cloudformation update-stack \
+  --stack-name SourceStack \
+  --template-body file://source-with-retain.yaml \
+  --capabilities CAPABILITY_IAM
+```
+
+**3. Remove resource from source stack template**
+
+```yaml
+# source-stack-updated.yaml
+Resources:
+  # DataBucket removed entirely
+  # Other resources remain
+```
+
+**4. Update source stack (resource persists in AWS)**
+
+```bash
+aws cloudformation update-stack \
+  --stack-name SourceStack \
+  --template-body file://source-stack-updated.yaml \
+  --capabilities CAPABILITY_IAM
+```
+
+The resource is now "orphaned" - exists in AWS but not managed by any stack.
+
+**5. Prepare destination stack template**
+
+```yaml
+# destination-stack.yaml
+Resources:
+  DataBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain  # Keep Retain for safety
+    Properties:
+      BucketName: my-data-bucket  # Must match exactly
+      VersioningConfiguration:
+        Status: Enabled  # Must match exactly
+```
+
+**6. Create resources-to-import file**
+
+```json
+[
+  {
+    "ResourceType": "AWS::S3::Bucket",
+    "LogicalResourceId": "DataBucket",
+    "ResourceIdentifier": {
+      "BucketName": "my-data-bucket"
+    }
+  }
+]
+```
+
+**7. Import into destination stack**
+
+For new stack:
+```bash
+aws cloudformation create-stack \
+  --stack-name DestinationStack \
+  --template-body file://destination-stack.yaml \
+  --resources-to-import file://resources-to-import.json
+```
+
+For existing stack:
+```bash
+# Create import change set
+aws cloudformation create-change-set \
+  --stack-name DestinationStack \
+  --change-set-name import-data-bucket \
+  --change-set-type IMPORT \
+  --template-body file://destination-stack-updated.yaml \
+  --resources-to-import file://resources-to-import.json
+
+# Review changes
+aws cloudformation describe-change-set \
+  --stack-name DestinationStack \
+  --change-set-name import-data-bucket
+
+# Execute import
+aws cloudformation execute-change-set \
+  --stack-name DestinationStack \
+  --change-set-name import-data-bucket
+```
+
+**8. Verify the import**
+
+```bash
+aws cloudformation describe-stack-resources \
+  --stack-name DestinationStack \
+  --logical-resource-id DataBucket
+```
+
+### Procedure C: Importing Unmanaged Resources
+
+Use this for resources created manually or outside CloudFormation.
+
+#### Prepare Import File
 
 Create a JSON file specifying which resources to import:
 
@@ -397,7 +675,7 @@ Create a JSON file specifying which resources to import:
 | AWS::DynamoDB::Table | TableName |
 | AWS::IAM::Role | RoleName |
 
-### Import into New Stack
+#### Import into New Stack
 
 ```bash
 aws cloudformation create-stack \
@@ -406,7 +684,7 @@ aws cloudformation create-stack \
   --resources-to-import file://resources-to-import.json
 ```
 
-### Import into Existing Stack
+#### Import into Existing Stack
 
 ```bash
 # 1. Create change set with import
@@ -428,7 +706,7 @@ aws cloudformation execute-change-set \
   --change-set-name import-more-resources
 ```
 
-### Requirements for Successful Import
+#### Requirements for Successful Import
 
 **Template requirements:**
 - Resource properties must match existing resource exactly
@@ -623,5 +901,33 @@ aws ec2 describe-vpcs \
 - Use `terraform state rm` to remove from Terraform state before importing to CloudFormation
 - For CDK: CDK uses CloudFormation under the hood, resources already in stacks
 - Document which tool manages what to avoid confusion
+
+### Challenge 8: Moving Resources Between Stacks
+
+**Problem:** Need to refactor stack organization without recreating resources.
+
+**Solutions:**
+
+**Option 1: Use Stack Refactoring (NEW - February 2025)**
+```bash
+aws cloudformation create-stack-refactor \
+  --description "Move S3 bucket to new stack" \
+  --enable-stack-creation \
+  --resource-mappings Source={StackName=OldStack,LogicalResourceId=Bucket},Destination={StackName=NewStack,LogicalResourceId=Bucket} \
+  --stack-definitions StackName=OldStack,TemplateBody=file://old.yaml StackName=NewStack,TemplateBody=file://new.yaml
+```
+
+**Option 2: Manual DeletionPolicy method**
+1. Add `DeletionPolicy: Retain` to resource in source stack
+2. Update source stack to apply policy
+3. Remove resource from source template and update (resource persists)
+4. Import resource into destination stack
+
+**Limitations:**
+- Stack refactoring only supports `FULLY_MUTABLE` resources
+- Cannot modify resource properties during refactoring
+- Manual method requires exact property matching in destination template
+
+See [Moving Resources Between Existing Stacks](#moving-resources-between-existing-stacks) for complete procedures.
 
 ---
