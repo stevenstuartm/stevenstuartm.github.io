@@ -1,7 +1,7 @@
 # Site settings
 title: Architecture Insights
 email: stevenstuartm@gmail.com
-description: Real-world insights on cloud architecture, system design, and building scalable distributed systems.
+description: Turning complexity into clarity. Real-world insights on building cloud architectures that teams actually understand.
 baseurl: ""
 url: "https://stevenstuartm.com"
 version: 1.0.11

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Resume
-description: "Software architect with proven expertise in AWS, .NET, microservices, and cloud infrastructure—delivering scalable, cost-effective solutions."
+description: "Full-stack platform architect who turns complexity into clarity. Building cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering."
 permalink: /resume.html
 ---
 
@@ -19,7 +19,7 @@ permalink: /resume.html
 
 ## Professional Summary
 
-Software architect with 15+ years designing and building cloud-native platforms, distributed systems, and scalable architectures. Proven track record of reducing infrastructure costs, strengthening security posture, and leading technical teams.
+Full-stack platform architect who turns complexity into clarity. I build cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering. My focus is creating systems that teams actually understand: clear architectures, solid security, and straightforward paths forward that align with business goals. From tangled problems to elegant solutions, I help teams move fast with confidence.
 
 ## Professional Experience
 
@@ -28,11 +28,11 @@ Software architect with 15+ years designing and building cloud-native platforms,
 Led complete modernization of cloud infrastructure and development operations for a financial research platform serving investors. Directed architecture strategy, mentored engineering team, and delivered secure, scalable solutions aligned with business objectives.
 
 **Key Achievements:**
-- **Reduced cloud costs 80%** through infrastructure optimization and service consolidation
-- **Enhanced security posture** with AWS WAF, zero-trust IAM policies, and compliant API architecture
-- **Eliminated transaction instability** by rearchitecting service-based architecture, dramatically improving reliability for sales operations and client applications
-- **Improved platform performance** by rearchitecting data layer with Aurora, DynamoDB, and Snowflake
-- **Accelerated deployment velocity** by implementing CI/CD pipelines and automated testing environments
+- **Reduced cloud costs 80%** through infrastructure optimization and service consolidation—cutting complexity without sacrificing capability
+- **Enhanced security posture** with AWS WAF, zero-trust IAM policies, and compliant API architecture that the team could confidently maintain
+- **Turned unstable transaction architecture into reliable system** by rearchitecting service-based architecture with clear boundaries, dramatically improving reliability for sales operations and client applications
+- **Improved platform performance** by rearchitecting data layer with Aurora, DynamoDB, and Snowflake—matching the right tool to each use case
+- **Accelerated deployment velocity** by implementing straightforward CI/CD pipelines and automated testing environments
 
 *Technologies: .NET 8, ASP.NET Core, AWS EKS, GraphQL (HotChocolate), Aurora PostgreSQL, DynamoDB, Snowflake, EventBridge, CloudFront, WAF, CodeBuild, Vue.js, .NET MAUI*
 
@@ -41,9 +41,9 @@ Led complete modernization of cloud infrastructure and development operations fo
 Built scalable microservices and event-driven systems for digital banking platform serving millions of users across 200+ financial institutions. Collaborated in Agile environment to deliver high-quality features while mentoring team members on architectural best practices.
 
 **Key Achievements:**
-- **Pioneered serverless architecture** by developing Alkami's first AWS Lambda-based APIs, establishing patterns for future development
+- **Pioneered serverless architecture** by developing Alkami's first AWS Lambda-based APIs, establishing clear patterns that other teams could follow
 - **Launched real-time notification platform** enabling banks to deliver instant alerts to customers across web and mobile channels
-- **Elevated code quality** through systematic code reviews and mentorship on SOLID principles and clean architecture
+- **Elevated code quality** through systematic code reviews and mentorship on SOLID principles and clean architecture—helping teams understand the why, not just the what
 
 *Technologies: .NET, ASP.NET Core, AWS Lambda, SQS, DynamoDB, SQL Server, Vue.js*
 

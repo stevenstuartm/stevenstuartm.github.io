@@ -1,7 +1,7 @@
 ---
 layout: home
 title: From Complexity to Clarity
-subtitle: Distilling what works in architecture, design, and systems thinking.
+subtitle: Practical insights on building architectures that teams actually understand.
 
 # Featured content cards (3-4 items)
 featured_items:
