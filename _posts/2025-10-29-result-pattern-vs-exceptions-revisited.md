@@ -49,7 +49,7 @@ This applies to all operations where failure is expected and valid: validation, 
 
 Programming errors like null references or array index violations. Those are bugs that should crash during development, not states to handle in production.
 
-Even Rust - often cited as "exception-free" - uses panics (stack-unwinding exceptions by another name) for these scenarios. When you access an invalid array index in Rust, it panics and unwinds the stack. The difference: Rust restricts this mechanism to programming errors. Expected failures must use `Result<T, E>`.
+Even Rust - often cited as "exception-free" - uses panics (stack-unwinding exceptions by another name) for these scenarios. When you access an invalid array index in Rust, it panics and unwinds the stack. Rust just restricts this mechanism to programming errors. Expected failures must use `Result<T, E>`.
 
 ## Why This Matters Now More Than Ever
 
@@ -65,19 +65,19 @@ The Result vs Exception debate has existed for decades. So why does it matter mo
 
 ### The Language Comparison
 
-Both Rust and C# are pragmatic, multi-paradigm languages that evolved from different starting points:
+Both Rust and C# are pragmatic, multi-paradigm languages that evolved from different starting points.
 
-**Rust** emerged with strong functional influences and a systems programming focus. It enforces a clear split: expected failures return `Result<T, E>` types (compiler-enforced handling), while unexpected failures trigger panics that unwind the stack like exceptions.
+**Rust** emerged with strong functional influences and a systems programming focus. It enforces a clear split - expected failures return `Result<T, E>` types (compiler-enforced handling), while unexpected failures trigger panics that unwind the stack like exceptions.
 
 **C#** started heavily OOP-dominant and progressively adopted functional features (LINQ, pattern matching, immutability) to solve real problems. It historically used exceptions for all failures - both expected and unexpected.
 
-**What's converging**: Both ecosystems now support the same error handling split - Results for expected failures, exceptions/panics for programming errors.
+**What's converging** - both ecosystems now support the same error handling split. Results for expected failures, exceptions/panics for programming errors.
 
-In Rust, this is built-in and enforced: `Result<T, E>` types must be handled (compiler error if ignored), while panics are reserved for bugs.
+In Rust, this is built-in and enforced. `Result<T, E>` types must be handled (compiler error if ignored), while panics are reserved for bugs.
 
 In C#, this is now possible through pattern matching (C# 7+) and community Result libraries, but relies on discipline rather than compiler enforcement. Nothing stops you from ignoring a returned Result or using exceptions for expected failures.
 
-**A critical distinction**: Microsoft hasn't adopted Results officially. The Result pattern adoption is **community-driven** - library authors choosing this despite Microsoft's silence. Community libraries exist ([LanguageExt](https://github.com/louthy/language-ext){:target="_blank" rel="noopener noreferrer"} with 26M downloads, [FluentResults](https://github.com/altmann/FluentResults){:target="_blank" rel="noopener noreferrer"} with 3.3M downloads, [ErrorOr](https://github.com/amantinband/error-or){:target="_blank" rel="noopener noreferrer"}), but these aren't mainstream - popular .NET libraries have hundreds of millions of downloads.
+**A critical distinction** - Microsoft hasn't adopted Results officially. The Result pattern adoption is **community-driven** through library authors choosing this despite Microsoft's silence. Community libraries exist ([LanguageExt](https://github.com/louthy/language-ext){:target="_blank" rel="noopener noreferrer"} with 26M downloads, [FluentResults](https://github.com/altmann/FluentResults){:target="_blank" rel="noopener noreferrer"} with 3.3M downloads, [ErrorOr](https://github.com/amantinband/error-or){:target="_blank" rel="noopener noreferrer"}), but these aren't mainstream - popular .NET libraries have hundreds of millions of downloads.
 
 Still, when a pragmatic developer community independently moves toward patterns from another ecosystem, that's a signal worth examining.
 
@@ -136,7 +136,7 @@ With parallel processing, `Task.WhenAll` with exceptions is awkward because one 
 
 Exceptions bubble to orchestration layers without code at each level - throw once, catch at the boundary. The happy path stays clean; error handling lives at boundaries.
 
-Results require explicit propagation: return `Result<T>`, check it, propagate it (even with Rust's `?` operator, you must explicitly use `?` at each call site). This threads error handling through intermediate functions that don't care about the specific error.
+Results require explicit propagation. Return `Result<T>`, check it, propagate it (even with Rust's `?` operator, you must explicitly use `?` at each call site). This threads error handling through intermediate functions that don't care about the specific error.
 
 **Strength**: Separation of concerns. Domain logic stays focused on domain, not error threading.
 

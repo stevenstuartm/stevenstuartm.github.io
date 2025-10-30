@@ -243,6 +243,7 @@ When writing blog posts, prioritize clarity over verbosity:
 - Keep sections focused; if a section is too long, break it up
 - **Avoid em-dashes in sentences**; use semicolons, commas, or new sentences instead
 - **Include articles ("a", "the") for clarity**; avoid ambiguous grammar like "masquerading as process" (use "masquerading as a process") or "reconsolidate agreement" (use "reconsolidate the agreement")
+- **Avoid AI-tell colon constructions**; phrases like "The difference:", "The key:", "The point:", "Here's why:" are unnatural shorthand. Write naturally instead - use em-dashes, periods, or integrate the thought into the sentence flow
 
 **Title-content alignment**:
 - Section titles should clearly indicate what the section contains
