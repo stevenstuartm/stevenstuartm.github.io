@@ -1,15 +1,31 @@
 ---
 layout: home
-title: Software Architect
-subtitle: Learn from real-world architecture challenges and proven solutions for scalable systems.
-featured_guide:
-  title: "The AAA Cycle: A Guiding Discipline for Architects"
-  description: "Not a framework, but a way of valuing. AAA transcends SDLC methodologies by instilling what matters: human connection through Align, shared commitment through Agree, and honoring agreements through Apply. Learn the discipline that provides guardrails against the most common failures."
-  url: "/study-guides/sdlc/aaa-cycle.html"
+title: From Complexity to Clarity
+subtitle: Distilling what works in architecture, design, and systems thinking.
+
+# Featured content cards (3-4 items)
+featured_items:
+  - label: "Featured Guide"
+    title: "The AAA Cycle: A Guiding Discipline for Architects"
+    description: "Not a framework, but a way of valuing. AAA transcends SDLC methodologies by instilling what matters: human connection through Align, shared commitment through Agree, and honoring agreements through Apply."
+    cta: "Learn More"
+    url: "/study-guides/sdlc/aaa-cycle.html"
+
+  - label: "Latest Post"
+    title: "Result Pattern vs Exceptions: A Revisit"
+    description: "An exploration of how Result types and exceptions serve different purposes in error handling, and why understanding their trade-offs matters for system design."
+    cta: "Read Now"
+    url: "/blog/2025/10/29/result-pattern-vs-exceptions-revisited.html"
+
+  - label: "Learning Methodology"
+    title: "Learning Through Compression"
+    description: "How deliberate compression transforms information overload into deep understanding and practical knowledge you can actually apply."
+    cta: "Explore"
+    url: "/blog/2025/10/09/learning-through-compression.html"
+
+# Content type descriptions
+blog_description: "Deep dives into architecture, design patterns, and practical lessons from building scalable systems."
+guides_description: "Comprehensive learning resources covering architecture, algorithms, design patterns, security, and more."
+radar_description: "Current technology landscape, tools, and frameworks—what to adopt, assess, or hold."
+case_studies_description: "Real-world architecture in action. Explore detailed analyses of system design decisions and their outcomes."
 ---
-
-I'm Steven—a software architect with 15+ years building cloud-native platforms and distributed systems.
-
-I share practical insights on system design, architectural patterns, and modern development practices. Learn from real projects: migrating monoliths to microservices, optimizing AWS infrastructure, implementing Domain-Driven Design, and leading engineering teams.
-
-Whether you're a developer leveling up to architect or a team building production systems, you'll find actionable strategies backed by real-world experience.

@@ -10,49 +10,66 @@ layout: default
         {% endif %}
     </section>
 
-    {% if page.featured_guide %}
-    <section class="featured-content">
-        <div class="featured-label">Featured Today</div>
-        <h3 class="featured-title">{{ page.featured_guide.title }}</h3>
-        <p class="featured-description">{{ page.featured_guide.description }}</p>
-        <a href="{{ page.featured_guide.url | relative_url }}" class="featured-link">Explore →</a>
+    <!-- Featured Cards Section -->
+    {% if page.featured_items %}
+    <section class="featured-cards">
+        {% for item in page.featured_items %}
+        <a href="{{ item.url | relative_url }}" class="featured-card" aria-label="{{ item.title }}">
+            <div class="featured-card-label">{{ item.label }}</div>
+            <h3 class="featured-card-title">{{ item.title }}</h3>
+            <p class="featured-card-description">{{ item.description }}</p>
+            <span class="featured-card-link" aria-hidden="true">{{ item.cta }} →</span>
+        </a>
+        {% endfor %}
     </section>
     {% endif %}
 
-    <div class="home-grid">
-        <aside class="home-summary">
-            <div class="home-intro">
-                {{ content }}
+    <!-- Content Type Cards Section -->
+    <section class="content-type-cards">
+        <!-- Blog Card -->
+        <a href="{{ '/blog.html' | relative_url }}" class="content-type-card" aria-label="View all blog posts">
+            <div class="content-type-icon" aria-hidden="true">📝</div>
+            <h3 class="content-type-title">Blog</h3>
+            <p class="content-type-description">{{ page.blog_description }}</p>
+            {% if site.posts.size > 0 %}
+            {% assign latest_post = site.posts.first %}
+            <div class="content-type-latest">
+                <span class="latest-label">Latest:</span>
+                <span class="latest-link">{{ latest_post.title }}</span>
             </div>
-        </aside>
+            {% endif %}
+            <span class="content-type-cta" aria-hidden="true">View All Posts →</span>
+        </a>
 
-        <main class="home-content">
-            <section class="content-card recent-posts-card">
-                <h2>Latest Blogs</h2>
-                {% if site.posts.size > 0 %}
-                <div class="post-list">
-                    {% for post in site.posts limit:3 %}
-                    <article class="post-preview">
-                        <a href="{{ post.url | relative_url }}" class="post-link">
-                            <h3>{{ post.title }}</h3>
-                            <p class="post-meta">
-                                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
-                            </p>
-                            {% if post.description %}
-                            <p class="post-excerpt">{{ post.description }}</p>
-                            {% elsif post.excerpt %}
-                            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-                            {% endif %}
-                            <span class="read-more">Read more →</span>
-                        </a>
-                    </article>
-                    {% endfor %}
-                </div>
-                <a href="{{ '/blog.html' | relative_url }}" class="view-all">View all posts →</a>
-                {% else %}
-                <p>No posts yet. Add your first post to <code>_posts/</code> directory.</p>
-                {% endif %}
-            </section>
-        </main>
-    </div>
+        <!-- Study Guides Card -->
+        <a href="{{ '/study-guides.html' | relative_url }}" class="content-type-card" aria-label="Browse study guides">
+            <div class="content-type-icon" aria-hidden="true">📚</div>
+            <h3 class="content-type-title">Study Guides</h3>
+            <p class="content-type-description">{{ page.guides_description }}</p>
+            <span class="content-type-cta" aria-hidden="true">Browse Guides →</span>
+        </a>
+
+        <!-- Tech Radar Card -->
+        <a href="{{ '/tech-radar.html' | relative_url }}" class="content-type-card" aria-label="Explore tech radar">
+            <div class="content-type-icon" aria-hidden="true">🎯</div>
+            <h3 class="content-type-title">Tech Radar</h3>
+            <p class="content-type-description">{{ page.radar_description }}</p>
+            <span class="content-type-cta" aria-hidden="true">Explore Radar →</span>
+        </a>
+
+        <!-- Case Studies Card -->
+        <a href="{{ '/case-studies.html' | relative_url }}" class="content-type-card" aria-label="View case studies">
+            <div class="content-type-icon" aria-hidden="true">💼</div>
+            <h3 class="content-type-title">Case Studies</h3>
+            <p class="content-type-description">{{ page.case_studies_description }}</p>
+            {% if site.case_studies.size > 0 %}
+            {% assign latest_case = site.case_studies.first %}
+            <div class="content-type-latest">
+                <span class="latest-label">Latest:</span>
+                <span class="latest-link">{{ latest_case.title }}</span>
+            </div>
+            {% endif %}
+            <span class="content-type-cta" aria-hidden="true">View All Cases →</span>
+        </a>
+    </section>
 </div>

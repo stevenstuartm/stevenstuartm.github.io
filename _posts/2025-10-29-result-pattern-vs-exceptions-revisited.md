@@ -55,7 +55,9 @@ Even Rust - often cited as "exception-free" - uses panics (stack-unwinding excep
 
 The Result vs Exception debate has existed for decades. So why does it matter more now?
 
-**Distributed systems made expected failures high-frequency**. In monolithic applications, exceptions for validation or not-found scenarios were tolerable. In modern distributed systems with microservices and service meshes, expected failures happen constantly at scale: circuit breaker fallbacks, cache misses (30-40% under load), timeout retries, validation of user input, partial batch results. Treating these high-frequency outcomes as exceptions creates friction: exceptions serialize across service boundaries as HTTP errors, generate stack traces for telemetry systems, require try-catch blocks at every service call. Results are just data - they compose, serialize cleanly, and don't trigger observability overhead.
+**Distributed systems made expected failures high-frequency**. In monolithic applications, exceptions for validation or not-found scenarios were tolerable. In modern distributed systems with microservices and service meshes, expected failures happen constantly at scale: circuit breaker fallbacks, timeout retries, validation of user input, partial batch results. Treating these high-frequency outcomes as exceptions creates friction: exceptions serialize across service boundaries as HTTP errors, generate stack traces for telemetry systems, require try-catch blocks at every service call. Results are just data - they compose, serialize cleanly, and don't trigger observability overhead.
+
+**Offline-first architecture became standard**. Progressive web apps, mobile applications, and desktop clients operate in environments where "no network" isn't exceptional - it's expected. Sync conflicts, partial data availability, and intermittent connectivity are normal operating conditions, not rare anomalies. These applications need error handling mechanisms designed for frequent expected states, not mechanisms optimized for rare exceptional cases.
 
 **Observability systems make exception costs visible**. Every exception generates a stack trace that gets captured, stored, and transmitted through distributed tracing. At scale, exception-heavy architectures create measurable storage costs and noise in observability platforms that Results avoid entirely.
 
@@ -101,7 +103,7 @@ Stack traces leak automatically unless actively prevented at every boundary. Res
 
 **Argument 4: Natural composition for partial success and iteration**
 
-Batch operations and parallel workflows often have partial success. Results compose naturally through filtering and mapping.
+Batch operations, parallel workflows, and offline sync scenarios often have partial success. Results compose naturally through filtering and mapping. In offline-first applications syncing local changes to servers, some records succeed while others fail due to conflicts or validation - this is expected behavior, not an exceptional case.
 
 More critically: **exceptions force iteration at the wrong layer**. When processing a collection where some items might fail, you must iterate at the orchestration layer (where you can catch exceptions) even if iteration logically belongs in the service layer.
 
@@ -198,6 +200,7 @@ Making it syntactically easy to handle errors inline encourages developers to sc
 **Exception arguments that stand:**
 - Implicit propagation reduces boilerplate in intermediate layers
 - Framework integration is smoother without constant translation
+- Orchestration layers remain valuable for consolidating error handling decisions for both Results and exceptions
 
 **Exception arguments that weaken:**
 - Documentation requires discipline to maintain (documentation rots in practice)
@@ -214,7 +217,7 @@ The exception camp's strongest argument is **implicit propagation** - exceptions
 
 The concerns about Results - C# doesn't enforce handling, scattered error logic is possible, framework integration creates friction - are valid. But these are execution risks, not structural flaws. With discipline and static analyzers, Results provide better defaults for high-frequency expected failures.
 
-**In practice**: Use Results for domain operations (validation, business rules, service calls), exceptions for programming errors (null references, contract violations). Translate framework exceptions to Results at boundaries. Use `Task.WhenAll` with Results for parallel operations. Centralize error handling in orchestration layers - don't scatter it across call sites.
+**In practice**: Use Results for domain operations (validation, business rules, service calls), exceptions for programming errors (null references, contract violations). Framework exceptions can still be handled by orchestration layers. Use `Task.WhenAll` with Results for parallel operations. Centralize error handling decisions in orchestration layers - they handle both Results and framework exceptions.
 
 ## Why the Resistance?
 
@@ -222,7 +225,7 @@ If structural arguments favor Results, why does the exception camp remain strong
 
 **Paradigm friction**: OOP treats errors as exceptional control flow (interrupt the action). Functional treats errors as data (another value to transform). C# developers gravitating toward exceptions isn't just familiarity - it's paradigm alignment. But modern distributed systems are functional in nature (stateless services, data pipelines), even when written in OOP. Results fit these problems better.
 
-**The Frozen Caveman pattern**: "Exceptions work if done correctly, and I've learned how to do them correctly." This solves yesterday's problem (poor exception handling) rather than today's (high-frequency expected failures, parallel operations, iteration at service layers). When 30-40% of operations fail expectedly, exceptions require discipline to work around their design, not just discipline to use them well.
+**The Frozen Caveman pattern**: "Exceptions work if done correctly, and I've learned how to do them correctly." This solves yesterday's problem (poor exception handling) rather than today's (high-frequency expected failures in distributed systems, offline-first sync conflicts, parallel operations, iteration at service layers). When operations frequently return expected failure states, exceptions require discipline to work around their design, not just discipline to use them well.
 
 ## Final Word
 

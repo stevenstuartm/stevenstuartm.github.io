@@ -1,7 +1,7 @@
 # Site settings
-title: Steven Stuart
+title: Architecture Insights
 email: stevenstuartm@gmail.com
-description: Software architect sharing practical insights on cloud architecture, system design, AWS, .NET, and building scalable distributed systems.
+description: Real-world insights on cloud architecture, system design, and building scalable distributed systems.
 baseurl: ""
 url: "https://stevenstuartm.com"
 version: 1.0.11
