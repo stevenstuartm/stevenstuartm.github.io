@@ -11,9 +11,9 @@ I thought focus meant exclusion; mastering one thing completely before moving to
 
 I was wrong. **Focus isn't about exclusion. It's about presence.**
 
-## The Problem with Single-Minded Focus
+## Single-Minded Focus Atrophies Other Skills
 
-Channeling all energy into one area atrophies everything else. Like exercising only one muscle group; you gain strength there while losing it everywhere else.
+Channeling all energy into one area atrophies everything else. Like exercising only one muscle group, you gain strength there while losing it everywhere else.
 
 For developers: Becoming a React expert while losing touch with CS fundamentals, system design, or emerging technologies. **You master one thing but lose the ability to apply it in the real world.**
 

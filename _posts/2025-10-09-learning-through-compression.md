@@ -64,7 +64,7 @@ This new ignorance becomes the next cycle's starting point. Each iteration:
 - Enables more targeted expansion (efficient learning)
 - Produces clearer teaching (better compression)
 
-## The Insight
+## Learning as Compression
 
 Learning isn't accumulation. It's expansion followed by compression.
 

@@ -11,7 +11,7 @@ Two years ago, I adopted Kubernetes without proper evaluation. The result? $2K/m
 
 Last month I migrated to AWS ECS Fargate, immediately saving $2K/month while dramatically simplifying operations. This is my lesson in avoiding technology hype.
 
-## The Mistake
+## My Mistake, Not Kubernetes'
 
 Kubernetes didn't fail; I did. As an architect, my job is evaluating tradeoffs before commitments. Instead, I got caught up in industry hype.
 
@@ -32,14 +32,14 @@ K8s is built for massive scale with dedicated platform teams. If you're running 
 
 Most teams just need reliable deployments without weekend cluster maintenance.
 
-## The Solution
+## What Worked Instead
 
 **AWS ECS Fargate:** Fully managed, auto-scaling, native AWS integration. No cluster management, significantly lower costs, dramatically simpler operations.
 
 Similar managed container solutions exist across cloud providers. Evaluate what fits your actual needs, not industry trends.
 
-## The Lesson
+## Evaluate Before Adopting
 
-**Evaluate before adopting.** Ask hard questions about your specific context before committing to trendy technologies. The boring, simple solution is usually the right solution.
+Ask hard questions about your specific context before committing to trendy technologies. The boring, simple solution is usually the right solution.
 
 As architects, we must protect our organizations from expensive assumptions, even when (especially when) the entire industry seems to be moving in one direction.

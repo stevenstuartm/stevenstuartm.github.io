@@ -11,7 +11,7 @@ Every architect has sat in a meeting where leadership demands faster delivery. "
 
 I've watched companies IPO with little apparent reason other than to raise capital for fixing their technical foundation rather than funding growth. I've seen product leaders race to market first, only to watch a thoughtful competitor learn from their mistakes and convert their frustrated customers. Building deliberately, with architectural intention, is the only path to sustainable speed.
 
-## The Economics of Architectural Decisions
+## Economics of Architectural Decisions
 
 When an architect spends a day designing a system properly, they're making decisions that echo through years of development:
 - How will this scale?
@@ -26,7 +26,7 @@ The problem? **These costs are delayed and distributed.** When a system fails si
 
 I've seen engineering organizations become fire departments, racing from incident to incident, unable to ship new features without breaking existing ones. Some companies go public primarily to raise funds to hire enough developers to manage the chaos or rebuild the foundation while keeping the lights on. Technical debt becomes a financial instrument, which is a terrible position.
 
-## The Second-Mover Advantage
+## Second-Mover Advantage
 
 Being first to market is often the best way to lose to the second mover.
 
@@ -60,7 +60,7 @@ Real balance means investing heavily in decisions that are expensive to change (
 
 Thoughtful building leads to faster delivery over time, while rushing leads to slowdown as debt accumulates.
 
-## The Architect's Primary Responsibility
+## Translating Technical Decisions to Business Value
 
 Being technically brilliant doesn't matter if you can't explain why your decisions benefit the business.
 

@@ -44,4 +44,4 @@ This pattern appears in courses, certifications, and job requirements. The disti
 - **Technical interviews**: Articulating architectural decisions clearly
 - **Team alignment**: Avoiding confusion when discussing patterns
 
-**Key takeaway:** Modern frameworks achieve hexagonal architecture's original goals through different means. Unless you're explicitly implementing symmetric drivers and swappable adapters, you're likely using layered architecture with dependency injection, and that's perfectly valid for most systems.
+Modern frameworks achieve hexagonal architecture's original goals through different means. Unless you're explicitly implementing symmetric drivers and swappable adapters, you're likely using layered architecture with dependency injection, and that's perfectly valid for most systems.

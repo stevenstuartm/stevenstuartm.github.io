@@ -27,6 +27,6 @@ In some cases, not all, AI simply picks a direction and runs with it. It might t
 
 When I first started using AI code generation I lost so much time. I assumed too much of AI, and I thought that actually learning the "old way" would be slower and less effective than asking my assistant. We learn and AI learns directly from us. So... it does not take a genius to see where this is going.
 
-## The Bottom Line
+## What This Means
 
-Use AI to assist you. You really should. But you still need to learn the domain and the tech and to have the agency to make final decisions.
+Use AI to assist you. You really should. But you still need to learn the domain and the tech and to have the agency to make decisions.

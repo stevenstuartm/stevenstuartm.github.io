@@ -51,7 +51,7 @@ Microsoft learned from TypeScript and is running dual strategies:
 
 **The reality:** Users need performance, not specific technologies. WebAssembly adoption depends on whether the web demands it. AI interfaces and browser-based tools might drive that demand. Or they might not.
 
-## The Verdict
+## Use It, But Don't Depend On It
 
 Use Blazor where it delivers clear value today. Don't architect long-term systems assuming it will be supported forever.
 

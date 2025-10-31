@@ -7,15 +7,15 @@ tags: [architecture, distributed-systems, refactoring, system-design, technical-
 description: "When distributed systems lose their rationale through team churn, strategic consolidation can reveal true boundaries and regain agility. A pragmatic approach to fixing distributed monoliths by merging tightly-coupled components to rediscover appropriate service boundaries."
 ---
 
-## The Inheritance Problem
+## Inheriting Distributed Complexity
 
 So you inherit a distributed system with components distributed early, databases fragmented, team churn erasing why boundaries exist, deployments coordinating across services and migrations, distributed complexity without distributed benefits.
 
 A **distributed monolith**.
 
-## The Fog Problem
+## Architectural Amnesia
 
-Aging systems can suffer from architectural amnesia. Boundaries reflect old org charts. Components couple through shared databases, common libraries, undocumented assumptions.
+Aging systems can suffer from architectural amnesia. Boundaries reflect old org charts. Components couple through shared databases, common libraries, and undocumented assumptions.
 
 Standard advice: add abstraction layers or apply domain-driven design.
 
@@ -53,7 +53,7 @@ Consolidate services and databases with high cohesion and coupling. This creates
 
 Architecture Decision Records preserve rationale across team changes. Team topologies aligned with domain boundaries prevent arbitrary splits. Systems with these practices rarely need aggressive consolidation.
 
-## The Goal
+## When Consolidation Makes Sense
 
 "Monolith first" works for greenfield. "Consolidate to rediscover boundaries" works for inherited complexity.
 

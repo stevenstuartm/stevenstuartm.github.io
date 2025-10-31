@@ -9,7 +9,7 @@ tags: [architecture, configuration-management, security, aws, devops]
 
 Configuration management is one of those problems that seems simple until you've lived through the chaos of production incidents caused by misconfigured deployments, secrets leaked in Git history, or the dreaded "it works on my machine" syndrome. Over the years, I've seen teams struggle with the same pattern: storing configuration files alongside their application code. While this approach feels intuitive and convenient, it creates more problems than it solves.
 
-## The Problem with Localized Configs
+## Problems with Localized Configs
 
 When configuration files are stored and deployed with your application components, you inherit a host of issues:
 
@@ -19,7 +19,7 @@ When configuration files are stored and deployed with your application component
 
 **Deployment Dependencies**: When configs change, you need to redeploy your entire application. When multiple services share configuration, coordinating deployments becomes a nightmare.
 
-## The Solution: Distributed and Versioned Config Store
+## Distributed and Versioned Config Store
 
 The answer isn't to build a custom configuration service or maintain complex templating systems. Modern cloud platforms have already solved this problem.
 
@@ -73,7 +73,7 @@ In my experience, AWS Systems Manager Parameter Store hits the sweet spot for mo
 
 Moving to a distributed config store isn't free. You're trading one form of complexity for another. Configuration updates become more like database migrations: more ceremony, more steps, more intentionality.
 
-This feels heavier, and it is. But that's actually a feature, not a bug. Configuration changes in production systems *should* be intentional and controlled. The ceremony around updating configuration forces you to think about:
+This feels heavier, and it is, but that's a feature, not a bug. Configuration changes in production systems *should* be intentional and controlled. The ceremony around updating configuration forces you to think about:
 
 - Backwards compatibility
 - Rollback procedures

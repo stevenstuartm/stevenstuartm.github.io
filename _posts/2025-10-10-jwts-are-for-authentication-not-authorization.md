@@ -9,9 +9,9 @@ description: "Why embedding authorization in JWTs creates security risks and UX 
 
 JSON Web Tokens (JWTs) have become ubiquitous in modern web applications, but they're often misused. The most common mistake? Treating them as an authorization solution when they're fundamentally an authentication mechanism. This misunderstanding leads to security vulnerabilities, poor user experience, and operational headaches.
 
-## The Problem: Immutability Meets Reality
+## Immutability Meets Reality
 
-JWTs are immutable by design. Once signed and issued, the claims inside cannot be changed until expiration. This works for authentication; your identity doesn't change mid-session. But it creates significant problems for authorization.
+JWTs are immutable by design. Once signed and issued, the claims inside cannot be changed until expiration. This works for authentication because your identity doesn't change mid-session, but it creates significant problems for authorization.
 
 Real-world scenarios:
 
@@ -22,7 +22,7 @@ Real-world scenarios:
 
 The immutability creates a window of risk or poor user experience, minutes to hours depending on token TTL.
 
-## The Common "Solution" That Doesn't Work
+## Shortening Lifetimes Doesn't Solve It
 
 The typical response: shorten JWT lifetimes (5-15 minutes) and refresh aggressively. This creates new problems:
 
@@ -32,7 +32,7 @@ The typical response: shorten JWT lifetimes (5-15 minutes) and refresh aggressiv
 
 This just works around the fundamental mismatch between immutable tokens and dynamic authorization.
 
-## The Latency Myth
+## Performance Is Not the Tradeoff
 
 The argument for embedding authorization in JWTs centers on performance: "We can't afford to hit the database on every request." This is a false tradeoff.
 
@@ -111,7 +111,7 @@ These attempt to balance statelessness with dynamic authorization. In practice, 
 
 The complexity cost rarely justifies the benefits. You're building infrastructure to work around the mismatch between immutable tokens and dynamic authorization, when session lookup solves it directly.
 
-## The Product and Subscription Reality
+## Products and Subscriptions Demand Dynamic Authorization
 
 Product-driven systems tie authorization to constantly changing factors:
 
@@ -135,7 +135,7 @@ But internal systems have:
 
 The places where JWT authorization seems acceptable are often where it's most dangerous.
 
-## The Operational Flexibility Tradeoff
+## Operational Flexibility Matters
 
 JWT-based authorization can work for systems with simple, stable permission models. For MVPs or rarely-changing authorization, embedding claims in tokens is reasonable.
 

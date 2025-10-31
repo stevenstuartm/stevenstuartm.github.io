@@ -49,7 +49,7 @@ This hedging behavior suggests developers are uncertain about Terraform/HashiCor
 
 Not explosive growth, but a solid foundation representing practitioners who chose platform-native early.
 
-## The Advantages of Native IaC
+## Advantages of Native IaC
 
 Cloud-native tools have fundamental advantages that compound over time:
 
@@ -113,9 +113,7 @@ This describes most organizations. Cloud-native includes template-based tools (C
 
 These are legitimate use cases, but less common than the single-cloud scenario.
 
-**The reality check:**
-
-While 92% of organizations claim "multi-cloud" (Gartner 2024), most is accidental (acquisitions, shadow IT, legacy systems). Active workload portability between clouds is rare. Don't choose tools based on theoretical future needs that may never materialize.
+**Reality check**: While 92% of organizations claim "multi-cloud" (Gartner 2024), most is accidental (acquisitions, shadow IT, legacy systems). Active workload portability between clouds is rare. Don't choose tools based on theoretical future needs that may never materialize.
 
 Platform vendors invest billions in developer experience. Native tools receive features first and the gap widens over time. The CloudFormation IaC Generator demonstrates this: a capability that third-party tools cannot replicate because they lack platform-level visibility.
 

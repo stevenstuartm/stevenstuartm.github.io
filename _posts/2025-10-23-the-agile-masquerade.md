@@ -7,7 +7,7 @@ series: "Industry & Culture"
 tags: [agile, requirements, aaa-cycle, estimation]
 ---
 
-## The Fundamental Problem
+## Agreement Requires Discovery
 
 You cannot deliver value without agreement on what constitutes value.
 
@@ -15,9 +15,9 @@ You cannot have agreement without discovery of what you're actually building.
 
 You cannot apply discovery to improve the agreement if you're afraid of "documentation" and refuse to step outside pointless timeboxes and absurd estimations based on nothing but assumptions.
 
-**You cannot iterate on what you cannot quantify. Otherwise you're operating on hope, not discipline.**
+**You cannot iterate on what you cannot quantify. Otherwise, you're operating on hope, not discipline.**
 
-## The Problem: Misalignment Disguised as Agreement
+## Misalignment Disguised as Agreement
 
 Software development frequently operates on fictional agreements, creating misaligned teams. The problem isn't new to "Agile" methodologies; waterfall documentation could be equally full of untested assumptions and vague requirements. But user stories have made the problem worse by treating minimal documentation as a virtue.
 
@@ -57,7 +57,7 @@ What does testing assumptions look like?
 
 ### The Spike Problem
 
-Scrum's flaws become obvious the moment someone suggests introducing spikes. A spike is exploratory work to reduce uncertainty; exactly what testing assumptions requires.
+Scrum's flaws become obvious the moment someone suggests introducing spikes. A spike is exploratory work to reduce uncertainty: exactly what testing assumptions requires.
 
 But spikes create political and metric chaos in Scrum:
 - **How do you estimate a spike?** The whole point is you don't know enough to estimate
@@ -140,7 +140,7 @@ The fundamental issue with Scrum is that it's interval-based, not feature-based.
 - Metrics focus on velocity and sprint completion
 - Discovery threatens the schedule
 - "Done" means "the sprint is over"
-- **Creates risk of misalignment**: teams may ship to meet the timebox rather than the outcome
+- **Creates risk of misalignment** because teams may ship to meet the timebox rather than the outcome
 
 **Feature-based frameworks** (Shape Up, incremental delivery):
 - Organize around completing defined features
@@ -148,9 +148,9 @@ The fundamental issue with Scrum is that it's interval-based, not feature-based.
 - Metrics focus on value delivered
 - Discovery informs scope adjustment
 - "Done" means "we delivered what we agreed to build"
-- **Supports alignment**: commitment is to the outcome, not the calendar
+- **Supports alignment** because commitment is to the outcome, not the calendar
 
-Feature-based frameworks naturally support the discipline of agreement. You define an initial outcome and commit to delivering value, not hitting a timeline. When discovery reveals complexity or better approaches, you reconsolidate the agreement: adjust scope within the feature boundary, extend the work, or pivot based on what you learned. The feature commitment creates accountability to an outcome, not to a calendar.
+Feature-based frameworks naturally support the discipline of agreement. You define an initial outcome and commit to delivering value, not hitting a timeline. When discovery reveals complexity or better approaches, you reconsolidate the agreement by adjusting scope within the feature boundary, extending the work, or pivoting based on what you learned. The feature commitment creates accountability to an outcome, not to a calendar.
 
 Interval-based frameworks make alignment harder. The timebox becomes the commitment. "Done" becomes arbitrary; whatever state the code is in when the sprint ends. Discovery becomes an inconvenience rather than legitimate learning. Teams become misaligned on what "done" even means.
 

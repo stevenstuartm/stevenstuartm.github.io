@@ -39,9 +39,9 @@ Are you mentoring less experienced engineers to do what you do? Not as a nice-to
 
 **Leadership multiplier:** Great engineers solve hard problems. Great leaders create engineers who solve hard problems.
 
-## The Bottom Line
+## What Leadership Means
 
-Leadership in software development isn't about titles—it's about:
+Leadership in software development isn't about titles. It's about:
 - Continuous growth over comfortable repetition
 - Quality standards over "it works"
 - Building others as you build systems

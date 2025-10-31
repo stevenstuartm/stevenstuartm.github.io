@@ -11,15 +11,13 @@ TDD's practical reality often contradicts its theoretical promise. Constant test
 
 Yet I think we're framing TDD wrong—in a way that creates division rather than value. Here's a reframe that might bridge the gap between advocates and skeptics.
 
-## The Problem
+## Reframing TDD
 
 We see TDD primarily as a code quality tool. Advocates measure test coverage while skeptics see rewritten tests as waste. Both may be missing the greater potential.
 
-## The Reframe: Tests as Executable Hypotheses
+TDD isn't just testing code. **It's testing assumptions.** Every test is an executable hypothesis about user needs and business logic.
 
-TDD isn't just testing code—**it's testing assumptions**. Every test is an executable hypothesis about user needs and business logic.
-
-When tests change or get discarded during discovery, they're delivering value: proving which assumptions were wrong **before** you built the wrong thing.
+When tests change or get discarded during discovery, they're delivering value by proving which assumptions were wrong **before** you built the wrong thing.
 
 ## From Code Quality to Business Intelligence
 
@@ -27,8 +25,8 @@ Think "executable business hypotheses," not "code quality practice." This refram
 
 **Changed tests have ROI.** They're evidence of assumptions validated or disproven before expensive implementation. Instead of arguing about coverage percentages, focus on assumption coverage: How quickly can you validate risky beliefs about what users need?
 
-## The Takeaway
+## What Matters Most
 
-The goal isn't perfect tests—it's perfect understanding.
+The goal isn't perfect tests. It's perfect understanding.
 
-TDD's real value: **Failing fast on assumptions, not code.** Whether you write tests first or after discovery, focus on testing the assumptions that matter most to your users and business.
+TDD's real value is **failing fast on assumptions, not code**. Whether you write tests first or after discovery, focus on testing the assumptions that matter most to your users and business.

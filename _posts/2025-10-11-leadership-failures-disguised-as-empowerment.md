@@ -102,7 +102,7 @@ The reality is typically the opposite:
 
 **Healthy alternative:** Clear PTO allocation with transparent policies. Minimum vacation requirements (yes, minimum) to ensure people actually take time off. Leadership that models healthy work-life boundaries.
 
-## The Common Thread: Externalizing Leadership Failure
+## Externalizing Leadership Failure
 
 Every pattern described here shares the same core dysfunction: **leadership failures externalized onto employees.**
 
