@@ -532,7 +532,8 @@ main {
 }
 
 .featured-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     color: white;
     padding: var(--spacing-md);
@@ -582,6 +583,8 @@ main {
     font-size: 0.8rem;
     text-decoration: none;
     transition: all 0.3s ease;
+    margin-top: auto;
+    align-self: flex-start;
 }
 
 .featured-card-link:hover {

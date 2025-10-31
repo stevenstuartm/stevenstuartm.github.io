@@ -365,19 +365,20 @@ When writing about software architecture, always use proper terminology:
 
 **CRITICAL: Avoid AI-tell phrases**:
 These phrases are obvious indicators of AI-generated content and must be avoided:
-- ❌ "The key insight"
-- ❌ "It's important to note"
-- ❌ "It's worth noting"
-- ❌ "It should be noted"
-- ❌ "In conclusion" / "In summary"
+- ❌ "The key insight" / "The insight" / "The takeaway"
+- ❌ "It's important to note" / "It's worth noting" / "It should be noted"
+- ❌ "In conclusion" / "In summary" / "Final version" / "Final conclusion"
 - ❌ "Ultimately" / "Essentially" / "Fundamentally" (when used as filler)
-- ❌ "At the end of the day"
-- ❌ "The bottom line is"
+- ❌ "At the end of the day" / "The bottom line is"
+- ❌ Section headers like "The Insight", "The Problem", "The Solution", "The Key"
 
 **Write naturally instead**:
 - ✅ State insights directly without meta-commentary
 - ✅ Use active voice and direct statements
 - ✅ Let the content speak for itself without labeling it as "key" or "important"
+- ✅ Use complete grammar with articles ("a", "the") instead of consolidated shorthand
+- ✅ Prefer simpler words when they convey the same meaning
+- ✅ Write as you would speak to someone in person
 
 **Example transformations**:
 ```markdown
@@ -389,6 +390,15 @@ These phrases are obvious indicators of AI-generated content and must be avoided
 
 ❌ AAA is fundamentally about how we value
 ✅ AAA is about how we value
+
+❌ ## The Insight
+✅ ## Why This Matters (or a specific descriptive header)
+
+❌ masquerading as process
+✅ masquerading as a process
+
+❌ reconsolidate agreement
+✅ reconsolidate the agreement
 ```
 
 ### AAA Cycle Content Philosophy
