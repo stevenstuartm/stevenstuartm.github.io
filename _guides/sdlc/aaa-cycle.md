@@ -2,7 +2,7 @@
 title: "AAA Cycle: Align-Agree-Apply"
 layout: guide
 category: Software Development Lifecycle
-subcategory: AAA Cycle Framework
+subcategory: AAA Cycle
 description: "A guiding discipline for architects that emphasizes human connection, shared agreement, and value delivery - transcending any specific SDLC methodology."
 ---
 

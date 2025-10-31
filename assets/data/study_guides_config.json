@@ -21,8 +21,8 @@
           ]
         },
         {
-          "name": "AAA Cycle Framework",
-          "description": "Comprehensive framework for architects: Align-Agree-Apply",
+          "name": "AAA Cycle",
+          "description": "Guiding discipline for architects: Align-Agree-Apply",
           "guides": [
             "sdlc/aaa-cycle.md",
             "sdlc/aaa-phase1-align.md",

@@ -2,7 +2,7 @@
 title: "AAA Cycle: Phase 1 - Align with the Need"
 layout: guide
 category: Software Development Lifecycle
-subcategory: AAA Cycle Framework
+subcategory: AAA Cycle
 description: "Understand the problem before committing to a solution."
 ---
 
@@ -78,7 +78,7 @@ Align applies at every level of work:
 - What business rules govern the process?
 - What data needs to be captured or integrated?
 
-**Non-Functional Requirements** (often missed):
+**Architectural Characteristics** (often missed):
 - Performance: Response time, throughput expectations
 - Scalability: Growth projections for users and data
 - Availability: Uptime requirements
@@ -92,7 +92,7 @@ Align applies at every level of work:
 
 **How to Do This Well**:
 - Ask "why" repeatedly to get to root needs
-- Probe for non-functionals explicitly—stakeholders often forget them
+- Probe for architectural characteristics explicitly—stakeholders often forget them
 - Push for measurable, testable criteria (not "it should be fast" but "page loads < 2 seconds")
 - Document acceptance criteria clearly so there's no ambiguity later
 - Think holistically about how requirements impact architecture

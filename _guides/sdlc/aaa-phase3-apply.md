@@ -2,7 +2,7 @@
 title: "AAA Cycle: Phase 3 - Apply the Plan and Deliver"
 layout: guide
 category: Software Development Lifecycle
-subcategory: AAA Cycle Framework
+subcategory: AAA Cycle
 description: "Execute with discipline while maintaining alignment."
 ---
 

@@ -2,7 +2,7 @@
 title: "AAA Cycle: Phase 2 - Agree to the Plan"
 layout: guide
 category: Software Development Lifecycle
-subcategory: AAA Cycle Framework
+subcategory: AAA Cycle
 description: "Design the solution and secure commitment to the approach."
 ---
 
