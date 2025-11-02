@@ -363,14 +363,17 @@ When writing about software architecture, always use proper terminology:
 
 ### Writing Style and Voice
 
-**CRITICAL: Avoid AI-tell phrases**:
-These phrases are obvious indicators of AI-generated content and must be avoided:
+**CRITICAL: Avoid AI-tell phrases and choppy grammar**:
+These phrases and patterns are obvious indicators of AI-generated content and must be avoided:
 - ❌ "The key insight" / "The insight" / "The takeaway"
 - ❌ "It's important to note" / "It's worth noting" / "It should be noted"
 - ❌ "In conclusion" / "In summary" / "Final version" / "Final conclusion"
 - ❌ "Ultimately" / "Essentially" / "Fundamentally" (when used as filler)
 - ❌ "At the end of the day" / "The bottom line is"
 - ❌ Section headers like "The Insight", "The Problem", "The Solution", "The Key"
+- ❌ Colon constructions announcing importance: "What's converging:", "A critical distinction:", "The difference:"
+- ❌ Sentence fragments with dashes: "What's converging -", "The point -"
+- ❌ Missing articles creating choppy grammar: "masquerading as process" (use "as a process"), "Distributed systems made expected failures high-frequency" (use "made expected failures more frequent" or "made failures frequent")
 
 **Write naturally instead**:
 - ✅ State insights directly without meta-commentary
@@ -379,6 +382,7 @@ These phrases are obvious indicators of AI-generated content and must be avoided
 - ✅ Use complete grammar with articles ("a", "the") instead of consolidated shorthand
 - ✅ Prefer simpler words when they convey the same meaning
 - ✅ Write as you would speak to someone in person
+- ✅ Use complete sentences with natural flow, not telegraphic fragments
 
 **Example transformations**:
 ```markdown
@@ -399,6 +403,16 @@ These phrases are obvious indicators of AI-generated content and must be avoided
 
 ❌ reconsolidate agreement
 ✅ reconsolidate the agreement
+
+❌ What's converging -
+✅ Several trends are converging...
+
+❌ A critical distinction:
+✅ The distinction matters because... (or just state it directly)
+
+❌ Distributed systems made expected failures high-frequency
+✅ Distributed systems made expected failures more frequent
+✅ In distributed systems, expected failures happen frequently
 ```
 
 ### AAA Cycle Content Philosophy
