@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Resume
-description: "Full-stack platform architect who turns complexity into clarity. Building cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering."
+description: "Full-stack platform architect bringing clarity from complexity. Building cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering."
 permalink: /resume.html
 ---
 
@@ -19,7 +19,7 @@ permalink: /resume.html
 
 ## Professional Summary
 
-Full-stack platform architect who turns complexity into clarity. I build cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering. My focus is creating systems that teams actually understand: clear architectures, solid security, and straightforward paths forward that align with business goals. From tangled problems to elegant solutions, I help teams move fast with confidence.
+Full-stack platform architect bringing clarity from complexity. I build cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering. My focus is creating systems that teams actually understand: clear architectures, solid security, and straightforward paths forward that align with business goals. I help teams move fast with confidence by extracting clear understanding from complex systems.
 
 ## Professional Experience
 
@@ -30,7 +30,7 @@ Led complete modernization of cloud infrastructure and development operations fo
 **Key Achievements:**
 - **Reduced cloud costs 80%** through infrastructure optimization and service consolidation—cutting complexity without sacrificing capability
 - **Enhanced security posture** with AWS WAF, zero-trust IAM policies, and compliant API architecture that the team could confidently maintain
-- **Turned unstable transaction architecture into reliable system** by rearchitecting service-based architecture with clear boundaries, dramatically improving reliability for sales operations and client applications
+- **Brought clarity to unstable transaction architecture** by rearchitecting service-based architecture with clear boundaries, dramatically improving reliability for sales operations and client applications
 - **Improved platform performance** by rearchitecting data layer with Aurora, DynamoDB, and Snowflake—matching the right tool to each use case
 - **Accelerated deployment velocity** by implementing straightforward CI/CD pipelines and automated testing environments
 

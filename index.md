@@ -1,6 +1,6 @@
 ---
 layout: home
-title: From Complexity to Clarity
+title: Clarity from Complexity
 subtitle: Practical insights on building architectures that teams actually understand.
 
 # Featured content cards (3-4 items)

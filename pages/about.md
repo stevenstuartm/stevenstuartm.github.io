@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: "Full-stack platform architect who turns complexity into clarity. Building cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering."
+description: "Full-stack platform architect bringing clarity from complexity. Building cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering."
 image: /assets/img/profile-steven-stuart.jpeg
 permalink: /about.html
 ---
@@ -10,13 +10,13 @@ permalink: /about.html
 
 ![Steven Stuart - Software Architect specializing in cloud-native platforms and distributed systems](/assets/img/profile-steven-stuart.jpeg){: .profile-image}
 
-I'm a full-stack platform architect who turns complexity into clarity. I build cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering. My focus is creating systems that teams actually understand: clear architectures, solid security, and straightforward paths forward that align with business goals.
+I'm a full-stack platform architect bringing clarity from complexity. I build cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering. My focus is creating systems that teams actually understand: clear architectures, solid security, and straightforward paths forward that align with business goals.
 
 I believe architecture starts with human connection, thrives on genuine commitment, and succeeds by honoring agreements. Good architecture balances technical tradeoffs. Great solutions start with trust and maintain that trust through principled execution.
 
 ### What I Do
 
-**Architecture & Design** — I design cloud-based systems on AWS, focusing on resilience, security, and cost optimization. From migrating monoliths to microservices to implementing event-driven architectures, I turn tangled problems into elegant solutions. But first, I invest time understanding the people behind the problems—their needs, constraints, and context. Technical elegance means nothing if it doesn't solve the real problem or if the team can't understand it.
+**Architecture & Design** — I design cloud-based systems on AWS, focusing on resilience, security, and cost optimization. From migrating monoliths to microservices to implementing event-driven architectures, I bring clarity to tangled problems through elegant solutions. But first, I invest time understanding the people behind the problems—their needs, constraints, and context. Technical elegance means nothing if it doesn't solve the real problem or if the team can't understand it.
 
 **Technical Leadership** — I help teams move fast with confidence by establishing clear practices and guiding them through architectural transitions. Great architecture requires more than technical skill; it requires building trust, securing genuine commitment from stakeholders and teams, and maintaining that alignment throughout delivery. I don't just hand down designs; I collaborate to create solutions people believe in and understand.
 
