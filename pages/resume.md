@@ -19,7 +19,7 @@ permalink: /resume.html
 
 ## Professional Summary
 
-Full-stack platform architect bringing clarity from complexity. I build cloud-native solutions that serve real needs and deliver genuine value—without the over-engineering. My focus is creating clear architectures with solid security and straightforward paths forward that align with business goals. I help teams move fast with confidence.
+Full-stack platform architect bringing clarity from complexity. I build cloud-native solutions that serve real needs and deliver genuine value, without the over-engineering. My focus is creating clear architectures with solid security and straightforward paths forward that align with business goals. I help teams move fast with confidence.
 
 ## Professional Experience
 
@@ -28,10 +28,10 @@ Full-stack platform architect bringing clarity from complexity. I build cloud-na
 Led complete modernization of cloud infrastructure and development operations for a financial research platform serving investors. Directed architecture strategy, mentored engineering team, and delivered secure, scalable solutions aligned with business objectives.
 
 **Key Achievements:**
-- **Reduced cloud costs 80%** through infrastructure optimization and service consolidation—cutting complexity without sacrificing capability
+- **Reduced cloud costs 80%** through infrastructure optimization and service consolidation, cutting complexity without sacrificing capability
 - **Enhanced security posture** with AWS WAF, zero-trust IAM policies, and compliant API architecture that the team could confidently maintain
 - **Brought clarity to unstable transaction architecture** by rearchitecting service-based architecture with clear boundaries, dramatically improving reliability for sales operations and client applications
-- **Improved platform performance** by rearchitecting data layer with Aurora, DynamoDB, and Snowflake—matching the right tool to each use case
+- **Improved platform performance** by rearchitecting data layer with Aurora, DynamoDB, and Snowflake, matching the right tool to each use case
 - **Accelerated deployment velocity** by implementing straightforward CI/CD pipelines and automated testing environments
 
 *Technologies: .NET 8, ASP.NET Core, AWS EKS, GraphQL (HotChocolate), Aurora PostgreSQL, DynamoDB, Snowflake, EventBridge, CloudFront, WAF, CodeBuild, Vue.js, .NET MAUI*
@@ -43,7 +43,7 @@ Built scalable microservices and event-driven systems for digital banking platfo
 **Key Achievements:**
 - **Pioneered serverless architecture** by developing Alkami's first AWS Lambda-based APIs, establishing clear patterns that other teams could follow
 - **Launched real-time notification platform** enabling banks to deliver instant alerts to customers across web and mobile channels
-- **Elevated code quality** through systematic code reviews and mentorship on SOLID principles and clean architecture—helping teams understand the why, not just the what
+- **Elevated code quality** through systematic code reviews and mentorship on SOLID principles and clean architecture, helping teams understand the why rather than just the what
 
 *Technologies: .NET, ASP.NET Core, AWS Lambda, SQS, DynamoDB, SQL Server, Vue.js*
 
