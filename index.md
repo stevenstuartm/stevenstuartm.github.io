@@ -1,7 +1,7 @@
 ---
 layout: home
 title: Clarity from Complexity
-subtitle: Practical insights on building architectures that teams actually understand.
+subtitle: Practical insights on building architectures that serve real needs and deliver genuine value.
 
 # Featured content cards (3-4 items)
 featured_items:

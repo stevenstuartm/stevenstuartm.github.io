@@ -19,7 +19,7 @@ permalink: /resume.html
 
 ## Professional Summary
 
-Full-stack platform architect bringing clarity from complexity. I build cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering. My focus is creating systems that teams actually understand: clear architectures, solid security, and straightforward paths forward that align with business goals. I help teams move fast with confidence by extracting clear understanding from complex systems.
+Full-stack platform architect bringing clarity from complexity. I build cloud-native solutions that serve real needs and deliver genuine value—without the over-engineering. My focus is creating clear architectures with solid security and straightforward paths forward that align with business goals. I help teams move fast with confidence.
 
 ## Professional Experience
 

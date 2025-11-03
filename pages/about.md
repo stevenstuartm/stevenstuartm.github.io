@@ -10,15 +10,15 @@ permalink: /about.html
 
 ![Steven Stuart - Software Architect specializing in cloud-native platforms and distributed systems](/assets/img/profile-steven-stuart.jpeg){: .profile-image}
 
-I'm a full-stack platform architect bringing clarity from complexity. I build cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering. My focus is creating systems that teams actually understand: clear architectures, solid security, and straightforward paths forward that align with business goals.
+I'm a full-stack platform architect bringing clarity from complexity. I build cloud-native solutions that serve real needs and deliver genuine value—without the over-engineering. My focus is creating architectures that align with business goals through clear design, solid security, and straightforward paths forward.
 
 I believe architecture starts with human connection, thrives on genuine commitment, and succeeds by honoring agreements. Good architecture balances technical tradeoffs. Great solutions start with trust and maintain that trust through principled execution.
 
 ### What I Do
 
-**Architecture & Design** — I design cloud-based systems on AWS, focusing on resilience, security, and cost optimization. From migrating monoliths to microservices to implementing event-driven architectures, I bring clarity to tangled problems through elegant solutions. But first, I invest time understanding the people behind the problems—their needs, constraints, and context. Technical elegance means nothing if it doesn't solve the real problem or if the team can't understand it.
+**Architecture & Design** — I design cloud-based systems on AWS, focusing on resilience, security, and cost optimization. From migrating monoliths to microservices to implementing event-driven architectures, I bring clarity to complex problems. First, I invest time understanding the people behind the problems—their needs, constraints, and context. Technical solutions only matter when they serve real needs and deliver genuine value.
 
-**Technical Leadership** — I help teams move fast with confidence by establishing clear practices and guiding them through architectural transitions. Great architecture requires more than technical skill; it requires building trust, securing genuine commitment from stakeholders and teams, and maintaining that alignment throughout delivery. I don't just hand down designs; I collaborate to create solutions people believe in and understand.
+**Technical Leadership** — I help teams move fast with confidence by establishing clear practices and guiding them through architectural transitions. Great architecture requires building trust, securing genuine commitment, and maintaining alignment throughout delivery. I collaborate to create solutions that people believe in and can sustain.
 
 **Technology Stack** — .NET (C#), AWS (EKS, Lambda, Aurora, DynamoDB), GraphQL, Vue.js, and modern DevOps practices. I've worked across financial services, digital banking, and SaaS platforms.
 
