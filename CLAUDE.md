@@ -250,6 +250,27 @@ When writing blog posts, prioritize clarity over verbosity:
 - Avoid generic titles like "The Problem"; be specific
 - Readers should understand the section's purpose from the title alone
 
+**Avoid choppy and generic content**:
+Writing that feels choppy or overly generic undermines the impact of the content. Watch for these patterns:
+- **Choppy openings**: Sentence fragments or noun-heavy constructions that lack natural flow
+  - ❌ "Lack of architectural decision records creates assumption of incompetence"
+  - ✅ "When architectural decision records don't exist, future teams assume incompetence rather than recognizing intentional tradeoffs"
+- **Generic examples**: Vague statements that readers can easily dismiss as obvious
+  - ❌ "Leadership proposes moving back to on-premises infrastructure... Months later they celebrate success"
+  - ✅ Provide specific numbers, timelines, and concrete consequences ($2M → $800K over 18 months, but 99.9% → 95% availability, ops team triples, DR becomes tape-based)
+- **Awkward semicolon + fragment patterns**: Using semicolons to introduce quotes or fragments creates choppy rhythm
+  - ❌ "The rebuild proposal emerges naturally from this dysfunction; 'Let's start fresh...'"
+  - ✅ "The rebuild proposal emerges naturally from this dysfunction. 'Let's start fresh,' someone suggests."
+- **Command-style paragraphs**: Lists of imperative sentences without context feel robotic
+  - ❌ "State the real problem. Define measurable success criteria. Evaluate the alternatives."
+  - ✅ Use bold headers with explanatory follow-ups: "**State the real problem, not the symptom.** The symptom is 'AWS is expensive.' The real problem is..."
+
+**When providing examples**: Specific details make abstract concepts concrete and credible. Include:
+- Actual numbers (costs, percentages, timelines)
+- Specific technologies and trade-offs
+- Real consequences, not just "it got worse"
+- Natural narrative flow, not telegraphic lists
+
 ### Study Guide Content Philosophy
 
 **Focus on actionable knowledge over reference material**:
