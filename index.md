@@ -12,10 +12,10 @@ featured_items:
     url: "/study-guides/sdlc/aaa-cycle.html"
 
   - label: "Latest Post"
-    title: "Result Pattern vs Exceptions: A Revisit"
-    description: "An exploration of how Result types and exceptions serve different purposes in error handling, and why understanding their trade-offs matters for system design."
+    title: "Rebuild or Realign: Why Rewrites Often Solve the Wrong Problem"
+    description: "Many celebrated system rebuilds appear successful not because of new technology, but because they force teams to realign with value and best practices. This realignment work could have happened without the rebuild."
     cta: "Read Now"
-    url: "/blog/2025/10/29/result-pattern-vs-exceptions-revisited.html"
+    url: "/blog/2025/11/07/rebuild-or-realign.html"
 
   - label: "Learning Methodology"
     title: "Learning Through Compression"
