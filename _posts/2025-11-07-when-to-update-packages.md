@@ -20,23 +20,9 @@ Version uniformity does matter in specific contexts:
 - **Security vulnerabilities**: When a CVE affects multiple services, coordinated updates prevent attackers from exploiting the weakest link
 - **Framework-level breaking changes**: When a platform upgrade (like .NET major versions) requires coordinated migration across services
 
-Outside these cases, enforcing uniformity wastes time and introduces unnecessary risk. Governance clarity—understanding which dependencies matter for coordination and which don't—beats version number theater.
+Outside these cases, enforcing uniformity wastes time and introduces unnecessary risk. Governance clarity (understanding which dependencies matter for coordination and which don't) beats version number theater.
 
 When version uniformity does matter, coordinate at the contract level, not the deployment level. Pin shared library versions in your contract definitions, communicate breaking changes through versioned APIs, and establish migration windows rather than demanding instant synchronization. This lets teams update deliberately while maintaining compatibility where it counts.
-
-## The AWS SDK Lesson
-
-Even when you decide updates don't require cross-team coordination, you still need deliberate evaluation. The assumption that trusted vendors always ship safe updates fails regularly.
-
-Recently, AWS released version 4 of many of their .NET SDK packages with a series of breaking changes. Teams that treated AWS as a trusted source and updated without thorough review faced consequences ranging from compilation errors to production failures.
-
-The most damaging change wasn't a breaking API; it was a critical bug introduced in the SDK core authentication workflow. The bug created silent deadlocks when calling AWS services under specific load conditions. Services appeared healthy in development and early testing but locked up under production traffic patterns.
-
-This example reinforces two truths:
-1. **Upfront due diligence has limits**: You can review changelogs, run regression tests, and validate functionality, but some bugs only surface under production conditions
-2. **Ongoing vigilance matters**: Staying plugged into ticket systems, community forums, and issue trackers helps you catch problems before they spread
-
-Even trusted sources ship bugs. Intentional updates include monitoring what happens after updates ship, not just before.
 
 ## Making Intentional Update Decisions
 
@@ -77,9 +63,23 @@ Target your testing based on what changed:
 - **Load tests**: Replicate production traffic patterns against the specific features that changed; validate SLA compliance (response times, throughput, error rates)
 - **Integration tests**: If the dependency handles I/O (databases, APIs, file systems), test those boundaries thoroughly
 
-Load testing deserves special attention. A bug that surfaces only under concurrent load (like the AWS SDK deadlock) won't appear in functional tests. The AWS SDK deadlock would have surfaced in a load test replicating production concurrency patterns—50+ concurrent authentication requests under realistic network latency. Functional tests with serial requests passed cleanly, creating false confidence. Load tests should mirror production traffic volume and patterns, not arbitrary "stress everything" scenarios.
+Load testing deserves special attention. A bug that surfaces only under concurrent load (like the AWS SDK deadlock) won't appear in functional tests. The AWS SDK deadlock would have surfaced in a load test replicating production concurrency patterns: 50+ concurrent authentication requests under realistic network latency. Functional tests with serial requests passed cleanly, creating false confidence. Load tests should mirror production traffic volume and patterns, not arbitrary "stress everything" scenarios.
 
 Avoid the temptation to test everything out of fear. Exhaustive testing creates a false sense of security while consuming time better spent on targeted, high-value validation.
+
+## The AWS SDK Lesson
+
+Even when you decide updates don't require cross-team coordination, you still need deliberate evaluation. The assumption that trusted vendors always ship safe updates fails regularly.
+
+Recently, AWS released version 4 of many of their .NET SDK packages with a series of breaking changes. Teams that treated AWS as a trusted source and updated without thorough review faced consequences ranging from compilation errors to production failures.
+
+The most damaging change wasn't a breaking API; it was a critical bug introduced in the SDK core authentication workflow. The bug created silent deadlocks when calling AWS services under specific load conditions. Services appeared healthy in development and early testing but locked up under production traffic patterns.
+
+This example reinforces two truths:
+1. **Upfront due diligence has limits**: You can review changelogs, run regression tests, and validate functionality, but some bugs only surface under production conditions
+2. **Ongoing vigilance matters**: Staying plugged into ticket systems, community forums, and issue trackers helps you catch problems before they spread
+
+Even trusted sources ship bugs. Intentional updates include monitoring what happens after updates ship, not just before.
 
 ## Common Objections
 
@@ -99,7 +99,9 @@ If your organization won't budge, at least apply the intentional framework to pr
 
 **"Automated tooling already handles this for us."**
 
-Automation helps with detection and scanning—finding available updates, flagging known CVEs, checking for outdated versions. What automation cannot do is decide whether an update makes sense for your context. Security scanners tell you a vulnerability exists; they don't tell you whether it affects code paths you actually execute. Automated PRs surface new versions; they don't evaluate community feedback, breaking changes, or production risk.
+Automation helps with detection and scanning: finding available updates, flagging known CVEs, checking for outdated versions. What automation cannot do is decide whether an update makes sense for your context.
+
+Security scanners tell you a vulnerability exists. They don't tell you whether it affects code paths you actually execute. Automated PRs surface new versions. They don't evaluate community feedback, breaking changes, or production risk.
 
 Auto-applying updates (even patch versions) without review is worse than no automation. A tool that automatically merges dependency updates trades predictable, bounded risk (staying on a known version) for unpredictable, unbounded risk (silently introducing bugs you didn't test for). Automation should notify, not decide.
 
@@ -119,6 +121,8 @@ Shipping fast and thinking deliberately aren't opposites. Teams that update thou
 
 ## Team Leadership Matters
 
-Team leads set the tone. If leadership treats updates as chores to batch and rush through, teams will cut corners. If leadership models intentional decision-making—asking hard questions, prioritizing based on value, and accepting that "not yet" is sometimes the right answer—teams will follow.
+Team leads set the tone. If leadership treats updates as chores to batch and rush through, teams will cut corners. If leadership models intentional decision-making (asking hard questions, prioritizing based on value, and accepting that "not yet" is sometimes the right answer), teams will follow.
 
-Package updates are investment decisions, not hygiene tasks. Treat them with the same rigor you apply to feature development. "Always update" and "never update" both fail; context-driven decisions based on value and risk win. In distributed systems, coordinate at contract boundaries, not version numbers. Even trusted vendors ship bugs, which means due diligence includes monitoring after updates ship, not just before. Test deliberately based on what changed and production patterns rather than exhaustively out of fear.
+Package updates are investment decisions, not hygiene tasks. Treat them with the same rigor you apply to feature development. "Always update" and "never update" both fail. Context-driven decisions based on value and risk win.
+
+In distributed systems, coordinate at contract boundaries, not version numbers. Even trusted vendors ship bugs, which means due diligence includes monitoring after updates ship, not just before. Test deliberately based on what changed and production patterns rather than exhaustively out of fear.

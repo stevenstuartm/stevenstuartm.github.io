@@ -220,12 +220,55 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - Use the appropriate language when the topic requires it (e.g., Terraform uses HCL, CloudFormation uses YAML/JSON, Python for data science)
 - For general programming concepts, algorithms, or patterns, prefer C# examples
 
-### Blog Post Writing Standards
+## Writing Standards for All Site Content
 
-**CRITICAL: Clarity through brevity**:
-When writing blog posts, prioritize clarity over verbosity:
+**IMPORTANT**: The following writing standards apply to ALL narrative content on the site—blog posts, study guides, page content, descriptions, etc. The only exceptions are content-specific structural requirements (e.g., study guide front matter, blog post date format). When creating any narrative content, follow these standards.
+
+### Automated Linter Rules
+
+**These rules are enforced by `lint_content.py`**. The linter will catch violations automatically. When you create content, the linter will run and flag these issues:
+
+**AI-tell phrases (automatically detected)**:
+- "the key insight", "the insight", "the takeaway"
+- "it's important to note", "it's worth noting", "it should be noted"
+- "in conclusion", "in summary", "final version", "final conclusion"
+- "ultimately", "essentially", "fundamentally" (when used as filler)
+- "at the end of the day", "the bottom line is"
+
+**AI-tell colon constructions (automatically detected)**:
+- "What's converging:", "A critical distinction:", "The difference:", "The key:", "The point:", "Here's why:"
+- These announce importance rather than stating it directly
+
+**Em-dashes in sentences (automatically detected)**:
+- Avoid using em-dashes (—) in prose; use semicolons, commas, or periods instead
+- Parentheses are acceptable for clarifying asides
+
+**Missing articles (pattern-based detection)**:
+- Include "a" or "the" for clarity
+- ❌ "masquerading as process" → ✅ "masquerading as a process"
+- ❌ "reconsolidate agreement" → ✅ "reconsolidate the agreement"
+
+**Run-on sentences (heuristic detection)**:
+- Sentences with 2+ semicolons will be flagged
+- Sentences over 150 characters with multiple semicolons and commas will be flagged
+- These are warnings; use judgment to determine if the sentence needs breaking up
+
+**How to use the linter**:
+```bash
+python lint_content.py _posts/2025-11-08-your-post.md
+```
+
+The linter will output violations with line numbers and suggestions. Fix violations before considering the content ready for review.
+
+### Writing Principles Requiring Judgment
+
+**These principles cannot be automated**. Apply them thoughtfully during drafting and review.
+
+#### Clarity and Brevity
+
+**Clarity through brevity**:
 - Cut unnecessary words that obscure the point
-- Use bullet points and lists instead of dense paragraphs for structural advantages
+- Use bullet points and lists strategically for structural advantages, not as a crutch
 - Break long sections into digestible subsections with clear headers
 - Ensure section titles accurately reflect their content
 - If a point can be made in fewer words, do so
@@ -236,21 +279,43 @@ When writing blog posts, prioritize clarity over verbosity:
 - Data without sources is meaningless and damages credibility
 - Link to sources when possible
 
-**Formatting for readability**:
+#### Formatting and Structure
+
 - Headers must have blank lines before them (Jekyll/Kramdown requirement)
 - Use tables for comparisons instead of prose when appropriate
-- Bulleted lists for advantages/disadvantages, not paragraph form
 - Keep sections focused; if a section is too long, break it up
-- **Avoid em-dashes in sentences**; use semicolons, commas, or new sentences instead
-- **Include articles ("a", "the") for clarity**; avoid ambiguous grammar like "masquerading as process" (use "masquerading as a process") or "reconsolidate agreement" (use "reconsolidate the agreement")
-- **Avoid AI-tell colon constructions**; phrases like "The difference:", "The key:", "The point:", "Here's why:" are unnatural shorthand. Write naturally instead - use em-dashes, periods, or integrate the thought into the sentence flow
 
-**Title-content alignment**:
+#### Sentence Flow and Punctuation
+
+**Use semicolons and commas purposefully for natural flow**:
+- Combine closely related thoughts with semicolons or commas when it improves narrative rhythm
+- ❌ "Something is broken in production. You need to fix it." (too choppy)
+- ✅ "Something is broken in production, and you need to fix it." (natural flow)
+- ❌ "Most troubleshooting failures aren't from lack of effort. Engineers work hard during incidents."
+- ✅ "Most troubleshooting failures aren't from lack of effort; engineers work hard during incidents."
+
+**Avoid run-on sentences that force buffering**:
+- Punctuation must serve a purpose: improving flow or adding clarity
+- Don't chain too many thoughts together; the reader shouldn't need to hold an entire massive sentence in memory to understand the conclusion
+- ❌ "With reproduction, you have a test case that consistently triggers the race condition; after your fix, the test passes, and you know it works before it touches production." (too much chaining)
+- ✅ "With reproduction, you have a test case that consistently triggers the race condition. After your fix, the test passes. You know it works before it touches production." (digestible chunks)
+- ❌ "If the answer is 'exception in cleanup code path,' the fix isn't just patching that one path; it's recognizing that error-handling code paths lack test coverage across the system." (forces buffering)
+- ✅ "If the answer is 'exception in cleanup code path,' the fix isn't just patching that one path. It's recognizing that error-handling code paths lack test coverage across the system." (clear separation)
+
+**Guidelines**:
+- Use commas/semicolons to connect two related thoughts
+- Use periods when adding a third thought or when the combined sentence becomes too long
+- Write as you think: natural internal narrative, not telegraphic fragments or over-complicated constructions
+- Each sentence should carry one clear idea or two closely related ideas, not three or more
+
+#### Title-Content Alignment
+
 - Section titles should clearly indicate what the section contains
 - Avoid generic titles like "The Problem"; be specific
 - Readers should understand the section's purpose from the title alone
 
-**Avoid choppy and generic content**:
+#### Avoid Choppy and Generic Content
+
 Writing that feels choppy or overly generic undermines the impact of the content. Watch for these patterns:
 - **Choppy openings**: Sentence fragments or noun-heavy constructions that lack natural flow
   - ❌ "Lack of architectural decision records creates assumption of incompetence"
@@ -265,11 +330,33 @@ Writing that feels choppy or overly generic undermines the impact of the content
   - ❌ "State the real problem. Define measurable success criteria. Evaluate the alternatives."
   - ✅ Use bold headers with explanatory follow-ups: "**State the real problem, not the symptom.** The symptom is 'AWS is expensive.' The real problem is..."
 
-**When providing examples**: Specific details make abstract concepts concrete and credible. Include:
+#### Providing Examples
+
+Specific details make abstract concepts concrete and credible. Include:
 - Actual numbers (costs, percentages, timelines)
 - Specific technologies and trade-offs
 - Real consequences, not just "it got worse"
 - Natural narrative flow, not telegraphic lists
+
+### Content Quality Workflow
+
+**When creating content, follow this workflow**:
+
+1. **Draft**: Write content applying the writing principles above
+2. **Lint**: Run `python lint_content.py <filepath>` and fix all violations
+3. **Self-review**: Check for issues the linter cannot detect:
+   - Is the narrative flow natural, or does it feel choppy?
+   - Are examples specific with concrete numbers and consequences?
+   - Do section titles accurately reflect their content?
+   - Are bullet points used strategically (for actionable items) vs. as a crutch?
+   - Is punctuation serving a purpose (flow/clarity) or just chaining thoughts?
+4. **Manual review**: User reviews for nuanced issues, content accuracy, and overall quality
+
+**Remember**: The linter catches mechanical issues. You must still apply judgment for voice, flow, examples, and narrative quality.
+
+## Content-Specific Guidelines
+
+The following sections contain guidelines specific to particular content types on the site.
 
 ### Study Guide Content Philosophy
 
@@ -384,6 +471,49 @@ When writing about software architecture, always use proper terminology:
 
 ### Writing Style and Voice
 
+**CRITICAL: Natural prose over robotic lists**
+
+Blog posts should read like thoughtful essays, not manuals or checklists. The default should be smooth narrative prose that reflects an inner dialog and pleasing voice. Use bullet points strategically for actual structural advantages (comparisons, options, steps), not as a crutch to avoid writing coherent paragraphs.
+
+**When bullet points make sense**:
+- ✅ Listing distinct options or alternatives
+- ✅ Presenting step-by-step procedures
+- ✅ Comparing features or characteristics side-by-side
+- ✅ Enumerating red flags or warning signs
+- ✅ Call-to-action checklists (diagnostic questions, troubleshooting steps, action items)
+
+**When prose works better**:
+- ❌ Explaining concepts or reasoning (use flowing paragraphs)
+- ❌ Providing examples (weave them into narrative)
+- ❌ Connecting ideas (use transitions, not bullets)
+- ❌ Describing how things work (use descriptive prose)
+
+**Key principle**: If the reader needs to scan and act on specific items (like diagnostic questions during an incident), use bullets for clarity. If the reader needs to understand a concept or follow reasoning, use prose for flow.
+
+**Test for when to use bullets**: If a sentence contains multiple items separated by commas or semicolons, and those items are things the reader should remember or act on, convert it to a bulleted list. Examples:
+- ❌ "Capture these artifacts: thread dumps, detailed logs, metrics, network traces, and resource utilization."
+- ✅ Use bullets listing each artifact type
+- ❌ "Facts gathered: spike started at 14:47 UTC, only read-heavy endpoints affected, database CPU at 95%."
+- ✅ Use bullets matching the diagnostic question structure
+- ❌ "Mitigation includes: restart the service, route traffic around failing component, increase resource limits."
+- ✅ Use bullets listing each mitigation action
+
+**Example transformations**:
+```markdown
+❌ Robotic/manual style:
+**Without reproduction, you cannot:**
+- Confirm you understand the problem
+- Test whether your fix works
+- Distinguish correlation from causation
+
+✅ Natural prose style:
+Think about what reproduction actually proves. If you can trigger the issue deliberately, you know the conditions that cause it. You understand not just that something broke, but why it breaks. Without that understanding, you're guessing—about the problem and about whether your fix actually works.
+```
+
+**Smooth transitions**: Sections should flow naturally. Use connecting phrases like "Think about...", "Consider...", "The problem is...", "Here's what happens..." rather than abrupt topic changes.
+
+**Integrate examples naturally**: Instead of **Example:** labels, use "Consider this pattern:" or "Here's a concrete example:" or weave examples directly into the narrative.
+
 **CRITICAL: Avoid AI-tell phrases and choppy grammar**:
 These phrases and patterns are obvious indicators of AI-generated content and must be avoided:
 - ❌ "The key insight" / "The insight" / "The takeaway"
@@ -404,6 +534,7 @@ These phrases and patterns are obvious indicators of AI-generated content and mu
 - ✅ Prefer simpler words when they convey the same meaning
 - ✅ Write as you would speak to someone in person
 - ✅ Use complete sentences with natural flow, not telegraphic fragments
+- ✅ Default to narrative prose; use bullets strategically, not reflexively
 
 **Example transformations**:
 ```markdown
