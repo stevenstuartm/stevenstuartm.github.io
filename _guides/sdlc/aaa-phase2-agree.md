@@ -79,7 +79,7 @@ Agree applies at every level of work:
 - Architecture Decision Records (ADRs): Context → Decision → Consequences
 - Document WHY, not just WHAT
 - Record alternatives considered and why they were rejected
-- See [Architecture Decisions & Leadership](/study-guides/architecture/ArchitectureDecisionsLeadership.html), [Governance](/study-guides/architecture/governance.html)
+- See [Architecture Decisions & Leadership](/study-guides/architecture/architecture-decision-making.html), [Governance](/study-guides/architecture/governance.html)
 
 **How to Do This Well**:
 - Evaluate multiple options before deciding—don't just pick what you know

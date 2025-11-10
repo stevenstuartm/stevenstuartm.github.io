@@ -271,7 +271,7 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 - **Rolling**: Gradual replacement, no downtime, can roll back
 - **Blue/Green**: Two environments, instant switchover, easy rollback
 - **Canary**: Deploy to subset first, monitor, then full rollout
-- See [Deployment Strategies](/study-guides/deployment-strategies.html), [Deployment & Infrastructure Patterns](/study-guides/architecture/deployment_infrastructure_patterns.html)
+- See [Deployment Strategies](/study-guides/infrastructure/deployment-strategies.html), [Deployment & Infrastructure Patterns](/study-guides/architecture/deployment_infrastructure_patterns.html)
 
 **Monitoring & Observability** (before deployment):
 - Instrument code with logging, metrics, tracing

@@ -61,11 +61,31 @@ p {
 a {
     color: var(--color-primary);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 a:hover {
     color: var(--color-hover);
+}
+
+/* Links within prose content should be clearly visible */
+.post-content a:not(.tag):not(.featured-card-link):not(.content-type-cta),
+.guide-content a:not(.category-badge):not(.guide-link),
+.page-content a,
+.case-study-content a {
+    text-decoration: underline;
+    text-decoration-color: rgba(31, 107, 67, 0.3);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    font-weight: 500;
+}
+
+.post-content a:not(.tag):not(.featured-card-link):not(.content-type-cta):hover,
+.guide-content a:not(.category-badge):not(.guide-link):hover,
+.page-content a:hover,
+.case-study-content a:hover {
+    text-decoration-color: var(--color-hover);
+    text-decoration-thickness: 2px;
 }
 
 /* ===== Layout ===== */
