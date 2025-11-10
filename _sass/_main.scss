@@ -819,6 +819,44 @@ main {
     margin-top: var(--spacing-xs);
 }
 
+.post-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+    min-width: 0;
+}
+
+.post-toc {
+    position: fixed;
+    left: -330px;
+    top: calc(80px + var(--spacing-lg));
+    width: 320px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 50;
+}
+
+.post-toc.expanded {
+    left: var(--spacing-md);
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom scrollbar styling for TOC */
+.post-toc::-webkit-scrollbar {
+    width: 6px;
+}
+
+.post-toc::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+}
+
+.post-toc::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
 .post-content {
     line-height: 1.8;
 }

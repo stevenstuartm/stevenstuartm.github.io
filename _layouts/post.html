@@ -52,8 +52,24 @@ layout: default
         {% endif %}
     </header>
 
-    <div class="post-content">
-        {{ content }}
+    <!-- TOC Toggle Button -->
+    <button class="toc-toggle" id="tocToggle" aria-label="Toggle table of contents">
+        <span class="toc-toggle-icon">☰</span>
+        <span class="toc-toggle-text">Contents</span>
+    </button>
+
+    <div class="post-container" id="postContainer">
+        <!-- Table of Contents (auto-generated from headings) -->
+        <aside class="post-toc" id="postToc">
+            <div class="toc-wrapper">
+                <h3>Table of Contents</h3>
+                <nav id="TableOfContents"></nav>
+            </div>
+        </aside>
+
+        <div class="post-content">
+            {{ content }}
+        </div>
     </div>
 
     <div class="post-share">
@@ -75,6 +91,101 @@ layout: default
 </button>
 
 <script>
+// Auto-generate table of contents from h2 and h3 headings
+document.addEventListener('DOMContentLoaded', function() {
+    const content = document.querySelector('.post-content');
+    const toc = document.getElementById('TableOfContents');
+
+    if (!content || !toc) return;
+
+    const headings = content.querySelectorAll('h2, h3');
+
+    if (headings.length === 0) {
+        document.querySelector('.post-toc').style.display = 'none';
+        document.querySelector('.toc-toggle').style.display = 'none';
+        return;
+    }
+
+    let tocHTML = '<ul class="toc-list">';
+    let currentLevel = 2;
+
+    headings.forEach((heading, index) => {
+        const level = parseInt(heading.tagName.charAt(1));
+        const text = heading.textContent;
+        const id = heading.id || 'heading-' + index;
+
+        if (!heading.id) {
+            heading.id = id;
+        }
+
+        if (level > currentLevel) {
+            tocHTML += '<ul class="toc-sublist">';
+        } else if (level < currentLevel) {
+            tocHTML += '</ul>';
+        }
+
+        const itemClass = level === 2 ? 'toc-item' : 'toc-subitem';
+        tocHTML += `<li class="${itemClass}"><a href="#${id}">${text}</a></li>`;
+
+        currentLevel = level;
+    });
+
+    tocHTML += '</ul>';
+    toc.innerHTML = tocHTML;
+
+    // Highlight current section on scroll
+    const tocLinks = toc.querySelectorAll('a');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const id = entry.target.id;
+            const tocLink = toc.querySelector(`a[href="#${id}"]`);
+
+            if (entry.isIntersecting) {
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (tocLink) tocLink.classList.add('active');
+            }
+        });
+    }, {
+        rootMargin: '-80px 0px -80% 0px'
+    });
+
+    headings.forEach(heading => observer.observe(heading));
+});
+
+// TOC Toggle Functionality
+(function() {
+    const tocToggle = document.getElementById('tocToggle');
+    const postToc = document.getElementById('postToc');
+    const postContainer = document.getElementById('postContainer');
+
+    if (!tocToggle || !postToc || !postContainer) return;
+
+    // TOC should be closed by default - don't check localStorage
+    // Users can open it if they want to use it
+
+    function toggleTOC(forceClose = false) {
+        if (forceClose) {
+            tocToggle.classList.remove('expanded');
+            postToc.classList.remove('expanded');
+        } else {
+            tocToggle.classList.toggle('expanded');
+            postToc.classList.toggle('expanded');
+        }
+    }
+
+    tocToggle.addEventListener('click', function() {
+        toggleTOC();
+    });
+
+    // Close TOC when clicking on a link
+    postToc.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+            toggleTOC(true);
+        }
+    });
+})();
+
+// Scroll to Top Button
 (function() {
     const scrollBtn = document.getElementById('scrollToTop');
     const scrollThreshold = window.innerHeight;

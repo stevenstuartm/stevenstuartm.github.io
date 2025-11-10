@@ -150,22 +150,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (!tocToggle || !guideToc || !guideContainer) return;
 
-    // Check localStorage for saved state
-    const tocState = localStorage.getItem('tocExpanded');
-    if (tocState === 'true') {
-        tocToggle.classList.add('expanded');
-        guideToc.classList.add('expanded');
-    }
+    // TOC should be closed by default - no localStorage persistence
 
     function toggleTOC(forceClose = false) {
         if (forceClose) {
             tocToggle.classList.remove('expanded');
             guideToc.classList.remove('expanded');
-            localStorage.setItem('tocExpanded', false);
         } else {
-            const isExpanded = tocToggle.classList.toggle('expanded');
+            tocToggle.classList.toggle('expanded');
             guideToc.classList.toggle('expanded');
-            localStorage.setItem('tocExpanded', isExpanded);
         }
     }
 
