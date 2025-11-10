@@ -30,7 +30,7 @@
 html {
     font-size: 16px;
     line-height: 1.6;
-    scroll-padding-top: 80px; /* Offset for sticky header */
+    scroll-padding-top: 140px; /* Offset for sticky header + TOC toggle button */
 }
 
 body {
@@ -1427,16 +1427,76 @@ main {
 
 .guide-container {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 1fr;
     gap: var(--spacing-xl);
     align-items: start;
-    overflow-x: hidden;
     min-width: 0;
 }
 
 .guide-toc {
-    position: sticky;
-    top: var(--spacing-md);
+    position: fixed;
+    left: -330px;
+    top: calc(var(--spacing-md) + 80px);
+    width: 320px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 50;
+}
+
+.guide-toc.expanded {
+    left: 0;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Toggle button for TOC */
+.toc-toggle {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(80px + var(--spacing-sm));
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xs) var(--spacing-md);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.toc-toggle:hover {
+    background: var(--color-hover);
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.toc-toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.toc-toggle.expanded .toc-toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Custom scrollbar styling for TOC */
+.guide-toc::-webkit-scrollbar {
+    width: 6px;
+}
+
+.guide-toc::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+}
+
+.guide-toc::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
 }
 
 .toc-wrapper {
@@ -1447,7 +1507,7 @@ main {
 }
 
 .toc-wrapper h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: var(--spacing-sm);
     color: var(--color-text);
 }
@@ -1462,15 +1522,17 @@ main {
 
 .toc-item a {
     color: var(--color-text-light);
-    font-size: 0.9rem;
+    font-size: 1rem;
     display: block;
     padding: 0.25rem 0;
     transition: color 0.3s ease;
+    line-height: 1.4;
 }
 
 .toc-item a:hover,
 .toc-item a.active {
     color: var(--color-primary);
+    font-weight: 500;
 }
 
 .toc-sublist {
@@ -1483,7 +1545,8 @@ main {
 }
 
 .toc-subitem a {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
+    line-height: 1.4;
 }
 
 .guide-content {
@@ -1654,13 +1717,19 @@ main {
 
 /* ===== Responsive Guides ===== */
 @media (max-width: 1024px) {
-    .guide-container {
-        grid-template-columns: 1fr;
+    .guide-toc {
+        width: 70%;
+        max-width: 320px;
     }
 
-    .guide-toc {
-        position: static;
-        margin-bottom: var(--spacing-lg);
+    .toc-toggle {
+        left: 50%;
+        transform: translateX(-50%);
+        top: calc(80px + var(--spacing-xs));
+    }
+
+    .toc-toggle:hover {
+        transform: translateX(-50%) translateY(-2px);
     }
 }
 

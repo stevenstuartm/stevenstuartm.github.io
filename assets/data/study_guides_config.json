@@ -1,5 +1,24 @@
 {
   "categories": {
+    "Leadership & Team Management": {
+      "subcategories": [
+        {
+          "name": "Team Leadership",
+          "description": "Practical leadership for dev team leads and managers",
+          "guides": [
+            "leadership/dev-team-leadership-crash-course.md"
+          ]
+        },
+        {
+          "name": "Architecture Leadership",
+          "description": "Leadership skills specific to software architects",
+          "guides": [
+            "leadership/architecture-leadership.md",
+            "architecture/architecture-decision-making.md"
+          ]
+        }
+      ]
+    },
     "Software Development Lifecycle": {
       "subcategories": [
         {
@@ -49,11 +68,9 @@
           ]
         },
         {
-          "name": "Leadership & Governance",
-          "description": "Decision-making, leadership, and architecture governance",
+          "name": "Governance",
+          "description": "Architecture governance frameworks, processes, and tools",
           "guides": [
-            "architecture/architecture-decision-making.md",
-            "architecture/architecture-leadership.md",
             "governance.md",
             "governance-frameworks.md",
             "governance-tools.md"

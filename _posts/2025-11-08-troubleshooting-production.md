@@ -9,7 +9,7 @@ tags: [incident-response, production, debugging, troubleshooting]
 
 Something is broken in production, and you need to fix it. Whether you're investigating alone at 2 AM or coordinating a war room with twenty people, the principles are the same.
 
-Most troubleshooting failures aren't from lack of effort; engineers work hard during incidents. The failures come from skipping fundamentals: investigating without reproduction, treating assumptions as facts, fixing symptoms instead of causes, changing multiple things simultaneously. These mistakes extend outages, create incomplete fixes, and guarantee you'll fight the same incident again.
+Most troubleshooting failures aren't from lack of effort. Engineers work hard during incidents. The failures come from skipping fundamentals: investigating without reproduction, treating assumptions as facts, fixing symptoms instead of causes, and changing multiple things simultaneously. These mistakes extend outages and create incomplete fixes. They guarantee you'll fight the same incident again.
 
 Effective troubleshooting follows a disciplined process, one that works whether you're debugging locally or coordinating across systems. The teams that resolve incidents fastest are the ones disciplined enough to slow down and understand what they're fixing.
 
@@ -138,7 +138,7 @@ Understand the layers:
 
 Service returns 500 errors (symptom). Database connection pool exhausted (surface cause). Connection leak in error-handling code path (root cause).
 
-Fixing the symptom means restarting the service; it restores service temporarily. Fixing the surface cause means increasing pool size; it delays the inevitable. Fixing the root cause means patching the connection leak; it prevents recurrence.
+Fixing the symptom means restarting the service. It restores service temporarily. Fixing the surface cause means increasing pool size. It delays the inevitable. Fixing the root cause means patching the connection leak. It prevents recurrence.
 
 The real fix emerges when you stop asking "why" and start seeing patterns. If the answer is "exception in cleanup code path," the fix isn't just patching that one path. It's recognizing that error-handling code paths lack test coverage across the system. The fix becomes adding tests for error scenarios and reviewing exception handling patterns throughout the codebase. That's how you prevent the next instance of this class of problem.
 
