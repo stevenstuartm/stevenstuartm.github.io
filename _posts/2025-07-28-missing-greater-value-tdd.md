@@ -7,9 +7,9 @@ tags: [tdd, testing, software-design, best-practices]
 description: "Reframing TDD as testing assumptions rather than just code—executable business hypotheses that prevent building the wrong thing."
 ---
 
-TDD's practical reality often contradicts its theoretical promise. Constant test rewrites during discovery, mocking unknown contracts, building for unclear domains—it feels wasteful. I've achieved similar results faster through focused discovery followed by disciplined testing.
+TDD's practical reality often contradicts its theoretical promise. Constant test rewrites during discovery, mocking unknown contracts, building for unclear domains: it feels wasteful. I've achieved similar results faster through focused discovery followed by disciplined testing.
 
-Yet I think we're framing TDD wrong—in a way that creates division rather than value. Here's a reframe that might bridge the gap between advocates and skeptics.
+Yet I think we're framing TDD wrong, in a way that creates division rather than value. Here's a reframe that might bridge the gap between advocates and skeptics.
 
 ## Reframing TDD
 
@@ -27,6 +27,6 @@ Think "executable business hypotheses," not "code quality practice." This refram
 
 ## What Matters Most
 
-The goal isn't perfect tests. It's perfect understanding.
+The goal isn't perfect tests; it's perfect understanding.
 
 TDD's real value is **failing fast on assumptions, not code**. Whether you write tests first or after discovery, focus on testing the assumptions that matter most to your users and business.

@@ -54,7 +54,7 @@ The tool doesn't create the problem; lack of discipline does. AI just makes cons
 
 ## What Balance Actually Means
 
-Balance isn't 50/50. It's contextual and strategic.
+Balance isn't 50/50; it's contextual and strategic.
 
 Real balance means investing heavily in decisions that are expensive to change (data models, service boundaries, security models), moving quickly on cheap iterations (UI layouts, feature flags, configuration), building feedback loops that validate assumptions early, testing risky assumptions first, and designing for change where requirements are uncertain.
 

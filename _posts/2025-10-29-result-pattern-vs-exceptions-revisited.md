@@ -134,7 +134,7 @@ With parallel processing, `Task.WhenAll` with exceptions is awkward because one 
 
 **Argument 1: Implicit propagation to appropriate handlers**
 
-Exceptions bubble to orchestration layers without code at each level; throw once, catch at the boundary. The happy path stays clean; error handling lives at boundaries.
+Exceptions bubble to orchestration layers without code at each level. Throw once, catch at the boundary. The happy path stays clean; error handling lives at boundaries.
 
 Results require explicit propagation. Return `Result<T>`, check it, propagate it (even with Rust's `?` operator, you must explicitly use `?` at each call site). This threads error handling through intermediate functions that don't care about the specific error.
 

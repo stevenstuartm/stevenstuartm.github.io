@@ -7,7 +7,7 @@ series: "Architecture Insights"
 tags: [security, architecture, authentication, distributed-systems, event-driven]
 ---
 
-It is tempting to treat user authentication sessions as ambient context, passing them through API layers, into service calls, across event processors, and through background jobs. The assumption: if a component needs to know who the user is, it needs the user's session. This conflates authentication with context, treating an external trust artifact as internal state. The result is coupling, performance waste, and systems that fundamentally break in asynchronous, event-driven, and integration scenarios.
+It is tempting to treat user authentication sessions as ambient context, passing them through API layers, into service calls, across event processors, and through background jobs. The assumption: if a component needs to know who the user is, it needs the user's session. This conflates authentication with context, treating an external trust artifact as internal state. The result is coupling, performance waste, and systems that break in asynchronous, event-driven, and integration scenarios.
 
 ## Sessions Validate at Boundaries, Context Flows Internally
 
@@ -85,7 +85,7 @@ The same principles apply: modules accept explicit context, operate with their o
 
 User authentication sessions serve one purpose: validating identity at a security boundary. Once validated, the session has done its job. Extract the necessary context, discard the session, and operate with service roles internally.
 
-The alternative, propagating sessions through internal flows, treats authentication as global state, couples components to auth mechanisms, wastes resources on redundant validation, and fundamentally breaks in event-driven architectures, background jobs, approval workflows, webhook integrations, and async processing.
+The alternative, propagating sessions through internal flows, treats authentication as global state, couples components to auth mechanisms, wastes resources on redundant validation, and breaks in event-driven architectures, background jobs, approval workflows, webhook integrations, and async processing.
 
 This isn't about microservices vs. monoliths. It's about recognizing architectural boundaries and respecting them:
 

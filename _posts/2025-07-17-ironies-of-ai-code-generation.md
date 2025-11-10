@@ -7,7 +7,7 @@ tags: [ai, coding, productivity, tools]
 description: "Lessons learned from using AI assistants for code generation—why you still need to learn the domain and maintain agency over decisions."
 ---
 
-AI code generation is powerful—but only when you maintain agency. After extensive use of Claude, Gemini, and Copilot, I've learned that AI is an assistant requiring constant validation, not a replacement for understanding.
+AI code generation is powerful, but only when you maintain agency. After extensive use of Claude, Gemini, and Copilot, I've learned that AI is an assistant requiring constant validation, not a replacement for understanding.
 
 Here are the ironies I've encountered:
 
@@ -29,4 +29,4 @@ When I first started using AI code generation I lost so much time. I assumed too
 
 ## What This Means
 
-Use AI to assist you. You really should. But you still need to learn the domain and the tech and to have the agency to make decisions.
+Use AI to assist you; you really should. But you still need to learn the domain and the tech and to have the agency to make decisions.

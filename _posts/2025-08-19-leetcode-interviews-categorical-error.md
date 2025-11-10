@@ -9,7 +9,7 @@ description: "Why algorithm interviews optimize for the wrong signals and system
 
 Hiring is hard. With hundreds of applications per role, organizations need efficient screening. LeetCode interviews offer appealing objectivity and scalability.
 
-But they optimize for the wrong signals—systematically excluding capable engineers while rewarding interview optimization over actual job performance.
+But they optimize for the wrong signals, systematically excluding capable engineers while rewarding interview optimization over actual job performance.
 
 ## Why This Fails
 
@@ -33,6 +33,6 @@ LeetCode interviews measure none of this.
 
 ## For Engineers
 
-Build your algorithmic foundation—it's genuinely important. Understand data structures and complexity analysis.
+Build your algorithmic foundation; it's genuinely important. Understand data structures and complexity analysis.
 
 But recognize that grinding LeetCode is interview preparation, not professional development. The complex, collaborative work of building production systems requires different skills entirely.

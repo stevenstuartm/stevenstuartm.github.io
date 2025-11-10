@@ -7,9 +7,9 @@ tags: [remote-work, career, industry, economics]
 description: "How high mortgage rates and the housing lock-in effect could force employers to embrace remote work as talent becomes unable to relocate."
 ---
 
-High mortgage rates create a housing lock-in effect—homeowners with low rates can't afford to move. Could this force employers to embrace remote work as talent becomes geographically immobile?
+High mortgage rates create a housing lock-in effect: homeowners with low rates can't afford to move. Could this force employers to embrace remote work as talent becomes geographically immobile?
 
-Trying to sell my own property, I've experienced this firsthand. Moving means either accepting a significantly higher mortgage rate or selling below market value—both representing massive financial losses.
+Trying to sell my own property, I've experienced this firsthand. Moving means either accepting a significantly higher mortgage rate or selling below market value; both represent massive financial losses.
 
 ## The Numbers
 

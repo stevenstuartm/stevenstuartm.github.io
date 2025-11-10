@@ -59,7 +59,7 @@ No more maintaining separate config files, no more complex CI/CD templating, no 
 
 ## A Practical Example: AWS Parameter Store
 
-In my experience, AWS Systems Manager Parameter Store hits the sweet spot for most applications. Here's why:
+AWS Systems Manager Parameter Store hits the sweet spot for most applications:
 
 **Cost Effective**: Standard parameters are free (up to 10,000), and advanced parameters with higher throughput and larger values are still remarkably affordable compared to custom solutions.
 
@@ -118,7 +118,7 @@ The goal isn't to rely on any single mechanism, but to create layers of defense 
 
 **"It adds complexity to local development."** Initially, yes. But tools like AWS CLI, SDKs, and local credential chains make this transparent. Once configured, developers get the same or better experience than managing local config files.
 
-**"What about cost?"** For most teams, config storage is essentially free. AWS Parameter Store's standard tier is free for 10,000 parameters. Even advanced parameters cost pennies. The cost of a single security incident far exceeds years of config storage fees.
+**"What about cost?"** For most teams, config storage is free. AWS Parameter Store's standard tier is free for 10,000 parameters. Even advanced parameters cost pennies. The cost of a single security incident far exceeds years of config storage fees.
 
 ## Real-World Benefits
 

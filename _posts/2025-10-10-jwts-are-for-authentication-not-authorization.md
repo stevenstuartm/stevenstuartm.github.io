@@ -7,7 +7,7 @@ tags: [security, architecture, jwt, authentication, authorization]
 description: "Why embedding authorization in JWTs creates security risks and UX problems. Learn the difference between authentication and authorization, and why session-based grants are worth the minimal latency cost."
 ---
 
-JSON Web Tokens (JWTs) have become ubiquitous in modern web applications, but they're often misused. The most common mistake? Treating them as an authorization solution when they're fundamentally an authentication mechanism. This misunderstanding leads to security vulnerabilities, poor user experience, and operational headaches.
+JSON Web Tokens (JWTs) have become ubiquitous in modern web applications, but they're often misused. The most common mistake? Treating them as an authorization solution when they're an authentication mechanism. This misunderstanding leads to security vulnerabilities, poor user experience, and operational headaches.
 
 ## Immutability Meets Reality
 

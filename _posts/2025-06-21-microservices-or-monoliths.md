@@ -7,13 +7,13 @@ tags: [architecture, microservices, monoliths, system-design]
 description: "Why monoliths are effective for discovery and microservices are optimizations—principles for choosing the right architecture for your context."
 ---
 
-An old debate, yet I contemplate it with every new project. There's no universal answer—choose the architecture that fits your context, constraints, and discovery needs.
+An old debate, yet I contemplate it with every new project. There's no universal answer; choose the architecture that fits your context, constraints, and discovery needs.
 
 ## Core Principles
 
 **1. Microservices Are Optimizations, Monoliths Enable Discovery**
 
-Microservices solve specific problems: team scaling, independent deployment, technology diversity. Monoliths accelerate discovery—learning boundaries, understanding domains, validating assumptions quickly.
+Microservices solve specific problems: team scaling, independent deployment, technology diversity. Monoliths accelerate discovery by learning boundaries, understanding domains, and validating assumptions quickly.
 
 Start with what helps you learn fastest. Optimize when you understand what needs optimizing.
 
@@ -35,7 +35,7 @@ API gateways and service abstractions provide flexibility before you know your f
 
 ## My Approach
 
-Start with **domain-based services**—modular monoliths organized along natural business boundaries (bounded contexts). This provides:
+Start with **domain-based services**: modular monoliths organized along natural business boundaries (bounded contexts). This provides:
 - Clear separation of concerns
 - Team autonomy within domains
 - Easy path to microservices when needed

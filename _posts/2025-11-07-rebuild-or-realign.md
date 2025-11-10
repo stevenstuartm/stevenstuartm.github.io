@@ -7,7 +7,9 @@ series: "Architecture Insights"
 tags: [architecture, leadership, decision-making, aaa-cycle]
 ---
 
-System rebuilds are often measured as successful by using the wrong metrics and via the wrong intentions. When you rebuild, you must first understand what you're building; this forces realignment with business value, best practices, and operational discipline. The improvements often come from this realignment, not from the new technology. The critical error is assuming the new runtime, framework, or platform drove the gains when ignorance was the actual constraint.
+System rebuilds are often measured as successful by using the wrong metrics and via the wrong intentions. When you rebuild, you must first understand what you're building; this forces realignment with business value, best practices, and operational discipline. The improvements often come from this realignment, not from the new technology.
+
+The critical error is assuming the new runtime, framework, or platform drove the gains. Ignorance was the actual constraint.
 
 This misattribution creates dangerous patterns. Organizations propose rebuilds when the real problem is organizational dysfunction, not technical limitations. The rebuild becomes a moving target that allows leadership to avoid accountability, celebrate "innovation" while making things worse, and mask problems that were never technical to begin with. Understanding this pattern is critical because it can bring down entire businesses.
 
@@ -61,7 +63,7 @@ When leadership constantly shifts priorities without acknowledging past commitme
 
 This connects to how leadership rewards visible heroics over invisible prevention. The engineers who prevented the fire through good design, monitoring, and operational discipline get ignored. The engineers who fought the fire through a hasty rebuild get celebrated. This teaches the organization that creating problems and fixing them dramatically is more valuable than preventing problems quietly. Rebuilds become performative rather than necessary.
 
-Good developers and architects can identify these problems and push for accountability, but without leadership commitment their efforts fail. Leadership must ask hard questions when rebuilds are proposed, acknowledge failures when commitments aren't met, and maintain clarity on what matters. Both leadership and technical teams are needed; technical teams must articulate problems clearly while leadership creates an environment where solving the right problem matters more than creating the appearance of progress.
+Good developers and architects can identify these problems and push for accountability, but without leadership commitment their efforts fail. Leadership must ask hard questions when rebuilds are proposed, acknowledge failures when commitments aren't met, and maintain clarity on what matters. Both leadership and technical teams are needed. Technical teams must articulate problems clearly while leadership creates an environment where solving the right problem matters more than creating the appearance of progress.
 
 The hidden cost is eroded organizational trust. When rebuilds fail to deliver on commitments but get celebrated anyway, teams learn that outcomes don't matter. This produces learned helplessness where engineers stop fighting for quality because leadership doesn't care.
 
@@ -87,7 +89,7 @@ The [AAA Cycle](/study-guides/architecture/AAA-align.html) (Align, Agree, Apply)
 
 ### Align: Understand Before You Prescribe
 
-Before proposing a rebuild, align on reality. What actually provides value? Which features drive business outcomes versus exist because no one removed them? Why was the current architecture chosen—what problems was it designed to solve, what constraints existed, which tradeoffs were intentional? Read the ADRs if they exist. Interview people who built the system.
+Before proposing a rebuild, align on reality. What actually provides value? Which features drive business outcomes versus exist because no one removed them? Why was the current architecture chosen? What problems was it designed to solve, what constraints existed, which tradeoffs were intentional? Read the ADRs if they exist. Interview people who built the system.
 
 Most importantly, determine whether the problem is technical or organizational. Are costs high because the cloud is expensive, or because no one is accountable for managing costs? Is the system slow because of the runtime, or because of N+1 queries and missing indexes? Most problems that look technical are actually process failures.
 
@@ -95,13 +97,13 @@ Most importantly, determine whether the problem is technical or organizational. 
 
 Once you understand reality, agree on what actually matters. State the real problem, not the symptom. "AWS is expensive" is a symptom; "We have no operational accountability for cost management" is the problem. Define measurable success criteria with explicit tradeoffs: "Reduce costs by 40% while maintaining 99.9% availability and zero security regressions."
 
-Evaluate alternatives. What could you do besides rebuild? What would those approaches cost? Acknowledge actual constraints—time, budget, team capacity, acceptable risk. Rebuilds hide behind "strategic investment" language to avoid honest resource conversations.
+Evaluate alternatives. What could you do besides rebuild? What would those approaches cost? Acknowledge actual constraints: time, budget, team capacity, acceptable risk. Rebuilds hide behind "strategic investment" language to avoid honest resource conversations.
 
 Assign specific ownership. Not "the team" but specific people accountable for specific metrics. If costs don't decrease, who failed? Without genuine agreement, rebuilds become exercises in diffused responsibility where no one can be held accountable.
 
 ### Apply: Execute with Integrity or Stop
 
-The Apply phase tests whether the agreement was real. Implement what you agreed to—if cost reduction was the priority, instrument cost tracking first. Track against the agreement continuously. When metrics diverge from commitments, pause and realign. Don't celebrate "completed migration" when you violated core commitments.
+The Apply phase tests whether the agreement was real. Implement what you agreed to. If cost reduction was the priority, instrument cost tracking first. Track against the agreement continuously. When metrics diverge from commitments, pause and realign. Don't celebrate "completed migration" when you violated core commitments.
 
 Recognize when agreements were wrong. If the rebuild isn't solving the real problem, stop. "We committed to this" isn't a valid reason to continue when reality invalidates the premise. Stopping a failed rebuild is success, not failure. Update ADRs and share learnings so the organization doesn't repeat the mistake.
 

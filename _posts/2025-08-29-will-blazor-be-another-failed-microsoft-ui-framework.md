@@ -47,7 +47,7 @@ Microsoft learned from TypeScript and is running dual strategies:
 
 **The uncertainty:** Microsoft's track record speaks for itself. Decades of abandoned UI frameworks create justified skepticism.
 
-**The difference:** WebAssembly isn't Microsoft-specific. Even if Microsoft abandons Blazor, the compiled output remains usable. That's more durability than previous frameworks offered, but still not a guarantee.
+WebAssembly isn't Microsoft-specific, which makes a difference. Even if Microsoft abandons Blazor, the compiled output remains usable. That's more durability than previous frameworks offered, but still not a guarantee.
 
 **The reality:** Users need performance, not specific technologies. WebAssembly adoption depends on whether the web demands it. AI interfaces and browser-based tools might drive that demand. Or they might not.
 

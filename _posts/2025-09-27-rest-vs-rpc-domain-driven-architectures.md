@@ -7,7 +7,7 @@ tags: [architecture, api-design, ddd, microservices]
 description: "Why REST's resource-centric design conflicts with domain-driven architectures and how RPC provides better alignment with business operations."
 ---
 
-Modern systems favor domain-driven design: modular monoliths, bounded contexts, and capability-based microservices. REST's resource-centric model fundamentally conflicts with these architectures.
+Modern systems favor domain-driven design: modular monoliths, bounded contexts, and capability-based microservices. REST's resource-centric model conflicts with these architectures.
 
 When building DDD systems, RPC-style APIs provide clearer alignment with business operations and avoid the architectural contortions required to force-fit REST patterns onto bounded contexts.
 

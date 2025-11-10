@@ -7,7 +7,7 @@ tags: [career, software-engineering, personal-development]
 description: "Understanding the difference between coders, developers, and engineers for personal clarity—even when job titles don't reflect these distinctions."
 ---
 
-Companies use "coder," "developer," and "engineer" inconsistently—often as seniority markers rather than meaningful distinctions. Since standardization won't happen, understand these categories for personal clarity and growth.
+Companies use "coder," "developer," and "engineer" inconsistently, often as seniority markers rather than meaningful distinctions. Since standardization won't happen, understand these categories for personal clarity and growth.
 
 ## Three Levels of Capability
 

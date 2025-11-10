@@ -23,7 +23,7 @@ Everyone starts with "it works because it's not broken." Juniors stay there. Sen
 
 **Key distinction:** Taking accountability for code quality *after* deployment. Leaders continuously ask "Is this good?" even when everything seems fine. They seek questions they don't yet know to ask.
 
-Quality isn't the absence of complaints—it's the presence of standards.
+Quality isn't the absence of complaints; it's the presence of standards.
 
 ## 3. Quality Approves vs. Approval Is Quality
 
@@ -35,7 +35,7 @@ Just because no one flagged your code doesn't mean it's quality work. Just becau
 
 This is foundational. **We learn by teaching.**
 
-Are you mentoring less experienced engineers to do what you do? Not as a nice-to-have, but as core responsibility? This creates space for your own growth—as they take your current work, you tackle what your leaders do.
+Are you mentoring less experienced engineers to do what you do? Not as a nice-to-have, but as core responsibility? This creates space for your own growth: as they take your current work, you tackle what your leaders do.
 
 **Leadership multiplier:** Great engineers solve hard problems. Great leaders create engineers who solve hard problems.
 
@@ -47,4 +47,4 @@ Leadership in software development isn't about titles. It's about:
 - Building others as you build systems
 - Accountability that extends beyond deployment
 
-These characteristics compound over careers, creating engineers who don't just write code—they elevate teams and organizations.
+These characteristics compound over careers, creating engineers who don't just write code; they elevate teams and organizations.

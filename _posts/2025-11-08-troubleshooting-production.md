@@ -23,7 +23,9 @@ You need facts, not interpretations. Facts are observable and measurable:
 - Specific metric values showing deviation
 - What changed recently (deployments, configuration, infrastructure, dependencies)
 
-When someone says "the database is slow" or "the network is flaky" or "the deployment broke something," they're offering conclusions, not observations. These interpretations might be correct, but they skip the actual observation that leads to understanding. "The database is slow" tells you nothing actionable; you need to know what "slow" actually means. Is query execution time up? Is CPU saturated? Are there lock waits? Each observation leads to different investigations.
+When someone says "the database is slow" or "the network is flaky" or "the deployment broke something," they're offering conclusions, not observations. These interpretations might be correct, but they skip the actual observation that leads to understanding.
+
+"The database is slow" tells you nothing actionable; you need to know what "slow" actually means. Is query execution time up? Is CPU saturated? Are there lock waits? Each observation leads to different investigations.
 
 Start with these questions:
 - **When did it start?** Exact time, gradual or sudden onset
@@ -69,7 +71,7 @@ I've seen this pattern repeatedly: service returns 200 status codes, but users r
 
 Almost nothing in troubleshooting starts or finishes without reproduction. Miss this point and you could spend days searching for what you could have targeted in the first hour.
 
-Think about what reproduction actually proves. If you can trigger the issue deliberately, you know the conditions that cause it; you understand not just that something broke, but why it breaks. Without that understanding, you're guessing about the problem and about whether your fix actually works.
+Think about what reproduction actually proves. If you can trigger the issue deliberately, you know the conditions that cause it. You understand not just that something broke, but why it breaks. Without that understanding, you're guessing about the problem and about whether your fix actually works.
 
 Consider the typical pattern: users report intermittent login failures, you check logs, see authentication errors, and update session configuration. The errors stop. Did you fix it? Maybe the config helped, maybe the issue stopped on its own, maybe it's happening less frequently but you're not seeing it. You have no way to know, which means the next time it happens you start from zero again.
 
@@ -134,7 +136,9 @@ Understand the layers:
 - **Surface cause**: The immediate technical reason for the symptom
 - **Root cause**: Why the surface cause happened
 
-Service returns 500 errors (symptom). Database connection pool exhausted (surface cause). Connection leak in error-handling code path (root cause). Fixing the symptom means restarting the service; it restores service temporarily. Fixing the surface cause means increasing pool size; it delays the inevitable. Fixing the root cause means patching the connection leak; it prevents recurrence.
+Service returns 500 errors (symptom). Database connection pool exhausted (surface cause). Connection leak in error-handling code path (root cause).
+
+Fixing the symptom means restarting the service; it restores service temporarily. Fixing the surface cause means increasing pool size; it delays the inevitable. Fixing the root cause means patching the connection leak; it prevents recurrence.
 
 The real fix emerges when you stop asking "why" and start seeing patterns. If the answer is "exception in cleanup code path," the fix isn't just patching that one path. It's recognizing that error-handling code paths lack test coverage across the system. The fix becomes adding tests for error scenarios and reviewing exception handling patterns throughout the codebase. That's how you prevent the next instance of this class of problem.
 
@@ -179,7 +183,10 @@ Red flags:
 - Same hypothesis tested multiple times by different people
 - Unclear who has authority to make rollback decisions
 
-Apply the troubleshooting principles collectively through clear communication standards. For reproduction: "Can anyone reproduce this issue? If yes, document exactly how. If no, that's our first priority." For facts versus interpretations: "The database is slow" is an interpretation; "Database query time is 2000ms, baseline is 100ms" is a fact. For testing assumptions: when someone says "the service is healthy," the incident commander asks "Show me a successful request."
+Apply the troubleshooting principles collectively through clear communication standards:
+- For reproduction: "Can anyone reproduce this issue? If yes, document exactly how. If no, that's our first priority."
+- For facts versus interpretations: "The database is slow" is an interpretation; "Database query time is 2000ms, baseline is 100ms" is a fact.
+- For testing assumptions: when someone says "the service is healthy," the incident commander asks "Show me a successful request."
 
 The incident commander explicitly approves changes and ensures only one change happens at a time across all teams. Before implementing a fix, confirm the team agrees on the root cause, not just the symptom being addressed.
 

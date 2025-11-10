@@ -103,7 +103,7 @@ This is continuous alignment, not upfront perfection. You start with enough unde
 - Make "triggers for reconsideration" an explicit part of sprint commitments
 - When discovery invalidates the plan mid-sprint, call it out and negotiate rather than silently cutting corners
 
-The framework isn't the enemy. The lack of discipline is. **The point is simpler: test your assumptions, commit to measurable outcomes, and be willing to stop and realign when you learn something important.** You can practice this discipline within any framework. It just requires courage to say "we learned something important; let's pause and reconsider" even when the calendar says to keep moving.
+The framework isn't the enemy; the lack of discipline is. **The point is simpler: test your assumptions, commit to measurable outcomes, and be willing to stop and realign when you learn something important.** You can practice this discipline within any framework. It just requires courage to say "we learned something important; let's pause and reconsider" even when the calendar says to keep moving.
 
 ## What Real Agreement Requires
 

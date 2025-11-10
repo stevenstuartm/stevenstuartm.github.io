@@ -7,13 +7,13 @@ tags: [software-design, best-practices, architecture]
 description: "Why adaptability trumps cleverness and performance as the ultimate measure of code quality, with practical principles for building flexible systems."
 ---
 
-The #1 measure of good code isn't cleverness, performance, or even correctness—**it's adaptability.**
+The #1 measure of good code isn't cleverness, performance, or even correctness: **it's adaptability.**
 
 Code that survives and thrives bends without breaking. Throughout my career, I've consistently prioritized building for change over premature optimization. (With occasional learning moments, I'll admit.)
 
 ## "Getting It Right First" Is The Wrong Goal
 
-You will never get it right the first time. And that's not a failure—it's a feature of how innovation actually works. Instead of chasing perfection upfront, embrace the power of iterative excellence. Give yourself the opportunity to deliver, learn, and evolve.
+You will never get it right the first time. And that's not a failure; it's a feature of how innovation actually works. Instead of chasing perfection upfront, embrace the power of iterative excellence. Give yourself the opportunity to deliver, learn, and evolve.
 
 ## Principles That Pay Dividends
 

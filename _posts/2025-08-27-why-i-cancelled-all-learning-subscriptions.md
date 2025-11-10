@@ -9,7 +9,7 @@ description: "Why building real projects beats passive learning platforms, and h
 
 I cancelled all my learning platform subscriptions. Not because learning is bad, but because building beats watching.
 
-Learning platforms sell completion badges, not capability. That green checkmark feels like progress, but can you build without the training wheels? Real learning happens through building, breaking, and fixing—not passive consumption.
+Learning platforms sell completion badges, not capability. That green checkmark feels like progress, but can you build without the training wheels? Real learning happens through building, breaking, and fixing, not passive consumption.
 
 ## Why Platforms Fall Short
 
@@ -23,10 +23,10 @@ Learning platforms sell completion badges, not capability. That green checkmark 
 Even terrible projects teach more than polished tutorials. That broken todo app you're embarrassed about taught you more about state management, debugging, and problem-solving than any video course.
 
 **2. Official Documentation**
-Framework creators document their tools better than third-party instructors. Modern docs (React, Vue, .NET, AWS) are excellent—comprehensive, up-to-date, and free.
+Framework creators document their tools better than third-party instructors. Modern docs (React, Vue, .NET, AWS) are excellent: comprehensive, up-to-date, and free.
 
 **3. GitHub & Open Source**
-Thousands of real-world examples, starter templates, and production codebases. Yes, quality varies—but learning to evaluate code is itself a critical skill.
+Thousands of real-world examples, starter templates, and production codebases. Yes, quality varies, but learning to evaluate code is itself a critical skill.
 
 **4. AI Assistants**
 Stuck? Get unstuck in minutes rather than scrolling through 2019 forum posts. Use AI as a rubber duck and rapid-feedback loop.
