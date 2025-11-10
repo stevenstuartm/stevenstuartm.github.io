@@ -52,7 +52,8 @@
           "name": "Leadership & Governance",
           "description": "Decision-making, leadership, and architecture governance",
           "guides": [
-            "ArchitectureDecisionsLeadership.md",
+            "architecture/architecture-decision-making.md",
+            "architecture/architecture-leadership.md",
             "governance.md",
             "governance-frameworks.md",
             "governance-tools.md"
