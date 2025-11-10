@@ -481,6 +481,7 @@ Blog posts should read like thoughtful essays, not manuals or checklists. The de
 - ✅ Comparing features or characteristics side-by-side
 - ✅ Enumerating red flags or warning signs
 - ✅ Call-to-action checklists (diagnostic questions, troubleshooting steps, action items)
+- ✅ **Conclusion sections with actionable next steps** (when concluding with specific actions the reader should take)
 
 **When prose works better**:
 - ❌ Explaining concepts or reasoning (use flowing paragraphs)
@@ -489,6 +490,18 @@ Blog posts should read like thoughtful essays, not manuals or checklists. The de
 - ❌ Describing how things work (use descriptive prose)
 
 **Key principle**: If the reader needs to scan and act on specific items (like diagnostic questions during an incident), use bullets for clarity. If the reader needs to understand a concept or follow reasoning, use prose for flow.
+
+**Conclusions and call-to-action**: When concluding a post with actionable steps the reader should take, use bullets. Long comma-separated lists force the reader to buffer too much context. Clear bullet points make each action scannable and memorable.
+
+**Example of effective conclusion bullets**:
+```markdown
+Or you can demand discipline:
+- Discover what you're building before estimating
+- Test your assumptions
+- Agree on specific outcomes with clear success criteria
+- Build what was agreed, or realign when discovery demands it
+- Measure whether you actually delivered value
+```
 
 **Test for when to use bullets**: If a sentence contains multiple items separated by commas or semicolons, and those items are things the reader should remember or act on, convert it to a bulleted list. Examples:
 - ❌ "Capture these artifacts: thread dumps, detailed logs, metrics, network traces, and resource utilization."
