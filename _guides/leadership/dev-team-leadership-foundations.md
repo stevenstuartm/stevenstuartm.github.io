@@ -1,12 +1,12 @@
 ---
 layout: guide
-title: "Dev Team Leadership: A Crash Course"
+title: "Dev Team Leadership"
 category: Leadership & Team Management
 subcategory: Team Leadership
 description: "Practical, step-by-step guide for new dev team leads: what to do from day zero through delivery cycles, handling crises, and building momentum without the fluff."
 ---
 
-# Dev Team Leadership: A Crash Course
+# Dev Team Leadership
 
 You're now responsible for a development team. Whether you were promoted internally, hired externally, or thrust into the role unexpectedly, you need to know what to actually do starting now.
 

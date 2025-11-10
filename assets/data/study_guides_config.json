@@ -6,14 +6,14 @@
           "name": "Team Leadership",
           "description": "Practical leadership for dev team leads and managers",
           "guides": [
-            "leadership/dev-team-leadership-crash-course.md"
+            "leadership/dev-team-leadership-foundations.md"
           ]
         },
         {
           "name": "Architecture Leadership",
           "description": "Leadership skills specific to software architects",
           "guides": [
-            "leadership/architecture-leadership.md",
+            "leadership/architecture-leadership-foundations.md",
             "architecture/architecture-decision-making.md"
           ]
         }
