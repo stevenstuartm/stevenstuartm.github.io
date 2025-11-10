@@ -836,17 +836,17 @@ One of the key tenets of DevSecOps is that security should be easy to do correct
 ## Resources
 
 ### DevSecOps Frameworks and Standards
-- [DevSecOps Manifesto](https://www.devsecops.org/) - Core principles and philosophy
-- [OWASP SAMM (Software Assurance Maturity Model)](https://owaspsamm.org/) - Security maturity framework
-- [NIST SSDF (Secure Software Development Framework)](https://csrc.nist.gov/Projects/ssdf) - Secure development practices
+- [DevSecOps Manifesto](https://www.devsecops.org/){:target="_blank" rel="noopener noreferrer"} - Core principles and philosophy
+- [OWASP SAMM (Software Assurance Maturity Model)](https://owaspsamm.org/){:target="_blank" rel="noopener noreferrer"} - Security maturity framework
+- [NIST SSDF (Secure Software Development Framework)](https://csrc.nist.gov/Projects/ssdf){:target="_blank" rel="noopener noreferrer"} - Secure development practices
 
 ### CI/CD Security Implementation
-- [CI/CD Guide](cicd.md) - Detailed guide on implementing security in CI/CD pipelines
+- [CI/CD Guide](cicd.md){:target="_blank" rel="noopener noreferrer"} - Detailed guide on implementing security in CI/CD pipelines
 
 ### Security Training
-- [OWASP Top 10](https://owasp.org/www-project-top-ten/) - Most critical web application security risks
-- [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/) - Secure development guidance
-- [SANS Secure Coding](https://www.sans.org/cyber-security-courses/secure-coding/) - Comprehensive secure coding training
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/){:target="_blank" rel="noopener noreferrer"} - Most critical web application security risks
+- [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/){:target="_blank" rel="noopener noreferrer"} - Secure development guidance
+- [SANS Secure Coding](https://www.sans.org/cyber-security-courses/secure-coding/){:target="_blank" rel="noopener noreferrer"} - Comprehensive secure coding training
 
 ### Books
 - *The Phoenix Project* by Gene Kim - DevOps novel with security themes
@@ -854,6 +854,6 @@ One of the key tenets of DevSecOps is that security should be easy to do correct
 - *The Unicorn Project* by Gene Kim - DevOps and security culture
 
 ### Community
-- [OWASP](https://owasp.org) - Open Web Application Security Project
-- [DevSecOps Community](https://www.devsecops.org/community/) - Forums and discussions
-- [Cloud Security Alliance](https://cloudsecurityalliance.org/) - Cloud security best practices
+- [OWASP](https://owasp.org){:target="_blank" rel="noopener noreferrer"} - Open Web Application Security Project
+- [DevSecOps Community](https://www.devsecops.org/community/){:target="_blank" rel="noopener noreferrer"} - Forums and discussions
+- [Cloud Security Alliance](https://cloudsecurityalliance.org/){:target="_blank" rel="noopener noreferrer"} - Cloud security best practices

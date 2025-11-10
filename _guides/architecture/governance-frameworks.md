@@ -94,11 +94,11 @@ The framework operates through iterative review cycles where teams assess curren
 **Example decision:** Use Well-Architected Review scores to prioritize technical debt remediation - systems below 70% compliance get mandatory improvement plans.
 
 **Resources:**
-- [AWS Well-Architected Framework Homepage](https://aws.amazon.com/architecture/well-architected/)
-- [Well-Architected Tool (AWS Console)](https://console.aws.amazon.com/wellarchitected/)
-- [Framework Whitepapers (All Pillars)](https://aws.amazon.com/architecture/well-architected/#Whitepapers)
-- [Well-Architected Lenses](https://aws.amazon.com/architecture/well-architected/#AWS_Well-Architected_Lenses)
-- [AWS Architecture Center](https://aws.amazon.com/architecture/)
+- [AWS Well-Architected Framework Homepage](https://aws.amazon.com/architecture/well-architected/){:target="_blank" rel="noopener noreferrer"}
+- [Well-Architected Tool (AWS Console)](https://console.aws.amazon.com/wellarchitected/){:target="_blank" rel="noopener noreferrer"}
+- [Framework Whitepapers (All Pillars)](https://aws.amazon.com/architecture/well-architected/#Whitepapers){:target="_blank" rel="noopener noreferrer"}
+- [Well-Architected Lenses](https://aws.amazon.com/architecture/well-architected/#AWS_Well-Architected_Lenses){:target="_blank" rel="noopener noreferrer"}
+- [AWS Architecture Center](https://aws.amazon.com/architecture/){:target="_blank" rel="noopener noreferrer"}
 
 ### TOGAF
 
@@ -153,11 +153,11 @@ TOGAF emphasizes stakeholder management, requirements management (continuous thr
 **Common mistake:** Implementing TOGAF by-the-book creates bureaucracy. Adapt it to your culture and needs.
 
 **Resources:**
-- [The Open Group - TOGAF Standard](https://www.opengroup.org/togaf)
-- [TOGAF 9.2 Documentation](https://pubs.opengroup.org/architecture/togaf9-doc/arch/)
-- [TOGAF Certification Program](https://www.opengroup.org/certifications/togaf)
-- [ArchiMate Modeling Language](https://www.opengroup.org/archimate-forum/archimate-overview) (commonly used with TOGAF)
-- [TOGAF Library (Members)](https://www.opengroup.org/togaf-library)
+- [The Open Group - TOGAF Standard](https://www.opengroup.org/togaf){:target="_blank" rel="noopener noreferrer"}
+- [TOGAF 9.2 Documentation](https://pubs.opengroup.org/architecture/togaf9-doc/arch/){:target="_blank" rel="noopener noreferrer"}
+- [TOGAF Certification Program](https://www.opengroup.org/certifications/togaf){:target="_blank" rel="noopener noreferrer"}
+- [ArchiMate Modeling Language](https://www.opengroup.org/archimate-forum/archimate-overview){:target="_blank" rel="noopener noreferrer"} (commonly used with TOGAF)
+- [TOGAF Library (Members)](https://www.opengroup.org/togaf-library){:target="_blank" rel="noopener noreferrer"}
 
 ### Zachman Framework
 
@@ -219,10 +219,10 @@ The framework helps identify gaps in enterprise documentation, ensures comprehen
 **Common mistake:** Treating Zachman as implementation methodology. It's a taxonomy for organizing architecture artifacts, not a process for creating them.
 
 **Resources:**
-- [Zachman International - Official Site](https://www.zachman.com/)
-- [Zachman Framework Overview](https://www.zachman.com/about-the-zachman-framework)
-- [Enterprise Architecture Body of Knowledge (EABOK)](https://www.zachman.com/ea-books-by-john-zachman) - John Zachman's books
-- [Zachman Framework Evolution (PDF)](https://www.zachman.com/images/ZI_PIcs/ZF3.0.pdf)
+- [Zachman International - Official Site](https://www.zachman.com/){:target="_blank" rel="noopener noreferrer"}
+- [Zachman Framework Overview](https://www.zachman.com/about-the-zachman-framework){:target="_blank" rel="noopener noreferrer"}
+- [Enterprise Architecture Body of Knowledge (EABOK)](https://www.zachman.com/ea-books-by-john-zachman){:target="_blank" rel="noopener noreferrer"} - John Zachman's books
+- [Zachman Framework Evolution (PDF)](https://www.zachman.com/images/ZI_PIcs/ZF3.0.pdf){:target="_blank" rel="noopener noreferrer"}
 
 ### Other Notable Frameworks
 
@@ -230,19 +230,19 @@ The framework helps identify gaps in enterprise documentation, ensures comprehen
 - Focus: IT governance and management
 - Best for: Audit, compliance, and IT risk management
 - Use when: Need to align IT with business objectives and manage IT risk
-- Resources: [ISACA COBIT Framework](https://www.isaca.org/resources/cobit)
+- Resources: [ISACA COBIT Framework](https://www.isaca.org/resources/cobit){:target="_blank" rel="noopener noreferrer"}
 
 **ITIL (Information Technology Infrastructure Library):**
 - Focus: IT service management
 - Best for: Operations and service delivery
 - Use when: Need to improve IT service quality and efficiency
-- Resources: [Axelos ITIL](https://www.axelos.com/certifications/itil-service-management)
+- Resources: [Axelos ITIL](https://www.axelos.com/certifications/itil-service-management){:target="_blank" rel="noopener noreferrer"}
 
 **DoDAF (Department of Defense Architecture Framework):**
 - Focus: Military and government systems
 - Best for: Complex system-of-systems architectures
 - Use when: Working on defense or government projects
-- Resources: [DoD Architecture Framework](https://dodcio.defense.gov/Library/DoD-Architecture-Framework/)
+- Resources: [DoD Architecture Framework](https://dodcio.defense.gov/Library/DoD-Architecture-Framework/){:target="_blank" rel="noopener noreferrer"}
 
 ## Key Takeaways
 

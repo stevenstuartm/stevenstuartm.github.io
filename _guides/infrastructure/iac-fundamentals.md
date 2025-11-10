@@ -378,7 +378,7 @@ Resources:
 **Critical**: IaC state files (like Terraform's `terraform.tfstate`) contain the actual values of all resources, including secrets.
 
 **Protect state files:**
-- Always use remote state with encryption (covered in [IaC State Management](/study-guides/infrastructure/iac-state-management.html))
+- Always use remote state with encryption (covered in [IaC State Management](/study-guides/infrastructure/iac-state-management.html){:target="_blank" rel="noopener noreferrer"})
 - Restrict access to state storage (S3 bucket policies, IAM roles)
 - Never commit state files to version control
 
@@ -425,9 +425,9 @@ Run security scans before deployment and integrate them into your CI/CD pipeline
 - Modules and reusable components
 
 **3. Implement Best Practices**
-- Remote state management (covered in [IaC State Management](/study-guides/infrastructure/iac-state-management.html))
+- Remote state management (covered in [IaC State Management](/study-guides/infrastructure/iac-state-management.html){:target="_blank" rel="noopener noreferrer"})
 - Version control and code review process
-- Automated testing (covered in [IaC Testing](/study-guides/infrastructure/iac-testing.html))
+- Automated testing (covered in [IaC Testing](/study-guides/infrastructure/iac-testing.html){:target="_blank" rel="noopener noreferrer"})
 
 **4. Production Readiness**
 - Security scanning integration

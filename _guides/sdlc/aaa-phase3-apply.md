@@ -112,7 +112,7 @@ The discipline of Apply is knowing when to:
   - Code quality metrics (coverage, complexity, duplication)
   - Technical debt tracking and paydown planning
   - Architectural violations
-- See [Governance](/study-guides/architecture/governance.html), [Governance Frameworks](/study-guides/architecture/governance-frameworks.html), [Governance Tools](/study-guides/architecture/governance-tools.html)
+- See [Governance](/study-guides/architecture/governance.html){:target="_blank" rel="noopener noreferrer"}, [Governance Frameworks](/study-guides/architecture/governance-frameworks.html){:target="_blank" rel="noopener noreferrer"}, [Governance Tools](/study-guides/architecture/governance-tools.html){:target="_blank" rel="noopener noreferrer"}
 
 **Decision Point: Architecture Conformance**:
 - Is implementation staying true to approved architecture?
@@ -210,7 +210,7 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
   - Dependency scanning: Check vulnerable libraries daily
   - DAST: Dynamic testing in staging
   - Penetration testing: Before launch
-  - See [Security Testing](/study-guides/security/security-testing.html), [Application Security](/study-guides/security/application-security.html)
+  - See [Security Testing](/study-guides/security/security-testing.html){:target="_blank" rel="noopener noreferrer"}, [Application Security](/study-guides/security/application-security.html){:target="_blank" rel="noopener noreferrer"}
 - **Performance Testing**:
   - Load testing before releases
   - Stress testing to find breaking points
@@ -264,21 +264,21 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 - Implement deployment strategies (blue/green, canary, rolling)
 - Configure release automation
 - Set up automated rollback
-- See [CI/CD](/study-guides/sdlc/cicd.html), [DevSecOps](/study-guides/sdlc/devsecops.html)
+- See [CI/CD](/study-guides/sdlc/cicd.html){:target="_blank" rel="noopener noreferrer"}, [DevSecOps](/study-guides/sdlc/devsecops.html){:target="_blank" rel="noopener noreferrer"}
 
 **Deployment Strategy Selection**:
 - **All-at-once**: Simple but risky, downtime required
 - **Rolling**: Gradual replacement, no downtime, can roll back
 - **Blue/Green**: Two environments, instant switchover, easy rollback
 - **Canary**: Deploy to subset first, monitor, then full rollout
-- See [Deployment Strategies](/study-guides/infrastructure/deployment-strategies.html), [Deployment & Infrastructure Patterns](/study-guides/architecture/deployment_infrastructure_patterns.html)
+- See [Deployment Strategies](/study-guides/infrastructure/deployment-strategies.html){:target="_blank" rel="noopener noreferrer"}, [Deployment & Infrastructure Patterns](/study-guides/architecture/deployment_infrastructure_patterns.html){:target="_blank" rel="noopener noreferrer"}
 
 **Monitoring & Observability** (before deployment):
 - Instrument code with logging, metrics, tracing
 - Set up dashboards for key metrics
 - Configure alerting for SLO violations
 - Implement health checks and readiness probes
-- See [Observability Fundamentals](/study-guides/observability-fundamentals.html)
+- See [Observability Fundamentals](/study-guides/observability-fundamentals.html){:target="_blank" rel="noopener noreferrer"}
 
 **Production Deployment**:
 1. Execute deployment via automation

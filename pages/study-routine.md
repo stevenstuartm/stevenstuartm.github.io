@@ -54,7 +54,7 @@ Regular review reinforces learning. I maintain [personal guides and notes on Git
 
 ## 🔍 Enrich Your Tech Radar
 
-Maintain your own [tech radar](/tech-radar.html) to track technologies and approaches worth exploring.
+Maintain your own [tech radar](/tech-radar.html){:target="_blank" rel="noopener noreferrer"} to track technologies and approaches worth exploring.
 
 ### Research Latest News
 

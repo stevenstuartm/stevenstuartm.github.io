@@ -55,13 +55,13 @@ Agree applies at every level of work:
   - Identify 7 characteristics critical to success (e.g., performance, scalability, availability, security, maintainability)
   - Prioritize the 3 most important characteristics—these drive architecture style selection
   - Use structured worksheets to evaluate characteristics and select appropriate style
-  - See [Architecture Foundations](/study-guides/architecture/ArchitectureFoundations.html#architecture-characteristics)
-  - **Worksheets**: [Architecture Characteristics & Style Selection Worksheets](https://developertoarchitect.com/downloads/worksheets.html)
+  - See [Architecture Foundations](/study-guides/architecture/ArchitectureFoundations.html#architecture-characteristics){:target="_blank" rel="noopener noreferrer"}
+  - **Worksheets**: [Architecture Characteristics & Style Selection Worksheets](https://developertoarchitect.com/downloads/worksheets.html){:target="_blank" rel="noopener noreferrer"}
 
 - **Architectural Style**: Monolithic, microservices, serverless, event-driven?
   - Choose style based on top 3 architectural characteristics
   - Consider: Scalability needs, team skills, operational maturity, cost
-  - See [Architecture Styles](/study-guides/architecture/ArchitectureStyles.html)
+  - See [Architecture Styles](/study-guides/architecture/ArchitectureStyles.html){:target="_blank" rel="noopener noreferrer"}
 
 - **Component Boundaries**: How do you break the system into pieces?
   - Define responsibilities, interfaces, and data ownership
@@ -69,17 +69,17 @@ Agree applies at every level of work:
 
 - **Integration Patterns**: How do components and external systems communicate?
   - Synchronous (REST, gRPC) vs. asynchronous (messaging, events)
-  - See [Communication Patterns](/study-guides/architecture/communication_patterns.html), [Integration Patterns](/study-guides/architecture/integration_patterns.html)
+  - See [Communication Patterns](/study-guides/architecture/communication_patterns.html){:target="_blank" rel="noopener noreferrer"}, [Integration Patterns](/study-guides/architecture/integration_patterns.html){:target="_blank" rel="noopener noreferrer"}
 
 - **Data Architecture**: How is data stored and managed?
   - SQL, NoSQL, caching strategy, consistency requirements
-  - See [Data Architecture](/study-guides/data-architecture.html), [Data Management Patterns](/study-guides/architecture/data_management_patterns.html)
+  - See [Data Architecture](/study-guides/data-architecture.html){:target="_blank" rel="noopener noreferrer"}, [Data Management Patterns](/study-guides/architecture/data_management_patterns.html){:target="_blank" rel="noopener noreferrer"}
 
 **Document Your Decisions**:
 - Architecture Decision Records (ADRs): Context → Decision → Consequences
 - Document WHY, not just WHAT
 - Record alternatives considered and why they were rejected
-- See [Architecture Decisions & Leadership](/study-guides/architecture/architecture-decision-making.html), [Governance](/study-guides/architecture/governance.html)
+- See [Architecture Decisions & Leadership](/study-guides/architecture/architecture-decision-making.html){:target="_blank" rel="noopener noreferrer"}, [Governance](/study-guides/architecture/governance.html){:target="_blank" rel="noopener noreferrer"}
 
 **How to Do This Well**:
 - Evaluate multiple options before deciding—don't just pick what you know
@@ -157,7 +157,7 @@ Agree applies at every level of work:
 - **Dependency Scanning**: Check for vulnerable libraries
 - **DAST**: Dynamic testing in staging
 - **Penetration Testing**: Before launch
-- See [Security Testing](/study-guides/security/security-testing.html), [Application Security](/study-guides/security/application-security.html)
+- See [Security Testing](/study-guides/security/security-testing.html){:target="_blank" rel="noopener noreferrer"}, [Application Security](/study-guides/security/application-security.html){:target="_blank" rel="noopener noreferrer"}
 
 **Performance Testing**:
 - Load testing for expected traffic
@@ -282,7 +282,7 @@ Agree applies at every level of work:
 
 **Comprehensive view of all costs over the system's lifetime.**
 
-For detailed guidance, see [Total Cost of Ownership](/study-guides/architecture/total-cost-of-ownership.html).
+For detailed guidance, see [Total Cost of Ownership](/study-guides/architecture/total-cost-of-ownership.html){:target="_blank" rel="noopener noreferrer"}.
 
 **Cost Categories**:
 
@@ -330,7 +330,7 @@ For detailed guidance, see [Total Cost of Ownership](/study-guides/architecture/
 
 **Justify the investment by demonstrating business value.**
 
-For detailed guidance, see [Return on Investment](/study-guides/architecture/return-on-investment.html).
+For detailed guidance, see [Return on Investment](/study-guides/architecture/return-on-investment.html){:target="_blank" rel="noopener noreferrer"}.
 
 **ROI Formula**:
 ```

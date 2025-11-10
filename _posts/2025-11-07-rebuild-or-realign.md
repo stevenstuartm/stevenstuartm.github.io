@@ -85,7 +85,7 @@ The difference between justified and unjustified rebuilds is honest assessment. 
 
 ## The AAA Discipline: How to Know If You Need a Rebuild
 
-The [AAA Cycle](/study-guides/sdlc/aaa-cycle.html) (Align, Agree, Apply) prevents rebuild disasters by forcing honest assessment before action.
+The [AAA Cycle](/study-guides/sdlc/aaa-cycle.html){:target="_blank" rel="noopener noreferrer"} (Align, Agree, Apply) prevents rebuild disasters by forcing honest assessment before action.
 
 ### Align: Understand Before You Prescribe
 

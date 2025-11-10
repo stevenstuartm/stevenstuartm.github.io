@@ -44,7 +44,7 @@ description: "Explore threat actor classifications from script kiddies to nation
 ### Common Vulnerabilities and Exposures (CVE)
 - **Purpose**: Standardized vulnerability identification
 - **Format**: CVE-YYYY-NNNN (e.g., CVE-2024-1234)
-- **Source**: [MITRE Corporation](https://cve.mitre.org/)
+- **Source**: [MITRE Corporation](https://cve.mitre.org/){:target="_blank" rel="noopener noreferrer"}
 - **Usage**: Vulnerability scanners, patch management
 
 ### Common Vulnerability Scoring System (CVSS)

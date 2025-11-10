@@ -82,8 +82,8 @@ Align applies at every level of work:
 - Performance: Response time, throughput expectations
 - Scalability: Growth projections for users and data
 - Availability: Uptime requirements
-- Security: Authentication, authorization, data protection (see [Security Foundations](/study-guides/security/security-foundations.html))
-- Compliance: Regulatory requirements (GDPR, HIPAA, etc.) (see [Compliance & Governance](/study-guides/security/compliance-governance.html))
+- Security: Authentication, authorization, data protection (see [Security Foundations](/study-guides/security/security-foundations.html){:target="_blank" rel="noopener noreferrer"})
+- Compliance: Regulatory requirements (GDPR, HIPAA, etc.) (see [Compliance & Governance](/study-guides/security/compliance-governance.html){:target="_blank" rel="noopener noreferrer"})
 
 **Prioritization**:
 - Must have vs. should have vs. could have

@@ -664,18 +664,18 @@ Most successful teams adapt methodologies to their needs rather than following t
 ### Resources
 
 **Agile:**
-- [Agile Manifesto](https://agilemanifesto.org/) - Original manifesto and principles
-- [Scrum Guide](https://scrumguides.org/) - Official Scrum definition by Schwaber & Sutherland
+- [Agile Manifesto](https://agilemanifesto.org/){:target="_blank" rel="noopener noreferrer"} - Original manifesto and principles
+- [Scrum Guide](https://scrumguides.org/){:target="_blank" rel="noopener noreferrer"} - Official Scrum definition by Schwaber & Sutherland
 
 **Lean:**
-- [Lean Software Development: An Agile Toolkit](https://www.amazon.com/Lean-Software-Development-Agile-Toolkit/dp/0321150783) - Mary & Tom Poppendieck
+- [Lean Software Development: An Agile Toolkit](https://www.amazon.com/Lean-Software-Development-Agile-Toolkit/dp/0321150783){:target="_blank" rel="noopener noreferrer"} - Mary & Tom Poppendieck
 
 **DevOps:**
-- [The DevOps Handbook](https://itrevolution.com/product/the-devops-handbook/) - Gene Kim, et al.
-- [DevOps Research and Assessment (DORA)](https://dora.dev/) - Research on DevOps performance
+- [The DevOps Handbook](https://itrevolution.com/product/the-devops-handbook/){:target="_blank" rel="noopener noreferrer"} - Gene Kim, et al.
+- [DevOps Research and Assessment (DORA)](https://dora.dev/){:target="_blank" rel="noopener noreferrer"} - Research on DevOps performance
 
 **XP:**
-- [Extreme Programming Explained](https://www.amazon.com/Extreme-Programming-Explained-Embrace-Change/dp/0321278658) - Kent Beck
+- [Extreme Programming Explained](https://www.amazon.com/Extreme-Programming-Explained-Embrace-Change/dp/0321278658){:target="_blank" rel="noopener noreferrer"} - Kent Beck
 
 **Kanban:**
-- [Kanban: Successful Evolutionary Change for Your Technology Business](https://www.amazon.com/Kanban-Successful-Evolutionary-Technology-Business/dp/0984521402) - David J. Anderson
+- [Kanban: Successful Evolutionary Change for Your Technology Business](https://www.amazon.com/Kanban-Successful-Evolutionary-Technology-Business/dp/0984521402){:target="_blank" rel="noopener noreferrer"} - David J. Anderson

@@ -926,14 +926,14 @@ Good shaping: "We'll integrate with Stripe (validated we can do this during spik
 
 ### Official Shape Up Resources
 
-- **[Shape Up Book](https://basecamp.com/shapeup)** - Free online book by Ryan Singer (read this first!)
-- **[Basecamp's Shape Up Website](https://basecamp.com/shapeup)** - Official methodology documentation
-- **[Shape Up on GitHub](https://github.com/basecamp/shapeup)** - Book source and community discussions
+- **[Shape Up Book](https://basecamp.com/shapeup){:target="_blank" rel="noopener noreferrer"}** - Free online book by Ryan Singer (read this first!)
+- **[Basecamp's Shape Up Website](https://basecamp.com/shapeup){:target="_blank" rel="noopener noreferrer"}** - Official methodology documentation
+- **[Shape Up on GitHub](https://github.com/basecamp/shapeup){:target="_blank" rel="noopener noreferrer"}** - Book source and community discussions
 
 ### Complementary Resources
 
-- **[Jobs to Be Done](https://jtbd.info/)** - Framework for understanding customer needs (pairs well with shaping)
-- **[Intercom on Product Management](https://www.intercom.com/blog/product-management/)** - Product thinking that aligns with Shape Up philosophy
+- **[Jobs to Be Done](https://jtbd.info/){:target="_blank" rel="noopener noreferrer"}** - Framework for understanding customer needs (pairs well with shaping)
+- **[Intercom on Product Management](https://www.intercom.com/blog/product-management/){:target="_blank" rel="noopener noreferrer"}** - Product thinking that aligns with Shape Up philosophy
 
 ### Community
 

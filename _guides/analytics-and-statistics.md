@@ -329,26 +329,26 @@ Think of a distribution as the "shape" your data makes when you plot it. Underst
 ## Free Datasets for Practice
 
 ### Government and Health
-- **[World Health Organization (WHO)](https://www.who.int/data/gho/)**: Mental health, COVID-19, air pollution data
-- **[Data.gov](https://www.data.gov/)**: US government data on agriculture, climate, energy
-- **[Storm Events Database](https://catalog.data.gov/dataset/ncdc-storm-events-database2)**: Weather and natural disaster data
-- **[US Census](https://www.census.gov/data.html)** and **[EU Census](https://ec.europa.eu/eurostat/web/population-demography/population-housing-censuses)**: Population demographics
+- **[World Health Organization (WHO)](https://www.who.int/data/gho/){:target="_blank" rel="noopener noreferrer"}**: Mental health, COVID-19, air pollution data
+- **[Data.gov](https://www.data.gov/){:target="_blank" rel="noopener noreferrer"}**: US government data on agriculture, climate, energy
+- **[Storm Events Database](https://catalog.data.gov/dataset/ncdc-storm-events-database2){:target="_blank" rel="noopener noreferrer"}**: Weather and natural disaster data
+- **[US Census](https://www.census.gov/data.html){:target="_blank" rel="noopener noreferrer"}** and **[EU Census](https://ec.europa.eu/eurostat/web/population-demography/population-housing-censuses){:target="_blank" rel="noopener noreferrer"}**: Population demographics
 
 ### News and Analysis
-- **[FiveThirtyEight](https://data.fivethirtyeight.com/)**: Sports, politics, culture datasets
-- **[Political polls](https://projects.fivethirtyeight.com/polls/)**: Election and opinion data
-- **[NBA player ratings](https://projects.fivethirtyeight.com/nba-player-ratings/)**: Sports analytics
+- **[FiveThirtyEight](https://data.fivethirtyeight.com/){:target="_blank" rel="noopener noreferrer"}**: Sports, politics, culture datasets
+- **[Political polls](https://projects.fivethirtyeight.com/polls/){:target="_blank" rel="noopener noreferrer"}**: Election and opinion data
+- **[NBA player ratings](https://projects.fivethirtyeight.com/nba-player-ratings/){:target="_blank" rel="noopener noreferrer"}**: Sports analytics
 
 ### Social Good
-- **[UNICEF Data](https://data.unicef.org/)**: Global data on children's welfare
-- **[Biodiversity at US National Parks](https://datasetsearch.research.google.com/search?query=national%20parks&docid=L2cvMTFqbl82ZmdmeQ%3D%3D)**: Species identification data
+- **[UNICEF Data](https://data.unicef.org/){:target="_blank" rel="noopener noreferrer"}**: Global data on children's welfare
+- **[Biodiversity at US National Parks](https://datasetsearch.research.google.com/search?query=national%20parks&docid=L2cvMTFqbl82ZmdmeQ%3D%3D){:target="_blank" rel="noopener noreferrer"}**: Species identification data
 
 ### Business and Economics
-- **[Netherlands Orchid Trade](https://datasetsearch.research.google.com/search?src=0&query=Value%20of%20the%20import%20and%20export%20of%20orchids%20in%20the%20Netherlands%202020&docid=L2cvMTFweDF5bnRzOQ%3D%3D)**: €12 billion flower export market
-- **[US Cosmetics Industry Revenue](https://datasetsearch.research.google.com/search?query=cosmetics&docid=L2cvMTFuZmJqOWtsXw%3D%3D)**: $49.2 billion market analysis
+- **[Netherlands Orchid Trade](https://datasetsearch.research.google.com/search?src=0&query=Value%20of%20the%20import%20and%20export%20of%20orchids%20in%20the%20Netherlands%202020&docid=L2cvMTFweDF5bnRzOQ%3D%3D){:target="_blank" rel="noopener noreferrer"}**: €12 billion flower export market
+- **[US Cosmetics Industry Revenue](https://datasetsearch.research.google.com/search?query=cosmetics&docid=L2cvMTFuZmJqOWtsXw%3D%3D){:target="_blank" rel="noopener noreferrer"}**: $49.2 billion market analysis
 
 ### Finding More Datasets
-**[Google Dataset Search](https://datasetsearch.research.google.com/)** - Search engine specifically for datasets
+**[Google Dataset Search](https://datasetsearch.research.google.com/){:target="_blank" rel="noopener noreferrer"}** - Search engine specifically for datasets
 
 ---
 

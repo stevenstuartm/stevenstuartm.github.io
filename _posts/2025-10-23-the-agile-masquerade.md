@@ -101,7 +101,7 @@ This is continuous alignment, not upfront perfection. You start with enough unde
 
 ## What Real Agreement Requires
 
-The [AAA Cycle](/study-guides/sdlc/aaa-cycle.html) provides the discipline:
+The [AAA Cycle](/study-guides/sdlc/aaa-cycle.html){:target="_blank" rel="noopener noreferrer"} provides the discipline:
 
 **Align** = Understand the problem before proposing solutions
 - What are we trying to accomplish?

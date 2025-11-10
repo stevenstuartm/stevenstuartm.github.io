@@ -1266,7 +1266,7 @@ workflows:
 ```
 
 **Resources:**
-- [CircleCI Documentation](https://circleci.com/docs/)
+- [CircleCI Documentation](https://circleci.com/docs/){:target="_blank" rel="noopener noreferrer"}
 
 **Azure DevOps**
 
@@ -1298,7 +1298,7 @@ steps:
 ```
 
 **Resources:**
-- [Azure DevOps Documentation](https://learn.microsoft.com/en-us/azure/devops/)
+- [Azure DevOps Documentation](https://learn.microsoft.com/en-us/azure/devops/){:target="_blank" rel="noopener noreferrer"}
 
 **AWS CodePipeline**
 
@@ -1314,7 +1314,7 @@ steps:
 **Best for:** Teams heavily invested in AWS, serverless applications
 
 **Resources:**
-- [AWS CodePipeline Documentation](https://docs.aws.amazon.com/codepipeline/)
+- [AWS CodePipeline Documentation](https://docs.aws.amazon.com/codepipeline/){:target="_blank" rel="noopener noreferrer"}
 
 ### Specialized CI/CD Tools
 
@@ -1363,36 +1363,36 @@ steps:
 ## Resources
 
 ### Documentation and Standards
-- [Continuous Delivery Book](https://continuousdelivery.com/) by Jez Humble and David Farley
-- [The Phoenix Project](https://itrevolution.com/product/the-phoenix-project/) - DevOps novel
-- [Accelerate](https://itrevolution.com/product/accelerate/) - Research-based DevOps metrics
+- [Continuous Delivery Book](https://continuousdelivery.com/){:target="_blank" rel="noopener noreferrer"} by Jez Humble and David Farley
+- [The Phoenix Project](https://itrevolution.com/product/the-phoenix-project/){:target="_blank" rel="noopener noreferrer"} - DevOps novel
+- [Accelerate](https://itrevolution.com/product/accelerate/){:target="_blank" rel="noopener noreferrer"} - Research-based DevOps metrics
 
 ### CI/CD Platforms
-- [GitHub Actions](https://docs.github.com/en/actions)
-- [GitLab CI/CD](https://docs.gitlab.com/ee/ci/)
-- [Jenkins](https://www.jenkins.io/doc/)
-- [CircleCI](https://circleci.com/docs/)
-- [Azure DevOps](https://learn.microsoft.com/en-us/azure/devops/)
+- [GitHub Actions](https://docs.github.com/en/actions){:target="_blank" rel="noopener noreferrer"}
+- [GitLab CI/CD](https://docs.gitlab.com/ee/ci/){:target="_blank" rel="noopener noreferrer"}
+- [Jenkins](https://www.jenkins.io/doc/){:target="_blank" rel="noopener noreferrer"}
+- [CircleCI](https://circleci.com/docs/){:target="_blank" rel="noopener noreferrer"}
+- [Azure DevOps](https://learn.microsoft.com/en-us/azure/devops/){:target="_blank" rel="noopener noreferrer"}
 
 ### Security Tools
-- [OWASP ZAP](https://www.zaproxy.org/) - Free DAST scanner
-- [Snyk](https://snyk.io/) - Developer security platform
-- [SonarQube](https://www.sonarqube.org/) - Code quality and security
-- [Trivy](https://trivy.dev/) - Container vulnerability scanner
+- [OWASP ZAP](https://www.zaproxy.org/){:target="_blank" rel="noopener noreferrer"} - Free DAST scanner
+- [Snyk](https://snyk.io/){:target="_blank" rel="noopener noreferrer"} - Developer security platform
+- [SonarQube](https://www.sonarqube.org/){:target="_blank" rel="noopener noreferrer"} - Code quality and security
+- [Trivy](https://trivy.dev/){:target="_blank" rel="noopener noreferrer"} - Container vulnerability scanner
 
 ### Secrets Management
-- [HashiCorp Vault](https://www.vaultproject.io/)
-- [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/)
-- [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault/)
-- [Google Secret Manager](https://cloud.google.com/secret-manager)
+- [HashiCorp Vault](https://www.vaultproject.io/){:target="_blank" rel="noopener noreferrer"}
+- [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/){:target="_blank" rel="noopener noreferrer"}
+- [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault/){:target="_blank" rel="noopener noreferrer"}
+- [Google Secret Manager](https://cloud.google.com/secret-manager){:target="_blank" rel="noopener noreferrer"}
 
 ### Compliance and Policy
-- [Open Policy Agent](https://www.openpolicyagent.org/)
-- [Conftest](https://www.conftest.dev/) - Test structured configuration
-- [Cloud Custodian](https://cloudcustodian.io/) - Cloud resource management
+- [Open Policy Agent](https://www.openpolicyagent.org/){:target="_blank" rel="noopener noreferrer"}
+- [Conftest](https://www.conftest.dev/){:target="_blank" rel="noopener noreferrer"} - Test structured configuration
+- [Cloud Custodian](https://cloudcustodian.io/){:target="_blank" rel="noopener noreferrer"} - Cloud resource management
 
 ### Testing Tools
-- [Selenium](https://www.selenium.dev/) - Browser automation
-- [JMeter](https://jmeter.apache.org/) - Performance testing
-- [k6](https://k6.io/) - Modern load testing
-- [Pact](https://pact.io/) - Contract testing
+- [Selenium](https://www.selenium.dev/){:target="_blank" rel="noopener noreferrer"} - Browser automation
+- [JMeter](https://jmeter.apache.org/){:target="_blank" rel="noopener noreferrer"} - Performance testing
+- [k6](https://k6.io/){:target="_blank" rel="noopener noreferrer"} - Modern load testing
+- [Pact](https://pact.io/){:target="_blank" rel="noopener noreferrer"} - Contract testing

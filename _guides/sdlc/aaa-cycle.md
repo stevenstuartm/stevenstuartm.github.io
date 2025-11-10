@@ -131,7 +131,7 @@ AAA provides guardrails by keeping these values front and center:
 
 **Why This Guards Against Failure**: When you truly align with people and their needs, you avoid building elegant solutions to misunderstood problems. Technical decisions stay grounded in reality throughout the project.
 
-[→ Detailed Phase 1 Guide](aaa-phase1-align.html)
+[→ Detailed Phase 1 Guide](aaa-phase1-align.html){:target="_blank" rel="noopener noreferrer"}
 
 ---
 
@@ -152,7 +152,7 @@ AAA provides guardrails by keeping these values front and center:
 
 **Why This Guards Against Failure**: When people genuinely agree (versus grudgingly sign-off), they stay committed when challenges arise. Plans survive reality because they were built with reality in mind.
 
-[→ Detailed Phase 2 Guide](aaa-phase2-agree.html)
+[→ Detailed Phase 2 Guide](aaa-phase2-agree.html){:target="_blank" rel="noopener noreferrer"}
 
 ---
 
@@ -173,7 +173,7 @@ AAA provides guardrails by keeping these values front and center:
 
 **Why This Guards Against Failure**: When you honor agreements instead of chasing features, scope stays stable. When you maintain connection, surprises get addressed early. Value is realized because the right things were built.
 
-[→ Detailed Phase 3 Guide](aaa-phase3-apply.html)
+[→ Detailed Phase 3 Guide](aaa-phase3-apply.html){:target="_blank" rel="noopener noreferrer"}
 
 ---
 
