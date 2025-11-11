@@ -253,6 +253,12 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - Sentences over 150 characters with multiple semicolons and commas will be flagged
 - These are warnings; use judgment to determine if the sentence needs breaking up
 
+**Choppy parallel structures (pattern detection)**:
+- Telegraphic fragments that should flow together will be flagged
+- Pattern: "X says Y. The other says Z." → Should be: "X says Y and the other says Z."
+- Pattern: "One side does X. Another does Y." → Should be: "One side does X while another does Y."
+- These create staccato rhythm instead of natural narrative flow
+
 **How to use the linter**:
 ```bash
 python lint_content.py _posts/2025-11-08-your-post.md
@@ -320,6 +326,12 @@ Writing that feels choppy or overly generic undermines the impact of the content
 - **Choppy openings**: Sentence fragments or noun-heavy constructions that lack natural flow
   - ❌ "Lack of architectural decision records creates assumption of incompetence"
   - ✅ "When architectural decision records don't exist, future teams assume incompetence rather than recognizing intentional tradeoffs"
+- **Telegraphic parallel structures**: Short sentences with parallel structure that should flow together
+  - ❌ "When do we update dependencies? One side says always stay current. The other says only update when forced."
+  - ✅ "When should we update dependencies? One side says to always stay current and the other says to only update when forced."
+  - ❌ "Some teams automate everything. Others rely on manual processes."
+  - ✅ "Some teams automate everything while others rely on manual processes."
+  - Missing conjunctions (and, but, while, yet) create staccato rhythm instead of conversational flow
 - **Generic examples**: Vague statements that readers can easily dismiss as obvious
   - ❌ "Leadership proposes moving back to on-premises infrastructure... Months later they celebrate success"
   - ✅ Provide specific numbers, timelines, and concrete consequences ($2M → $800K over 18 months, but 99.9% → 95% availability, ops team triples, DR becomes tape-based)

@@ -7,7 +7,7 @@ series: "Technology & Tools"
 tags: [dependency-management, distributed-systems, risk-management, testing]
 ---
 
-When do we update dependencies? One side says always stay current. The other says only update when forced. Both approaches fail because updates are investments, not hygiene tasks. Teams that decide deliberately based on context and value outperform those following dogma.
+When should we update dependencies? One side says to always stay current and the other says to only update when forced. Yet both approaches fail because updates are investments, not hygiene tasks. Teams that decide deliberately based on context and value outperform those following dogma.
 
 ## The Distributed Systems Uniformity Trap
 

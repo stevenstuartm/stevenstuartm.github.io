@@ -7,7 +7,7 @@ tags: [architecture, microservices, monoliths, system-design]
 description: "Why monoliths are effective for discovery and microservices are optimizations—principles for choosing the right architecture for your context."
 ---
 
-An old debate, yet I contemplate it with every new project. There's no universal answer; choose the architecture that fits your context, constraints, and discovery needs.
+An old debate, yet I contemplate it with every new project. There's no universal answer. Choose the architecture that fits your context, constraints, and discovery needs.
 
 ## Core Principles
 

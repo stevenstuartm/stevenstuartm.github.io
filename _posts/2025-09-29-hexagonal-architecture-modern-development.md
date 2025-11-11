@@ -29,7 +29,7 @@ This sounds like what every modern framework encourages: testability, decoupling
 
 ## 3. The Question
 
-Modern frameworks provide built-in DI, testing support, and interface-based design. More importantly, we deploy immutable containers: entire artifacts with dependencies baked in. You don't swap adapters at runtime; you deploy new images through CI/CD pipelines.
+Modern frameworks provide built-in DI, testing support, and interface-based design. More importantly, we deploy immutable containers with dependencies baked in. You don't swap adapters at runtime. Instead, you deploy new images through CI/CD pipelines.
 
 Cross-cutting concerns that hexagonal architecture addressed through adapters (monitoring, observability, authentication, rate limiting) are now handled by service meshes and API gateways, external to your application code entirely.
 

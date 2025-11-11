@@ -85,7 +85,7 @@ Still, when a pragmatic developer community independently moves toward patterns 
 
 **Argument 1: Performance for frequent expected failures**
 
-When cache misses, validation failures, and timeouts happen thousands of times per second, exception overhead creates degradation. Results are simple branches; exceptions require stack unwinding. Calling these failures "exceptional" doesn't change the performance characteristics.
+When cache misses, validation failures, and timeouts happen thousands of times per second, exception overhead creates degradation. Results are simple branches while exceptions require stack unwinding. Calling these failures "exceptional" doesn't change the performance characteristics.
 
 **Strength**: Measurable at scale in systems with high-frequency expected failures.
 
@@ -162,7 +162,7 @@ The "compiler safety" argument assumes static analyzers and discipline - the sam
 
 **Argument 4: Orchestration layers solve the same problems**
 
-Proper architecture already requires orchestration layers that catch domain exceptions, translate them to appropriate responses, control what information crosses boundaries, and make consistent logging decisions. Results don't eliminate the need for this architecture; they just change what propagates upward.
+Proper architecture already requires orchestration layers that catch domain exceptions, translate them to appropriate responses, and control what information crosses boundaries. These layers also make consistent logging decisions. Results don't eliminate the need for this architecture; they just change what propagates upward.
 
 **Strength**: Architecture matters more than mechanism.
 

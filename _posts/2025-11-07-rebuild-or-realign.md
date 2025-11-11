@@ -7,7 +7,7 @@ series: "Architecture Insights"
 tags: [architecture, leadership, decision-making, aaa-cycle]
 ---
 
-System rebuilds are often measured as successful by using the wrong metrics and via the wrong intentions. When you rebuild, you must first understand what you're building; this forces realignment with business value, best practices, and operational discipline. The improvements often come from this realignment, not from the new technology.
+System rebuilds are often measured as successful using the wrong metrics and driven by the wrong intentions. When you rebuild, you must first understand what you're building. This forces realignment with business value, best practices, and operational discipline. The improvements often come from this realignment, not from the new technology.
 
 The critical error is assuming the new runtime, framework, or platform drove the gains. Ignorance was the actual constraint.
 
@@ -27,7 +27,7 @@ The root cause was never the cloud provider or its pricing. It was absence of op
 
 **Framework modernizations**: "We rebuilt with React and our UI is much faster." Was it React's virtual DOM, or was it the rebuild that forced you to eliminate unnecessary re-renders, implement proper state management, and optimize bundle sizes?
 
-The new runtime gets credit. The new provider gets credit. The new framework gets credit. But the realignment did the work. You could have achieved the same benefits by fixing the N+1 queries in Node.js, right-sizing the existing infrastructure, and optimizing the existing UI code. The technology wasn't the blocker; ignorance was.
+The new runtime gets credit, the new provider gets credit, and the new framework gets credit. But the realignment did the work. You could have achieved the same benefits by fixing the N+1 queries in Node.js, right-sizing the existing infrastructure, and optimizing the existing UI code. The technology wasn't the blocker. Ignorance was.
 
 ## When Rebuilds Masquerade as Solutions to Organizational Problems
 

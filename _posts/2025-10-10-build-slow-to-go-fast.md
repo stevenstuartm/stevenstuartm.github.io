@@ -113,9 +113,9 @@ These metrics are your early warning system.
 
 ## Conclusion
 
-Building deliberately to enable speed isn't philosophy; it's economics. Companies that ignore this principle pay in technical debt, lost customers, burned-out teams, or failure.
+Building deliberately to enable speed isn't philosophy; it's economics. Companies that ignore this principle pay in technical debt, lost customers, and burned-out teams.
 
-The balance isn't achieved by splitting the difference between speed and quality. It's achieved by being strategic about where you invest time, testing assumptions ruthlessly, building feedback loops, and maintaining discipline.
+The balance isn't achieved by splitting the difference between speed and quality. It's achieved by being strategic about where you invest time, testing assumptions ruthlessly, and building feedback loops. Discipline maintains this balance.
 
 For architects: get better at communicating business value. For leaders: create incentives that reward sustainable velocity. For everyone: accept that going fast requires building thoughtfully.
 

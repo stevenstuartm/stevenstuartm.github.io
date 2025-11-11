@@ -189,16 +189,47 @@ class ContentLinter:
 
     def _check_choppy_sentences(self, line_num: int, line: str):
         """Check for choppy sentence patterns."""
-        # Pattern: Two short sentences that could be combined
+        # Pattern: Telegraphic parallel structures (check first - more specific)
+        # "X says Y. The other says Z." or "X does Y. Another does Z."
+        parallel_patterns = [
+            # Question followed by parallel structure (most specific)
+            (r'[A-Z][^.?]{10,40}\?\s+One side [^.]{10,50}\.\s+The other [^.]{10,50}\.',
+             "Combine parallel thoughts with conjunctions: 'One side says X and the other says Y'"),
+            # One side... The other...
+            (r'One side [^.]{10,50}\.\s+The other [^.]{10,50}\.',
+             "Consider: 'One side X and the other Y' for better flow"),
+            # Some... Others...
+            (r'Some [^.]{10,50}\.\s+Others [^.]{10,50}\.',
+             "Consider: 'Some X while others Y' for better flow"),
+            # One... Another...
+            (r'One [^.]{10,50}\.\s+Another [^.]{10,50}\.',
+             "Consider using 'while' or 'whereas' to connect the thoughts"),
+        ]
+
+        # Track whether we've flagged this line to avoid duplicates
+        flagged = False
+        for pattern, suggestion in parallel_patterns:
+            if re.search(pattern, line.strip()):
+                self.violations.append(ContentViolation(
+                    line_num,
+                    "Telegraphic parallel structure",
+                    line.strip()[:100] + ("..." if len(line.strip()) > 100 else ""),
+                    suggestion
+                ))
+                flagged = True
+                break
+
+        # Pattern: General choppy sentences (only if not already flagged)
         # Looking for: "Word. Word" pattern where both are very short
-        pattern = r'^([A-Z][^.!?]{5,30})\.(\s+)([A-Z][^.!?]{5,30})\.'
-        if re.search(pattern, line.strip()):
-            self.violations.append(ContentViolation(
-                line_num,
-                "Possibly choppy sentences",
-                line.strip()[:80],
-                "Consider combining with comma or semicolon for better flow"
-            ))
+        if not flagged:
+            pattern = r'^([A-Z][^.!?]{5,30})\.(\s+)([A-Z][^.!?]{5,30})\.'
+            if re.search(pattern, line.strip()):
+                self.violations.append(ContentViolation(
+                    line_num,
+                    "Possibly choppy sentences",
+                    line.strip()[:80],
+                    "Consider combining with comma or semicolon for better flow"
+                ))
 
 
 def main():
