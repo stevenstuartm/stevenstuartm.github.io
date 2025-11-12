@@ -152,6 +152,26 @@ Despite two decades of Agile adoption, project failure rates remain staggering:
 
 The problem isn't "bad implementation." The problem is that Scrum protects leaders from accountability, not teams from failure. Velocity metrics give the illusion of progress. Sprint completions create the appearance of discipline. Leadership can point to charts and burndown graphs while the product slowly dies.
 
+### Even the Authors Know
+
+The original authors of the Agile Manifesto have watched what happened to their creation and expressed public disappointment. While they don't "own" agile principles, their voices carry weight as witnesses to how corporate frameworks and certification mills corrupted values into commodities.
+
+**Dave Thomas**, one of the 17 Manifesto signatories, declared "[Agile is Dead](https://pragdave.me/blog/2014/03/04/time-to-kill-agile.html){:target="_blank" rel="noopener noreferrer"}" in 2014. He argued that the word "agile" had been subverted to the point of meaninglessness, with the agile community becoming an arena for consultants and vendors to sell services and products. Thomas notably refused to participate in Agile events after Snowbird, didn't affiliate with the Agile Alliance, and didn't do any "agile" consultancy. His critique focused on how commercialization conflicted with the original spirit of the Manifesto.
+
+**Ron Jeffries**, co-creator of Extreme Programming and Manifesto signatory, published "[Developers Should Abandon Agile](https://ronjeffries.com/articles/018-01ff/abandon-1/){:target="_blank" rel="noopener noreferrer"}" in 2018. He coined the terms "Faux Agile" and "Dark Agile" to describe approaches that made developers' lives worse rather than better. Jeffries heard from many developers that "Agile sucks" and "Scrum sucks" because most organizations claiming to do "Agile" were actually doing Scrum. He noted that poor implementations lead to more interference with developers, less time to do the work, higher pressure, and demands to "go faster." Even Ken Schwaber, one of Scrum's creators, admitted this situation made him sad.
+
+**Martin Fowler** identified "the Agile Industrial Complex" as the first major problem facing agile software development in his 2018 keynote at Agile Australia. He described the collection of consultants, experts, and managers who try to assert "best practice" rather than letting teams decide how to work. Fowler argued that "a lot of what is being pushed goes really against a lot of our precepts," particularly the realization that people operate at their best when they choose how they want to work. He called the Agile Industrial Complex imposing methods upon people "an absolute travesty."
+
+**Allen Holub** (not a Manifesto signatory, but a prominent agile advocate who has worked closely with several signatories) has been particularly vocal. He states that Scrum has never been about real agility and is all about selling certificates. Holub argues that you can "implement Scrum perfectly and not be in the least bit agile." He notes that words like "certification," "Scrum master," "Sprint," and "story point" do not appear in the Agile Manifesto and Principles. At the very top of the Manifesto is "Individuals and interactions over processes and tools," yet the word "agile" has come to mean rigid adherence to both process and tools.
+
+Even **Ken Schwaber**, Scrum's co-creator, has expressed disappointment: "Scrum has been more successful than I could have ever imagined, but I am still disappointed with most Scrum implementations." He has repeatedly noted that organizations are full of superficial adoptions including ScrumButs, FlaccidScrum, and Copy Paste Scrum.
+
+**The pattern is clear: timeboxes and corporate frameworks have corrupted agile values.** The certification industry turned principles into products. Scrum masters replaced collaboration with ceremony. Sprint planning replaced discovery with guessing. And velocity replaced value delivery with theater.
+
+These corruptions didn't happen by accident. They happened because frameworks optimized for what executives want: predictability, metrics, and plausible deniability when projects fail. Scrum gives leadership charts and processes to point at while avoiding the hard work of genuine alignment. The timebox becomes a shield against accountability for whether anything valuable was actually built.
+
+**The authors don't own agile principles, but they watched those principles get buried under frameworks that sabotage the very values they tried to codify.** And that sabotage has, is, and will continue to cause projects to fail before they even start—not because teams lack discipline, but because the frameworks they're forced to follow actively prevent the discipline that real agility requires.
+
 ### The Feedback Loop Lie
 
 Scrum sells itself on "inspect and adapt." Feedback loops are supposed to compensate for uncertainty. They don't.

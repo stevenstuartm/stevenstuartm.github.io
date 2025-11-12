@@ -70,6 +70,18 @@ class ContentLinter:
         with open(filepath, 'r', encoding='utf-8') as f:
             lines = f.readlines()
 
+        self._lint_lines(lines)
+        return self.violations
+
+    def lint_text(self, text: str) -> List[ContentViolation]:
+        """Lint raw text and return list of violations."""
+        self.violations = []
+        lines = text.splitlines(keepends=True)
+        self._lint_lines(lines)
+        return self.violations
+
+    def _lint_lines(self, lines: List[str]):
+        """Internal method to lint a list of lines."""
         in_frontmatter = False
         in_code_block = False
 
@@ -112,8 +124,6 @@ class ContentLinter:
             # Check for choppy sentence patterns
             if not is_bullet and not is_header:
                 self._check_choppy_sentences(line_num, line)
-
-        return self.violations
 
     def _check_ai_tell_phrases(self, line_num: int, line: str):
         """Check for AI-tell phrases."""
@@ -235,26 +245,39 @@ class ContentLinter:
 def main():
     if len(sys.argv) < 2:
         print("Usage: python lint_content.py <markdown_file>")
-        sys.exit(1)
-
-    filepath = Path(sys.argv[1])
-
-    if not filepath.exists():
-        print(f"Error: File not found: {filepath}")
+        print("       python lint_content.py --text <text_content>")
         sys.exit(1)
 
     linter = ContentLinter()
-    violations = linter.lint_file(filepath)
+
+    # Check if using --text flag for raw string input
+    if sys.argv[1] == '--text':
+        if len(sys.argv) < 3:
+            print("Error: --text flag requires text content argument")
+            sys.exit(1)
+
+        text_content = sys.argv[2]
+        violations = linter.lint_text(text_content)
+        source_name = "provided text"
+    else:
+        filepath = Path(sys.argv[1])
+
+        if not filepath.exists():
+            print(f"Error: File not found: {filepath}")
+            sys.exit(1)
+
+        violations = linter.lint_file(filepath)
+        source_name = filepath.name
 
     if not violations:
-        print(f"OK: No violations found in {filepath.name}")
+        print(f"OK: No violations found in {source_name}")
         sys.exit(0)
 
     # Use UTF-8 encoding for output
     import io
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-    print(f"VIOLATIONS FOUND in {filepath.name}:\n")
+    print(f"VIOLATIONS FOUND in {source_name}:\n")
     for violation in violations:
         print(violation)
         print()

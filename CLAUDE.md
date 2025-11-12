@@ -366,6 +366,49 @@ Specific details make abstract concepts concrete and credible. Include:
 
 **Remember**: The linter catches mechanical issues. You must still apply judgment for voice, flow, examples, and narrative quality.
 
+### Creating Social Media Summaries from Blog Posts
+
+When creating LinkedIn or social media summaries of blog posts, apply these principles for maximum impact:
+
+**1. Lead with the hook and solution signal**
+- Open with the provocative thesis immediately
+- Signal that a concrete solution exists early: "So try a different approach"
+- Don't bury the solution promise in later paragraphs
+
+**2. Trust intelligent readers**
+- Assume readers can fill in obvious gaps without exhaustive explanation
+- Remove unnecessary elaboration that weakens punch
+- ❌ "Decisions made without understanding constraints, requirements that shift mid-implementation, or scope creep that forces compromises"
+- ✅ "unclear communication with stakeholders and a lack of governance between tech leads and developers"
+
+**3. Use standalone punchy statements**
+- Give key points their own paragraph for emphasis
+- ✅ "When you later say 'we need to pay down tech debt,' stakeholders hear 'we want to fix our mistakes instead of delivering features.'"
+- Standing alone creates impact that inline text doesn't
+
+**4. Be specific about root causes**
+- Add dimensions that the full post explores in detail
+- Don't just say "communication problems"—specify "unclear communication with stakeholders AND lack of governance between tech leads and developers"
+
+**5. Simplify solution presentation**
+- Use clean bulleted lists instead of bold inline text for scannability
+- Format for the platform (LinkedIn favors bullets over dense paragraphs)
+
+**6. Cut redundant phrases**
+- ❌ "Stop asking stakeholders to pay for past mistakes. Start presenting forward-looking opportunities."
+- ✅ "Start presenting forward-looking opportunities." (the contrast is implied)
+
+**7. Shorter, punchier sentences**
+- ✅ "Regardless of the origin of the problem, the term 'tech debt' nearly guarantees de-prioritization."
+- More direct than elaborate constructions
+
+**Testing the summary**:
+- Run `python lint_content.py --text "<summary_text>"` to check for AI-tell phrases and other violations
+- Read it aloud—does it sound like how you'd explain it in person?
+- Could an intelligent reader grasp the thesis and solution in 30 seconds?
+
+**Key principle**: Social summaries are not compressed blog posts. They're standalone artifacts that capture the thesis, hint at the reasoning, and present the solution clearly. Assume smart readers who don't need hand-holding.
+
 ## Content-Specific Guidelines
 
 The following sections contain guidelines specific to particular content types on the site.
