@@ -130,6 +130,6 @@ Consider breaking it by being the solution:
 - **Enforce quality standards at every increment** through code reviews, architecture reviews, and quality gates
 - **Document decisions with ADRs** so context doesn't disappear and future teams have roadmaps
 
-These approaches share a common thread: they demand clear communication upfront. The alternative framework forces you to articulate impact and quantify value. Mentoring spreads that practice across teams. Governance prevents quality problems from accumulating. ADRs preserve context so future teams understand decisions. When communication happens at every level, the gap that creates the prophecy never forms.
+All of these approaches prevent the prophecy by demanding clear communication. When you replace vague language with business impact, mentor developers to do the same, enforce quality standards that prevent accumulation, and document decisions so context doesn't disappear, the communication gap never forms.
 
-These aren't debts to be paid; they're opportunities for value. The term guarantees the problem. Consider replacing it.
+These aren't debts to be paid; they're opportunities for value. If the term itself guarantees the problem, replace it.
