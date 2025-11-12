@@ -132,4 +132,4 @@ Consider breaking it by being the solution:
 
 These approaches share a common thread: they demand clear communication upfront. The alternative framework forces you to articulate impact and quantify value. Mentoring spreads that practice across teams. Governance prevents quality problems from accumulating. ADRs preserve context so future teams understand decisions. When communication happens at every level, the gap that creates the prophecy never forms.
 
-These aren't debts to be paid. They're opportunities for value. The term guarantees the problem. Consider replacing it.
+These aren't debts to be paid; they're opportunities for value. The term guarantees the problem. Consider replacing it.
