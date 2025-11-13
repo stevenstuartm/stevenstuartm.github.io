@@ -44,12 +44,12 @@
           "name": "SDLC Frameworks",
           "description": "Comprehensive guides to major software development methodologies",
           "guides": [
-            "sdlc/lean.md",
-            "sdlc/kanban.md",
+            "sdlc/waterfall.md",
             "sdlc/scrum.md",
+            "sdlc/kanban.md",
+            "sdlc/lean.md",
             "sdlc/extreme-programming.md",
-            "sdlc/shape-up.md",
-            "sdlc/waterfall.md"
+            "sdlc/shape-up.md"
           ]
         },
         {
@@ -92,7 +92,11 @@
           "name": "Design",
           "description": "Component design and risk analysis",
           "guides": [
-            "DesignImplementation.md"
+            "DesignImplementation.md",
+            "domain-driven-design.md",
+            "api-design-architecture.md",
+            "testing-strategy-architecture.md",
+            "performance-engineering.md"
           ]
         },
         {
@@ -116,7 +120,9 @@
             "performance_scalability_patterns.md",
             "reliability_patterns.md",
             "deployment_infrastructure_patterns.md",
-            "migration_patterns.md"
+            "migration_patterns.md",
+            "legacy-modernization-strategies.md",
+            "service-mesh-architecture.md"
           ]
         },
         {
@@ -260,7 +266,8 @@
           "name": "Monitoring & Observability",
           "description": "System monitoring and observability fundamentals",
           "guides": [
-            "observability-fundamentals.md"
+            "observability-fundamentals.md",
+            "architecture/observability-architecture.md"
           ]
         }
       ]
