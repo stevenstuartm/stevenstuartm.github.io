@@ -1,8 +1,8 @@
 ---
 title: "AWS Well-Architected Framework"
 layout: guide
-category: Infrastructure & Cloud
-subcategory: AWS
+category: AWS
+subcategory: Architecture Principles
 description: "The six pillars of the AWS Well-Architected Framework and how they guide architectural decision-making for building secure, high-performing, resilient, and efficient cloud infrastructure."
 tags: [infrastructure, aws, best-practices, framework, architecture, reference]
 ---

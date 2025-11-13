@@ -1,8 +1,8 @@
 ---
 title: "CloudFormation Template Reference"
 layout: guide
-category: Infrastructure & Cloud
-subcategory: AWS
+category: AWS
+subcategory: Infrastructure as Code
 description: "Complete reference for CloudFormation intrinsic functions, parameters, outputs, mappings, and conditions with practical examples."
 tags: [infrastructure, iac, aws, cloudformation, practical, templates]
 ---

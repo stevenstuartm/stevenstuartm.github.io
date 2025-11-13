@@ -266,11 +266,63 @@
         }
       ]
     },
+    "AWS": {
+      "subcategories": [
+        {
+          "name": "Architecture Principles",
+          "description": "Well-Architected Framework and architectural decision-making",
+          "guides": [
+            "infrastructure/aws/aws-well-architected-framework.md"
+          ]
+        },
+        {
+          "name": "Identity & Access Management",
+          "description": "IAM, Identity Center, Organizations, and security controls",
+          "guides": [
+            "infrastructure/aws/aws-iam-fundamentals.md"
+          ]
+        },
+        {
+          "name": "Networking",
+          "description": "VPC, subnets, routing, PrivateLink, and network connectivity",
+          "guides": [
+            "infrastructure/aws/aws-vpc-architecture.md"
+          ]
+        },
+        {
+          "name": "Compute Services",
+          "description": "EC2, Lambda, ECS, EKS, and compute service selection",
+          "guides": [
+            "infrastructure/aws/aws-ec2-fundamentals.md"
+          ]
+        },
+        {
+          "name": "Storage Services",
+          "description": "S3, EBS, EFS, and storage architecture patterns",
+          "guides": []
+        },
+        {
+          "name": "Database Services",
+          "description": "RDS, DynamoDB, Aurora, and database selection",
+          "guides": []
+        },
+        {
+          "name": "Infrastructure as Code",
+          "description": "CloudFormation for infrastructure automation and management",
+          "guides": [
+            "infrastructure/aws/cloudformation-fundamentals.md",
+            "infrastructure/aws/cloudformation-templates.md",
+            "infrastructure/aws/cloudformation-advanced.md",
+            "infrastructure/aws/cloudformation-migration.md"
+          ]
+        }
+      ]
+    },
     "Infrastructure & Cloud": {
       "subcategories": [
         {
           "name": "Infrastructure as Code",
-          "description": "IaC fundamentals, tools, patterns, and best practices",
+          "description": "Multi-cloud IaC fundamentals, tools, patterns, and best practices",
           "guides": [
             "infrastructure/iac-fundamentals.md",
             "infrastructure/iac-tools-comparison.md",
@@ -279,20 +331,6 @@
             "infrastructure/iac-environment-lifecycle.md",
             "infrastructure/iac-testing.md",
             "infrastructure/iac-governance.md"
-          ]
-        },
-        {
-          "name": "AWS",
-          "description": "AWS services and architectural patterns for system architects",
-          "guides": [
-            "infrastructure/aws-well-architected-framework.md",
-            "infrastructure/aws-iam-fundamentals.md",
-            "infrastructure/aws-vpc-architecture.md",
-            "infrastructure/aws-ec2-fundamentals.md",
-            "infrastructure/cloudformation-fundamentals.md",
-            "infrastructure/cloudformation-templates.md",
-            "infrastructure/cloudformation-advanced.md",
-            "infrastructure/cloudformation-migration.md"
           ]
         },
         {

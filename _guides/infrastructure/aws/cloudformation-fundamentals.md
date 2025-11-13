@@ -1,8 +1,8 @@
 ---
 title: "AWS CloudFormation: Fundamentals"
 layout: guide
-category: Infrastructure & Cloud
-subcategory: AWS
+category: AWS
+subcategory: Infrastructure as Code
 description: "Core CloudFormation concepts including stacks, templates, resources, and basic workflow for managing AWS infrastructure as code."
 tags: [infrastructure, iac, aws, cloudformation, fundamentals, practical]
 ---

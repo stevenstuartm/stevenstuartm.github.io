@@ -1,8 +1,8 @@
 ---
 title: "CloudFormation Advanced Features"
 layout: guide
-category: Infrastructure & Cloud
-subcategory: AWS
+category: AWS
+subcategory: Infrastructure as Code
 description: "Change sets, nested stacks, StackSets, custom resources, drift detection, and best practices for production CloudFormation deployments."
 tags: [infrastructure, iac, aws, cloudformation, advanced, practical]
 ---

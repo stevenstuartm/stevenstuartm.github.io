@@ -1,8 +1,8 @@
 ---
 title: "EC2 for System Architects"
 layout: guide
-category: Infrastructure & Cloud
-subcategory: AWS
+category: AWS
+subcategory: Compute Services
 description: "Comprehensive guide to AWS EC2 instance selection, cost optimization, security, high availability, and architectural patterns for system architects"
 tags: [infrastructure, aws, cloud-computing, cost-analysis, practical, fundamentals]
 ---
