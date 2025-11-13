@@ -69,14 +69,26 @@
           "name": "Foundations",
           "description": "Core concepts and principles of software architecture",
           "guides": [
-            "ArchitectureFoundations.md"
+            "ArchitectureFoundations.md",
+            "modularity-coupling.md",
+            "architecture-characteristics.md",
+            "distributed-computing.md"
           ]
         },
         {
           "name": "Styles",
           "description": "Architectural styles from monolithic to distributed",
           "guides": [
-            "ArchitectureStyles.md"
+            "ArchitectureStyles.md",
+            "layered-architecture.md",
+            "pipeline-architecture.md",
+            "microkernel-architecture.md",
+            "modular-monolith-architecture.md",
+            "service-based-architecture.md",
+            "event-driven-architecture.md",
+            "microservices-architecture.md",
+            "soa-architecture.md",
+            "space-based-architecture.md"
           ]
         },
         {

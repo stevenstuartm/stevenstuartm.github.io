@@ -83,13 +83,23 @@ class ContentLinter:
     def _lint_lines(self, lines: List[str]):
         """Internal method to lint a list of lines."""
         in_frontmatter = False
+        frontmatter_ended = False
         in_code_block = False
 
         for line_num, line in enumerate(lines, start=1):
-            # Skip YAML frontmatter
+            # Skip YAML frontmatter (only at start of file)
             if line.strip() == '---':
-                in_frontmatter = not in_frontmatter
-                continue
+                if line_num == 1:
+                    # First line with --- starts frontmatter
+                    in_frontmatter = True
+                    continue
+                elif in_frontmatter and not frontmatter_ended:
+                    # Second --- ends frontmatter
+                    in_frontmatter = False
+                    frontmatter_ended = True
+                    continue
+                # Any other --- is just content (horizontal rule)
+
             if in_frontmatter:
                 continue
 
