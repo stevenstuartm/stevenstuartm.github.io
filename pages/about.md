@@ -14,13 +14,21 @@ I'm a software and systems architect bringing clarity from complexity. I build c
 
 I believe architecture starts with human connection, thrives on genuine commitment, and succeeds by honoring agreements. Good architecture balances technical tradeoffs. Great solutions start with trust and maintain that trust through principled execution.
 
-### What I Do
+## Why Hire an Architect?
 
-**Architecture & Design** — I design cloud-based systems on AWS, focusing on resilience, security, and cost optimization. From migrating monoliths to microservices to implementing event-driven architectures, I bring clarity to complex problems. First, I invest time understanding the people behind the problems: their needs, constraints, and context. Technical solutions only matter when they serve real needs and deliver genuine value.
+Architects bring unique value that neither business stakeholders nor individual developers can provide on their own.
 
-**Technical Leadership** — I help teams move fast with confidence by establishing clear practices and guiding them through architectural transitions. Great architecture requires building trust, securing genuine commitment, and maintaining alignment throughout delivery. I collaborate to create solutions that people believe in and can sustain.
+**I translate between business reality and technical possibility.** Business stakeholders speak in outcomes, market pressures, and customer value. Development teams speak in code, APIs, and frameworks. I'm fluent in both languages—converting abstract business needs into concrete architectural characteristics (scalability, performance, availability) that shape system design.
 
-**Technology Stack** — .NET (C#), AWS (EKS, Lambda, Aurora, DynamoDB), GraphQL, Vue.js, and modern DevOps practices. I've worked across financial services, digital banking, and SaaS platforms.
+**I see trade-offs where others see only benefits.** Every technical decision has costs. Microservices bring independent deployment but introduce distributed system complexity. Cloud brings elasticity but can explode budgets. I don't just evaluate technologies; I assess what you're giving up to get what you want and help you make informed decisions.
+
+**I think in timescales beyond the current sprint.** Architecture decisions are strategic, long-term, and expensive to change. They affect multiple teams over years. I balance immediate delivery pressure against long-term maintainability, extensibility, and cost—preventing failures that aren't obvious until it's too late.
+
+**I create clarity without control.** Effective architecture isn't about dictating every decision. It's about defining appropriate boundaries: the non-negotiables that must be consistent, the principles for making local decisions, and the examples teams can adapt. I enable teams to succeed independently while maintaining architectural integrity.
+
+**I navigate the political landscape.** Architecture doesn't exist in a vacuum. I negotiate with business stakeholders who want everything immediately, collaborate with other architects who have different priorities, and work alongside developers to implement solutions that actually work. I translate technical complexity into business terms and provide justification, not dictates.
+
+The value? Strategic technical thinking that prevents expensive failures. Breadth of knowledge that connects disparate concerns. Leadership skills that enable teams to execute effectively. Translation capabilities that align business needs with technical reality. I don't just make systems work; I make them work at the right cost, with the right characteristics, in ways that teams can maintain and evolve as business needs change.
 
 ## Let's Connect
 

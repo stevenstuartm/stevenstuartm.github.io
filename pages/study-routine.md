@@ -32,30 +32,6 @@ Building a strong foundation requires deliberate study of fundamentals and moder
 - [.NET Blog](https://devblogs.microsoft.com/dotnet/){:target="_blank" rel="noopener noreferrer"} - Latest from the .NET team
 - [.Microsoft Learning](https://learn.microsoft.com/en-us/training/){:target="_blank" rel="noopener noreferrer"} - Explore Microsoft product documentation and training
 
----
-
-## 💬 Join the Conversation
-
-Learning happens in community. Engaging with other practitioners provides perspective and accelerates growth.
-
-- [Rands Leadership Slack](https://randsinrepose.com/welcome-to-rands-leadership-slack/){:target="_blank" rel="noopener noreferrer"} - Engineering leadership community
-- [LinkedIn](https://www.linkedin.com){:target="_blank" rel="noopener noreferrer"} - Professional network and industry discussions
-- Technical conferences and meetups (virtual and in-person)
-
----
-
-## 📝 Refine and Review Your Notes
-
-Regular review reinforces learning. I maintain [personal guides and notes on GitHub](https://github.com/stevenstuartm/guides){:target="_blank" rel="noopener noreferrer"} covering:
-
-**Practice:** Review notes weekly, refine monthly. Teaching concepts to others (through writing or mentoring) deepens understanding.
-
----
-
-## 🔍 Enrich Your Tech Radar
-
-Maintain your own [tech radar](/tech-radar.html){:target="_blank" rel="noopener noreferrer"} to track technologies and approaches worth exploring.
-
 ### Research Latest News
 
 Stay informed through regular scanning:
@@ -65,13 +41,16 @@ Stay informed through regular scanning:
 - [AWS Blogs](https://aws.amazon.com/blogs/){:target="_blank" rel="noopener noreferrer"} - Cloud innovation and patterns
 - [.NET DevBlogs](https://devblogs.microsoft.com/dotnet/){:target="_blank" rel="noopener noreferrer"} - Platform updates
 
-### Validate with Proof of Concepts
+---
 
-After researching a technology:
-1. Build a small POC to understand practical implications
-2. Document findings and trade-offs
-3. Update your tech radar based on hands-on experience
-4. Share learnings with your team or community
+## 💬 Join the Conversation
+
+Learning happens in community. Engaging with other practitioners provides perspective and accelerates growth.
+
+- [Rands Leadership Slack](https://randsinrepose.com/welcome-to-rands-leadership-slack/){:target="_blank" rel="noopener noreferrer"} - Engineering leadership community
+- [LinkedIn](https://www.linkedin.com){:target="_blank" rel="noopener noreferrer"} - Professional network and industry discussions
+- [DEV Community](https://dev.to){:target="_blank" rel="noopener noreferrer"} - Developer community and technical writing platform
+- Technical conferences and meetups (virtual and in-person)
 
 ---
 

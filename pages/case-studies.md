@@ -87,9 +87,13 @@ Deep dives into real projects: the problems faced, architectural decisions made,
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-.case-study-link {
+.case-study-card .case-study-link {
   display: block;
   text-decoration: none;
+  color: inherit;
+}
+
+.case-study-card .case-study-link:hover {
   color: inherit;
 }
 

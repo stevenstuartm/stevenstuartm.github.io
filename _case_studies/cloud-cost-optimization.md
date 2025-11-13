@@ -15,7 +15,7 @@ technologies:
 
 ## The Problem
 
-This is not a story of genius system analysis or innovative architectural decisions—this is about establishing the bare minimum standards for cloud infrastructure management.
+This is not a story of genius system analysis or innovative architectural decisions. This is about establishing the bare minimum standards for cloud infrastructure management.
 
 When I joined, I began the long journey of exploring a system that had no documentation from the previous consulting team. From experience, I knew this was common and understood what I was getting into. After completing my initial macro-level assessment, I was puzzled: while there were numerous technical issues, I couldn't identify where the monthly cost of $10,250 was being spent.
 
@@ -76,7 +76,7 @@ Importantly, costs were strategically increased in several areas:
 - AWS VPN for secure database access
 - WAF rules to enforce proper application security
 
-This effort was not about indiscriminate cost reduction—it was about eliminating waste to fund investments in actual operational needs.
+This effort was not about indiscriminate cost reduction. It was about eliminating waste to fund investments in actual operational needs.
 
 ### Monthly Costs Before/After
 
@@ -139,4 +139,4 @@ The root causes of this cost inefficiency were:
 - Missing rationale documentation for architectural decisions
 - No post-deployment review or optimization cycle
 
-This initiative demonstrated that effective cost management is not about minimizing expenses—it's about eliminating waste to fund genuine operational requirements and security improvements.
+This initiative demonstrated that effective cost management is not about minimizing expenses. It's about eliminating waste to fund genuine operational requirements and security improvements.

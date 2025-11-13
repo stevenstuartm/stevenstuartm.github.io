@@ -12,13 +12,17 @@ tags: [sdlc, methodology, agile, product-development, basecamp]
 2. [The Shape Up Workflow](#the-shape-up-workflow)
 3. [Key Principles and Practices](#key-principles-and-practices)
 4. [When to Use Shape Up](#when-to-use-shape-up)
-5. [Common Pitfalls and How to Avoid Them](#common-pitfalls-and-how-to-avoid-them)
+5. [Alignment with AAA Cycle](#alignment-with-aaa-cycle)
+6. [Common Pitfalls and How to Avoid Them](#common-pitfalls-and-how-to-avoid-them)
+7. [Resources](#resources)
 
 ---
 
 ## What is Shape Up
 
 *Developed by Basecamp (Ryan Singer, 2019) as an alternative to Scrum. Documented in "Shape Up: Stop Running in Circles and Ship Work that Matters"*
+
+> **For Architects**: Shape Up is the best operational framework for practicing the [AAA Cycle discipline](aaa-cycle.html). While AAA can be practiced in any methodology, Shape Up explicitly structures the three phases: Shaping = Align, Betting = Agree, Building = Apply. See [Alignment with AAA Cycle](#alignment-with-aaa-cycle) below.
 
 **Shape Up** is a product development methodology that emerged from Basecamp's experience building software products over 15+ years. It addresses common frustrations with Scrum and traditional project management:
 
@@ -760,6 +764,252 @@ Shape Up is adaptable - you don't have to follow it exactly:
 - Use Kanban for maintenance and support
 - Use Scrum for parts of the organization
 - Hybrid approaches are fine if they solve your problems
+
+---
+
+## Alignment with AAA Cycle
+
+Shape Up naturally aligns with AAA principles. The methodology was designed around similar values: understanding before commitment, clear agreements, and focused execution.
+
+### How Shape Up Supports AAA
+
+**Align Phase: Shaping**
+
+Shaping is alignment work:
+
+**What works:**
+- Dedicated time for understanding the problem
+- No commitment until problem is shaped
+- Explores feasibility and desirability together
+- Tests key assumptions through research and prototyping
+
+**How it maps to AAA:**
+- **Discovery**: Shapers research the problem space (talk to users, explore existing solutions, understand constraints)
+- **Feasibility**: Technical exploration during shaping (is this buildable in 6 weeks?)
+- **Boundaries**: Setting appetite defines scope alignment upfront (6 weeks, not infinite)
+- **No commitment yet**: Shaped work goes to betting table, not directly to teams
+
+**Example:**
+Senior designer shapes "better notifications." Researches user complaints. Discovers problem isn't frequency of notifications, but lack of control. Shapes solution: notification preferences UI. Defines appetite: 2 weeks. Explores technical approach with engineer: feasible using existing preferences system. Now shaped work represents genuine alignment between user needs, technical feasibility, and available time.
+
+---
+
+**Agree Phase: Betting Table**
+
+Betting table establishes agreement:
+
+**What works:**
+- Leadership reviews shaped work and decides what's worth doing
+- Commitment is "yes we'll do this" or "no we won't," not "maybe"
+- Team gets clear scope (the pitch) and time box (the appetite)
+- Fixed time, variable scope means agreement on priority, not every detail
+
+**How it maps to AAA:**
+- **Explicit commitment**: Bet on this work for this cycle
+- **Shared understanding**: Pitch communicates problem, solution, and constraints
+- **Scope agreement**: Team understands boundaries and what's out of scope
+- **Time agreement**: 6 weeks (or 2 weeks for small batch), not open-ended
+
+**Example:**
+Betting table reviews notification preferences pitch. Leadership agrees: this solves real user problem, appetite is reasonable, team has capacity. Commits to 6-week cycle. Team receives pitch document explaining problem, proposed solution, appetite, and explicitly what's out of scope (e.g., not redesigning entire settings page). Clear agreement exists before work starts.
+
+---
+
+**Apply Phase: Building**
+
+Building phase applies the agreement:
+
+**What works:**
+- Team builds what was pitched (the agreement)
+- Scope hammering respects appetite (time boundary is agreement)
+- Team has autonomy on implementation details
+- Must-haves vs. nice-to-haves prevent feature creep
+- Circuit breaker (6 weeks max) prevents endless work
+
+**How it maps to AAA:**
+- **Honor agreement**: Build what was pitched, don't gold-plate
+- **Honor time**: 6-week circuit breaker enforces discipline
+- **Quality included**: Scope hammering, not corner cutting
+- **Adapt within bounds**: Team adjusts implementation details, but not core problem/solution
+
+**Example:**
+Team builds notification preferences. Discovers technical complexity in one area. Uses scope hammering: simplifies that feature rather than extending timeline. Delivers working notification preferences in 6 weeks. Honors agreement (user control over notifications) without honoring every imagined implementation detail.
+
+---
+
+### Shape Up's Natural Alignment with AAA
+
+Shape Up was designed to solve many of the same problems AAA addresses:
+
+**Alignment before commitment:**
+- Shape Up: Don't bet on unshaped work
+- AAA: Don't commit without understanding
+
+**Fixed time forces quality agreements:**
+- Shape Up: 6-week appetite forces choosing what matters
+- AAA: Scope hammering over corner cutting
+
+**Outcomes, not specifications:**
+- Shape Up: Pitch defines problem and solution direction, not detailed spec
+- AAA: Agreement on what we're trying to achieve, not every implementation detail
+
+**Continuous stakeholder connection:**
+- Shape Up: Shapers are senior, understand business needs
+- AAA: Alignment means understanding stakeholder needs, not just requirements
+
+**Realistic commitments:**
+- Shape Up: Appetite based on value (is 6 weeks worth it?), not estimation accuracy
+- AAA: Defer commitment until sufficient understanding
+
+---
+
+### Where Shape Up Can Tension with AAA
+
+**Tension 1: Betting table can feel like handing down decisions**
+
+**Potential problem:**
+- Senior leadership makes betting decisions
+- Teams receive assignments, didn't participate in shaping
+- Can feel like "told what to build" rather than collaborative
+
+**AAA requires:**
+- Alignment means shared understanding, not just communication
+- Teams should understand why this work matters
+- Opportunity to raise concerns before commitment
+
+**How Shape Up addresses this:**
+- Pitch document explains problem, rationale, research
+- Teams can push back if pitch doesn't make sense
+- Cool-down period allows team input on shaping for next cycle
+- Senior shapers should understand team's reality
+
+**How to strengthen:**
+- Include team leads in betting table (at least as observers)
+- Shapers consult with teams during shaping (technical feasibility)
+- Betting table can say "needs more shaping" if team raises valid concerns
+
+---
+
+**Tension 2: 6-week cycle might not match natural discovery rhythm**
+
+**Potential problem:**
+- Some problems need 2 weeks of exploration before committing to 6 weeks
+- Shaping happens outside the cycle, team might discover shaping was wrong
+- Circuit breaker can feel arbitrary (why must this be done in exactly 6 weeks?)
+
+**AAA requires:**
+- Realignment when discovery changes understanding
+- Pause and realign rather than push through with wrong solution
+
+**How Shape Up addresses this:**
+- Cool-down period provides time for reflection and realignment
+- Unfinished work doesn't automatically get re-bet (re-evaluate if still worth doing)
+- Hill charts surface when teams are thrashing (signal to pause and realign)
+- Teams can call out "this pitch was wrong" during building
+
+**How to strengthen:**
+- Use first week of cycle for team-level shaping (validate the pitch)
+- Hill charts trigger conversations when stuck in "figuring things out"
+- Explicit permission to stop and realign if fundamental assumptions wrong
+- Cool-down retrospectives discuss whether shaping was sufficient
+
+---
+
+**Tension 3: Hand-off between shaping and building can lose context**
+
+**Potential problem:**
+- Shaper understands problem deeply, team gets pitch document
+- Context and reasoning might not transfer completely
+- Team might build "to spec" rather than solving the real problem
+
+**AAA requires:**
+- Shared understanding, not just communicated specifications
+- Team should understand why, not just what
+
+**How Shape Up addresses this:**
+- Pitch includes problem statement (not just solution)
+- Kick-off meeting allows questions
+- Shapers available during building to clarify intent
+- Team has autonomy to adjust approach if better solution found
+
+**How to strengthen:**
+- Shapers present pitches to teams directly (not just written pitch)
+- Include "why this matters" and "research findings" in every pitch
+- Encourage teams to push back if pitch doesn't make sense
+- Shapers check in at hill chart milestones (not to micromanage, to ensure alignment)
+
+---
+
+### Using Shape Up to Strengthen AAA
+
+**Make shaping explicitly about alignment:**
+- Frame shaping as "alignment work," not "design work"
+- Shapers should test assumptions, not just define solutions
+- Include user research, technical exploration, and business validation in shaping
+- Pitch document should demonstrate alignment, not just describe features
+
+**Use betting table for explicit agreement:**
+- Betting table says "we commit to this" or "we don't," no maybes
+- Pitch defines boundaries (appetite, must-haves, out of scope)
+- Team understands why this work is valuable (not just that it's assigned)
+
+**Hill charts surface realignment needs:**
+- When team stuck in "uphill" phase too long, pause and realign
+- "Downhill" work should flow; if it doesn't, assumptions might be wrong
+- Use hill charts to trigger conversations, not just track progress
+
+**Cool-down provides realignment space:**
+- Reflect on whether cycle achieved intended outcomes
+- Decide whether unfinished work should be re-bet (might not be worth it)
+- Time to test assumptions before committing to next cycle
+
+**Fixed time enforces quality scope decisions:**
+- Can't extend timeline, so must choose what matters
+- Scope hammering respects the agreement (time boundary)
+- Forces conversations: "Is this must-have or nice-to-have?"
+
+---
+
+### Key Insight: Shape Up is the Best Operational Framework for AAA
+
+AAA is a guiding discipline that can be practiced in any methodology, but **Shape Up is the methodology that best operationalizes AAA principles into concrete practice**.
+
+**Why Shape Up stands above other frameworks for AAA:**
+
+While you can practice AAA discipline within Scrum, Kanban, Lean, or even Waterfall, these methodologies require you to design your own structure for the three phases. Shape Up makes the structure explicit:
+
+**Shaping = Align (structured alignment work)**
+- Dedicated discovery time before any commitment
+- Senior people (shapers) test assumptions through research and prototypes
+- Technical and business alignment happens together
+- No betting without shaping (prevents committing without understanding)
+
+**Betting Table = Agree (explicit commitment ritual)**
+- Clear yes/no decisions, not maybes
+- Fixed time, variable scope forces real prioritization
+- Pitch document establishes shared understanding
+- Boundaries defined upfront (appetite, must-haves, out of scope)
+
+**Building = Apply (disciplined application)**
+- Circuit breaker honors time agreement (6 weeks maximum)
+- Scope hammering honors scope agreement (solve problem, don't gold-plate)
+- Quality over feature completeness
+- Team autonomy within agreed boundaries
+
+**Shape Up's advantage**: These phases are explicit and structured. Teams know exactly when they're aligning vs. agreeing vs. applying. Other methodologies require maturity and discipline to create this clarity; Shape Up provides it by design.
+
+**Comparison to other frameworks:**
+- **Lean**: Strong AAA philosophy but abstract - teams must design their own structure
+- **Kanban**: Excellent for Apply phase (flow) but doesn't structure Align and Agree
+- **Scrum**: Sprint Planning supports Agree, but often lacks sufficient Align time
+- **XP**: Strong Apply practices (TDD, pair programming) but lacks structured Align phase
+- **DevOps**: Addresses Apply at scale but doesn't structure Align and Agree phases
+
+**The verdict**: If your goal is practicing AAA discipline, Shape Up is the methodology that makes it easiest. It's AAA with an instruction manual - a complete operational implementation of the principles, not just philosophical alignment.
+
+Shape Up doesn't just support AAA; it embodies it. Every practice, every phase, every ritual reinforces the core values: align before committing, agree on boundaries, apply with discipline.
+
+For architects learning AAA, studying Shape Up teaches you what the discipline looks like in practice, making it easier to adapt AAA principles to other contexts when organizational constraints require it.
 
 ---
 
