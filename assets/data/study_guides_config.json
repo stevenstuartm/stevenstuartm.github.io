@@ -120,7 +120,6 @@
             "performance_scalability_patterns.md",
             "reliability_patterns.md",
             "deployment_infrastructure_patterns.md",
-            "migration_patterns.md",
             "legacy-modernization-strategies.md",
             "service-mesh-architecture.md"
           ]
@@ -319,7 +318,8 @@
           "name": "Storage Services",
           "description": "S3, EBS, EFS, and storage architecture patterns",
           "guides": [
-            "infrastructure/aws/aws-s3-fundamentals.md"
+            "infrastructure/aws/aws-s3-fundamentals.md",
+            "infrastructure/aws/aws-ebs-efs.md"
           ]
         },
         {
