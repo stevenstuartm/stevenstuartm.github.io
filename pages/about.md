@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: "Software and systems architect bringing clarity from complexity. Building cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering."
+description: "Software and systems architect bringing clarity from complexity. Building cloud-native solutions that scale, perform beautifully, and save costs without the over-engineering."
 image: /assets/img/profile-steven-stuart.jpeg
 permalink: /about.html
 ---
@@ -16,19 +16,57 @@ I believe architecture starts with human connection, thrives on genuine commitme
 
 ## Why Hire an Architect?
 
-Architects bring unique value that neither business stakeholders nor individual developers can provide on their own.
+Architects bring unique value that neither business stakeholders nor individual developers can provide on their own. Here's what that looks like in practice:
 
-**I translate between business reality and technical possibility.** Business stakeholders speak in outcomes, market pressures, and customer value. Development teams speak in code, APIs, and frameworks. I'm fluent in both languages—converting abstract business needs into concrete architectural characteristics (scalability, performance, availability) that shape system design.
+### Translate Business Needs into Technical Reality
 
-**I see trade-offs where others see only benefits.** Every technical decision has costs. Microservices bring independent deployment but introduce distributed system complexity. Cloud brings elasticity but can explode budgets. I don't just evaluate technologies; I assess what you're giving up to get what you want and help you make informed decisions.
+Business stakeholders speak in outcomes, market pressures, and customer value. Development teams speak in code, APIs, and frameworks. I'm fluent in both languages.
 
-**I think in timescales beyond the current sprint.** Architecture decisions are strategic, long-term, and expensive to change. They affect multiple teams over years. I balance immediate delivery pressure against long-term maintainability, extensibility, and cost—preventing failures that aren't obvious until it's too late.
+**Business Values**: Faster time-to-market, reduced operational costs, competitive advantage, risk mitigation
 
-**I create clarity without control.** Effective architecture isn't about dictating every decision. It's about defining appropriate boundaries: the non-negotiables that must be consistent, the principles for making local decisions, and the examples teams can adapt. I enable teams to succeed independently while maintaining architectural integrity.
+**Technical Values**: Scalability, performance, availability, maintainability, security
 
-**I navigate the political landscape.** Architecture doesn't exist in a vacuum. I negotiate with business stakeholders who want everything immediately, collaborate with other architects who have different priorities, and work alongside developers to implement solutions that actually work. I translate technical complexity into business terms and provide justification, not dictates.
+**Outcomes**: Clear architectural characteristics derived from business priorities, shared understanding across stakeholders and teams, aligned technical decisions
 
-The value? Strategic technical thinking that prevents expensive failures. Breadth of knowledge that connects disparate concerns. Leadership skills that enable teams to execute effectively. Translation capabilities that align business needs with technical reality. I don't just make systems work; I make them work at the right cost, with the right characteristics, in ways that teams can maintain and evolve as business needs change.
+### Evaluate Trade-offs and Inform Decisions
+
+Every technical decision has costs. Microservices bring independent deployment but introduce distributed system complexity. Cloud brings elasticity but can explode budgets. The job is assessing what you're giving up to get what you want.
+
+**Business Values**: Informed risk management, cost predictability, strategic investment
+
+**Technical Values**: Appropriate complexity, sustainable architecture, performance vs. cost balance
+
+**Outcomes**: Transparent decision-making, documented trade-offs, stakeholder buy-in on technical direction
+
+### Balance Short-Term Delivery with Long-Term Strategy
+
+Architecture decisions are strategic, long-term, and expensive to change. They affect multiple teams over years. The challenge is balancing immediate delivery pressure against long-term maintainability, extensibility, and cost.
+
+**Business Values**: Sustainable velocity, reduced technical debt costs, platform longevity
+
+**Technical Values**: Evolvability, extensibility, modularity, technical debt management
+
+**Outcomes**: Systems that scale with the business, reduced rework, faster feature delivery over time
+
+### Enable Teams Through Clarity, Not Control
+
+Effective architecture isn't about dictating every decision. It's about defining appropriate boundaries: the non-negotiables that must be consistent, the principles for making local decisions, and the examples teams can adapt.
+
+**Business Values**: Team autonomy, faster decision-making, consistent quality
+
+**Technical Values**: Architectural integrity, design consistency, innovation within guardrails
+
+**Outcomes**: Empowered teams that make sound local decisions, reduced architectural drift, sustainable development pace
+
+### Navigate Technical and Organizational Complexity
+
+Architecture doesn't exist in a vacuum. Success requires negotiating with business stakeholders who want everything immediately, collaborating with other architects who have different priorities, and working alongside developers to implement solutions that actually work.
+
+**Business Values**: Stakeholder alignment, reduced conflict, predictable delivery
+
+**Technical Values**: Cross-functional coherence, integration integrity, implementation feasibility
+
+**Outcomes**: Consensus on direction, buy-in across teams, realistic commitments
 
 ## Let's Connect
 
