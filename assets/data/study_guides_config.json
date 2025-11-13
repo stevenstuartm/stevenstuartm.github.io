@@ -311,7 +311,9 @@
         {
           "name": "Storage Services",
           "description": "S3, EBS, EFS, and storage architecture patterns",
-          "guides": []
+          "guides": [
+            "infrastructure/aws/aws-s3-fundamentals.md"
+          ]
         },
         {
           "name": "Database Services",
