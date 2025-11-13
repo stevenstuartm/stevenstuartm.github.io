@@ -14,13 +14,22 @@ layout: default
     <div class="guides-container">
         <aside class="guides-sidebar">
             <h3>Categories</h3>
-            <div class="category-filters">
+            <nav class="category-toc">
                 {% assign configured_categories = site.data.study_guides_config.categories %}
                 {% for category_pair in configured_categories %}
                     {% assign category_name = category_pair[0] %}
-                <button class="filter-btn{% if forloop.first %} active{% endif %}" data-category="{{ category_name }}">{{ category_name }}</button>
+                    {% assign category_config = category_pair[1] %}
+                    {% comment %} Count total guides in this category {% endcomment %}
+                    {% assign guide_count = 0 %}
+                    {% for subcategory in category_config.subcategories %}
+                        {% assign guide_count = guide_count | plus: subcategory.guides.size %}
+                    {% endfor %}
+                <a href="#{{ category_name | slugify }}" class="category-toc-link">
+                    {{ category_name }}
+                    <span class="guide-count">({{ guide_count }})</span>
+                </a>
                 {% endfor %}
-            </div>
+            </nav>
         </aside>
 
         <div class="guides-main">
@@ -30,16 +39,21 @@ layout: default
             {% assign category_name = category_pair[0] %}
             {% assign category_config = category_pair[1] %}
 
-        <section class="category-section" data-category="{{ category_name }}">
+        <section class="category-section" id="{{ category_name | slugify }}" data-category="{{ category_name }}">
             <h2 class="category-heading">{{ category_name }}</h2>
 
             {% comment %} Display guides organized by subcategories {% endcomment %}
             {% for subcategory in category_config.subcategories %}
                 <div class="subcategory-group">
-                    <h3 class="subcategory-title">{{ subcategory.name }}</h3>
                     {% if subcategory.description %}
                         <p class="subcategory-desc">{{ subcategory.description }}</p>
                     {% endif %}
+                    <button class="subcategory-toggle" aria-expanded="false" aria-controls="subcontent-{{ category_name | slugify }}-{{ forloop.index }}">
+                        <span class="subcategory-toggle-icon">▶</span>
+                        <h3 class="subcategory-title">{{ subcategory.name }}</h3>
+                        <span class="subcategory-guide-count">({{ subcategory.guides.size }} guides)</span>
+                    </button>
+                    <div class="subcategory-content" id="subcontent-{{ category_name | slugify }}-{{ forloop.index }}">
                     <div class="guide-cards">
                         {% for guide_filename in subcategory.guides %}
                             {% assign guide = site.guides | where_exp: "item", "item.path contains guide_filename" | first %}
@@ -76,6 +90,7 @@ layout: default
                             {% endif %}
                         {% endfor %}
                     </div>
+                    </div>
                 </div>
             {% endfor %}
         </section>
@@ -91,65 +106,86 @@ layout: default
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const guidesGrid = document.getElementById('guidesGrid');
-    const categorySections = document.querySelectorAll('.category-section');
-    const noResults = document.getElementById('noResults');
+    const subcategoryToggles = document.querySelectorAll('.subcategory-toggle');
+    const categoryTocLinks = document.querySelectorAll('.category-toc-link');
 
-    // Check for category parameter in URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const categoryParam = urlParams.get('category');
-    if (categoryParam) {
-        // Decode the category parameter to handle special characters like &
-        const decodedCategory = decodeURIComponent(categoryParam);
-        // Update active button
-        filterBtns.forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.dataset.category === decodedCategory) {
-                btn.classList.add('active');
+    // Subcategory accordion functionality
+    subcategoryToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const icon = this.querySelector('.subcategory-toggle-icon');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            const subcategoryContent = this.parentElement.querySelector('.subcategory-content');
+
+            if (isExpanded) {
+                // Collapse
+                subcategoryContent.style.maxHeight = null;
+                this.setAttribute('aria-expanded', 'false');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Expand - use a large enough value or calculate scrollHeight
+                // Using scrollHeight directly
+                const height = subcategoryContent.scrollHeight;
+                subcategoryContent.style.maxHeight = height + 'px';
+                this.setAttribute('aria-expanded', 'true');
+                icon.style.transform = 'rotate(90deg)';
             }
-        });
-        filterGuides(decodedCategory);
-    } else {
-        // No URL parameter, filter to first category by default
-        const firstBtn = filterBtns[0];
-        if (firstBtn) {
-            filterGuides(firstBtn.dataset.category);
-        }
-    }
-
-    // Category filtering
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            filterGuides(this.dataset.category);
         });
     });
 
-    function filterGuides(category) {
-        let visibleCount = 0;
+    // Smooth scroll for TOC links
+    categoryTocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
 
-        categorySections.forEach(section => {
-            const sectionCategory = section.dataset.category;
-            const matchesCategory = sectionCategory === category;
+            if (targetSection) {
+                // Smooth scroll to section
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            if (matchesCategory) {
-                section.style.display = 'block';
-                visibleCount += section.querySelectorAll('.guide-card').length;
-            } else {
-                section.style.display = 'none';
+                // Update active link in TOC
+                categoryTocLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
             }
         });
+    });
 
-        // Show "no results" message
-        if (visibleCount === 0) {
-            guidesGrid.style.display = 'none';
-            noResults.style.display = 'block';
-        } else {
-            guidesGrid.style.display = 'block';
-            noResults.style.display = 'none';
+    // Handle URL hash on page load
+    if (window.location.hash) {
+        const targetId = window.location.hash.substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+            // Scroll to it after a brief delay to allow rendering
+            setTimeout(() => {
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+
+            // Update active link in TOC
+            const matchingLink = document.querySelector(`.category-toc-link[href="${window.location.hash}"]`);
+            if (matchingLink) {
+                matchingLink.classList.add('active');
+            }
         }
     }
+
+    // Update active TOC link on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                const matchingLink = document.querySelector(`.category-toc-link[href="#${id}"]`);
+
+                if (matchingLink) {
+                    categoryTocLinks.forEach(l => l.classList.remove('active'));
+                    matchingLink.classList.add('active');
+                }
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.category-section').forEach(section => {
+        observer.observe(section);
+    });
 });
 </script>

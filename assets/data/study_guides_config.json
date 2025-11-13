@@ -87,6 +87,7 @@
           "name": "Modeling",
           "description": "Visual modeling and diagramming techniques",
           "guides": [
+            "architecture/c4-model.md",
             "uml-diagrams.md"
           ]
         },
@@ -280,8 +281,11 @@
         },
         {
           "name": "AWS",
-          "description": "AWS CloudFormation for infrastructure as code",
+          "description": "AWS services and architectural patterns for system architects",
           "guides": [
+            "infrastructure/aws-well-architected-framework.md",
+            "infrastructure/aws-iam-fundamentals.md",
+            "infrastructure/aws-vpc-architecture.md",
             "infrastructure/cloudformation-fundamentals.md",
             "infrastructure/cloudformation-templates.md",
             "infrastructure/cloudformation-advanced.md",
