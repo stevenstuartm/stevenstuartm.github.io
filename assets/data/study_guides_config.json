@@ -31,6 +31,16 @@
           ]
         },
         {
+          "name": "AAA Cycle",
+          "description": "Guiding discipline for architects: Align-Agree-Apply",
+          "guides": [
+            "sdlc/aaa-cycle.md",
+            "sdlc/aaa-phase1-align.md",
+            "sdlc/aaa-phase2-agree.md",
+            "sdlc/aaa-phase3-apply.md"
+          ]
+        },
+        {
           "name": "SDLC Frameworks",
           "description": "Comprehensive guides to major software development methodologies",
           "guides": [
@@ -49,16 +59,6 @@
             "sdlc/devops.md",
             "sdlc/cicd.md",
             "sdlc/devsecops.md"
-          ]
-        },
-        {
-          "name": "AAA Cycle",
-          "description": "Guiding discipline for architects: Align-Agree-Apply",
-          "guides": [
-            "sdlc/aaa-cycle.md",
-            "sdlc/aaa-phase1-align.md",
-            "sdlc/aaa-phase2-agree.md",
-            "sdlc/aaa-phase3-apply.md"
           ]
         }
       ]
@@ -303,7 +303,9 @@
           "name": "Compute Services",
           "description": "EC2, Lambda, ECS, EKS, and compute service selection",
           "guides": [
-            "infrastructure/aws/aws-ec2-fundamentals.md"
+            "infrastructure/aws/aws-ec2-fundamentals.md",
+            "infrastructure/aws/aws-lambda-fundamentals.md",
+            "infrastructure/aws/aws-container-services.md"
           ]
         },
         {

@@ -21,6 +21,9 @@ Building a strong foundation requires deliberate study of fundamentals and moder
 - **Software Architecture: The Hard Parts** by Neal Ford, Mark Richards, et al.
   *Modern trade-off analyses for distributed architectures*
 
+- **The Software Architect Elevator: Redefining the Architect's Role in the Digital Enterprise** by Gregor Hohpe
+  *Bridging the gap between technical teams and executive leadership*
+
 ### Online Resources
 
 - [Martin Fowler's Blog](https://martinfowler.com/){:target="_blank" rel="noopener noreferrer"} - Timeless patterns and practices
