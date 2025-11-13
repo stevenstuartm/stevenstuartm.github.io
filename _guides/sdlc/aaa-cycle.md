@@ -11,7 +11,7 @@ tags: [sdlc, methodology, collaboration, stakeholder-management, leadership, fun
 
 The **AAA Cycle** (Align-Agree-Apply) is not a framework in the traditional sense. It is not another SDLC methodology to compare against Agile, Waterfall, or Shape Up. AAA is a **guiding discipline and principle** - a way of thinking that provides guardrails against the most common mistakes architects make. It is a philosophy that transcends any specific methodology, operating from the architect's perspective on what truly matters.
 
-> **Quick Start**: Want to practice AAA immediately? [Shape Up](shape-up.html) is the methodology that best operationalizes AAA principles. Its three phases (Shaping, Betting, Building) map directly to Align-Agree-Apply. See [Implementing AAA](#implementing-aaa-why-shape-up-is-the-best-operational-framework) below for why Shape Up stands above other frameworks.
+> **Quick Start**: Want to practice AAA immediately? [Shape Up](/study-guides/sdlc/shape-up.html) is the methodology that best operationalizes AAA principles. Its three phases (Shaping, Betting, Building) map directly to Align-Agree-Apply.
 
 ### AAA as a Way of Valuing
 
@@ -249,68 +249,8 @@ These intangibles are what make projects succeed when challenges arise.
 
 ---
 
-## Implementing AAA: Why Shape Up is the Best Operational Framework
+## AAA in Practice Across Methodologies
 
-AAA is a guiding discipline that transcends any specific methodology. You can practice AAA within Scrum, Kanban, Lean, or even Waterfall. However, **Shape Up is the methodology that best operationalizes AAA principles into concrete practice**.
+AAA is a guiding discipline that transcends any specific methodology. You can practice AAA within any SDLC approach - Scrum, Kanban, Lean, Waterfall, XP, DevOps, or Shape Up. Each methodology offers different support for the three phases, and understanding these trade-offs helps you adapt AAA to your context.
 
-### Shape Up Makes AAA Explicit
-
-While AAA can be practiced anywhere, Shape Up was designed around the same core values:
-
-**Shaping = Align**
-- Dedicated discovery time before commitment
-- Research problems before proposing solutions
-- Test assumptions through prototypes and exploration
-- Senior people (shapers) ensure technical and business alignment
-
-**Betting Table = Agree**
-- Explicit commitment ritual: yes or no, not maybe
-- Fixed time, variable scope forces real prioritization
-- Pitch document establishes shared understanding
-- Agreement on boundaries (appetite, must-haves, out of scope)
-
-**Building = Apply**
-- Honor the time agreement (circuit breaker at 6 weeks)
-- Honor the scope agreement (solve the problem, don't gold-plate)
-- Scope hammering, not corner-cutting
-- Team autonomy within agreed boundaries
-
-### Why Shape Up Succeeds Where Other Methodologies Struggle
-
-**Built-in guardrails prevent AAA failures:**
-- Can't bet on unshaped work (prevents committing without alignment)
-- Fixed appetite forces choosing what matters (prevents scope creep)
-- Circuit breaker enforces discipline (prevents endless iteration)
-- Cool-down provides reflection time (supports continuous realignment)
-
-**Clear phase separation:**
-Teams know when they're aligning (shaping), agreeing (betting), or applying (building). This clarity makes AAA discipline easier to practice than frameworks where phases blur together.
-
-**Senior leadership involvement:**
-Shapers are senior people who understand both business needs and technical reality. Betting table includes leadership making real commitments. AAA requires this level of engagement - Shape Up structures it explicitly.
-
-### Comparison: AAA in Different Methodologies
-
-**Shape Up**: AAA is the methodology's foundation. Phases map directly to Align-Agree-Apply.
-
-**Lean**: Strong philosophical alignment but requires teams to design their own AAA structure. Principles support AAA but don't operationalize the three phases explicitly.
-
-**Kanban**: Works well for Apply phase (flow and delivery) but doesn't structure Align and Agree phases. Teams must add discovery and commitment rituals.
-
-**Scrum**: Sprint Planning can support Agree, but often lacks sufficient Align time. Sprint commitments can become inflexible. Requires discipline to prevent committing before understanding.
-
-**Waterfall**: Extensive upfront Align and Agree phases, but sequential structure makes realignment costly. Works only when requirements are genuinely stable.
-
-**XP**: Strong engineering practices for Apply phase. Pair programming and TDD honor quality agreements. But lacks structured Align phase - relies on customer being available.
-
-**DevOps**: Addresses Apply phase across entire delivery pipeline. Automation and feedback loops support applying agreements at scale. But doesn't structure Align and Agree phases.
-
-### The Verdict: Shape Up Operationalizes AAA
-
-AAA is about values and discipline. You can practice it anywhere with sufficient maturity and commitment.
-
-But if you want teams to practice AAA without having to design their own structure, **Shape Up is the methodology that makes it easiest**. It's AAA with an instruction manual.
-
-Shape Up isn't just compatible with AAA - it's the clearest operational implementation of AAA principles as a complete methodology.
-
-**Recommendation**: Study all the frameworks to understand their trade-offs ([SDLC Frameworks guides](../sdlc/)). But if your goal is practicing AAA discipline, start with Shape Up. It will teach you what AAA looks like in practice, making it easier to adapt the principles to other contexts when needed.
+For a detailed exploration of how Shape Up operationalizes AAA principles (including methodology comparisons), see the [Shape Up guide's AAA Cycle alignment section](/study-guides/sdlc/shape-up.html#alignment-with-aaa-cycle).

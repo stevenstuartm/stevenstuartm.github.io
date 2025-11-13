@@ -19,7 +19,7 @@ tags: [architecture, governance, leadership, decision-making, collaboration, sta
 
 ## Prerequisites
 
-This guide assumes familiarity with Architecture Decision Records (ADRs). If you haven't already, please review the [Architecture Decisions & Leadership](ArchitectureDecisionsLeadership.html) guide which covers ADRs in detail.
+This guide assumes familiarity with Architecture Decision Records (ADRs). If you haven't already, please review the [Architecture Decision-Making](/study-guides/architecture/architecture-decision-making.html) guide which covers ADRs in detail.
 
 ## What is Architecture Governance?
 
