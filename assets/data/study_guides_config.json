@@ -23,21 +23,29 @@
       "subcategories": [
         {
           "name": "SDLC Fundamentals",
-          "description": "Core SDLC concepts and methodologies",
+          "description": "Core SDLC concepts, phases, and methodology comparison",
           "guides": [
             "sdlc/sdlc.md",
             "sdlc/sdlc-methodologies.md",
+            "sdlc/team-organization.md"
+          ]
+        },
+        {
+          "name": "SDLC Frameworks",
+          "description": "Comprehensive guides to major software development methodologies",
+          "guides": [
             "sdlc/lean.md",
             "sdlc/kanban.md",
             "sdlc/scrum.md",
-            "sdlc/shape-up.md",
-            "sdlc/team-organization.md"
+            "sdlc/extreme-programming.md",
+            "sdlc/shape-up.md"
           ]
         },
         {
           "name": "DevOps & Delivery",
           "description": "CI/CD, deployment automation, and security integration",
           "guides": [
+            "sdlc/devops.md",
             "sdlc/cicd.md",
             "sdlc/devsecops.md"
           ]
