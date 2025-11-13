@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Resume
-description: "Full-stack platform architect bringing clarity from complexity. Building cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering."
+description: "Software and systems architect bringing clarity from complexity. Building cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering."
 permalink: /resume.html
 ---
 
@@ -19,7 +19,7 @@ permalink: /resume.html
 
 ## Professional Summary
 
-Full-stack platform architect bringing clarity from complexity. I build cloud-native solutions that serve real needs and deliver genuine value, without the over-engineering. My focus is creating clear architectures with solid security and straightforward paths forward that align with business goals. I help teams move fast with confidence.
+Software and systems architect bringing clarity from complexity. I build cloud-native solutions that serve real needs and deliver genuine value, without the over-engineering. My focus is creating clear architectures with solid security and straightforward paths forward that align with business goals. I help teams move fast with confidence.
 
 ## Professional Experience
 

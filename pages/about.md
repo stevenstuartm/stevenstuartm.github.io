@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: "Full-stack platform architect bringing clarity from complexity. Building cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering."
+description: "Software and systems architect bringing clarity from complexity. Building cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering."
 image: /assets/img/profile-steven-stuart.jpeg
 permalink: /about.html
 ---
@@ -10,7 +10,7 @@ permalink: /about.html
 
 ![Steven Stuart - Software Architect specializing in cloud-native platforms and distributed systems](/assets/img/profile-steven-stuart.jpeg){: .profile-image}
 
-I'm a full-stack platform architect bringing clarity from complexity. I build cloud-native solutions that serve real needs and deliver genuine value, without the over-engineering. My focus is creating architectures that align with business goals through clear design, solid security, and straightforward paths forward.
+I'm a software and systems architect bringing clarity from complexity. I build cloud-native solutions that serve real needs and deliver genuine value, without the over-engineering. My focus is creating architectures that align with business goals through clear design, solid security, and straightforward paths forward.
 
 I believe architecture starts with human connection, thrives on genuine commitment, and succeeds by honoring agreements. Good architecture balances technical tradeoffs. Great solutions start with trust and maintain that trust through principled execution.
 
