@@ -4,6 +4,7 @@ layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC & Modeling
 description: "Comprehensive comparison of software development methodologies including Waterfall, Agile (Scrum, Kanban, XP), Lean, DevOps, and specialized approaches with guidance on selection."
+tags: [sdlc, methodology, agile, waterfall, comparison, decision-making]
 ---
 
 ## Table of Contents

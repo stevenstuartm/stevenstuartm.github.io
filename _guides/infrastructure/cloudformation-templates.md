@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: AWS
 description: "Complete reference for CloudFormation intrinsic functions, parameters, outputs, mappings, and conditions with practical examples."
+tags: [infrastructure, iac, aws, cloudformation, practical, templates]
 ---
 
 ## Table of Contents

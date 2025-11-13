@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: AWS
 description: "Core CloudFormation concepts including stacks, templates, resources, and basic workflow for managing AWS infrastructure as code."
+tags: [infrastructure, iac, aws, cloudformation, fundamentals, practical]
 ---
 
 ## Table of Contents

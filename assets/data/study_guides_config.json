@@ -27,6 +27,8 @@
           "guides": [
             "sdlc/sdlc.md",
             "sdlc/sdlc-methodologies.md",
+            "sdlc/lean.md",
+            "sdlc/kanban.md",
             "sdlc/shape-up.md",
             "sdlc/team-organization.md"
           ]
@@ -286,6 +288,7 @@
             "infrastructure/aws-well-architected-framework.md",
             "infrastructure/aws-iam-fundamentals.md",
             "infrastructure/aws-vpc-architecture.md",
+            "infrastructure/aws-ec2-fundamentals.md",
             "infrastructure/cloudformation-fundamentals.md",
             "infrastructure/cloudformation-templates.md",
             "infrastructure/cloudformation-advanced.md",

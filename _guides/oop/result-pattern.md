@@ -2,6 +2,7 @@
 title: "The Result Pattern"
 category: Object-Oriented Programming
 description: "Functional error handling pattern replacing exceptions with explicit Result types, making failure cases clear and composable for robust C# applications."
+tags: [oop, design-patterns, error-handling, functional-programming, practical, performance]
 ---
 
 ---

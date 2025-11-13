@@ -4,6 +4,7 @@ layout: guide
 category: Architecture
 subcategory: Leadership & Governance
 description: "Enterprise architecture frameworks and governance approaches - when to use them and why"
+tags: [architecture, governance, frameworks, leadership, compliance, standards]
 ---
 
 ## Table of Contents

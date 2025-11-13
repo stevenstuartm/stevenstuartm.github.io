@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: Infrastructure as Code
 description: "Enforcing tagging standards, automated drift detection, compliance monitoring, and governance at scale using AWS Config, Organizations, and automation."
+tags: [infrastructure, iac, governance, compliance, security, practical]
 ---
 
 ## Table of Contents

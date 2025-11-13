@@ -103,7 +103,7 @@ tags: [architecture, design-patterns]
 ### Study Guide Format
 All study guides must:
 - Be placed in `_guides/` directory (can be organized in subdirectories by topic)
-- Include YAML front matter with: layout, title, category, subcategory, and description
+- Include YAML front matter with: layout, title, category, subcategory, description, and tags
 - Use `layout: guide`
 - Include proper markdown formatting with blank lines before tables
 
@@ -115,10 +115,61 @@ layout: guide
 category: Main Category
 subcategory: Subcategory
 description: "Brief description of the guide content"
+tags: [tag1, tag2, tag3, tag4]
 ---
 ```
 
 **Important**: Tables in Markdown must have a blank line before them to render correctly in Jekyll/Kramdown.
+
+### Study Guide Tagging System
+
+**CRITICAL**: All study guides must include tags for discoverability and filtering.
+
+**Tag format**:
+- Lowercase, hyphenated format (e.g., `decision-making`, `cost-analysis`)
+- 4-8 tags per guide (target average: 5-6 tags)
+- Tags appear in YAML front matter as an array: `tags: [tag1, tag2, tag3]`
+
+**Tag vocabulary categories**:
+
+1. **Core Disciplines**: `architecture`, `algorithms`, `data-structures`, `security`, `design-patterns`, `distributed-systems`, `infrastructure`, `cloud-computing`, `databases`, `networking`, `testing`, `devops`
+
+2. **Skill Levels**: `fundamentals`, `advanced`, `practical`
+
+3. **Application Contexts**: `performance`, `scalability`, `reliability`, `maintainability`, `observability`
+
+4. **Specific Technologies**: `aws`, `microservices`, `kubernetes`, `oop`, `functional-programming`, `cicd`, `terraform`, `cloudformation`
+
+5. **Business & Process**: `cost-analysis`, `decision-making`, `governance`, `leadership`, `collaboration`, `sdlc`, `agile`, `modeling`, `threat-modeling`
+
+6. **Common Concept Tags**: `statistics`, `analytics`, `hypothesis-testing`, `messaging`, `consistency`, `resilience`, `legacy-systems`, `modernization`, `risk-management`, `workflow`, `transactions`, `caching`, `rate-limiting`, `deployment`, `consensus`, `coordination`, `integration`, `automation`, `documentation`, `complexity-analysis`
+
+**Tagging guidelines**:
+- Choose tags that reflect **core concepts covered** in the guide
+- Include tags for **related disciplines** to enable cross-category discovery
+- Add **skill level** tags (`fundamentals`, `advanced`, `practical`) to help users navigate learning paths
+- Include **technology-specific** tags when applicable
+- Prioritize tags that enable **cross-cutting discovery** (e.g., all guides about "decision-making" regardless of category)
+
+**Standard procedure for tagging new guides**:
+1. Read the guide content to understand core concepts
+2. Select 4-8 tags from the established vocabulary
+3. Add tags field to YAML front matter before the closing `---`
+4. Ensure tags align with similar guides in the same or related categories
+
+**Example tags for common guide types**:
+- Architecture pattern guide: `architecture`, `design-patterns`, `distributed-systems`, `microservices`, `practical`
+- DSA guide: `algorithms`, `data-structures`, `complexity-analysis`, `fundamentals`, `interview-prep`
+- OOP guide: `oop`, `design-patterns`, `solid`, `maintainability`, `practical`
+- Security guide: `security`, `threats`, `vulnerabilities`, `defense`, `practical`
+- SDLC guide: `sdlc`, `methodology`, `collaboration`, `stakeholder-management`, `practical`
+
+**Why tags matter**:
+- Enable **filtering** on study guides and blog pages by concept, not just category
+- Support **cross-category discovery** (find all content about "performance" across Architecture, DSA, and Infrastructure)
+- Act as a **lightweight index** without the overhead of full-text search
+- Improve **SEO** by adding semantic metadata to content
+- Create **learning paths** by connecting related guides across categories
 
 ### Study Guides Configuration
 
@@ -129,11 +180,13 @@ description: "Brief description of the guide content"
 
 **Standard procedure for adding a new study guide**:
 1. Create the markdown file in `_guides/` (organized by category subdirectory)
-2. Include proper YAML front matter with category, subcategory, and description
+2. Include proper YAML front matter with category, subcategory, description, **and tags**
 3. **Immediately update** `assets/data/study_guides_config.json`:
    - Add new subcategory if needed (with name and description)
    - Add the guide filename to the appropriate subcategory's `guides` array
 4. Test locally to verify the guide appears on the study guides page
+
+**IMPORTANT**: Do not forget to add tags when creating a new guide. Tags are critical for discoverability and filtering.
 
 **Example configuration entry**:
 ```json
@@ -209,11 +262,27 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 
 ### Content Guidelines
 - Blog posts should include meaningful tags for discoverability
+- Study guides MUST include tags (4-8 tags from the established vocabulary)
 - Use descriptive titles and ensure proper front matter
 - Include meta descriptions for better SEO
 - Study guides should have comprehensive table of contents
 - Ensure proper markdown formatting, especially blank lines before tables
 - Organize study guides by category and subcategory for better navigation
+
+### Content Discovery Features
+
+**Tagging system** (implemented):
+- All 105+ study guides have been tagged with 4-8 tags each
+- Tags enable cross-category discovery (e.g., find all "decision-making" content regardless of category)
+- Tag vocabulary is standardized across core disciplines, skill levels, application contexts, technologies, and processes
+- Blog posts already have tags in place
+
+**Filtering UI** (planned):
+- Client-side JavaScript filtering for study guides page (filter by category, subcategory, tags)
+- Client-side JavaScript filtering for blog page (filter by series, tags)
+- Optional: Unified "Browse by Tag" page showing all content with specific tags
+- No backend required; filters operate on existing JSON data and front matter
+- Provides "cheap index" functionality without full-text search overhead
 
 ### Code Examples
 - **Default to C# for programming examples** unless the subject is language-specific

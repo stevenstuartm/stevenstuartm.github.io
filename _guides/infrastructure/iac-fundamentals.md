@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: Infrastructure as Code
 description: "Core IaC concepts including declarative vs. imperative approaches, idempotency, immutability, and why IaC matters for modern infrastructure."
+tags: [infrastructure, iac, automation, fundamentals, devops, practical]
 ---
 
 ## Table of Contents

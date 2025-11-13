@@ -4,6 +4,7 @@ layout: guide
 category: Architecture
 subcategory: Design
 description: "Practical UML diagram guide covering class diagrams, sequence diagrams, use cases, activity diagrams, and when to use each throughout the SDLC."
+tags: [architecture, modeling, documentation, uml, diagrams, practical]
 ---
 
 UML diagrams are standardized visual representations used throughout the software development lifecycle to model system architecture, behavior, and structure.

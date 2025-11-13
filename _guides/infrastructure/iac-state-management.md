@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: Infrastructure as Code
 description: "Understanding infrastructure state, remote backends, state locking, and best practices for managing IaC state across teams."
+tags: [infrastructure, iac, state-management, terraform, practical]
 ---
 
 ## Table of Contents

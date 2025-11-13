@@ -4,6 +4,7 @@ layout: guide
 category: Networking
 subcategory: Fundamentals
 description: "Essential networking concepts for developers covering OSI model, IP addressing, DNS, load balancing, security protocols, and cloud networking fundamentals."
+tags: [networking, fundamentals, protocols, tcp-ip, reference]
 ---
 
 Networking fundamentals for software developers and system architects.

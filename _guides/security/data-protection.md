@@ -2,6 +2,7 @@
 title: "Data Protection"
 category: Security
 description: "Comprehensive coverage of data classification, encryption for data at rest/in transit/in use, privacy regulations like GDPR and HIPAA, and data loss prevention strategies."
+tags: [security, encryption, data-protection, privacy, compliance]
 ---
 
 ---

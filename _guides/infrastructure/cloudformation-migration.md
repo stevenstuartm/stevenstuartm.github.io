@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: AWS
 description: "Complete guide for migrating resources to CloudFormation: importing unmanaged resources, moving resources between stacks, and stack refactoring with the latest AWS solutions."
+tags: [infrastructure, iac, aws, cloudformation, migration, practical]
 ---
 
 ## Table of Contents

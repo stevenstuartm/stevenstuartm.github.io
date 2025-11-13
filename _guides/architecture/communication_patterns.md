@@ -4,6 +4,7 @@ title: "Communication Patterns"
 category: Architecture
 subcategory: Patterns
 description: "Essential patterns for distributed service communication including load balancing, pub/sub, request-reply, circuit breaker, and retry strategies."
+tags: [architecture, design-patterns, distributed-systems, messaging, scalability, practical]
 ---
 
 # Communication Patterns

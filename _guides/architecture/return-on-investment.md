@@ -4,6 +4,7 @@ title: "Return on Investment (ROI)"
 category: Architecture
 subcategory: Business & Economics
 description: "Measuring financial returns from technology investments, including ROI calculation methods, benefit quantification, and decision frameworks for architecture decisions."
+tags: [architecture, cost-analysis, decision-making, business, practical, metrics]
 ---
 
 # Return on Investment (ROI)

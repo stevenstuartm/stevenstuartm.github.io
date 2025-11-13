@@ -2,6 +2,7 @@
 title: "Big O Notation - The Basics"
 category: Data Structures & Algorithms
 description: "Build practical intuition for algorithm complexity from O(1) to O(2ⁿ), with rules for analysis, space complexity fundamentals, and common misconceptions debunked."
+tags: [algorithms, complexity-analysis, fundamentals, performance, interview-prep]
 ---
 
 ## Why Big O Matters

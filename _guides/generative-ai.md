@@ -4,6 +4,7 @@ layout: guide
 category: AI & Machine Learning
 subcategory: Generative AI
 description: "Generative AI including popular tools, prompt engineering techniques, transformer architectures, RAG systems, and practical integration strategies for 2025."
+tags: [ai, generative-ai, llm, modern, practical]
 ---
 
 ## Table of Contents

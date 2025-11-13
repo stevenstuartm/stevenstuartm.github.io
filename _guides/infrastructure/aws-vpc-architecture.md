@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: AWS
 description: "VPC fundamentals for architects including subnets, routing, security groups, NACLs, and multi-AZ and multi-VPC patterns for building secure and scalable network architectures."
+tags: [infrastructure, aws, networking, vpc, security, practical]
 ---
 
 ## Table of Contents

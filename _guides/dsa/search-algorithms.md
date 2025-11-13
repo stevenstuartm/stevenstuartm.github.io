@@ -2,6 +2,7 @@
 title: "Search Algorithms"
 category: Data Structures & Algorithms
 description: "Compare linear and binary search algorithms with complexity analysis, when to use each approach, and implementing efficient search strategies."
+tags: [algorithms, searching, complexity-analysis, practical, interview-prep]
 ---
 
 ## Why Searching Exists

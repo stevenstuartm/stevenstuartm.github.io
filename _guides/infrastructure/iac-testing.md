@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: Infrastructure as Code
 description: "Static analysis, unit testing, integration testing, and compliance testing strategies for infrastructure code."
+tags: [infrastructure, iac, testing, validation, practical, automation]
 ---
 
 ## Table of Contents

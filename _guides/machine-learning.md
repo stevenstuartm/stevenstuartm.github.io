@@ -4,6 +4,7 @@ layout: guide
 category: AI & Machine Learning
 subcategory: Machine Learning
 description: "Comprehensive ML fundamentals covering supervised/unsupervised learning, model training, neural networks, MLOps practices, and 2025 industry trends."
+tags: [machine-learning, ai, fundamentals, algorithms, data-science]
 ---
 
 ## Table of Contents

@@ -2,6 +2,7 @@
 title: "Trees & Binary Search Trees"
 category: Data Structures & Algorithms
 description: "Comprehensive guide to binary search trees covering implementation, traversal algorithms, search operations, and understanding when to use tree structures."
+tags: [data-structures, algorithms, trees, practical, interview-prep]
 ---
 
 ## Why Trees Exist

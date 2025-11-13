@@ -4,6 +4,7 @@ layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC & Modeling
 description: "Modern team structures and collaboration patterns for software development, including domain-driven design, feature teams, and architectural governance."
+tags: [sdlc, leadership, team-organization, collaboration, structure]
 ---
 
 ## Table of Contents

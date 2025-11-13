@@ -4,6 +4,7 @@ layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC & Modeling
 description: "CI/CD fundamentals, pipeline design, automation strategies, security gates, testing approaches, and deployment workflows for modern software delivery."
+tags: [sdlc, cicd, automation, devops, testing, security, practical]
 ---
 
 ## Table of Contents

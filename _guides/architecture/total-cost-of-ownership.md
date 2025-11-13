@@ -4,6 +4,7 @@ title: "Total Cost of Ownership (TCO)"
 category: Architecture
 subcategory: Business & Economics
 description: "Understanding and calculating the complete cost of technology solutions over their entire lifecycle, including hidden costs and optimization strategies."
+tags: [architecture, cost-analysis, decision-making, cloud-computing, practical, business]
 ---
 
 # Total Cost of Ownership (TCO)

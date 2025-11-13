@@ -2,6 +2,7 @@
 title: "Compliance and Governance"
 category: Security
 description: "Essential framework for risk management, compliance standards like SOX and PCI DSS, security auditing processes, and continuous monitoring strategies."
+tags: [security, compliance, governance, regulations, frameworks]
 ---
 
 ---

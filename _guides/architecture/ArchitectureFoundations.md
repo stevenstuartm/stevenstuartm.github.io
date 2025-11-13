@@ -4,6 +4,7 @@ title: "Architecture Foundations"
 category: Architecture
 subcategory: Foundations
 description: "Essential principles of software architecture including trade-off analysis, architectural thinking, modularity patterns, and the difference between architecture and design."
+tags: [architecture, fundamentals, trade-offs, modularity, distributed-systems, decision-making]
 ---
 
 # Architecture Foundations

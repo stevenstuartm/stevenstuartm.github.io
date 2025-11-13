@@ -4,6 +4,7 @@ title: "Architecture Leadership"
 category: Leadership & Team Management
 subcategory: Architecture Leadership
 description: "Master the architect's leadership responsibilities: building effective teams, providing guidance, elastic leadership, negotiating with stakeholders, and integrating with development teams."
+tags: [architecture, leadership, fundamentals, collaboration, decision-making, communication]
 ---
 
 # Architecture Leadership

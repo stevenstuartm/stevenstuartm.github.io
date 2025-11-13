@@ -2,6 +2,7 @@
 title: "OOP Quick Reference"
 category: Object-Oriented Programming
 description: "Quick reference guide to all design patterns organized by category with purpose, use cases, and practical guidance for pattern selection."
+tags: [oop, reference, quick-reference, cheatsheet]
 ---
 
 ---

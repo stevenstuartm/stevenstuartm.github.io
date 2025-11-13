@@ -4,6 +4,7 @@ layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC & Modeling
 description: "Core SDLC phases from planning through maintenance, CI/CD best practices, and modern development principles for delivering quality software."
+tags: [sdlc, fundamentals, methodology, planning, execution]
 ---
 
 ## Table of Contents

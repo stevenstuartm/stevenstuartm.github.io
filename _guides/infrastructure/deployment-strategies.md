@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: Cloud Operations
 description: "Deployment strategies define how new versions of applications are released to production environments. Learn about Rolling, Blue-Green, Canary, A/B Testing deployments, and Chaos Engineering."
+tags: [infrastructure, deployment, blue-green, canary, practical, reliability]
 ---
 
 ## Table of Contents

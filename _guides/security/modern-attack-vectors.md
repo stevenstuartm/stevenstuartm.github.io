@@ -2,6 +2,7 @@
 title: "Modern Attack Vectors"
 category: Security
 description: "Understand contemporary cyber threats including social engineering, phishing variants, injection attacks, advanced persistent threats, and ransomware with prevention strategies."
+tags: [security, threats, modern, attack-vectors, defense]
 ---
 
 ---

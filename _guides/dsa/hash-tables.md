@@ -2,6 +2,7 @@
 title: "Hash Tables"
 category: Data Structures & Algorithms
 description: "Master hash tables with O(1) average lookups, collision resolution strategies, hash function design, and practical applications from caching to frequency counting."
+tags: [data-structures, algorithms, hash-tables, performance, practical, fundamentals]
 ---
 
 ## Why Hash Tables Exist

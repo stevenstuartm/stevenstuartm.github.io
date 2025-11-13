@@ -2,6 +2,7 @@
 title: "Advanced Graph Algorithms"
 category: Data Structures & Algorithms
 description: "Advanced graph algorithms including Dijkstra's shortest path, topological sorting, minimum spanning trees, and network flow problems with practical implementations."
+tags: [data-structures, algorithms, graphs, advanced, optimization]
 ---
 
 ## Shortest Path Algorithms

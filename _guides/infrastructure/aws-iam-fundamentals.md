@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: AWS
 description: "Modern AWS identity management including IAM Identity Center for workforce access, AWS Organizations with Service Control Policies, and IAM roles for workloads following 2024/2025 best practices."
+tags: [infrastructure, aws, iam, security, access-control, fundamentals]
 ---
 
 ## Table of Contents

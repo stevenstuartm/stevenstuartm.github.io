@@ -4,6 +4,7 @@ layout: guide
 category: Architecture
 subcategory: Leadership & Governance
 description: "Practical tools and automation for implementing architecture governance - AWS, .NET, IaC, and security"
+tags: [architecture, governance, automation, aws, security, practical]
 ---
 
 ## Table of Contents

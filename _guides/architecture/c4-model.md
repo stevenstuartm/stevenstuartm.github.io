@@ -4,6 +4,7 @@ layout: guide
 category: Architecture
 subcategory: Modeling
 description: "A pragmatic approach to software architecture diagrams focused on clarity and context"
+tags: [architecture, modeling, documentation, diagrams, practical, fundamentals]
 ---
 
 ## What is the C4 Model?

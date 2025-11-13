@@ -4,6 +4,7 @@ title: "Deployment and Infrastructure Patterns"
 category: Architecture
 subcategory: Patterns
 description: "Infrastructure patterns including sidecar, ambassador, anti-corruption layer, blue-green deployment, and canary releases for robust deployment strategies."
+tags: [architecture, design-patterns, infrastructure, kubernetes, service-mesh, deployment]
 ---
 
 # Deployment and Infrastructure Patterns

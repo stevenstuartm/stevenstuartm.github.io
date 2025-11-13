@@ -2,6 +2,7 @@
 title: "Graphs & Graph Algorithms"
 category: Data Structures & Algorithms
 description: "Complete guide to graphs covering representations, traversal algorithms (BFS/DFS), and applications from social networks to pathfinding problems."
+tags: [data-structures, algorithms, graphs, practical, interview-prep]
 ---
 
 ## Why Graphs Exist

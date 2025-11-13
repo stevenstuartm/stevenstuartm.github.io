@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: Infrastructure as Code
 description: "Managing environment recreation, resource discovery, and handling mutable vs. immutable identifiers when recreating infrastructure."
+tags: [infrastructure, iac, environments, lifecycle, practical]
 ---
 
 ## Table of Contents

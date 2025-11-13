@@ -4,6 +4,7 @@ layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC & Modeling
 description: "DevSecOps philosophy and practices for making security everyone's responsibility throughout the SDLC, including shift-left security, security culture, and collaborative security practices."
+tags: [sdlc, security, devops, automation, integration, practical]
 ---
 
 ## Table of Contents

@@ -4,6 +4,7 @@ title: "Reliability Patterns"
 category: Architecture
 subcategory: Patterns
 description: "Build resilient systems with circuit breakers, retries, bulkheads, health checks, and graceful degradation patterns for handling failures."
+tags: [architecture, design-patterns, reliability, resilience, distributed-systems, practical]
 ---
 
 # Reliability Patterns

@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: Infrastructure as Code
 description: "Comprehensive comparison of IaC tools including CloudFormation, Terraform, Pulumi, Ansible, and others to help choose the right tool for your needs."
+tags: [infrastructure, iac, tools, comparison, decision-making, reference]
 ---
 
 ## Table of Contents

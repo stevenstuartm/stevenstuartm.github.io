@@ -4,6 +4,7 @@ title: "Architecture Decision-Making"
 category: Leadership & Team Management
 subcategory: Architecture Leadership
 description: "Master the architect's role in making decisions: frameworks for when to decide, antipatterns to avoid, what makes decisions architecturally significant, and how to capture them with ADRs."
+tags: [architecture, decision-making, adrs, trade-offs, documentation, practical]
 ---
 
 # Architecture Decision-Making

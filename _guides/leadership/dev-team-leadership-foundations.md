@@ -4,6 +4,7 @@ title: "Dev Team Leadership"
 category: Leadership & Team Management
 subcategory: Team Leadership
 description: "Practical, step-by-step guide for new dev team leads: what to do from day zero through delivery cycles, handling crises, and building momentum without the fluff."
+tags: [leadership, team-management, fundamentals, coaching, collaboration]
 ---
 
 # Dev Team Leadership

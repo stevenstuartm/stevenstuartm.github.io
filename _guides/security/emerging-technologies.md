@@ -2,6 +2,7 @@
 title: "Emerging Technologies"
 category: Security
 description: "Explore security challenges in AI/ML, cloud computing, IoT devices, blockchain smart contracts, and quantum computing's impact on cryptography."
+tags: [security, emerging, modern, cloud-security, future]
 ---
 
 ---

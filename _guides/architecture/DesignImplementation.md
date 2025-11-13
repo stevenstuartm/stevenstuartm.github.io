@@ -4,6 +4,7 @@ title: "Design & Implementation"
 category: Architecture
 subcategory: Design
 description: "Learn component design principles, bounded contexts, coupling types, logical vs physical architecture, and practical implementation strategies for distributed systems."
+tags: [architecture, design-patterns, component-design, risk-analysis, practical, modeling]
 ---
 
 # Design & Implementation

@@ -4,6 +4,7 @@ layout: guide
 category: Architecture
 subcategory: Leadership & Governance
 description: "Principles, processes, and practices for governing software architecture decisions and ensuring alignment with business objectives"
+tags: [architecture, governance, leadership, decision-making, collaboration, standards]
 ---
 
 ## Table of Contents

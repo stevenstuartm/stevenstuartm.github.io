@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: Infrastructure as Code
 description: "Modular design, environment separation, layered architecture, and GitOps workflow patterns for organizing IaC code effectively."
+tags: [infrastructure, iac, design-patterns, best-practices, practical]
 ---
 
 ## Table of Contents

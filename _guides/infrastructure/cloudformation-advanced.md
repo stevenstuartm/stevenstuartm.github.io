@@ -4,6 +4,7 @@ layout: guide
 category: Infrastructure & Cloud
 subcategory: AWS
 description: "Change sets, nested stacks, StackSets, custom resources, drift detection, and best practices for production CloudFormation deployments."
+tags: [infrastructure, iac, aws, cloudformation, advanced, practical]
 ---
 
 ## Table of Contents
