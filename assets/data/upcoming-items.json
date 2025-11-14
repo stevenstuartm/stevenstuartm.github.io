@@ -1,8 +1,3 @@
 [
-  {
-    "title": "Spec-Driven and Test-Driven Code Generation",
-    "description": "Exploring how AI code generation tools transform development workflows when paired with specifications and test suites, and the architectural implications of treating code as ephemeral",
-    "status": "planned",
-    "deliveryDate": "2025-12-01"
-  }
+
 ]
