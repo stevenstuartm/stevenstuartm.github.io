@@ -159,7 +159,8 @@ class ContentLinter:
                 ))
 
     def _check_em_dashes(self, line_num: int, line: str):
-        """Check for em-dashes in prose sentences."""
+        """Check for em-dashes and hyphen-dash substitutes in prose sentences."""
+        # Check for actual em-dash character
         if '—' in line:
             self.violations.append(ContentViolation(
                 line_num,
@@ -167,6 +168,29 @@ class ContentLinter:
                 line.strip(),
                 "Use semicolon, comma, or period instead"
             ))
+
+        # Check for hyphen used as em-dash substitute
+        # Pattern: word/punctuation followed by space-hyphen-space followed by word
+        # Exclude cases where it's clearly not a dash substitute:
+        # - List items starting with "- "
+        # - Markdown links with " - " as separator
+        # - Short phrases like "a - b" comparisons
+        if not line.strip().startswith('-'):  # Not a bullet point
+            # Look for space-hyphen-space pattern with substantial text on both sides
+            # Must have at least one comma before the hyphen (indicates it's mid-sentence)
+            # OR have lowercase letter after hyphen (indicates continuation, not new sentence)
+            hyphen_dash_pattern = r'[a-z,]\s+-\s+[a-z]'
+            if re.search(hyphen_dash_pattern, line, re.IGNORECASE):
+                # Additional check: make sure there's enough context (not just "a - b")
+                # Look for at least 15 chars before the hyphen
+                context_pattern = r'.{15,}\s+-\s+\w'
+                if re.search(context_pattern, line):
+                    self.violations.append(ContentViolation(
+                        line_num,
+                        "Hyphen used as em-dash substitute",
+                        line.strip(),
+                        "Use semicolon, comma, or period instead of ' - '"
+                    ))
 
     def _check_missing_articles(self, line_num: int, line: str):
         """Check for common missing article patterns."""

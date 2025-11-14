@@ -360,6 +360,14 @@
             "infrastructure/aws/cloudformation-advanced.md",
             "infrastructure/aws/cloudformation-migration.md"
           ]
+        },
+        {
+          "name": "Application Integration & Messaging",
+          "description": "SQS, SNS, EventBridge, Step Functions, and messaging patterns",
+          "guides": [
+            "infrastructure/aws/aws-sqs-sns.md",
+            "infrastructure/aws/aws-eventbridge.md"
+          ]
         }
       ]
     },
