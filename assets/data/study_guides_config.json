@@ -370,6 +370,17 @@
             "infrastructure/aws/aws-step-functions.md",
             "infrastructure/aws/aws-kinesis.md"
           ]
+        },
+        {
+          "name": "Security & Compliance",
+          "description": "Threat detection, security posture, compliance monitoring, and encryption",
+          "guides": [
+            "infrastructure/aws/aws-security-hub-guardduty.md",
+            "infrastructure/aws/aws-cloudtrail-config.md",
+            "infrastructure/aws/aws-waf-shield.md",
+            "infrastructure/aws/aws-kms-secrets-manager.md",
+            "infrastructure/aws/aws-organizations-control-tower.md"
+          ]
         }
       ]
     },
