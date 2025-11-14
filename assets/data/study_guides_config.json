@@ -363,10 +363,12 @@
         },
         {
           "name": "Application Integration & Messaging",
-          "description": "SQS, SNS, EventBridge, Step Functions, and messaging patterns",
+          "description": "SQS, SNS, EventBridge, Step Functions, Kinesis, and messaging patterns",
           "guides": [
             "infrastructure/aws/aws-sqs-sns.md",
-            "infrastructure/aws/aws-eventbridge.md"
+            "infrastructure/aws/aws-eventbridge.md",
+            "infrastructure/aws/aws-step-functions.md",
+            "infrastructure/aws/aws-kinesis.md"
           ]
         }
       ]
