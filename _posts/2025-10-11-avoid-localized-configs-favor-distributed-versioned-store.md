@@ -90,7 +90,7 @@ Not everything belongs in a remote config store. Keep these things local:
 
 **Framework Configuration**: Things like HTTP server ports, thread pool sizes, or middleware configuration that rarely change between environments.
 
-**Proof of Concepts**: If you're building a POC or throwaway prototype, the overhead of distributed configs isn't worth it. Use local configs and move fast. But the moment you're building something production-ready or UAT-ready, make the switch. The discipline of externalizing configs should start before you have real users or sensitive data.
+**Proof of Concepts**: If you're building a POC or throwaway prototype, the overhead of distributed configs isn't worth it, so use local configs and move fast. But the moment you're building something production-ready or UAT-ready, make the switch. The discipline of externalizing configs should start before you have real users or sensitive data.
 
 The rule of thumb: If it's sensitive, environment-specific, or shared across services, it belongs in the distributed store. If it's about how the application behaves internally and doesn't change between environments, keep it local.
 
@@ -114,7 +114,7 @@ The goal isn't to rely on any single mechanism, but to create layers of defense 
 
 **"It's slower than reading a local file."** Yes, but only on startup. Cache the config after fetching it. The marginal performance difference is negligible compared to the security and operational benefits.
 
-**"Developers can't work offline."** This objection does not align with reality. Software development requires connectivity: installing packages, pulling dependencies, checking Jira tickets, communicating with your team, accessing documentation, and running CI/CD pipelines.
+**"Developers can't work offline."** This doesn't match reality. Software development requires connectivity: installing packages, pulling dependencies, checking Jira tickets, communicating with your team, accessing documentation, and running CI/CD pipelines.
 
 **"It adds complexity to local development."** Initially, yes. But tools like AWS CLI, SDKs, and local credential chains make this transparent. Once configured, developers get the same or better experience than managing local config files.
 
@@ -124,15 +124,15 @@ The goal isn't to rely on any single mechanism, but to create layers of defense 
 
 After adopting this pattern across multiple teams, here are the concrete benefits I've seen:
 
-1. **Easier Testing**: Engineers can test against staging or prod configs from their local machine (with proper auth) without maintaining local copies.
+1. **Testing becomes easier**: Engineers can test against staging or prod configs from their local machine (with proper auth) without maintaining local copies.
 
-2. **Better Security Posture**: No more secrets in Git, no more sharing credentials over Slack, no more "did we rotate that key everywhere?"
+2. **Security posture improves**: No more secrets in Git, no more sharing credentials over Slack, no more "did we rotate that key everywhere?"
 
-3. **Simplified Deployments**: The same artifact works in every environment. Deployments become faster and more reliable.
+3. **Deployments simplify**: The same artifact works in every environment. Deployments become faster and more reliable.
 
-4. **Clear Audit Trails**: You know exactly what changed, when, and by whom.
+4. **Audit trails become clear**: You know exactly what changed, when, and by whom.
 
-## Conclusion
+## Making the Shift
 
 Localized configs feel simple and convenient, but they create long-term problems with security and deployment complexity. By moving to a distributed configuration store, you trade a bit of upfront complexity for significant long-term benefits: better security, environment independence, and clearer audit trails.
 
