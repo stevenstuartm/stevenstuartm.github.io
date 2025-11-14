@@ -337,7 +337,13 @@
         {
           "name": "Database Services",
           "description": "RDS, DynamoDB, Aurora, and database selection",
-          "guides": []
+          "guides": [
+            "infrastructure/aws/aws-rds-aurora.md",
+            "infrastructure/aws/aws-dynamodb.md",
+            "infrastructure/aws/aws-elasticache.md",
+            "infrastructure/aws/aws-redshift.md",
+            "infrastructure/aws/aws-database-selection.md"
+          ]
         },
         {
           "name": "Infrastructure as Code",

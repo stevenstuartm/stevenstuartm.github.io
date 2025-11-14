@@ -65,7 +65,7 @@ The discipline of Apply is knowing when to:
 
 **When to pause and reconsolidate the agreement**:
 
-- **Technical discovery**: Assumed approach won't work; fundamentally different solution needed
+- **Technical discovery**: Assumed approach won't work; a different solution is needed
 - **Scope discovery**: Original scope misunderstood; what was agreed doesn't match what's actually needed
 - **Dependency discovery**: Critical dependencies emerge that change timeline or feasibility
 - **Value discovery**: Building the feature reveals a better problem to solve
@@ -85,7 +85,7 @@ The discipline of Apply is knowing when to:
 5. Update the agreement and communicate changes
 6. Resume execution with the new understanding
 
-**The key insight**: Realignment isn't scope creep or project failure. It's the discipline to incorporate learning and maintain integrity with stakeholders. Teams that ship based on broken assumptions, just to avoid "changing the plan," deliver work that misses the mark.
+Realignment isn't scope creep or project failure. It's the discipline to incorporate learning and maintain integrity with stakeholders. Teams that ship based on broken assumptions, just to avoid "changing the plan," deliver work that misses the mark.
 
 ---
 

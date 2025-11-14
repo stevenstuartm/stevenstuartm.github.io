@@ -185,6 +185,68 @@ Align applies at every level of work:
 
 ---
 
+## Visual Communication During Alignment
+
+### Purpose
+
+**Use diagrams to build shared understanding, not to create documentation.**
+
+During Align, visualization serves discovery. The goal is to ensure stakeholders share the same mental model of the problem space, system boundaries, and key relationships. These are working artifacts, not formal documentation.
+
+### What Works at This Stage
+
+**C4 Level 1 (Context Diagrams)**:
+- Shows the system boundary and external dependencies
+- Helps stakeholders understand what's in scope vs. out of scope
+- Clarifies which external systems, teams, or users are involved
+- Useful when: Multiple systems interact, scope boundaries are unclear, or stakeholders have different assumptions about what's included
+
+**Simple Box-and-Arrow Sketches**:
+- Whiteboard-level clarity for exploring ideas
+- No formal notation required—focus on communication
+- Easy to change as understanding evolves
+- Useful when: Exploring concepts collaboratively, testing different mental models, or facilitating stakeholder discussions
+
+**Data Flow Diagrams**:
+- Shows how information moves through the system
+- Identifies sources, destinations, and transformations
+- Useful when: The problem centers on data movement, integration points are unclear, or compliance requires data flow documentation
+
+### When to Create Diagrams
+
+**Create diagrams when**:
+- Stakeholders have different mental models of the system boundary
+- External dependencies or integrations are unclear
+- Multiple teams or systems are involved and roles need clarification
+- Compliance or governance requires visual documentation of scope
+- Verbal descriptions create confusion or misalignment
+
+**Skip diagrams when**:
+- Everyone already shares the same mental model
+- The system is simple enough to describe clearly in a few sentences
+- You're still discovering what the problem actually is (too early to diagram)
+- Creating the diagram would take longer than the value it provides
+
+### How to Do This Well
+
+- **Keep it simple** - Use the minimum formality needed for clarity
+- **Make it collaborative** - Sketch together with stakeholders, don't present finished diagrams
+- **Focus on boundaries** - What's in scope? What's out? Who owns what?
+- **Iterate quickly** - Diagrams should evolve as understanding evolves
+- **Don't over-invest** - These are discovery tools, not deliverables
+- **Test understanding** - Ask stakeholders to explain the diagram back to you
+
+### Red Flags
+
+- ❌ Creating UML class diagrams during Align—you don't know the solution yet
+- ❌ Spending hours on polished diagrams before you've agreed on the problem
+- ❌ Using diagrams to avoid conversations ("here's the architecture, read it")
+- ❌ Formal notation that stakeholders don't understand
+- ❌ Diagrams that become stale immediately because they're not maintained
+- ❌ Diagramming the solution when you're supposed to be understanding the problem
+
+---
+
 ## The Project Charter
 
 ### Purpose

@@ -100,7 +100,216 @@ Agree applies at every level of work:
 
 ---
 
-### 2. Technical Proof of Concept
+### 2. Architecture Documentation in Agreements
+
+**Create the minimum documentation needed to achieve genuine agreement on high-risk decisions.**
+
+During Agree, diagrams codify decisions and create shared commitment. The level of detail should match the risk and complexity. Use documentation strategically to clarify what you're agreeing to, not to create comprehensive reference material.
+
+#### C4 Model: Matching Documentation to AAA Needs
+
+The [C4 Model](https://c4model.com){:target="_blank" rel="noopener noreferrer"} provides four levels of architectural diagrams. Don't create all levels by default; choose based on what decisions need clarity.
+
+**Level 1 (System Context)**
+
+Shows the system boundary and external dependencies.
+
+**Include when**:
+- Multiple systems or teams are involved
+- External dependencies need to be explicit
+- Defining system boundaries is part of the agreement
+- Stakeholders need to understand what's in scope vs. out of scope
+
+**Skip when**:
+- Single isolated system with no external dependencies
+- Boundaries are obvious and uncontested
+
+**Level 2 (Container)**
+
+Shows major runtime components (applications, databases, file systems).
+
+**Include when**:
+- You're agreeing on deployment architecture
+- Technology choices for major components are part of the decision
+- Operational concerns (scalability, availability) are in your top 3 architectural characteristics
+- Multiple runtime processes or databases are involved
+- Infrastructure costs need to be understood for TCO analysis
+
+**Skip when**:
+- Simple single-container application
+- Deployment model is standard and non-controversial
+
+**Level 3 (Component)**
+
+Shows internal structure within a container.
+
+**Include when**:
+- Maintainability is a top-3 architectural characteristic
+- Internal structure significantly affects the agreement
+- Multiple teams will work on different components simultaneously
+- You're establishing module boundaries to enable parallel development
+- Domain-driven design with bounded contexts is critical
+
+**Skip when**:
+- Small team working together on the entire codebase
+- Internal structure can evolve during implementation
+- Component boundaries are obvious or can be decided during Apply phase
+
+**Level 4 (Code)**
+
+Shows detailed class/interface design.
+
+**Include when**:
+- Specific design patterns are critical to the agreement
+- A novel approach requires detailed explanation upfront
+- Team needs alignment on complex domain model
+
+**Skip when**:
+- Always, unless explicitly required—code evolves rapidly and diagrams become stale
+- Code-level details are better expressed in actual code or ADRs
+
+#### UML Diagrams: Use Selectively
+
+UML diagrams can clarify specific aspects, but avoid comprehensive UML documentation.
+
+**Sequence Diagrams**
+
+Shows interactions between components over time.
+
+**Include when**:
+- Complex interactions between components need to be explicit
+- Timing, ordering, or protocol details are critical to the agreement
+- Multiple teams need to coordinate on integration contracts
+- Asynchronous workflows or event-driven patterns need clarification
+
+**Skip when**:
+- Simple request-response patterns that can be described in text
+- Interactions are standard REST/RPC calls without special ordering
+
+**State Diagrams**
+
+Shows system states and transitions.
+
+**Include when**:
+- System behavior is state-driven and transitions are complex
+- Different stakeholders have different assumptions about system states
+- State management is a key architectural decision (workflow engines, state machines)
+- Compliance requires explicit state transition documentation
+
+**Skip when**:
+- Stateless or simple CRUD operations
+- State logic is straightforward
+
+**Deployment Diagrams**
+
+Shows physical/cloud infrastructure topology.
+
+**Include when**:
+- Physical/cloud infrastructure is a key decision
+- Cost, availability, or compliance drive deployment choices
+- Operations team needs to agree on topology upfront
+- Multi-region or complex networking is involved
+
+**Skip when**:
+- Standard single-region cloud deployment
+- Infrastructure details can be decided during implementation
+
+**Class Diagrams**
+
+Shows object-oriented class structures.
+
+**Include when**:
+- Agreeing on domain model boundaries in domain-driven design (bounded contexts)
+- Specific inheritance or interface contracts are critical to the agreement
+
+**Skip when**:
+- Always, unless explicitly required—too detailed for most agreements, becomes stale quickly
+
+#### How to Decide What to Include
+
+Ask these questions to determine which diagrams to create:
+
+**1. What are our top 3 architectural characteristics?**
+- Scalability → Include C4 Level 2 (Container) and Deployment diagrams
+- Maintainability → Include C4 Level 3 (Component)
+- Availability → Include C4 Level 2 (Container) and Deployment diagrams
+- Performance → Include Sequence diagrams for critical paths
+
+**2. What assumptions are stakeholders making?**
+- Diagram the areas where people have different mental models
+- If three stakeholders describe the architecture three different ways, you need diagrams
+
+**3. What decisions are hard to reverse?**
+- Document high-risk, high-cost choices explicitly
+- Technology selection, deployment model, major integration points
+
+**4. What will other teams need to integrate with?**
+- Provide just enough detail for clear contracts
+- Context diagrams for boundaries, sequence diagrams for protocols
+
+#### Decision Framework by Scenario
+
+| Scenario | Recommended Diagrams | Why |
+|----------|---------------------|-----|
+| New microservice in existing system | C4 Level 1 (Context), Level 2 (Container) | Shows how it fits into landscape and deployment model |
+| Refactoring monolith module | C4 Level 3 (Component) | Clarifies new internal boundaries without over-documenting |
+| Complex event-driven workflow | Sequence diagram, State diagram | Makes asynchronous interactions and state transitions explicit |
+| Choosing database technology | Deployment diagram, trade-off table | Shows physical deployment and decision rationale |
+| Defining domain model boundaries | C4 Level 3, possibly simple class diagram | Establishes bounded contexts and key entities |
+| Multi-team parallel development | C4 Level 2 (Container), Level 3 (Component) | Defines clear boundaries and integration contracts |
+| Cloud migration project | C4 Level 2 (Container), Deployment diagram | Shows new infrastructure topology and deployment model |
+
+#### Alternatives to Diagrams
+
+Sometimes prose and structured artifacts work better than diagrams:
+
+**Architecture Decision Records (ADRs)**:
+- Capture the "why" behind decisions (diagrams show the "what")
+- Document context, decision, and consequences
+- Record alternatives considered and why rejected
+- See [Architecture Decisions & Leadership](/study-guides/architecture/architecture-decision-making.html){:target="_blank" rel="noopener noreferrer"}
+
+**Textual Contracts**:
+- API specifications (OpenAPI/Swagger)
+- Event schemas (AsyncAPI, JSON Schema)
+- Database schemas (SQL DDL, entity definitions)
+
+**Trade-off Tables**:
+- Compare alternatives across multiple dimensions
+- Make evaluation criteria explicit
+- No diagrams required, just structured comparison
+
+#### How to Do This Well
+
+- **Match detail to risk** - High-risk decisions need more documentation, low-risk decisions need less
+- **Focus on decisions** - Document what you're agreeing to, not comprehensive system details
+- **Make diagrams scannable** - Use clear labels, consistent notation, avoid clutter
+- **Link to C4 model resources** - Stakeholders can reference [c4model.com](https://c4model.com){:target="_blank" rel="noopener noreferrer"} for notation details
+- **Use "diagrams as code" tools** - Mermaid, PlantUML, Structurizr keep diagrams version-controlled and easier to maintain
+- **Test understanding** - Ask stakeholders to explain the diagrams back to you
+- **Keep diagrams up to date during Agree** - Diagrams should evolve as design evolves
+- **Don't mandate all levels** - Create only what's needed for the specific agreement
+
+#### Red Flags
+
+- ❌ Creating all four C4 levels by default—massive overhead
+- ❌ Comprehensive UML documentation "because we might need it later"
+- ❌ Diagrams that nobody references during implementation
+- ❌ Updating diagrams manually after code changes (they'll drift immediately)
+- ❌ Spending more time on diagrams than on the actual design decisions
+- ❌ Using diagrams to avoid difficult conversations
+- ❌ Formal notation that stakeholders don't understand
+- ❌ Diagramming implementation details that should be decided during Apply phase
+
+#### The AAA Principle for Documentation
+
+> Create the **minimum documentation** needed to achieve **genuine agreement** on **high-risk decisions**.
+
+If a diagram doesn't help someone commit to a specific decision, don't create it. If prose or a simple table achieves the same clarity, use that instead.
+
+---
+
+### 3. Technical Proof of Concept
 
 **Validate critical technical assumptions before full commitment.**
 
@@ -143,7 +352,7 @@ Agree applies at every level of work:
 
 ---
 
-### 3. Quality & Testing Strategy
+### 4. Quality & Testing Strategy
 
 **Define how you'll ensure quality throughout development.**
 
@@ -187,7 +396,7 @@ Agree applies at every level of work:
 
 ---
 
-### 4. SLA/SLO Definition
+### 5. SLA/SLO Definition
 
 **Establish measurable performance and availability targets.**
 
@@ -233,7 +442,7 @@ Agree applies at every level of work:
 
 ---
 
-### 5. Detailed Planning & Budget
+### 6. Detailed Planning & Budget
 
 **Create concrete implementation plan with resource commitment.**
 
