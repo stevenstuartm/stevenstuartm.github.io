@@ -133,6 +133,8 @@ AWS reserves 5 IP addresses in every subnet:
 
 **Practical Impact:** A `/24` subnet has 256 total IPs, but only 251 are usable (256 - 5 reserved).
 
+**Note:** The Amazon-provided DNS server integrates with Route 53 for private hosted zones. For DNS routing strategies, health checks, and traffic management, see [AWS Route 53](aws-route53.md){:target="_blank" rel="noopener noreferrer"}.
+
 ---
 
 ## Routing and Gateways
@@ -242,6 +244,8 @@ Public Subnet 1b → NAT Gateway 1b → Private Subnet 1b
 - Create VPN connection or Direct Connect connection to VGW
 - Update route tables to route traffic destined for on-premises through VGW
 
+**For detailed hybrid connectivity architecture, resiliency patterns, and cost analysis, see [AWS Direct Connect & VPN](aws-direct-connect-vpn.md){:target="_blank" rel="noopener noreferrer"}.**
+
 ---
 
 ## Security Layers
@@ -331,11 +335,9 @@ You must explicitly allow both inbound traffic (port 80) AND outbound response t
 
 ## Private Connectivity: PrivateLink and VPC Endpoints
 
-### What is AWS PrivateLink?
+**AWS PrivateLink** enables private connectivity between VPCs, AWS services, and on-premises networks without exposing traffic to the public internet. It uses VPC endpoints to keep traffic within the AWS network.
 
-**AWS PrivateLink** enables private connectivity between VPCs, AWS services, and on-premises networks without exposing traffic to the public internet. It uses interface VPC endpoints powered by Elastic Network Interfaces (ENIs) with private IP addresses.
-
-**Key Benefit:** Traffic never traverses the public internet, reducing exposure to cyber threats and enabling secure architectures without internet connectivity.
+**Key Benefit:** Traffic never traverses the public internet, reducing exposure to threats, improving security posture, and often reducing costs.
 
 ### VPC Endpoint Types
 
@@ -347,23 +349,9 @@ AWS provides three types of VPC endpoints:
 | **Interface Endpoint** | 130+ AWS services + SaaS | PrivateLink (ENIs with private IPs) | Hourly + data processing | Accessing AWS services from private subnets without NAT/IGW |
 | **Gateway Load Balancer Endpoint** | Third-party security appliances | PrivateLink | Hourly + data processing | Traffic inspection with third-party appliances |
 
----
-
 ### Gateway Endpoints (S3 and DynamoDB)
 
-**What They Are:**
-
 Gateway endpoints add routes to your route tables directing traffic destined for S3 or DynamoDB through the endpoint instead of an internet gateway or NAT gateway.
-
-**How They Work:**
-
-```
-Route Table Entry:
-Destination: pl-12345678 (S3 prefix list)
-Target: vpce-abcd1234 (gateway endpoint)
-```
-
-When instances make requests to S3 or DynamoDB, the VPC router directs traffic through the gateway endpoint using AWS's internal network.
 
 **Key Characteristics:**
 - No ENIs in your subnets (just route table entries)
@@ -371,196 +359,54 @@ When instances make requests to S3 or DynamoDB, the VPC router directs traffic t
 - Highly available by default (regional service)
 - Can attach endpoint policies to control access
 
+**Cost Impact:**
+- Without gateway endpoint: $0.045/GB through NAT gateway + data transfer
+- With gateway endpoint: Data transfer charges only
+- For workloads transferring large amounts of S3/DynamoDB data, this saves significant cost
+
 **When to Use:**
 - ✅ Always for S3 and DynamoDB access from within the VPC
-- ✅ Cost optimization (eliminates NAT gateway data processing charges for S3/DynamoDB traffic)
+- ✅ Cost optimization (eliminates NAT gateway data processing charges)
 - ✅ Security (traffic stays within AWS network)
 
-**Example Use Case:**
+### Interface Endpoints (AWS Services and SaaS)
 
-EC2 instances in private subnets need to read/write to S3 without routing through NAT gateway:
-
-1. Create S3 gateway endpoint
-2. Associate with route tables for private subnets
-3. Instances now access S3 privately (no NAT gateway charges)
-
-**Cost Impact:**
-
-Without gateway endpoint: $0.045/GB through NAT gateway + data transfer
-With gateway endpoint: Data transfer charges only
-
-For workloads transferring large amounts of S3 data, this saves significant cost.
-
----
-
-### Interface Endpoints (Everything Else)
-
-**What They Are:**
-
-Interface endpoints create ENIs with private IP addresses in your subnets. These ENIs serve as entry points for traffic destined for supported AWS services.
-
-**Supported Services (130+):**
-- **Management:** Systems Manager, CloudWatch, CloudWatch Logs, CloudTrail
-- **Security:** Secrets Manager, KMS, IAM, STS
-- **Compute:** Lambda, ECS, EKS, Step Functions
-- **Storage:** EFS, FSx, S3 (for on-premises access)
-- **Database:** RDS, Aurora, DynamoDB, ElastiCache
-- **Integration:** SNS, SQS, EventBridge, Kinesis
-- **Third-party SaaS:** Snowflake, Splunk, Datadog, MongoDB Atlas
+Interface endpoints create ENIs with private IP addresses in your subnets, serving as entry points for traffic destined for 130+ AWS services and third-party SaaS providers.
 
 **How They Work:**
-
-1. You create interface endpoint for specific service (e.g., com.amazonaws.us-east-1.ssm)
+1. Create interface endpoint for specific service (e.g., `com.amazonaws.us-east-1.ssm`)
 2. AWS creates ENI in specified subnets with private IPs
-3. AWS assigns private DNS name (e.g., `ssm.us-east-1.amazonaws.com`) that resolves to ENI private IPs
-4. Your applications use standard service endpoints; DNS resolves to private IPs automatically
+3. Private DNS resolves service endpoints to ENI private IPs automatically
+4. Applications use standard service endpoints with no code changes
 
 **Key Characteristics:**
 - ENIs deployed in your subnets (one per AZ for high availability)
 - Charged hourly per endpoint + data processing ($0.01/GB in most regions)
 - Can attach security groups to control access
 - Support endpoint policies for fine-grained control
-- Private DNS automatically resolves service endpoints to private IPs
+
+**Cost Comparison:**
+
+| Approach | Cost per AZ | Data Processing | Security |
+|----------|-------------|-----------------|----------|
+| NAT Gateway | $0.045/hour + $0.045/GB | Higher cost | Traffic routes through internet gateway |
+| Interface Endpoints | $0.01/hour per endpoint + $0.01/GB | Lower cost | Traffic stays private |
+
+For workloads making frequent AWS API calls, interface endpoints are often cheaper and more secure than NAT gateway.
 
 **When to Use:**
-- ✅ Private subnets need AWS service access without internet gateway or NAT gateway
+- ✅ Private subnets need AWS service access without NAT/IGW
 - ✅ Cost optimization (eliminate NAT gateway charges for AWS API calls)
 - ✅ Security compliance requires no internet routing
 - ✅ On-premises systems need private access to AWS services (via Direct Connect or VPN)
 
-**Example Use Case:**
+### PrivateLink Best Practices
 
-Lambda functions in private subnets need to access Secrets Manager and Parameter Store:
-
-1. Create interface endpoints for Secrets Manager and SSM
-2. Deploy endpoints in private subnets across multiple AZs
-3. Lambda functions now access services privately (no NAT gateway needed)
-
-**Cost Comparison:**
-
-| Approach | Cost | Security |
-|----------|------|----------|
-| NAT Gateway | $0.045/hour per AZ + $0.045/GB | Traffic routes through internet gateway |
-| Interface Endpoints | $0.01/hour per endpoint per AZ + $0.01/GB | Traffic stays private |
-
-For workloads making frequent AWS API calls, interface endpoints can be cheaper and more secure than NAT gateway.
-
----
-
-### PrivateLink for Accessing Third-Party SaaS
-
-**Use Case:** Connect to SaaS providers (Snowflake, Splunk, Datadog, MongoDB Atlas) that offer PrivateLink endpoints.
-
-**How It Works:**
-
-1. SaaS provider creates VPC endpoint service in their AWS account
-2. Provider shares service name (e.g., `com.amazonaws.vpce.us-east-1.vpce-svc-12345678`)
-3. You create interface endpoint in your VPC pointing to provider's service
-4. Your applications access SaaS privately via endpoint private IPs
-
-**Benefits:**
-- No traffic traverses public internet
-- No need for VPN or Direct Connect
-- Simplified security (no IP whitelisting)
-- Reduced latency (stays on AWS backbone)
-
-**Example:**
-
-Accessing Snowflake data warehouse privately:
-
-1. Snowflake provides PrivateLink service name for your region
-2. Create interface endpoint in your VPC
-3. Update Snowflake connection string to use endpoint DNS name
-4. Applications connect to Snowflake privately
-
----
-
-### PrivateLink for Exposing Your Own Services
-
-**Use Case:** You're a SaaS provider wanting to offer private connectivity to customers.
-
-**How It Works:**
-
-1. **Deploy Network Load Balancer** in your VPC with your service as targets
-2. **Create VPC endpoint service** connected to the NLB
-3. **Grant access** to customer AWS accounts (allowlist or require acceptance)
-4. **Customers create interface endpoints** in their VPCs pointing to your service
-5. **Customers access your service** privately from their VPCs
-
-**Benefits:**
-- Scales to thousands of customers without complex networking
-- Customers control endpoint lifecycle
-- You don't need to manage customer VPC details
-- No VPC peering required (avoids CIDR overlap issues)
-- Traffic stays on AWS backbone
-
-**Example:**
-
-SaaS application exposing APIs to customers:
-
-1. Deploy API servers behind NLB
-2. Create VPC endpoint service
-3. Share service name with customers
-4. Customers create endpoints and access APIs privately
-
----
-
-### PrivateLink Best Practices (2024)
-
-**1. High Availability:**
-
-Deploy interface endpoints in at least two Availability Zones for production workloads.
-
-```
-Endpoint Configuration:
-  Service: com.amazonaws.us-east-1.ssm
-  Subnets:
-    - private-subnet-1a (AZ 1)
-    - private-subnet-1b (AZ 2)
-  Security Groups: endpoint-sg
-```
-
-**2. Cost Optimization for S3:**
-
-- Use **gateway endpoints** for S3 access from VPC (free)
-- Use **interface endpoints** for S3 access from on-premises (charged, but required)
-
-Gateway endpoints don't work with on-premises traffic (Direct Connect/VPN); interface endpoints are required for hybrid scenarios.
-
-**3. Security Controls:**
-
-- Attach security groups to interface endpoints (control source IPs/security groups)
-- Use endpoint policies to restrict access (e.g., allow specific S3 buckets only)
-
-**Example Endpoint Policy (S3 Gateway Endpoint):**
-
-```json
-{
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:*",
-      "Resource": [
-        "arn:aws:s3:::my-allowed-bucket",
-        "arn:aws:s3:::my-allowed-bucket/*"
-      ]
-    }
-  ]
-}
-```
-
-This restricts the endpoint to one specific bucket.
-
-**4. Private DNS:**
-
-Enable DNS hostnames and DNS resolution in your VPC settings. This allows private DNS names to automatically resolve to endpoint private IPs.
-
-**5. Centralized Endpoints with VPC Sharing:**
-
-Share interface endpoints across multiple accounts using AWS Resource Access Manager (RAM). Deploy endpoints once in shared VPC, reduce costs across organization.
-
----
+1. **High Availability:** Deploy interface endpoints in at least two Availability Zones for production workloads
+2. **Cost Optimization for S3:** Use gateway endpoints for VPC access (free), interface endpoints for on-premises access only
+3. **Security Controls:** Attach security groups and endpoint policies to restrict access
+4. **Private DNS:** Enable DNS hostnames and resolution in VPC settings for automatic DNS resolution
+5. **Centralized Endpoints:** Share endpoints across accounts using AWS Resource Access Manager (RAM)
 
 ### When to Use PrivateLink vs. VPC Peering
 
@@ -569,11 +415,11 @@ Share interface endpoints across multiple accounts using AWS Resource Access Man
 | Exposing specific services to many consumers (SaaS model) | Full VPC-to-VPC connectivity needed |
 | Provider-consumer relationship | Peer-to-peer trust relationship |
 | Need to scale to thousands of consumers | Small number of VPC connections (2-10) |
-| Consumer controls endpoint lifecycle | Both sides need to reach all resources |
-| Don't want to manage consumer VPC details | Bidirectional network access required |
 | Accessing AWS services privately | Connecting trusted partner VPCs |
 
 **Key Principle:** PrivateLink is one-way (provider → consumer); VPC peering is bidirectional.
+
+**For detailed PrivateLink architecture patterns, Transit Gateway integration, cost optimization strategies, and multi-VPC connectivity, see [AWS PrivateLink & Transit Gateway](aws-privatelink-transit-gateway.md){:target="_blank" rel="noopener noreferrer"}.**
 
 ---
 
@@ -626,6 +472,8 @@ Private Subnet (Database)
 - ALB security group: Allow 80/443 from `0.0.0.0/0`
 - Application security group: Allow traffic only from ALB security group
 - Database security group: Allow traffic only from application security group
+
+**For detailed load balancing strategies, target group configuration, and health check patterns, see [AWS Elastic Load Balancing](aws-elastic-load-balancing.md){:target="_blank" rel="noopener noreferrer"}.**
 
 **Trade-Offs:**
 - ✅ Defense in depth (multiple security layers)
@@ -776,6 +624,8 @@ Private Subnets
 **Example: 10 VPCs**
 - **Without Transit Gateway:** 45 VPC peering connections
 - **With Transit Gateway:** 10 attachments to transit gateway (dramatically simpler)
+
+**For detailed Transit Gateway routing, isolation patterns, multi-region connectivity, and cost analysis, see [AWS PrivateLink & Transit Gateway](aws-privatelink-transit-gateway.md){:target="_blank" rel="noopener noreferrer"}.**
 
 ---
 
