@@ -314,7 +314,13 @@
           "name": "Networking",
           "description": "VPC, subnets, routing, PrivateLink, and network connectivity",
           "guides": [
-            "infrastructure/aws/aws-vpc-architecture.md"
+            "infrastructure/aws/aws-vpc-architecture.md",
+            "infrastructure/aws/aws-route53.md",
+            "infrastructure/aws/aws-cloudfront.md",
+            "infrastructure/aws/aws-elastic-load-balancing.md",
+            "infrastructure/aws/aws-api-gateway.md",
+            "infrastructure/aws/aws-direct-connect-vpn.md",
+            "infrastructure/aws/aws-privatelink-transit-gateway.md"
           ]
         },
         {

@@ -14,7 +14,6 @@ tags: [sdlc, methodology, agile, product-development, basecamp]
 4. [When to Use Shape Up](#when-to-use-shape-up)
 5. [Alignment with AAA Cycle](#alignment-with-aaa-cycle)
 6. [Common Pitfalls and How to Avoid Them](#common-pitfalls-and-how-to-avoid-them)
-7. [Resources](#resources)
 
 ---
 
@@ -55,6 +54,86 @@ Shape Up runs three parallel tracks:
 ## The Shape Up Workflow
 
 Shape Up has three main phases that repeat: **Shaping**, **Betting**, and **Building**.
+
+```text
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          SHAPE UP WORKFLOW CYCLE                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+TRACK 1: SHAPING (Ongoing, 1-2 Cycles Ahead)
+─────────────────────────────────────────────────────────────────────────
+│
+│  Step 1: Set Boundaries (Define appetite, problem, scope)
+│     │
+│     ▼
+│  Step 2: Rough Out Elements (Breadboards, fat marker sketches)
+│     │
+│     ▼
+│  Step 3: Address Risks & Rabbit Holes (Technical spikes, de-scope)
+│     │
+│     ▼
+│  Step 4: Write the Pitch (Problem, Appetite, Solution, No-Gos)
+│     │
+│     └──────────────────────────────┐
+│                                    │
+│                                    ▼
+TRACK 2: BETTING (Every 6 Weeks)
+─────────────────────────────────────────────────────────────────────────
+                                     │
+                    Betting Table Meeting (2-4 hours)
+                                     │
+                    ┌────────────────┼────────────────┐
+                    │                │                │
+                   Bet             Bet             Defer
+                (Team A)        (Team B)        (Try again)
+                    │                │                │
+                    └────────────────┼────────────────┘
+                                     │
+                                     ▼
+TRACK 3: BUILDING (6 Weeks)
+─────────────────────────────────────────────────────────────────────────
+                                     │
+                        Week 1-2: Get Oriented
+                        (Understand pitch, plan approach)
+                                     │
+                                     ▼
+                        Week 3-4: Build Core
+                        (Vertical slices, start in the middle)
+                                     │
+                                     ▼
+                        Week 5-6: Finish & Ship
+                        (Scope hammering, deploy to production)
+                                     │
+                   ┌─────────────────┴─────────────────┐
+                   │                                   │
+               Shipped ✓                         Not Finished
+                   │                                   │
+                   ▼                                   ▼
+                                            Circuit Breaker Trips
+                                            (Re-evaluate, reshape,
+                                             or abandon)
+                                                       │
+                                     ┌─────────────────┴─────────────────┐
+                                     │                                   │
+                                     ▼                                   ▼
+COOL-DOWN (2 Weeks)
+─────────────────────────────────────────────────────────────────────────
+
+    • Bug fixes, refactoring, exploration
+    • No scheduled work or commitments
+    • Teams shape ideas for next cycle
+    • Prevents burnout
+                                     │
+                                     ▼
+                            Cycle Repeats
+                        (Back to Betting Table)
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  TIMELINE: 8-Week Cycle = 6 Weeks Building + 2 Weeks Cool-Down             │
+│  THREE PARALLEL TRACKS: Shaping future work | Betting on next cycle |       │
+│                         Building current cycle                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ### Phase 1: Shaping (Senior Staff)
 
@@ -147,7 +226,6 @@ A formal write-up that makes the case for the project. This goes to the betting 
 
 **Appetite:**
 - How much time is this worth? (2 weeks, 6 weeks, etc.)
-- Why this appetite? (based on business value, opportunity cost)
 
 **Solution:**
 - The shaped concept with breadboards or fat marker sketches
@@ -210,23 +288,9 @@ At the start of each six-week cycle, stakeholders hold a **betting table** meeti
 
 **No Backlogs:**
 
-Shape Up explicitly rejects the concept of maintaining a backlog of shaped pitches:
+Shape Up rejects maintaining backlogs of shaped pitches. Ideas that don't get bet on disappear rather than accumulate. If an idea is truly valuable, it will resurface naturally. Old ideas become stale and no longer represent current priorities. Backlogs create false urgency and guilt about being "behind."
 
-**Why no backlogs:**
-- Ideas that don't get bet on don't get added to a pile
-- If an idea is truly valuable, it will come up again naturally
-- Old ideas get stale and no longer represent current priorities or context
-- Backlogs create false urgency and guilt ("we're behind!")
-- Saying "no" is easier when things disappear rather than accumulate
-
-**What about good ideas that don't get bet on?**
-- They might come up again next betting cycle (if still relevant)
-- Someone might reshape them with better constraints
-- They might be replaced by better ideas
-- If they never come up again, they weren't that valuable
-
-**Decentralized idea capture:**
-Teams maintain their own notes on bug fixes, small improvements, and ideas. These inform cool-down work and future shaping, but there's no central "official" backlog.
+Teams maintain their own notes on improvements and bugs, which inform cool-down work and future shaping, but there's no central official backlog.
 
 ---
 
@@ -349,89 +413,15 @@ When a cycle starts, teams don't immediately start coding:
 
 **Work in Vertical Slices:**
 
-**Don't:** Work horizontally (all backend, then all frontend)
-```
-Week 1-3: Build entire backend API
-Week 4-6: Build entire frontend UI
-↓
-Problem: Integration happens late, surprises at the end
-```
-
-**Do:** Work vertically (complete one piece end-to-end, then another)
-```
-Week 1-2: "View notifications" end-to-end (backend + frontend + tests)
-Week 3-4: "Mark as read" end-to-end
-Week 5-6: "Notification settings" end-to-end
-↓
-Benefit: Integration is continuous, something working from day one
-```
-
-**Why vertical slices:**
-- Integration problems surface immediately (not at the end)
-- Visible progress from early in the cycle
-- Can stop at any point and have something working
-- Reduces risk by validating the approach early
-- Easier to make scope trade-offs (cut last slice if needed)
+Build complete features end-to-end (one slice at a time) rather than horizontal layers (all backend, then all frontend). This ensures integration happens continuously, visible progress from day one, and the ability to cut scope cleanly if needed. See [Build One Piece at a Time](#build-one-piece-at-a-time) for detailed examples.
 
 ---
 
 **The Hill Chart:**
 
-Shape Up uses a unique progress tracking metaphor called the "Hill Chart":
+Shape Up tracks progress with a "Hill Chart" metaphor. **Uphill** (left): figuring out unknowns, high uncertainty. **Top**: clarity achieved, approach figured out. **Downhill** (right): clear execution of known solution, predictable progress.
 
-```
-    Problem     |    Solution
-    --------    |    --------
-       /\       |       \
-      /  \      |        \
-     /    \     |         \
-    /------\----|----------\
-  Uphill        Top      Downhill
-(figuring out) (figured  (executing)
-                 out)
-```
-
-**Three phases of work:**
-
-**Uphill (left side):**
-- Work where you're still figuring out unknowns
-- High uncertainty
-- "I'm not sure how to solve this yet"
-- Might move slowly or backwards as understanding changes
-
-**Top of the Hill:**
-- You've figured out the approach
-- Clarity achieved
-- "I know what to do now"
-
-**Downhill (right side):**
-- Clear execution of known solution
-- Just executing what you've figured out
-- Progress is predictable
-- "Just typing it in"
-
-**How teams use Hill Charts:**
-
-Teams place work items (scopes) on the hill and move them as work progresses:
-- Start everything on left (uphill)
-- Move right as understanding increases
-- Get over the hill (reach clarity)
-- Move down (execute on the solution)
-
-**Why Hill Charts are better than percent complete:**
-
-- **"50% complete"** is meaningless - which 50%? The hard part or easy part?
-- **"Uphill"** clearly signals "still figuring this out" - might take longer
-- **"Downhill"** clearly signals "just execution" - should go faster
-- Leaders can identify work stuck uphill and offer help
-
-**Example Hill Chart tracking:**
-```
-Week 1: [Notification List UI] is uphill at 30%
-Week 2: [Notification List UI] is uphill at 70% (approaching top)
-Week 3: [Notification List UI] is over the hill, downhill at 20%
-Week 4: [Notification List UI] is downhill at 80%, nearly done
-```
+Teams place work items on the hill and move them right as understanding increases. Unlike "50% complete" (which doesn't indicate if the hard part is done), "uphill" clearly signals ongoing discovery while "downhill" signals predictable execution. Leaders can identify work stuck uphill and offer help.
 
 ---
 
@@ -470,38 +460,14 @@ If work doesn't ship in six weeks, the project **automatically dies**. There's *
 - Creates urgency to make scope trade-offs
 
 **What happens if work doesn't finish:**
-- Project is not automatically scheduled for next cycle
-- Team and leadership evaluate:
-  - Was the shaping poor? (Problem wasn't well understood)
-  - Was the scope underestimated? (Should have been split into two cycles)
-  - Did unexpected issues arise? (New information changes priority)
-  - Is this still the most valuable thing to work on?
 
-**Options:**
-- Re-shape with reduced scope and re-bet (if still high value)
-- Split into multiple shaped projects for future cycles
-- Abandon (if no longer valuable or too costly)
-- Let it rest and potentially reshape later with fresh perspective
-
-**The circuit breaker is a feature, not a bug.** It prevents sunk cost fallacy and forces continuous re-evaluation of priorities.
+Project is not automatically scheduled for next cycle. Team and leadership re-evaluate whether to reshape with reduced scope, split into multiple projects, or abandon. This prevents sunk cost fallacy and forces honest assessment of whether shaping was poor, scope was underestimated, or priorities have changed.
 
 ---
 
 **Done Means Deployed:**
 
-A cycle is complete when the work is **deployed to production**, not when code is "done" in a branch.
-
-**Definition of done:**
-- Code is merged to main
-- Tests are passing
-- Deployed to production
-- Available to users (or behind feature flag if needed)
-
-**This means:**
-- Teams think about deployment from day one
-- QA and testing happen throughout the cycle, not at the end
-- No "hardening sprints" or "QA phase"
-- Teams own quality, not a separate QA team
+A cycle is complete when work is deployed to production and available to users, not when code is "done" in a branch. Teams think about deployment from day one, with testing and QA happening throughout the cycle. No separate QA phase or hardening sprints—teams own quality.
 
 ---
 
@@ -509,111 +475,31 @@ A cycle is complete when the work is **deployed to production**, not when code i
 
 ### Fixed Time, Variable Scope
 
-**Traditional approach:**
-- **Fixed scope, variable time**: Project takes as long as it takes
-- Leads to delays, missed deadlines, scope creep
-- Teams estimate, then estimate again, then add padding
+Six weeks is non-negotiable—scope adjusts to fit time. Appetite drives design constraints, forcing prioritization upfront and throughout. This prevents scope creep, delivers value predictably every six weeks, and builds a culture of shipping over perfection.
 
-**Shape Up approach:**
-- **Fixed time, variable scope**: Fit the best solution within time constraints
-- Six weeks is non-negotiable
-- Scope adjusts to fit time
-- Appetite drives design constraints
-
-**Why this works:**
-- Forces prioritization and trade-offs upfront and throughout
-- Prevents scope creep and endless projects
-- Delivers value predictably (every 6 weeks)
-- Builds a culture of shipping over perfection
-- Prevents analysis paralysis
-
-**Example:**
-- Traditional: "This will take 8-12 weeks, we'll let you know when it's done"
-- Shape Up: "We have 6 weeks. What's the best version we can ship in that time?"
+Traditional approach asks "How long will this take?" Shape Up asks "What's the best version we can ship in six weeks?"
 
 ---
 
 ### No Estimates
 
-Shape Up doesn't use story points, hour estimates, or velocity:
+Shape Up uses **appetite** ("How much time is this worth?") instead of story points, hour estimates, or velocity. Appetite is decided by business value and becomes a design constraint. Shapers work within appetite when designing; teams make scope trade-offs to fit. If something can't be done within appetite, reshape or abandon it.
 
-**Instead of estimates:**
-- Use **appetite** - "How much time is this worth?"
-- Appetite is decided by business value and opportunity cost
-- Appetite becomes a design constraint
-
-**Why no estimates:**
-- Estimates are often wrong and create false precision
-- Arguing over estimates wastes time
-- Story points create artificial metrics divorced from value
-- Velocity games (sandbagging, gaming the system)
-
-**Instead:**
-- Shapers work within appetite constraints when designing
-- Teams make scope trade-offs to fit within appetite
-- If something can't be done within appetite, reshape or abandon it
-
-**Example:**
-- Traditional: "Feature X is estimated at 40 story points, velocity is 30, so 1.3 sprints"
-- Shape Up: "Feature X is worth 2 weeks. If we can't do it in 2 weeks, we shouldn't do it or we need to reshape it."
+Traditional: "Feature X is 40 story points, velocity is 30, so 1.3 sprints." Shape Up: "Feature X is worth 2 weeks. If we can't do it in 2 weeks, reshape it."
 
 ---
 
 ### Autonomy and Trust
 
-Teams are trusted to:
-- Figure out implementation details
-- Make technical decisions
-- Organize their own work
-- Adjust scope within boundaries
-- Ask for help when needed (but not micromanaged)
-- Decide on their own processes
-
-**No required ceremonies:**
-- No daily standups (if team doesn't want them)
-- No sprint planning (happens once per 6-week cycle)
-- No retrospectives (can do if team wants)
-- No story point poker
-
-**Teams choose their own practices:**
-- How to coordinate
-- When to meet
-- How to track work
-- What tools to use
-
-**Why this works:**
-- Attracts and retains talented people (autonomy is motivating)
-- Faster decision-making (no waiting for approval)
-- Better solutions emerge from people close to the work
-- Higher morale and engagement
-- Treats people like adults
+Teams figure out implementation details, make technical decisions, organize their own work, and adjust scope within boundaries. No required ceremonies—no mandatory standups, sprint planning, retrospectives, or story point poker. Teams choose their own coordination practices, meeting schedules, and tools. This autonomy attracts talented people, enables faster decisions, produces better solutions from those close to the work, and increases engagement.
 
 ---
 
 ### Start in the Middle
 
-**Don't** start with peripheral features:
-- Authentication/login
-- Settings and preferences
-- Permissions and roles
-- Edge cases and error handling
+Start with the core, novel part that solves the main problem and carries the risk, not peripheral features like authentication, settings, or permissions. Core problems are where uncertainty lies—starting early reveals if the shaped solution works. Peripheral features are well-understood and can be cut if time runs short.
 
-**Do** start with the core, novel part:
-- The thing that hasn't been built before
-- The feature that solves the main problem
-- The unknown or risky part
-- The thing that makes this project valuable
-
-**Why:**
-- Core problems are where the risk lies
-- Starting early reveals if the shaped solution actually works
-- Peripheral features are well-understood and lower risk (do them later)
-- Can cut peripheral features if time runs short, but not the core
-- Core work teaches you what the periphery needs to be
-
-**Example - Building a Calendar Feature:**
-- ❌ Bad: Week 1: Auth, Week 2: Settings, Week 3-4: Permissions, Week 5-6: Calendar views (run out of time on the core!)
-- ✅ Good: Week 1-4: Core calendar views and event creation (the novel part), Week 5: Settings if time, Week 6: Polish and edges
+Example: When building a calendar feature, start with calendar views and event creation (weeks 1-4), then add settings and polish (weeks 5-6). Don't spend weeks 1-4 on auth/permissions and run out of time for the actual calendar.
 
 ---
 
@@ -659,357 +545,73 @@ Week 5-6: "Settings" - backend + frontend + tests
 
 ### Shape Up Works Well For:
 
-**Product development teams:**
-- Building new features for existing products
-- Enhancing established products
-- Startups building product-market fit
-
-**Organizations that value shipping over process:**
-- Focus on outcomes, not activity
-- Comfortable with autonomy
-- Willing to make trade-offs
-
-**Teams of 2-3+ experienced developers:**
-- Senior enough to make decisions
-- Small enough to avoid coordination overhead
-- Experienced enough to handle ambiguity
-
-**Projects with uncertainty:**
-- Requirements aren't fully known upfront
-- Exploration and discovery are part of the work
-- Trade-offs will be needed
-
-**Teams comfortable with autonomy:**
-- Don't need detailed task breakdowns
-- Can self-organize
-- Take ownership and responsibility
-
-**Organizations willing to say no:**
-- Can let ideas die if not valuable enough
-- Comfortable without backlogs
-- Make explicit priority decisions
+Product development teams building or enhancing features, organizations that value shipping over process, teams of 2-3+ experienced developers who can handle ambiguity, projects with uncertainty requiring exploration, and organizations comfortable making explicit priority decisions and saying no to low-value work.
 
 ---
 
 ### Shape Up May Not Fit:
 
-**Brand new teams:**
-- Still learning to work together
-- Need more structure initially
-- May benefit from Scrum's explicit ceremonies
-
-**Strict fixed-scope contracts:**
-- Client services with defined deliverables
-- Fixed-bid contracts with no flexibility
-- Regulatory requirements for specific features
-
-**Highly regulated environments:**
-- Requiring detailed upfront documentation
-- Needing extensive sign-offs
-- Compliance-heavy industries (medical devices, aerospace)
-
-**Command-and-control culture:**
-- Micromanagement is the norm
-- Leaders uncomfortable with team autonomy
-- "That's not how we've always done it"
-
-**Teams that prefer detailed task breakdowns:**
-- Junior teams needing guidance
-- Distributed teams needing explicit coordination
-- Teams uncomfortable with ambiguity
-
-**Very short projects (< 2 weeks):**
-- Too short for meaningful shaping
-- Better handled during cool-down
-- Can batch into a larger shaped project
+Brand new teams still learning to work together, strict fixed-scope contracts or highly regulated environments requiring detailed upfront documentation, command-and-control cultures uncomfortable with team autonomy, junior or distributed teams needing detailed task breakdowns, or very short projects (< 2 weeks) better handled during cool-down.
 
 ---
 
 ### Adaptations for Your Context:
 
-Shape Up is adaptable - you don't have to follow it exactly:
-
-**Cycle length:**
-- **4 weeks** for teams moving faster or with shorter attention spans
-- **8 weeks** for larger, more complex projects
-- **6 weeks** (standard) balances focus and flexibility
-
-**Cool-down:**
-- **1 week** if your team prefers shorter breaks
-- **2 weeks** (standard) if you need the breathing room
-- **Flexible** - some teams skip cool-down if low technical debt
-
-**Betting table:**
-- **Formal** (scheduled meeting, documented decisions)
-- **Informal** (quick discussion, implicit decisions)
-- **Async** (written pitches, async decision-making)
-
-**Shaping:**
-- **Formal pitches** (written documents)
-- **Informal sketches** (lightweight, conversational)
-- **Vary by project size** (small projects need less shaping)
-
-**Hill charts:**
-- Optional - useful for leaders wanting visibility
-- Not required - teams can track work however they want
-- Some teams love them, others ignore them
-
-**Team size:**
-- **1-2 people** for small projects
-- **3-4 people** for larger projects
-- **Multiple teams** for very large projects (rare in Shape Up)
-
-**Mix with other methods:**
-- Use Shape Up for new features
-- Use Kanban for maintenance and support
-- Use Scrum for parts of the organization
-- Hybrid approaches are fine if they solve your problems
+Shape Up is adaptable. Adjust cycle length (4-8 weeks, 6 is standard), cool-down duration (1-2 weeks or flexible), betting table formality (formal meetings, informal discussions, or async), shaping approach (formal pitches or lightweight sketches), team size (1-2 for small projects, 3-4 for larger), and hill charts usage (optional). Mix with other methods—use Shape Up for features, Kanban for maintenance, or hybrid approaches as needed.
 
 ---
 
 ## Alignment with AAA Cycle
 
-Shape Up naturally aligns with AAA principles. The methodology was designed around similar values: understanding before commitment, clear agreements, and focused execution.
+Shape Up naturally aligns with [AAA Cycle](aaa-cycle.html) principles, making it one of the best operational frameworks for practicing the discipline. The three-phase structure maps cleanly: **Shaping = Align**, **Betting Table = Agree**, **Building = Apply**.
 
-### How Shape Up Supports AAA
+### Natural Compatibility
 
-**Align Phase: Shaping**
+Shape Up was designed around similar values as AAA:
+- **Alignment before commitment**: Don't bet on unshaped work; defer commitment until sufficient understanding
+- **Explicit agreements**: Betting table makes yes/no decisions with clear boundaries (appetite, must-haves, out of scope)
+- **Disciplined application**: Circuit breaker enforces time agreement; scope hammering respects appetite without cutting corners
+- **Outcomes over specifications**: Pitch defines problem and solution direction; teams have autonomy on implementation details
 
-Shaping is alignment work:
+### Friction Points and Resolution
 
-**What works:**
-- Dedicated time for understanding the problem
-- No commitment until problem is shaped
-- Explores feasibility and desirability together
-- Tests key assumptions through research and prototyping
+**Potential friction: Betting table can feel top-down**
 
-**How it maps to AAA:**
-- **Discovery**: Shapers research the problem space (talk to users, explore existing solutions, understand constraints)
-- **Feasibility**: Technical exploration during shaping (is this buildable in 6 weeks?)
-- **Boundaries**: Setting appetite defines scope alignment upfront (6 weeks, not infinite)
-- **No commitment yet**: Shaped work goes to betting table, not directly to teams
+Teams may receive assignments without participating in shaping, which can feel like "told what to build" rather than collaborative alignment.
 
-**Example:**
-Senior designer shapes "better notifications." Researches user complaints. Discovers problem isn't frequency of notifications, but lack of control. Shapes solution: notification preferences UI. Defines appetite: 2 weeks. Explores technical approach with engineer: feasible using existing preferences system. Now shaped work represents genuine alignment between user needs, technical feasibility, and available time.
-
----
-
-**Agree Phase: Betting Table**
-
-Betting table establishes agreement:
-
-**What works:**
-- Leadership reviews shaped work and decides what's worth doing
-- Commitment is "yes we'll do this" or "no we won't," not "maybe"
-- Team gets clear scope (the pitch) and time box (the appetite)
-- Fixed time, variable scope means agreement on priority, not every detail
-
-**How it maps to AAA:**
-- **Explicit commitment**: Bet on this work for this cycle
-- **Shared understanding**: Pitch communicates problem, solution, and constraints
-- **Scope agreement**: Team understands boundaries and what's out of scope
-- **Time agreement**: 6 weeks (or 2 weeks for small batch), not open-ended
-
-**Example:**
-Betting table reviews notification preferences pitch. Leadership agrees: this solves real user problem, appetite is reasonable, team has capacity. Commits to 6-week cycle. Team receives pitch document explaining problem, proposed solution, appetite, and explicitly what's out of scope (e.g., not redesigning entire settings page). Clear agreement exists before work starts.
-
----
-
-**Apply Phase: Building**
-
-Building phase applies the agreement:
-
-**What works:**
-- Team builds what was pitched (the agreement)
-- Scope hammering respects appetite (time boundary is agreement)
-- Team has autonomy on implementation details
-- Must-haves vs. nice-to-haves prevent feature creep
-- Circuit breaker (6 weeks max) prevents endless work
-
-**How it maps to AAA:**
-- **Honor agreement**: Build what was pitched, don't gold-plate
-- **Honor time**: 6-week circuit breaker enforces discipline
-- **Quality included**: Scope hammering, not corner cutting
-- **Adapt within bounds**: Team adjusts implementation details, but not core problem/solution
-
-**Example:**
-Team builds notification preferences. Discovers technical complexity in one area. Uses scope hammering: simplifies that feature rather than extending timeline. Delivers working notification preferences in 6 weeks. Honors agreement (user control over notifications) without honoring every imagined implementation detail.
-
----
-
-### Shape Up's Natural Alignment with AAA
-
-Shape Up was designed to solve many of the same problems AAA addresses:
-
-**Alignment before commitment:**
-- Shape Up: Don't bet on unshaped work
-- AAA: Don't commit without understanding
-
-**Fixed time forces quality agreements:**
-- Shape Up: 6-week appetite forces choosing what matters
-- AAA: Scope hammering over corner cutting
-
-**Outcomes, not specifications:**
-- Shape Up: Pitch defines problem and solution direction, not detailed spec
-- AAA: Agreement on what we're trying to achieve, not every implementation detail
-
-**Continuous stakeholder connection:**
-- Shape Up: Shapers are senior, understand business needs
-- AAA: Alignment means understanding stakeholder needs, not just requirements
-
-**Realistic commitments:**
-- Shape Up: Appetite based on value (is 6 weeks worth it?), not estimation accuracy
-- AAA: Defer commitment until sufficient understanding
-
----
-
-### Where Shape Up Can Tension with AAA
-
-**Tension 1: Betting table can feel like handing down decisions**
-
-**Potential problem:**
-- Senior leadership makes betting decisions
-- Teams receive assignments, didn't participate in shaping
-- Can feel like "told what to build" rather than collaborative
-
-**AAA requires:**
-- Alignment means shared understanding, not just communication
-- Teams should understand why this work matters
-- Opportunity to raise concerns before commitment
-
-**How Shape Up addresses this:**
-- Pitch document explains problem, rationale, research
+**Resolution:**
+- Include team leads in betting table (at least as observers)
+- Shapers consult with teams during shaping for technical feasibility
 - Teams can push back if pitch doesn't make sense
 - Cool-down period allows team input on shaping for next cycle
-- Senior shapers should understand team's reality
-
-**How to strengthen:**
-- Include team leads in betting table (at least as observers)
-- Shapers consult with teams during shaping (technical feasibility)
-- Betting table can say "needs more shaping" if team raises valid concerns
 
 ---
 
-**Tension 2: 6-week cycle might not match natural discovery rhythm**
+**Potential friction: Fixed 6-week cycle may not match discovery rhythm**
 
-**Potential problem:**
-- Some problems need 2 weeks of exploration before committing to 6 weeks
-- Shaping happens outside the cycle, team might discover shaping was wrong
-- Circuit breaker can feel arbitrary (why must this be done in exactly 6 weeks?)
+Some problems need exploration during building, and the circuit breaker can feel arbitrary when shaping assumptions prove wrong.
 
-**AAA requires:**
-- Realignment when discovery changes understanding
-- Pause and realign rather than push through with wrong solution
-
-**How Shape Up addresses this:**
-- Cool-down period provides time for reflection and realignment
-- Unfinished work doesn't automatically get re-bet (re-evaluate if still worth doing)
-- Hill charts surface when teams are thrashing (signal to pause and realign)
-- Teams can call out "this pitch was wrong" during building
-
-**How to strengthen:**
-- Use first week of cycle for team-level shaping (validate the pitch)
-- Hill charts trigger conversations when stuck in "figuring things out"
+**Resolution:**
+- Use first week of cycle for team-level validation of the pitch
+- Hill charts surface when teams are stuck "uphill" (signal to pause and realign)
+- Unfinished work doesn't auto-rollover; re-evaluate if still worth doing
 - Explicit permission to stop and realign if fundamental assumptions wrong
-- Cool-down retrospectives discuss whether shaping was sufficient
 
 ---
 
-**Tension 3: Hand-off between shaping and building can lose context**
+**Potential friction: Hand-off between shaping and building can lose context**
 
-**Potential problem:**
-- Shaper understands problem deeply, team gets pitch document
-- Context and reasoning might not transfer completely
-- Team might build "to spec" rather than solving the real problem
+Shapers understand the problem deeply, but teams receive a pitch document. Context and reasoning might not transfer completely.
 
-**AAA requires:**
-- Shared understanding, not just communicated specifications
-- Team should understand why, not just what
-
-**How Shape Up addresses this:**
-- Pitch includes problem statement (not just solution)
-- Kick-off meeting allows questions
-- Shapers available during building to clarify intent
-- Team has autonomy to adjust approach if better solution found
-
-**How to strengthen:**
+**Resolution:**
 - Shapers present pitches to teams directly (not just written pitch)
-- Include "why this matters" and "research findings" in every pitch
-- Encourage teams to push back if pitch doesn't make sense
-- Shapers check in at hill chart milestones (not to micromanage, to ensure alignment)
+- Include "why this matters" and research findings in every pitch
+- Shapers available during building to clarify intent
+- Teams have autonomy to adjust approach if better solution found
 
----
+### Why Shape Up Works Well for AAA
 
-### Using Shape Up to Strengthen AAA
-
-**Make shaping explicitly about alignment:**
-- Frame shaping as "alignment work," not "design work"
-- Shapers should test assumptions, not just define solutions
-- Include user research, technical exploration, and business validation in shaping
-- Pitch document should demonstrate alignment, not just describe features
-
-**Use betting table for explicit agreement:**
-- Betting table says "we commit to this" or "we don't," no maybes
-- Pitch defines boundaries (appetite, must-haves, out of scope)
-- Team understands why this work is valuable (not just that it's assigned)
-
-**Hill charts surface realignment needs:**
-- When team stuck in "uphill" phase too long, pause and realign
-- "Downhill" work should flow; if it doesn't, assumptions might be wrong
-- Use hill charts to trigger conversations, not just track progress
-
-**Cool-down provides realignment space:**
-- Reflect on whether cycle achieved intended outcomes
-- Decide whether unfinished work should be re-bet (might not be worth it)
-- Time to test assumptions before committing to next cycle
-
-**Fixed time enforces quality scope decisions:**
-- Can't extend timeline, so must choose what matters
-- Scope hammering respects the agreement (time boundary)
-- Forces conversations: "Is this must-have or nice-to-have?"
-
----
-
-### Key Insight: Shape Up is the Best Operational Framework for AAA
-
-AAA is a guiding discipline that can be practiced in any methodology, but **Shape Up is the methodology that best operationalizes AAA principles into concrete practice**.
-
-**Why Shape Up stands above other frameworks for AAA:**
-
-While you can practice AAA discipline within Scrum, Kanban, Lean, or even Waterfall, these methodologies require you to design your own structure for the three phases. Shape Up makes the structure explicit:
-
-**Shaping = Align (structured alignment work)**
-- Dedicated discovery time before any commitment
-- Senior people (shapers) test assumptions through research and prototypes
-- Technical and business alignment happens together
-- No betting without shaping (prevents committing without understanding)
-
-**Betting Table = Agree (explicit commitment ritual)**
-- Clear yes/no decisions, not maybes
-- Fixed time, variable scope forces real prioritization
-- Pitch document establishes shared understanding
-- Boundaries defined upfront (appetite, must-haves, out of scope)
-
-**Building = Apply (disciplined application)**
-- Circuit breaker honors time agreement (6 weeks maximum)
-- Scope hammering honors scope agreement (solve problem, don't gold-plate)
-- Quality over feature completeness
-- Team autonomy within agreed boundaries
-
-**Shape Up's advantage**: These phases are explicit and structured. Teams know exactly when they're aligning vs. agreeing vs. applying. Other methodologies require maturity and discipline to create this clarity; Shape Up provides it by design.
-
-**Comparison to other frameworks:**
-- **Lean**: Strong AAA philosophy but abstract - teams must design their own structure
-- **Kanban**: Excellent for Apply phase (flow) but doesn't structure Align and Agree
-- **Scrum**: Sprint Planning supports Agree, but often lacks sufficient Align time
-- **XP**: Strong Apply practices (TDD, pair programming) but lacks structured Align phase
-- **DevOps**: Addresses Apply at scale but doesn't structure Align and Agree phases
-
-**The verdict**: If your goal is practicing AAA discipline, Shape Up is the methodology that makes it easiest. It's AAA with an instruction manual - a complete operational implementation of the principles, not just philosophical alignment.
-
-Shape Up doesn't just support AAA; it embodies it. Every practice, every phase, every ritual reinforces the core values: align before committing, agree on boundaries, apply with discipline.
-
-For architects learning AAA, studying Shape Up teaches you what the discipline looks like in practice, making it easier to adapt AAA principles to other contexts when organizational constraints require it.
+Shape Up makes AAA's three phases explicit and structured. Teams know exactly when they're aligning vs. agreeing vs. applying. Other methodologies (Scrum, Kanban, Lean) can support AAA but require maturity and discipline to create this clarity; Shape Up provides it by design.
 
 ---
 
@@ -1154,39 +756,6 @@ Good shaping: "We'll integrate with Stripe (validated we can do this during spik
 
 ### Pitfall 7: Treating Cool-Down as Second-Class Time
 
-**Problem:**
-- Cool-down is viewed as "cleanup" or "catching up"
-- Teams feel guilty not working on "real" projects
-- Cool-down gets skipped when "behind"
+**Problem:** Cool-down is viewed as "cleanup" or gets skipped when "behind."
 
-**Solution:**
-- **Cool-down is legitimate work** - bug fixes, refactoring, exploration are valuable
-- **Protect cool-down time** - don't skip it to "get ahead"
-- **No tracking or commitments** - cool-down is unstructured by design
-- **Use it for learning** - experiment with new tech, learn new skills
-
-**Cool-down is essential:**
-- Prevents burnout from six straight weeks of intensity
-- Creates space for reactive work (bugs, support)
-- Allows experimentation and learning
-- Gives shaping time for next cycle
-
----
-
-## Resources
-
-### Official Shape Up Resources
-
-- **[Shape Up Book](https://basecamp.com/shapeup){:target="_blank" rel="noopener noreferrer"}** - Free online book by Ryan Singer (read this first!)
-- **[Basecamp's Shape Up Website](https://basecamp.com/shapeup){:target="_blank" rel="noopener noreferrer"}** - Official methodology documentation
-- **[Shape Up on GitHub](https://github.com/basecamp/shapeup){:target="_blank" rel="noopener noreferrer"}** - Book source and community discussions
-
-### Complementary Resources
-
-- **[Jobs to Be Done](https://jtbd.info/){:target="_blank" rel="noopener noreferrer"}** - Framework for understanding customer needs (pairs well with shaping)
-- **[Intercom on Product Management](https://www.intercom.com/blog/product-management/){:target="_blank" rel="noopener noreferrer"}** - Product thinking that aligns with Shape Up philosophy
-
-### Community
-
-- Search "Shape Up" on Twitter, Hacker News, or Reddit for case studies and discussions
-- Many companies blog about their Shape Up adaptations (search "[company name] Shape Up")
+**Solution:** Protect cool-down time—it's legitimate work (bug fixes, refactoring, exploration) that prevents burnout, creates space for reactive work, allows experimentation, and gives shaping time for the next cycle. See [Cool-Down Period](#cool-down-period-2-weeks-after-each-6-week-cycle) for full details.
