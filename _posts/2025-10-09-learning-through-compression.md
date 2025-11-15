@@ -36,7 +36,7 @@ This creates your learning target. You cannot compress effectively without knowi
 
 **Phase 2: Expand Through Research**
 
-Study the details. Accumulate facts. Read deeply. The information expands, becomes verbose, complex, overwhelming; this is necessary.
+Study the details, accumulate facts, and read deeply. The information will grow verbose and overwhelming, but you need that complexity before you can compress it.
 
 Learning with intent to teach changes how you process this expansion. You're not just collecting information; you're preparing to articulate it. This makes you notice:
 - What surprises you (challenges assumptions)

@@ -9,16 +9,16 @@ tags: [architecture, infrastructure, devops, cloud]
 
 When cloud platforms were young, third-party tools filled critical gaps. Terraform emerged as the answer to a real problem: how do you manage infrastructure across immature platforms that lacked robust native tooling?
 
-But platforms mature, and when they do, they internalize the patterns that third-party tools pioneered. The shift toward cloud-native IaC isn't about Terraform failing - it's about recognizing that cloud platforms have matured to the point where their native solutions offer fundamental advantages that third-party tools can't match.
+But platforms mature, and when they do, they internalize the patterns that third-party tools pioneered. The shift toward cloud-native IaC isn't about Terraform failing; it's about recognizing that cloud platforms have matured to the point where their native solutions offer fundamental advantages that third-party tools can't match.
 
 ## The Natural Evolution of Platform Tooling
 
 This pattern repeats across the tech industry:
 
-1. **Early Platform** - Manual operations, no standardization
-2. **Third-Party Innovation** - Tools emerge to solve platform limitations
-3. **Platform Maturity** - Native tools internalize proven patterns
-4. **Market Shift** - Practitioners recognize native advantages
+1. **Early Platform**: Manual operations, no standardization
+2. **Third-Party Innovation**: Tools emerge to solve platform limitations
+3. **Platform Maturity**: Native tools internalize proven patterns
+4. **Market Shift**: Practitioners recognize native advantages
 
 We've seen this with mobile development (cross-platform frameworks → native), databases (ORMs → native features), and now infrastructure as code.
 
@@ -32,7 +32,7 @@ Recent industry surveys show changing sentiment toward IaC tools:
 - Future intent: Only 47% plan to continue using it
 - Source: Firefly's "State of IaC 2025" report
 
-That's a 15-point drop in commitment - not failure, but a clear market signal that practitioners are reassessing whether Terraform's trade-offs still make sense.
+That's a 15-point drop in commitment. Not failure, but a clear market signal that practitioners are reassessing whether Terraform's trade-offs still make sense.
 
 **The OpenTofu Factor:**
 
@@ -102,7 +102,7 @@ Source: AWS CloudFormation documentation and practitioner reports
 - Your team needs direct vendor support
 - Operational simplicity is a priority
 
-This describes most organizations. Cloud-native includes template-based tools (CloudFormation, ARM) and programmatic tools (AWS CDK, Azure Bicep) - both generate native infrastructure definitions.
+This describes most organizations. Cloud-native includes template-based tools (CloudFormation, ARM) and programmatic tools (AWS CDK, Azure Bicep). Both generate native infrastructure definitions.
 
 **Choose Terraform/OpenTofu when:**
 

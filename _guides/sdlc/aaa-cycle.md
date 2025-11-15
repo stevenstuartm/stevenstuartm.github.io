@@ -9,7 +9,7 @@ tags: [sdlc, methodology, collaboration, stakeholder-management, leadership, fun
 
 ## Overview
 
-The **AAA Cycle** (Align-Agree-Apply) is not a framework in the traditional sense. It is not another SDLC methodology to compare against Agile, Waterfall, or Shape Up. AAA is a **guiding discipline and principle** - a way of thinking that provides guardrails against the most common mistakes architects make. It is a philosophy that transcends any specific methodology, operating from the architect's perspective on what truly matters.
+AAA is a **guiding discipline and principle** for software development: a way of thinking that provides guardrails against the most common mistakes organizations and development teams make. It is a philosophy that transcends any specific methodology, operating from the software architect's perspective on what truly matters.
 
 > **Quick Start**: Want to practice AAA immediately? [Shape Up](/study-guides/sdlc/shape-up.html) is the methodology that best operationalizes AAA principles. Its three phases (Shaping, Betting, Building) map directly to Align-Agree-Apply.
 
@@ -27,9 +27,9 @@ AAA is about **how we value** before **how we work**:
 
 Nearly every failed project makes the same mistake: it starts with solutions, jumps to plans, and treats delivery as the goal. AAA deliberately reverses this:
 
-1. **The need comes first** - We align with people and their actual problems before proposing solutions
-2. **Human agreement comes first** - We secure genuine commitment before implementation begins
-3. **Applying the agreement comes first** - We honor what was agreed before declaring success
+1. **The need comes first**: We align with people and their actual problems before proposing solutions
+2. **Human agreement comes first**: We secure genuine commitment before implementation begins
+3. **Applying the agreement comes first**: We honor what was agreed before declaring success
 
 When you walk into that first stakeholder meeting, you don't need a project plan. You need to connect with people, understand their world, and establish the foundation for meaningful agreement. AAA gives you the confidence to lead from this perspective.
 
@@ -46,17 +46,17 @@ This discipline applies whether you're using Scrum sprints, Kanban flows, or wat
 
 ### Trust Over Politics
 
-Strict frameworks like Scrum often function as defensive mechanisms - ways to protect yourself from stakeholders and vice versa. They create systems of politics rather than trust. Yes, these frameworks are based on truth and provide valuable starting points for organizing teams. But they can become rigid checklists that substitute for genuine human connection.
+Strict frameworks like Scrum often function as defensive mechanisms: ways to protect yourself from stakeholders and vice versa. They create systems of politics rather than trust. Yes, these frameworks are based on truth and provide valuable starting points for organizing teams. But they can become rigid checklists that substitute for genuine human connection.
 
-The problem isn't having structure - it's when that structure becomes a shield instead of a bridge. When "following the process" matters more than solving the problem. When ceremonies become rituals emptied of meaning. When adherence to the framework is how you defend yourself rather than how you deliver value.
+The problem isn't having structure; it's when that structure becomes a shield instead of a bridge. When "following the process" matters more than solving the problem. When ceremonies become rituals emptied of meaning. When adherence to the framework is how you defend yourself rather than how you deliver value.
 
 AAA calls us back to something more fundamental: **focusing on what we value**. Not "Agile" the branded methodology with capital-A ceremonies, but "agile" the principle of being responsive to reality. Not defensive processes that protect territories, but disciplines that build trust.
 
-Yes, use frameworks. Use their ceremonies and practices. But stay open to discovery and change within each event, each schedule, each unique situation. The framework serves the values - connection, commitment, and honored agreements - not the other way around. When a framework ceremony stops serving those values, you adapt it. That's the discipline AAA represents: being flexible about *how* while remaining unwavering about *what matters*.
+Yes, use frameworks. Use their ceremonies and practices. But stay open to discovery and change within each event, each schedule, each unique situation. The framework serves the values (connection, commitment, and honored agreements), not the other way around. When a framework ceremony stops serving those values, you adapt it. That's the discipline AAA represents: being flexible about *how* while remaining unwavering about *what matters*.
 
 ### AAA as a Recursive Cycle
 
-AAA is not just a one-time project framework - it's a **cycle** that repeats at every level of work:
+AAA is not just a one-time project framework; it's a **cycle** that repeats at every level of work:
 
 **Program Level** (6-18 months):
 - Align on strategic goals and portfolio priorities
@@ -205,7 +205,7 @@ Establish context    →  Earn confidence      →  Complete the cycle
 
 ### The Architect's Role: Guardian of the Values
 
-As the architect, you're not just managing deliverables - you're **stewarding the values** that AAA represents:
+As the architect, you're not just managing deliverables; you're **stewarding the values** that AAA represents:
 
 **In Align**: You facilitate connection
 - Create space for people to be heard
@@ -251,6 +251,6 @@ These intangibles are what make projects succeed when challenges arise.
 
 ## AAA in Practice Across Methodologies
 
-AAA is a guiding discipline that transcends any specific methodology. You can practice AAA within any SDLC approach - Scrum, Kanban, Lean, Waterfall, XP, DevOps, or Shape Up. Each methodology offers different support for the three phases, and understanding these trade-offs helps you adapt AAA to your context.
+AAA is a guiding discipline that transcends any specific methodology. You can practice AAA within any SDLC approach: Scrum, Kanban, Lean, Waterfall, XP, DevOps, or Shape Up. Each methodology offers different support for the three phases, and understanding these trade-offs helps you adapt AAA to your context.
 
 For a detailed exploration of how Shape Up operationalizes AAA principles (including methodology comparisons), see the [Shape Up guide's AAA Cycle alignment section](/study-guides/sdlc/shape-up.html#alignment-with-aaa-cycle).

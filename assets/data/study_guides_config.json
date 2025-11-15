@@ -381,6 +381,14 @@
             "infrastructure/aws/aws-kms-secrets-manager.md",
             "infrastructure/aws/aws-organizations-control-tower.md"
           ]
+        },
+        {
+          "name": "Management & Governance",
+          "description": "Monitoring, observability, systems management, and cost optimization",
+          "guides": [
+            "infrastructure/aws/aws-cloudwatch.md",
+            "infrastructure/aws/aws-xray.md"
+          ]
         }
       ]
     },

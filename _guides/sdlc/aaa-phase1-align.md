@@ -17,12 +17,12 @@ tags: [sdlc, aaa-cycle, requirements, stakeholder-management, collaboration, pra
 
 Regardless of project size or methodology, alignment follows these steps:
 
-1. **Understand the need** - What problem? Why now?
-2. **Identify stakeholders** - Who cares? Who decides?
-3. **Surface constraints** - What limits our options?
-4. **Assess risk** - What could go wrong?
-5. **Estimate effort** - How much work?
-6. **Get agreement** - Are we aligned to proceed?
+1. **Understand the need**: What problem? Why now?
+2. **Identify stakeholders**: Who cares? Who decides?
+3. **Surface constraints**: What limits our options?
+4. **Assess risk**: What could go wrong?
+5. **Estimate effort**: How much work?
+6. **Get agreement**: Are we aligned to proceed?
 
 The depth and formality scale with scope and risk, but these questions remain constant.
 

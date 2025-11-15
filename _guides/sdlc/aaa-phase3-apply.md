@@ -17,12 +17,12 @@ tags: [sdlc, aaa-cycle, implementation, delivery, governance, practical]
 
 Regardless of project size or methodology, application follows these steps:
 
-1. **Implement incrementally** - Build in small batches
-2. **Maintain quality** - Test continuously, don't compromise
-3. **Govern architecture** - Ensure integrity through reviews
-4. **Keep stakeholders aligned** - Regular communication and demos
-5. **Deploy reliably** - Automate and practice
-6. **Reflect and improve** - Learn from experience
+1. **Implement incrementally**: Build in small batches
+2. **Maintain quality**: Test continuously, don't compromise
+3. **Govern architecture**: Ensure integrity through reviews
+4. **Keep stakeholders aligned**: Regular communication and demos
+5. **Deploy reliably**: Automate and practice
+6. **Reflect and improve**: Learn from experience
 
 The frequency and formality scale with methodology, but the principles remain constant.
 

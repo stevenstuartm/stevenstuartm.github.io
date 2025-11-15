@@ -17,13 +17,13 @@ tags: [sdlc, aaa-cycle, planning, architecture, collaboration, practical]
 
 Regardless of project size or methodology, agreement follows these steps:
 
-1. **Design the solution** - How will we build this?
-2. **Validate assumptions** - Will this approach work?
-3. **Define quality standards** - How good is good enough?
-4. **Set performance targets** - What's the bar for success?
-5. **Analyze costs** - What's the total investment and return?
-6. **Plan the work** - What's the sequence and effort?
-7. **Get commitment** - Do we all agree to proceed?
+1. **Design the solution**: How will we build this?
+2. **Validate assumptions**: Will this approach work?
+3. **Define quality standards**: How good is good enough?
+4. **Set performance targets**: What's the bar for success?
+5. **Analyze costs**: What's the total investment and return?
+6. **Plan the work**: What's the sequence and effort?
+7. **Get commitment**: Do we all agree to proceed?
 
 The depth and formality scale with scope and risk, but these questions remain constant.
 

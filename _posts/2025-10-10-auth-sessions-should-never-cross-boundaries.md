@@ -55,7 +55,7 @@ This context flows explicitly through every component. Relying on session tokens
 
 ### "Compliance Requires User Identity Throughout the System"
 
-Compliance frameworks (SOC2, HIPAA, GDPR) require knowing **who** performed an action and **when**. User sessions are for authentication, proving identity at the boundary. Passing user_id in explicit context satisfies compliance. Passing the session token does not improve compliance; it couples your compliance logging to your auth mechanism.
+Compliance frameworks (SOC2, HIPAA, GDPR) require knowing **who** performed an action and **when**. User sessions are for authentication, proving identity at the boundary. Passing user_id in explicit context satisfies compliance. Passing the session token does not improve compliance. It couples your compliance logging to your auth mechanism.
 
 ### "Service Roles Create Privilege Escalation Risks"
 
@@ -77,7 +77,7 @@ If you rely on session tokens for tracing, non-user-initiated requests fail. Cor
 
 Using a monolith does not exempt you from these principles. You still must avoid global user session context and pass user context within structures appropriate to the needs of each module.
 
-Treating the session as globally accessible state makes distribution impossible when you eventually need to scale. It makes unit testing a nightmare; every test requires mocking session context. It couples your service layer to your web layer, preventing reuse from background jobs, CLI tools, or internal scripts.
+Treating the session as globally accessible state makes distribution impossible when you eventually need to scale. It makes unit testing a nightmare because every test requires mocking session context. It couples your service layer to your web layer, preventing reuse from background jobs, CLI tools, or internal scripts.
 
 The same principles apply: modules accept explicit context, operate with their own credentials, and perform explicit authorization. Whether those modules are in separate processes or the same codebase is irrelevant to the design.
 
