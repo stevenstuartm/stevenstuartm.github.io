@@ -7,8 +7,6 @@ description: "Practical, step-by-step guide for new dev team leads: what to do f
 tags: [leadership, team-management, fundamentals, coaching, collaboration]
 ---
 
-# Dev Team Leadership
-
 You're now responsible for a development team. Whether you were promoted internally, hired externally, or thrust into the role unexpectedly, you need to know what to actually do starting now.
 
 This guide is not about leadership philosophy. It's about the concrete activities you must perform from day zero forward to establish credibility, build momentum, and keep your team productive through both routine work and crisis situations.

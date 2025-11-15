@@ -7,8 +7,6 @@ description: "Master the architect's role in making decisions: frameworks for wh
 tags: [architecture, decision-making, adrs, trade-offs, documentation, practical]
 ---
 
-# Architecture Decision-Making
-
 ## The Architect's Primary Responsibility
 
 Making architecture decisions is the first and most critical responsibility of an architect. Every other responsibility (analysis, staying current, ensuring compliance, leading teams) exists to support better decision-making.

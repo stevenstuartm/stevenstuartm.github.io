@@ -7,8 +7,6 @@ description: "Distributed coordination patterns including leader election, distr
 tags: [architecture, design-patterns, distributed-systems, consensus, coordination, advanced]
 ---
 
-# Coordination Patterns
-
 Coordination patterns enable multiple distributed nodes to work together effectively, ensuring consistency, preventing conflicts, and managing shared resources.
 
 ## Leader Election

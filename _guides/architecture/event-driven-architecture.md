@@ -7,8 +7,6 @@ description: "Asynchronous event-based architecture enabling responsiveness, dec
 tags: [architecture, distributed-systems, messaging, scalability, async, practical]
 ---
 
-# Event-Driven Architecture
-
 Event-driven architecture organizes a system around asynchronous event broadcasts. Components publish events representing things that happened ("order placed," "payment processed," "inventory depleted"). Other components listen for events they care about and react accordingly. There's no direct coupling between event publishers and subscribers.
 
 This architecture enables high responsiveness, complex workflows with many independent reactions, and systems that must handle unpredictable, variable workloads.

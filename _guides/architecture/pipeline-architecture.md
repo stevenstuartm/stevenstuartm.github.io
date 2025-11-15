@@ -7,8 +7,6 @@ description: "Sequential data processing architecture using pipes and filters fo
 tags: [architecture, monolithic, design-patterns, practical, data-processing]
 ---
 
-# Pipeline Architecture
-
 Pipeline architecture structures a system as a series of processing steps connected by data flow. Think Unix command-line pipes: each filter reads input, transforms it, and writes output to the next stage. Data flows unidirectionally from source to destination through a sequence of transformations.
 
 ## How It Works

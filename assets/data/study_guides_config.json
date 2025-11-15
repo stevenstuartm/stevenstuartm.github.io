@@ -387,7 +387,46 @@
           "description": "Monitoring, observability, systems management, and cost optimization",
           "guides": [
             "infrastructure/aws/aws-cloudwatch.md",
-            "infrastructure/aws/aws-xray.md"
+            "infrastructure/aws/aws-xray.md",
+            "infrastructure/aws/aws-systems-manager.md",
+            "infrastructure/aws/aws-cost-management.md"
+          ]
+        },
+        {
+          "name": "Developer Tools & CI/CD",
+          "description": "CI/CD pipelines, build automation, and deployment orchestration",
+          "guides": [
+            "infrastructure/aws/aws-codepipeline-codebuild.md",
+            "infrastructure/aws/aws-codedeploy.md",
+            "infrastructure/aws/aws-cdk.md"
+          ]
+        },
+        {
+          "name": "Analytics & Data Processing",
+          "description": "ETL, data lakes, serverless analytics, and BI tools",
+          "guides": [
+            "infrastructure/aws/aws-glue.md",
+            "infrastructure/aws/aws-athena.md",
+            "infrastructure/aws/aws-quicksight.md",
+            "infrastructure/aws/aws-data-architecture.md"
+          ]
+        },
+        {
+          "name": "Machine Learning & AI",
+          "description": "SageMaker ML platform and AWS AI services for production workloads",
+          "guides": [
+            "infrastructure/aws/aws-sagemaker.md",
+            "infrastructure/aws/aws-rekognition-textract.md",
+            "infrastructure/aws/aws-comprehend-translate.md",
+            "infrastructure/aws/aws-transcribe-polly.md",
+            "infrastructure/aws/aws-ml-service-selection.md"
+          ]
+        },
+        {
+          "name": "Migration & Hybrid Cloud",
+          "description": "Cloud migration strategies, planning, and execution best practices",
+          "guides": [
+            "infrastructure/aws/aws-migration-strategy.md"
           ]
         }
       ]

@@ -7,8 +7,6 @@ description: "Comprehensive data architecture covering database fundamentals, AC
 tags: [architecture, data-architecture, databases, data-modeling, design-patterns]
 ---
 
-# Data Architecture & Processing
-
 ## Table of Contents
 
 - [Database Fundamentals](#database-fundamentals)

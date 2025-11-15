@@ -7,8 +7,6 @@ description: "Master the architect's leadership responsibilities: building effec
 tags: [architecture, leadership, fundamentals, collaboration, decision-making, communication]
 ---
 
-# Architecture Leadership
-
 ## Architect Responsibilities
 
 Being an architect is more than making technical decisions. It requires balancing eight distinct responsibilities:

@@ -28,8 +28,8 @@ layout: default
 }
 </script>
 
-<article class="post">
-    <header class="post-header">
+<header class="page-header-card">
+    <div class="post-header">
         <nav class="breadcrumb">
             <a href="{{ '/blog.html' | relative_url }}">Blog</a>
             <span class="separator">/</span>
@@ -50,7 +50,10 @@ layout: default
             {% endfor %}
         </div>
         {% endif %}
-    </header>
+    </div>
+</header>
+
+<article class="post">
 
     <!-- TOC Toggle Button -->
     <button class="toc-toggle" id="tocToggle" aria-label="Toggle table of contents">

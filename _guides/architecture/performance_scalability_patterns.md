@@ -7,8 +7,6 @@ description: "Optimize system performance and scale with patterns for caching, t
 tags: [architecture, design-patterns, performance, scalability, caching, rate-limiting]
 ---
 
-# Performance and Scalability Patterns
-
 These patterns optimize system performance, handle increased load, and ensure systems can scale efficiently as demand grows.
 
 ## Throttling and Rate Limiting

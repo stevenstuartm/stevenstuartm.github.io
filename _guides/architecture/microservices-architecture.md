@@ -7,8 +7,6 @@ description: "Fine-grained distributed architecture maximizing evolvability and 
 tags: [architecture, distributed-systems, microservices, scalability, domain-driven-design, practical]
 ---
 
-# Microservices Architecture
-
 Microservices architecture, popularized by Martin Fowler and James Lewis in 2014, takes distributed architecture to its logical extreme. The system splits into many fine-grained services, each representing a small, focused business capability. Each service owns its data, deploys independently, and can use different technologies. This maximizes evolvability and team autonomy but requires significant operational maturity.
 
 ## How It Works

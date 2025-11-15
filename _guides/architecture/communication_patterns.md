@@ -7,8 +7,6 @@ description: "Essential patterns for distributed service communication including
 tags: [architecture, design-patterns, distributed-systems, messaging, scalability, practical]
 ---
 
-# Communication Patterns
-
 Communication patterns define how services and components interact in distributed systems.
 
 ## Load Balancing

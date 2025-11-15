@@ -29,35 +29,37 @@ layout: default
 </script>
 
 <article class="case-study">
-    <header class="case-study-header">
-        <nav class="breadcrumb">
-            <a href="{{ '/case-studies.html' | relative_url }}">Case Studies</a>
-            <span class="separator">/</span>
-            <span>{{ page.title }}</span>
-        </nav>
-        <h1 class="case-study-title">{{ page.title }}</h1>
-        {% if page.subtitle %}
-        <p class="case-study-subtitle">{{ page.subtitle }}</p>
-        {% endif %}
-        <div class="case-study-meta">
-            {% if page.company %}
-            <span class="meta-item"><strong>Company:</strong> {{ page.company }}</span>
+    <header class="page-header-card">
+        <div class="case-study-header">
+            <nav class="breadcrumb">
+                <a href="{{ '/case-studies.html' | relative_url }}">Case Studies</a>
+                <span class="separator">/</span>
+                <span>{{ page.title }}</span>
+            </nav>
+            <h1 class="case-study-title">{{ page.title }}</h1>
+            {% if page.subtitle %}
+            <p class="case-study-subtitle">{{ page.subtitle }}</p>
             {% endif %}
-            {% if page.role %}
-            <span class="meta-item"><strong>Role:</strong> {{ page.role }}</span>
-            {% endif %}
-            {% if page.date %}
-            <span class="meta-item"><strong>Timeline:</strong> {{ page.date | date: "%Y" }}</span>
+            <div class="case-study-meta">
+                {% if page.company %}
+                <span class="meta-item"><strong>Company:</strong> {{ page.company }}</span>
+                {% endif %}
+                {% if page.role %}
+                <span class="meta-item"><strong>Role:</strong> {{ page.role }}</span>
+                {% endif %}
+                {% if page.date %}
+                <span class="meta-item"><strong>Timeline:</strong> {{ page.date | date: "%Y" }}</span>
+                {% endif %}
+            </div>
+            {% if page.technologies %}
+            <div class="case-study-technologies">
+                <strong>Technologies:</strong>
+                {% for tech in page.technologies %}
+                <span class="tech-tag">{{ tech }}</span>
+                {% endfor %}
+            </div>
             {% endif %}
         </div>
-        {% if page.technologies %}
-        <div class="case-study-technologies">
-            <strong>Technologies:</strong>
-            {% for tech in page.technologies %}
-            <span class="tech-tag">{{ tech }}</span>
-            {% endfor %}
-        </div>
-        {% endif %}
     </header>
 
     <div class="case-study-content">

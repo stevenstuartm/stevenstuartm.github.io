@@ -7,8 +7,6 @@ description: "Technical layer-based monolithic architecture organizing systems b
 tags: [architecture, monolithic, design-patterns, fundamentals, practical]
 ---
 
-# Layered Architecture
-
 Layered architecture organizes a system by technical capability rather than business function. The classic example has four layers: presentation (UI), business logic, persistence (data access), and database. Each layer depends only on the layer directly below it, creating a clean separation of technical concerns.
 
 ## How It Works

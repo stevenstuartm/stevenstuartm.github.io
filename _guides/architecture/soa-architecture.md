@@ -7,8 +7,6 @@ description: "Enterprise service architecture with ESB-based integration, servic
 tags: [architecture, distributed-systems, legacy-systems, integration, enterprise]
 ---
 
-# Service-Oriented Architecture (SOA)
-
 Service-Oriented Architecture emerged in the early 2000s as an approach to enterprise integration. It organized systems into a taxonomy of reusable services connected through an Enterprise Service Bus (ESB) and orchestration engine. While modern systems rarely build full SOA architectures, understanding SOA helps recognize when you're accidentally recreating its problems and when its patterns still make sense.
 
 ## How It Worked

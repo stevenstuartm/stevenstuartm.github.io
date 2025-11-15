@@ -8,11 +8,13 @@ permalink: /tech-radar.html
 <div class="view-toggle">
   <button id="radarViewBtn" class="toggle-btn active">Radar View</button>
   <button id="listViewBtn" class="toggle-btn">List View</button>
-</div>
-
-<div style="text-align: center; margin: 1rem 0;">
-  <p style="margin-bottom: 0.5rem; color: var(--color-text-light); font-size: 0.9rem;">Find this tech radar useful?</p>
-  {% include share-linkedin.html %}
+  <button id="infoBtn" class="info-icon" aria-label="About this radar">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="16" x2="12" y2="12"></line>
+      <line x1="12" y1="8" x2="12.01" y2="8"></line>
+    </svg>
+  </button>
 </div>
 
 <div id="radar-container" class="view-section">
@@ -205,7 +207,7 @@ function showItemDetail(item) {
   document.getElementById('itemDetailRing').style.color = ring.color;
   document.getElementById('itemDetailDescription').textContent = item.description;
 
-  detailModal.style.display = 'flex';
+  detailModal.style.display = 'block';
 }
 
 // Modal functionality
@@ -216,7 +218,7 @@ const closeInfoModal = document.getElementById('closeModal');
 const closeDetailModal = document.getElementById('closeDetailModal');
 
 infoBtn.addEventListener('click', function() {
-  infoModal.style.display = 'flex';
+  infoModal.style.display = 'block';
 });
 
 closeInfoModal.addEventListener('click', function() {
@@ -239,10 +241,10 @@ window.addEventListener('click', function(event) {
 // Close modals with Escape key
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Escape') {
-    if (infoModal.style.display === 'flex') {
+    if (infoModal.style.display === 'block') {
       infoModal.style.display = 'none';
     }
-    if (itemDetailModal.style.display === 'flex') {
+    if (itemDetailModal.style.display === 'block') {
       itemDetailModal.style.display = 'none';
     }
   }
@@ -323,42 +325,35 @@ function makeRadarBlipsClickable() {
 
 .radar-page {
   width: 100%;
+  padding-top: var(--spacing-md);
 }
 
-.radar-header {
-  padding-bottom: var(--spacing-md);
-  border-bottom: 2px solid var(--color-border);
-  margin-bottom: var(--spacing-xl);
-  margin-top: var(--spacing-xl);
+.radar-page .page-header-card {
+  max-width: 1200px;
+  margin: 0 auto var(--spacing-lg) auto;
+  width: calc(100% - var(--spacing-lg) * 2);
 }
 
-.header-content-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-content-flex h1 {
-  margin: 0;
+.radar-page .page-header h1 {
+  text-align: center;
+  color: var(--color-text);
+  margin-bottom: 0;
 }
 
 .info-icon {
   background: none;
-  border: none;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-card-bg);
   color: var(--color-text);
   cursor: pointer;
-  padding: var(--spacing-xs);
+  padding: var(--spacing-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: var(--border-radius);
   transition: all 0.3s ease;
-}
-
-.info-icon svg {
-  width: 28px;
-  height: 28px;
-  stroke-width: 2.5;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .info-icon:hover {
@@ -383,7 +378,7 @@ function makeRadarBlipsClickable() {
 
 .toggle-btn {
   padding: var(--spacing-sm) var(--spacing-lg);
-  border: 2px solid var(--color-primary);
+  border: 1px solid var(--color-primary);
   background-color: var(--color-card-bg);
   color: var(--color-text);
   font-size: 1rem;
@@ -520,11 +515,9 @@ function makeRadarBlipsClickable() {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.5);
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-md);
+  padding: var(--spacing-xl) var(--spacing-md);
 }
 
 .modal-content {
@@ -532,8 +525,10 @@ function makeRadarBlipsClickable() {
   border-radius: var(--border-radius);
   max-width: 600px;
   width: 100%;
+  margin: 0 auto;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   animation: modalFadeIn 0.3s ease;
+  position: relative;
 }
 
 @keyframes modalFadeIn {
@@ -552,7 +547,7 @@ function makeRadarBlipsClickable() {
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-lg);
-  border-bottom: 2px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .modal-header h2 {

@@ -7,8 +7,6 @@ description: "In-memory data grid architecture eliminating database bottlenecks 
 tags: [architecture, distributed-systems, scalability, performance, caching, practical]
 ---
 
-# Space-Based Architecture
-
 Space-based architecture (also called tuple space or cloud architecture pattern) eliminates the database as a central bottleneck by keeping all active data in replicated in-memory data grids. This enables extreme scalability and elasticity for systems with highly variable, unpredictable load.
 
 The name comes from tuple space concept from distributed computing: shared memory spaces that processing units can read from and write to without direct coupling.

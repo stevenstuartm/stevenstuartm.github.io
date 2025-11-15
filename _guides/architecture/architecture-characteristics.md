@@ -7,8 +7,6 @@ description: "How to identify, select, measure, and govern the quality attribute
 tags: [architecture, fundamentals, decision-making, performance, scalability, reliability, maintainability]
 ---
 
-# Architecture Characteristics
-
 Architecture characteristics define the qualities a system must exhibit to be successful. While functional requirements describe what the system does, architecture characteristics describe how well it does it. These characteristics drive architectural decisions more than functional requirements do.
 
 ## What Qualifies as an Architecture Characteristic?

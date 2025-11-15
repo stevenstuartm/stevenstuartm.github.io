@@ -29,18 +29,20 @@ layout: default
     {% comment %} Add prev/next navigation at top {% endcomment %}
     {% include guide_navigation.html %}
 
-    <header class="guide-header">
-        <nav class="breadcrumb">
-            <a href="{{ '/study-guides.html' | relative_url }}">Study Guides</a>
-            <span class="separator">/</span>
-            <a href="{{ '/study-guides.html' | relative_url }}#{{ page.category | slugify }}" class="category">{{ page.category }}</a>
-        </nav>
-        <h1 class="guide-title">{{ page.title }}</h1>
-        {% if page.category %}
-        <div class="guide-meta">
-            <span class="category-badge">{{ page.category }}</span>
+    <header class="page-header-card">
+        <div class="guide-header">
+            <nav class="breadcrumb">
+                <a href="{{ '/study-guides.html' | relative_url }}">Study Guides</a>
+                <span class="separator">/</span>
+                <a href="{{ '/study-guides.html' | relative_url }}#{{ page.category | slugify }}" class="category">{{ page.category }}</a>
+            </nav>
+            <h1 class="guide-title">{{ page.title }}</h1>
+            {% if page.category %}
+            <div class="guide-meta">
+                <span class="category-badge">{{ page.category }}</span>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
     </header>
 
     <!-- TOC Toggle Button -->

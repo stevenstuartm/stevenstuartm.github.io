@@ -7,8 +7,6 @@ description: "Compare centralized orchestration vs distributed choreography for 
 tags: [architecture, design-patterns, distributed-systems, microservices, workflow, transactions]
 ---
 
-# Orchestration and Choreography Patterns
-
 These patterns define how multiple services coordinate to complete complex business processes, either through centralized control (orchestration) or distributed coordination (choreography).
 
 ## Orchestration Pattern

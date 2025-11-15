@@ -7,8 +7,6 @@ description: "Build resilient systems with circuit breakers, retries, bulkheads,
 tags: [architecture, design-patterns, reliability, resilience, distributed-systems, practical]
 ---
 
-# Reliability Patterns
-
 Reliability patterns help systems handle failures gracefully, maintain availability, and provide consistent service even when individual components fail.
 
 ## Circuit Breaker

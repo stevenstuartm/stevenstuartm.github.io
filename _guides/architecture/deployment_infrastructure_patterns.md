@@ -7,8 +7,6 @@ description: "Infrastructure patterns including sidecar, ambassador, anti-corrup
 tags: [architecture, design-patterns, infrastructure, kubernetes, service-mesh, deployment]
 ---
 
-# Deployment and Infrastructure Patterns
-
 These patterns address how applications are deployed, managed, and operated in distributed environments, focusing on infrastructure concerns and operational efficiency.
 
 ## Sidecar Pattern

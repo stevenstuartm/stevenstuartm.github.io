@@ -7,8 +7,6 @@ description: "Understanding the fallacies of distributed computing, architecture
 tags: [architecture, distributed-systems, microservices, scalability, decision-making, fundamentals]
 ---
 
-# Distributed Computing Fundamentals
-
 Distributed systems promise scalability, resilience, and flexibility, but they introduce significant complexity. Understanding the fundamental challenges and decision frameworks helps architects choose the right level of distribution for their context.
 
 ## The Fallacies of Distributed Computing

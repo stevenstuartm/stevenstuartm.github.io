@@ -7,8 +7,6 @@ description: "Learn component design principles, bounded contexts, coupling type
 tags: [architecture, design-patterns, component-design, risk-analysis, practical, modeling]
 ---
 
-# Design & Implementation
-
 ## Component Design
 
 ### Bounded Contexts (DDD)

@@ -7,8 +7,6 @@ description: "Database patterns for distributed systems including database-per-s
 tags: [architecture, design-patterns, databases, distributed-systems, microservices, consistency]
 ---
 
-# Data Management Patterns
-
 Data management patterns address how distributed systems handle data storage, access, and consistency across multiple services and databases.
 
 ## Database per Service

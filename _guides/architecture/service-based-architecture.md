@@ -7,8 +7,6 @@ description: "Pragmatic distributed architecture with coarse-grained domain serv
 tags: [architecture, distributed-systems, microservices, scalability, practical]
 ---
 
-# Service-Based Architecture
-
 Service-based architecture organizes a system into a small number of coarse-grained domain services (typically 4-12) sitting between the user interface and data layer. Each service represents a significant chunk of business capability: think "catalog service," "checkout service," "inventory service," not fine-grained functions.
 
 This is the pragmatic middle ground between monoliths and microservices. You get distributed system benefits (independent scaling, technology diversity, team autonomy) without microservices' operational complexity.

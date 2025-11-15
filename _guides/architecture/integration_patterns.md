@@ -7,8 +7,6 @@ description: "Essential integration patterns for connecting systems including pi
 tags: [architecture, design-patterns, integration, etl, routing, practical]
 ---
 
-# Integration Patterns
-
 Integration patterns define how different systems and services work together, enabling data flow and coordination between disparate components.
 
 ## Pipes and Filters

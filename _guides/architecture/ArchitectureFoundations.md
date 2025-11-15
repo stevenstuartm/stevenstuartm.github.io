@@ -7,8 +7,6 @@ description: "Essential principles of software architecture including trade-off 
 tags: [architecture, fundamentals, trade-offs, decision-making, leadership, collaboration]
 ---
 
-# Architecture Foundations
-
 ## Core Laws of Software Architecture
 
 > 1. **Everything in software architecture is a trade-off**

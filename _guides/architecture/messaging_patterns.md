@@ -7,8 +7,6 @@ description: "Reliable messaging patterns including transactional outbox/inbox, 
 tags: [architecture, design-patterns, messaging, reliability, distributed-systems, transactions]
 ---
 
-# Messaging Patterns
-
 Messaging patterns ensure reliable, consistent, and efficient message handling in distributed systems.
 
 ## Transactional Outbox

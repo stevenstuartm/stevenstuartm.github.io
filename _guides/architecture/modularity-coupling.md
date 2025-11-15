@@ -7,8 +7,6 @@ description: "Understanding cohesion, coupling metrics, connascence, and strateg
 tags: [architecture, modularity, coupling, cohesion, design-patterns, maintainability]
 ---
 
-# Modularity & Coupling
-
 Modularity determines how well a system can be understood, changed, and maintained. Well-modularized systems have high cohesion within components and low coupling between components. Understanding how to measure and manage these properties is fundamental to architectural thinking.
 
 ## Cohesion: What Belongs Together

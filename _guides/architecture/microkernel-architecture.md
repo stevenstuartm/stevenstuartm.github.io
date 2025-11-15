@@ -7,8 +7,6 @@ description: "Plug-in based architecture separating core functionality from cust
 tags: [architecture, monolithic, design-patterns, extensibility, practical]
 ---
 
-# Microkernel Architecture
-
 Microkernel architecture (also called plug-in architecture) separates core baseline functionality from extended or customizable features. The core system implements the minimal "happy path" behavior. Plug-ins add specialized capabilities, customizations, or variations without modifying the core.
 
 This pattern appears in product platforms sold to multiple customers, extensible applications like IDEs, and systems with well-defined variation points.

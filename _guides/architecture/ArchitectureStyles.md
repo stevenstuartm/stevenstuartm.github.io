@@ -7,8 +7,6 @@ description: "Comprehensive overview comparing architectural styles from monolit
 tags: [architecture, design-patterns, monolithic, distributed-systems, microservices, practical, decision-making]
 ---
 
-# Architecture Styles Overview
-
 Architecture styles are named patterns that describe how to organize a system's components, data, and communication. Each style represents a set of design decisions that directly influence the system's structural characteristics: its scalability, maintainability, performance, and resilience. Understanding architecture styles gives you a vocabulary for comparing approaches and making informed tradeoffs based on what your system actually needs.
 
 When you choose an architecture style, you're not just picking a topology. You're selecting defaults for how components communicate, where data lives, how the system deploys, and which characteristics the architecture naturally supports. A layered monolith makes modularity easy but scalability hard. Microservices make independent deployment easy but operational complexity inevitable. Event-driven architectures make responsiveness easy but debugging and state management hard.
