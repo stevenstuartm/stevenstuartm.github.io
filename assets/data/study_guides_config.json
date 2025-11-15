@@ -443,7 +443,16 @@
           "name": "Container Orchestration (Advanced)",
           "description": "Advanced container patterns, security, and service mesh architectures",
           "guides": [
-            "infrastructure/aws/aws-ecr-container-security.md"
+            "infrastructure/aws/aws-ecr-container-security.md",
+            "infrastructure/aws/advanced-container-patterns.md"
+          ]
+        },
+        {
+          "name": "Architecture Patterns (Advanced)",
+          "description": "Multi-region architectures and disaster recovery strategies",
+          "guides": [
+            "infrastructure/aws/multi-region-architecture.md",
+            "infrastructure/aws/disaster-recovery.md"
           ]
         }
       ]
