@@ -426,7 +426,24 @@
           "name": "Migration & Hybrid Cloud",
           "description": "Cloud migration strategies, planning, and execution best practices",
           "guides": [
-            "infrastructure/aws/aws-migration-strategy.md"
+            "infrastructure/aws/aws-migration-strategy.md",
+            "infrastructure/aws/aws-migration-services.md",
+            "infrastructure/aws/aws-hybrid-cloud-architecture.md"
+          ]
+        },
+        {
+          "name": "Serverless Architecture",
+          "description": "Serverless patterns, event-driven design, and production best practices",
+          "guides": [
+            "infrastructure/aws/serverless-architecture-patterns.md",
+            "infrastructure/aws/aws-sam.md"
+          ]
+        },
+        {
+          "name": "Container Orchestration (Advanced)",
+          "description": "Advanced container patterns, security, and service mesh architectures",
+          "guides": [
+            "infrastructure/aws/aws-ecr-container-security.md"
           ]
         }
       ]
