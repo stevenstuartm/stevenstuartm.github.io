@@ -11,11 +11,12 @@ from typing import List, Tuple
 
 
 class ContentViolation:
-    def __init__(self, line_num: int, rule: str, text: str, suggestion: str = ""):
+    def __init__(self, line_num: int, rule: str, text: str, suggestion: str = "", is_style=False):
         self.line_num = line_num
         self.rule = rule
         self.text = text
         self.suggestion = suggestion
+        self.is_style = is_style
 
     def __str__(self):
         result = f"Line {self.line_num}: {self.rule}\n  \"{self.text}\""
@@ -86,6 +87,9 @@ class ContentLinter:
         frontmatter_ended = False
         in_code_block = False
 
+        # Track consecutive short sentences for choppy flow detection
+        short_sentence_buffer = []
+
         for line_num, line in enumerate(lines, start=1):
             # Skip YAML frontmatter (only at start of file)
             if line.strip() == '---':
@@ -138,6 +142,12 @@ class ContentLinter:
             # Check for choppy sentence patterns
             if not is_bullet and not is_header:
                 self._check_choppy_sentences(line_num, line)
+
+            # Check for narrative flow issues (Phase 1 detectors)
+            if not is_bullet and not is_header:
+                self._check_consecutive_short_sentences(line_num, line, short_sentence_buffer)
+                self._check_missing_conjunctions(line_num, line)
+                self._check_sequential_examples(line_num, line)
 
     def _check_ai_tell_phrases(self, line_num: int, line: str):
         """Check for AI-tell phrases."""
@@ -275,6 +285,72 @@ class ContentLinter:
                     "Consider combining with comma or semicolon for better flow"
                 ))
 
+    def _check_consecutive_short_sentences(self, line_num: int, line: str, buffer: list):
+        """Check for 3+ consecutive short sentences (choppy flow)."""
+        # Split line into sentences (basic split on ". ")
+        sentences = [s.strip() for s in line.split('. ') if s.strip()]
+
+        for sent in sentences:
+            # Consider sentences under 60 chars as "short"
+            if len(sent) < 60 and sent.endswith('.'):
+                buffer.append((line_num, sent))
+            else:
+                # Reset buffer if we hit a longer sentence
+                if len(buffer) >= 3:
+                    # Flag the choppy sequence
+                    first_line = buffer[0][0]
+                    combined_text = '. '.join([s for _, s in buffer])
+                    self.violations.append(ContentViolation(
+                        first_line,
+                        "Choppy flow: consecutive short sentences",
+                        combined_text[:100] + ("..." if len(combined_text) > 100 else ""),
+                        "Consider connecting related ideas with connectors (while, and, as) for better flow",
+                        is_style=True
+                    ))
+                buffer.clear()
+
+    def _check_missing_conjunctions(self, line_num: int, line: str):
+        """Check for contrasting statements without conjunctions."""
+        # Patterns: Sentence ending with period followed by contrastive starter
+        contrast_triggers = [
+            (r'([Ff]eature teams [^.]{10,50})\.\s+([Pp]latform teams [^.]{10,50}\.)', 'while'),
+            (r'([Ss]ome teams [^.]{10,50})\.\s+([Oo]ther teams [^.]{10,50}\.)', 'while'),
+            (r'([Ss]ometimes [^.]{10,50})\.\s+([Ss]ometimes [^.]{10,50}\.)', 'while other times'),
+        ]
+
+        for pattern, connector in contrast_triggers:
+            match = re.search(pattern, line.strip())
+            if match:
+                self.violations.append(ContentViolation(
+                    line_num,
+                    f"Missing conjunction in contrast",
+                    line.strip()[:100] + ("..." if len(line.strip()) > 100 else ""),
+                    f"Consider connecting with '{connector}' for better flow",
+                    is_style=True
+                ))
+                break
+
+    def _check_sequential_examples(self, line_num: int, line: str):
+        """Check for sequential examples that could combine."""
+        # Pattern: Multiple sentences with "might/could/can take/be/have" within same line
+        example_pattern = r'(might|could|can) (take|be|have|deliver)'
+        matches = list(re.finditer(example_pattern, line, re.IGNORECASE))
+
+        # If we find 3+ examples in separate sentences on the same line
+        if len(matches) >= 3:
+            # Check they're in different sentences
+            sentences = line.split('. ')
+            example_sentences = [s for s in sentences if re.search(example_pattern, s, re.IGNORECASE)]
+
+            if len(example_sentences) >= 3:
+                self.violations.append(ContentViolation(
+                    line_num,
+                    "Sequential examples could flow together",
+                    line.strip()[:100] + ("..." if len(line.strip()) > 100 else ""),
+                    "Consider combining examples with commas and 'and': 'X might take 3 days, Y might take 6 weeks, and Z might take 3 months'",
+                    is_style=True
+                ))
+
 
 def main():
     if len(sys.argv) < 2:
@@ -303,21 +379,39 @@ def main():
         violations = linter.lint_file(filepath)
         source_name = filepath.name
 
-    if not violations:
-        print(f"OK: No violations found in {source_name}")
-        sys.exit(0)
+    # Separate violations from style suggestions
+    errors = [v for v in violations if not v.is_style]
+    style_suggestions = [v for v in violations if v.is_style]
 
     # Use UTF-8 encoding for output
     import io
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-    print(f"VIOLATIONS FOUND in {source_name}:\n")
-    for violation in violations:
-        print(violation)
-        print()
+    # Print errors (blocking violations)
+    if errors:
+        print(f"VIOLATIONS FOUND in {source_name}:\n")
+        for violation in errors:
+            print(violation)
+            print()
+        print(f"Total violations: {len(errors)}\n")
 
-    print(f"Total violations: {len(violations)}")
-    sys.exit(1)
+    # Print style suggestions (informational)
+    if style_suggestions:
+        print(f"STYLE SUGGESTIONS for {source_name}:\n")
+        for suggestion in style_suggestions:
+            print(suggestion)
+            print()
+        print(f"Total style suggestions: {len(style_suggestions)}\n")
+
+    # Exit with error only if there are actual violations (not just style)
+    if not errors and not style_suggestions:
+        print(f"OK: No violations found in {source_name}")
+        sys.exit(0)
+    elif not errors:
+        print("Note: Only style suggestions found (not blocking)")
+        sys.exit(0)
+    else:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

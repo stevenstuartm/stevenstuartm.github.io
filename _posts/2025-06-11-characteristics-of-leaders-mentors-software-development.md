@@ -15,7 +15,7 @@ Effective technical leaders and mentors share distinct characteristics that sepa
 
 **Accumulating:** Building new capabilities, taking on broader responsibilities, establishing feedback loops for yourself and your team.
 
-**Leaders are builders**—they create opportunities for others while advancing their own skills. Even when focused on code, they enable team growth.
+**Leaders are builders**; they create opportunities for others while advancing their own skills. Even when focused on code, they enable team growth.
 
 ## 2. "It Works" vs. "Is This Good?"
 

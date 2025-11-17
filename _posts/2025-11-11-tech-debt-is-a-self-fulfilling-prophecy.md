@@ -89,7 +89,7 @@ Optimizations communicate efficiency gains. The business improves margins, perfo
 - Vendor lock-in preventing multi-cloud strategy
 - Legacy authentication system preventing enterprise SSO integrations
 
-**Why this works**: Stakeholders understand opportunity cost. If the current architecture blocks a $2M revenue opportunity, fixing it isn't "paying debt"—it's "unlocking growth."
+**Why this works**: Stakeholders understand opportunity cost. If the current architecture blocks a $2M revenue opportunity, fixing it isn't "paying debt"; it's "unlocking growth."
 
 **Language to use**:
 - "We can't build the mobile app until we redesign the API. The redesign takes 6 weeks and unblocks a $2M annual opportunity."
@@ -111,7 +111,9 @@ The alternative framework addresses existing problems, but architects can preven
 
 **Mentor developers on effective stakeholder communication.** Developers often communicate poorly with stakeholders because no one taught them how. Show them the difference between "we need to refactor the payment module" and "the current payment module blocks PCI compliance certification. Re-architecting it takes 4 weeks and eliminates the $200K compliance risk." This isn't just about vocabulary; it's about thinking in terms of stakeholder priorities.
 
-**Implement governance that enforces quality standards.** Code reviews, architecture reviews, and automated quality gates prevent low-quality implementations from accumulating. When a pull request lacks tests, violates established patterns, or introduces tight coupling, governance catches it before it becomes a problem. This isn't bureaucracy; it's preventing technical problems from forming in the first place. The communication problem here is that teams often skip these standards under pressure, then later label the accumulated mess "tech debt" and ask for time to fix it. Enforce the standards at every increment, and the problem never accumulates.
+**Implement governance that enforces quality standards.** Code reviews, architecture reviews, and automated quality gates prevent low-quality implementations from accumulating. When a pull request lacks tests, violates established patterns, or introduces tight coupling, governance catches it before it becomes a problem.
+
+This isn't bureaucracy; it's preventing technical problems from forming in the first place. The communication problem here is that teams often skip these standards under pressure, then later label the accumulated mess "tech debt" and ask for time to fix it. Enforce the standards at every increment, and the problem never accumulates.
 
 **Use Architectural Decision Records to prevent context loss.** Much of what becomes "tech debt" starts as reasonable decisions made under real constraints. The problem isn't the decision; it's the missing context about why it was made and how it should evolve. Without that context, future teams assume incompetence. The adversarial dynamic forms, and the self-fulfilling prophecy begins.
 

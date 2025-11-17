@@ -82,6 +82,15 @@ tags: [architecture, design-patterns]
 - **description**: A 1-2 sentence summary that captures the core thesis. Used for SEO and post previews.
 - **series**: Must match one of the existing series names in `assets/data/blog_series_config.json`
 
+**CRITICAL: Never fabricate personal experiences or examples in blog posts**:
+- ❌ **NEVER** write "I've watched...", "I've seen...", "I've observed..." unless the user explicitly provided those experiences
+- ❌ **NEVER** invent specific examples with made-up details, timelines, or scenarios
+- ❌ **NEVER** claim personal anecdotes that weren't shared by the user
+- ✅ **USE** hypothetical framing: "Teams can...", "Developers might...", "Consider a scenario where..."
+- ✅ **USE** generic, illustrative examples that don't claim personal observation
+- ✅ **ASK** the user for specific examples if concrete ones would strengthen the post
+- This rule is **non-negotiable** and applies to all narrative blog content
+
 **Standard procedure for creating a new blog post**:
 1. Create the markdown file in `_posts/` with correct date format
 2. Include complete YAML front matter (layout, title, date, description, series, tags)
@@ -348,6 +357,13 @@ The linter will output violations with line numbers and suggestions. Fix violati
 - Ensure section titles accurately reflect their content
 - If a point can be made in fewer words, do so
 
+**CRITICAL: Examples and personal experiences**:
+- **NEVER fabricate personal experiences** - Do not write "I've watched...", "I've seen...", "I've observed..." unless the user explicitly provided those experiences
+- **Use hypothetical framing** for examples: "Teams might...", "Developers can...", "Consider a scenario where..."
+- **Keep examples generic and illustrative** unless the user provides specific details
+- **Ask the user** if concrete examples would strengthen the content rather than inventing them
+- Fabricated experiences undermine authenticity and credibility - this is a critical error that must never happen
+
 **Data and claims require sources**:
 - Any market statistics, survey results, or industry data MUST include the source
 - Format: "62% of users (Source: Company Name Report 2024)"
@@ -401,6 +417,14 @@ Writing that feels choppy or overly generic undermines the impact of the content
   - ❌ "Some teams automate everything. Others rely on manual processes."
   - ✅ "Some teams automate everything while others rely on manual processes."
   - Missing conjunctions (and, but, while, yet) create staccato rhythm instead of conversational flow
+- **Choppy prose from disconnected sentences**: Related ideas should flow together as a cohesive narrative, not be listed as separate sentences
+  - ❌ "Many teams struggle with interval-based development. Work fragments across multiple sprint cycles. Features sit incomplete when sprint boundaries arrive. Discovery mid-sprint forces awkward choices." (choppy, disconnected)
+  - ✅ "After many years of the industry refining interval-based methodologies, many teams still struggle to navigate them. The symptoms often present as work fragmenting across sprint cycles, features sitting incomplete, and then discovery of critical constraints mid-sprint which can force awkward choices." (flowing narrative)
+  - ❌ "Feature teams might deliver every few days. Platform teams might deliver every few months." (staccato)
+  - ✅ "Feature teams might deliver every few days while platform teams might deliver every few months." (connected with 'while')
+  - ❌ "Organizations respond. This creates waste. Feature teams delay work. Platform teams fragment work. Dependencies become problems." (telegraphic)
+  - ✅ "Organizations respond by forcing synchronization. This creates waste as feature teams delay work to match sprint boundaries, platform teams fragment work to fit sprints, and dependencies become sprint-boundary problems." (unified flow)
+  - **Key principle**: Write as humans read and think. Related ideas are manifestations of the same underlying thought and should flow together. Use connectors (and, while, as, where, but) to show relationships. Provide context before assertions. Show progression with "and then". Use commas to create natural speech rhythm instead of choppy periods.
 - **Generic examples**: Vague statements that readers can easily dismiss as obvious
   - ❌ "Leadership proposes moving back to on-premises infrastructure... Months later they celebrate success"
   - ✅ Provide specific numbers, timelines, and concrete consequences ($2M → $800K over 18 months, but 99.9% → 95% availability, ops team triples, DR becomes tape-based)
@@ -439,9 +463,17 @@ Specific details make abstract concepts concrete and credible. Include:
 
 When creating LinkedIn or social media summaries of blog posts, apply these principles for maximum impact:
 
+**CRITICAL: Use informal and personal tone for LinkedIn**
+- Write in first person ("I've been thinking about...", "So I've been exploring...")
+- Use conversational language, not formal presentation style
+- Read like you're sharing your thinking with colleagues, not presenting a formal solution
+- Avoid sounding prescriptive or evangelical; be exploratory and humble
+- Example: "The approach I'm calling..." vs "This framework provides..."
+- Example: "This won't fit everywhere" vs "This may not fit every context"
+
 **1. Lead with the hook and solution signal**
-- Open with the provocative thesis immediately
-- Signal that a concrete solution exists early: "So try a different approach"
+- Open with a concrete problem people recognize, framed personally
+- Signal that you're exploring a solution: "So I've been exploring what happens if..."
 - Don't bury the solution promise in later paragraphs
 
 **2. Trust intelligent readers**
