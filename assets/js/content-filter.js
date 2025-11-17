@@ -134,6 +134,21 @@ class ContentFilter {
     applyFilters() {
         let visibleCount = 0;
 
+        // For blog pages: handle "All" series differently
+        const isBlogPage = this.config.itemName === 'posts';
+
+        if (isBlogPage && this.activeFilters.category === 'all') {
+            // When "All" is selected, hide all category sections except "All"
+            this.categorySections.forEach(section => {
+                const sectionCategory = section.dataset.category?.toLowerCase().replace(/\s+/g, '-');
+                if (sectionCategory === 'all') {
+                    section.style.display = '';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
         this.contentItems.forEach(item => {
             const matches = this.itemMatchesFilters(item);
 
@@ -147,9 +162,14 @@ class ContentFilter {
             }
         });
 
-        // Handle category sections and subcategory visibility (for study guides)
+        // Handle category sections and subcategory visibility
         if (this.categorySections.length > 0) {
             this.categorySections.forEach(section => {
+                // For blog pages with "All" selected, section visibility is already handled above
+                if (isBlogPage && this.activeFilters.category === 'all') {
+                    return;
+                }
+
                 // Hide empty subcategories within each category
                 const subcategoryGroups = section.querySelectorAll('.subcategory-group');
                 subcategoryGroups.forEach(subgroup => {
