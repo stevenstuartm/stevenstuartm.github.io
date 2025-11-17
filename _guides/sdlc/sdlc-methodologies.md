@@ -3,7 +3,7 @@ title: "SDLC Methodologies Comparison"
 layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC & Modeling
-description: "Comprehensive comparison of software development methodologies including Waterfall, Agile (Scrum, Kanban, XP), Lean, DevOps, and specialized approaches with guidance on selection."
+description: "Comprehensive comparison of software development methodologies including Waterfall, Agile (Scrum, Kanban, XP, Shape Up), Lean, DevOps, and specialized approaches with guidance on selection."
 tags: [sdlc, methodology, agile, waterfall, comparison, decision-making]
 ---
 
@@ -337,6 +337,86 @@ Waterfall dominated software development from the 1970s through the 1990s. While
 
 ---
 
+### Shape Up
+
+*Developed by Ryan Singer and the team at Basecamp (formerly 37signals) in the 2010s, documented in "Shape Up: Stop Running in Circles and Ship Work that Matters" (2019).*
+
+**What it is:** An agile methodology that replaces fixed sprints with fixed-time, variable-scope cycles (6 weeks) focused on meaningful project completion. It emphasizes upfront shaping work, betting on projects, and giving teams uninterrupted time to solve problems.
+
+**Key Characteristics:**
+- Fixed 6-week cycles with 2-week cooldown periods
+- Upfront shaping work that defines problem boundaries, not detailed specs
+- Betting table where leadership commits to projects
+- Small teams (1 designer + 1-2 programmers) with full autonomy
+- Circuit breakers: no extensions - projects either ship or get re-shaped
+- No backlogs or endless to-do lists
+- Appetite-based planning (time available) rather than estimation-based
+
+**Core Concepts:**
+
+**Shaping**: Senior team members spend the cooldown period shaping potential projects:
+- Define the problem, not the solution
+- Set boundaries with appetite (how much time is this worth?)
+- Rough out the solution to prove feasibility
+- Identify risks and rabbit holes
+- Produce shaped work ready for betting
+
+**Betting**: Leadership reviews shaped projects and decides what to commit to:
+- Betting happens every 6 weeks
+- Choose projects that fit the appetite
+- Commit fully - no interruptions during the cycle
+- If a project doesn't ship in 6 weeks, it doesn't get an automatic extension
+- Unfinished work goes back to shaping (circuit breaker)
+
+**Building**: Teams get full cycle (6 weeks) to work autonomously:
+- No daily standups or status meetings required
+- Teams scope down work to fit the circuit breaker
+- Use hill charts to show progress (uphill = figuring things out, downhill = executing)
+- Focus on delivering integrated slices, not separate layers
+- Solve problems creatively within the appetite
+
+**Cooldown (2 weeks)**: Between cycles:
+- No scheduled work
+- Teams can fix bugs, explore ideas, or pay down tech debt
+- Shapers prepare projects for next betting table
+- Breathing room prevents burnout
+
+**When to Use:**
+- Product development teams (especially SaaS products)
+- Teams that struggle with endless sprint churn
+- Organizations wanting to break feature factory patterns
+- Teams where senior members can shape work effectively
+- Projects requiring meaningful completion, not partial increments
+- Teams that can work autonomously without frequent check-ins
+
+**Why Choose Shape Up:**
+- **Meaningful Work**: 6 weeks allows time to complete something significant
+- **No Estimation Theater**: Appetite replaces estimates ("how much time is this worth?" vs. "how long will this take?")
+- **Circuit Breaker**: Forces hard decisions rather than endless extensions
+- **Autonomy**: Teams solve problems without micromanagement
+- **No Backlogs**: Only shaped, bet-on work gets done; everything else is intentionally discarded
+- **Strategic Shaping**: Senior members solve hard problems before teams build
+
+**Considerations:**
+- Requires experienced shapers (senior designers/developers who can define boundaries)
+- Circuit breaker can feel harsh (projects that don't ship get killed)
+- Not suitable for teams needing daily oversight
+- Requires leadership buy-in to betting process
+- 6-week cycles may be too long for very early-stage startups
+- Less structure than Scrum (requires team maturity)
+- Shaping work requires dedicated time from senior staff
+
+**Shape Up vs. Scrum:**
+- **Time box**: 6 weeks vs. 2 weeks
+- **Scope**: Variable (teams scope down to fit) vs. Fixed (committed sprint backlog)
+- **Planning**: Shaping by seniors before betting vs. Sprint planning by whole team
+- **Autonomy**: High (no daily standups) vs. Lower (daily standups, mid-sprint adjustments)
+- **Backlogs**: None (shaped work only) vs. Product backlog with prioritized stories
+- **Interruptions**: None during cycle vs. Sprint goals can shift
+- **Output**: Completed, integrated work vs. Incremental stories
+
+---
+
 ### Lean Software Development
 
 *Adapted from Lean Manufacturing (Toyota Production System) to software development by Mary and Tom Poppendieck in the early 2000s, documented in "Lean Software Development: An Agile Toolkit" (2003).*
@@ -551,6 +631,7 @@ Waterfall dominated software development from the 1970s through the 1990s. While
 |------------------|---------------------|-----------------|---------|
 | Well-defined requirements, regulatory | Waterfall | Spiral | Stability suits sequential approach |
 | Software products, frequent feedback | Scrum | XP | Structure with agility |
+| SaaS products, meaningful completion | Shape Up | Scrum | 6-week cycles enable complete features |
 | Maintenance, varied requests | Kanban | Lean | Continuous flow handles variability |
 | High-quality code focus | XP | Scrum + engineering practices | Engineering practices are core |
 | Resource-constrained, MVP focus | Lean | Kanban | Waste elimination maximizes value |
@@ -558,6 +639,7 @@ Waterfall dominated software development from the 1970s through the 1990s. While
 | Continuous deployment focus | DevOps | Scrum + DevOps | Deployment automation is key |
 | Large teams, feature tracking | FDD | Scrum | Scales to large teams |
 | Small teams, low criticality | Crystal | Scrum | Lightweight suits context |
+| Breaking feature factory pattern | Shape Up | Lean | Appetite-based planning eliminates backlog churn |
 
 ---
 
@@ -572,7 +654,7 @@ Waterfall dominated software development from the 1970s through the 1990s. While
 - Hardware-software integration (changes are expensive)
 - Large, distributed teams needing coordination
 
-#### Choose Agile (Scrum/Kanban/XP/Lean) when:
+#### Choose Agile (Scrum/Kanban/XP/Lean/Shape Up) when:
 - Requirements are expected to evolve
 - Customer feedback is crucial throughout development
 - Time to market is important
@@ -595,34 +677,37 @@ Waterfall dominated software development from the 1970s through the 1990s. While
 **1. How stable are requirements?**
 - Very stable → Waterfall
 - Somewhat stable → Scrum, Spiral
-- Evolving → Kanban, Lean, XP
-- Unknown → XP, Lean, Crystal
+- Evolving → Kanban, Lean, XP, Shape Up
+- Unknown → XP, Lean, Crystal, Shape Up
 
 **2. How important is time to market?**
 - Critical (weeks) → Lean, XP, Kanban
-- Important (months) → Scrum, DevOps
+- Important (6-week cycles) → Shape Up
+- Important (2-week cycles) → Scrum, DevOps
 - Flexible (6+ months) → Waterfall, FDD, Spiral
 
 **3. What's the team size?**
-- 1-6 people → Crystal, XP, Kanban
+- 1-3 people → Shape Up, Crystal, XP, Kanban
+- 4-6 people → Scrum, XP, Kanban, Shape Up
 - 7-12 people → Scrum, XP, Lean
 - 13-40 people → Scrum, FDD, Crystal
 - 40+ people → FDD, Scaled Agile (SAFe)
 
 **4. What's the team's Agile experience?**
 - New to Agile → Scrum (structure helps)
-- Some experience → Kanban, Lean
-- Experienced → XP, Crystal, Kanban
+- Some experience → Kanban, Lean, Shape Up
+- Experienced → XP, Crystal, Kanban, Shape Up
 
 **5. How critical is the system?**
 - Life-critical → Spiral, Waterfall
-- Business-critical → Scrum, FDD
+- Business-critical → Scrum, FDD, Shape Up
 - Important → Most Agile methods
-- Low criticality → Crystal, Kanban
+- Low criticality → Crystal, Kanban, Shape Up
 
 **6. How much customer involvement is feasible?**
 - Daily → XP
 - Weekly/bi-weekly → Scrum
+- Every 6 weeks → Shape Up
 - Monthly → Lean, FDD
 - Minimal → Waterfall, Spiral
 
@@ -638,6 +723,9 @@ Waterfall dominated software development from the 1970s through the 1990s. While
 **Scrum + XP Engineering Practices:**
 Use Scrum for project management (sprints, roles, ceremonies) and XP for technical practices (TDD, pair programming, CI). This is very common and effective.
 
+**Shape Up + XP Engineering Practices:**
+Use Shape Up for project planning and autonomy (6-week cycles, shaping, betting) and XP for technical practices (TDD, refactoring, CI). Combines meaningful completion with engineering excellence.
+
 **Kanban + DevOps:**
 Use Kanban for workflow visualization and WIP limits, DevOps for deployment automation and collaboration. Great for operations and SRE teams.
 
@@ -645,7 +733,7 @@ Use Kanban for workflow visualization and WIP limits, DevOps for deployment auto
 Define architecture and high-level design in a Waterfall phase, then implement using Agile sprints. Useful when architecture must be stable.
 
 **Dual-Track Agile (Discovery + Delivery):**
-Run parallel tracks: discovery (research, design) and delivery (implementation). Discovery feeds validated ideas to delivery track.
+Run parallel tracks: discovery (research, design) and delivery (implementation). Discovery feeds validated ideas to delivery track. Shape Up's shaping process fits naturally as the discovery track.
 
 ---
 
@@ -667,6 +755,9 @@ Most successful teams adapt methodologies to their needs rather than following t
 **Agile:**
 - [Agile Manifesto](https://agilemanifesto.org/){:target="_blank" rel="noopener noreferrer"} - Original manifesto and principles
 - [Scrum Guide](https://scrumguides.org/){:target="_blank" rel="noopener noreferrer"} - Official Scrum definition by Schwaber & Sutherland
+
+**Shape Up:**
+- [Shape Up: Stop Running in Circles and Ship Work that Matters](https://basecamp.com/shapeup){:target="_blank" rel="noopener noreferrer"} - Ryan Singer (free online book)
 
 **Lean:**
 - [Lean Software Development: An Agile Toolkit](https://www.amazon.com/Lean-Software-Development-Agile-Toolkit/dp/0321150783){:target="_blank" rel="noopener noreferrer"} - Mary & Tom Poppendieck

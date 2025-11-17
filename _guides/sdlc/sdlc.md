@@ -35,8 +35,6 @@ The **Software Development Lifecycle (SDLC)** is a structured process for planni
 - The SDLC phases remain consistent: planning, design, development, testing, deployment, maintenance
 - Methodologies determine the approach: sequential (Waterfall), iterative (Agile), timeboxed (Scrum), continuous flow (Kanban)
 
-For detailed comparison of methodologies, see the [SDLC Methodologies Comparison](sdlc-methodologies.md) guide.
-
 ### Core SDLC Principles
 
 Regardless of methodology, effective SDLCs share common principles:
