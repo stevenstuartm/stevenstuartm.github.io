@@ -1,5 +1,5 @@
 ---
-title: "Shape Up: Modern Product Development"
+title: "ShapeUp Methodology"
 layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC & Modeling

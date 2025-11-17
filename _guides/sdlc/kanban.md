@@ -1,5 +1,5 @@
 ---
-title: "Kanban Method"
+title: "Kanban Methodology"
 layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC Fundamentals

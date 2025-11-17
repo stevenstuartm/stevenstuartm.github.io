@@ -1,5 +1,5 @@
 ---
-title: "Extreme Programming (XP)"
+title: "Extreme Programming (XP) Methodology"
 layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC Frameworks

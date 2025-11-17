@@ -1,5 +1,5 @@
 ---
-title: "Scrum Framework"
+title: "Scrum Methodology"
 layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC Fundamentals

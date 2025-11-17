@@ -111,8 +111,12 @@ class ContentLinter:
                 continue
 
             # Skip bullet points and headers for some checks
-            is_bullet = line.strip().startswith('-') or line.strip().startswith('*')
-            is_header = line.strip().startswith('#')
+            # Bullet points start with "- " or "* " (with space), not just "-" or "*"
+            stripped = line.strip()
+            is_bullet = (stripped.startswith('- ') or
+                        stripped.startswith('* ') or
+                        (len(stripped) >= 2 and stripped[0] in '-*' and stripped[1] in ' \t'))
+            is_header = stripped.startswith('#')
 
             # Check for AI-tell phrases
             self._check_ai_tell_phrases(line_num, line)

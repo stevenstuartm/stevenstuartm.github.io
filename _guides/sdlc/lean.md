@@ -1,5 +1,5 @@
 ---
-title: "Lean Software Development"
+title: "Lean Software Methodology"
 layout: guide
 category: Software Development Lifecycle
 subcategory: SDLC Fundamentals

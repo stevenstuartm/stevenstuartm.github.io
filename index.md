@@ -11,11 +11,11 @@ featured_items:
     cta: "Learn More"
     url: "/study-guides/sdlc/aaa-cycle.html"
 
-  - label: "Latest Post"
-    title: "Rebuild or Realign: Why Rewrites Often Solve the Wrong Problem"
-    description: "Many celebrated system rebuilds appear successful not because of new technology, but because they force teams to realign with value and best practices. This realignment work could have happened without the rebuild."
+  - label: "Featured Post"
+    title: "Shaped Kanban: Agility Without Artificial Constraints"
+    description: "Timeboxes attempt to enforce through calendar boundaries what discipline should provide naturally. Shaped Kanban combines Shape Up's shaping discipline with Kanban's continuous flow to deliver predictability, focus, and rapid delivery without artificial constraints."
     cta: "Read Now"
-    url: "/blog/2025/11/07/rebuild-or-realign.html"
+    url: "/blog/2025/11/17/shaped-kanban.html"
 
   - label: "Learning Methodology"
     title: "Learning Through Compression"
