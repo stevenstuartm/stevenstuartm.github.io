@@ -11,8 +11,6 @@ tags: [sdlc, methodology, collaboration, stakeholder-management, leadership, fun
 
 AAA is a **guiding discipline and principle** for software development: a way of thinking that provides guardrails against the most common mistakes organizations and development teams make. It is a philosophy that transcends any specific methodology, operating from the software architect's perspective on what truly matters.
 
-> **Quick Start**: Want to practice AAA immediately? [Shape Up](/study-guides/sdlc/shape-up.html) is the methodology that best operationalizes AAA principles. Its three phases (Shaping, Betting, Building) map directly to Align-Agree-Apply.
-
 ### AAA as a Way of Valuing
 
 AAA is about **how we value** before **how we work**:
@@ -251,6 +249,4 @@ These intangibles are what make projects succeed when challenges arise.
 
 ## AAA in Practice Across Methodologies
 
-AAA is a guiding discipline that transcends any specific methodology. You can practice AAA within any SDLC approach: Scrum, Kanban, Lean, Waterfall, XP, DevOps, or Shape Up. Each methodology offers different support for the three phases, and understanding these trade-offs helps you adapt AAA to your context.
-
-For a detailed exploration of how Shape Up operationalizes AAA principles (including methodology comparisons), see the [Shape Up guide's AAA Cycle alignment section](/study-guides/sdlc/shape-up.html#alignment-with-aaa-cycle).
+AAA is a guiding discipline that transcends any specific methodology. You can practice AAA within any SDLC approach: Scrum, Kanban, Lean, Waterfall, XP, or DevOps. Each methodology offers different support for the three phases, and understanding these trade-offs helps you adapt AAA to your context.

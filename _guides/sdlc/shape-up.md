@@ -21,8 +21,6 @@ tags: [sdlc, methodology, agile, product-development, basecamp]
 
 *Developed by Basecamp (Ryan Singer, 2019) as an alternative to Scrum. Documented in "Shape Up: Stop Running in Circles and Ship Work that Matters"*
 
-> **For Architects**: Shape Up is the best operational framework for practicing the [AAA Cycle discipline](aaa-cycle.html). While AAA can be practiced in any methodology, Shape Up explicitly structures the three phases: Shaping = Align, Betting = Agree, Building = Apply. See [Alignment with AAA Cycle](#alignment-with-aaa-cycle) below.
-
 **Shape Up** is a product development methodology that emerged from Basecamp's experience building software products over 15+ years. It addresses common frustrations with Scrum and traditional project management:
 
 - Endless backlogs that create guilt and false urgency
@@ -563,7 +561,7 @@ Shape Up is adaptable. Adjust cycle length (4-8 weeks, 6 is standard), cool-down
 
 ## Alignment with AAA Cycle
 
-Shape Up naturally aligns with [AAA Cycle](aaa-cycle.html) principles, making it one of the best operational frameworks for practicing the discipline. The three-phase structure maps cleanly: **Shaping = Align**, **Betting Table = Agree**, **Building = Apply**.
+Shape Up's three-phase structure can align with [AAA Cycle](aaa-cycle.html) principles: **Shaping = Align**, **Betting Table = Agree**, **Building = Apply**.
 
 ### Natural Compatibility
 
@@ -609,9 +607,9 @@ Shapers understand the problem deeply, but teams receive a pitch document. Conte
 - Shapers available during building to clarify intent
 - Teams have autonomy to adjust approach if better solution found
 
-### Why Shape Up Works Well for AAA
+### How Shape Up Structures AAA Phases
 
-Shape Up makes AAA's three phases explicit and structured. Teams know exactly when they're aligning vs. agreeing vs. applying. Other methodologies (Scrum, Kanban, Lean) can support AAA but require maturity and discipline to create this clarity; Shape Up provides it by design.
+Shape Up makes AAA's three phases explicit and structured. Teams know exactly when they're aligning vs. agreeing vs. applying. The methodology provides clear boundaries between these phases by design.
 
 ---
 

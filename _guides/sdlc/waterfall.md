@@ -772,7 +772,7 @@ Most of software's total cost is maintenance (60-90%). Waterfall projects often 
 - Requirements emerge from experimentation
 - Need flexibility to pivot
 
-**Better approach:** Lean Startup, Shape Up, XP
+**Better approach:** Lean Startup, XP
 
 ---
 
@@ -808,7 +808,7 @@ Most of software's total cost is maintenance (60-90%). Waterfall projects often 
 - Resources constrained (can't afford waterfall overhead)
 - Speed to market critical
 
-**Better approach:** Lean Startup, Shape Up
+**Better approach:** Lean Startup
 
 ---
 
@@ -1018,7 +1018,7 @@ Waterfall conflicts with AAA when:
 - Rapid feedback and course correction needed
 - Discovery reveals fundamentally different reality
 
-For most modern software development, these conflicts make waterfall a poor fit with AAA. Use iterative methodologies (Lean, Kanban, Shape Up) that embrace continuous realignment.
+For most modern software development, these conflicts make waterfall a poor fit with AAA. Use iterative methodologies (Lean, Kanban) that embrace continuous realignment.
 
 ---
 
