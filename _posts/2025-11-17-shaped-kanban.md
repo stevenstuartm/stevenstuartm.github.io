@@ -9,7 +9,7 @@ tags: [agile, kanban, shapeup, aaa-cycle, sdlc]
 
 ## The Timebox Problem
 
-After many years of the industry refining interval-based methodologies, many teams still struggle to navigate them. The symptoms often present as work fragmenting across sprint cycles, features sitting incomplete, and then discovery of critical constraints mid-sprint which can force awkward choices about whether to ship incomplete work or carry it over to the next cycle.
+After many years of the industry refining interval-based methodologies, many teams still struggle to navigate them. The symptoms often present as work fragmenting across sprint cycles, features sitting incomplete, and discovery of critical constraints mid-sprint which can force awkward choices about whether to ship incomplete work or carry it over to the next cycle.
 
 **Interval-based development organizes work around fixed time periods, not around completing features.** When timeboxes become the primary organizing principle, they corrupt even well-aligned teams.
 
