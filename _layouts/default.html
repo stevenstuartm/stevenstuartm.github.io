@@ -58,6 +58,9 @@
 <body>
     {% include header.html %}
 
+    <!-- Load reading progress tracker for homepage card -->
+    <script src="{{ '/assets/js/reading-progress.js' | relative_url }}"></script>
+
     <main class="container">
         {{ content }}
     </main>

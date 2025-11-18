@@ -163,9 +163,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (!tocToggle || !postToc || !postContainer) return;
 
-    // TOC should be closed by default - don't check localStorage
-    // Users can open it if they want to use it
-
     function toggleTOC(forceClose = false) {
         if (forceClose) {
             tocToggle.classList.remove('expanded');

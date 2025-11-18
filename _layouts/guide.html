@@ -151,9 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const guideContainer = document.getElementById('guideContainer');
 
     if (!tocToggle || !guideToc || !guideContainer) return;
-
-    // TOC should be closed by default - no localStorage persistence
-
+    
     function toggleTOC(forceClose = false) {
         if (forceClose) {
             tocToggle.classList.remove('expanded');
@@ -200,5 +198,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initial check
     toggleScrollButton();
+})();
+</script>
+
+<!-- Load reading progress tracker -->
+<script src="{{ '/assets/js/reading-progress.js' | relative_url }}"></script>
+
+<!-- Initialize reading progress tracking -->
+<script>
+(function() {
+    const tracker = new ReadingProgressTracker();
+
+    const guideData = {
+        url: '{{ page.url | absolute_url }}',
+        title: '{{ page.title | escape }}',
+        category: '{{ page.category | escape }}'
+    };
+
+    tracker.initTracking(guideData);
 })();
 </script>

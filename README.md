@@ -4,7 +4,8 @@ A practical resource for software architects and engineers, featuring real-world
 
 ## What You'll Find Here
 
-- **Technical Articles**: In-depth posts on software architecture, system design patterns, Domain-Driven Design, AWS, .NET, microservices, and engineering leadership
+- **Study Guides**: comprehensive guides covering Architecture, Data Structures & Algorithms, Object-Oriented Programming, Security, SDLC, AI/ML, and more—organized by category and tagged for easy discovery
+- **Blog**: In-depth posts on software architecture, system design patterns, Domain-Driven Design, AWS, .NET, microservices, and engineering leadership
 - **Tech Radar**: Interactive visualization exploring technology choices, assessments, and recommendations based on production experience
 - **Practical Lessons**: Real project learnings—architectural decisions that worked (and those that didn't), cloud optimization strategies, and team leadership insights
 
@@ -57,26 +58,30 @@ The generated site will be in the `_site/` directory.
 ```
 .
 ├── _config.yml           # Site configuration
-├── _layouts/             # Page templates
+├── _layouts/             # Page templates (default, home, post, guide, radar, blog-listing)
 ├── _includes/            # Reusable HTML components
-├── _posts/               # Blog posts (Markdown)
+├── _posts/               # Blog posts (Markdown, YYYY-MM-DD-title.md format)
+├── _guides/              # Study guides organized by category
+│   ├── architecture/    # Architecture guides
+│   ├── dsa/             # Data Structures & Algorithms
+│   ├── oop/             # Object-Oriented Programming
+│   ├── security/        # Security guides
+│   ├── sdlc/            # Software Development Lifecycle
+│   └── ...              # Other categories
+├── pages/               # Site pages (blog, study-guides, tech-radar, resume, about)
 ├── assets/
 │   ├── css/             # Stylesheets
-│   ├── data/            # JSON data files
-│   └── images/          # Image assets
-├── index.md             # Homepage
-├── blog.md              # Blog listing page
-├── resume.md            # Resume/CV
-└── about.md             # About page
+│   ├── js/              # JavaScript (D3.js, radar visualization, reading progress)
+│   ├── data/            # JSON data files (radar-data, blog series config, study guides config)
+│   └── img/             # Image assets
+└── index.md             # Homepage
 ```
 
-## Writing Blog Posts
+## Writing Content
 
-Blog posts are written in Markdown and placed in the `_posts/` directory with the filename format:
+### Blog Posts
 
-```
-YYYY-MM-DD-title.md
-```
+Blog posts are written in Markdown and placed in the `_posts/` directory with the filename format `YYYY-MM-DD-title.md`.
 
 Each post requires YAML front matter:
 
@@ -85,11 +90,34 @@ Each post requires YAML front matter:
 layout: post
 title: "Your Post Title"
 date: 2025-09-29
+description: "Brief summary for SEO and previews"
+series: "Architecture Insights"
 tags: [architecture, design-patterns]
 ---
 
 Your content here...
 ```
+
+**Important**: When creating a new blog post, also update `assets/data/blog_series_config.json` to add the post to its series.
+
+### Study Guides
+
+Study guides are organized in `_guides/` by category. Each guide requires:
+
+```yaml
+---
+layout: guide
+title: "Guide Title"
+category: Main Category
+subcategory: Subcategory
+description: "Brief description"
+tags: [tag1, tag2, tag3, tag4]
+---
+
+Your content here...
+```
+
+**Important**: When creating a new study guide, also update `assets/data/study_guides_config.json` to make it discoverable on the study guides page.
 
 ## Technology Stack
 
