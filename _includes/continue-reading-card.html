@@ -11,12 +11,6 @@
             </div>
         </div>
         <div class="compact-right">
-            <div class="compact-progress">
-                <div class="compact-progress-bar">
-                    <div class="compact-progress-fill" id="homeProgressFill"></div>
-                </div>
-                <span class="compact-percent" id="homeGuideProgress"></span>
-            </div>
             <a href="#" id="homeContinueLink" class="compact-btn">Resume →</a>
         </div>
     </div>
@@ -60,9 +54,7 @@
 
         // Populate card with progress data (using textContent to avoid HTML encoding)
         document.getElementById('homeGuideTitle').textContent = progress.title;
-        document.getElementById('homeGuideProgress').textContent = `${progress.scrollPercent}%`;
         document.getElementById('homeGuideLastRead').textContent = ReadingProgressTracker.formatTimeAgo(progress.lastRead);
-        document.getElementById('homeProgressFill').style.width = `${progress.scrollPercent}%`;
         document.getElementById('homeContinueLink').href = progress.url;
 
         // Show the card
