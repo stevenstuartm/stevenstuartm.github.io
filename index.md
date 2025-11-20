@@ -12,8 +12,8 @@ featured_items:
     url: "/study-guides/sdlc/aaa-cycle.html"
 
   - label: "Featured Post"
-    title: "Shaped Kanban: Agility Without Artificial Constraints"
-    description: "Timeboxes attempt to enforce through calendar boundaries what discipline should provide naturally. Shaped Kanban combines Shape Up's shaping discipline with Kanban's continuous flow to deliver predictability, focus, and rapid delivery without artificial constraints."
+    title: "Shaped Kanban: Complete Features, Not Sprints"
+    description: "Sprints organize around time intervals. Shaped Kanban organizes around completing features with clear boundaries and circuit breakers to bound risk. Work flows at its natural pace within disciplined constraints."
     cta: "Read Now"
     url: "/blog/2025/11/17/shaped-kanban.html"
 
