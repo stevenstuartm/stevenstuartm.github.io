@@ -7,7 +7,7 @@ series: "Industry & Culture"
 tags: [leadership, management, culture, organizational-health]
 ---
 
-I've been thinking about the management practices that experienced engineers encounter: the ones that feel wrong but are hard to name. Personal development goals that feel invasive. "We're a family" rhetoric that breeds guilt. Criticism so vague it becomes impossible to address. Performance improvement plans that feel predetermined. "Unlimited PTO" that results in taking less vacation.
+I've been thinking about the management practices that we all encounter: the ones that feel wrong but are hard to name. Personal development goals that feel invasive. "We're a family" rhetoric that breeds guilt. Criticism so vague it becomes impossible to address. Performance improvement plans that feel predetermined. "Unlimited PTO" that results in taking less vacation.
 
 These aren't random management mistakes. They share a common pattern: leadership externalizing its own failures onto employees while maintaining control through ambiguity and emotional manipulation.
 

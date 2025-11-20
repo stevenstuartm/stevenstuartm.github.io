@@ -7,7 +7,7 @@ series: "Technology & Tools"
 tags: [architecture, infrastructure, devops, cloud]
 ---
 
-I still remember when Terraform felt like the obvious answer to infrastructure as code. Cloud platforms were young, their native tooling was clunky, and managing infrastructure across multiple providers manually was painful. Terraform emerged to solve a real problem, and it solved it well.
+I remember when Terraform felt like the obvious answer to infrastructure as code. Cloud platforms were young, their native tooling was clunky, and managing infrastructure across multiple providers manually was painful. Terraform emerged to solve a real problem, and it solved it well.
 
 But platforms mature. They internalize the patterns that third-party tools pioneered, and when they do, the advantages shift. The conversation around cloud-native IaC isn't about Terraform failing; it's about recognizing that cloud platforms have reached a maturity point where their native solutions offer fundamental advantages that third-party tools can't match.
 
