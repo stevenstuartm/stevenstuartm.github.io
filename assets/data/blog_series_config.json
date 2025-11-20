@@ -33,6 +33,7 @@
       "description": "Insights on agile methodologies, learning strategies, and career growth",
       "posts": [
         "2025-11-17-shaped-kanban.md",
+        "2025-11-11-tech-debt-is-a-self-fulfilling-prophecy.md",
         "2025-11-08-troubleshooting-production.md",
         "2025-10-23-the-agile-masquerade.md",
         "2025-10-09-learning-through-compression.md",
@@ -46,7 +47,6 @@
     "Industry & Culture": {
       "description": "Perspectives on hiring practices, leadership, and industry trends",
       "posts": [
-        "2025-11-11-tech-debt-is-a-self-fulfilling-prophecy.md",
         "2025-10-11-leadership-failures-disguised-as-empowerment.md",
         "2025-10-10-build-slow-to-go-fast.md",
         "2025-09-09-innovating-ourselves-into-corner.md",

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Let the Results Speak for Themselves: Exceptions vs Result types"
+title: "Result Types vs Exceptions: Which Arguments Actually Hold Up?"
 date: 2025-10-29
 description: "Evaluating arguments for Result types versus exceptions for handling expected failures in modern distributed C# systems, examining which claims have measurable backing and which are subjective preference."
 series: "Architecture Insights"
@@ -53,9 +53,13 @@ Programming errors like null references or array index violations. Those are bug
 
 The Result vs Exception debate has existed for decades. So why does it matter more now?
 
-**Distributed systems made expected failures more frequent**. In monolithic applications, exceptions for validation or not-found scenarios were tolerable. In modern distributed systems with microservices and service meshes, expected failures happen constantly at scale: circuit breaker fallbacks, timeout retries, validation of user input, partial batch results. Treating these frequent outcomes as exceptions creates friction. Exceptions serialize across service boundaries as HTTP errors, generate stack traces for telemetry systems, and require try-catch blocks at every service call. Results are just data; they compose, serialize cleanly, and don't trigger observability overhead.
+**Distributed systems made expected failures more frequent**. In monolithic applications, exceptions for validation or not-found scenarios were tolerable. In modern distributed systems with microservices and service meshes, expected failures happen constantly at scale: circuit breaker fallbacks, timeout retries, validation of user input, partial batch results. Treating these frequent outcomes as exceptions creates friction.
 
-**Offline-first architecture became standard**. Progressive web apps, mobile applications, and desktop clients operate in environments where "no network" isn't exceptional - it's expected. Sync conflicts, partial data availability, and intermittent connectivity are normal operating conditions, not rare anomalies. These applications need error handling mechanisms designed for frequent expected states, not mechanisms optimized for rare exceptional cases.
+Exceptions serialize across service boundaries as HTTP errors, generate stack traces for telemetry systems, and require try-catch blocks at every service call. Results are just data. They compose, serialize cleanly, and don't trigger observability overhead.
+
+**Offline-first architecture became standard**. Progressive web apps, mobile applications, and desktop clients operate in environments where "no network" isn't exceptional; it's expected.
+
+Sync conflicts, partial data availability, and intermittent connectivity are normal operating conditions. Error handling mechanisms must be designed for frequent expected states.
 
 **Observability systems make exception costs visible**. Every exception generates a stack trace that gets captured, stored, and transmitted through distributed tracing. At scale, exception-heavy architectures create measurable storage costs and noise in observability platforms. Results avoid this entirely.
 
@@ -65,9 +69,9 @@ The Result vs Exception debate has existed for decades. So why does it matter mo
 
 Both Rust and C# are pragmatic, multi-paradigm languages that evolved from different starting points.
 
-**Rust** emerged with strong functional influences and a systems programming focus. It enforces a clear split - expected failures return `Result<T, E>` types (compiler-enforced handling), while unexpected failures trigger panics that unwind the stack like exceptions.
+**Rust** emerged with strong functional influences and a systems programming focus. It enforces a clear split: expected failures return `Result<T, E>` types (compiler-enforced handling), while unexpected failures trigger panics that unwind the stack like exceptions.
 
-**C#** started heavily OOP-dominant and progressively adopted functional features (LINQ, pattern matching, immutability) to solve real problems. It historically used exceptions for all failures - both expected and unexpected.
+**C#** started heavily OOP-dominant and progressively adopted functional features (LINQ, pattern matching, immutability) to solve real problems. It historically used exceptions for all failures, both expected and unexpected.
 
 Both ecosystems now support the same error handling split: Results for expected failures, exceptions or panics for programming errors.
 
@@ -81,25 +85,25 @@ Still, when a pragmatic developer community independently moves toward patterns 
 
 ## Arguments for Result Types
 
-**Argument 1: Performance for frequent expected failures**
+### Performance for frequent expected failures
 
 When cache misses, validation failures, and timeouts happen thousands of times per second, exception overhead creates degradation. Results are simple branches while exceptions require stack unwinding. Calling these failures "exceptional" doesn't change the performance characteristics.
 
 **Strength**: Measurable at scale in systems with high-frequency expected failures.
 
-**Argument 2: Information disclosure prevention by default**
+### Information disclosure prevention by default
 
 Stack traces leak automatically unless actively prevented at every boundary. Results can't leak stack traces because there are no stack traces. Safe boundaries are the default, not something you must remember to enforce.
 
 **Strength**: Security by default beats security through discipline.
 
-**Argument 3: Type signatures as reliable documentation**
+### Type signatures as reliable documentation
 
 `Result<Order>` tells you immediately that getting an order can fail. `Order` tells you nothing without reading implementation or relying on potentially outdated XML comments. Refactoring tools update type signatures automatically; they don't update documentation.
 
 **Strength**: Types can't lie about whether failure is possible.
 
-**Argument 4: Natural composition for partial success and iteration**
+### Natural composition for partial success and iteration
 
 Batch operations, parallel workflows, and offline sync scenarios often have partial success. Results compose naturally through filtering and mapping. In offline-first applications syncing local changes to servers, some records succeed while others fail due to conflicts or validation. This is expected behavior, not an exceptional case.
 
@@ -130,7 +134,7 @@ With parallel processing, `Task.WhenAll` with exceptions is awkward because one 
 
 ## Arguments for Exceptions
 
-**Argument 1: Implicit propagation to appropriate handlers**
+### Implicit propagation to appropriate handlers
 
 Exceptions bubble to orchestration layers without code at each level. Throw once, catch at the boundary. The happy path stays clean; error handling lives at boundaries.
 
@@ -138,13 +142,13 @@ Results require explicit propagation. Return `Result<T>`, check it, propagate it
 
 **Strength**: Separation of concerns. Domain logic stays focused on domain, not error threading.
 
-**Argument 2: Framework integration without friction**
+### Framework integration without friction
 
 The .NET ecosystem uses exceptions. Entity Framework throws `DbUpdateException`. HttpClient throws `HttpRequestException`. Wrapping every framework call in try-catch to convert to Results creates boilerplate at every boundary.
 
 **Strength**: Working with the ecosystem, not against it.
 
-**Argument 3: C# doesn't enforce Result handling**
+### C# doesn't enforce Result handling
 
 Unlike Rust where ignoring a `Result` is a compiler error, C# lets you completely ignore returned Results. You can access `.Value` without checking `.IsSuccess` and get runtime exceptions anyway.
 
@@ -158,13 +162,13 @@ The "compiler safety" argument assumes static analyzers and discipline; the same
 
 **Strength**: Results in C# provide discoverability, not enforcement.
 
-**Argument 4: Orchestration layers solve the same problems**
+### Orchestration layers solve the same problems
 
 Proper architecture already requires orchestration layers that catch domain exceptions, translate them to appropriate responses, and control what information crosses boundaries. These layers also make consistent logging decisions. Results don't eliminate the need for this architecture; they just change what propagates upward.
 
 **Strength**: Architecture matters more than mechanism.
 
-**Argument 5: Exception documentation is sufficient with discipline**
+### Exception documentation is sufficient with discipline
 
 XML comments document exceptions, appear in IntelliSense, and provide discoverability at call sites:
 
@@ -177,7 +181,7 @@ Well-maintained codebases keep documentation current through code reviews. If yo
 
 **Strength**: Documentation works if teams maintain it.
 
-**Argument 6: Results encourage scattered error handling**
+### Results encourage scattered error handling
 
 Making it syntactically easy to handle errors inline encourages developers to scatter error-handling logic across call sites instead of centralizing it in orchestration layers. The path of least resistance becomes handling each Result immediately rather than propagating it to appropriate boundaries.
 

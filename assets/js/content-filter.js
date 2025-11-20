@@ -133,23 +133,49 @@ class ContentFilter {
 
     applyFilters() {
         let visibleCount = 0;
+        let totalCount = 0;
 
         // For blog pages: handle "All" series differently
         const isBlogPage = this.config.itemName === 'posts';
 
-        if (isBlogPage && this.activeFilters.category === 'all') {
-            // When "All" is selected, hide all category sections except "All"
-            this.categorySections.forEach(section => {
-                const sectionCategory = section.dataset.category?.toLowerCase().replace(/\s+/g, '-');
-                if (sectionCategory === 'all') {
-                    section.style.display = '';
-                } else {
-                    section.style.display = 'none';
-                }
-            });
+        // First pass: handle section visibility for blog pages
+        if (isBlogPage) {
+            if (this.activeFilters.category === 'all') {
+                // When "All" is selected, hide all category sections except "All"
+                this.categorySections.forEach(section => {
+                    const sectionCategory = this.slugify(section.dataset.category);
+                    if (sectionCategory === 'all') {
+                        section.style.display = '';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            } else {
+                // When a specific series is selected, show that series and hide "All"
+                this.categorySections.forEach(section => {
+                    const sectionCategory = this.slugify(section.dataset.category);
+                    if (sectionCategory === 'all') {
+                        section.style.display = 'none';
+                    } else if (sectionCategory === this.activeFilters.category) {
+                        section.style.display = '';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            }
         }
 
+        // Second pass: filter items and count
         this.contentItems.forEach(item => {
+            // For blog pages, only process items in currently visible sections
+            if (isBlogPage) {
+                const itemSection = item.closest('.category-section');
+                if (itemSection && itemSection.style.display === 'none') {
+                    return; // Skip items in hidden sections
+                }
+            }
+
+            totalCount++;
             const matches = this.itemMatchesFilters(item);
 
             if (matches) {
@@ -162,14 +188,9 @@ class ContentFilter {
             }
         });
 
-        // Handle category sections and subcategory visibility
-        if (this.categorySections.length > 0) {
+        // Handle category sections and subcategory visibility (for study guides)
+        if (this.categorySections.length > 0 && !isBlogPage) {
             this.categorySections.forEach(section => {
-                // For blog pages with "All" selected, section visibility is already handled above
-                if (isBlogPage && this.activeFilters.category === 'all') {
-                    return;
-                }
-
                 // Hide empty subcategories within each category
                 const subcategoryGroups = section.querySelectorAll('.subcategory-group');
                 subcategoryGroups.forEach(subgroup => {
@@ -184,7 +205,7 @@ class ContentFilter {
         }
 
         // Update result count and no results message
-        this.updateResultCount(visibleCount);
+        this.updateResultCount(visibleCount, totalCount);
 
         if (visibleCount === 0) {
             if (this.noResultsEl) this.noResultsEl.style.display = 'block';
@@ -245,11 +266,12 @@ class ContentFilter {
         return true;
     }
 
-    updateResultCount(count) {
+    updateResultCount(count, total) {
         if (!this.resultCountEl) return;
 
-        const total = this.contentItems.length;
-        this.resultCountEl.textContent = `Showing ${count} of ${total} ${this.config.itemName || 'items'}`;
+        // Use the provided total if available, otherwise fall back to all items
+        const totalItems = total !== undefined ? total : this.contentItems.length;
+        this.resultCountEl.textContent = `Showing ${count} of ${totalItems} ${this.config.itemName || 'items'}`;
     }
 
     updateClearFiltersVisibility() {
@@ -361,6 +383,15 @@ class ContentFilter {
             : window.location.pathname;
 
         window.history.replaceState({}, '', newURL);
+    }
+
+    slugify(text) {
+        if (!text) return '';
+        return text.toLowerCase()
+            .replace(/&/g, '')  // Remove ampersands first
+            .replace(/\s+/g, '-')  // Then replace spaces with dashes
+            .replace(/-+/g, '-')  // Collapse multiple dashes into one
+            .replace(/^-|-$/g, '');  // Remove leading/trailing dashes
     }
 }
 

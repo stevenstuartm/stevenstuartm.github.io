@@ -1,47 +1,52 @@
 ---
 layout: post
-title: "What Does 'Hexagonal Architecture' Actually Mean in Modern Development?"
+title: "Are You Using Hexagonal Architecture, or Just Dependency Injection?"
 date: 2025-09-29
 series: "Architecture Insights"
 tags: [architecture, design-patterns, software-design]
-description: "Understanding the difference between hexagonal architecture's structural pattern and achieving testability through modern frameworks, and why it matters."
+description: "Most developers achieve hexagonal architecture's goals without implementing its structure. Modern frameworks offer testability and decoupling through different means, and understanding this distinction clarifies what you're actually building."
 ---
 
-Most developers achieve hexagonal architecture's goals (testability, decoupling) without implementing its structure. Understanding this distinction clarifies what you're actually building.
+I've noticed something curious after having read certain posts or having talked with certain teams about their architecture. Some describe themselves as "using hexagonal architecture" because they have repository interfaces and dependency injection. But when the conversation turns to symmetric treatment of UI and database as external actors, or how they swap adapters in production, the pattern doesn't quite match. They've achieved testability and decoupling (which were Cockburn's original goals) but through standard layered architecture and modern framework patterns rather than hexagonal structure.
 
-## 1. The Confusion
+This distinction matters, not as pedantry about pattern purity, but because understanding what you're actually building helps when learning patterns, discussing architecture decisions, or interviewing for roles that mention specific architectural styles.
 
-**Cockburn's Goals (2005):** "Allow an application to equally be driven by users, programs, automated test or batch scripts, and to be developed and tested in isolation from its eventual run-time devices and databases."
+## Cockburn's Vision vs. Modern Reality
 
-This sounds like what every modern framework encourages: testability, decoupling, multiple interfaces.
+In 2005, Alistair Cockburn described hexagonal architecture with a clear goal: "Allow an application to equally be driven by users, programs, automated test or batch scripts, and to be developed and tested in isolation from its eventual run-time devices and databases."
 
-**Cockburn's Implementation:** Explicit symmetry treating UI and database identically as external actors. Multiple driving mechanisms as first-class equals (REST, CLI, tests, batch). Ports as distinct boundaries with swappable adapters.
+This sounds exactly like what modern frameworks encourage through dependency injection, interface-based design, and built-in testing support. The goals resonate because they address real problems: tight coupling to infrastructure, difficulty testing business logic, and fragile dependencies on external systems.
 
-**The Gap:** People achieve the goals using framework DI and think they're "doing hexagonal architecture," but they're using standard layered patterns (Controller → Service → Repository), not the hexagonal structure.
+But Cockburn's implementation was specific. Hexagonal architecture treats the UI and database identically as external actors. It positions multiple driving mechanisms (REST endpoints, CLI tools, automated tests, batch scripts) as first-class equals, not as primary interface with secondary test harnesses. It defines ports as distinct boundaries with swappable adapters that can change at runtime or between deployments.
 
-## 2. What People Are Actually Doing
+The gap emerges when developers use framework DI to achieve testability and call it "hexagonal architecture" while still organizing code in standard layers: Controller → Service → Repository. They've met the goals but haven't implemented the structure.
 
-**Actual Hexagonal (Rare):** Explicit symmetry, multiple equal drivers, real adapter swapping in production.
+## What Most Teams Are Actually Building
 
-**Layered Architecture with DI (Most Common):** Framework DI with repository interfaces. Achieves testability and decoupling through framework patterns, not hexagonal structure. Calls interfaces "ports" but still thinks in layers.
+If you look at modern codebases that claim hexagonal architecture, you'll find three common patterns:
 
-**Terminological Confusion (Common):** Using "hexagonal" as shorthand for "clean code" or any architecture with interfaces.
+**True hexagonal architecture** is rare. It requires explicit symmetry where UI and database adapters are interchangeable external actors, multiple driving mechanisms treated as equals, and actual runtime adapter swapping. Most systems don't need this level of abstraction.
 
-## 3. The Question
+**Layered architecture with dependency injection** is what most teams build. They use framework DI with repository interfaces, achieve testability and decoupling through standard framework patterns, and organize code in traditional layers. They might call interfaces "ports" but the mental model is still layered, not symmetric.
 
-Modern frameworks provide built-in DI, testing support, and interface-based design. More importantly, we deploy immutable containers with dependencies baked in. You don't swap adapters at runtime. Instead, you deploy new images through CI/CD pipelines.
+**Terminological confusion** is widespread. Teams use "hexagonal" as shorthand for "clean architecture" or any codebase with interfaces and dependency injection. The term loses its specific structural meaning and becomes synonymous with "well-designed."
 
-Cross-cutting concerns that hexagonal architecture addressed through adapters (monitoring, observability, authentication, rate limiting) are now handled by service meshes and API gateways, external to your application code entirely.
+## The Infrastructure Shift That Changed Everything
 
-The "swappable adapters" benefit that justified hexagonal structure in 2005 doesn't materialize with immutable infrastructure and externalized concerns.
+Modern deployment practices have changed the context in which hexagonal architecture operates. We deploy immutable containers with dependencies baked in at build time. You don't swap adapters at runtime; you deploy new container images through CI/CD pipelines. The entire notion of runtime adapter flexibility contradicts immutable infrastructure principles.
 
-When you're using framework DI, repository interfaces, and deploying containers with infrastructure managed externally, are you implementing hexagonal structure, or achieving testability and decoupling through standard modern practices?
+More importantly, cross-cutting concerns that hexagonal architecture addressed through adapters (monitoring, observability, authentication, rate limiting) are now handled by service meshes and API gateways external to your application code. These infrastructure patterns externalize what hexagonal architecture internalized.
 
-## 4. Why It Matters
+The "swappable adapters" benefit that justified hexagonal structure in 2005 doesn't materialize when you're deploying immutable infrastructure with externalized concerns. Modern frameworks achieve Cockburn's original goals (testability, decoupling, isolation from runtime dependencies) through dependency injection and interface-based design without requiring symmetric structural patterns.
 
-This pattern appears in courses, certifications, and job requirements. The distinction between goals and structure matters for:
-- **Learning accurately**: Understanding what you're actually implementing
-- **Technical interviews**: Articulating architectural decisions clearly
-- **Team alignment**: Avoiding confusion when discussing patterns
+## When the Distinction Matters
 
-Modern frameworks achieve hexagonal architecture's original goals through different means. Unless you're explicitly implementing symmetric drivers and swappable adapters, you're likely using layered architecture with dependency injection, and that's perfectly valid for most systems.
+Hexagonal architecture appears in courses, certifications, and job requirements. The distinction between goals and structure matters in concrete situations:
+
+**Learning accurately**: If you're studying architectural patterns, understanding that you're implementing layered architecture with DI rather than true hexagonal structure helps you learn what the patterns actually are, not just what they aim to achieve.
+
+**Technical interviews**: When asked about hexagonal architecture, articulating the difference between Cockburn's structural pattern and modern framework approaches demonstrates deeper understanding than just saying "we use ports and adapters."
+
+**Team alignment**: Avoiding confusion when discussing patterns prevents miscommunication. If one developer thinks "hexagonal" means symmetric actors and another thinks it means "has repository interfaces," you're not actually aligned on design decisions.
+
+Modern frameworks achieve hexagonal architecture's original goals through different structural means. Unless you're explicitly implementing symmetric drivers and swappable adapters, you're likely using layered architecture with dependency injection. That's perfectly valid for most systems, and there's no need to retrofit the hexagonal label onto standard practices.

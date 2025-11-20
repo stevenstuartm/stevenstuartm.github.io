@@ -109,6 +109,15 @@ tags: [architecture, design-patterns]
 
 **Common gotcha**: Creating a blog post without updating blog_series_config.json will result in the post not appearing in the series listing on the blog page. Always modify both files together.
 
+**CRITICAL: NEVER rename files**:
+- ❌ **NEVER** rename blog post files (`_posts/*.md`) or any other content files
+- ❌ **NEVER** use `git mv` or any other method to rename files
+- The filename format `YYYY-MM-DD-title.md` is permanent once created
+- If the title changes, update only the `title:` field in the front matter
+- The filename and URL remain stable regardless of title changes
+- **Rationale**: File renames break external links, analytics, bookmarks, and SEO
+- This rule is **non-negotiable** and applies to all content files (posts, guides, pages)
+
 ### Study Guide Format
 All study guides must:
 - Be placed in `_guides/` directory (can be organized in subdirectories by topic)
@@ -630,6 +639,42 @@ When writing about software architecture, always use proper terminology:
 **CRITICAL: Natural prose over robotic lists**
 
 Blog posts should read like thoughtful essays, not manuals or checklists. The default should be smooth narrative prose that reflects an inner dialog and pleasing voice. Use bullet points strategically for actual structural advantages (comparisons, options, steps), not as a crutch to avoid writing coherent paragraphs.
+
+**Blog Post Introductions: Personal and Relatable**
+
+The introduction sets the tone for the entire post and establishes connection with the reader. Apply these principles:
+
+**Opening voice**:
+- Start with relatable, personal framing that acknowledges common knowledge or shared experiences
+- Be conversational and authentic; avoid rigid formulas or templates
+- Use varied, creative openings that fit the specific post's tone and subject
+- Avoid sounding arrogant or distant; be humble and contextual
+- Make it clear you're sharing experience and observations, not prescribing universal truths
+- The intro should feel like you're having a conversation with a colleague
+
+**Note**: Phrases like "I know, I know..." or "every time I start a new project..." can work well when they genuinely fit the context, but don't force them as a template. Each introduction should be crafted specifically for that post's subject and tone.
+
+**Voice balance throughout the post**:
+- **Introduction (1-3 paragraphs)**: Personal voice with "I" statements to establish credibility and relatability
+- **Main content (principles, analysis, examples)**: More objective observations without excessive "I've seen...", "I like...", "I follow..."
+- **Approach/recommendations sections**: Can use "I" sparingly, but prefer direct imperative ("Start with...") or inclusive ("We can...")
+- **Goal**: Warm, relatable opening that establishes voice → objective content that feels like shared observations → actionable guidance
+
+**Examples illustrating effective vs. ineffective approaches** (not templates to copy):
+```markdown
+✅ Good - Personal, relatable, and fits the specific topic:
+"I know, I know—another post about microservices versus monoliths. The debate feels exhausted at this point. Yet every time I start a new project, I find myself weighing the same questions. Not because the answer is unclear, but because the answer genuinely depends on where you are and what you're trying to learn."
+
+Note: This works because it acknowledges a saturated topic while justifying why this post exists. The specific phrasing should vary based on your actual subject matter.
+
+❌ Too distant and declarative:
+"Microservices versus monoliths is an important architectural decision. Organizations must choose the architecture that fits their context."
+
+❌ Overused "I" throughout principles:
+"I've come to see microservices as... I've seen plenty of terrible monoliths... I like introducing API gateways... I tend to start with..."
+```
+
+**Key principle**: Use first-person voice strategically in the introduction to establish connection and credibility, then shift to more universal observations in the body. This creates a natural progression from "here's my experience" to "here's what this means" without constantly reminding the reader "I think this."
 
 **When bullet points make sense**:
 - ✅ Listing distinct options or alternatives

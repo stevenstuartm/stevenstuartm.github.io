@@ -33,6 +33,11 @@ layout: default
                 </select>
             </div>
 
+            <!-- Result Count -->
+            <div class="filter-result-count">
+                <span id="blogResultCount"></span>
+            </div>
+
             <!-- Search Filter -->
             <div class="filter-group">
                 <label for="blogSearchInput">Search</label>
@@ -59,11 +64,6 @@ layout: default
                         <button class="tag-filter-btn" data-tag="{{ tag }}">{{ tag }}</button>
                     {% endfor %}
                 </div>
-            </div>
-
-            <!-- Result Count -->
-            <div class="filter-result-count">
-                <span id="blogResultCount"></span>
             </div>
 
             <!-- Clear Filters Button -->
