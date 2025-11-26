@@ -44,7 +44,7 @@ If a JWT gets leaked, the token is only valid for 1 hour maximum. The next refre
 
 ## Microservices and Shared State
 
-A common concern is that session-based authorization introduces shared state into a distributed system, creating dependencies and potential bottlenecks. This is legitimate, but the authentication vs. authorization distinction still applies. JWT validation remains stateless with no external dependencies. Authorization requires current state from a shared data store; not in-memory session state, but externalized grant data.
+A common concern is that session-based authorization introduces shared state into a distributed system, creating dependencies and potential bottlenecks. This is legitimate, but the authentication vs. authorization distinction still applies. JWT validation remains stateless with no external dependencies. Authorization requires current state from a shared data store. Not in-memory session state, but externalized grant data.
 
 Patterns that preserve service autonomy include using a shared session store like DynamoDB or Postgres with fast reads and externalized state. You can also build an authorization service with centralized grant logic that can be cached at the edge, or implement API gateway enrichment where the gateway fetches grants once and enriches downstream requests. You're not adding stateful sessions to individual services; you're externalizing authorization to a shared, scalable data layer that services query independently.
 
@@ -52,7 +52,7 @@ Patterns that preserve service autonomy include using a shared session store lik
 
 Some teams use hybrid models: coarse-grained roles in the JWT with fine-grained permissions fetched server-side, JWT blocklists that track revoked tokens in a shared store, short-lived JWTs with embedded permissions that refresh every 5 minutes, or version numbers in JWTs where the server checks if the permission version is current.
 
-These attempt to balance statelessness with dynamic authorization, but they introduce significant complexity. Tuning becomes difficult; how short should JWT TTL be, how do you cache the blocklist, when do you check versions? Debugging becomes a nightmare because authorization bugs span token structure, refresh timing, cache invalidation, and server logic. You still end up with partial solutions that have stale permission windows or require coordination between components.
+These attempt to balance statelessness with dynamic authorization, but they introduce significant complexity. Tuning becomes difficult: how short should JWT TTL be, how do you cache the blocklist, when do you check versions? Debugging becomes a nightmare because authorization bugs span token structure, refresh timing, cache invalidation, and server logic. You still end up with partial solutions that have stale permission windows or require coordination between components.
 
 The complexity cost rarely justifies the benefits. You're building infrastructure to work around the mismatch between immutable tokens and dynamic authorization, when session lookup solves it directly.
 

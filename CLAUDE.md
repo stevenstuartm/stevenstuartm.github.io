@@ -377,7 +377,15 @@ The linter will output violations with line numbers and suggestions. Fix violati
 - Any market statistics, survey results, or industry data MUST include the source
 - Format: "62% of users (Source: Company Name Report 2024)"
 - Data without sources is meaningless and damages credibility
-- Link to sources when possible
+- Link to sources when possible using markdown link syntax with appropriate target attributes
+
+**Historical claims require verification**:
+- When making claims about "original visions," "promises," or historical context, verify them with research
+- Don't assume what systems "were supposed to do" without evidence
+- Use WebSearch to verify historical context before making sweeping statements
+- Stronger arguments cite specific sources: "Tim Berners-Lee stated that 'had the technology been proprietary...it would probably not have taken off' ([CERN](https://example.com))"
+- Historical betrayal narratives are more powerful when grounded in documented promises
+- Example: "Google's PageRank was described as the 'democracy of the web'" is stronger than "search was supposed to be democratic"
 
 #### Formatting and Structure
 
@@ -413,6 +421,53 @@ The linter will output violations with line numbers and suggestions. Fix violati
 - Section titles should clearly indicate what the section contains
 - Avoid generic titles like "The Problem"; be specific
 - Readers should understand the section's purpose from the title alone
+
+#### Natural List Integration
+
+**CRITICAL: Avoid colon-based list constructions in prose (automatically detected by linter)**
+
+When listing items within flowing prose, use natural connectors like "like," "such as," or "including" rather than colons or em-dashes that create artificial breaks.
+
+**Why this matters**:
+- Colons and em-dashes create telegraphic, technical-manual rhythm
+- Natural connectors ("like", "such as") reflect how people actually speak
+- Efficiency (fewer characters) doesn't always serve effectiveness (natural communication)
+- Sometimes adding a word or two improves readability and flow
+
+**Examples**:
+
+❌ **Colon/em-dash constructions** (robotic, compressed):
+- "Google introduced authority signals—domain age, backlink profiles, historical traffic patterns—to filter spam"
+- "publish on platforms. Medium, LinkedIn, Substack, and dev.to provide distribution"
+- "Alternative models—subscriptions, public infrastructure, non-profit foundations—could realign incentives"
+- "diverse sources—Reddit discussions, GitHub repositories, published books—specifically to escape"
+
+✅ **Natural connector constructions** (conversational, flowing):
+- "Google introduced authority signals like domain age, backlink profiles, and historical traffic patterns to filter spam"
+- "publish on platforms like Medium, LinkedIn, Substack, and dev.to that provide distribution"
+- "Alternative models like subscriptions, public infrastructure, or non-profit foundations could realign incentives"
+- "diverse sources like Reddit discussions, GitHub repositories, published books, and paywalled academic content"
+
+**Linter detection**:
+The linter automatically detects three patterns:
+1. **Em-dash lists**: `signals—X, Y, Z—to filter`
+2. **Colon lists**: `models: X, Y, and Z could`
+3. **Bare lists**: `platforms. Medium, LinkedIn, and X provide` (list after period without connector)
+
+**Guidelines**:
+- Use "like" when providing representative examples
+- Use "such as" for more formal examples or comprehensive lists
+- Use "including" when the list is partial or non-exhaustive
+- Avoid parenthetical list constructions like "(feature A, feature B, feature C)" in flowing prose
+- Em-dashes for lists are acceptable in certain contexts but should be used sparingly
+
+**When colons ARE appropriate**:
+- Introducing bulleted lists that stand alone as their own paragraph
+- Setting up a formal enumeration (e.g., "Three factors matter: first, second, third")
+- After complete independent clauses that introduce what follows
+
+**The efficiency vs. effectiveness principle**:
+Shorter isn't always better. A few extra words can transform compressed, technical writing into natural, conversational prose. Optimize for how humans read and think, not for character count.
 
 #### Avoid Choppy and Generic Content
 
@@ -780,6 +835,35 @@ These phrases and patterns are obvious indicators of AI-generated content and mu
 ✅ Distributed systems made expected failures more frequent
 ✅ In distributed systems, expected failures happen frequently
 ```
+
+**CRITICAL: Avoid lazy parentheticals (automatically detected by linter)**
+
+Parentheses should flow with narrative thought, not serve as shortcuts to avoid proper sentence structure.
+
+**Why this matters**:
+- Lazy parentheticals indicate sloppy sentence construction
+- They cram definitions/explanations into the middle of sentences instead of integrating them naturally
+- Good parentheticals reflect how people think or speak out loud
+- Lazy parentheticals are just writer laziness
+
+**Examples**:
+
+❌ **Lazy parentheticals** (definition shortcuts):
+- "The cure for spam (algorithmic gatekeeping based on authority signals) became worse than the disease"
+- "Platform consolidation (network effects creating winner-take-all dynamics) locks out newcomers"
+- "Authority signals (domain age, backlinks, traffic history) compound over time"
+
+✅ **Natural integration** (proper sentence structure):
+- "The cure for spam became worse than the disease. Algorithmic gatekeeping based on authority signals locked out new entrants more effectively than spam ever did."
+- "Platform consolidation locks out newcomers through network effects that create winner-take-all dynamics."
+- "Authority signals like domain age, backlinks, and traffic history compound over time."
+
+✅ **Good parentheticals** (narrative flow):
+- "Parentheses are good when they coincide with narrative flow (the way people think or think out loud)"
+- "The solution requires breaking dependencies (something Google won't do voluntarily)"
+- "Users treat browsers and search engines as one product (even though they shouldn't)"
+
+**Key principle**: If the parenthetical is defining or explaining the term that precedes it, integrate it naturally into the sentence structure instead. Parentheses should add asides or clarifications that flow with thought, not serve as lazy shortcuts.
 
 ### AAA Cycle Content Philosophy
 

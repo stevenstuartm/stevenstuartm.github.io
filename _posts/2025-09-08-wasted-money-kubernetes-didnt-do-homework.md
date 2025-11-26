@@ -37,7 +37,7 @@ Most teams just need containers to deploy reliably, scale automatically, and int
 
 AWS ECS Fargate turned out to be the right answer for this project. It's fully managed, integrates natively with AWS services, and costs significantly less. No cluster management, no node optimization, no operational overhead.
 
-The migration took 3 days. Again, 3 days. Task definitions replaced Kubernetes manifests, IAM roles replaced service accounts, and AWS networking replaced custom overlays. The application code didn't change at all.
+The migration took 3 days. Task definitions replaced Kubernetes manifests, IAM roles replaced service accounts, and AWS networking replaced custom overlays. The application code didn't change at all.
 
 After the migration:
 - Costs dropped by roughly 60%

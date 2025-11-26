@@ -19,7 +19,7 @@ These categories describe how people think about their work, not what their empl
 
 **Developers** solve problems through software. They participate in defining solutions, not just implementing them. When someone describes a business need, developers think about what to build and how it should work before writing any code. They still write plenty of code, but they're also figuring out what the code should accomplish.
 
-**Engineers** bring systematic approaches and quality practices to building software. They think about reliability, maintainability, and how systems behave under real-world conditions. Testing strategies, deployment pipelines, monitoring, performance characteristics; these concerns shape their work from the start. They build systems meant to run in production for years, not just pass acceptance criteria today.
+**Engineers** bring systematic approaches and quality practices to building software. They think about reliability, maintainability, and how systems behave under real-world conditions. Testing strategies, deployment pipelines, monitoring, and performance characteristics shape their work from the start. They build systems meant to run in production for years, not just pass acceptance criteria today.
 
 Each level is valuable, and organizations need all three. They also represent a natural progression of responsibility and skill breadth. As you take on more ownership, you naturally move toward the concerns of the next level. You build on previous skills while expecting more from yourself, not because you're abandoning what you knew, but because broader responsibility demands broader thinking.
 
@@ -31,7 +31,7 @@ These mismatches create tension. You're either constrained by a role that's narr
 
 Two things matter more than your official title:
 
-**Self-awareness about your strengths and interests.** What energizes you? Is it solving problems, refining implementation craft, or ensuring system reliability? What drains you? This clarity helps you evaluate opportunities. When interviewing, you can ask specific questions about what the role actually involves, not just accept the title at face value. "You call this a senior engineer role; does that mean I'll be making architectural decisions, or implementing designs others create?"
+**Self-awareness about your strengths and interests.** What energizes you? Is it solving problems, refining implementation craft, or ensuring system reliability? This clarity helps you evaluate opportunities and ask better questions. When interviewing, dig into what the role actually involves. "You call this a senior engineer role. Does that mean I'll be making architectural decisions, or implementing designs others create?"
 
 **Continuous growth regardless of your current constraints.** Your employer's policies don't determine what you can learn. If you're stuck writing predetermined code but want to think more broadly, study system design on your own time. Read about how experienced developers approach problem decomposition. If your company doesn't emphasize quality practices, learn them anyway. Practice writing tests, even if they're not required. Build small projects where you control the entire system and can experiment with reliability techniques.
 
@@ -39,7 +39,7 @@ This isn't about working extra hours for your employer's benefit. It's about dev
 
 ## Context Shapes Expectations
 
-These distinctions play out differently depending on where you work. Startups often expect everyone to operate at multiple levels by necessity; there's no one else to handle the work you're not officially responsible for. Larger enterprises may strictly compartmentalize roles, with separate teams for requirements definition, implementation, and operations.
+These distinctions play out differently depending on where you work. Startups often expect everyone to operate at multiple levels by necessity. There's no one else to handle the work you're not officially responsible for. Larger enterprises may strictly compartmentalize roles, with separate teams for requirements definition, implementation, and operations.
 
 Neither approach is inherently better, but understanding your natural fit helps you choose environments where you'll thrive rather than constantly fight against structure or chaos.
 

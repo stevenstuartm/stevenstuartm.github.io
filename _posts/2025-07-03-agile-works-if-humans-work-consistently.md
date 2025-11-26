@@ -21,7 +21,7 @@ Establish clarity about what the organization values and act decisively when tho
 
 Agile fails when no one has actual authority. The customer is "too busy" to participate in refinement sessions, the product owner translates requirements without understanding technical constraints, and the development team is "empowered" but cannot make decisions without approval from three layers of management.
 
-This isn't Agile; it's theater. Teams go through the ceremonies without the substance. Standups become status reports, retrospectives produce action items that no one has authority to implement. Sprints become two-week intervals of hope that someone, somewhere, will make a decision.
+This isn't Agile; it's theater. Teams go through the ceremonies without the substance. Standups become status reports. Retrospectives produce action items that no one has authority to implement. Sprints become two-week intervals of hope that someone, somewhere, will make a decision.
 
 Understand what commitments leadership has actually made. If the product owner lacks authority to prioritize, you don't have a product owner. If developers cannot make technical decisions without escalation, you don't have an empowered team. Fix the responsibility matrix before implementing Agile rituals.
 
@@ -45,7 +45,7 @@ Consider combining Scrum's structured ceremonies with Kanban's sustained flow. N
 
 ## The Team Structure Trap
 
-Large, unfocused "component teams" kill Agile effectiveness. When the UI team, services team, and data team all need to coordinate for a single feature, you're not doing Agile; you're doing waterfall with standups.
+Large, unfocused "component teams" kill Agile effectiveness. When the UI team, services team, and data team all need to coordinate for a single feature, you're doing waterfall with standups.
 
 Feature teams aligned to business capabilities can own complete slices of functionality, from UI to database. They make decisions quickly because they control the entire stack, while component teams create dependencies that force coordination overhead and blame-shifting when deliverables slip.
 

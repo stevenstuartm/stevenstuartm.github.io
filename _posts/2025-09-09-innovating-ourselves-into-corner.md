@@ -29,7 +29,7 @@ This makes business sense in the short term. Full rewrites are expensive and ris
 
 ## How Switching Costs Compound Over Time
 
-Consider a company with a million lines of code written in 2015. In 2016, migrating to a newer technology would have been straightforward; the codebase was manageable and the team was still small. By 2020, they had three million lines with established patterns, libraries, and team expertise. Migration cost tripled.
+Consider a company with a million lines of code written in 2015. In 2016, migrating to a newer technology would have been straightforward. The codebase was manageable and the team was still small. By 2020, they had three million lines with established patterns, libraries, and team expertise. Migration cost tripled.
 
 By 2025, they have five million lines, specialized tooling, performance-critical code optimized for specific runtime characteristics, and a team hired for expertise in the existing stack. Migration cost is now prohibitive. The business case weakens even as newer alternatives mature. The legacy system works well enough, and changing it risks disruption without clear ROI.
 
