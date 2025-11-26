@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Result Types vs Exceptions: Which Arguments Actually Hold Up?"
+title: "Why I Changed My Mind About Exceptions"
 date: 2025-10-29
 description: "Evaluating arguments for Result types versus exceptions for handling expected failures in modern distributed C# systems, examining which claims have measurable backing and which are subjective preference."
 series: "Architecture Insights"
