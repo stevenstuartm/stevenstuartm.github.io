@@ -11,7 +11,7 @@ I prefer the clean code that is more often produced by throwing exceptions. With
 
 But when Rust's approach to error handling gained cultural influence and C# developers (among many others of course) began exploring Result types through community libraries, I re-examined my perspective more honestly. Do the arguments for Results hold up under scrutiny for expected failures in modern systems?
 
-This isn't advocacy. It's an honest conceptual analysis of the arguments from both camps, examining which ones have measurable backing and which are subjective preference.
+This isn't just blind advocacy. It's an honest conceptual analysis of the arguments from both camps, examining which ones have measurable backing and which are subjective preference.
 
 Before I dive into this, let's be clear about what we are not talking about. We are not talking about programming errors like null references, array index violations, or machine resource errors. Those are bugs and special occurrences which should cause a fatal response since there is no safe way to default the outcome.
 
@@ -237,4 +237,4 @@ Despite my preferences, the evidence (at least conceptually) has led me to concl
 
 The resistance is understandable. Paradigm friction is real, and "do exceptions correctly this time" reflects discipline. But when an increasing number of use cases can and will return expected failures, you need mechanisms designed for common outcomes, not rare anomalies.
 
-Use Results for expected failures. Reserve exceptions for bugs. Build the discipline and tooling to use them well.
+Moving forward I will endeavor to use Results for expected failures, reserve exceptions for bugs, and build the discipline and tooling to use them both well.
