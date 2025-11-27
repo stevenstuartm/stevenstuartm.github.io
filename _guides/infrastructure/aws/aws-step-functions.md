@@ -1678,13 +1678,13 @@ POST /orders → Step Functions (Express Synchronous) → Returns order confirma
 
 1. **Step Functions orchestrates distributed workflows with visual state machines.** Define workflows declaratively in Amazon States Language; Step Functions handles execution, error handling, retries.
 
-2. **Choose Standard for long-running, auditable workflows; Express for high-volume, short-duration.** Standard supports up to 1 year, exactly-once execution, full history. Express supports up to 5 minutes, 100,000 requests/sec, at-least-once execution.
+2. **Choose Standard for long-running, auditable workflows.** Standard supports up to 1 year, exactly-once execution, and full history. Choose Express for high-volume, short-duration workflows. Express supports up to 5 minutes, 100,000 requests/sec, and at-least-once execution.
 
 3. **Step Functions provides 8 state types for workflow control.** Task (invoke service), Choice (conditional), Parallel (concurrent branches), Map (iterate array), Wait (delay), Pass (transform), Succeed/Fail (terminal states).
 
 4. **Built-in error handling eliminates custom retry logic.** Retry with exponential backoff, max attempts, backoff rate. Catch blocks define fallback states for errors.
 
-5. **Service integrations call 220+ AWS services without Lambda glue code.** DynamoDB, SNS, SQS, ECS, Batch, Glue, SageMaker—all callable directly from state machine.
+5. **Service integrations call 220+ AWS services without Lambda glue code.** DynamoDB, SNS, SQS, ECS, Batch, Glue, and SageMaker are all callable directly from state machine.
 
 6. **Use .sync pattern for long-running jobs (ECS, Batch, Glue).** Step Functions waits for job completion; no polling required.
 
@@ -1698,7 +1698,7 @@ POST /orders → Step Functions (Express Synchronous) → Returns order confirma
 
 11. **Use service integrations instead of Lambda glue code to reduce costs.** DynamoDB putItem, SNS publish, SQS sendMessage callable directly; eliminates Lambda invocation and duration costs.
 
-12. **Standard workflows provide full execution history for 90 days; Express uses CloudWatch Logs.** Execution history shows every state transition, input/output, errors—critical for debugging and compliance.
+12. **Standard workflows provide full execution history for 90 days.** Express workflows use CloudWatch Logs instead. Execution history shows every state transition, input/output, and errors. This is critical for debugging and compliance.
 
 13. **Use Distributed Map for large datasets (millions of items).** Standard Map limited to 40 concurrent iterations; Distributed Map scales to 10,000 child executions, reads from S3.
 

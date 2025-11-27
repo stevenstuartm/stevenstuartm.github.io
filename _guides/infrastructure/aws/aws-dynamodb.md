@@ -31,7 +31,7 @@ Amazon DynamoDB is a fully managed, serverless NoSQL database service that deliv
 
 DynamoDB organizes data into **tables**. Each table contains **items** (similar to rows) composed of **attributes** (similar to columns).
 
-**Schemaless Design**: Unlike relational databases, DynamoDB is schemaless—items in the same table can have different attributes (except for the required partition key and optional sort key).
+**Schemaless Design**: Unlike relational databases, DynamoDB is schemaless. Items in the same table can have different attributes (except for the required partition key and optional sort key).
 
 **Example**:
 ```
@@ -635,7 +635,7 @@ This policy allows users to query only items where the partition key matches the
 - You require strong ACID transactions across tables
 - Your team is familiar with relational databases
 
-**Hybrid Approach**: Use both—DynamoDB for high-scale operational data, RDS for analytics and reporting (sync via DynamoDB Streams).
+**Hybrid Approach**: Use both: DynamoDB for high-scale operational data, RDS for analytics and reporting (sync via DynamoDB Streams).
 
 ## Key Takeaways
 

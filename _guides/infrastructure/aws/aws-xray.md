@@ -29,7 +29,7 @@ X-Ray is AWS's distributed tracing service that addresses critical observability
 
 **Root cause analysis for distributed systems**: A request traverses Lambda function → API Gateway → DynamoDB → SQS → another Lambda. The request takes 3 seconds, but which component caused the delay? X-Ray shows you that the DynamoDB query consumed 2.8 seconds due to a missing index.
 
-**Performance bottleneck identification**: CloudWatch metrics tell you that p99 latency is 2 seconds. X-Ray traces show you why—30% of requests wait 1.5 seconds for an external API that returns cached data. You implement client-side caching and drop p99 to 400ms.
+**Performance bottleneck identification**: CloudWatch metrics tell you that p99 latency is 2 seconds. X-Ray traces show you why: 30% of requests wait 1.5 seconds for an external API that returns cached data. You implement client-side caching and drop p99 to 400ms.
 
 **Dependency visualization**: Your microservices architecture has grown to 40 services. Which services call which? What happens if the payment service goes down? X-Ray's service map shows all dependencies automatically, revealing that 12 services depend on the payment service and would fail without proper circuit breakers.
 
@@ -291,7 +291,7 @@ spec:
           protocol: UDP
 ```
 
-**Application code**: Same as Lambda—capture AWS SDK and HTTP calls.
+**Application code**: Same as Lambda (capture AWS SDK and HTTP calls).
 
 ### EC2 Instrumentation
 
@@ -581,7 +581,7 @@ const traceHeader = message.MessageAttributes.AWSTraceHeader.StringValue;
 AWSXRay.setSegment(traceHeader);
 ```
 
-**SNS and EventBridge**: Similar pattern—propagate trace ID via message attributes.
+**SNS and EventBridge**: Similar pattern; propagate trace ID via message attributes.
 
 ### Step Functions Integration
 

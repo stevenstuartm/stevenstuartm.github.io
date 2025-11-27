@@ -53,15 +53,15 @@ tags: [aws, kms, secrets-manager, encryption, key-management, security, secrets-
 
 **AWS KMS (Key Management Service):**
 - **Centralized key management**: Create, rotate, disable, audit encryption keys
-- **Envelope encryption**: Encrypt data keys with master keys; never expose master keys
+- **Envelope encryption**: Encrypt data keys with master keys without exposing master keys
 - **Integrated with AWS services**: S3, EBS, RDS, DynamoDB automatically use KMS
-- **Hardware security modules (HSMs)**: FIPS 140-2 Level 2 validated (Level 3 for CloudHSM)
+- **Hardware security modules**: FIPS 140-2 Level 2 validated, Level 3 for CloudHSM
 - **Audit trail**: CloudTrail logs every key usage
 
 **AWS Secrets Manager:**
 - **Centralized secret storage**: Database passwords, API keys, OAuth tokens
-- **Automatic rotation**: Lambda function rotates secrets on schedule (30/60/90 days)
-- **Versioning**: Track secret changes over time; rollback if needed
+- **Automatic rotation**: Lambda function rotates secrets on schedule every 30, 60, or 90 days
+- **Versioning**: Track secret changes over time with rollback capability
 - **Fine-grained access control**: IAM policies control who can retrieve secrets
 - **Encrypted at rest**: All secrets encrypted with KMS keys
 
@@ -69,13 +69,13 @@ tags: [aws, kms, secrets-manager, encryption, key-management, security, secrets-
 
 | Problem | KMS Solution | Secrets Manager Solution |
 |---------|-------------|--------------------------|
-| Hardcoded passwords | N/A | Store secrets in Secrets Manager; retrieve at runtime |
-| Encryption keys in plaintext | Store keys in KMS; keys never leave HSM | N/A |
+| Hardcoded passwords | N/A | Store secrets in Secrets Manager and retrieve at runtime |
+| Encryption keys in plaintext | Store keys in KMS where keys never leave HSM | N/A |
 | No audit trail for key/secret access | CloudTrail logs all KMS API calls | CloudTrail logs all secret retrievals |
-| Manual secret rotation | Automatic key rotation (365 days) | Automatic secret rotation (30-365 days) with Lambda |
-| Secrets shared insecurely | N/A | IAM-based access control; secrets never exposed |
-| Ex-employee retains access | Disable key; all encrypted data inaccessible | Rotate secret; old credentials invalid |
-| Unencrypted data (compliance violation) | Enable encryption with KMS for S3, RDS, EBS | N/A |
+| Manual secret rotation | Automatic key rotation every 365 days | Automatic secret rotation every 30-365 days with Lambda |
+| Secrets shared insecurely | N/A | IAM-based access control where secrets never exposed |
+| Ex-employee retains access | Disable key making all encrypted data inaccessible | Rotate secret making old credentials invalid |
+| Unencrypted data causing compliance violation | Enable encryption with KMS for S3, RDS, EBS | N/A |
 
 ---
 
@@ -85,7 +85,7 @@ tags: [aws, kms, secrets-manager, encryption, key-management, security, secrets-
 
 **AWS Key Management Service (KMS)** is a managed service for creating and controlling encryption keys.
 
-**Core Concept:** KMS creates and stores **Customer Master Keys (CMKs)**; you use CMKs to encrypt/decrypt data; CMKs never leave AWS HSMs unencrypted.
+**Core Concept:** KMS creates and stores Customer Master Keys (CMKs). You use CMKs to encrypt and decrypt data. CMKs never leave AWS HSMs unencrypted.
 
 ### Key Types
 
@@ -189,7 +189,7 @@ Year 2: CMK automatically generates key material version 2
 
 **AWS Secrets Manager** is a managed service for storing, retrieving, and rotating secrets (passwords, API keys, credentials).
 
-**Core Concept:** Store secrets in Secrets Manager; applications retrieve secrets at runtime via API; secrets automatically rotated on schedule.
+**Core Concept:** Store secrets in Secrets Manager. Applications retrieve secrets at runtime via API. Secrets automatically rotate on schedule.
 
 ### Secret Types
 
@@ -272,7 +272,7 @@ conn = mysql.connector.connect(
 )
 ```
 
-**Best Practice:** Retrieve secret once at startup; cache for application lifetime (not per-request).
+**Best Practice:** Retrieve secret once at startup and cache for application lifetime, not per-request.
 
 ### Secret Versioning
 
@@ -379,7 +379,7 @@ response = requests.get(api_url, headers={'Authorization': f'Bearer {api_key}'})
 
 **Envelope Encryption:** Encrypt data with a data key; encrypt the data key with a master key.
 
-**Why:** Master key never leaves KMS; only encrypted data keys transmitted; improves performance (encrypt large data locally, not via network).
+**Why:** The master key never leaves KMS, only encrypted data keys are transmitted. This improves performance since you encrypt large data locally, not via network.
 
 **Architecture:**
 
@@ -991,7 +991,7 @@ Total: $1.24/month
 
 **Total Cost: $10.24/month for secure secret management**
 
-**ROI:** Prevents hardcoded secrets; automatic rotation; compliance; far lower cost than security breach.
+**ROI:** Prevents hardcoded secrets, provides automatic rotation and compliance, and is far lower cost than a security breach.
 
 ---
 
@@ -1227,4 +1227,4 @@ Application in VPC → VPC Endpoint → KMS (private connection)
 
 15. **Use VPC endpoints for KMS/Secrets Manager to keep traffic private.** Prevents secrets from traversing internet; reduces attack surface.
 
-**AWS KMS and Secrets Manager provide enterprise-grade encryption and secret management, enabling automatic rotation, fine-grained access control, and complete audit trails for compliance and security. KMS handles encryption keys while Secrets Manager handles passwords, API keys, and credentials—both essential for protecting sensitive data in production.**
+**AWS KMS and Secrets Manager provide enterprise-grade encryption and secret management, enabling automatic rotation, fine-grained access control, and complete audit trails for compliance and security. KMS handles encryption keys while Secrets Manager handles passwords, API keys, and credentials. Both are essential for protecting sensitive data in production.**

@@ -735,7 +735,7 @@ df = spark.read.parquet("s3://my-bucket/small-files/")
 df.repartition(100).write.parquet("s3://my-bucket/compacted/")
 ```
 
-**Recommendation**: Target 128 MB - 1 GB file sizes for optimal Spark performance.
+**Recommendation**: Target `128 MB − 1 GB` file sizes for optimal Spark performance.
 
 ### Skewed Partitions
 
@@ -849,6 +849,6 @@ If this fails, issue is network/security groups, not Glue job logic.
 
 **Security defaults matter**. Enable catalog encryption, use VPC endpoints to avoid NAT costs, store credentials in Secrets Manager, and apply least-privilege IAM policies. Lake Formation adds fine-grained access control (column-level, row-level) on top of catalog permissions.
 
-**Common pitfalls involve file size, partition skew, and network configuration**. Compact small files into 128 MB - 1 GB sizes, use composite partitioning or bucketing to balance data distribution, and verify VPC endpoint and security group setup when accessing private resources.
+**Common pitfalls involve file size, partition skew, and network configuration**. Compact small files into `128 MB − 1 GB` sizes, use composite partitioning or bucketing to balance data distribution, and verify VPC endpoint and security group setup when accessing private resources.
 
 **Integrate with broader AWS ecosystem**: Glue catalogs data, Athena queries it, QuickSight visualizes it, Lake Formation governs it. This combination provides enterprise-grade data platform capabilities without managing infrastructure.

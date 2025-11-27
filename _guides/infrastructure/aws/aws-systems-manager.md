@@ -195,7 +195,7 @@ This grants access to production instances only and allows users to terminate th
 
 **Troubleshooting production issues**: Engineer needs to check logs on instance during incident. Session Manager provides immediate access without SSH keys or VPN.
 
-**Temporary contractor access**: Grant IAM permissions for contractor to access specific instances for 2 weeks. Revoke IAM permissions when contract ends—no SSH keys to rotate.
+**Temporary contractor access**: Grant IAM permissions for contractor to access specific instances for 2 weeks. Revoke IAM permissions when contract ends; no SSH keys to rotate.
 
 **Compliance and audit**: Security audit requires proof that all instance access is logged. Session Manager logs every session with full command history to S3.
 
@@ -673,7 +673,7 @@ mainSteps:
 
 **Security remediation**: EventBridge rule detects S3 bucket made public, triggers automation to revert permissions and notify security team.
 
-**Change management**: Automation with approval gate—reviewer approves before automation applies database schema change.
+**Change management**: Automation with approval gate; reviewer approves before automation applies database schema change.
 
 ### Automation Triggers
 

@@ -33,13 +33,13 @@ AWS CDK allows you to define cloud infrastructure using familiar programming lan
 
 **Provide type safety and IDE support**: CloudFormation YAML has no compile-time validation. Typos discovered at deployment (30 minutes later). CDK TypeScript/Python provides autocomplete, type checking, and inline documentation in IDE. Catch errors before `cdk deploy`.
 
-**Simplify complex logic**: CloudFormation conditionals and mappings are verbose and limited. CDK uses native language constructs—if/else, for loops, functions. Define 10 S3 buckets with a for loop, not 10 copy-pasted resource definitions.
+**Simplify complex logic**: CloudFormation conditionals and mappings are verbose and limited. CDK uses native language constructs like if/else, for loops, and functions. Define 10 S3 buckets with a for loop, not 10 copy-pasted resource definitions.
 
-**Generate CloudFormation best practices automatically**: CDK constructs encode AWS best practices. `new ec2.Vpc()` creates VPC with public/private subnets across availability zones, route tables, internet gateway, and NAT gateways—all properly configured. Manual CloudFormation would take hours and is error-prone.
+**Generate CloudFormation best practices automatically**: CDK constructs encode AWS best practices. `new ec2.Vpc()` creates VPC with public/private subnets across availability zones, route tables, internet gateway, and NAT gateways, all properly configured. Manual CloudFormation would take hours and is error-prone.
 
 **Support multi-stack deployments**: Large applications span multiple CloudFormation stacks (networking, databases, applications). CDK manages dependencies between stacks automatically via cross-stack references. CloudFormation requires manual export/import parameters.
 
-**Enable testing infrastructure code**: CloudFormation has no testing framework. CDK supports unit tests (Jest, pytest) and integration tests. Test that S3 bucket has encryption enabled, Lambda has correct environment variables, or VPC has expected number of subnets—before deployment.
+**Enable testing infrastructure code**: CloudFormation has no testing framework. CDK supports unit tests (Jest, pytest) and integration tests. Test that S3 bucket has encryption enabled, Lambda has correct environment variables, or VPC has expected number of subnets before deployment.
 
 ## Service Fundamentals
 
@@ -121,7 +121,7 @@ new patterns.ApplicationLoadBalancedFargateService(this, 'Service', {
 });
 ```
 
-This creates: ECS Fargate service, ALB, target group, security groups, IAM roles—all with one construct.
+This creates an ECS Fargate service, ALB, target group, security groups, and IAM roles, all with one construct.
 
 ## CDK vs CloudFormation
 
@@ -198,7 +198,7 @@ Total: 5 lines for same VPC (generates 40+ CloudFormation resources)
 ### Benefits Over CloudFormation
 
 **Conciseness**: 5 lines vs 150 lines
-**Abstraction**: Don't specify CIDR blocks, route tables, NAT gateway placement—CDK handles it
+**Abstraction**: Don't specify CIDR blocks, route tables, NAT gateway placement; CDK handles it
 **Best practices**: VPC automatically includes public/private subnets, internet gateway, NAT gateways
 **Type safety**: IDE autocomplete for `maxAzs`, compiler error if typo
 **Testable**: Can write unit tests for VPC configuration

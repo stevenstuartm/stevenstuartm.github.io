@@ -131,7 +131,7 @@ AWS reserves 5 IP addresses in every subnet:
 | Fourth IP (e.g., `10.0.1.3`) | Reserved for future use |
 | Last IP (e.g., `10.0.1.255`) | Broadcast address (not used in VPC but reserved) |
 
-**Practical Impact:** A `/24` subnet has 256 total IPs, but only 251 are usable (256 - 5 reserved).
+**Practical Impact:** A `/24` subnet has 256 total IPs, but only 251 are usable (`256 − 5` reserved).
 
 **Note:** The Amazon-provided DNS server integrates with Route 53 for private hosted zones. For DNS routing strategies, health checks, and traffic management, see [AWS Route 53](aws-route53.md){:target="_blank" rel="noopener noreferrer"}.
 
@@ -993,4 +993,4 @@ For IPv6, the equivalent of NAT Gateway is Egress-Only Internet Gateway:
 
 12. **Test failover scenarios.** Design for high availability, but also test that failover works as expected. Simulate AZ failures to verify that your architecture is truly resilient.
 
-**VPC is not just networking—it's the security boundary, availability foundation, connectivity layer, and increasingly the cost optimization target (IPv4 charges) for your entire AWS architecture.**
+**VPC is not just networking.** It's the security boundary, availability foundation, connectivity layer, and increasingly the cost optimization target (IPv4 charges) for your entire AWS architecture.

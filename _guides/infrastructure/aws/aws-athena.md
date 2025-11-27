@@ -26,7 +26,7 @@ AWS Athena eliminates the infrastructure complexity and upfront cost of running 
 
 ## Service Fundamentals
 
-AWS Athena is built on Presto (now Trino), a distributed SQL query engine designed for fast analytics across large datasets. Athena runs as a fully managed service—you submit SQL via console, CLI, JDBC/ODBC drivers, or API, and AWS handles all infrastructure provisioning and scaling.
+AWS Athena is built on Presto (now Trino), a distributed SQL query engine designed for fast analytics across large datasets. Athena runs as a fully managed service. You submit SQL via console, CLI, JDBC/ODBC drivers, or API, and AWS handles all infrastructure provisioning and scaling.
 
 ### Core Architecture
 
@@ -232,7 +232,7 @@ Athena performance depends on data organization, query structure, and resource a
 
 **Why giant files hurt**: Athena splits large files internally but can't split optimally across workers.
 
-**Optimal file size**: 128 MB - 1 GB per file (Parquet/ORC).
+**Optimal file size**: `128 MB − 1 GB` per file (Parquet/ORC).
 
 **Compaction strategy**: Use Glue ETL job or CTAS (CREATE TABLE AS SELECT) to rewrite small files into larger files.
 
@@ -894,11 +894,11 @@ GROUP BY user_id;
 
 ## Key Takeaways
 
-**AWS Athena provides serverless SQL analytics on S3 data lakes** with pay-per-query pricing that eliminates idle infrastructure costs. You pay $5 per TB scanned—cost directly correlates with data volume processed.
+**AWS Athena provides serverless SQL analytics on S3 data lakes** with pay-per-query pricing that eliminates idle infrastructure costs. You pay $5 per TB scanned, and cost directly correlates with data volume processed.
 
 **Cost optimization is achieved through format and partitioning**. Converting JSON to Parquet reduces costs by 90-98% by enabling columnar scans and compression. Partitioning by query patterns (date, region) reduces scanned data by skipping irrelevant partitions. These two optimizations combined can reduce costs from $10,000/month to $200/month for typical workloads.
 
-**Performance depends on data organization, not infrastructure tuning**. Athena auto-scales workers per query. Improve performance by optimizing file sizes (128 MB - 1 GB), using columnar formats, applying partition pruning, and selecting only needed columns. Query execution time is dominated by S3 scan time, not compute.
+**Performance depends on data organization, not infrastructure tuning**. Athena auto-scales workers per query. Improve performance by optimizing file sizes (`128 MB − 1 GB`), using columnar formats, applying partition pruning, and selecting only needed columns. Query execution time is dominated by S3 scan time, not compute.
 
 **Use Athena for ad-hoc and infrequent analytics** where serverless simplicity and pay-per-query pricing outweigh Redshift's constant cluster costs. For high-frequency dashboards querying the same datasets repeatedly, Redshift or Redshift Spectrum may provide better TCO despite operational overhead.
 

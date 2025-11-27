@@ -23,7 +23,7 @@ tags: [infrastructure, iac, design-patterns, best-practices, practical]
 
 **Purpose:** Modules encapsulate resources that work together as a logical unit (e.g., a VPC with subnets, a database with backups). They're about **code reuse and abstraction**, not about deployment organization (that's layering).
 
-**Think of modules as:** Functions or libraries in programming - reusable building blocks you can use anywhere.
+**Think of modules as:** Functions or libraries in programming; reusable building blocks you can use anywhere.
 
 ### Benefits
 
@@ -399,7 +399,7 @@ resource "aws_eks_cluster" "main" {
 
 **The question:** Should application-specific IaC live with the application code or in a centralized infrastructure repository?
 
-**The answer:** Hybrid approach based on layers - application teams own application layer IaC, DevOps owns foundation/platform/devops layers.
+**The answer:** Hybrid approach based on layers; application teams own application layer IaC, DevOps owns foundation/platform/devops layers.
 
 ### Option 1: IaC With Application Code (Application Layer Only)
 

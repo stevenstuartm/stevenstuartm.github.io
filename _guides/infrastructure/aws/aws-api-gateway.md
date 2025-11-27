@@ -1067,7 +1067,7 @@ for (int i = 0; i < maxRetries; i++)
 
 **Impact**: API appears broken to front-end, 1-2 day debugging cycle.
 
-**Solution** (HTTP API - Simple):
+**Solution (HTTP API, Simple)**:
 ```json
 {
   "cors": {
@@ -1079,7 +1079,7 @@ for (int i = 0; i < maxRetries; i++)
 }
 ```
 
-**Solution** (REST API - Manual):
+**Solution (REST API, Manual)**:
 - Enable CORS on each method
 - API Gateway adds OPTIONS method automatically
 - Returns `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods`, etc.

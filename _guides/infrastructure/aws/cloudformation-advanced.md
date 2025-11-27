@@ -529,11 +529,11 @@ aws cloudformation describe-stack-events \
 
 ### Debugging Tips
 
-1. **Use Change Sets** - Preview changes before applying
-2. **Start Small** - Test with minimal template first
-3. **Check Dependencies** - Review implicit dependencies
-4. **Validate Templates** - Use `validate-template` and `cfn-lint`
-5. **Enable Termination Protection** - Prevent accidental deletion
+1. **Use Change Sets**: Preview changes before applying
+2. **Start Small**: Test with minimal template first
+3. **Check Dependencies**: Review implicit dependencies
+4. **Validate Templates**: Use `validate-template` and `cfn-lint`
+5. **Enable Termination Protection**: Prevent accidental deletion
 
 ```bash
 # Enable termination protection

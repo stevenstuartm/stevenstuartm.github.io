@@ -1050,7 +1050,7 @@ Action: SNS → PagerDuty
 
 ### Pitfall 2: Ignoring Medium Severity Findings
 
-**Problem:** Team focuses only on High/Critical; Medium findings accumulate; security posture degrades.
+**Problem:** Team focuses only on High/Critical findings. Medium findings accumulate and security posture degrades.
 
 **Example:** 500 Medium findings (public S3 buckets, unencrypted RDS) ignored for months; data breach.
 
@@ -1084,7 +1084,7 @@ Action: SNS → PagerDuty
 
 **Problem:** Compliance score decreasing over time; no one notices; failed checks accumulate.
 
-**Solution:** Dashboard review cadence (weekly for security team); track trends; investigate score drops.
+**Solution:** Dashboard review cadence (weekly for security team). Track trends and investigate score drops.
 
 **Cost Impact:** Compliance violations; failed audits.
 
@@ -1092,7 +1092,7 @@ Action: SNS → PagerDuty
 
 ### Pitfall 6: Excessive Suppression Rules
 
-**Problem:** Created suppression rules for every false positive; now suppressing 90% of findings; real threats hidden.
+**Problem:** Created suppression rules for every false positive. Now suppressing 90% of findings with real threats hidden.
 
 **Solution:** Use trusted IP lists instead of broad suppression; review suppression rules quarterly.
 
@@ -1104,7 +1104,7 @@ Action: SNS → PagerDuty
 
 **Problem:** EventBridge rule triggers Lambda; Lambda has bug; remediation fails silently.
 
-**Solution:** Test automation workflows; enable Lambda error monitoring (CloudWatch Logs, X-Ray); alerts on Lambda failures.
+**Solution:** Test automation workflows and enable Lambda error monitoring (CloudWatch Logs, X-Ray). Set alerts on Lambda failures.
 
 **Cost Impact:** Remediation never happens; threats persist.
 
@@ -1130,7 +1130,7 @@ Action: SNS → PagerDuty
 
 9. **Suppression rules prevent false positive fatigue.** Suppress findings from approved pentesting, security scanning. Review rules quarterly to avoid hiding real threats.
 
-10. **Compliance score tracks security posture over time.** Monitor trends; investigate score drops; automate remediation for common failures.
+10. **Compliance score tracks security posture over time.** Monitor trends and investigate score drops. Automate remediation for common failures.
 
 11. **GuardDuty provides 6 protection plans.** Foundational (CloudTrail, VPC, DNS), S3, EKS, RDS, Lambda, Malware. Enable based on workload requirements.
 
@@ -1140,6 +1140,6 @@ Action: SNS → PagerDuty
 
 14. **Security Hub integrates with 50+ AWS services.** GuardDuty, Inspector, Macie, Config, IAM Access Analyzer, Firewall Manager, Detective, 3rd-party tools (Palo Alto, Fortinet, Splunk).
 
-15. **Test remediation workflows before production.** Lambda bugs cause silent failures; monitor Lambda errors; alert on remediation failures.
+15. **Test remediation workflows before production.** Lambda bugs cause silent failures. Monitor Lambda errors and alert on remediation failures.
 
-**AWS GuardDuty and Security Hub together provide comprehensive threat detection and security posture management, enabling automated response to active threats and continuous compliance monitoring across multi-account AWS environments. GuardDuty protects against runtime threats while Security Hub prevents misconfigurations—both essential for defense-in-depth security.**
+**AWS GuardDuty and Security Hub together provide comprehensive threat detection and security posture management, enabling automated response to active threats and continuous compliance monitoring across multi-account AWS environments. GuardDuty protects against runtime threats while Security Hub prevents misconfigurations. Both are essential for defense-in-depth security.**

@@ -80,7 +80,7 @@ ECS is AWS's native container orchestration service, designed for simplicity and
 
 **Task Definition**: JSON blueprint describing 1-10 containers that comprise your application. Specifies container images, CPU/memory requirements, port mappings, network modes, IAM roles, environment variables, and secrets.
 
-**Task**: Instantiation of a task definition—smallest unit of execution in ECS. Can contain one or more containers running together on the same host.
+**Task**: Instantiation of a task definition (smallest unit of execution in ECS). Can contain one or more containers running together on the same host.
 
 **Service**: Manages desired number of tasks, ensuring they keep running. Handles scheduling, load balancer integration, auto scaling, and rolling deployments. Use services for long-running applications.
 
@@ -717,7 +717,7 @@ EKS runs upstream Kubernetes, ensuring compatibility with standard Kubernetes to
 - Use Fargate Spot for up to 70% savings
 - Implement retry logic for interrupted tasks
 
-**Gotcha**: Fargate Spot capacity not guaranteed—have fallback to On-Demand if Spot unavailable.
+**Gotcha**: Fargate Spot capacity not guaranteed; have fallback to On-Demand if Spot unavailable.
 
 ### Improper Health Checks
 

@@ -598,7 +598,7 @@ Account Factory enables self-service, automated account provisioning with govern
 - Users with `AWSServiceCatalogEndUserFullAccess` can provision
 - Approval workflows can be added
 
-**Via AWS CLI** (Account Factory for Terraform - AFT):
+**Via AWS CLI** (Account Factory for Terraform, AFT):
 
 ```bash
 # Using Account Factory for Terraform (AFT)

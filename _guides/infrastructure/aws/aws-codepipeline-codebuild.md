@@ -597,7 +597,7 @@ Target: SNS topic → Email, Lambda, Slack
 ### Third-Party Integrations
 
 **Jenkins**: CodePipeline can trigger Jenkins jobs as build/test actions
-**GitHub Actions**: Hybrid approach—GitHub Actions for build, CodePipeline for deployment
+**GitHub Actions**: Hybrid approach (GitHub Actions for build, CodePipeline for deployment)
 **Jira**: Lambda function creates Jira deployment ticket when pipeline deploys to production
 **Slack**: Lambda function posts deployment status to Slack channel
 

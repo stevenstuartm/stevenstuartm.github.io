@@ -367,7 +367,7 @@ Resources:
 
 ### Use Secret Management Services
 
-**Don't pass secrets as plain text - retrieve them from secure stores:**
+**Don't pass secrets as plain text; retrieve them from secure stores:**
 
 - [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/){:target="_blank" rel="noopener noreferrer"} / [Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html){:target="_blank" rel="noopener noreferrer"}: Native AWS secret storage
 - [HashiCorp Vault](https://www.vaultproject.io/){:target="_blank" rel="noopener noreferrer"}: Multi-cloud secret management

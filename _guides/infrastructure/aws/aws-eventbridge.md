@@ -1010,8 +1010,8 @@ EventBridge Rule → API Destination (HTTPS endpoint)
 
 10. **Configure DLQs for rules to prevent event loss.** Failed invocations retry for 24 hours; without DLQ, events lost after retries exhausted.
 
-11. **EventBridge supports 35+ SaaS integrations.** Native integrations with Auth0, Datadog, Zendesk, Stripe, MongoDB Atlas—no custom webhook handlers.
+11. **EventBridge supports 35+ SaaS integrations.** Native integrations with Auth0, Datadog, Zendesk, Stripe, and MongoDB Atlas eliminate custom webhook handlers.
 
 12. **Monitor FailedInvocations metric to detect target issues.** Alert on failures; investigate target errors (permissions, timeouts, logic errors).
 
-**EventBridge is AWS's strategic event-driven architecture service, providing content-based routing, SaaS integrations, and schema management that SNS cannot. Choose EventBridge for complex event-driven architectures; choose SNS for simple, high-throughput fanout.**
+EventBridge is AWS's strategic event-driven architecture service, providing content-based routing, SaaS integrations, and schema management that SNS cannot. Choose EventBridge for complex event-driven architectures; choose SNS for simple, high-throughput fanout.

@@ -63,7 +63,7 @@ AWS provides two primary block and file storage services that address different 
 | **Performance** | Up to 256,000 IOPS, 4,000 MB/s per volume | Up to 3 GiB/s read, 1 GiB/s write per file system |
 | **Latency** | Sub-millisecond (0.5-1ms for io2 Block Express) | Low single-digit milliseconds (1-10ms) |
 | **Availability** | Single AZ (replicate to Multi-AZ with snapshots) | Multi-AZ by default (99.99% availability) |
-| **Scalability** | 16 TB - 64 TB per volume | Petabytes, auto-scaling |
+| **Scalability** | `16 TB − 64 TB` per volume | Petabytes, auto-scaling |
 | **Pricing** | $0.08-$0.125/GB/month | $0.30/GB/month (Standard), $0.16/GB (One Zone) |
 | **Use Cases** | Databases, boot volumes, single-instance apps | Shared web content, code repositories, container storage |
 

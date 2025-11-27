@@ -774,7 +774,7 @@ Auto Scaling Groups (ASGs) provide automated instance management, not just scali
 - Useful for predictable daily/weekly traffic changes
 - Can combine with dynamic scaling
 
-**Example**: Scale up Monday-Friday 8 AM - 6 PM, scale down at night and weekends.
+**Example**: Scale up Monday-Friday `8 AM − 6 PM`, scale down at night and weekends.
 
 #### Auto Scaling Best Practices
 
@@ -1110,7 +1110,7 @@ Instance store provides the lowest latency storage available on AWS:
 | **Latency** | Low (milliseconds) | Lowest (sub-millisecond) | Moderate (network latency) |
 | **Attachment** | Single instance* | Single instance | Multiple instances |
 | **Scope** | Single AZ | Single instance | Multi-AZ, multi-region |
-| **Capacity** | 1 GB - 64 TB | Fixed per instance | Unlimited (automatic scaling) |
+| **Capacity** | `1 GB − 64 TB` | Fixed per instance | Unlimited (automatic scaling) |
 | **Use case** | Databases, boot volumes | Caches, temp data, HPC | Shared file storage |
 | **Cost model** | Pay for provisioned capacity | Included with instance | Pay for usage |
 | **Replication** | Within AZ only | None | Across AZs automatically |
@@ -1580,4 +1580,4 @@ There's overlap between EC2, containers, and Lambda, but each service has limita
 
 **9. Integration amplifies capabilities**: Leverage IAM roles for secure service access, VPC segmentation for network isolation, CloudWatch for monitoring and alerting, Systems Manager for automation and compliance, Route 53 for DNS failover, and load balancer health checks for robust architectures.
 
-**10. Testing is cost-effective with per-second billing**: Test instance types, configurations, and architectures with real workloads before committing to long-term purchases. The ability to experiment cheaply is one of EC2's greatest advantages—use it to find optimal configurations.
+**10. Testing is cost-effective with per-second billing**: Test instance types, configurations, and architectures with real workloads before committing to long-term purchases. The ability to experiment cheaply is one of EC2's greatest advantages; use it to find optimal configurations.

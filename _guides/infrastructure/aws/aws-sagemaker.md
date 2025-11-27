@@ -20,13 +20,13 @@ AWS SageMaker eliminates the infrastructure complexity and operational burden of
 
 **Concrete scenario**: Your ML team built a product recommendation model using TensorFlow on local laptops. Training takes 2 days on a single GPU. To deploy, you manually set up an EC2 instance with TensorFlow Serving, write custom Flask endpoints, configure an ALB, and implement monitoring. When the model needs retraining weekly with fresh data, the process is entirely manual. The team wants to A/B test model versions, but that requires duplicating the entire infrastructure. Scaling inference during Black Friday requires manually adding EC2 instances. Total ML infrastructure cost: $8,000/month (dedicated GPU instances running 24/7). Data scientists spend 60% of their time managing infrastructure instead of improving models.
 
-**What SageMaker provides**: Managed infrastructure for the entire ML lifecycle—notebooks for exploration, distributed training jobs that auto-provision GPU clusters, one-click model deployment to auto-scaling endpoints, built-in A/B testing, and automatic model versioning. You pay per training hour and per inference request, not for idle infrastructure.
+**What SageMaker provides**: Managed infrastructure for the entire ML lifecycle. This includes notebooks for exploration, distributed training jobs that auto-provision GPU clusters, one-click model deployment to auto-scaling endpoints, built-in A/B testing, and automatic model versioning. You pay per training hour and per inference request, not for idle infrastructure.
 
 **Real-world impact**: After migrating to SageMaker, training time dropped from 2 days to 4 hours (distributed training on 4× GPUs). Deployment became one API call instead of manual infrastructure setup. A/B testing is built-in (70% traffic to model v1, 30% to v2). Inference auto-scales from 1 to 100 instances based on load. Cost dropped from $8,000/month to $1,200/month (pay only during training and inference, no idle GPU instances). Data scientists spend 90% of time on modeling, 10% on infrastructure.
 
 ## Service Fundamentals
 
-AWS SageMaker is a fully managed ML platform with four core capabilities: Build (notebooks and data prep), Train (distributed training jobs), Deploy (managed endpoints), and Govern (model registry and monitoring).
+AWS SageMaker is a fully managed ML platform with four core capabilities like Build (notebooks and data prep), Train (distributed training jobs), Deploy (managed endpoints), and Govern (model registry and monitoring).
 
 ### SageMaker Studio
 

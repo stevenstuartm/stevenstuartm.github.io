@@ -189,7 +189,7 @@ ORDER BY eventTime DESC
 
 **AWS Config** is a service that continuously monitors and records AWS resource configurations and evaluates them against desired configurations.
 
-**Core Concept:** Config takes snapshots of resource configurations; tracks changes over time; evaluates compliance with rules.
+**Core Concept:** Config takes snapshots of resource configurations, tracks changes over time, and evaluates compliance with rules.
 
 **Config Workflow:**
 
@@ -1126,7 +1126,7 @@ Changes to Network ACLs:
 
 ### Pitfall 6: Config Rules Without Remediation
 
-**Problem:** Config detects non-compliant resources; generates alerts; no one fixes them; hundreds of violations accumulate.
+**Problem:** Config detects non-compliant resources and generates alerts, but no one fixes them and hundreds of violations accumulate.
 
 **Solution:** Automated remediation with EventBridge + Lambda for common violations.
 
@@ -1136,7 +1136,7 @@ Changes to Network ACLs:
 
 ### Pitfall 7: Not Using Config Aggregator
 
-**Problem:** 100 AWS accounts; security team checks compliance in each account manually; takes days.
+**Problem:** With 100 AWS accounts, the security team checks compliance in each account manually, which takes days.
 
 **Solution:** Config Aggregator provides single dashboard across all accounts.
 
@@ -1148,7 +1148,7 @@ Changes to Network ACLs:
 
 1. **CloudTrail logs actions (who did what); Config tracks state (what changed).** CloudTrail records API calls for audit. Config records resource configurations for compliance.
 
-2. **Enable organizational trail for multi-account logging.** One trail covers all accounts; auto-enables for new accounts; centralized S3 bucket; saves $200/month vs. trail per account.
+2. **Enable organizational trail for multi-account logging.** One trail covers all accounts and auto-enables for new accounts with a centralized S3 bucket. This saves $200/month vs. a trail per account.
 
 3. **CloudTrail provides 90-day Event History for free.** Quick investigations covered without creating trail. Create trail for >90 days or data events.
 
@@ -1168,7 +1168,7 @@ Changes to Network ACLs:
 
 11. **Config records configuration items ($0.003/CI).** Optimize cost by recording only critical resource types (EC2, S3, RDS, IAM).
 
-12. **CloudTrail Lake provides SQL queryable audit logs.** Query events across accounts/regions with SQL; 7-year retention; $2.50/GB ingestion.
+12. **CloudTrail Lake provides SQL queryable audit logs.** Query events across accounts/regions with SQL. It offers 7-year retention at $2.50/GB ingestion.
 
 13. **Monitor CloudTrail configuration changes with EventBridge.** Alert on `StopLogging`, `DeleteTrail` API calls to detect attackers covering tracks.
 
@@ -1176,4 +1176,4 @@ Changes to Network ACLs:
 
 15. **Conformance packs deploy 50+ rules in one command.** CIS, PCI-DSS, NIST, HIPAA frameworks available as pre-packaged conformance packs.
 
-**AWS CloudTrail and Config together provide comprehensive audit logging and compliance monitoring, enabling automated governance, security forensics, and regulatory compliance across multi-account AWS environments. CloudTrail answers "who did what" while Config answers "what changed"—both essential for defense-in-depth security and compliance.**
+**AWS CloudTrail and Config together provide comprehensive audit logging and compliance monitoring, enabling automated governance, security forensics, and regulatory compliance across multi-account AWS environments. CloudTrail answers "who did what" while Config answers "what changed"; both are essential for defense-in-depth security and compliance.**

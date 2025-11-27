@@ -251,9 +251,9 @@ Multi-site active/active is the most robust and costly disaster recovery strateg
 | Strategy | RPO | RTO | Cost | Complexity | Best For |
 |----------|-----|-----|------|------------|-----------|
 | **Backup & Restore** | 8-24 hours | 4-24+ hours | Lowest | Low | Non-critical systems, archival data |
-| **Pilot Light** | 15 min - 1 hour | 30 min - 1 hour | Low-Medium | Medium | Business-critical with cost constraints |
+| **Pilot Light** | `15 min−1 hour` | `30 min−1 hour` | Low-Medium | Medium | Business-critical with cost constraints |
 | **Warm Standby** | 5-15 minutes | 5-30 minutes | Medium | Medium-High | Applications needing fast recovery |
-| **Multi-Site Hot** | Near-zero - 5 min | Near-zero - 5 min | Highest | High | Mission-critical, zero-downtime requirements |
+| **Multi-Site Hot** | `Near-zero−5 min` | `Near-zero−5 min` | Highest | High | Mission-critical, zero-downtime requirements |
 
 ## Implementation Strategies
 

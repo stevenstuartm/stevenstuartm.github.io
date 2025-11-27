@@ -29,15 +29,15 @@ tags: [aws, deployment, codedeploy, blue-green, canary, cicd, automation, devops
 
 AWS CodeDeploy automates application deployments to EC2, Lambda, and ECS:
 
-**Eliminate deployment downtime**: Manual deployments require stopping all instances, deploying code, and restarting. Users experience downtime. CodeDeploy performs rolling deployments—deploying to one instance at a time while others serve traffic. Zero downtime for users.
+**Eliminate deployment downtime**: Manual deployments require stopping all instances, deploying code, and restarting. Users experience downtime. CodeDeploy performs rolling deployments, deploying to one instance at a time while others serve traffic. Zero downtime for users.
 
-**Reduce deployment risk**: Deploying to 100 instances simultaneously means bugs affect all users immediately. CodeDeploy enables gradual rollouts—deploy to 10% of fleet, monitor for errors, then proceed or rollback. Limits blast radius of bad deployments.
+**Reduce deployment risk**: Deploying to 100 instances simultaneously means bugs affect all users immediately. CodeDeploy enables gradual rollouts: deploy to 10% of fleet, monitor for errors, then proceed or rollback. Limits blast radius of bad deployments.
 
 **Automate rollback**: Bad deployment reaches production. Engineers scramble to identify the issue and manually revert. Takes 30 minutes. CodeDeploy monitors CloudWatch alarms during deployment, automatically rolls back when thresholds breach. Recovery in under 5 minutes.
 
 **Standardize deployment process**: Each team has different deployment scripts and procedures. Knowledge silos form. CodeDeploy provides consistent deployment mechanism across teams and applications. New team members deploy confidently on day one.
 
-**Blue/green deployments without complexity**: Setting up blue/green manually requires provisioning duplicate infrastructure, routing traffic with load balancers, and cleaning up old resources. CodeDeploy orchestrates the entire process—provisions green environment, shifts traffic, terminates blue environment.
+**Blue/green deployments without complexity**: Setting up blue/green manually requires provisioning duplicate infrastructure, routing traffic with load balancers, and cleaning up old resources. CodeDeploy orchestrates the entire process: provisions green environment, shifts traffic, terminates blue environment.
 
 **Canary testing in production**: Deploying risky changes to all users is dangerous. Deploying only to staging misses production-specific issues. CodeDeploy routes 10% of traffic to new version, monitors metrics, then proceeds or reverts. Safe production testing.
 

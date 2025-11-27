@@ -455,7 +455,7 @@ Switch from provisioned to Serverless for workloads with idle periods.
 | **6. Not partitioning Spectrum data** | Scanning entire dataset | Partition by date/region (only scan relevant partitions) |
 | **7. Provisioned cluster always running** | Paying for idle time | Pause clusters or use Serverless for variable workloads |
 | **8. Not using Reserved Instances** | 64% higher costs | Purchase Reserved Instances for stable workloads |
-| **9. Small files in S3** | Slow Spectrum queries | Combine into 64 MB - 1 GB files |
+| **9. Small files in S3** | Slow Spectrum queries | Combine into `64 MB−1 GB` files |
 | **10. Skipping VACUUM/ANALYZE** | Degraded query performance | Run VACUUM after large deletes, ANALYZE after bulk loads |
 | **11. ALL distribution for large tables** | Wastes storage (copied to every node) | Use ALL only for small dimension tables (<1M rows) |
 | **12. Not monitoring query performance** | Unoptimized queries waste resources | Use Query Monitoring Rules (QMR) and System Tables (STL, STV) |

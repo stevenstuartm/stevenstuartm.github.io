@@ -9,7 +9,7 @@ tags: [aws, machine-learning, automation, integration, practical, cost-analysis]
 
 ## What Problems AWS Comprehend & Translate Solve
 
-AWS Comprehend and Translate eliminate the complexity of building custom NLP and translation models by providing pre-trained APIs for common language tasks—sentiment analysis, entity extraction, language detection, and translation across 75+ languages.
+AWS Comprehend and Translate eliminate the complexity of building custom NLP and translation models by providing pre-trained APIs for common language tasks: sentiment analysis, entity extraction, language detection, and translation across 75+ languages.
 
 **Traditional NLP challenges**:
 - Building custom sentiment analysis models requires labeled datasets of 10,000+ examples and NLP expertise
@@ -25,7 +25,7 @@ AWS Comprehend and Translate eliminate the complexity of building custom NLP and
 
 ## AWS Comprehend
 
-**What it is**: Managed NLP service that extracts insights from text—sentiment, entities, key phrases, language, topics, and personally identifiable information (PII).
+**What it is**: Managed NLP service that extracts insights from text (sentiment, entities, key phrases, language, topics, and personally identifiable information).
 
 ### Core Capabilities
 
@@ -684,7 +684,7 @@ text[:500].rsplit('.', 1)[0] + '.'  # Cut at sentence boundary
 
 **Cost scales with character count**. Comprehend costs $0.0001 per 100 characters (synchronous), Translate costs $15 per million characters. Cache results, truncate long texts, and use asynchronous processing for batch workloads to reduce costs 50%.
 
-**Use Comprehend for text analysis** (sentiment, entities, language detection, PII). Use Translate for converting text between languages. Both integrate seamlessly—detect language with Comprehend, translate with Translate.
+**Use Comprehend for text analysis** (sentiment, entities, language detection, PII). Use Translate for converting text between languages. Both integrate seamlessly: detect language with Comprehend, translate with Translate.
 
 **Custom models extend capabilities**. Train custom classifiers for domain-specific categorization (support ticket routing, content moderation). Define custom terminologies to preserve brand names and technical terms in translations.
 

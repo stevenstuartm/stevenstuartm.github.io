@@ -144,9 +144,9 @@ If DR cost > outage cost × frequency: Accept risk or choose cheaper DR strategy
 
 **Pattern**: Regular backups stored offsite, restore when needed.
 
-**RTO**: 12-24 hours (time to provision infrastructure + restore data)
-**RPO**: 1-24 hours (time since last backup)
-**Cost**: Baseline (1×) - only pay for storage
+**RTO**: `12−24` hours (time to provision infrastructure + restore data)
+**RPO**: `1−24` hours (time since last backup)
+**Cost**: Baseline (1×); only pay for storage
 
 ### Architecture
 

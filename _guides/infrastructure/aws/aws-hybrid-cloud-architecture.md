@@ -169,7 +169,7 @@ On-Premises → Cross-Connect → AWS Direct Connect Location → AWS Backbone �
 **Connection types**:
 
 1. **Dedicated Connection**: 1 Gbps, 10 Gbps, 100 Gbps (AWS provisions entire port)
-2. **Hosted Connection**: 50 Mbps - 10 Gbps (AWS Partner provisions, shares port)
+2. **Hosted Connection**: `50 Mbps − 10 Gbps` (AWS Partner provisions, shares port)
 
 **When to use**:
 - High bandwidth requirements (>1 Gbps sustained)

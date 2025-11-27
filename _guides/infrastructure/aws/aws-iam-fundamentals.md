@@ -34,12 +34,12 @@ tags: [infrastructure, aws, iam, security, access-control, fundamentals]
 - No secure way for AWS services to access other services
 
 **With IAM:**
-- Centralized workforce identity management across multiple accounts (IAM Identity Center)
-- Temporary credentials that expire automatically (eliminates long-term credential exposure)
-- Principle of least privilege (grant only necessary permissions)
-- Services access other services securely without hardcoded credentials (roles)
-- Complete audit trail of all actions (CloudTrail integration)
-- Organization-wide guardrails prevent policy violations (Service Control Policies)
+- Centralized workforce identity management across multiple accounts with IAM Identity Center
+- Temporary credentials that expire automatically, eliminating long-term credential exposure
+- Principle of least privilege, granting only necessary permissions
+- Services access other services securely without hardcoded credentials using roles
+- Complete audit trail of all actions through CloudTrail integration
+- Organization-wide guardrails prevent policy violations using Service Control Policies
 
 ### How IAM Works
 
@@ -61,7 +61,7 @@ tags: [infrastructure, aws, iam, security, access-control, fundamentals]
 
 **For workload access:** Use IAM roles attached to compute resources (EC2, Lambda, ECS), not long-term access keys.
 
-**Why the shift:** Over 40% of cloud breaches originate from unnecessarily broad privileges. Over 80% of cloud breaches link to misconfigurations, often from overly permissive access. Long-term credentials (access keys) represent persistent attack vectors. Temporary credentials that expire automatically reduce this risk.
+**Why the shift:** Over 40% of cloud breaches originate from unnecessarily broad privileges. Over 80% of cloud breaches link to misconfigurations, often from overly permissive access. Long-term credentials like access keys represent persistent attack vectors. Temporary credentials that expire automatically reduce this risk.
 
 ---
 
@@ -120,11 +120,11 @@ When you assign a permission set to users for specific accounts, IAM Identity Ce
 
 | Aspect | Permission Sets (Identity Center) | Traditional IAM Roles |
 |--------|-----------------------------------|----------------------|
-| Management | Centralized - update once, applies everywhere | Per-account manual management |
+| Management | Centralized: update once, applies everywhere | Per-account manual management |
 | Deployment | Automatic across assigned accounts | Manual creation in each account |
 | Updates | Propagate automatically to all accounts | Must update each account individually |
 | Access Method | Through IAM Identity Center portal or CLI | Direct AWS console or API access |
-| Credentials | Always temporary (session duration configurable) | Can be assumed with various credential types |
+| Credentials | Always temporary with configurable session duration | Can be assumed with various credential types |
 | Use Case | Workforce users accessing multiple accounts | Service-to-service, cross-account, workloads |
 
 **Policy Types Supported in Permission Sets:**
@@ -659,10 +659,10 @@ In AWS Organizations, effective permissions are the intersection of:
 
 | Type | Description | When to Use |
 |------|-------------|-------------|
-| **AWS Managed Policies** | Pre-built policies maintained by AWS | Quick setup, common use cases (`ReadOnlyAccess`, `PowerUserAccess`) |
+| **AWS Managed Policies** | Pre-built policies maintained by AWS | Quick setup, common use cases like `ReadOnlyAccess`, `PowerUserAccess` |
 | **Customer Managed Policies** | Custom policies you create and manage | Reusable permissions across multiple identities |
 | **Inline Policies** | Embedded directly in a single user, group, or role | Strict one-to-one relationship; policy should not outlive the identity |
-| **Resource-Based Policies** | Attached to resources (S3 buckets, SQS queues, Lambda functions) | Cross-account access, service-specific permissions |
+| **Resource-Based Policies** | Attached to resources like S3 buckets, SQS queues, Lambda functions | Cross-account access, service-specific permissions |
 | **Permission Boundaries** | Maximum permissions an identity can have | Delegating role/user creation while preventing privilege escalation |
 | **Service Control Policies** | Organization-wide guardrails | Enforce compliance across all accounts |
 
@@ -672,7 +672,7 @@ In AWS Organizations, effective permissions are the intersection of:
 
 **What is IAM Access Analyzer?**
 
-IAM Access Analyzer uses automated reasoning (mathematical logic) to analyze permissions and determine all possible access paths. It evaluates hundreds or thousands of policies in seconds.
+IAM Access Analyzer uses automated reasoning with mathematical logic to analyze permissions and determine all possible access paths. It evaluates hundreds or thousands of policies in seconds.
 
 **Key Capabilities:**
 

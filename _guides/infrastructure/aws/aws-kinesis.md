@@ -49,21 +49,21 @@ tags: [aws, kinesis, streaming, real-time, data-processing, analytics, architect
 **Managed Streaming Platform:**
 - **Real-time ingestion**: Millisecond latency from data production to consumption
 - **Ordered delivery**: Events from same partition key delivered in order
-- **Replay capability**: Reprocess historical data (up to 365 days retention)
+- **Replay capability**: Reprocess historical data with up to 365 days retention
 - **Multiple consumers**: Fan-out to multiple applications reading same stream
-- **Automatic scaling**: On-demand mode scales with traffic (Data Streams) or fully managed (Firehose)
+- **Automatic scaling**: On-demand mode scales with traffic for Data Streams or fully managed for Firehose
 - **Durable storage**: Data replicated across 3 Availability Zones
 
 **Problem-Solution Mapping:**
 
 | Problem | Kinesis Data Streams Solution | Kinesis Firehose Solution |
 |---------|------------------------------|---------------------------|
-| Real-time processing needed | Sub-second latency; consumers process immediately | Near real-time (60s-900s) delivery to destinations |
-| High throughput (>10,000 events/sec) | Scales to millions of events/sec with sharding | Auto-scales; no throughput limits |
-| Need to replay data | Retain data 1-365 days; reprocess anytime | No replay (direct delivery); use Data Streams if needed |
-| Multiple consumers need same data | Enhanced fan-out (2 MB/sec per consumer) | Single destination per delivery stream |
-| Custom processing before storage | Lambda, KCL apps process and transform | Built-in Lambda transformation before delivery |
-| Complex infrastructure management | Managed service; no servers to manage | Fully managed; zero infrastructure |
+| Real-time processing needed | Sub-second latency with immediate consumer processing | Near real-time delivery to destinations in 60-900 seconds |
+| High throughput exceeding 10,000 events/sec | Scales to millions of events/sec with sharding | Auto-scales without throughput limits |
+| Need to replay data | Retain data 1-365 days and reprocess anytime | No replay with direct delivery; use Data Streams if needed |
+| Multiple consumers need same data | Enhanced fan-out provides 2 MB/sec per consumer | Single destination per delivery stream |
+| Custom processing before storage | Lambda and KCL apps process and transform | Built-in Lambda transformation before delivery |
+| Complex infrastructure management | Managed service with no servers to manage | Fully managed with zero infrastructure |
 
 ---
 
@@ -220,16 +220,16 @@ Supported targets:
 Firehose batches records before delivery.
 
 **Buffer Configuration:**
-- **Size**: 1 MB - 128 MB (default: 5 MB)
-- **Interval**: 60 seconds - 900 seconds (default: 300s)
+- **Size**: `1 MB − 128 MB` (default: 5 MB)
+- **Interval**: `60 seconds − 900 seconds` (default: 300s)
 
 **Delivery triggers when EITHER condition met:**
 - Buffer size reached
 - Buffer interval elapsed
 
 **Example:** 5 MB buffer, 60s interval
-- If 5 MB accumulated in 30s → deliver immediately
-- If only 1 MB after 60s → deliver anyway
+- If 5 MB accumulated in 30s, deliver immediately
+- If only 1 MB after 60s, deliver anyway
 
 ### Data Transformation
 
@@ -289,7 +289,7 @@ s3://my-bucket/
               └── data-2025-01-14-12-00.parquet
 ```
 
-**Benefit:** Athena/Redshift queries filter by partition; scan only relevant data.
+**Benefit:** Athena and Redshift queries filter by partition and scan only relevant data.
 
 ---
 
@@ -426,10 +426,10 @@ Merge two shards into one (decrease capacity, reduce cost).
 |---------|---------------------|-----|
 | **Ordering** | Guaranteed per shard (partition key) | FIFO queues only (up to 300 TPS) |
 | **Delivery** | At-least-once (consumers read records) | At-least-once (Standard), Exactly-once (FIFO) |
-| **Retention** | 24 hours - 365 days | 1 minute - 14 days |
+| **Retention** | `24 hours − 365 days` | `1 minute − 14 days` |
 | **Replay** | Yes (reprocess any point in retention) | No (message deleted after processing) |
 | **Multiple Consumers** | Yes (fan-out to unlimited consumers) | No (each message consumed once; use SNS+SQS for fan-out) |
-| **Latency** | 70ms - 200ms | <10ms (polling latency separate) |
+| **Latency** | `70ms − 200ms` | <10ms (polling latency separate) |
 | **Throughput** | Millions of events/sec (with sharding) | Unlimited (Standard), 300-3,000 TPS (FIFO) |
 | **Message Size** | Up to 1 MB | Up to 256 KB |
 | **Consumer Model** | Pull (consumers poll shards) | Pull (consumers poll queue) |
@@ -1223,9 +1223,9 @@ Cross-region replication via Lambda or Firehose
 
 ## Key Takeaways
 
-1. **Kinesis Data Streams enables real-time streaming with replay capability.** Ingest millions of events/sec; consumers process in real-time; replay data up to 365 days for reprocessing.
+1. **Kinesis Data Streams enables real-time streaming with replay capability.** Ingest millions of events/sec, consumers process in real-time, and replay data up to 365 days for reprocessing.
 
-2. **Kinesis Firehose delivers streaming data to AWS services with zero infrastructure.** Fully managed service; automatic scaling; built-in transformation; loads data into S3, Redshift, OpenSearch, Splunk.
+2. **Kinesis Firehose delivers streaming data to AWS services with zero infrastructure.** Fully managed service with automatic scaling and built-in transformation. It loads data into S3, Redshift, OpenSearch, and Splunk.
 
 3. **Choose Data Streams for custom processing and replay; Firehose for simple delivery.** Data Streams: custom consumers, multiple readers, replay needed. Firehose: delivery to S3/Redshift/OpenSearch without custom code.
 
@@ -1233,7 +1233,7 @@ Cross-region replication via Lambda or Firehose
 
 5. **Partition key choice critical to avoid hot shards.** Use high-cardinality, evenly distributed keys (user ID, device ID, request ID). Avoid low-cardinality keys (log level, page name).
 
-6. **On-demand mode recommended for variable traffic; provisioned for steady workloads.** On-demand auto-scales; provisioned saves 60%+ for predictable traffic.
+6. **On-demand mode recommended for variable traffic; provisioned for steady workloads.** On-demand auto-scales, while provisioned saves 60%+ for predictable traffic.
 
 7. **Use KPL/KCL for production workloads.** KPL: automatic batching, aggregation, retry (10× throughput). KCL: automatic shard discovery, checkpointing, failover.
 

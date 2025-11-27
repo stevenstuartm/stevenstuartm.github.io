@@ -46,7 +46,7 @@ CloudWatch is AWS's native monitoring and observability service that addresses c
 
 CloudWatch consists of several integrated services:
 
-**CloudWatch Metrics**: Time-series data points representing resource and application behavior (CPU utilization, request count, error rate). Metrics are the foundation—everything else builds on them.
+**CloudWatch Metrics**: Time-series data points representing resource and application behavior (CPU utilization, request count, error rate). Metrics are the foundation; everything else builds on them.
 
 **CloudWatch Alarms**: Automated watches on metrics that trigger actions when thresholds are crossed. Alarms evaluate metrics over time windows and can trigger SNS notifications, Auto Scaling actions, EC2 actions, or Systems Manager automation.
 
@@ -83,7 +83,7 @@ CloudWatch retains metrics for different periods based on resolution:
 | 5-minute | 63 days |
 | 1-hour | 455 days (15 months) |
 
-Logs have configurable retention from 1 day to 10 years, or indefinite retention. Short retention periods reduce costs dramatically—changing from indefinite to 30-day retention can reduce log storage costs by 90%+ for high-volume applications.
+Logs have configurable retention from 1 day to 10 years, or indefinite retention. Short retention periods reduce costs dramatically; changing from indefinite to 30-day retention can reduce log storage costs by 90%+ for high-volume applications.
 
 ## CloudWatch Metrics
 
@@ -149,7 +149,7 @@ Custom metrics let you publish application-level metrics:
 - Each unique combination of dimensions creates a separate metric
 - Example: Metric `ResponseTime` with dimensions `{Service, Endpoint, StatusCode}` and 5 services × 20 endpoints × 5 status codes = 500 metric streams = $150/month
 
-**Avoid cardinality explosions**: Adding a dimension like `UserId` with millions of unique values creates millions of metrics. Use aggregation instead—track `ResponseTime` by `Service` and `Endpoint`, not by individual user.
+**Avoid cardinality explosions**: Adding a dimension like `UserId` with millions of unique values creates millions of metrics. Use aggregation instead; track `ResponseTime` by `Service` and `Endpoint`, not by individual user.
 
 ### CloudWatch Agent
 
@@ -922,7 +922,7 @@ Example: Metric `RequestLatency` with dimensions `{UserId, Endpoint}` and 10,000
 
 **CloudWatch integrates deeply with AWS automation**: Alarms trigger Auto Scaling, Lambda remediation, and Systems Manager automation. Use these integrations to build self-healing architectures.
 
-**Consider hybrid observability strategies**: CloudWatch excels at AWS-native monitoring but third-party tools (Datadog, New Relic) provide superior APM and user experience. Many organizations use both—CloudWatch for infrastructure metrics, third-party for application performance management.
+**Consider hybrid observability strategies**: CloudWatch excels at AWS-native monitoring but third-party tools (Datadog, New Relic) provide superior APM and user experience. Many organizations use both: CloudWatch for infrastructure metrics, third-party for application performance management.
 
 **Retention and aggregation balance cost and utility**: Short-term detailed logs (7-30 days), long-term aggregated metrics (15 months), and S3 archives for compliance (years) provide cost-effective observability at different time scales.
 

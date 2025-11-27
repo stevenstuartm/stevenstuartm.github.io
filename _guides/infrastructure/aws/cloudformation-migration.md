@@ -26,8 +26,8 @@ tags: [infrastructure, iac, aws, cloudformation, migration, practical]
 
 **Two migration scenarios:**
 
-1. **Importing unmanaged resources** - Resources created manually or outside CloudFormation
-2. **Moving resources between stacks** - Resources already in CloudFormation but need to move to different stacks
+1. **Importing unmanaged resources**: Resources created manually or outside CloudFormation
+2. **Moving resources between stacks**: Resources already in CloudFormation but need to move to different stacks
 
 **Why migrate:**
 - Version control for infrastructure
@@ -568,7 +568,7 @@ aws cloudformation update-stack \
   --capabilities CAPABILITY_IAM
 ```
 
-The resource is now "orphaned" - exists in AWS but not managed by any stack.
+The resource is now "orphaned"; it exists in AWS but is not managed by any stack.
 
 **5. Prepare destination stack template**
 
@@ -744,7 +744,7 @@ aws cloudformation describe-stack-resource-drifts \
 
 ### Interpret Drift Results
 
-**IN_SYNC:** Template matches actual resource - good!
+**IN_SYNC:** Template matches actual resource (good!).
 
 **MODIFIED:** Actual resource differs from template:
 - Someone changed the resource manually after import
@@ -909,7 +909,7 @@ aws ec2 describe-vpcs \
 
 **Solutions:**
 
-**Option 1: Use Stack Refactoring (NEW - February 2025)**
+**Option 1: Use Stack Refactoring (NEW in February 2025)**
 ```bash
 aws cloudformation create-stack-refactor \
   --description "Move S3 bucket to new stack" \

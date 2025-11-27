@@ -9,7 +9,7 @@ tags: [aws, machine-learning, automation, cost-analysis, integration, practical]
 
 ## What Problems AWS Rekognition & Textract Solve
 
-AWS Rekognition and Textract eliminate the complexity of building custom computer vision models by providing pre-trained APIs for common vision tasks—image analysis, video analysis, and document extraction.
+AWS Rekognition and Textract eliminate the complexity of building custom computer vision models by providing pre-trained APIs for common vision tasks: image analysis, video analysis, and document extraction.
 
 **Traditional computer vision challenges**:
 - Building custom ML models for face detection, object recognition, or text extraction requires months of data labeling and model training
@@ -638,14 +638,14 @@ labels = [l for l in response['Labels'] if l['Confidence'] >= 90]
 
 **Cost scales with usage volume**. Rekognition costs $1 per 1,000 images, Textract costs $1.50-$50 per 1,000 pages depending on features. Cache results to avoid reprocessing, filter by confidence scores to reduce downstream manual review costs.
 
-**Use Rekognition for images/videos** (object detection, face recognition, moderation, text in images). Use Textract for documents (PDFs, scans, forms, tables, IDs). Don't use Rekognition for document OCR—Textract is optimized for documents and provides structured extraction.
+**Use Rekognition for images/videos** (object detection, face recognition, moderation, text in images). Use Textract for documents (PDFs, scans, forms, tables, IDs). Don't use Rekognition for document OCR. Textract is optimized for documents and provides structured extraction.
 
 **Integration patterns are serverless-first**. S3 triggers Lambda on upload, Lambda calls Rekognition/Textract, stores results in DynamoDB, notifies via SNS. For real-time use cases (image moderation), call APIs synchronously from API Gateway + Lambda.
 
-**Set confidence thresholds** (90%+) to filter low-quality results. Don't assume 100% accuracy—use confidence scores to route uncertain cases to human review.
+**Set confidence thresholds** (90%+) to filter low-quality results. Don't assume 100% accuracy. Use confidence scores to route uncertain cases to human review.
 
 **Choose between Rekognition/Textract vs SageMaker** based on customization needs. Use Rekognition/Textract for standard use cases (face detection works out-of-box). Use SageMaker when you need custom models (detect specific product defects unique to your manufacturing process).
 
-**Video analysis is asynchronous** and can take minutes to hours. Don't poll synchronously—use SNS notifications to trigger downstream processing when video analysis completes.
+**Video analysis is asynchronous** and can take minutes to hours. Don't poll synchronously. Use SNS notifications to trigger downstream processing when video analysis completes.
 
 **Textract Queries provide natural language interface** to document extraction. Instead of parsing complex JSON responses to find specific fields, ask "What is the invoice total?" and get the answer directly with confidence score.

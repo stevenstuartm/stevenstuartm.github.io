@@ -22,7 +22,7 @@ AWS QuickSight eliminates the infrastructure complexity and licensing costs of t
 
 **What QuickSight provides**: A serverless BI service with pay-per-session pricing for viewers ($0.30/session, max $5/month/user), unlimited dashboards and datasets, and a fast in-memory engine (SPICE) that caches data for sub-second query performance. Authors pay $24/month for full creation capabilities, readers pay only when actively viewing dashboards.
 
-**Real-world impact**: After migrating to QuickSight, licensing costs dropped to $14,400/year (50 authors × $24/month × 12 + 100 customers × $5/month × 12). Infrastructure costs dropped to zero (serverless, no cluster management). Total annual cost: $14,400 vs $627,500 (97.7% reduction). SPICE eliminated database load—dashboards query in-memory cache instead of hitting production databases. Analysts build dashboards directly against S3 data lakes via Athena without waiting for data engineering. Customer-facing embedded dashboards load in under 1 second with automatic scaling during peak traffic.
+**Real-world impact**: After migrating to QuickSight, licensing costs dropped to $14,400/year (50 authors × $24/month × 12 + 100 customers × $5/month × 12). Infrastructure costs dropped to zero (serverless, no cluster management). Total annual cost: $14,400 vs $627,500 (97.7% reduction). SPICE eliminated database load; dashboards query in-memory cache instead of hitting production databases. Analysts build dashboards directly against S3 data lakes via Athena without waiting for data engineering. Customer-facing embedded dashboards load in under 1 second with automatic scaling during peak traffic.
 
 ## Service Fundamentals
 
@@ -837,11 +837,11 @@ Reduces scan to 90 days of completed orders (99% reduction).
 
 ## Key Takeaways
 
-**AWS QuickSight provides serverless BI with pay-per-session pricing** that eliminates traditional BI licensing costs and infrastructure management. Author licenses cost $24/month for dashboard creators, reader licenses cost $0.30/session (max $5/month) for dashboard consumers—a 97% cost reduction compared to traditional BI tools for viewer-heavy workloads.
+**AWS QuickSight provides serverless BI with pay-per-session pricing** that eliminates traditional BI licensing costs and infrastructure management. Author licenses cost $24/month for dashboard creators, reader licenses cost $0.30/session (max $5/month) for dashboard consumers. This represents a 97% cost reduction compared to traditional BI tools for viewer-heavy workloads.
 
 **SPICE in-memory engine enables sub-second dashboard performance** without managing caching infrastructure. Import frequently-queried data to SPICE with scheduled refreshes (hourly, daily) instead of direct-querying source databases. This reduces database load, improves user experience, and minimizes data source query costs (Athena, Redshift).
 
-**Embedded analytics pricing makes customer-facing dashboards economically viable**. Traditional BI tools charge $5,000+ per embedded user per year. QuickSight charges $0.30 per session with no embedding premium—100 embedded users viewing dashboards monthly costs $500/month vs $41,667/month with traditional tools (98.8% savings).
+**Embedded analytics pricing makes customer-facing dashboards economically viable**. Traditional BI tools charge $5,000+ per embedded user per year. QuickSight charges $0.30 per session with no embedding premium. This means 100 embedded users viewing dashboards monthly costs $500/month vs $41,667/month with traditional tools (98.8% savings).
 
 **Pre-aggregate data before importing to SPICE** to maximize performance and minimize costs. Import daily summaries instead of raw transactions (100× size reduction), use incremental refresh for append-only datasets, and share datasets across dashboards to avoid redundant imports.
 

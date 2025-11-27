@@ -27,17 +27,17 @@ AWS Lambda provides event-driven compute capacity without managing servers, addr
 
 **Infrastructure challenges solved:**
 
-**Operational overhead elimination**: No server provisioning, patching, or infrastructure management. AWS automatically manages availability and fault tolerance by running functions across multiple Availability Zones. You write code; AWS handles everything else.
+**Operational overhead elimination**: No server provisioning, patching, or infrastructure management. AWS automatically manages availability and fault tolerance by running functions across multiple Availability Zones. You write code and AWS handles everything else.
 
 **Cost inefficiency for variable workloads**: Pay only for compute time consumed, billed per millisecond. For sporadic workloads, Lambda costs are up to 75% less than EC2. No charges for idle capacity. A function invoked 100 times per day for 1 second each costs $0.06/month. The same workload on EC2 (running 24/7) costs $15+/month.
 
 **Scaling complexity**: Automatic scaling from zero to thousands of concurrent executions without configuration. As of 2023, each function can burst to 1,000 concurrent executions instantly, scaling 12x faster than previous generations. No Auto Scaling Groups, no capacity planning.
 
-**Event-driven architecture**: Native integration with 200+ AWS event sources without custom polling logic. S3 uploads, DynamoDB changes, API Gateway requests, SQS messages—all trigger Lambda automatically.
+**Event-driven architecture**: Native integration with 200+ AWS event sources without custom polling logic. S3 uploads, DynamoDB changes, API Gateway requests, and SQS messages all trigger Lambda automatically.
 
 ### When EC2 is Better
 
-**Consistent, predictable high workloads**: If your application runs continuously with high utilization, EC2 with Reserved Instances or Savings Plans is more cost-effective. Lambda excels at variable workloads; EC2 excels at sustained load.
+**Consistent, predictable high workloads**: If your application runs continuously with high utilization, EC2 with Reserved Instances or Savings Plans is more cost-effective. Lambda excels at variable workloads while EC2 excels at sustained load.
 
 **Full server control requirements**: Applications requiring custom OS configurations, kernel modules, or legacy dependencies incompatible with Lambda runtimes need EC2.
 
@@ -686,7 +686,7 @@ X-Ray visualizes request flow across distributed applications.
 
 ### Custom Metrics
 
-**Embedded Metric Format (EMF) - Recommended**:
+**Embedded Metric Format (EMF), Recommended**:
 Print JSON to stdout; Lambda automatically extracts metrics. No API calls; faster and cheaper than PutMetricData.
 
 ```javascript
@@ -806,7 +806,7 @@ Lambda supports container images up to 10 GB as an alternative to ZIP deployment
 
 ### Lambda vs EventBridge Pipes
 
-EventBridge Pipes (2022+) provides point-to-point integration between AWS services with filtering, enrichment, and transformation—without Lambda code.
+EventBridge Pipes (2022+) provides point-to-point integration between AWS services with filtering, enrichment, and transformation, all without Lambda code.
 
 **When to use Lambda**:
 - Custom business logic (complex validation, algorithmic processing)

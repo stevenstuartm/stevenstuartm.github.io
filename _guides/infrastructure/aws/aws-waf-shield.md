@@ -1006,9 +1006,9 @@ Action: Alert security team + engage DRT
 
 ### Pitfall 2: Not Testing Rules with COUNT
 
-**Problem:** Deployed managed rule group with BLOCK action immediately; blocks legitimate traffic; site down.
+**Problem:** Deployed managed rule group with BLOCK action immediately. Blocks legitimate traffic. Site down.
 
-**Solution:** Always start with COUNT action; review logs for 7 days; adjust; then switch to BLOCK.
+**Solution:** Always start with COUNT action. Review logs for 7 days. Adjust rules. Then switch to BLOCK.
 
 **Cost Impact:** Business disruption from false positives.
 
@@ -1068,7 +1068,7 @@ Action: Alert security team + engage DRT
 
 6. **Shield Advanced costs $3,000/month but includes DRT and cost protection.** DDoS Response Team provides 24/7 support. AWS credits data transfer charges during attacks.
 
-7. **Always test rules with COUNT action before BLOCK.** Review logs for false positives; tune rules; then switch to BLOCK. Prevents blocking legitimate traffic.
+7. **Always test rules with COUNT action before BLOCK.** Review logs for false positives. Tune rules. Then switch to BLOCK. Prevents blocking legitimate traffic.
 
 8. **Web ACL capacity limited to 5,000 WCUs.** Managed rule groups consume 50-1,500 WCUs. Plan rule budget accordingly.
 
@@ -1086,4 +1086,4 @@ Action: Alert security team + engage DRT
 
 15. **WAF integrates with CloudFront, ALB, API Gateway, AppSync.** Choose integration point based on architecture. CloudFront provides edge protection; ALB protects regional applications.
 
-**AWS WAF and Shield provide comprehensive protection against web exploits and DDoS attacks, enabling defense-in-depth security with managed rules, ML-powered bot detection, and 24/7 DDoS response. WAF protects against application-layer threats while Shield mitigates network-layer DDoS—both essential for production web applications.**
+**AWS WAF and Shield provide comprehensive protection against web exploits and DDoS attacks, enabling defense-in-depth security with managed rules, ML-powered bot detection, and 24/7 DDoS response. WAF protects against application-layer threats while Shield mitigates network-layer DDoS; both are essential for production web applications.**

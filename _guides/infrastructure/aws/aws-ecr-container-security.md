@@ -1267,7 +1267,7 @@ kubectl create secret docker-registry ecr-registry-secret \
   --docker-password=$(aws ecr get-login-password --region us-east-1)
 ```
 
-**IRSA (IAM Roles for Service Accounts)** - Better approach:
+**IRSA (IAM Roles for Service Accounts)** (Better approach):
 
 ```yaml
 apiVersion: v1
@@ -1290,7 +1290,7 @@ spec:
           image: 123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app:v1.2.3
 ```
 
-No explicit pull secret needed - EKS automatically uses IRSA role to authenticate.
+No explicit pull secret needed; EKS automatically uses IRSA role to authenticate.
 
 ## When to Use ECR vs Alternatives
 

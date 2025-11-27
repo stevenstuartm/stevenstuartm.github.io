@@ -914,7 +914,7 @@ Use Fargate Spot (70% discount) in secondary regions.
 
 **Savings**: $2,016/month (70%) on secondary compute
 
-**Risk**: Fargate Spot interruptions (2-minute notice) - acceptable for secondary region.
+**Risk**: Fargate Spot interruptions (2-minute notice); acceptable for secondary region.
 
 ### Data Transfer Cost Optimization
 

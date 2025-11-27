@@ -57,7 +57,7 @@ tags: [aws, sqs, sns, messaging, event-driven, distributed-systems, reliability,
 | Problem | SQS Solution | SNS Solution |
 |---------|-------------|-------------|
 | Service unavailable | Messages persist in queue until service recovers | Messages retry delivery; SNS DLQ captures failures |
-| Traffic spike | Queue buffers messages; consumers process at steady rate | Publishes to multiple subscribers; each handles at own pace |
+| Traffic spike | Queue buffers messages while consumers process at steady rate | Publishes to multiple subscribers where each handles at own pace |
 | Lost messages | Durable storage with 4-14 day retention | Retry up to 100,015 times over 23 days for SQS/Lambda endpoints |
 | Tight coupling | Point-to-point decoupling | Pub/sub decoupling (one-to-many) |
 | Scaling bottleneck | Scale consumers independently of producers | Scale subscribers independently of publishers |
@@ -1749,6 +1749,6 @@ Source Queue → Consumer (fails) → [DLQ] → Manual Inspection / Reprocessing
 
 11. **Use VPC endpoints for private SQS/SNS access.** Eliminates NAT gateway costs, improves security, and reduces latency for applications in private subnets. See [AWS PrivateLink & Transit Gateway](aws-privatelink-transit-gateway.md){:target="_blank" rel="noopener noreferrer"} for details.
 
-12. **Implement idempotency for Standard queues; FIFO provides exactly-once delivery.** Standard queues may deliver duplicates; application must handle with idempotency checks. FIFO queues guarantee exactly-once delivery but at lower throughput.
+12. **Implement idempotency for Standard queues.** Standard queues may deliver duplicates, so applications must handle this with idempotency checks. FIFO queues guarantee exactly-once delivery but at lower throughput.
 
 **SQS and SNS are foundational building blocks for decoupled, event-driven architectures. Master these services to build scalable, resilient, and cost-optimized distributed systems on AWS.**
