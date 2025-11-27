@@ -36,7 +36,7 @@ tags: [sdlc, methodology, kanban, workflow, continuous-delivery, lean, practical
 
 **Key Difference from Frameworks:**
 
-Kanban is not a replacement for your current process. It's a lens through which you visualize, measure, and improve your existing workflow. You don't "do Kanban"—you apply Kanban principles to what you already do.
+Kanban is not a replacement for your current process. It's a lens through which you visualize, measure, and improve your existing workflow. You don't "do Kanban"; you apply Kanban principles to what you already do.
 
 ### Why Kanban Emerged
 
@@ -95,7 +95,7 @@ David J. Anderson applied these principles to software development at Microsoft 
 
 ### The Kanban Mindset
 
-**Kanban is fundamentally about making work visible, limiting WIP, and optimizing flow.**
+**Kanban is about making work visible, limiting WIP, and optimizing flow.**
 
 **Start with what you do now:**
 - Don't disrupt current process with wholesale change
@@ -215,7 +215,7 @@ Create a visual representation of how work actually flows through your system, f
 
 **Step 1: Map your actual workflow**
 
-Don't idealize—map what really happens:
+Don't idealize; map what really happens:
 - Where does work come from?
 - What stages does it go through?
 - Where does work wait?
@@ -782,7 +782,7 @@ Kanban defines four core cadences, each with different purpose and frequency:
 - Discuss blocked items (how to unblock?)
 - Identify who will help finish work if WIP limit reached
 
-**Not a status report to management—it's team coordination.**
+**Not a status report to management; it's team coordination.**
 
 **Key differences from Scrum standup:**
 - Walk the board (not round-robin per person)
@@ -1216,7 +1216,7 @@ Kanban relies on data-driven improvement. Track these key metrics to understand 
 - 85th percentile: 10 days
 
 **Why median and percentile matter:**
-Outliers skew averages. Median represents typical item. 85th percentile gives reasonable upper bound for forecasting.
+Outliers skew averages, while median represents a typical item. The 85th percentile gives a reasonable upper bound for forecasting.
 
 **Target:** Decreasing over time
 
@@ -1462,7 +1462,7 @@ Kanban is designed for evolutionary change. Start where you are and improve incr
 4. Write cards for all current work
 5. Place cards in appropriate columns
 
-**Don't change anything yet—just visualize.**
+**Don't change anything yet; just visualize.**
 
 **Day 2-7: Measure baseline**
 

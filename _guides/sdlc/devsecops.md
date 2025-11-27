@@ -24,7 +24,7 @@ tags: [sdlc, security, devops, automation, integration, practical]
 ### Core Principles
 
 **1. Security as Code**
-Treat security policies, configurations, and infrastructure as code that can be versioned, tested, and automated—just like application code.
+Treat security policies, configurations, and infrastructure as code that can be versioned, tested, and automated, just like application code.
 
 **Why it matters:**
 - Security becomes reproducible and testable
@@ -522,7 +522,7 @@ DevSecOps is as much about culture as it is about tools and processes. Creating 
 
 ### Security Champions Program
 
-**What it is:** Identify and empower security champions within development teams—developers who have extra security training and advocate for security in their teams.
+**What it is:** Identify and empower security champions within development teams. These are developers who have extra security training and advocate for security in their teams.
 
 **Benefits:**
 - Scales security expertise across the organization

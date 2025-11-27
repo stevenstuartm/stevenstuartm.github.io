@@ -37,11 +37,11 @@ Understanding the distinction between monitoring and observability is crucial fo
 | **Data Sources** | Predefined metrics and alerts | Multiple correlated data sources |
 | **Question Answered** | "Is the system working?" | "Why is the system not working?" |
 
-**Key Insight**: Observability is a broader version of monitoring that allows operations teams to be proactive and resolve sophisticated issues faster.
+Observability is a broader version of monitoring that allows operations teams to be proactive and resolve sophisticated issues faster.
 
 ## Events: The Foundation
 
-The "Three Pillars of Observability" all rely on the concept of "Events". Events are essentially the basic building blocks of monitoring and telemetry—distinct occurrences that can be defined, something discrete and unique that happened.
+The "Three Pillars of Observability" all rely on the concept of "Events". Events are the basic building blocks of monitoring and telemetry: distinct occurrences that can be defined, something discrete and unique that happened.
 
 **Event Characteristics:**
 - **Temporal**: Occur at a specific time

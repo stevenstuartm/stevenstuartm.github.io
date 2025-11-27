@@ -181,7 +181,7 @@ public class NamingConventionConfigRule
 3. Create automated responses for critical findings only
 4. Review high/critical findings weekly
 
-**Don't try to achieve 100% compliance immediately** - focus on critical and high severity findings.
+**Don't try to achieve 100% compliance immediately.** Focus on critical and high severity findings.
 
 ## Code Quality Governance (.NET)
 
@@ -192,7 +192,7 @@ public class NamingConventionConfigRule
 | Enforce architecture rules | ArchUnit.NET | Layered architecture, DDD, strict boundaries | Small apps, prototypes |
 | Comprehensive analysis | NDepend | Large codebases, technical debt tracking | < 50k LOC, tight budget |
 | CI/CD quality gates | SonarQube | All teams after PoC stage | Solo developers, hobby projects |
-| Real-time feedback | Roslyn Analyzers | Always (low cost, high value) | N/A - use this |
+| Real-time feedback | Roslyn Analyzers | Always (low cost, high value) | Always use this |
 
 ### Roslyn Analyzers (Start Here)
 

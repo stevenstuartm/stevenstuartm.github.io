@@ -67,7 +67,7 @@ Two primary metrics quantify coupling:
 
 **Afferent Coupling (Ca)** counts the number of components that depend on this component. High afferent coupling means many components rely on this one, making it harder to change without breaking dependents.
 
-**Efferent Coupling (Ce)** counts the number of components this component depends on. High efferent coupling means this component is fragile—changes to any dependency can break it.
+**Efferent Coupling (Ce)** counts the number of components this component depends on. High efferent coupling means this component is fragile because changes to any dependency can break it.
 
 ### Derived Metrics
 

@@ -310,7 +310,7 @@ Extension to ISO 27001 for privacy management (GDPR, CCPA compliance).
 
 ### NIST SP 800-53: Security and Privacy Controls
 
-**Release 5.2.0 (2025)** - Enhanced controls for logging, root cause analysis, and cyber resiliency.
+**Release 5.2.0 (2025)**: Enhanced controls for logging, root cause analysis, and cyber resiliency.
 
 **Control Families:**
 
@@ -409,16 +409,16 @@ Evidence:
 
 **18 prioritized cybersecurity safeguards** organized by Implementation Groups (IG1, IG2, IG3).
 
-**Implementation Group 1 (IG1) - Essential Controls:**
+**Implementation Group 1 (IG1): Essential Controls**
 
 | Control | Description | Implementation Priority |
 |---------|-------------|----------------------|
-| **1. Inventory of Assets** | Hardware and software asset tracking | Critical - IG1 |
-| **2. Inventory of Software** | Authorized and unauthorized software | Critical - IG1 |
-| **3. Data Protection** | Identify and protect sensitive data | Critical - IG1 |
-| **4. Secure Configuration** | Secure settings for hardware/software | Critical - IG1 |
-| **5. Account Management** | Control active accounts and credentials | Critical - IG1 |
-| **6. Access Control Management** | Manage access based on need-to-know | Critical - IG1 |
+| **1. Inventory of Assets** | Hardware and software asset tracking | Critical (IG1) |
+| **2. Inventory of Software** | Authorized and unauthorized software | Critical (IG1) |
+| **3. Data Protection** | Identify and protect sensitive data | Critical (IG1) |
+| **4. Secure Configuration** | Secure settings for hardware/software | Critical (IG1) |
+| **5. Account Management** | Control active accounts and credentials | Critical (IG1) |
+| **6. Access Control Management** | Manage access based on need-to-know | Critical (IG1) |
 
 **Example IG1 Implementation:**
 
@@ -447,7 +447,7 @@ asset_manager:
     - Unauthorized device blocking
 ```
 
-**Implementation Group 2 (IG2) - Medium Organizations:**
+**Implementation Group 2 (IG2): Medium Organizations**
 
 Additional controls for organizations managing IT infrastructure for multiple departments.
 
@@ -457,7 +457,7 @@ Additional controls for organizations managing IT infrastructure for multiple de
 - Control 11: Data Recovery
 - Control 13: Network Monitoring and Defense
 
-**Implementation Group 3 (IG3) - Large Organizations:**
+**Implementation Group 3 (IG3): Large Organizations**
 
 Advanced controls for organizations with dedicated security teams.
 

@@ -470,7 +470,7 @@ var clone2 = original.DeepClone(); // Using JSON serialization
 | **Abstract Factory** | Create families of related objects | Need consistent object families | Cross-platform UIs, themed components | Only one product family |
 | **Builder** | Construct complex objects step-by-step | Objects with many optional parameters | Immutable objects, fluent APIs, complex construction | Simple objects with few properties |
 | **Prototype** | Clone existing objects | Expensive object creation | Object templates, reducing initialization cost | Objects are cheap to create |
-| **Singleton** | Single instance globally | Shared resource access | Config, logging - **prefer DI instead** | Almost always - use DI |
+| **Singleton** | Single instance globally | Shared resource access | Config, logging (**prefer DI instead**) | Almost always (use DI) |
 
 ### Pattern Selection Guide
 

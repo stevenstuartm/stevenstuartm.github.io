@@ -6,7 +6,7 @@ tags: [algorithms, sorting, complexity-analysis, practical, interview-prep]
 ---
 
 ## Why Sorting Exists
-Sorted data enables binary search (O(log n) vs O(n)) and makes many operations faster - searching, finding duplicates, merging datasets, range queries. Sorting is often a preprocessing step that makes everything else efficient.
+Sorted data enables binary search (O(log n) vs O(n)) and makes many operations faster: searching, finding duplicates, merging datasets, and range queries. Sorting is often a preprocessing step that makes everything else efficient.
 
 ## Algorithm Selection Guide
 

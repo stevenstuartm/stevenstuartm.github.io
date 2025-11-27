@@ -48,7 +48,7 @@ A shared language used by both developers and domain experts to describe the dom
 - Reject vague terms ("process," "handle," "manage") in favor of specific domain terms
 - Refine the language iteratively as understanding deepens
 
-**Example**: In an insurance domain, don't say "request processing." Say "underwriting" or "claims adjudication" or "policy renewal" - the specific domain terms that experts use.
+**Example**: In an insurance domain, don't say "request processing." Say "underwriting" or "claims adjudication" or "policy renewal," using the specific domain terms that experts use.
 
 **In code**:
 ```csharp
@@ -405,7 +405,7 @@ public class FundsTransferService
 }
 ```
 
-**Why not put this on Account?**: Transfer is a concept involving *two* accounts. Putting it on one account (`fromAccount.TransferTo(toAccount, amount)`) is arbitrary - why should the source account own this operation? A domain service makes the concept explicit.
+**Why not put this on Account?**: Transfer is a concept involving *two* accounts. Putting it on one account (`fromAccount.TransferTo(toAccount, amount)`) is arbitrary; why should the source account own this operation? A domain service makes the concept explicit.
 
 **Domain service vs application service**:
 - **Domain service**: Contains domain logic, uses ubiquitous language, works with domain objects

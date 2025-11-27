@@ -584,7 +584,7 @@ Observability can become expensive at scale. Manage costs intentionally.
 
 **Correlation is more valuable than individual signals**: Logs, metrics, and traces are useful alone but powerful when correlated through trace IDs and resource attributes.
 
-**Sampling is essential at scale**: You cannot trace every request. Sample intelligently—keep errors and slow requests, discard routine successes.
+**Sampling is essential at scale**: You cannot trace every request. Sample intelligently by keeping errors and slow requests while discarding routine successes.
 
 **Manage cardinality intentionally**: High cardinality dimensions (user IDs, unique identifiers) explode storage costs and query performance. Use bucketing, aggregation, and exemplars.
 

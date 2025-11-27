@@ -34,13 +34,13 @@ The OSI (Open Systems Interconnection) model provides a framework for understand
 
 ### The 7 Layers
 
-1. **Physical Layer** - Electrical signals, cables, wireless transmission
-2. **Data Link Layer** - MAC addresses, Ethernet frames, switching
-3. **Network Layer** - IP addresses, routing, ICMP
-4. **Transport Layer** - TCP/UDP, port numbers, flow control
-5. **Session Layer** - Session management, connections
-6. **Presentation Layer** - Encryption, compression, data formatting
-7. **Application Layer** - HTTP, FTP, SMTP, DNS
+1. **Physical Layer**: Electrical signals, cables, wireless transmission
+2. **Data Link Layer**: MAC addresses, Ethernet frames, switching
+3. **Network Layer**: IP addresses, routing, ICMP
+4. **Transport Layer**: TCP/UDP, port numbers, flow control
+5. **Session Layer**: Session management, connections
+6. **Presentation Layer**: Encryption, compression, data formatting
+7. **Application Layer**: HTTP, FTP, SMTP, DNS
 
 ### Practical TCP/IP Model (4 Layers)
 
@@ -48,10 +48,10 @@ The OSI (Open Systems Interconnection) model provides a framework for understand
 
 Most developers work with the simplified TCP/IP model:
 
-- **Application Layer** (7, 6, 5) - HTTP, HTTPS, FTP, SSH, DNS
-- **Transport Layer** (4) - TCP, UDP
-- **Internet Layer** (3) - IP, ICMP, ARP
-- **Network Access Layer** (2, 1) - Ethernet, WiFi
+- **Application Layer** (7, 6, 5): HTTP, HTTPS, FTP, SSH, DNS
+- **Transport Layer** (4): TCP, UDP
+- **Internet Layer** (3): IP, ICMP, ARP
+- **Network Access Layer** (2, 1): Ethernet, WiFi
 
 ---
 
@@ -67,9 +67,9 @@ IPv4 addresses are 32-bit numbers typically written in dotted decimal notation (
 - **Class C**: 192.0.0.0 to 223.255.255.255 (/24)
 
 #### Private IP Ranges (RFC 1918)
-- **10.0.0.0/8** - 10.0.0.0 to 10.255.255.255 (16.7M addresses)
-- **172.16.0.0/12** - 172.16.0.0 to 172.31.255.255 (1M addresses)
-- **192.168.0.0/16** - 192.168.0.0 to 192.168.255.255 (65K addresses)
+- **10.0.0.0/8**: 10.0.0.0 to 10.255.255.255 (16.7M addresses)
+- **172.16.0.0/12**: 172.16.0.0 to 172.31.255.255 (1M addresses)
+- **192.168.0.0/16**: 192.168.0.0 to 192.168.255.255 (65K addresses)
 
 ### CIDR (Classless Inter-Domain Routing)
 
@@ -81,10 +81,10 @@ CIDR notation combines an IP address with a prefix length (e.g., 192.168.1.0/24)
 - `/8` = 255.0.0.0 (16,777,216 addresses)
 
 #### Calculating CIDR
-- `/32` - Single host (255.255.255.255)
-- `/31` - Point-to-point links (2 addresses, both usable)
-- `/30` - Small subnets (4 addresses, 2 usable)
-- `/24` - Standard small network (256 addresses, 254 usable)
+- `/32`: Single host (255.255.255.255)
+- `/31`: Point-to-point links (2 addresses, both usable)
+- `/30`: Small subnets (4 addresses, 2 usable)
+- `/24`: Standard small network (256 addresses, 254 usable)
 
 ### IPv6 Addressing
 
@@ -121,9 +121,9 @@ Allows different subnet sizes within the same network:
 ## Network Protocols
 
 ### TCP (Transmission Control Protocol)
-- **Connection-oriented** - Establishes connection before data transfer
-- **Reliable** - Guarantees packet delivery and order
-- **Flow control** - Manages data transmission rate
+- **Connection-oriented**: Establishes connection before data transfer
+- **Reliable**: Guarantees packet delivery and order
+- **Flow control**: Manages data transmission rate
 - **Use cases**: HTTP, HTTPS, SSH, FTP, email
 
 #### TCP Three-Way Handshake
@@ -132,24 +132,24 @@ Allows different subnet sizes within the same network:
 3. Client → Server: ACK
 
 ### UDP (User Datagram Protocol)
-- **Connectionless** - No connection establishment
-- **Unreliable** - No delivery guarantee
-- **Low overhead** - Faster than TCP
+- **Connectionless**: No connection establishment
+- **Unreliable**: No delivery guarantee
+- **Low overhead**: Faster than TCP
 - **Use cases**: DNS, DHCP, streaming media, gaming
 
 ### HTTP/HTTPS
-- **HTTP** (Port 80) - Hypertext Transfer Protocol
-- **HTTPS** (Port 443) - HTTP over TLS/SSL
+- **HTTP** (Port 80): Hypertext Transfer Protocol
+- **HTTPS** (Port 443): HTTP over TLS/SSL
 - **Methods**: GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS
 - **Status Codes**: 2xx (Success), 3xx (Redirect), 4xx (Client Error), 5xx (Server Error)
 
 ### Other Important Protocols
-- **SSH** (Port 22) - Secure Shell
-- **FTP** (Port 21) - File Transfer Protocol
-- **SFTP** (Port 22) - SSH File Transfer Protocol
-- **SMTP** (Port 25/587) - Simple Mail Transfer Protocol
-- **POP3** (Port 110) - Post Office Protocol
-- **IMAP** (Port 143) - Internet Message Access Protocol
+- **SSH** (Port 22): Secure Shell
+- **FTP** (Port 21): File Transfer Protocol
+- **SFTP** (Port 22): SSH File Transfer Protocol
+- **SMTP** (Port 25/587): Simple Mail Transfer Protocol
+- **POP3** (Port 110): Post Office Protocol
+- **IMAP** (Port 143): Internet Message Access Protocol
 
 ---
 
@@ -204,14 +204,14 @@ Allows different subnet sizes within the same network:
 DNS translates human-readable domain names to IP addresses.
 
 ### DNS Record Types
-- **A** - Maps domain to IPv4 address
-- **AAAA** - Maps domain to IPv6 address
-- **CNAME** - Canonical name (alias)
-- **MX** - Mail exchange
-- **NS** - Name server
-- **PTR** - Reverse DNS lookup
-- **TXT** - Text records (SPF, DKIM, DMARC)
-- **SRV** - Service records
+- **A**: Maps domain to IPv4 address
+- **AAAA**: Maps domain to IPv6 address
+- **CNAME**: Canonical name (alias)
+- **MX**: Mail exchange
+- **NS**: Name server
+- **PTR**: Reverse DNS lookup
+- **TXT**: Text records (SPF, DKIM, DMARC)
+- **SRV**: Service records
 
 ### DNS Resolution Process
 1. Browser cache
@@ -240,20 +240,20 @@ dig -x 8.8.8.8
 Load balancers distribute incoming requests across multiple servers.
 
 ### Load Balancing Algorithms
-- **Round Robin** - Requests distributed sequentially
-- **Weighted Round Robin** - Servers assigned weights
-- **Least Connections** - Route to server with fewest active connections
-- **IP Hash** - Route based on client IP hash
-- **Geographic** - Route based on client location
+- **Round Robin**: Requests distributed sequentially
+- **Weighted Round Robin**: Servers assigned weights
+- **Least Connections**: Route to server with fewest active connections
+- **IP Hash**: Route based on client IP hash
+- **Geographic**: Route based on client location
 
 ### Types of Load Balancers
-- **Layer 4 (Transport)** - Routes based on IP and port
-- **Layer 7 (Application)** - Routes based on application data (HTTP headers, URLs)
+- **Layer 4 (Transport)**: Routes based on IP and port
+- **Layer 7 (Application)**: Routes based on application data (HTTP headers, URLs)
 
 ### Health Checks
 Load balancers monitor server health:
-- **Active checks** - Periodic health probes
-- **Passive checks** - Monitor response codes and timeouts
+- **Active checks**: Periodic health probes
+- **Passive checks**: Monitor response codes and timeouts
 
 ---
 
@@ -263,26 +263,26 @@ Load balancers monitor server health:
 Control network traffic based on predetermined rules.
 
 #### Types
-- **Packet filtering** - Inspects packets at network layer
-- **Stateful** - Tracks connection state
-- **Application layer** - Deep packet inspection
-- **Next-generation** - Advanced threat detection
+- **Packet filtering**: Inspects packets at network layer
+- **Stateful**: Tracks connection state
+- **Application layer**: Deep packet inspection
+- **Next-generation**: Advanced threat detection
 
 ### Network Address Translation (NAT)
 Translates private IP addresses to public IP addresses.
 
 #### NAT Types
-- **Static NAT** - One-to-one mapping
-- **Dynamic NAT** - Pool of public IPs
-- **PAT (Port Address Translation)** - Many-to-one with port mapping
+- **Static NAT**: One-to-one mapping
+- **Dynamic NAT**: Pool of public IPs
+- **PAT (Port Address Translation)**: Many-to-one with port mapping
 
 ### VPN (Virtual Private Network)
 Creates secure connections over public networks.
 
 #### VPN Protocols
-- **IPSec** - Network layer security
-- **OpenVPN** - SSL/TLS-based
-- **WireGuard** - Modern, lightweight protocol
+- **IPSec**: Network layer security
+- **OpenVPN**: SSL/TLS-based
+- **WireGuard**: Modern, lightweight protocol
 
 ---
 
@@ -341,12 +341,12 @@ curl -o /dev/null -s -w "%{time_total}\n" http://example.com
 Logically isolated network segments in cloud environments.
 
 #### Key Concepts
-- **Subnets** - Network segments within VPC
-- **Internet Gateway** - Provides internet access
-- **NAT Gateway** - Outbound internet access for private subnets
-- **Route Tables** - Control traffic routing
-- **Security Groups** - Virtual firewalls for instances
-- **Network ACLs** - Subnet-level access control
+- **Subnets**: Network segments within VPC
+- **Internet Gateway**: Provides internet access
+- **NAT Gateway**: Outbound internet access for private subnets
+- **Route Tables**: Control traffic routing
+- **Security Groups**: Virtual firewalls for instances
+- **Network ACLs**: Subnet-level access control
 
 ### CDN (Content Delivery Network)
 Geographically distributed servers that cache content closer to users.
@@ -371,8 +371,8 @@ Time for data to travel from source to destination.
 - **Serialization delay**
 
 ### Bandwidth vs Throughput
-- **Bandwidth** - Maximum theoretical capacity
-- **Throughput** - Actual data transfer rate
+- **Bandwidth**: Maximum theoretical capacity
+- **Throughput**: Actual data transfer rate
 
 ### Common Network Issues
 
@@ -438,9 +438,9 @@ wireshark  # GUI packet analyzer
 
 | Network | Range | Addresses | Typical Use |
 |---------|-------|-----------|-------------|
-| 10.0.0.0/8 | 10.0.0.0 - 10.255.255.255 | 16,777,216 | Large organizations |
-| 172.16.0.0/12 | 172.16.0.0 - 172.31.255.255 | 1,048,576 | Medium organizations |
-| 192.168.0.0/16 | 192.168.0.0 - 192.168.255.255 | 65,536 | Home/small office |
+| 10.0.0.0/8 | 10.0.0.0 to 10.255.255.255 | 16,777,216 | Large organizations |
+| 172.16.0.0/12 | 172.16.0.0 to 172.31.255.255 | 1,048,576 | Medium organizations |
+| 192.168.0.0/16 | 192.168.0.0 to 192.168.255.255 | 65,536 | Home/small office |
 
 ### Common TCP/UDP Ports Quick Reference
 ```

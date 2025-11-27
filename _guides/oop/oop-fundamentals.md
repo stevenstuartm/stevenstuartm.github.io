@@ -212,7 +212,7 @@ public class CommissionEmployee : Employee
 }
 ```
 
-**Modern Alternative - Composition Over Inheritance**:
+**Modern Alternative: Composition Over Inheritance**
 ```csharp
 // Interface defines capability
 public interface IPayCalculator
@@ -397,7 +397,7 @@ List<string> strings = new List<string>();
 |--------|----------|------------|
 | **Abstraction** | Hiding complex implementation, defining contracts | Simple, straightforward code |
 | **Encapsulation** | Protecting internal state, enforcing invariants | Data transfer objects (DTOs) |
-| **Inheritance** | True "is-a" relationships, minimal hierarchy | Code reuse alone - use composition |
+| **Inheritance** | True "is-a" relationships, minimal hierarchy | Code reuse alone (use composition) |
 | **Polymorphism** | Working with families of related types | Single concrete implementation |
 
 ### Common Anti-Patterns

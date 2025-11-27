@@ -15,11 +15,11 @@ AAA is a **guiding discipline and principle** for software development: a way of
 
 AAA is about **how we value** before **how we work**:
 
-**Align**: We establish and value **human connection**. Before we talk about solutions, timelines, or technology, we connect with people. We understand their needs, their context, their constraints. Alignment is not about extracting requirements - it's about building understanding and trust.
+**Align**: We establish and value **human connection**. Before we talk about solutions, timelines, or technology, we connect with people. We understand their needs, their context, their constraints. Alignment is not about extracting requirements; it's about building understanding and trust.
 
-**Agree**: We value **shared commitment** on how we will seek to accomplish what we're now aligned on. Agreement isn't just about documentation or sign-off ceremonies - it's mutual understanding of the path forward and genuine commitment to walk it together.
+**Agree**: We value **shared commitment** on how we will seek to accomplish what we're now aligned on. Agreement isn't just about documentation or sign-off ceremonies; it's mutual understanding of the path forward and genuine commitment to walk it together.
 
-**Apply**: We value **delivering on agreements**. Notice that "deliver" is not the focus - applying the agreement is. We execute what we agreed to do, in the way we agreed to do it, because we value honoring the commitments made to the people we aligned with.
+**Apply**: We value **delivering on agreements**. Notice that "deliver" is not the focus; applying the agreement is. We execute what we agreed to do, in the way we agreed to do it, because we value honoring the commitments made to the people we aligned with.
 
 ### Why This Order Matters
 
@@ -119,7 +119,7 @@ AAA provides guardrails by keeping these values front and center:
 
 **Establish human connection and deeply understand the context before proposing solutions.**
 
-**The Core Value**: Connection with people comes first. Alignment is not requirement extraction - it's building shared understanding with the humans behind the need. You're establishing trust and context that will sustain the entire journey.
+**The Core Value**: Connection with people comes first. Alignment is not requirement extraction; it's building shared understanding with the humans behind the need. You're establishing trust and context that will sustain the entire journey.
 
 **Living This Discipline**:
 - Enter stakeholder meetings to listen and understand, not to propose solutions
@@ -128,7 +128,7 @@ AAA provides guardrails by keeping these values front and center:
 - Create estimates that reflect honest capability, not wishful thinking
 - Draft a project charter that captures genuine shared understanding
 
-**What Alignment Produces**: A foundation of mutual understanding with stakeholder commitment - not just signatures, but real buy-in from people who feel heard.
+**What Alignment Produces**: A foundation of mutual understanding with stakeholder commitment, not just signatures but real buy-in from people who feel heard.
 
 **Why This Guards Against Failure**: When you truly align with people and their needs, you avoid building elegant solutions to misunderstood problems. Technical decisions stay grounded in reality throughout the project.
 
@@ -140,7 +140,7 @@ AAA provides guardrails by keeping these values front and center:
 
 **Secure genuine commitment to how you will accomplish what you're now aligned on.**
 
-**The Core Value**: Shared commitment to the path forward. Agreement isn't about getting approval for your design - it's about creating a plan together and building mutual confidence in the approach. This is where technical expertise meets human collaboration.
+**The Core Value**: Shared commitment to the path forward. Agreement isn't about getting approval for your design; it's about creating a plan together and building mutual confidence in the approach. This is where technical expertise meets human collaboration.
 
 **Living This Discipline**:
 - Design system architecture that reflects the needs you aligned on
@@ -149,7 +149,7 @@ AAA provides guardrails by keeping these values front and center:
 - Establish SLAs and monitoring that match real expectations
 - Create implementation plans that your team genuinely believes in
 
-**What Agreement Produces**: Authentic commitment from stakeholders and teams - everyone understands and believes in the path forward because they helped shape it.
+**What Agreement Produces**: Authentic commitment from stakeholders and teams. Everyone understands and believes in the path forward because they helped shape it.
 
 **Why This Guards Against Failure**: When people genuinely agree (versus grudgingly sign-off), they stay committed when challenges arise. Plans survive reality because they were built with reality in mind.
 
@@ -193,9 +193,9 @@ Establish context    →  Earn confidence      →  Complete the cycle
 ✓ CONNECTED          →  ✓ COMMITTED          →  ✓ VALUE REALIZED
 ```
 
-**The Flow of Values**: Each phase builds on the previous one. You can't genuinely agree without first aligning. You can't honor agreements that were never truly made. This isn't a checklist - it's the natural progression of principled work.
+**The Flow of Values**: Each phase builds on the previous one. You can't genuinely agree without first aligning. You can't honor agreements that were never truly made. This isn't a checklist; it's the natural progression of principled work.
 
-**When to Revisit**: Return to earlier phases when reality demands it. If new information breaks alignment, go back and re-align. If the plan proves infeasible, go back and re-agree. This isn't failure - it's the discipline of maintaining integrity.
+**When to Revisit**: Return to earlier phases when reality demands it. If new information breaks alignment, go back and re-align. If the plan proves infeasible, go back and re-agree. This isn't failure; it's the discipline of maintaining integrity.
 
 ---
 

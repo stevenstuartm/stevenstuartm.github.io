@@ -252,7 +252,7 @@ Willingness to make big changes when needed. Courage to refactor, courage to thr
 
 **What it means:**
 
-Everyone contributes value. Everyone's input matters. No one is disposable.
+Everyone contributes value, everyone's input matters, and no one is disposable.
 
 **How XP demonstrates respect:**
 
@@ -1170,7 +1170,7 @@ XP practices honor agreements through quality and delivery:
 - Acceptance tests validate agreement met
 
 **Example:**
-Team commits to three stories. TDD ensures quality. CI catches integration issues. Stories deployed to production. Customer validates with acceptance tests. Agreement honored.
+The team commits to three stories; TDD ensures quality while CI catches integration issues. Stories are deployed to production, and the customer validates with acceptance tests. Agreement honored.
 
 ---
 
@@ -1426,7 +1426,7 @@ Simple design means appropriate design, not no design. Still need good abstracti
 
 **Problem:**
 
-Product manager as proxy. Real customer never involved.
+Product manager acts as proxy while the real customer is never involved.
 
 **Why it's wrong:**
 
@@ -1498,7 +1498,7 @@ Sustainable pace is core XP value. Overtime as standard is failure, not XP.
 
 **Problem:**
 
-Adopting some practices but ignoring others. "We do XP—we pair sometimes."
+Adopting some practices but ignoring others. "We do XP; we pair sometimes."
 
 **Why it's wrong:**
 

@@ -25,11 +25,11 @@ This architecture's key insight: the database is the bottleneck in most web appl
 
 **Messaging Grid**: Routes incoming requests to available processing units. Manages session affinity when needed (ensuring a user's requests route to the same unit during a session). Distributes load evenly across units.
 
-**Data Grid**: Manages data replication across processing units. When one unit updates data, the grid propagates changes to other units. This introduces eventual consistency—different units might temporarily have different data values.
+**Data Grid**: Manages data replication across processing units. When one unit updates data, the grid propagates changes to other units. This introduces eventual consistency, meaning different units might temporarily have different data values.
 
 **Processing Grid**: Coordinates distributed request processing when a single request must span multiple processing units (relatively rare; most requests are independent).
 
-**Deployment Manager**: Monitors load and automatically spins processing units up or down. This is the architecture's key strength—handling massive load spikes by adding units and gracefully reducing capacity when load drops.
+**Deployment Manager**: Monitors load and automatically spins processing units up or down. This is the architecture's key strength: handling massive load spikes by adding units and gracefully reducing capacity when load drops.
 
 **Data Pumps/Writers/Readers**: Asynchronously persist data from the in-memory grid to the database. Pumps batch updates for efficiency. Readers load data into the grid at startup or for cold data access.
 
@@ -105,7 +105,7 @@ This is acceptable for many domains:
 
 **Concert ticket sales**: Ticketmaster-style systems handling massive spikes when popular shows go on sale. Normal load: thousands of users. Peak load: millions of users in minutes. Space-based architecture spins up hundreds of processing units during the spike, then scales down when sales stabilize.
 
-**Online auction platforms**: eBay-style systems with unpredictable concurrent bidding. Some auctions have minimal activity. Others have thousands of concurrent bidders. Elasticity handles varying load per auction.
+**Online auction platforms**: eBay-style systems with unpredictable concurrent bidding. Some auctions have minimal activity while others have thousands of concurrent bidders. Elasticity handles varying load per auction.
 
 **Financial trading platforms**: Trading volume varies dramatically throughout the day. Pre-market: minimal load. Market open: extreme load. After-hours: minimal load. Space-based architecture provides elasticity to match demand.
 

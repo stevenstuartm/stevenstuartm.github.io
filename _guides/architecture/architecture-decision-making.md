@@ -73,7 +73,7 @@ Decisions get made in email threads, Slack conversations, or hallway discussions
 
 **How to overcome it**:
 
-**Store in a single system of record**: Wiki, dedicated repo, documentation system—pick one place. Not email, not chat, not meeting notes scattered across tools.
+**Store in a single system of record**: Wiki, dedicated repo, or documentation system. Pick one place. Not email, not chat, not meeting notes scattered across tools.
 
 **Email only links, not decision bodies**: If you must discuss via email, the email should link to the authoritative record, not contain the decision itself.
 

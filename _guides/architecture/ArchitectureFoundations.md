@@ -21,7 +21,7 @@ These three laws form the foundation of architectural thinking. The first law re
 
 Software architecture encompasses five interconnected dimensions:
 
-**Structure** defines how the system is organized—the components and their relationships. Think of this as the blueprint showing what pieces exist and how they connect.
+**Structure** defines how the system is organized: the components and their relationships. Think of this as the blueprint showing what pieces exist and how they connect.
 
 **Characteristics** specify the non-functional capabilities the system must deliver, such as scalability, performance, security, and maintainability. These drive architectural decisions more than functional requirements do.
 

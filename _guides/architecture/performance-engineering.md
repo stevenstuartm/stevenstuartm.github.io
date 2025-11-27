@@ -9,7 +9,7 @@ tags: [architecture, performance, scalability, optimization, profiling, capacity
 
 ## What is Performance Engineering?
 
-Performance engineering is the systematic practice of ensuring systems meet performance requirements throughout their lifecycle—from design through operation. It encompasses defining performance requirements, measuring current performance, identifying bottlenecks, optimizing critical paths, and planning for future capacity.
+Performance engineering is the systematic practice of ensuring systems meet performance requirements throughout their lifecycle, from design through operation. It encompasses defining performance requirements, measuring current performance, identifying bottlenecks, optimizing critical paths, and planning for future capacity.
 
 **Core principle**: Performance is a feature, not an afterthought. Systems that address performance requirements early in design avoid costly rewrites later.
 

@@ -92,7 +92,7 @@ The framework operates through iterative review cycles where teams assess curren
 3. Create quarterly review cadence
 4. Track improvement over time
 
-**Example decision:** Use Well-Architected Review scores to prioritize technical debt remediation - systems below 70% compliance get mandatory improvement plans.
+**Example decision:** Use Well-Architected Review scores to prioritize technical debt remediation. Systems below 70% compliance get mandatory improvement plans.
 
 **Resources:**
 - [AWS Well-Architected Framework Homepage](https://aws.amazon.com/architecture/well-architected/){:target="_blank" rel="noopener noreferrer"}
@@ -164,7 +164,7 @@ TOGAF emphasizes stakeholder management, requirements management (continuous thr
 
 **What it is:**
 
-The Zachman Framework is an enterprise architecture ontology—a classification scheme for organizing architecture artifacts into a structured taxonomy. It's represented as a 6x6 matrix (36 cells) defining the intersection of:
+The Zachman Framework is an enterprise architecture ontology, a classification scheme for organizing architecture artifacts into a structured taxonomy. It's represented as a 6x6 matrix (36 cells) defining the intersection of:
 
 **Interrogatives (Columns):**
 1. **What (Data):** What data/information the enterprise uses

@@ -19,7 +19,7 @@ Focus on object creation mechanisms, increasing flexibility and reuse.
 | **Abstract Factory** | Create families of related objects without specifying concrete classes | Need consistent families of objects (UI themes, cross-platform) | Only one product family exists |
 | **Builder** | Construct complex objects step-by-step | Objects with many optional parameters, immutable objects | Simple objects with few properties |
 | **Prototype** | Create new objects by cloning existing ones | Expensive object creation, object state templates | Objects are cheap to create from scratch |
-| **Singleton** | Ensure only one instance exists globally | Shared resources (logging, config) - **Use DI instead** | Almost always - prefer dependency injection |
+| **Singleton** | Ensure only one instance exists globally | Shared resources like logging and config (**Use DI instead**) | Almost always (prefer dependency injection) |
 
 ### Structural Patterns (7 patterns)
 
@@ -27,7 +27,7 @@ Deal with object composition and relationships.
 
 | Pattern | Purpose | When to Use | When to Avoid |
 |---------|---------|-------------|---------------|
-| **Adapter** | Make incompatible interfaces work together | Integrating legacy code, third-party libraries | You control both interfaces - fix the design |
+| **Adapter** | Make incompatible interfaces work together | Integrating legacy code, third-party libraries | You control both interfaces (fix the design) |
 | **Bridge** | Separate abstraction from implementation | Avoid Cartesian product explosion (N abstractions × M implementations) | Simple one-to-one relationship |
 | **Composite** | Treat individual objects and compositions uniformly | Tree structures (files/folders, UI components) | Flat structure with no hierarchy |
 | **Decorator** | Add behavior to objects dynamically | Flexible alternative to subclassing, runtime behavior modification | Compile-time behavior definition is sufficient |
@@ -43,7 +43,7 @@ Focus on communication between objects and responsibility distribution.
 |---------|---------|-------------|---------------|
 | **Chain of Responsibility** | Pass requests along a chain of handlers | Multiple handlers, handler selection at runtime | Single handler or static handler selection |
 | **Command** | Encapsulate requests as objects | Undo/redo, queuing operations, logging requests | Simple method calls suffice |
-| **Interpreter** | Define grammar and interpreter for a language | Simple domain-specific languages | Complex grammars - use parser generator |
+| **Interpreter** | Define grammar and interpreter for a language | Simple domain-specific languages | Complex grammars (use parser generator) |
 | **Iterator** | Access collection elements sequentially without exposing structure | Custom traversal algorithms | Standard foreach loop works |
 | **Mediator** | Centralize complex communications between objects | Many-to-many object relationships | Simple one-to-one relationships |
 | **Memento** | Capture and restore object state | Undo/redo functionality, snapshots | State is simple enough to store directly |
@@ -51,7 +51,7 @@ Focus on communication between objects and responsibility distribution.
 | **State** | Change behavior based on internal state | Complex state-dependent behavior | Simple if/switch statements suffice |
 | **Strategy** | Define family of algorithms, make them interchangeable | Runtime algorithm selection, multiple implementations | Single algorithm, no variation needed |
 | **Template Method** | Define algorithm skeleton, let subclasses override steps | Common algorithm structure with varying steps | No variation in algorithm steps |
-| **Visitor** | Add operations to object hierarchies without modifying them | Operations on complex object structures | Simple structures - use pattern matching |
+| **Visitor** | Add operations to object hierarchies without modifying them | Operations on complex object structures | Simple structures (use pattern matching) |
 
 ## Pattern Selection Decision Tree
 
@@ -325,7 +325,7 @@ var revenue = orders
 ## Pattern Complexity Guide
 
 ### Beginner-Friendly Patterns
-Start with these - easy to understand and apply:
+Start with these, as they are easy to understand and apply:
 - **Factory Method**: Simple object creation
 - **Singleton**: Single instance (use DI)
 - **Strategy**: Interchangeable algorithms

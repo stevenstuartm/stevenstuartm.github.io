@@ -130,7 +130,7 @@ A service mesh provides a unified control plane managing all sidecars consistent
 
 ## When Microservices Architecture Fits
 
-**Large systems where different parts need different operational characteristics**: Some services need 99.99% availability. Others tolerate downtime. Some need extreme scalability. Others have minimal load. Microservices let you optimize each service independently.
+**Large systems where different parts need different operational characteristics**: Some services need 99.99% availability while others tolerate downtime. Some need extreme scalability while others have minimal load. Microservices let you optimize each service independently.
 
 **Organizations with mature DevOps practices**: Automated deployment pipelines, comprehensive observability, container orchestration, and sophisticated monitoring. Without this maturity, managing dozens of services becomes overwhelming.
 

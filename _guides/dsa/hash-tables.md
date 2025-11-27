@@ -9,7 +9,7 @@ tags: [data-structures, algorithms, hash-tables, performance, practical, fundame
 
 *Concept pioneered by Hans Peter Luhn at IBM (1953), formalized as "hash tables" in the 1960s*
 
-Provides average O(1) lookups by trading space for time using mathematical hashing. This is the fundamental trade-off that powers most modern software - from database indexes to compiler symbol tables.
+Provides average O(1) lookups by trading space for time using mathematical hashing. This is the fundamental trade-off that powers most modern software, from database indexes to compiler symbol tables.
 
 ## When to Use Hash Tables
 
@@ -26,7 +26,7 @@ Provides average O(1) lookups by trading space for time using mathematical hashi
 - Keys don't hash well (cause many collisions)
 - Need to iterate in sorted order
 
-**🏢 Modern reality:** Your go-to data structure. Use `Dictionary<K,V>` in C#. Hash tables power most modern software - databases, caches, compilers, etc.
+**🏢 Modern reality:** Your go-to data structure. Use `Dictionary<K,V>` in C#. Hash tables power most modern software: databases, caches, compilers, and more.
 
 ## Time Complexity
 - **Average case:** O(1) for all operations (lookup, insert, delete)
@@ -241,6 +241,6 @@ Console.WriteLine(hashMap.Retrieve("missing")); // null or default
 - `HashSet<T>` - Set operations, unique values
 - `ConcurrentDictionary<K,V>` - Thread-safe
 
-**Key Trade-off:** Memory for speed - O(1) operations at cost of O(n) space
+**Key Trade-off:** Memory for speed: O(1) operations at cost of O(n) space
 
 ---

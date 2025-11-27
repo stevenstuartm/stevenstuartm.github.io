@@ -427,7 +427,7 @@ Testing at the end means late discovery of issues. Integration problems, perform
 
 **What happens:**
 
-Deploy system to production. Make it available to users.
+Deploy system to production and make it available to users.
 
 **Activities:**
 
@@ -881,7 +881,7 @@ Implementation follows design specifications. Testing validates each component. 
 
 ---
 
-### Where Waterfall Fundamentally Conflicts with AAA
+### Where Waterfall Conflicts with AAA
 
 **Conflict 1: Late discovery, costly realignment**
 
@@ -923,7 +923,7 @@ This is fundamental tension. If your project allows late discovery and requires 
 Waterfall documents create false sense of certainty. Stakeholders sign off thinking "we're done with requirements." Team builds to spec thinking "we have approval." When reality differs from plan, focus becomes "who approved this?" not "what should we do now?"
 
 **Partial reconciliation:**
-Include explicit clause in waterfall contracts: "This specification represents our current understanding. We will pause and realign if implementation reveals fundamentally different reality." Make realignment process lightweight. Keep stakeholders engaged throughout implementation.
+Include explicit clause in waterfall contracts: "This specification represents our current understanding. We will pause and realign if implementation reveals a significantly different reality." Make realignment process lightweight. Keep stakeholders engaged throughout implementation.
 
 ---
 
@@ -950,7 +950,7 @@ Separating testing from implementation means you build for months without valida
 - Continuous integration and automated testing
 - Stakeholder demos during implementation (not just at end)
 
-This is basically "waterfall with agile practices" - see Hybrid Approaches below.
+This is basically "waterfall with agile practices"; see Hybrid Approaches below.
 
 ---
 
@@ -1016,7 +1016,7 @@ Waterfall conflicts with AAA when:
 - Learning happens during implementation (most software)
 - Requirements emerge through building
 - Rapid feedback and course correction needed
-- Discovery reveals fundamentally different reality
+- Discovery reveals a significantly different reality
 
 For most modern software development, these conflicts make waterfall a poor fit with AAA. Use iterative methodologies (Lean, Kanban) that embrace continuous realignment.
 

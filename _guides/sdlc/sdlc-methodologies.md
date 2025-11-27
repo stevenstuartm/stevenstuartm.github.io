@@ -739,7 +739,7 @@ Run parallel tracks: discovery (research, design) and delivery (implementation).
 
 ### Key Takeaway
 
-**There is no "best" methodology** - only the methodology that best fits your context:
+**There is no "best" methodology.** The best is only the methodology that best fits your context:
 - Project characteristics
 - Team capabilities
 - Organizational culture

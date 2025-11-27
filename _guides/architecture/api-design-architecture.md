@@ -48,7 +48,7 @@ APIs generally follow two models:
 
 **Operation-oriented (RPC-style)**: Models the domain as operations (verbs). Works well for complex business operations that don't map to CRUD.
 
-Neither is universally better. Choose based on your domain. Most systems use both: resource-oriented for data access, operation-oriented for workflows.
+Neither is universally better, so choose based on your domain. Most systems use both: resource-oriented for data access and operation-oriented for workflows.
 
 ## REST API Design
 

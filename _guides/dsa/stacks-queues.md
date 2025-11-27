@@ -13,7 +13,7 @@ Two fundamental abstract data types that restrict how elements are added and rem
 ## Stacks (LIFO - Last In, First Out)
 
 ### Why Stacks Exist
-LIFO behavior mirrors natural problem patterns - function calls, undo operations, parsing nested structures, backtracking algorithms.
+LIFO behavior mirrors natural problem patterns like function calls, undo operations, parsing nested structures, and backtracking algorithms.
 
 ### When to Use Stacks
 
@@ -553,7 +553,7 @@ Console.WriteLine(EvaluatePostfix("3 4 + 2 *")); // 14.0
 ## Queues (FIFO - First In, First Out)
 
 ### Why Queues Exist
-FIFO behavior matches real-world scenarios - waiting lines, task scheduling, breadth-first processing, producer-consumer systems.
+FIFO behavior matches real-world scenarios like waiting lines, task scheduling, breadth-first processing, and producer-consumer systems.
 
 ### When to Use Queues
 

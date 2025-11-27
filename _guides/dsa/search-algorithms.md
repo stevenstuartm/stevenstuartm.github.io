@@ -208,7 +208,7 @@ Console.WriteLine($"Search for 8: {BinarySearch.SearchIterative(testArray, 8)}")
 
 ## Key Interview Points
 
-1. **Always ask if data is sorted** - determines algorithm choice
+1. **Always ask if data is sorted**: This determines algorithm choice
 ## Quick Reference
 
 ### Search Algorithm Comparison

@@ -23,13 +23,13 @@ tags: [architecture, data-architecture, databases, data-modeling, design-pattern
 
 ACID properties ensure your database doesn't lose or corrupt data when multiple operations happen at once.
 
-**Atomicity** - All or nothing. If you're transferring $100 between bank accounts, either both the deduction AND addition happen, or neither does. No money disappears into thin air.
+**Atomicity**: All or nothing. If you're transferring $100 between bank accounts, either both the deduction AND addition happen, or neither does. No money disappears into thin air.
 
-**Consistency** - Rules are enforced. If you have a rule that inventory can't go negative, the database won't let you sell more items than you have in stock.
+**Consistency**: Rules are enforced. If you have a rule that inventory can't go negative, the database won't let you sell more items than you have in stock.
 
-**Isolation** - Transactions don't interfere with each other. Two people trying to book the last airplane seat won't both succeed - one will get it, the other gets an error.
+**Isolation**: Transactions don't interfere with each other. Two people trying to book the last airplane seat won't both succeed; one will get it, the other gets an error.
 
-**Durability** - Once confirmed, it's permanent. When the system says your order went through, it survives even if the server crashes five minutes later.
+**Durability**: Once confirmed, it's permanent. When the system says your order went through, it survives even if the server crashes five minutes later.
 
 
 ---
@@ -57,7 +57,7 @@ This is where messy real-world data becomes clean, consistent data you can actua
 - **Business logic**: Raw transactions become "Customer Lifetime Value" through calculations
 - **Joining**: Combine customer info from your CRM with purchase history from your e-commerce platform
 
-**Key insight**: Transformation often takes 70% of your ETL effort. Don't underestimate it.
+Transformation often takes 70% of your ETL effort. Don't underestimate it.
 
 ### Load - Putting Data Where It Belongs
 
@@ -201,11 +201,11 @@ Break big problems into smaller pieces that can run in parallel, then combine th
 
 ### Key Concepts
 
-**ACID**: Atomicity, Consistency, Isolation, Durability - database transaction guarantees
-**CDC**: Change Data Capture - track database changes in real-time
-**Data Contract**: Agreement defining data quality, schema, delivery expectations
-**Data Lineage**: Map of data origin, transformations, and destinations
-**dbt**: Data build tool - SQL-based transformation framework
-**Slowly Changing Dimensions**: Techniques for tracking historical changes
+**ACID**: Atomicity, Consistency, Isolation, Durability. Database transaction guarantees.
+**CDC**: Change Data Capture. Tracks database changes in real-time.
+**Data Contract**: Agreement defining data quality, schema, and delivery expectations.
+**Data Lineage**: Map of data origin, transformations, and destinations.
+**dbt**: Data build tool. SQL-based transformation framework.
+**Slowly Changing Dimensions**: Techniques for tracking historical changes.
 
 ---

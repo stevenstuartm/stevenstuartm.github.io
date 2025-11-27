@@ -6,7 +6,7 @@ tags: [algorithms, recursion, fundamentals, problem-solving, interview-prep]
 ---
 
 ## Why Recursion Exists
-Some problems are naturally self-similar - tree traversal, mathematical sequences, divide-and-conquer algorithms. Recursion provides an elegant way to express solutions that work on progressively smaller versions of the same problem.
+Some problems are naturally self-similar, such as tree traversal, mathematical sequences, and divide-and-conquer algorithms. Recursion provides an elegant way to express solutions that work on progressively smaller versions of the same problem.
 
 ## When to Use Recursion
 
@@ -678,10 +678,10 @@ Console.WriteLine(IsPalindrome("hello"));   // False
 ## Quick Reference
 
 ### Recursion Checklist
-✓ **Base case** - When to stop
-✓ **Progress** - Move toward base case
-✓ **Recursive call** - Solve smaller problem
-✓ **Combine** - Use subproblem results
+✓ **Base case**: When to stop
+✓ **Progress**: Move toward base case
+✓ **Recursive call**: Solve smaller problem
+✓ **Combine**: Use subproblem results
 
 ### Time Complexity Patterns
 | Pattern | Complexity | Example |

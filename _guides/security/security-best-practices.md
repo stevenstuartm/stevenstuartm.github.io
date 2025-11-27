@@ -341,7 +341,7 @@ class PatchManagement:
 2. **Biometric Authentication** (Fingerprint, Face ID)
 3. **Authenticator Apps** (TOTP: Google Authenticator, Authy)
 4. **Push Notifications** (Duo, Microsoft Authenticator)
-5. **SMS/Voice** (Vulnerable to SIM swapping - avoid when possible)
+5. **SMS/Voice** (Vulnerable to SIM swapping; avoid when possible)
 
 **MFA Enforcement:**
 

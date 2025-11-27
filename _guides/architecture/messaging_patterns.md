@@ -15,7 +15,7 @@ Messaging patterns ensure reliable, consistent, and efficient message handling i
 
 Ensures reliable message publishing by storing messages in the same database transaction as business data, then publishing them separately. Guarantees atomicity between database updates and message publishing.
 
-**Problem Solved**: The dual-write problem - writing to database AND message broker atomically isn't possible without distributed transactions.
+**Problem Solved**: The dual-write problem. Writing to a database AND message broker atomically isn't possible without distributed transactions.
 
 **Use When**:
 - Need to guarantee message publishing after data changes

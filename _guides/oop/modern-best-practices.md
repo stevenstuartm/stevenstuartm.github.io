@@ -520,10 +520,10 @@ public class OrderService
 | Anti-Pattern | Problem | Solution |
 |--------------|---------|----------|
 | **God Object** | Class does too much | Apply SRP, split responsibilities |
-| **Premature Optimization** | Complex code "for performance" | KISS - optimize when needed |
-| **Shotgun Surgery** | Changes require editing many files | DRY - centralize logic |
-| **Tight Coupling** | Hard to test and change | DI - depend on abstractions |
-| **Gold Plating** | Over-engineering features | YAGNI - build what's needed |
+| **Premature Optimization** | Complex code "for performance" | KISS: optimize when needed |
+| **Shotgun Surgery** | Changes require editing many files | DRY: centralize logic |
+| **Tight Coupling** | Hard to test and change | DI: depend on abstractions |
+| **Gold Plating** | Over-engineering features | YAGNI: build what's needed |
 
 ### Modern Framework Integration
 

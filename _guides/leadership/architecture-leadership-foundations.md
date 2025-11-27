@@ -11,14 +11,14 @@ tags: [architecture, leadership, fundamentals, collaboration, decision-making, c
 
 Being an architect is more than making technical decisions. It requires balancing eight distinct responsibilities:
 
-1. **Make Architecture Decisions** - Define decisions and principles guiding technology choices ([See Architecture Decision-Making](/study-guides/architecture/architecture-decision-making.html))
-2. **Continually Analyze** - Assess architecture vitality as business and technology change
-3. **Keep Current** - Stay updated on technical and industry trends
-4. **Ensure Compliance** - Verify teams follow defined decisions and principles
-5. **Understand Technologies** - Maintain technical breadth over depth
-6. **Know the Business** - Understand domain, problems, goals, and requirements
-7. **Lead Teams** - Exceptional interpersonal skills: teamwork, facilitation, leadership
-8. **Navigate Politics** - Negotiation skills to get decisions approved and implemented
+1. **Make Architecture Decisions**: Define decisions and principles guiding technology choices ([See Architecture Decision-Making](/study-guides/architecture/architecture-decision-making.html))
+2. **Continually Analyze**: Assess architecture vitality as business and technology change
+3. **Keep Current**: Stay updated on technical and industry trends
+4. **Ensure Compliance**: Verify teams follow defined decisions and principles
+5. **Understand Technologies**: Maintain technical breadth over depth
+6. **Know the Business**: Understand domain, problems, goals, and requirements
+7. **Lead Teams**: Exceptional interpersonal skills like teamwork, facilitation, and leadership
+8. **Navigate Politics**: Negotiation skills to get decisions approved and implemented
 
 This guide focuses on responsibilities 7 and 8: leading teams and navigating organizational dynamics. These soft skills separate effective architects from those who struggle despite technical excellence.
 

@@ -120,7 +120,7 @@ Cloud infrastructure and containerization accelerated DevOps adoption:
 
 ### DevOps Culture
 
-**DevOps is fundamentally a cultural transformation, not a technical one.**
+**DevOps is a cultural transformation, not a technical one.**
 
 **Traditional IT culture:**
 - Silos (Dev vs. Ops vs. QA vs. Security)

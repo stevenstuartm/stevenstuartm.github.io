@@ -31,7 +31,7 @@ For example, an "order placed" event might trigger inventory reservation, paymen
 
 This distinction is fundamental and often misunderstood.
 
-**Events** announce what happened. They're informational, not prescriptive. "Inventory depleted" is an event. It states a fact. The publisher doesn't know or care who reacts. Multiple subscribers might react in different ways. One might trigger reordering. Another might send alerts. A third might update analytics.
+**Events** announce what happened and are informational, not prescriptive. "Inventory depleted" is an event. It states a fact. The publisher doesn't know or care who reacts. Multiple subscribers might react in different ways: one might trigger reordering, another might send alerts, and a third might update analytics.
 
 **Messages** command what should happen. "Replenish inventory" is a message. It's prescriptive. The sender expects specific action from a specific receiver. Messages create tighter coupling because the sender knows about the receiver and expects particular behavior.
 
@@ -59,7 +59,7 @@ An orchestrator controls workflow. It receives events, makes decisions based on 
 
 **Advantages**: Central workflow visibility. Easy to understand and debug. State management is centralized. Error handling is explicit. Can implement complex conditional logic, timeouts, and retries.
 
-**Tradeoffs**: Reintroduces coupling. The orchestrator knows about all services. Creates a potential bottleneck. Orchestrator becomes a single point of failure unless highly available. Reduces system flexibility—adding new reactions requires changing the orchestrator.
+**Tradeoffs**: Reintroduces coupling. The orchestrator knows about all services. Creates a potential bottleneck. Orchestrator becomes a single point of failure unless highly available. Reduces system flexibility because adding new reactions requires changing the orchestrator.
 
 **When to use**: Workflows requiring central control and visibility. Systems where error handling and retry logic are complex. Domains where workflow understanding and debugging matter more than maximum decoupling.
 

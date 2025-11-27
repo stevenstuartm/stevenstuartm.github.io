@@ -81,7 +81,7 @@ C4 has specific boundaries where other approaches work better:
 
 **Infrastructure and deployment details**: C4 containers show what needs to be deployed, but not how it's deployed. For showing servers, network zones, load balancers, and infrastructure topology, use deployment diagrams or infrastructure diagrams (often using tools like Cloudcraft or draw.io).
 
-**Class-level design**: C4 deliberately avoids detailed class structures. If you need to show inheritance hierarchies, design patterns, or detailed object interactions, use UML class diagrams—but recognize that these diagrams become outdated quickly.
+**Class-level design**: C4 deliberately avoids detailed class structures. If you need to show inheritance hierarchies, design patterns, or detailed object interactions, use UML class diagrams, but recognize that these diagrams become outdated quickly.
 
 ## Mixing C4 and UML
 
@@ -116,7 +116,7 @@ C4 and UML complement each other when used appropriately. The goal is to use eac
 
 **Show technology explicitly**: On Container and Component diagrams, include technology choices in square brackets (e.g., "Web Application [React]", "Database [PostgreSQL]", "API [ASP.NET Core]"). This makes architecture decisions visible.
 
-**Use color meaningfully**: Differentiate internal vs. external systems, or highlight specific areas of concern (e.g., legacy vs. new systems). But don't overdo it—too many colors create visual noise.
+**Use color meaningfully**: Differentiate internal vs. external systems, or highlight specific areas of concern (e.g., legacy vs. new systems). But don't overdo it; too many colors create visual noise.
 
 **Keep it current**: Unlike code-level diagrams, C4 diagrams should be maintained as the architecture evolves. When you add a new container or change how containers communicate, update the diagrams. This is feasible because C4 focuses on stable abstractions.
 

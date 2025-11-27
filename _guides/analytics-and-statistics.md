@@ -125,12 +125,12 @@ Use robust measures when you have outliers or skewed data.
 
 ## Statistical Distributions
 
-*A distribution shows you how your data is spread out - where most values cluster and how they trail off.*
+*A distribution shows you how your data is spread out: where most values cluster and how they trail off.*
 
 Think of a distribution as the "shape" your data makes when you plot it. Understanding this shape helps you choose the right statistics and spot unusual patterns.
 
 ### Normal Distribution (The "Bell Curve")
-**What it looks like**: A symmetric hill - most data clusters in the middle, fewer values at the extremes.
+**What it looks like**: A symmetric hill where most data clusters in the middle, with fewer values at the extremes.
 
 **Why it matters**: Many real-world phenomena follow this pattern (heights, test scores, measurement errors), and many statistical tests assume your data looks like this.
 
@@ -148,42 +148,42 @@ Think of a distribution as the "shape" your data makes when you plot it. Underst
 **Right-skewed (Positive skew)**
 - **What it looks like**: Most data bunches up on the left, with a long tail stretching right
 - **Key signal**: Mean > median (the tail pulls the average higher)
-- **Example**: Household income - most families earn modest amounts, but a few millionaires pull the average way up
+- **Example**: Household income, where most families earn modest amounts, but a few millionaires pull the average way up
 - **Why it happens**: Income can't go below $0, but there's no upper limit
 
 **Left-skewed (Negative skew)**
 - **What it looks like**: Most data bunches up on the right, with a long tail stretching left  
 - **Key signal**: Mean < median (the tail pulls the average lower)
-- **Example**: Test scores when most students do well - scores cluster near 90-100, but a few low scores drag the average down
+- **Example**: Test scores when most students do well, where scores cluster near 90-100, but a few low scores drag the average down
 - **Why it happens**: Scores can't go above 100%, but can drop to 0%
 
 ### Why This Matters for Analysis
 - **Normal distribution**: Mean and median both work well
 - **Skewed distribution**: Use median instead of mean (the mean gets "fooled" by the tail)
-- **Choosing tests**: Many statistical tests assume normal distribution - if your data is skewed, you may need different approaches
+- **Choosing tests**: Many statistical tests assume normal distribution, so if your data is skewed, you may need different approaches
 
 ---
 
 ## Data Analysis Methods
 
-*Different types of analysis answer different questions. Think of them as different tools - you wouldn't use a hammer when you need a screwdriver.*
+*Different types of analysis answer different questions. Think of them as different tools; you wouldn't use a hammer when you need a screwdriver.*
 
 ### Descriptive Analysis
 **Purpose**: Summarize and describe what happened in your data
 **Question it answers**: "What does my data look like?"
 
-**What you're doing**: Taking a pile of raw numbers and turning them into understandable summaries - like calculating averages, making charts, or counting how often things happen.
+**What you're doing**: Taking a pile of raw numbers and turning them into understandable summaries, like calculating averages, making charts, or counting how often things happen.
 
 **Tools you use**: Mean, median, mode, standard deviation, histograms, tables
 **Real example**: A store owner calculating that their average daily sales is $2,500, their busiest day is Friday, and 60% of customers pay with credit cards.
 
-**When to use**: This is always your first step - you need to understand your data before doing anything else.
+**When to use**: This is always your first step. You need to understand your data before doing anything else.
 
 ### Exploratory Data Analysis (EDA)
 **Purpose**: Investigate your data to discover hidden patterns and generate ideas
 **Question it answers**: "What interesting patterns or relationships might be hiding in here?"
 
-**What you're doing**: Playing detective with your data - looking for unexpected connections, unusual patterns, or groups that naturally form. You're not trying to prove anything yet, just exploring.
+**What you're doing**: Playing detective with your data, looking for unexpected connections, unusual patterns, or groups that naturally form. You're not trying to prove anything yet, just exploring.
 
 **Tools you use**: Scatter plots, correlation analysis, clustering, PCA
 **Real example**: A marketing team discovers that customers who buy coffee also tend to buy pastries, and that there seem to be three distinct customer groups with different buying patterns.
@@ -194,7 +194,7 @@ Think of a distribution as the "shape" your data makes when you plot it. Underst
 
 **Principal Component Analysis (PCA)**
 - **What it does**: Takes complex data with many variables and finds the most important patterns
-- **Why useful**: Like creating a highlights reel - keeps the important stuff, drops the noise
+- **Why useful**: Like creating a highlights reel that keeps the important stuff and drops the noise
 - **Example**: Instead of tracking 20 different customer behaviors, PCA might show that just 3 underlying patterns explain most of the differences
 
 **K-means Clustering**
@@ -206,7 +206,7 @@ Think of a distribution as the "shape" your data makes when you plot it. Underst
 **Purpose**: Make educated guesses about a large group based on a smaller sample
 **Question it answers**: "If this is true for my sample, is it likely true for everyone?"
 
-**What you're doing**: Like conducting a poll - you survey 1,000 voters to predict how 1 million will vote. You're using statistics to bridge the gap between what you observed and what you can conclude.
+**What you're doing**: Like conducting a poll where you survey 1,000 voters to predict how 1 million will vote. You're using statistics to bridge the gap between what you observed and what you can conclude.
 
 **Tools you use**: Hypothesis testing, confidence intervals, statistical significance tests
 **Real example**: A pharmaceutical company tests a drug on 500 patients and uses statistics to determine if it would work for the broader population.
@@ -222,12 +222,12 @@ Think of a distribution as the "shape" your data makes when you plot it. Underst
 **Purpose**: Determine if one thing actually causes another (not just correlation)
 **Question it answers**: "Does X really cause Y, or do they just happen together?"
 
-**What you're doing**: The hardest type of analysis - proving cause and effect. Just because two things happen together doesn't mean one causes the other (ice cream sales and drowning both increase in summer, but ice cream doesn't cause drowning - heat causes both).
+**What you're doing**: The hardest type of analysis, proving cause and effect. Just because two things happen together doesn't mean one causes the other. Ice cream sales and drowning both increase in summer, but ice cream doesn't cause drowning; heat causes both.
 
 **Tools you use**: Controlled experiments, randomized trials, advanced statistical techniques
 **Real example**: Testing whether a new teaching method actually improves test scores, not just whether schools using it happen to have higher scores.
 
-**Why it's difficult**: You need to control for confounding variables - other factors that might explain the relationship.
+**Why it's difficult**: You need to control for confounding variables, meaning other factors that might explain the relationship.
 
 **When to use**: When you need to make decisions based on cause-and-effect (like "will this marketing campaign increase sales?" not just "are they correlated?").
 
@@ -240,7 +240,7 @@ Think of a distribution as the "shape" your data makes when you plot it. Underst
 **Tools you use**: Machine learning algorithms, regression models, neural networks
 **Real example**: Netflix predicting which movies you'll like based on what you've watched before, or banks predicting loan defaults.
 
-**Key insight**: The model can only be as good as your data - "garbage in, garbage out."
+**Key insight**: The model can only be as good as your data. "Garbage in, garbage out."
 
 **Difference from inferential**: Inferential analysis generalizes about populations; predictive analysis forecasts future events.
 
@@ -349,7 +349,7 @@ Think of a distribution as the "shape" your data makes when you plot it. Underst
 - **[US Cosmetics Industry Revenue](https://datasetsearch.research.google.com/search?query=cosmetics&docid=L2cvMTFuZmJqOWtsXw%3D%3D){:target="_blank" rel="noopener noreferrer"}**: $49.2 billion market analysis
 
 ### Finding More Datasets
-**[Google Dataset Search](https://datasetsearch.research.google.com/){:target="_blank" rel="noopener noreferrer"}** - Search engine specifically for datasets
+**[Google Dataset Search](https://datasetsearch.research.google.com/){:target="_blank" rel="noopener noreferrer"}**: Search engine specifically for datasets
 
 ---
 

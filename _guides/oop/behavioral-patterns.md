@@ -558,7 +558,7 @@ Console.WriteLine(expr.Evaluate());  // 14
 ```
 
 **When to Use**: Operations on complex object structures, expression trees.
-**When to Avoid**: Simple structures - use pattern matching instead.
+**When to Avoid**: Simple structures; use pattern matching instead.
 
 ## Quick Reference
 
@@ -576,7 +576,7 @@ Console.WriteLine(expr.Evaluate());  // 14
 | **Memento** | Capture/restore state | Undo/redo while maintaining encapsulation | Snapshots, transaction rollback | Simple state storage |
 | **Visitor** | Add operations to hierarchies | Adding operations without modification | Expression trees, AST processing | Pattern matching is simpler |
 | **Iterator** | Sequential access to elements | Collection traversal | Custom iteration logic | `foreach` works |
-| **Interpreter** | Define language grammar | Domain-specific languages | Simple DSLs | Complex grammars - use parser |
+| **Interpreter** | Define language grammar | Domain-specific languages | Simple DSLs | Complex grammars (use parser) |
 
 ### Pattern Selection Guide
 
@@ -620,7 +620,7 @@ Console.WriteLine(expr.Evaluate());  // 14
 - Encapsulation must be maintained
 - Example: Game save states, document revision history
 
-**Avoid Visitor - use pattern matching instead** in modern C#
+**Avoid Visitor; use pattern matching instead** in modern C#
 
 ### Modern C# Alternatives
 

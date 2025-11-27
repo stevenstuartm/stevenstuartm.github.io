@@ -639,7 +639,7 @@ var data2 = await proxy.GetData("user123"); // Cache hit
 
 | Pattern | Intent | Problem Solved | When to Use | When to Avoid |
 |---------|--------|----------------|-------------|---------------|
-| **Adapter** | Make incompatible interfaces compatible | Legacy code integration, third-party library mismatch | Wrapping existing classes with incompatible interfaces | You control both interfaces - fix design |
+| **Adapter** | Make incompatible interfaces compatible | Legacy code integration, third-party library mismatch | Wrapping existing classes with incompatible interfaces | You control both interfaces (fix design) |
 | **Bridge** | Separate abstraction from implementation | Cartesian product explosion (N × M classes) | Multiple dimensions of variation | Single dimension of variation |
 | **Composite** | Treat individual and composite objects uniformly | Tree structures, hierarchies | File systems, UI components, organizational charts | Flat structures |
 | **Decorator** | Add behavior dynamically without subclassing | Static inheritance limitations | Runtime behavior modification, multiple combinations | Behavior known at compile time |

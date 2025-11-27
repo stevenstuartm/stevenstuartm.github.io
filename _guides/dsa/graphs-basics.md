@@ -9,7 +9,7 @@ tags: [data-structures, algorithms, graphs, fundamentals, interview-prep]
 
 Graphs model relationships between entities, making them essential for solving connectivity problems. From social networks to GPS navigation to dependency management, graphs help us understand and navigate complex interconnected systems. They're the backbone of many modern algorithms that power search engines, recommendation systems, and network protocols.
 
-**Real impact:** Understanding graphs enables you to solve problems involving any kind of relationship or connection - whether it's finding the shortest route, detecting cycles in dependencies, or analyzing network structures.
+**Real impact:** Understanding graphs enables you to solve problems involving any kind of relationship or connection, whether it's finding the shortest route, detecting cycles in dependencies, or analyzing network structures.
 
 ---
 

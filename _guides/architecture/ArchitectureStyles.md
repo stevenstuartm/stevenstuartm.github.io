@@ -21,11 +21,11 @@ Every architecture style makes explicit or implicit decisions about:
 
 **Physical architecture**: Whether the system deploys as a single unit (monolithic) or multiple independent units (distributed). This affects deployment complexity, operational characteristics, and how failures propagate.
 
-**Communication patterns**: How components interact—synchronous request/response, asynchronous messaging, event broadcasts, or combinations. Each pattern has different performance, reliability, and complexity tradeoffs.
+**Communication patterns**: How components interact, whether through synchronous request/response, asynchronous messaging, event broadcasts, or combinations. Each pattern has different performance, reliability, and complexity tradeoffs.
 
 **Data topology**: Where data lives and who owns it. A single shared database, domain-specific databases, or per-service databases each create different constraints around consistency, transactions, and coupling.
 
-**Deployment patterns**: How the system packages and deploys to production. Single artifact, multiple services, containerized, serverless—each has operational implications.
+**Deployment patterns**: How the system packages and deploys to production. Single artifact, multiple services, containerized, or serverless options each have different operational implications.
 
 ## Choosing an Architecture Style
 

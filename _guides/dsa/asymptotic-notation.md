@@ -72,7 +72,7 @@ Example: log₂(8) = 3 because 8 → 4 → 2 → 1 (3 steps)
 ### Big O (O) - Upper Bound (Worst Case)
 **"At worst, it will take this long"**
 
-Like a speed limit - algorithm never slower than this bound.
+Like a speed limit; the algorithm is never slower than this bound.
 
 **Usage:** Safety guarantees, most common in practice
 

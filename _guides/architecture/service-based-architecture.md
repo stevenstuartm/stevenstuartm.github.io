@@ -121,7 +121,7 @@ Each service owns its own database. Maximum data isolation. This mirrors the mic
 
 **Systems with clear domain boundaries and moderate complexity**: When the domain naturally partitions into 4-12 major capabilities. Not so simple that a monolith suffices, not so complex that microservices' fine-grained modularity is required.
 
-**Mid-size systems or organizations**: Microservices work well at large scale with mature operations. Monoliths work well for small systems. Service-based architecture fits the middle—systems too large for monoliths but not large enough to justify microservices complexity.
+**Mid-size systems or organizations**: Microservices work well at large scale with mature operations. Monoliths work well for small systems. Service-based architecture fits the middle: systems too large for monoliths but not large enough to justify microservices complexity.
 
 **Transitional architecture**: When evolving from a monolith but not ready for microservices. Extract major capabilities as coarse services. Learn distributed system patterns. Move to finer-grained services if needed.
 
@@ -151,7 +151,7 @@ Each service owns its own database. Maximum data isolation. This mirrors the mic
 
 When service-based architecture stops fitting:
 
-**Evolve to microservices**: If services are too coarse and you need finer-grained deployment, break services into smaller microservices. The transition is natural—your 8 services might become 40 microservices.
+**Evolve to microservices**: If services are too coarse and you need finer-grained deployment, break services into smaller microservices. The transition is natural; your 8 services might become 40 microservices.
 
 **Consolidate back to modular monolith**: If inter-service communication overhead outweighs benefits, or if you don't actually need independent deployment, consolidate services back into a modular monolith. Keep the domain boundaries as modules.
 

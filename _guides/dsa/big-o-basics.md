@@ -7,7 +7,7 @@ tags: [algorithms, complexity-analysis, fundamentals, performance, interview-pre
 
 ## Why Big O Matters
 
-Understanding Big O isn't about memorizing formulas—it's about developing intuition for how algorithms scale. When your app works fine with 100 users but crashes with 1,000, that's a Big O problem. This guide gives you the practical tools to predict and prevent performance issues before they happen.
+Understanding Big O isn't about memorizing formulas; it's about developing intuition for how algorithms scale. When your app works fine with 100 users but crashes with 1,000, that's a Big O problem. This guide gives you the practical tools to predict and prevent performance issues before they happen.
 
 **Real impact:** The difference between O(n) and O(n²) might seem small on paper, but it's the difference between a search taking 1 second vs 17 minutes with a million items.
 
@@ -115,7 +115,7 @@ public static void MergeSort(int[] array, int left, int right)
 ```
 
 ### O(n²) - Quadratic Time
-**What it means:** Performance grows quadratically with input (not exponentially - that's O(2ⁿ))
+**What it means:** Performance grows quadratically with input, not exponentially (that's O(2ⁿ))
 **Examples:** Nested loops, bubble sort, selection sort, naive algorithms
 **Real world:** Comparing every person in a room to every other person (handshakes problem)
 

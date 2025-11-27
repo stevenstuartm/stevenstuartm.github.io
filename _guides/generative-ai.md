@@ -286,7 +286,7 @@ AI models trained on vast amounts of text data to understand and generate human-
 
 ### **Transformers**
 
-*Revolutionary architecture introduced by Vaswani et al. in "Attention Is All You Need" (Google, 2017). This paper fundamentally changed NLP and enabled the current AI revolution.*
+*Revolutionary architecture introduced by Vaswani et al. in "Attention Is All You Need" (Google, 2017). This paper transformed NLP and enabled the current wave of AI capabilities.*
 
 The underlying neural network architecture that enables modern generative AI models to handle large amounts of data efficiently and generate complex outputs. The "T" in GPT stands for Transformer.
 

@@ -38,7 +38,7 @@ tags: [sdlc, methodology, agile, product-development, basecamp]
 
 **Key Difference from Scrum:**
 
-Shape Up is not an iterative approach to a final design. Instead, the shaping process defines boundaries and constraints, and teams work within those boundaries to discover the best solution during the cycle. You're not incrementally building toward a known end state - you're exploring within defined constraints.
+Shape Up is not an iterative approach to a final design. Instead, the shaping process defines boundaries and constraints, and teams work within those boundaries to discover the best solution during the cycle. You're not incrementally building toward a known end state; you're exploring within defined constraints.
 
 **The Three Tracks:**
 
@@ -240,7 +240,7 @@ A formal write-up that makes the case for the project. This goes to the betting 
 - Scope boundaries
 - Features left for future cycles
 
-**Optional: Alternatives considered** - briefly explain why other approaches weren't chosen.
+**Optional: Alternatives considered**: briefly explain why other approaches weren't chosen.
 
 **Who Does Shaping:**
 - Senior designers, programmers, or product managers
@@ -268,7 +268,7 @@ At the start of each six-week cycle, stakeholders hold a **betting table** meeti
 
 **The Betting Table Meeting:**
 
-**Who attends:** CEO/leadership, product leads, technical leads - whoever has authority to allocate team time
+**Who attends:** CEO/leadership, product leads, and technical leads (whoever has authority to allocate team time)
 
 **What happens:**
 1. Review shaped pitches from the shaping track
@@ -321,7 +321,7 @@ After every six-week cycle, teams get a two-week cool-down:
 - Teams own their project for the full six weeks
 - **No interruptions** (no pulling people off projects mid-cycle)
 - **No new requirements** added during the cycle
-- **No mid-cycle pivots** unless project is fundamentally blocked
+- **No mid-cycle pivots** unless project is completely blocked
 
 **After the cycle:**
 - If work doesn't finish in six weeks, it's **not automatically rolled over**
@@ -465,7 +465,7 @@ Project is not automatically scheduled for next cycle. Team and leadership re-ev
 
 **Done Means Deployed:**
 
-A cycle is complete when work is deployed to production and available to users, not when code is "done" in a branch. Teams think about deployment from day one, with testing and QA happening throughout the cycle. No separate QA phase or hardening sprints—teams own quality.
+A cycle is complete when work is deployed to production and available to users, not when code is "done" in a branch. Teams think about deployment from day one, with testing and QA happening throughout the cycle. No separate QA phase or hardening sprints; teams own quality.
 
 ---
 
@@ -473,7 +473,7 @@ A cycle is complete when work is deployed to production and available to users, 
 
 ### Fixed Time, Variable Scope
 
-Six weeks is non-negotiable—scope adjusts to fit time. Appetite drives design constraints, forcing prioritization upfront and throughout. This prevents scope creep, delivers value predictably every six weeks, and builds a culture of shipping over perfection.
+Six weeks is non-negotiable, and scope adjusts to fit time. Appetite drives design constraints, forcing prioritization upfront and throughout. This prevents scope creep, delivers value predictably every six weeks, and builds a culture of shipping over perfection.
 
 Traditional approach asks "How long will this take?" Shape Up asks "What's the best version we can ship in six weeks?"
 
@@ -489,13 +489,13 @@ Traditional: "Feature X is 40 story points, velocity is 30, so 1.3 sprints." Sha
 
 ### Autonomy and Trust
 
-Teams figure out implementation details, make technical decisions, organize their own work, and adjust scope within boundaries. No required ceremonies—no mandatory standups, sprint planning, retrospectives, or story point poker. Teams choose their own coordination practices, meeting schedules, and tools. This autonomy attracts talented people, enables faster decisions, produces better solutions from those close to the work, and increases engagement.
+Teams figure out implementation details, make technical decisions, organize their own work, and adjust scope within boundaries. No required ceremonies, meaning no mandatory standups, sprint planning, retrospectives, or story point poker. Teams choose their own coordination practices, meeting schedules, and tools. This autonomy attracts talented people, enables faster decisions, produces better solutions from those close to the work, and increases engagement.
 
 ---
 
 ### Start in the Middle
 
-Start with the core, novel part that solves the main problem and carries the risk, not peripheral features like authentication, settings, or permissions. Core problems are where uncertainty lies—starting early reveals if the shaped solution works. Peripheral features are well-understood and can be cut if time runs short.
+Start with the core, novel part that solves the main problem and carries the risk, not peripheral features like authentication, settings, or permissions. Core problems are where uncertainty lies, so starting early reveals if the shaped solution works. Peripheral features are well-understood and can be cut if time runs short.
 
 Example: When building a calendar feature, start with calendar views and event creation (weeks 1-4), then add settings and polish (weeks 5-6). Don't spend weeks 1-4 on auth/permissions and run out of time for the actual calendar.
 
@@ -555,7 +555,7 @@ Brand new teams still learning to work together, strict fixed-scope contracts or
 
 ### Adaptations for Your Context:
 
-Shape Up is adaptable. Adjust cycle length (4-8 weeks, 6 is standard), cool-down duration (1-2 weeks or flexible), betting table formality (formal meetings, informal discussions, or async), shaping approach (formal pitches or lightweight sketches), team size (1-2 for small projects, 3-4 for larger), and hill charts usage (optional). Mix with other methods—use Shape Up for features, Kanban for maintenance, or hybrid approaches as needed.
+Shape Up is adaptable. Adjust cycle length (4-8 weeks, 6 is standard), cool-down duration (1-2 weeks or flexible), betting table formality (formal meetings, informal discussions, or async), shaping approach (formal pitches or lightweight sketches), team size (1-2 for small projects, 3-4 for larger), and hill charts usage (optional). Mix with other methods; use Shape Up for features, Kanban for maintenance, or hybrid approaches as needed.
 
 ---
 
@@ -756,4 +756,4 @@ Good shaping: "We'll integrate with Stripe (validated we can do this during spik
 
 **Problem:** Cool-down is viewed as "cleanup" or gets skipped when "behind."
 
-**Solution:** Protect cool-down time—it's legitimate work (bug fixes, refactoring, exploration) that prevents burnout, creates space for reactive work, allows experimentation, and gives shaping time for the next cycle. See [Cool-Down Period](#cool-down-period-2-weeks-after-each-6-week-cycle) for full details.
+**Solution:** Protect cool-down time. It's legitimate work (bug fixes, refactoring, exploration) that prevents burnout, creates space for reactive work, allows experimentation, and gives shaping time for the next cycle. See [Cool-Down Period](#cool-down-period-2-weeks-after-each-6-week-cycle) for full details.

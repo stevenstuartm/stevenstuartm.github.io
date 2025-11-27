@@ -80,7 +80,7 @@ They translated Lean Manufacturing principles to software development, creating 
 
 ### The Lean Mindset
 
-**Lean is fundamentally about how you think about work, not what ceremonies you practice.**
+**Lean is about how you think about work, not what ceremonies you practice.**
 
 **Value-focused thinking:**
 - Every activity either adds value or creates waste

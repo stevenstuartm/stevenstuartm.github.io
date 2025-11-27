@@ -87,18 +87,18 @@ tags: [algorithms, data-structures, decision-making, practical, reference]
 ## Interview vs Production Mindset
 
 ### In Interviews:
-1. **Start with brute force** - get working solution first
-2. **Optimize iteratively** - identify bottlenecks, improve step by step  
-3. **Implement from scratch** - show algorithmic thinking
-4. **State complexity** - always analyze time/space trade-offs
-5. **Consider edge cases** - empty input, single element, duplicates
+1. **Start with brute force**: Get working solution first
+2. **Optimize iteratively**: Identify bottlenecks, improve step by step
+3. **Implement from scratch**: Show algorithmic thinking
+4. **State complexity**: Always analyze time/space trade-offs
+5. **Consider edge cases**: Empty input, single element, duplicates
 
 ### In Production:
-1. **Use well-tested libraries** - don't reinvent wheels
-2. **Profile before optimizing** - measure actual bottlenecks
-3. **Prioritize readability** - maintainable code beats clever code
-4. **Consider total cost** - development time, maintenance, bug risk
-5. **Plan for scale** - but don't over-engineer for problems you don't have
+1. **Use well-tested libraries**: Don't reinvent wheels
+2. **Profile before optimizing**: Measure actual bottlenecks
+3. **Prioritize readability**: Maintainable code beats clever code
+4. **Consider total cost**: Development time, maintenance, bug risk
+5. **Plan for scale**: But don't over-engineer for problems you don't have
 
 ## Red Flags - When You're Probably Overthinking
 

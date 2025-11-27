@@ -15,7 +15,7 @@ Total Cost of Ownership (TCO) represents the complete cost of acquiring, deployi
 
 Understanding TCO matters because hidden costs (technical debt, opportunity cost, and operational overhead) frequently dominate total spending. A cloud migration might cost $50K upfront but $300K annually. A "simple" microservices split could add $400K in operational costs per year. Without TCO analysis, these surprises derail budgets and undermine business credibility.
 
-**Formula**: TCO = Initial Costs + Ongoing Costs - Disposal Value
+**Formula**: `TCO = Initial Costs + Ongoing Costs − Disposal Value`
 
 ---
 
@@ -494,24 +494,24 @@ Measure actual costs against estimates (typically ±30% variance), identify wher
 
 ## Key Takeaways
 
-1. **TCO is more than purchase price** - Include all direct, indirect, and hidden costs over the system's lifetime
+1. **TCO is more than purchase price.** Include all direct, indirect, and hidden costs over the system's lifetime.
 
-2. **Hidden costs often dominate** - Technical debt, opportunity cost, and coordination overhead frequently exceed direct costs
+2. **Hidden costs often dominate.** Technical debt, opportunity cost, and coordination overhead frequently exceed direct costs.
 
-3. **Time value of money matters** - Use NPV for multi-year decisions; $100K today ≠ $100K in 3 years
+3. **Time value of money matters.** Use NPV for multi-year decisions; $100K today ≠ $100K in 3 years.
 
-4. **Right time horizon is critical** - Match analysis period to decision type (1-2 years tactical, 3-5 years strategic)
+4. **Right time horizon is critical.** Match analysis period to decision type (1-2 years tactical, 3-5 years strategic).
 
-5. **Over-provisioning is expensive** - 30-40% of cloud spend is wasted on unused resources
+5. **Over-provisioning is expensive.** 30-40% of cloud spend is wasted on unused resources.
 
-6. **Complexity has a cost** - Each additional service, technology, or integration point increases operational burden
+6. **Complexity has a cost.** Each additional service, technology, or integration point increases operational burden.
 
-7. **Simplification often has 2x multiplier** - Reducing complexity improves both costs and productivity
+7. **Simplification often has a 2x multiplier.** Reducing complexity improves both costs and productivity.
 
-8. **Be conservative in estimates** - Use ranges, add contingency (10-20%), reality is usually more expensive
+8. **Be conservative in estimates.** Use ranges, add contingency (10-20%), and recognize that reality is usually more expensive.
 
-9. **Make it routine** - Standard TCO analysis prevents costly mistakes and builds business credibility
+9. **Make it routine.** Standard TCO analysis prevents costly mistakes and builds business credibility.
 
-10. **Measure and learn** - Track actual vs. projected costs to improve future estimates
+10. **Measure and learn.** Track actual vs. projected costs to improve future estimates.
 
 ---

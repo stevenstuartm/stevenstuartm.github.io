@@ -30,7 +30,7 @@ Each context's Customer model serves its specific needs without forcing a bloate
 
 **Implementation**: How you implement dependencies (database choices, service boundaries)
 
-**Static**: Architecture "wiring"—how services depend on each other
+**Static**: Architecture "wiring," meaning how services depend on each other
 
 **Dynamic**: Runtime communication between quanta forming workflows
 
@@ -90,7 +90,7 @@ Don't create components based on entities (Customer Manager, Order Manager).
 
 **Efferent (Outgoing/Fan-out)**: Degree this component depends on others
 
-**Temporal**: Nonstatic dependencies (timing/transactions). Hard to detect—found via design docs or error conditions
+**Temporal**: Nonstatic dependencies (timing/transactions). Hard to detect; found via design docs or error conditions
 
 ### Law of Demeter
 

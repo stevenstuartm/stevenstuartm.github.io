@@ -6,7 +6,7 @@ tags: [data-structures, algorithms, graphs, practical, interview-prep]
 ---
 
 ## Why Graphs Exist
-Model relationships and networks - social networks, maps, dependencies, state machines, computer networks. Graphs are the most flexible data structure for representing complex relationships between entities.
+Model relationships and networks like social networks, maps, dependencies, state machines, and computer networks. Graphs are the most flexible data structure for representing complex relationships between entities.
 
 ## When to Use Graphs
 

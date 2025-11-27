@@ -28,7 +28,7 @@ The first decision is whether to modernize incrementally (brownfield) or rebuild
 
 **When greenfield makes sense**:
 - Technology stack is completely obsolete (mainframe to cloud-native migration)
-- Business model has fundamentally changed
+- Business model has changed completely
 - System is small enough to rebuild quickly (3-6 months)
 - Legacy code provides no value (mostly configuration, minimal business logic)
 - Risk of parallel operation is acceptable
@@ -645,7 +645,7 @@ Now you can inject a modern email service, a test double, or even a facade that 
 
 ## Risk Mitigation Strategies
 
-Modernization is risky. These strategies reduce risk.
+Modernization is risky, but these strategies reduce risk.
 
 ### Feature Flags for Gradual Rollout
 

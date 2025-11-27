@@ -105,7 +105,7 @@ Think of architecture characteristics as a budget. You have limited resources to
 
 **Under-prioritizing**: Vague goals like "good performance" aren't actionable. Specify measurable targets: "95th percentile response time under 200ms."
 
-**Ignoring trade-offs**: Fast, reliable, cheap—pick two. Acknowledging trade-offs forces honest conversations about priorities.
+**Ignoring trade-offs**: Fast, reliable, cheap: pick two. Acknowledging trade-offs forces honest conversations about priorities.
 
 ## Measuring Architecture Characteristics
 
@@ -171,7 +171,7 @@ Fitness functions work best when they're fast, reliable, and clear. A fitness fu
 
 Architecture is the art of balancing trade-offs. Understanding common conflicts helps make informed decisions:
 
-**Performance vs. Security**: Encryption and security checks add latency. Fast systems often sacrifice security controls. Balance requires selective application—encrypt sensitive data while allowing less sensitive operations to run faster.
+**Performance vs. Security**: Encryption and security checks add latency. Fast systems often sacrifice security controls. Balance requires selective application: encrypt sensitive data while allowing less sensitive operations to run faster.
 
 **Scalability vs. Consistency**: Strongly consistent distributed systems sacrifice availability during partitions (CAP theorem). Eventually consistent systems scale better but create complexity in business logic.
 
