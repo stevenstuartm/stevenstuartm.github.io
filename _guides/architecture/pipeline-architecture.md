@@ -7,6 +7,10 @@ description: "Sequential data processing architecture using pipes and filters fo
 tags: [architecture, monolithic, design-patterns, practical, data-processing]
 ---
 
+<blockquote class="pull-quote">
+<p>Pipeline architecture structures a system as a series of processing steps connected by data flow—think Unix command-line pipes at the application level.</p>
+</blockquote>
+
 Pipeline architecture structures a system as a series of processing steps connected by data flow. Think Unix command-line pipes: each filter reads input, transforms it, and writes output to the next stage. Data flows unidirectionally from source to destination through a sequence of transformations.
 
 ## How It Works
@@ -49,14 +53,23 @@ Multiple filter instances process data concurrently for throughput. A load balan
 
 ## Data Flow Models
 
-### Batch Processing
-The pipeline processes data in discrete batches. A file arrives, the pipeline processes all records, and produces an output file. Batch processing is simple to reason about and easy to restart after failures. Suitable for periodic data loads and scheduled transformations.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Batch Processing</h4>
+<p>The pipeline processes data in discrete batches. A file arrives, the pipeline processes all records, and produces an output file.</p>
+<p><strong>Best for:</strong> Periodic data loads, scheduled transformations, simple restart after failures</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Stream Processing</h4>
+<p>The pipeline processes data continuously as it arrives. Records flow through individually or in micro-batches.</p>
+<p><strong>Best for:</strong> Low latency requirements, real-time processing, continuous data flows</p>
+</div>
+</div>
 
-### Stream Processing
-The pipeline processes data continuously as it arrives. Records flow through the pipeline individually or in micro-batches. Consumers receive results as soon as processing completes. Stream processing provides lower latency but requires more sophisticated error handling and state management.
-
-### Hybrid Processing
-Some stages use batching while others stream. Data arrives in a stream but accumulates in a staging area. A scheduler triggers batch processing on accumulated data. Results publish to a stream for real-time consumption. Hybrid approaches balance latency and complexity.
+<div class="callout callout--note">
+<p class="callout__title">Hybrid Processing</p>
+<p>Some stages use batching while others stream. Data arrives in a stream but accumulates in a staging area. A scheduler triggers batch processing on accumulated data. Results publish to a stream for real-time consumption. Hybrid approaches balance latency and complexity.</p>
+</div>
 
 ## Characteristics
 

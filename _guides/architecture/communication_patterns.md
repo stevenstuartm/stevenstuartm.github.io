@@ -19,24 +19,34 @@ Distributes incoming requests across multiple service instances to prevent any s
 - Want high availability through redundancy
 - Horizontal scaling required
 
-**Common Algorithms**:
+<div class="callout callout--note">
+<p class="callout__title">Common Load Balancing Algorithms</p>
+<p><strong>Round Robin</strong>: Distributes requests sequentially across instances in circular order (simple, no state required, assumes equal capacity)</p>
+<p><strong>Weighted Round Robin</strong>: Assigns different weights to instances based on capacity (2x capacity server gets 2x traffic)</p>
+<p><strong>Least Connections</strong>: Routes to the instance with fewest active connections (better for long-lived connections or varying request durations)</p>
+<p><strong>Least Response Time</strong>: Routes to instance with fastest response time (requires health monitoring, adapts to performance)</p>
+<p><strong>IP Hash/Sticky Sessions</strong>: Routes requests from the same client to the same instance (maintains session state, but can cause imbalance)</p>
+<p><strong>Geographic/Latency-based</strong>: Routes based on client location or proximity (optimizes for network latency)</p>
+</div>
 
-- **Round Robin**: Distributes requests sequentially across instances in circular order
-  - *Simple, no state required, assumes equal capacity*
-- **Weighted Round Robin**: Assigns different weights to instances based on capacity
-  - *Example*: 2x capacity server gets 2x traffic
-- **Least Connections**: Routes to the instance with fewest active connections
-  - *Better for long-lived connections or varying request durations*
-- **Least Response Time**: Routes to instance with fastest response time
-  - *Requires health monitoring, adapts to performance*
-- **IP Hash/Sticky Sessions**: Routes requests from the same client to the same instance
-  - *Maintains session state, but can cause imbalance*
-- **Geographic/Latency-based**: Routes based on client location or proximity
-  - *Optimizes for network latency*
-
-**Load Balancer Types**:
-- **Layer 4 (Transport)**: Routes based on IP/port (TCP/UDP) - fast but limited routing logic
-- **Layer 7 (Application)**: Routes based on HTTP headers, URLs, cookies - slower but flexible
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Layer 4 (Transport)</h4>
+<ul>
+<li>Routes based on IP/port (TCP/UDP)</li>
+<li>Fast performance</li>
+<li>Limited routing logic</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Layer 7 (Application)</h4>
+<ul>
+<li>Routes based on HTTP headers, URLs, cookies</li>
+<li>Slower but flexible</li>
+<li>Advanced routing capabilities</li>
+</ul>
+</div>
+</div>
 
 **Example**: E-commerce with three web server instances. Load balancer receives requests and distributes them evenly, ensuring no single server is overloaded during peak shopping.
 
@@ -102,16 +112,35 @@ Continuous flow of events that can be processed in real-time or stored for later
 - Implementing event sourcing
 - Multiple consumers need to process same events at different rates
 
-**Key Characteristics**:
-- **Ordered events**: Events maintain sequence within partitions
-- **Event replay**: Can reprocess events from any point in time
-- **Multiple consumers**: Each consumer tracks own position independently
-- **Durability**: Events persisted to disk, not just in-memory
-- **Retention**: Events stored for configurable time period (hours to forever)
+<div class="callout callout--note">
+<p class="callout__title">Key Event Streaming Characteristics</p>
+<p><strong>Ordered events</strong>: Events maintain sequence within partitions</p>
+<p><strong>Event replay</strong>: Can reprocess events from any point in time</p>
+<p><strong>Multiple consumers</strong>: Each consumer tracks own position independently</p>
+<p><strong>Durability</strong>: Events persisted to disk, not just in-memory</p>
+<p><strong>Retention</strong>: Events stored for configurable time period (hours to forever)</p>
+</div>
 
-**Stream vs Pub/Sub**:
-- Pub/Sub: Message deleted after delivery to all subscribers (ephemeral)
-- Event Streaming: Events retained and can be replayed (durable log)
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Pub/Sub (Ephemeral)</h4>
+<ul>
+<li>Message deleted after delivery to all subscribers</li>
+<li>No event history</li>
+<li>Cannot replay events</li>
+<li>Simpler architecture</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Event Streaming (Durable)</h4>
+<ul>
+<li>Events retained for configurable period</li>
+<li>Maintains event history</li>
+<li>Can replay from any point</li>
+<li>More complex but powerful</li>
+</ul>
+</div>
+</div>
 
 **Example**: Financial trading platform where stock price changes are streamed continuously to update displays and trigger automated trading rules.
 

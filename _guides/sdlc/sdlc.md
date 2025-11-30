@@ -37,6 +37,10 @@ The **Software Development Lifecycle (SDLC)** is a structured process for planni
 
 ### Core SDLC Principles
 
+<blockquote class="pull-quote">
+<p>Effective SDLCs build quality in from the start, iterate continuously, and collaborate across disciplines—not treating quality as an afterthought.</p>
+</blockquote>
+
 Regardless of methodology, effective SDLCs share common principles:
 
 1. **Understand Before Building**: Invest time in requirements and design before coding
@@ -105,11 +109,15 @@ The planning phase establishes the foundation for the entire project by defining
 - Initial project plan and timeline
 - Risk assessment
 
-**Common Pitfalls:**
-- Insufficient stakeholder engagement
-- Vague or incomplete requirements
-- Skipping feasibility analysis
-- Over-promising on timelines
+<div class="callout callout--warning">
+<p class="callout__title">Common Pitfalls</p>
+<ul>
+<li>Insufficient stakeholder engagement</li>
+<li>Vague or incomplete requirements</li>
+<li>Skipping feasibility analysis</li>
+<li>Over-promising on timelines</li>
+</ul>
+</div>
 
 ---
 
@@ -157,12 +165,16 @@ Transform requirements into a technical blueprint that guides implementation.
 - UI/UX mockups and prototypes
 - Threat model documentation
 
-**Common Pitfalls:**
-- Over-engineering solutions
-- Designing in isolation without developer input
-- Ignoring non-functional requirements
-- Skipping security considerations
-- Not validating designs with stakeholders
+<div class="callout callout--warning">
+<p class="callout__title">Common Pitfalls</p>
+<ul>
+<li>Over-engineering solutions</li>
+<li>Designing in isolation without developer input</li>
+<li>Ignoring non-functional requirements</li>
+<li>Skipping security considerations</li>
+<li>Not validating designs with stakeholders</li>
+</ul>
+</div>
 
 ---
 
@@ -215,12 +227,16 @@ Developers write code to implement the designed solution.
 - API documentation
 - Code review records
 
-**Common Pitfalls:**
-- Skipping code reviews to save time
-- Not writing tests alongside code
-- Copy-pasting code instead of refactoring
-- Ignoring technical debt
-- Poor documentation
+<div class="callout callout--warning">
+<p class="callout__title">Common Pitfalls</p>
+<ul>
+<li>Skipping code reviews to save time</li>
+<li>Not writing tests alongside code</li>
+<li>Copy-pasting code instead of refactoring</li>
+<li>Ignoring technical debt</li>
+<li>Poor documentation</li>
+</ul>
+</div>
 
 ---
 

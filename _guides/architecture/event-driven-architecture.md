@@ -9,6 +9,10 @@ tags: [architecture, distributed-systems, messaging, scalability, async, practic
 
 Event-driven architecture organizes a system around asynchronous event broadcasts. Components publish events representing things that happened ("order placed," "payment processed," "inventory depleted"). Other components listen for events they care about and react accordingly. There's no direct coupling between event publishers and subscribers.
 
+<blockquote class="pull-quote">
+<p>Events announce what happened. Messages command what should happen. This distinction determines whether you have loose coupling or hidden dependencies.</p>
+</blockquote>
+
 This architecture enables high responsiveness, complex workflows with many independent reactions, and systems that must handle unpredictable, variable workloads.
 
 ## How It Works
@@ -29,39 +33,74 @@ For example, an "order placed" event might trigger inventory reservation, paymen
 
 ## Events vs Messages
 
-This distinction is fundamental and often misunderstood.
-
-**Events** announce what happened and are informational, not prescriptive. "Inventory depleted" is an event. It states a fact. The publisher doesn't know or care who reacts. Multiple subscribers might react in different ways: one might trigger reordering, another might send alerts, and a third might update analytics.
-
-**Messages** command what should happen. "Replenish inventory" is a message. It's prescriptive. The sender expects specific action from a specific receiver. Messages create tighter coupling because the sender knows about the receiver and expects particular behavior.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Events (Informational)</h4>
+<ul>
+<li>Announce what happened</li>
+<li>State facts, not commands</li>
+<li>Publisher doesn't know who reacts</li>
+<li>Multiple subscribers react independently</li>
+<li>Example: "Inventory depleted"</li>
+<li><strong>Result:</strong> Maximum decoupling</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Messages (Prescriptive)</h4>
+<ul>
+<li>Command what should happen</li>
+<li>Directed at specific receiver</li>
+<li>Sender expects specific action</li>
+<li>One-to-one communication</li>
+<li>Example: "Replenish inventory"</li>
+<li><strong>Result:</strong> Tighter coupling</li>
+</ul>
+</div>
+</div>
 
 Event-driven architectures use events. Publishers broadcast facts. Subscribers independently decide how to react. This maximizes decoupling.
 
 ## Architectural Patterns
 
-### Choreographed Event-Driven
-
-No central coordinator exists; events broadcast freely and processors react independently. Workflows emerge from the collective reactions of independent processors.
-
-**How it works**: The Order Service publishes an "OrderPlaced" event. The Inventory Service subscribes, reserves stock, and publishes a "StockReserved" event. The Payment Service subscribes, processes payment, and publishes a "PaymentCaptured" event. The Shipping Service subscribes to both events, waits for both, then publishes a "ShipmentScheduled" event.
-
-**Advantages**: Maximum decoupling. Services don't know about each other. Easy to add new reactions (subscribe to events). No single point of failure. Highly scalable.
-
-**Tradeoffs**: Workflows are hard to trace and debug. No single view shows the complete workflow. Understanding what happens when an event publishes requires examining all subscribers. Error handling is complex. If one processor fails, how do others know? State management is distributed.
-
-**When to use**: Complex workflows with many independent reactions. Systems where new reactions are frequently added. Domains where loose coupling matters more than workflow visibility.
-
-### Mediated Event-Driven
-
-An orchestrator controls workflow. It receives events, makes decisions based on state, and triggers subsequent actions. The orchestrator knows the complete workflow and coordinates processors.
-
-**How it works**: Order orchestrator receives "OrderPlaced" event. It calls Inventory Service to reserve stock. After success, it calls Payment Service to capture payment. After both succeed, it calls Shipping Service to schedule shipment.
-
-**Advantages**: Central workflow visibility. Easy to understand and debug. State management is centralized. Error handling is explicit. Can implement complex conditional logic, timeouts, and retries.
-
-**Tradeoffs**: Reintroduces coupling. The orchestrator knows about all services. Creates a potential bottleneck. Orchestrator becomes a single point of failure unless highly available. Reduces system flexibility because adding new reactions requires changing the orchestrator.
-
-**When to use**: Workflows requiring central control and visibility. Systems where error handling and retry logic are complex. Domains where workflow understanding and debugging matter more than maximum decoupling.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Choreographed Event-Driven</h4>
+<p><strong>How it works:</strong> No central coordinator. Events broadcast freely, processors react independently.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Maximum decoupling</li>
+<li>Easy to add new reactions</li>
+<li>No single point of failure</li>
+<li>Highly scalable</li>
+</ul>
+<p><strong>Tradeoffs:</strong></p>
+<ul>
+<li>Workflows hard to trace</li>
+<li>Complex error handling</li>
+<li>Distributed state management</li>
+</ul>
+<p><strong>Use when:</strong> Complex workflows with many independent reactions</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Mediated Event-Driven</h4>
+<p><strong>How it works:</strong> Orchestrator controls workflow, coordinates processors.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Central workflow visibility</li>
+<li>Easy to understand and debug</li>
+<li>Explicit error handling</li>
+<li>Complex logic support</li>
+</ul>
+<p><strong>Tradeoffs:</strong></p>
+<ul>
+<li>Reintroduces coupling</li>
+<li>Potential bottleneck</li>
+<li>Single point of failure</li>
+<li>Reduced flexibility</li>
+</ul>
+<p><strong>Use when:</strong> Workflows need central control and visibility</p>
+</div>
+</div>
 
 ## Event Payload Strategies
 
@@ -137,7 +176,9 @@ Events include only identifiers. An "OrderPlaced" event contains the order ID. S
 
 ## Common Pitfalls
 
-**Nondeterministic side effects**: Events trigger unpredictable numbers of reactions. You publish an event expecting three reactions but ten occur. Or two reactions interfere with each other. Solution: Make processors idempotent. Document expected reactions. Monitor actual behavior.
+<div class="callout callout--warning">
+<p class="callout__title">Watch Out For</p>
+<p><strong>Nondeterministic side effects:</strong> Events trigger unpredictable numbers of reactions. You publish an event expecting three reactions but ten occur. <em>Solution: Make processors idempotent. Document expected reactions. Monitor actual behavior.</em></p>
 
 **Static coupling via contracts**: Changing event structure breaks subscribers. Event evolution requires coordinating all subscribers. Solution: Version events. Support multiple event versions during transitions. Use flexible schemas (add fields, don't remove).
 
@@ -145,7 +186,8 @@ Events include only identifiers. An "OrderPlaced" event contains the order ID. S
 
 **Difficult state management**: No single component knows the full system state. Debugging why something happened requires tracing event chains across multiple processors. Solution: Implement distributed tracing. Use correlation IDs on events. Maintain event stores for replay and auditing.
 
-**Event storms**: A single event triggers cascades of derived events. The system bogs down processing events. Solution: Be selective about what warrants an event. Implement circuit breakers. Monitor event volumes.
+<p><strong>Event storms:</strong> A single event triggers cascades of derived events. The system bogs down processing events. <em>Solution: Be selective about what warrants an event. Implement circuit breakers. Monitor event volumes.</em></p>
+</div>
 
 ## Evolution and Alternatives
 

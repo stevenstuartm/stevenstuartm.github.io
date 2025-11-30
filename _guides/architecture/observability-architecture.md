@@ -11,7 +11,11 @@ tags: [architecture, observability, monitoring, distributed-systems, reliability
 
 Observability architecture addresses how to design systems to be observable, how to collect and correlate telemetry data efficiently, and how to use observability to drive reliability and decision-making. This goes beyond implementing the three pillars (logs, metrics, traces) to strategic questions about sampling, cardinality, cost management, and using observability data to improve systems.
 
-**Core principle**: Observability is not something you bolt on after building a system. It must be architected from the start, with intentional decisions about what to measure, how to correlate data, and how to make telemetry actionable.
+<blockquote class="pull-quote">
+<p>Observability is not something you bolt on after building a system. It must be architected from the start.</p>
+</blockquote>
+
+**Core principle**: Observability requires intentional decisions about what to measure, how to correlate data, and how to make telemetry actionable.
 
 For observability fundamentals (three pillars, basic concepts), see [Observability Fundamentals](../observability-fundamentals.html).
 
@@ -160,28 +164,39 @@ Distributed tracing is powerful but expensive. Tracing every request in a high-t
 
 ### Sampling Strategies
 
-**Head-based sampling**: Decide whether to trace a request at the beginning (when it enters the system).
-
-**Pros**:
-- Simple to implement
-- Consistent trace coverage
-- Predictable resource usage
-
-**Cons**:
-- May miss rare but important failures
-- Cannot sample based on outcome (don't know if request will fail)
-
-**Tail-based sampling**: Decide whether to keep a trace after the request completes, based on its characteristics.
-
-**Pros**:
-- Keep all errors and slow requests
-- Discard successful, fast requests
-- Capture rare failures
-
-**Cons**:
-- Complex to implement (requires buffering traces)
-- Higher resource overhead
-- Inconsistent trace coverage
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Head-based Sampling</h4>
+<p>Decide whether to trace a request at the beginning (when it enters the system).</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Simple to implement</li>
+<li>Consistent trace coverage</li>
+<li>Predictable resource usage</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>May miss rare but important failures</li>
+<li>Cannot sample based on outcome (don't know if request will fail)</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Tail-based Sampling</h4>
+<p>Decide whether to keep a trace after the request completes, based on its characteristics.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Keep all errors and slow requests</li>
+<li>Discard successful, fast requests</li>
+<li>Capture rare failures</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Complex to implement (requires buffering traces)</li>
+<li>Higher resource overhead</li>
+<li>Inconsistent trace coverage</li>
+</ul>
+</div>
+</div>
 
 **Adaptive sampling**: Adjust sampling rate based on current traffic volume and error rates.
 
@@ -248,7 +263,11 @@ Spans represent operations within a trace. Good span design is critical for trac
 
 ## Cardinality Management
 
-Cardinality is the number of unique values for a metric dimension or label. High cardinality causes exponential cost and performance problems.
+<blockquote class="pull-quote">
+<p>High cardinality causes exponential cost and performance problems.</p>
+</blockquote>
+
+Cardinality is the number of unique values for a metric dimension or label.
 
 ### The Cardinality Explosion
 
@@ -272,20 +291,29 @@ Total time series: 10 × 50 × 6 × 1,000,000 = 3 billion time series
 
 ### Managing Cardinality
 
-**Low cardinality labels** (safe to use):
-- Service name (tens of services)
-- Environment (dev, staging, production)
-- Region (handful of AWS regions)
-- HTTP method (GET, POST, PUT, DELETE, PATCH)
-- Status code ranges (2xx, 3xx, 4xx, 5xx)
-
-**High cardinality labels** (avoid):
-- User IDs
-- Session IDs
-- Request IDs
-- IP addresses
-- Unique identifiers
-- Timestamps
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Low Cardinality Labels (Safe to Use)</h4>
+<ul>
+<li>Service name (tens of services)</li>
+<li>Environment (dev, staging, production)</li>
+<li>Region (handful of AWS regions)</li>
+<li>HTTP method (GET, POST, PUT, DELETE, PATCH)</li>
+<li>Status code ranges (2xx, 3xx, 4xx, 5xx)</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>High Cardinality Labels (Avoid)</h4>
+<ul>
+<li>User IDs</li>
+<li>Session IDs</li>
+<li>Request IDs</li>
+<li>IP addresses</li>
+<li>Unique identifiers</li>
+<li>Timestamps</li>
+</ul>
+</div>
+</div>
 
 **Strategies to reduce cardinality**:
 

@@ -23,6 +23,10 @@ This guide assumes familiarity with Architecture Decision Records (ADRs). If you
 
 ## What is Architecture Governance?
 
+<blockquote class="pull-quote">
+<p>Good governance enables teams rather than constraining them. It aligns with objectives, not rigid rules.</p>
+</blockquote>
+
 Architecture governance is the practice of establishing and enforcing processes, standards, and decision-making frameworks to ensure that software architecture aligns with business objectives, manages risk, and enables sustainable system evolution.
 
 **Core purposes:**
@@ -33,11 +37,15 @@ Architecture governance is the practice of establishing and enforcing processes,
 - Facilitate knowledge sharing and reusability
 - Protect architectural integrity over time
 
-**Governance is NOT:**
-- A bureaucratic approval process that slows down teams
-- Command-and-control management
-- A way to enforce personal preferences
-- A replacement for technical leadership
+<div class="callout callout--warning">
+<p class="callout__title">Governance is NOT</p>
+<ul>
+<li>A bureaucratic approval process that slows down teams</li>
+<li>Command-and-control management</li>
+<li>A way to enforce personal preferences</li>
+<li>A replacement for technical leadership</li>
+</ul>
+</div>
 
 ## Key Principles
 
@@ -93,41 +101,46 @@ Distribute decision-making authority while maintaining alignment.
 
 ## Governance Models
 
-### Centralized Governance
-
-**Structure:** Central architecture team makes and enforces decisions.
-
-**Advantages:**
-- Consistent standards across organization
-- Clear accountability
-- Efficient for small organizations
-- Strong control over critical systems
-
-**Disadvantages:**
-- Can become a bottleneck
-- Limited scalability
-- May lack context for specific domains
-- Risk of ivory tower syndrome
-
-**Best for:** Small organizations, highly regulated industries, early-stage standardization efforts.
-
-### Federated Governance
-
-**Structure:** Distributed decision-making with central coordination and standards.
-
-**Advantages:**
-- Scales with organization growth
-- Leverages domain expertise
-- Faster local decisions
-- Better context awareness
-
-**Disadvantages:**
-- Requires mature teams
-- Risk of inconsistency
-- More complex coordination
-- Harder to enforce standards
-
-**Best for:** Large organizations, microservices architectures, multi-product companies.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Centralized Governance</h4>
+<p><strong>Structure:</strong> Central architecture team makes and enforces decisions.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Consistent standards</li>
+<li>Clear accountability</li>
+<li>Efficient for small organizations</li>
+<li>Strong control over critical systems</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Can become bottleneck</li>
+<li>Limited scalability</li>
+<li>May lack domain context</li>
+<li>Risk of ivory tower syndrome</li>
+</ul>
+<p><strong>Best for:</strong> Small organizations, highly regulated industries</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Federated Governance</h4>
+<p><strong>Structure:</strong> Distributed decision-making with central coordination.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Scales with organization growth</li>
+<li>Leverages domain expertise</li>
+<li>Faster local decisions</li>
+<li>Better context awareness</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Requires mature teams</li>
+<li>Risk of inconsistency</li>
+<li>More complex coordination</li>
+<li>Harder to enforce standards</li>
+</ul>
+<p><strong>Best for:</strong> Large organizations, microservices architectures</p>
+</div>
+</div>
 
 ### Guild-Based Governance
 
@@ -348,19 +361,12 @@ Not every standard fits every context. Establish a clear variance process:
 
 ### 1. Governance Theater
 
-**Problem:** Process exists but provides no real value, becomes box-checking exercise.
-
-**Signs:**
-- Reviews rubber-stamp every decision
-- No one reads ADRs after approval
-- Standards exist but aren't enforced
-- Teams bypass governance processes
-
-**Solution:**
-- Demonstrate value through examples
-- Streamline processes
-- Show metrics on prevented issues
-- Make governance opt-in for low-risk changes
+<div class="callout callout--warning">
+<p class="callout__title">Anti-Pattern: Governance Theater</p>
+<p><strong>Problem:</strong> Process exists but provides no real value, becomes box-checking exercise.</p>
+<p><strong>Signs:</strong> Reviews rubber-stamp every decision | No one reads ADRs after approval | Standards exist but aren't enforced | Teams bypass governance processes</p>
+<p><strong>Solution:</strong> Demonstrate value through examples | Streamline processes | Show metrics on prevented issues | Make governance opt-in for low-risk changes</p>
+</div>
 
 ### 2. Bottleneck Governance
 

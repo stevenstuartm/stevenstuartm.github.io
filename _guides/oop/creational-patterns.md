@@ -11,7 +11,9 @@ tags: [oop, design-patterns, creational-patterns, factory, singleton, practical]
 
 *Design patterns from "Design Patterns: Elements of Reusable Object-Oriented Software" by the Gang of Four (Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides), published 1994*
 
-> Creational patterns focus on object creation mechanisms, providing flexibility in how objects are instantiated.
+<blockquote class="pull-quote">
+<p>Creational patterns focus on object creation mechanisms, providing flexibility in how objects are instantiated.</p>
+</blockquote>
 
 **Historical note**: While the Gang of Four catalog formalized these patterns, many existed in practice before 1994. The patterns book itself was inspired by Christopher Alexander's "A Pattern Language" (1977) for architecture.
 
@@ -20,6 +22,17 @@ tags: [oop, design-patterns, creational-patterns, factory, singleton, practical]
 **Purpose**: Construct complex objects step by step, separating construction from representation.
 
 **Modern Variations**:
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Fluent Builder</h4>
+<p>Method chaining with return of builder instance. Flexible and readable, allowing optional parameters in any order.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Stepwise Builder</h4>
+<p>Enforces construction order through interfaces. Compile-time safety ensuring all required parameters are set.</p>
+</div>
+</div>
 
 **Fluent Builder**
 ```csharp
@@ -278,13 +291,17 @@ var connection = await DatabaseConnection.CreateAsync("localhost", "MyDB");
 
 *One of the original Gang of Four patterns (1994), but now controversial in modern software development*
 
-**⚠️ Modern Warning**: Traditional singleton implementations are difficult to test and violate dependency inversion. Many consider Singleton an anti-pattern in modern development due to:
-- Global state (hidden dependencies)
-- Testing difficulties (can't mock easily)
-- Violates Single Responsibility (manages own lifecycle + business logic)
-- Thread-safety complexity in some languages
-
-**Modern consensus**: Use dependency injection with singleton lifetime instead of static Singleton pattern.
+<div class="callout callout--warning">
+<p class="callout__title">Modern Warning</p>
+<p>Traditional singleton implementations are difficult to test and violate dependency inversion. Many consider Singleton an anti-pattern in modern development due to:</p>
+<ul>
+<li>Global state (hidden dependencies)</li>
+<li>Testing difficulties (can't mock easily)</li>
+<li>Violates Single Responsibility (manages own lifecycle + business logic)</li>
+<li>Thread-safety complexity in some languages</li>
+</ul>
+<p><strong>Modern consensus</strong>: Use dependency injection with singleton lifetime instead of static Singleton pattern.</p>
+</div>
 
 **Traditional Singleton (Avoid)**
 ```csharp
@@ -496,6 +513,10 @@ var clone2 = original.DeepClone(); // Using JSON serialization
 - Object creation is expensive (database loads, complex initialization)
 - You need independent copies with similar state
 - Example: Cloning configuration templates
+
+<blockquote class="pull-quote">
+<p>Builder pattern shines when objects have many optional parameters or require complex construction logic that would make constructors unwieldy.</p>
+</blockquote>
 
 **Avoid Singleton when:**
 - Testing is important (hard to mock)

@@ -16,6 +16,10 @@ tags: [security, compliance, governance, regulations, frameworks]
 4. **Risk Analysis**: Impact and likelihood evaluation
 5. **Risk Treatment**: Accept, mitigate, transfer, avoid
 
+<blockquote class="pull-quote">
+<p>Risk management is not about eliminating all risk—it's about understanding which risks to accept, mitigate, transfer, or avoid based on business priorities.</p>
+</blockquote>
+
 ### Risk Rating (OWASP Methodology)
 - **Likelihood Factors**:
   - Threat agent factors (skill, motive, opportunity, size)
@@ -26,25 +30,39 @@ tags: [security, compliance, governance, regulations, frameworks]
 
 ## Compliance Frameworks
 
-### SOX (Sarbanes-Oxley Act)
-- **Scope**: US publicly traded companies
-- **Requirements**: Financial reporting controls and certification
-- **IT Impact**: Financial system security and access controls
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>SOX (Sarbanes-Oxley Act)</h4>
+<ul>
+<li><strong>Scope</strong>: US publicly traded companies</li>
+<li><strong>Requirements</strong>: Financial reporting controls and certification</li>
+<li><strong>IT Impact</strong>: Financial system security and access controls</li>
+</ul>
+<p><strong>Focus</strong>: Financial accuracy and transparency</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>PCI DSS</h4>
+<ul>
+<li><strong>Scope</strong>: Organizations handling credit card data</li>
+<li><strong>Requirements</strong>:
+  <ul>
+  <li>Secure network and systems</li>
+  <li>Protect cardholder data</li>
+  <li>Maintain vulnerability management program</li>
+  <li>Strong access control measures</li>
+  <li>Regular monitoring and testing</li>
+  <li>Information security policy</li>
+  </ul>
+</li>
+</ul>
+<p><strong>Focus</strong>: Payment card data protection</p>
+</div>
+</div>
 
-### PCI DSS (Payment Card Industry Data Security Standard)
-- **Scope**: Organizations handling credit card data
-- **Requirements**:
-  - Secure network and systems
-  - Protect cardholder data
-  - Maintain vulnerability management program
-  - Strong access control measures
-  - Regular monitoring and testing
-  - Information security policy
-
-### SOC 2 (Service Organization Control 2)
-- **Trust Criteria**: Security, availability, processing integrity, confidentiality, privacy
-- **Report Types**: Type I (point in time), Type II (period of time)
-- **Audience**: Service providers and their customers
+<div class="callout callout--note">
+<p class="callout__title">SOC 2 for Service Providers</p>
+<p><strong>Service Organization Control 2 (SOC 2)</strong> evaluates service providers on five trust criteria: security, availability, processing integrity, confidentiality, and privacy. Type I reports provide a point-in-time assessment, while Type II reports evaluate controls over a period of time. These reports are critical for SaaS companies and cloud service providers.</p>
+</div>
 
 ## Audit and Assessment
 
@@ -59,5 +77,10 @@ tags: [security, compliance, governance, regulations, frameworks]
 - **Security Metrics**: Key performance indicators
 - **Dashboard Reporting**: Executive visibility
 - **Trend Analysis**: Security posture evolution
+
+<div class="callout callout--tip">
+<p class="callout__title">Automate Compliance Monitoring</p>
+<p>Manual compliance audits are time-consuming and error-prone. Implement automated compliance checking tools that continuously monitor for policy violations and provide real-time alerts. This shifts compliance from a periodic burden to an ongoing, manageable process.</p>
+</div>
 
 ---

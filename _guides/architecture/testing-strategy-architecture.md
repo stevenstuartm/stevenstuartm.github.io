@@ -9,6 +9,10 @@ tags: [architecture, testing, quality, distributed-systems, reliability, practic
 
 ## What is Testing Strategy & Architecture?
 
+<blockquote class="pull-quote">
+<p>Testing is architectural: Testing strategy impacts system design, deployment pipelines, team organization, and release velocity.</p>
+</blockquote>
+
 Testing strategy defines what to test, how to test it, and where testing fits in the development lifecycle. Testing architecture addresses how to design systems to be testable, how to organize test suites, and how to test architectural characteristics like performance, security, and resilience.
 
 **Testing is architectural**: Testing strategy impacts system design, deployment pipelines, team organization, and release velocity. Poor testing strategy creates bottlenecks, slows delivery, and undermines confidence in releases.
@@ -29,13 +33,11 @@ The classic testing pyramid suggests a distribution of test types:
 
 **The pyramid's core insight**: Lower-level tests are faster, cheaper, and more reliable. Prefer many fast unit tests over a few slow end-to-end tests.
 
-**Why the pyramid is insufficient**:
-- Doesn't address contract testing (critical for microservices)
-- Doesn't cover non-functional testing (performance, security, resilience)
-- Assumes all integration tests are equally expensive
-- Ignores testing in production (monitoring, chaos engineering, synthetic transactions)
-
-**Modern testing strategy requires multiple models**: Use the pyramid for functional testing, but add contract testing, property-based testing, and architectural characteristic testing.
+<div class="callout callout--note">
+<p class="callout__title">Why the Pyramid is Insufficient</p>
+<p>The pyramid doesn't address contract testing (critical for microservices), doesn't cover non-functional testing (performance, security, resilience), assumes all integration tests are equally expensive, and ignores testing in production (monitoring, chaos engineering, synthetic transactions).</p>
+<p><strong>Modern testing strategy requires multiple models:</strong> Use the pyramid for functional testing, but add contract testing, property-based testing, and architectural characteristic testing.</p>
+</div>
 
 ## Test Types and Scope
 

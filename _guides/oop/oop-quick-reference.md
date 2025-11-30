@@ -11,6 +11,10 @@ tags: [oop, reference, quick-reference, cheatsheet]
 
 ## Design Pattern Categories
 
+<blockquote class="pull-quote">
+<p>Design patterns are reusable solutions to common problems in software design, categorized into Creational, Structural, and Behavioral patterns.</p>
+</blockquote>
+
 ### Creational Patterns (5 patterns)
 
 Focus on object creation mechanisms, increasing flexibility and reuse.
@@ -100,6 +104,11 @@ Multiple handlers for a request?
 ```
 
 ## Common Anti-Patterns to Avoid
+
+<div class="callout callout--warning">
+<p class="callout__title">Warning: Common Anti-Patterns</p>
+<p>These anti-patterns indicate design problems that violate SOLID principles and make code harder to maintain, test, and extend.</p>
+</div>
 
 ### God Object
 **Problem**: One class does everything.
@@ -269,34 +278,38 @@ public string Greet() => "Hello";
 
 ## When to Use OOP vs Other Paradigms
 
-### Object-Oriented Programming
-**Best For**:
-- Business domain modeling
-- Complex state management
-- Clear entity relationships
-- Polymorphic behavior
-- Framework/library design
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Object-Oriented Programming</h4>
+<p><strong>Best For:</strong></p>
+<ul>
+<li>Business domain modeling</li>
+<li>Complex state management</li>
+<li>Clear entity relationships</li>
+<li>Polymorphic behavior</li>
+<li>Framework/library design</li>
+</ul>
+<p><strong>Example:</strong> E-commerce system with Products, Orders, Customers</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Functional Programming</h4>
+<p><strong>Best For:</strong></p>
+<ul>
+<li>Data transformation pipelines</li>
+<li>Stateless operations</li>
+<li>Mathematical computations</li>
+<li>Concurrent operations</li>
+<li>Immutable data</li>
+</ul>
+<p><strong>Example:</strong> Data processing, LINQ queries</p>
+</div>
+</div>
 
-**Example**: E-commerce system with Products, Orders, Customers
-
-### Functional Programming
-**Best For**:
-- Data transformation pipelines
-- Stateless operations
-- Mathematical computations
-- Concurrent operations
-- Immutable data
-
-**Example**: Data processing, LINQ queries
-
-### Procedural Programming
-**Best For**:
-- Simple scripts
-- Linear workflows
-- System utilities
-- One-off tasks
-
-**Example**: Build scripts, data migration
+<div class="callout callout--note">
+<p class="callout__title">Procedural Programming</p>
+<p><strong>Best For:</strong> Simple scripts, linear workflows, system utilities, one-off tasks</p>
+<p><strong>Example:</strong> Build scripts, data migration</p>
+</div>
 
 ### Hybrid Approach (Modern C#)
 ```csharp

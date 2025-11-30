@@ -19,6 +19,10 @@ tags: [architecture, governance, automation, aws, security, practical]
 
 ## Tool Selection Strategy
 
+<blockquote class="pull-quote">
+<p>Start with problems, not tools. Prove value at each phase before expanding. Make governance automatic, not manual.</p>
+</blockquote>
+
 ### Decision Matrix
 
 | Organization Size | Complexity | Regulatory Requirements | Recommended Tools |
@@ -47,15 +51,26 @@ tags: [architecture, governance, automation, aws, security, practical]
 
 **What it is:** Organizations provides multi-account management, Control Tower adds automated governance guardrails.
 
-**When to use:**
-- You have (or will have) multiple AWS accounts
-- Need to prevent specific actions (like disabling CloudTrail)
-- Want automated account provisioning
-- Require consolidated billing and security
-
-**When NOT to use:**
-- Single AWS account only (Organizations alone is sufficient)
-- Very early startup with 1-2 engineers (premature)
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>When to Use Control Tower</h4>
+<ul>
+<li>Multiple AWS accounts (or will have)</li>
+<li>Need to prevent specific actions (like disabling CloudTrail)</li>
+<li>Want automated account provisioning</li>
+<li>Require consolidated billing and security</li>
+<li>Organization is scaling</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>When NOT to Use</h4>
+<ul>
+<li>Single AWS account only (Organizations alone is sufficient)</li>
+<li>Very early startup with 1-2 engineers (premature)</li>
+<li>Not ready for multi-account complexity</li>
+</ul>
+</div>
+</div>
 
 **Why it's essential:**
 - Prevents accidental or intentional policy violations
@@ -87,19 +102,22 @@ Root
 
 ### Control Tower: Guardrails Priority
 
-Start with these guardrails only:
-
-**Mandatory (Preventive):**
-- Disallow public read access to S3 buckets
-- Disallow changes to CloudTrail
-- Disallow deletion of AWS Config resources
-
-**Recommended (Detective):**
-- Detect unencrypted EBS volumes
-- Detect unrestricted SSH access (0.0.0.0/0)
-- Detect root account usage
-
-**Add custom guardrails only when you have specific needs.** Don't enable everything "just in case."
+<div class="callout callout--tip">
+<p class="callout__title">Start Small with Guardrails</p>
+<p><strong>Mandatory (Preventive):</strong></p>
+<ul>
+<li>Disallow public read access to S3 buckets</li>
+<li>Disallow changes to CloudTrail</li>
+<li>Disallow deletion of AWS Config resources</li>
+</ul>
+<p><strong>Recommended (Detective):</strong></p>
+<ul>
+<li>Detect unencrypted EBS volumes</li>
+<li>Detect unrestricted SSH access (0.0.0.0/0)</li>
+<li>Detect root account usage</li>
+</ul>
+<p>Add custom guardrails only when you have specific needs. Don't enable everything "just in case."</p>
+</div>
 
 ### AWS Config: Compliance Monitoring
 
@@ -196,13 +214,19 @@ public class NamingConventionConfigRule
 
 ### Roslyn Analyzers (Start Here)
 
-**What it is:** Compile-time code analysis integrated into Visual Studio/VS Code.
+<div class="callout callout--tip">
+<p class="callout__title">Always Start with Roslyn Analyzers</p>
+<p><strong>Why start here:</strong></p>
+<ul>
+<li>Zero infrastructure required</li>
+<li>Catches issues immediately at compile time</li>
+<li>Free and built into .NET SDK</li>
+<li>Easily distributed via NuGet</li>
+<li>Fastest feedback loop possible</li>
+</ul>
+</div>
 
-**Why start here:**
-- Zero infrastructure required
-- Catches issues immediately
-- Free and built into .NET SDK
-- Easily distributed via NuGet
+**What it is:** Compile-time code analysis integrated into Visual Studio/VS Code.
 
 **Implementation:**
 
@@ -418,9 +442,12 @@ public class MyStack : Stack
 }
 ```
 
-**Aspects vs Guard:**
-- **Use Aspects** when you're already using CDK and need complex logic
-- **Use Guard** when you need simple policy validation or use both CDK and raw CFN
+<div class="callout callout--note">
+<p class="callout__title">Aspects vs Guard</p>
+<p><strong>Use Aspects</strong> when you're already using CDK and need complex logic with type safety.</p>
+<p><strong>Use Guard</strong> when you need simple policy validation or use both CDK and raw CloudFormation.</p>
+<p>Many teams use both: Guard for simple checks, Aspects for complex logic.</p>
+</div>
 
 ### Terraform + Open Policy Agent
 
@@ -613,6 +640,10 @@ rule required_tags {
 **Start with 3-4 tags only.** Add more as you prove value of existing tags.
 
 ## Implementation Roadmap
+
+<blockquote class="pull-quote">
+<p>Demonstrate value at each phase before moving to the next. Adjust priorities based on your specific pain points, not a generic roadmap.</p>
+</blockquote>
 
 ### Phase 1: Quick Wins (Week 1-4)
 

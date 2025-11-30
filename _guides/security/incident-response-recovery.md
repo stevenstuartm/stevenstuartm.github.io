@@ -22,6 +22,10 @@ NIST released updated incident response guidance in April 2025, emphasizing six 
 ### Incident Response Team Structure
 NIST recommends expanding beyond traditional "incident handler" teams to include company leadership, legal teams, technology professionals, public relations teams, and human resources.
 
+<blockquote class="pull-quote">
+<p>Incident response is a team sport that requires coordination across technical, legal, communications, and business functions.</p>
+</blockquote>
+
 **Core Team Roles**:
 - **Incident Commander**: Overall response coordination
 - **Security Analyst**: Technical investigation and analysis
@@ -33,6 +37,12 @@ NIST recommends expanding beyond traditional "incident handler" teams to include
 ### Response Phases
 
 #### Preparation
+
+<div class="callout callout--tip">
+<p class="callout__title">Preparation Determines Response Success</p>
+<p>The quality of your incident response is determined long before an incident occurs. Organizations with documented plans, trained teams, and tested procedures respond faster and more effectively than those scrambling to coordinate during a crisis.</p>
+</div>
+
 - **Policies and Procedures**: Documented response plans
 - **Team Training**: Regular drills and exercises
 - **Tools and Resources**: Incident response toolkit
@@ -70,11 +80,34 @@ NIST recommends expanding beyond traditional "incident handler" teams to include
 ### Recovery Strategies
 
 #### Site Recovery Options
-- **Hot Site**: Fully operational backup facility
-- **Warm Site**: Partially equipped facility (hours to days)
-- **Cold Site**: Basic facility with infrastructure only
-- **Cloud Recovery**: Virtual recovery environments
-- **Mobile Sites**: Portable recovery facilities
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Hot Site</h4>
+<ul>
+<li>Fully operational backup facility</li>
+<li>Near-instant failover capability</li>
+<li>Highest cost</li>
+<li>Best for critical systems requiring minimal downtime</li>
+</ul>
+<p><strong>RTO</strong>: Minutes to hours</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Warm Site</h4>
+<ul>
+<li>Partially equipped facility</li>
+<li>Requires configuration and data restore</li>
+<li>Moderate cost</li>
+<li>Balance between cost and recovery speed</li>
+</ul>
+<p><strong>RTO</strong>: Hours to days</p>
+</div>
+</div>
+
+<div class="callout callout--note">
+<p class="callout__title">Cloud Recovery and Cold Sites</p>
+<p><strong>Cloud Recovery</strong> environments offer flexible, cost-effective alternatives to physical sites with on-demand scaling. <strong>Cold Sites</strong> provide basic infrastructure only (power, cooling, network) but require full equipment procurement and setup, resulting in days to weeks recovery time and the lowest cost option.</p>
+</div>
 
 #### Data Backup Strategies
 - **Full Backup**: Complete data copy

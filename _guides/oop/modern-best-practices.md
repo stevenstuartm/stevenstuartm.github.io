@@ -13,11 +13,19 @@ tags: [oop, best-practices, practical, maintainability, modern]
 
 **Definition**: Favor object composition over class inheritance to achieve code reuse and flexibility.
 
-**Why This Matters**:
-- Inheritance creates tight coupling between parent and child classes
-- Deep inheritance hierarchies become fragile and hard to maintain
-- Composition provides better flexibility and testability
-- Avoids the "fragile base class" problem
+<blockquote class="pull-quote">
+<p>Favor object composition over class inheritance to achieve code reuse and flexibility.</p>
+</blockquote>
+
+<div class="callout callout--note">
+<p class="callout__title">Why This Matters</p>
+<ul>
+<li>Inheritance creates tight coupling between parent and child classes</li>
+<li>Deep inheritance hierarchies become fragile and hard to maintain</li>
+<li>Composition provides better flexibility and testability</li>
+<li>Avoids the "fragile base class" problem</li>
+</ul>
+</div>
 
 **Inheritance Problems**:
 ```csharp
@@ -94,9 +102,26 @@ var regularDog = new Dog(new WalkingMovement(), new BarkSound());
 var robotDog = new Dog(new WheelMovement(), new RobotSound());
 ```
 
-**When to Use**:
-- **Inheritance**: True "is-a" relationships with shallow hierarchies (1-2 levels)
-- **Composition**: "has-a" or "uses-a" relationships, behavior combinations
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Use Inheritance When</h4>
+<ul>
+<li>True "is-a" relationships</li>
+<li>Shallow hierarchies (1-2 levels)</li>
+<li>Base class provides core functionality</li>
+<li>Derived classes are true specializations</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Use Composition When</h4>
+<ul>
+<li>"Has-a" or "uses-a" relationships</li>
+<li>Behavior combinations needed</li>
+<li>Runtime flexibility required</li>
+<li>Multiple behaviors to mix and match</li>
+</ul>
+</div>
+</div>
 
 ## Dependency Injection
 
@@ -254,17 +279,26 @@ public class SimpleCalculator
 }
 ```
 
-**When Simple is Better**:
-- Straightforward business logic
-- One-time use code
-- Internal utilities
-- Prototypes and MVPs
-
-**When Complexity is Justified**:
-- Anticipating multiple variations
-- Complex business rules
-- Framework/library code
-- High reuse scenarios
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>When Simple is Better</h4>
+<ul>
+<li>Straightforward business logic</li>
+<li>One-time use code</li>
+<li>Internal utilities</li>
+<li>Prototypes and MVPs</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>When Complexity is Justified</h4>
+<ul>
+<li>Anticipating multiple variations</li>
+<li>Complex business rules</li>
+<li>Framework/library code</li>
+<li>High reuse scenarios</li>
+</ul>
+</div>
+</div>
 
 ### YAGNI (You Aren't Gonna Need It)
 
@@ -292,11 +326,19 @@ public class UserService
 }
 ```
 
-**Benefits**:
-- Less code to maintain
-- Faster initial development
-- Easier to understand
-- Avoid wrong assumptions about future needs
+<blockquote class="pull-quote">
+<p>Don't implement features before they're needed. Focus on current requirements and add capabilities when they become actual needs, not anticipated ones.</p>
+</blockquote>
+
+<div class="callout callout--tip">
+<p class="callout__title">Benefits of YAGNI</p>
+<ul>
+<li>Less code to maintain</li>
+<li>Faster initial development</li>
+<li>Easier to understand</li>
+<li>Avoid wrong assumptions about future needs</li>
+</ul>
+</div>
 
 ### DRY (Don't Repeat Yourself)
 

@@ -11,7 +11,11 @@ tags: [architecture, modeling, documentation, diagrams, practical, fundamentals]
 
 The C4 model is a hierarchical approach to software architecture diagramming created by [Simon Brown](https://simonbrown.je/){:target="_blank" rel="noopener noreferrer"}. It provides four levels of abstraction (Context, Containers, Components, and Code) that work like a map zoom function for software systems. Each level reveals appropriate detail for its audience without overwhelming them with implementation specifics that rapidly become outdated.
 
-The model was created in response to the problems with traditional UML diagrams: they often show too much detail too early, use inconsistent notation across teams, and focus on implementation details that change frequently rather than architectural decisions that remain stable. C4 focuses on what matters when it matters, showing only the information relevant to each level of abstraction.
+<blockquote class="pull-quote">
+<p>C4 focuses on what matters when it matters, showing only the information relevant to each level of abstraction.</p>
+</blockquote>
+
+The model was created in response to the problems with traditional UML diagrams: they often show too much detail too early, use inconsistent notation across teams, and focus on implementation details that change frequently rather than architectural decisions that remain stable.
 
 ### The Four Levels
 
@@ -43,17 +47,28 @@ Optional level showing how a specific component is implemented using classes, in
 
 UML provides extensive notation for many purposes: class diagrams, sequence diagrams, activity diagrams, state diagrams, deployment diagrams. This flexibility becomes a problem when teams use different diagram types inconsistently, notation varies between tools and individuals, and diagrams often show implementation details that become stale as soon as code changes.
 
-C4 addresses these problems directly:
-
-**Focused scope**: C4 specifically targets software architecture diagramming, not general-purpose modeling. This focus allows it to be prescriptive where UML is permissive.
-
-**Simple notation**: C4 uses boxes and lines with labels. No need to memorize whether an arrow should be solid or dashed, filled or empty, pointing one way or bidirectional. If you can draw a rectangle and a line, you can create C4 diagrams.
-
-**Stable abstractions**: C4 encourages documenting architectural decisions (system boundaries, container choices, component organization) that remain stable over time. Implementation details that change frequently (class hierarchies, method signatures) are deliberately excluded or relegated to the optional code level.
-
-**Technology visibility**: UML deployment diagrams can show infrastructure, but they're often disconnected from the logical views. C4 containers make technology choices explicit at the architecture level, showing what's a web app, what's a database, what's a message queue, and how they communicate.
-
-**Hierarchy prevents chaos**: UML lets you create any diagram at any time. C4's hierarchical approach enforces discipline: start with context, then containers, then components. This prevents teams from jumping straight to detailed class diagrams before understanding the system boundaries.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>C4 Model Advantages</h4>
+<ul>
+<li><strong>Focused scope</strong>: Specifically targets software architecture diagramming</li>
+<li><strong>Simple notation</strong>: Boxes and lines with labels—no memorization required</li>
+<li><strong>Stable abstractions</strong>: Documents architectural decisions that remain stable over time</li>
+<li><strong>Technology visibility</strong>: Makes technology choices explicit at each level</li>
+<li><strong>Hierarchy prevents chaos</strong>: Enforces discipline through levels (Context → Container → Component)</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>UML Challenges</h4>
+<ul>
+<li><strong>General-purpose</strong>: Many diagram types with inconsistent usage across teams</li>
+<li><strong>Complex notation</strong>: Requires memorizing arrow types, line styles, and symbols</li>
+<li><strong>Implementation focus</strong>: Often shows details that change frequently and become stale</li>
+<li><strong>Disconnected views</strong>: Deployment diagrams often separate from logical views</li>
+<li><strong>Permissive</strong>: Teams can jump to detailed class diagrams prematurely</li>
+</ul>
+</div>
+</div>
 
 ## When to Use C4
 
@@ -110,19 +125,17 @@ C4 and UML complement each other when used appropriately. The goal is to use eac
 
 ## Creating Effective C4 Diagrams
 
-**Start at the top**: Always begin with a System Context diagram. This forces you to define system boundaries and identify external dependencies before diving into implementation details.
-
-**Label everything**: Every box should have a name and a type (Person, Software System, Container, Component). Every line should have a label describing the interaction (e.g., "Makes API calls to", "Reads from and writes to", "Sends events to").
-
-**Show technology explicitly**: On Container and Component diagrams, include technology choices in square brackets (e.g., "Web Application [React]", "Database [PostgreSQL]", "API [ASP.NET Core]"). This makes architecture decisions visible.
-
-**Use color meaningfully**: Differentiate internal vs. external systems, or highlight specific areas of concern (e.g., legacy vs. new systems). But don't overdo it; too many colors create visual noise.
-
-**Keep it current**: Unlike code-level diagrams, C4 diagrams should be maintained as the architecture evolves. When you add a new container or change how containers communicate, update the diagrams. This is feasible because C4 focuses on stable abstractions.
+<div class="callout callout--tip">
+<p class="callout__title">Best Practices for C4 Diagrams</p>
+<p><strong>Start at the top</strong>: Always begin with a System Context diagram. This forces you to define system boundaries and identify external dependencies before diving into implementation details.</p>
+<p><strong>Label everything</strong>: Every box should have a name and a type (Person, Software System, Container, Component). Every line should have a label describing the interaction (e.g., "Makes API calls to", "Reads from and writes to", "Sends events to").</p>
+<p><strong>Show technology explicitly</strong>: On Container and Component diagrams, include technology choices in square brackets (e.g., "Web Application [React]", "Database [PostgreSQL]", "API [ASP.NET Core]"). This makes architecture decisions visible.</p>
+<p><strong>Use color meaningfully</strong>: Differentiate internal vs. external systems, or highlight specific areas of concern (e.g., legacy vs. new systems). But don't overdo it; too many colors create visual noise.</p>
+<p><strong>Keep it current</strong>: Unlike code-level diagrams, C4 diagrams should be maintained as the architecture evolves. When you add a new container or change how containers communicate, update the diagrams. This is feasible because C4 focuses on stable abstractions.</p>
+<p><strong>Stop at the right level</strong>: Not every system needs all four levels. Many teams find that Context and Container diagrams provide 80% of the value. Only create Component diagrams for containers with significant complexity. Skip Code diagrams unless you need them for onboarding or teaching purposes.</p>
+</div>
 
 **Use diagramming-as-code tools**: Tools like [Structurizr](https://structurizr.com/){:target="_blank" rel="noopener noreferrer"}, [PlantUML](https://plantuml.com/){:target="_blank" rel="noopener noreferrer"} with C4 extensions, or [Diagrams](https://diagrams.mingrammer.com/){:target="_blank" rel="noopener noreferrer"} let you define diagrams in code. This makes them versionable, reviewable, and easier to keep in sync with architecture changes.
-
-**Stop at the right level**: Not every system needs all four levels. Many teams find that Context and Container diagrams provide 80% of the value. Only create Component diagrams for containers with significant complexity. Skip Code diagrams unless you need them for onboarding or teaching purposes.
 
 ## Common Pitfalls
 

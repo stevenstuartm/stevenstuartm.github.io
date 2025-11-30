@@ -19,10 +19,14 @@ Each microservice owns its data and database, ensuring loose coupling and servic
 - Want to enable independent service evolution
 - Need to prevent database-level coupling
 
-**Challenges**:
-- No ACID transactions across services
-- Data consistency becomes more complex
-- Reporting across services requires aggregation
+<div class="callout callout--warning">
+<p class="callout__title">Database per Service Challenges</p>
+<ul>
+<li>No ACID transactions across services</li>
+<li>Data consistency becomes more complex</li>
+<li>Reporting across services requires aggregation</li>
+</ul>
+</div>
 
 **Example**: E-commerce system where user service uses SQL database, product catalog uses document database, and recommendation engine uses graph database.
 
@@ -36,19 +40,26 @@ Recommendation Service → Neo4j
 
 ## Shared Database
 
-Multiple services access the same database, sharing data directly.
-
-**Use When**:
-- Tight coupling between services is acceptable
-- ACID transactions across services are required
-- Migrating from monolithic applications
-- Services have significant data overlap
-
-**Drawbacks**:
-- Creates tight coupling between services
-- Database becomes a bottleneck
-- Reduces service autonomy
-- Schema changes affect multiple services
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>When to Use Shared Database</h4>
+<ul>
+<li>Tight coupling between services is acceptable</li>
+<li>ACID transactions across services are required</li>
+<li>Migrating from monolithic applications</li>
+<li>Services have significant data overlap</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Drawbacks of Shared Database</h4>
+<ul>
+<li>Creates tight coupling between services</li>
+<li>Database becomes a bottleneck</li>
+<li>Reduces service autonomy</li>
+<li>Schema changes affect multiple services</li>
+</ul>
+</div>
+</div>
 
 ---
 
@@ -58,17 +69,25 @@ Multiple services access the same database, sharing data directly.
 
 Stores all changes to application state as an immutable sequence of events rather than storing only current state. The current state is derived by replaying events from the beginning.
 
+<blockquote class="pull-quote">
+<p>Event sourcing maintains a complete audit trail of all changes, allowing you to replay events for testing, analytics, or answering temporal queries like "what was the state at time X?"</p>
+</blockquote>
+
 **Use When**:
 - Need complete audit trail of all changes
 - Want to replay events for testing or analytics
 - Implementing complex business domains (especially with Domain-Driven Design)
-- Building systems that benefit from temporal queries ("what was the state at time X?")
+- Building systems that benefit from temporal queries
 
-**Considerations**:
-- Event store grows continuously (implement snapshotting for performance)
-- Complex queries may require rebuilding state from events
-- Need to handle event schema evolution carefully
-- Deleting data is complex (GDPR compliance requires special handling)
+<div class="callout callout--warning">
+<p class="callout__title">Event Sourcing Considerations</p>
+<ul>
+<li>Event store grows continuously (implement snapshotting for performance)</li>
+<li>Complex queries may require rebuilding state from events</li>
+<li>Need to handle event schema evolution carefully</li>
+<li>Deleting data is complex (GDPR compliance requires special handling)</li>
+</ul>
+</div>
 
 **Example**: Banking system that stores all account transactions as events (deposit, withdrawal, transfer) and calculates current balance by replaying events.
 
@@ -93,10 +112,12 @@ Separates read (query) and write (command) operations into different models, oft
 - Different consistency requirements for reads and writes
 - Working with Event Sourcing (natural fit)
 
-**Implementation Options**:
-- **Simple**: Separate models, same database
-- **Advanced**: Separate databases for reads and writes
-- **Full**: Event sourcing for writes, materialized projections for reads
+<div class="callout callout--note">
+<p class="callout__title">CQRS Implementation Options</p>
+<p><strong>Simple</strong>: Separate models, same database</p>
+<p><strong>Advanced</strong>: Separate databases for reads and writes</p>
+<p><strong>Full</strong>: Event sourcing for writes, materialized projections for reads</p>
+</div>
 
 **Example**: Social media platform with write-optimized database for posts and read-optimized database with denormalized data for feeds and searches.
 
@@ -106,7 +127,10 @@ Read: Feed Service → Query DB (denormalized, optimized for feeds)
 Sync: Command DB → Events → Update Query DB
 ```
 
-**Warning**: CQRS adds complexity. Don't use unless you have a specific problem it solves.
+<div class="callout callout--warning">
+<p class="callout__title">Warning</p>
+<p>CQRS adds complexity. Don't use unless you have a specific problem it solves.</p>
+</div>
 
 ---
 

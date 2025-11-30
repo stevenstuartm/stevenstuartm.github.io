@@ -11,16 +11,22 @@ tags: [oop, fundamentals, encapsulation, inheritance, polymorphism, practical]
 
 ## Core OOP Pillars
 
-Object-Oriented Programming is built on four fundamental pillars that work together to create maintainable, scalable software systems.
+<blockquote class="pull-quote">
+<p>Object-Oriented Programming is built on four fundamental pillars that work together to create maintainable, scalable software systems.</p>
+</blockquote>
 
 ### Abstraction
 
 **Definition**: Hide complex implementation details while exposing a simple, clear interface.
 
-**Key Principles**:
-- Focus on what an object does rather than how it does it
-- Define contracts through interfaces and abstract classes
-- Reduce complexity by hiding unnecessary details
+<div class="callout callout--note">
+<p class="callout__title">Key Principles of Abstraction</p>
+<ul>
+<li>Focus on what an object does rather than how it does it</li>
+<li>Define contracts through interfaces and abstract classes</li>
+<li>Reduce complexity by hiding unnecessary details</li>
+</ul>
+</div>
 
 **Example**:
 ```csharp
@@ -85,11 +91,19 @@ public class OrderService
 
 **Definition**: Bundle data and methods that operate on that data within a single unit, controlling access through visibility modifiers.
 
-**Key Principles**:
-- Keep internal state private
-- Expose behavior through public methods
-- Use properties for controlled access to data
-- Protect object invariants
+<blockquote class="pull-quote">
+<p>Encapsulation bundles data and methods that operate on that data within a single unit, controlling access through visibility modifiers.</p>
+</blockquote>
+
+<div class="callout callout--note">
+<p class="callout__title">Key Principles of Encapsulation</p>
+<ul>
+<li>Keep internal state private</li>
+<li>Expose behavior through public methods</li>
+<li>Use properties for controlled access to data</li>
+<li>Protect object invariants</li>
+</ul>
+</div>
 
 **Example**:
 ```csharp
@@ -147,11 +161,15 @@ public class BankAccount
 
 **Definition**: Create new classes based on existing classes, establishing "is-a" relationships and enabling code reuse.
 
-**Key Principles**:
-- Use inheritance for true "is-a" relationships
-- Prefer composition over inheritance when possible
-- Follow the Liskov Substitution Principle
-- Avoid deep inheritance hierarchies (3+ levels)
+<div class="callout callout--warning">
+<p class="callout__title">Key Principles of Inheritance</p>
+<ul>
+<li>Use inheritance for true "is-a" relationships</li>
+<li>Prefer composition over inheritance when possible</li>
+<li>Follow the Liskov Substitution Principle</li>
+<li>Avoid deep inheritance hierarchies (3+ levels)</li>
+</ul>
+</div>
 
 **Example**:
 ```csharp
@@ -273,11 +291,19 @@ public class ModernEmployee
 
 **Definition**: Objects of different types can be treated as instances of the same type, with behavior determined at runtime.
 
-**Key Principles**:
-- Enable flexible, extensible code
-- Support method overriding (runtime polymorphism)
-- Support method overloading (compile-time polymorphism)
-- Work with abstractions, not concrete types
+<blockquote class="pull-quote">
+<p>Polymorphism allows objects of different types to be treated as instances of the same type, with behavior determined at runtime.</p>
+</blockquote>
+
+<div class="callout callout--note">
+<p class="callout__title">Key Principles of Polymorphism</p>
+<ul>
+<li>Enable flexible, extensible code</li>
+<li>Support method overriding (runtime polymorphism)</li>
+<li>Support method overloading (compile-time polymorphism)</li>
+<li>Work with abstractions, not concrete types</li>
+</ul>
+</div>
 
 **Runtime Polymorphism Example**:
 ```csharp

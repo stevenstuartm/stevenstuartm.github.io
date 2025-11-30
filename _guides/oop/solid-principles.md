@@ -11,7 +11,9 @@ tags: [oop, design-patterns, solid, fundamentals, maintainability, practical]
 
 *SOLID principles introduced and popularized by Robert C. Martin ("Uncle Bob") in the early 2000s, with the acronym coined by Michael Feathers*
 
-> **SOLID** principles create maintainable, scalable, and flexible software systems that are easier to understand, modify, and extend over time.
+<blockquote class="pull-quote">
+<p>SOLID principles create maintainable, scalable, and flexible software systems that are easier to understand, modify, and extend over time.</p>
+</blockquote>
 
 **Historical context**: While Martin popularized these under the SOLID acronym, the individual principles have earlier origins:
 - Single Responsibility: Tom DeMarco & Meilir Page-Jones (cohesion concepts, 1970s-80s)
@@ -26,11 +28,15 @@ tags: [oop, design-patterns, solid, fundamentals, maintainability, practical]
 
 **Intent**: Each class should focus on a single concern, making it easier to understand, test, and maintain.
 
-**Benefits**:
-- Easier to test and maintain
-- Reduces coupling between components
-- Simplifies debugging and troubleshooting
-- Clearer code organization
+<div class="callout callout--tip">
+<p class="callout__title">Benefits of Single Responsibility</p>
+<ul>
+<li>Easier to test and maintain</li>
+<li>Reduces coupling between components</li>
+<li>Simplifies debugging and troubleshooting</li>
+<li>Clearer code organization</li>
+</ul>
+</div>
 
 **Example Violation**:
 ```csharp
@@ -144,11 +150,19 @@ public class PayStubNotifier
 
 **Intent**: Design classes so new functionality can be added without changing existing code, reducing risk of bugs.
 
-**Benefits**:
-- Add new features without changing existing code
-- Reduces risk of introducing bugs in working code
-- Promotes code reusability
-- Supports plugin architectures
+<blockquote class="pull-quote">
+<p>Software entities should be open for extension but closed for modification.</p>
+</blockquote>
+
+<div class="callout callout--tip">
+<p class="callout__title">Benefits of Open-Closed Principle</p>
+<ul>
+<li>Add new features without changing existing code</li>
+<li>Reduces risk of introducing bugs in working code</li>
+<li>Promotes code reusability</li>
+<li>Supports plugin architectures</li>
+</ul>
+</div>
 
 **Example Violation**:
 ```csharp
@@ -233,17 +247,29 @@ public class Hexagon : IShape
 
 **Intent**: Subtypes must be substitutable for their base types without breaking functionality.
 
-**Benefits**:
-- Ensures polymorphism works correctly
-- Maintains contract integrity
-- Enables reliable inheritance hierarchies
-- Prevents unexpected behavior
+<blockquote class="pull-quote">
+<p>Objects of a superclass should be replaceable with objects of a subclass without altering the correctness of the program.</p>
+</blockquote>
 
-**Key Rule**: Subclasses must:
-- Strengthen postconditions (can return more specific types)
-- Weaken preconditions (can accept more general parameters)
-- Preserve invariants (maintain class constraints)
-- Not throw new exceptions on base methods
+<div class="callout callout--tip">
+<p class="callout__title">Benefits of Liskov Substitution</p>
+<ul>
+<li>Ensures polymorphism works correctly</li>
+<li>Maintains contract integrity</li>
+<li>Enables reliable inheritance hierarchies</li>
+<li>Prevents unexpected behavior</li>
+</ul>
+</div>
+
+<div class="callout callout--warning">
+<p class="callout__title">Key Rule: Subclasses Must</p>
+<ul>
+<li>Strengthen postconditions (can return more specific types)</li>
+<li>Weaken preconditions (can accept more general parameters)</li>
+<li>Preserve invariants (maintain class constraints)</li>
+<li>Not throw new exceptions on base methods</li>
+</ul>
+</div>
 
 **Example Violation**:
 ```csharp
@@ -340,11 +366,15 @@ public void MakeFlyableFly(IFlyable flyable)
 
 **Intent**: Create small, focused interfaces rather than large, monolithic ones.
 
-**Benefits**:
-- Reduces coupling between components
-- Avoids unnecessary dependencies
-- Enables more targeted implementations
-- Improves code clarity
+<div class="callout callout--tip">
+<p class="callout__title">Benefits of Interface Segregation</p>
+<ul>
+<li>Reduces coupling between components</li>
+<li>Avoids unnecessary dependencies</li>
+<li>Enables more targeted implementations</li>
+<li>Improves code clarity</li>
+</ul>
+</div>
 
 **Example Violation**:
 ```csharp
@@ -439,11 +469,19 @@ public class PayrollManager
 
 **Intent**: Decouple high-level business logic from low-level implementation details.
 
-**Benefits**:
-- Improves testability through dependency injection
-- Reduces coupling between layers
-- Enables flexible architecture
-- Supports multiple implementations
+<blockquote class="pull-quote">
+<p>High-level modules should not depend on low-level modules. Both should depend on abstractions.</p>
+</blockquote>
+
+<div class="callout callout--tip">
+<p class="callout__title">Benefits of Dependency Inversion</p>
+<ul>
+<li>Improves testability through dependency injection</li>
+<li>Reduces coupling between layers</li>
+<li>Enables flexible architecture</li>
+<li>Supports multiple implementations</li>
+</ul>
+</div>
 
 **Example Violation**:
 ```csharp

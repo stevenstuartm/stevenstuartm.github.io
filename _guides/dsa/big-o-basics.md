@@ -7,6 +7,10 @@ tags: [algorithms, complexity-analysis, fundamentals, performance, interview-pre
 
 ## Why Big O Matters
 
+<blockquote class="pull-quote">
+<p>The difference between O(n) and O(n²) might seem small on paper, but it's the difference between a search taking 1 second vs 17 minutes with a million items.</p>
+</blockquote>
+
 Understanding Big O isn't about memorizing formulas; it's about developing intuition for how algorithms scale. When your app works fine with 100 users but crashes with 1,000, that's a Big O problem. This guide gives you the practical tools to predict and prevent performance issues before they happen.
 
 **Real impact:** The difference between O(n) and O(n²) might seem small on paper, but it's the difference between a search taking 1 second vs 17 minutes with a million items.
@@ -250,17 +254,15 @@ function recursiveFunction(n) {
 
 ## Common Misconceptions
 
-### ❌ "Big O gives exact runtime"
-**Reality:** Big O shows growth patterns, not precise timing
-
-### ❌ "O(n) is always faster than O(n²)"
-**Reality:** With small inputs, O(n²) might be faster due to lower overhead
-
-### ❌ "Better Big O always means better algorithm"
-**Reality:** Consider constants, memory usage, and real-world constraints
-
-### ❌ "Optimize everything to O(1)"
-**Reality:** Sometimes O(n) with simple code beats O(1) with complex overhead
+<div class="callout callout--warning">
+<p class="callout__title">Big O Misconceptions</p>
+<ul>
+<li><strong>❌ "Big O gives exact runtime"</strong> → Reality: Big O shows growth patterns, not precise timing</li>
+<li><strong>❌ "O(n) is always faster than O(n²)"</strong> → Reality: With small inputs, O(n²) might be faster due to lower overhead</li>
+<li><strong>❌ "Better Big O always means better algorithm"</strong> → Reality: Consider constants, memory usage, and real-world constraints</li>
+<li><strong>❌ "Optimize everything to O(1)"</strong> → Reality: Sometimes O(n) with simple code beats O(1) with complex overhead</li>
+</ul>
+</div>
 
 ---
 

@@ -11,9 +11,15 @@ tags: [oop, design-patterns, structural-patterns, adapter, decorator, practical]
 
 *Structural patterns from the Gang of Four's "Design Patterns" (1994): Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides*
 
-> Structural patterns deal with object composition and relationships, helping form larger structures while maintaining flexibility.
+<blockquote class="pull-quote">
+<p>Structural patterns deal with object composition and relationships, helping form larger structures while maintaining flexibility.</p>
+</blockquote>
 
 ## Adapter Pattern
+
+<blockquote class="pull-quote">
+<p>Adapter pattern allows incompatible interfaces to work together by wrapping existing functionality without modifying the original code.</p>
+</blockquote>
 
 **Purpose**: Allow incompatible interfaces to work together by wrapping existing functionality.
 
@@ -76,6 +82,11 @@ shape.Move(30, 40);
 ```
 
 ## Bridge Pattern
+
+<div class="callout callout--note">
+<p class="callout__title">Purpose: Avoid Cartesian Product Explosion</p>
+<p>Bridge pattern separates abstraction from implementation to avoid creating N × M classes when you have N abstractions and M implementations.</p>
+</div>
 
 **Purpose**: Separate abstraction from implementation to avoid Cartesian product complexity.
 
@@ -485,7 +496,22 @@ document.Display();
 
 ## Proxy Pattern
 
+<blockquote class="pull-quote">
+<p>Proxy pattern controls access to objects through a surrogate, enabling lazy loading, access control, caching, and logging without changing the original object.</p>
+</blockquote>
+
 **Purpose**: Control access to objects through a surrogate or placeholder.
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Protection Proxy</h4>
+<p>Controls access based on permissions or conditions. Validates access rights before delegating to real object.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Virtual Proxy</h4>
+<p>Delays expensive object creation until actually needed. Creates real object only on first use (lazy loading).</p>
+</div>
+</div>
 
 **Protection Proxy**
 ```csharp

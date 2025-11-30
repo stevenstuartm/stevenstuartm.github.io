@@ -6,6 +6,11 @@ tags: [data-structures, algorithms, fundamentals, practical, interview-prep]
 ---
 
 ## Why Linked Lists Exist
+
+<blockquote class="pull-quote">
+<p>Dynamic sizing without pre-allocating memory, efficient insertion/deletion anywhere without shifting elements.</p>
+</blockquote>
+
 Dynamic sizing without pre-allocating memory, efficient insertion/deletion anywhere. They solve the fixed-size problem of static arrays while allowing insertion/deletion at arbitrary positions.
 
 ## When to Use Linked Lists
@@ -149,16 +154,25 @@ Console.WriteLine(ll.StringifyList()); // A -> C -> null
 
 ## Doubly Linked List
 
-**When to use doubly linked:**
-- Need bidirectional traversal
-- Implementing undo/redo functionality
-- Browser history navigation
-- Music playlist with previous/next
-
-**Don't use when:**
-- Memory is constrained (50% more pointers)
-- Only need forward traversal
-- Working with simple, small datasets
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>When to Use Doubly Linked</h4>
+<ul>
+<li>Need bidirectional traversal</li>
+<li>Implementing undo/redo functionality</li>
+<li>Browser history navigation</li>
+<li>Music playlist with previous/next</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>When to Avoid</h4>
+<ul>
+<li>Memory is constrained (50% more pointers)</li>
+<li>Only need forward traversal</li>
+<li>Working with simple, small datasets</li>
+</ul>
+</div>
+</div>
 
 ### C# Implementation
 ```csharp

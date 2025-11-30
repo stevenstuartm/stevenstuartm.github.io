@@ -17,6 +17,10 @@ tags: [architecture, governance, frameworks, leadership, compliance, standards]
 
 ## Choosing a Governance Approach
 
+<blockquote class="pull-quote">
+<p>Choose based on organization size, complexity, and regulatory requirements—not on what seems comprehensive or impressive.</p>
+</blockquote>
+
 Before selecting a framework, understand your governance needs based on organization characteristics.
 
 ### Decision Matrix
@@ -42,10 +46,10 @@ Before selecting a framework, understand your governance needs based on organiza
 - **Defined (Level 3):** Implement comprehensive framework with defined processes
 - **Optimized (Level 4):** Fine-tune framework to organizational needs
 
-**3. What can we realistically maintain?**
-- Frameworks require ongoing commitment and cultural adoption
-- Start small and expand based on demonstrated value
-- Heavy frameworks like TOGAF need dedicated enterprise architects
+<div class="callout callout--tip">
+<p class="callout__title">Key Question: What Can We Maintain?</p>
+<p>Frameworks require ongoing commitment and cultural adoption. Start small and expand based on demonstrated value. Heavy frameworks like TOGAF need dedicated enterprise architects.</p>
+</div>
 
 ## Enterprise Architecture Frameworks
 
@@ -69,16 +73,27 @@ Each pillar contains design principles, best practices, and specific questions t
 
 The framework operates through iterative review cycles where teams assess current state, identify high-risk areas, and create improvement plans prioritized by business impact.
 
-**When to use:**
-- You're building on AWS (any organization size)
-- Need objective criteria for architecture reviews
-- Want lightweight process without heavy documentation
-- Conducting quarterly architecture reviews
-
-**When NOT to use:**
-- You need enterprise-wide governance across multiple clouds
-- You require formal methodology like TOGAF for regulatory compliance
-- Your systems are primarily on-premises
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>When to Use AWS Well-Architected</h4>
+<ul>
+<li>Building on AWS (any organization size)</li>
+<li>Need objective architecture review criteria</li>
+<li>Want lightweight process without heavy docs</li>
+<li>Conducting quarterly architecture reviews</li>
+<li>Starting governance journey</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>When NOT to Use</h4>
+<ul>
+<li>Need enterprise-wide governance across multiple clouds</li>
+<li>Require formal methodology like TOGAF for regulatory compliance</li>
+<li>Systems are primarily on-premises</li>
+<li>Non-AWS cloud providers</li>
+</ul>
+</div>
+</div>
 
 **Why it works:**
 - Free and AWS-supported with extensive documentation
@@ -145,13 +160,16 @@ TOGAF emphasizes stakeholder management, requirements management (continuous thr
 - Well-established with training and certifications
 - Addresses both technical and business architecture
 
+<div class="callout callout--warning">
+<p class="callout__title">Common Mistake</p>
+<p>Implementing TOGAF by-the-book creates bureaucracy. Adapt it to your culture and needs. Don't try to use all phases—focus on phases B-D (architecture definition) and H (change management) for governance.</p>
+</div>
+
 **How to implement:**
 1. Train enterprise architecture team on TOGAF
 2. Adapt ADM phases to organization needs (don't follow blindly)
 3. Focus on phases B-D (architecture definition) and H (change management) for governance
 4. Use TOGAF artifacts as templates, not mandates
-
-**Common mistake:** Implementing TOGAF by-the-book creates bureaucracy. Adapt it to your culture and needs.
 
 **Resources:**
 - [The Open Group - TOGAF Standard](https://www.opengroup.org/togaf){:target="_blank" rel="noopener noreferrer"}
@@ -211,13 +229,16 @@ The framework helps identify gaps in enterprise documentation, ensures comprehen
 - Helps identify gaps in enterprise architecture documentation
 - Common language across stakeholders
 
+<div class="callout callout--warning">
+<p class="callout__title">Common Mistake</p>
+<p>Treating Zachman as implementation methodology. It's a taxonomy for organizing architecture artifacts, not a process for creating them. Use it to classify and organize, not to guide development.</p>
+</div>
+
 **How to implement:**
 - Use as classification system for existing artifacts
 - Don't try to fill every cell in the matrix
 - Focus on perspectives relevant to your organization
 - Combine with methodologies like TOGAF for process guidance
-
-**Common mistake:** Treating Zachman as implementation methodology. It's a taxonomy for organizing architecture artifacts, not a process for creating them.
 
 **Resources:**
 - [Zachman International - Official Site](https://www.zachman.com/){:target="_blank" rel="noopener noreferrer"}

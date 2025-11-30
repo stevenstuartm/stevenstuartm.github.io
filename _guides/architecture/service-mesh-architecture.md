@@ -9,6 +9,10 @@ tags: [architecture, service-mesh, microservices, networking, distributed-system
 
 ## What is a Service Mesh?
 
+<blockquote class="pull-quote">
+<p>A service mesh centralizes networking logic (retries, timeouts, circuit breakers, encryption) in infrastructure, eliminating duplication and inconsistency across microservices.</p>
+</blockquote>
+
 A service mesh is a dedicated infrastructure layer that manages service-to-service communication in a microservices architecture. It handles cross-cutting concerns like service discovery, load balancing, failure recovery, metrics collection, and security without requiring changes to application code.
 
 **Core premise**: As microservices proliferate, each service reimplementing networking logic (retries, timeouts, circuit breakers, encryption) creates duplication and inconsistency. A service mesh centralizes these concerns in infrastructure.
@@ -141,7 +145,10 @@ Gain visibility into service-to-service communication.
 
 ## When to Adopt a Service Mesh
 
-Service meshes add complexity. Adopt when benefits justify the cost.
+<div class="callout callout--warning">
+<p class="callout__title">Service Meshes Add Complexity</p>
+<p>Service meshes add significant operational complexity, resource overhead, and a learning curve. Only adopt when the benefits clearly justify the cost—typically in large-scale microservices environments with polyglot architectures or strict security requirements.</p>
+</div>
 
 ### When Service Mesh Makes Sense
 

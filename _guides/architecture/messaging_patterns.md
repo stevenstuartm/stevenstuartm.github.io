@@ -136,9 +136,11 @@ Stores large message payloads separately and sends only a reference (claim check
 4. Optional: Delete S3 object after processing
 ```
 
-**Trade-offs**:
-- **Pros**: Keeps messages small, works around broker limits, reduces memory usage
-- **Cons**: Extra retrieval step, external storage dependency, consistency challenges (what if message succeeds but payload deleted?)
+<div class="callout callout--tip">
+<p class="callout__title">Trade-offs</p>
+<p><strong>Pros:</strong> Keeps messages small, works around broker limits, reduces memory usage</p>
+<p><strong>Cons:</strong> Extra retrieval step, external storage dependency, consistency challenges (what if message succeeds but payload deleted?)</p>
+</div>
 
 ---
 

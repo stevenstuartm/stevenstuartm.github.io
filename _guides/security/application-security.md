@@ -23,31 +23,52 @@ tags: [security, application-security, threat-modeling, secure-coding, sdlc, pra
 - **Collaboration**: Development, security, and operations teams
 - **Continuous Monitoring**: Runtime security analysis
 
+<blockquote class="pull-quote">
+<p>Security integrated early in development costs less to fix and prevents more vulnerabilities than security bolted on at the end.</p>
+</blockquote>
+
 ## Threat Modeling
 
 ### Methodologies
 
-#### STRIDE (Microsoft)
-- **Spoofing**: Identity falsification
-- **Tampering**: Data modification
-- **Repudiation**: Denying actions
-- **Information Disclosure**: Unauthorized data access
-- **Denial of Service**: System availability attacks
-- **Elevation of Privilege**: Unauthorized access level increase
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>STRIDE (Microsoft)</h4>
+<ul>
+<li><strong>Spoofing</strong>: Identity falsification</li>
+<li><strong>Tampering</strong>: Data modification</li>
+<li><strong>Repudiation</strong>: Denying actions</li>
+<li><strong>Information Disclosure</strong>: Unauthorized data access</li>
+<li><strong>Denial of Service</strong>: System availability attacks</li>
+<li><strong>Elevation of Privilege</strong>: Unauthorized access level increase</li>
+</ul>
+<p><strong>Best for</strong>: Technical teams modeling application threats</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>PASTA (Risk-Centric)</h4>
+<ul>
+<li><strong>Risk-Centric</strong>: Focus on business risk</li>
+<li><strong>Seven-Stage Process</strong>: From strategy to vulnerability analysis</li>
+<li><strong>Scalable</strong>: Adaptable to different organization sizes</li>
+</ul>
+<p><strong>Best for</strong>: Enterprise-level risk assessment</p>
+</div>
+</div>
 
-#### PASTA (Process for Attack Simulation and Threat Analysis)
-- **Risk-Centric**: Focus on business risk
-- **Seven-Stage Process**: From strategy to vulnerability analysis
-- **Scalable**: Adaptable to different organization sizes
-
-#### OCTAVE (Operationally Critical Threat, Asset, and Vulnerability Evaluation)
-- **Organizational Focus**: Business impact assessment
-- **Asset-Centric**: Identify and protect critical assets
-- **Self-Directed**: Organization-led assessment
+<div class="callout callout--tip">
+<p class="callout__title">OCTAVE for Business Focus</p>
+<p><strong>Operationally Critical Threat, Asset, and Vulnerability Evaluation (OCTAVE)</strong> takes an organizational focus with business impact assessment. It's asset-centric, helping identify and protect critical assets through a self-directed, organization-led assessment process.</p>
+</div>
 
 ## Secure Coding Practices
 
 ### Input Validation
+
+<div class="callout callout--warning">
+<p class="callout__title">Never Trust User Input</p>
+<p>All input from users, APIs, or external systems should be treated as potentially malicious. Validate, sanitize, and encode every piece of data before processing or storage.</p>
+</div>
+
 - **Whitelist Approach**: Accept only known good input
 - **Data Type Validation**: Ensure proper format and range
 - **Encoding**: Prevent injection attacks

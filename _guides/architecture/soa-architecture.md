@@ -7,6 +7,10 @@ description: "Enterprise service architecture with ESB-based integration, servic
 tags: [architecture, distributed-systems, legacy-systems, integration, enterprise]
 ---
 
+<blockquote class="pull-quote">
+<p>Understanding SOA helps you recognize when you're accidentally recreating its problems in modern microservices architectures.</p>
+</blockquote>
+
 Service-Oriented Architecture emerged in the early 2000s as an approach to enterprise integration. It organized systems into a taxonomy of reusable services connected through an Enterprise Service Bus (ESB) and orchestration engine. While modern systems rarely build full SOA architectures, understanding SOA helps recognize when you're accidentally recreating its problems and when its patterns still make sense.
 
 ## How It Worked
@@ -85,17 +89,17 @@ Some regulated industries require centralized control, audit trails, and determi
 
 ## The Accidental SOA Antipattern
 
-Teams building microservices sometimes recreate SOA problems without realizing it:
-
-**Shared libraries become enterprise services**: Teams create shared libraries for "reuse." Services depend on these libraries. When libraries change, all services must redeploy. This is the enterprise service coupling problem with a different name.
-
-**API gateways become ESBs**: The API gateway starts handling routing. Then transformation. Then orchestration. Then business logic. You've recreated an ESB.
-
-**Orchestration services recreate the workflow engine**: You build a "coordinator service" that orchestrates other services. It knows all service endpoints, handles workflow logic, and manages state. You've recreated SOA orchestration.
-
-**Service taxonomy debates**: Teams spend time debating whether something should be a "domain service" or "infrastructure service" or "integration service." The taxonomy has no practical impact but creates artificial constraints.
-
-**If your "microservices" can't change independently because they share too much, you've built SOA with different names.**
+<div class="callout callout--warning">
+<p class="callout__title">Are You Accidentally Building SOA?</p>
+<p>Teams building microservices sometimes recreate SOA problems without realizing it:</p>
+<ul>
+<li><strong>Shared libraries become enterprise services:</strong> When libraries change, all services must redeploy—this is the enterprise service coupling problem with a different name.</li>
+<li><strong>API gateways become ESBs:</strong> The gateway starts handling routing, then transformation, then orchestration, then business logic. You've recreated an ESB.</li>
+<li><strong>Orchestration services recreate the workflow engine:</strong> A "coordinator service" knows all endpoints, handles workflow logic, and manages state—you've recreated SOA orchestration.</li>
+<li><strong>Service taxonomy debates:</strong> Teams debate "domain service" vs "infrastructure service"—the taxonomy has no practical impact but creates artificial constraints.</li>
+</ul>
+<p><strong>If your "microservices" can't change independently because they share too much, you've built SOA with different names.</strong></p>
+</div>
 
 ## Characteristics
 

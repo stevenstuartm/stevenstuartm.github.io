@@ -11,7 +11,9 @@ tags: [oop, design-patterns, behavioral-patterns, strategy, observer, practical]
 
 *Behavioral patterns from the Gang of Four's "Design Patterns" (1994). Observer pattern predates GoF, originating in Smalltalk's Model-View-Controller (MVC) architecture (1979).*
 
-> Behavioral patterns focus on communication between objects and define how objects interact and distribute responsibilities.
+<blockquote class="pull-quote">
+<p>Behavioral patterns focus on communication between objects and define how objects interact and distribute responsibilities.</p>
+</blockquote>
 
 ## Observer Pattern
 
@@ -63,8 +65,15 @@ var bbc = new NewsChannel("BBC", agency);
 agency.News = "Breaking news!";
 ```
 
-**When to Use**: Event-driven systems, pub/sub architectures, MVC/MVVM data binding.
-**When to Avoid**: Simple callbacks suffice, one-to-one relationships.
+<div class="callout callout--tip">
+<p class="callout__title">When to Use</p>
+<p>Event-driven systems, pub/sub architectures, MVC/MVVM data binding.</p>
+</div>
+
+<div class="callout callout--warning">
+<p class="callout__title">When to Avoid</p>
+<p>Simple callbacks suffice, one-to-one relationships.</p>
+</div>
 
 ## Strategy Pattern
 
@@ -122,8 +131,15 @@ compressor.SetStrategy(new GzipCompression());
 var compressed = compressor.CompressFile(data);
 ```
 
-**When to Use**: Multiple algorithms for same task, runtime selection needed.
-**When to Avoid**: Single algorithm, no variation needed.
+<div class="callout callout--tip">
+<p class="callout__title">When to Use</p>
+<p>Multiple algorithms for same task, runtime selection needed.</p>
+</div>
+
+<div class="callout callout--warning">
+<p class="callout__title">When to Avoid</p>
+<p>Single algorithm, no variation needed.</p>
+</div>
 
 ## Command Pattern
 
@@ -206,8 +222,19 @@ public class CommandManager
 }
 ```
 
-**When to Use**: Undo/redo functionality, operation queuing, macro recording.
-**When to Avoid**: Simple method calls suffice.
+<blockquote class="pull-quote">
+<p>Command pattern transforms requests into standalone objects containing all information about the request, enabling undo/redo, queuing, and operation history.</p>
+</blockquote>
+
+<div class="callout callout--tip">
+<p class="callout__title">When to Use</p>
+<p>Undo/redo functionality, operation queuing, macro recording.</p>
+</div>
+
+<div class="callout callout--warning">
+<p class="callout__title">When to Avoid</p>
+<p>Simple method calls suffice.</p>
+</div>
 
 ## State Pattern
 
@@ -246,8 +273,15 @@ public class Order
 }
 ```
 
-**When to Use**: Complex state-dependent behavior, state machines.
-**When to Avoid**: Simple if/switch statements suffice.
+<div class="callout callout--tip">
+<p class="callout__title">When to Use</p>
+<p>Complex state-dependent behavior, state machines.</p>
+</div>
+
+<div class="callout callout--warning">
+<p class="callout__title">When to Avoid</p>
+<p>Simple if/switch statements suffice.</p>
+</div>
 
 ## Chain of Responsibility Pattern
 
@@ -318,8 +352,19 @@ chain.SetNext(new AuthenticationHandler())
 var result = chain.Handle(request);
 ```
 
-**When to Use**: Multiple handlers, handler order matters, middleware pipelines.
-**When to Avoid**: Single handler, static handler selection.
+<blockquote class="pull-quote">
+<p>Chain of Responsibility passes requests along a chain of handlers until one processes it, enabling dynamic handler composition and decoupled sender-receiver relationships.</p>
+</blockquote>
+
+<div class="callout callout--tip">
+<p class="callout__title">When to Use</p>
+<p>Multiple handlers, handler order matters, middleware pipelines.</p>
+</div>
+
+<div class="callout callout--warning">
+<p class="callout__title">When to Avoid</p>
+<p>Single handler, static handler selection.</p>
+</div>
 
 ## Template Method Pattern
 

@@ -7,7 +7,11 @@ description: "How to identify, select, measure, and govern the quality attribute
 tags: [architecture, fundamentals, decision-making, performance, scalability, reliability, maintainability]
 ---
 
-Architecture characteristics define the qualities a system must exhibit to be successful. While functional requirements describe what the system does, architecture characteristics describe how well it does it. These characteristics drive architectural decisions more than functional requirements do.
+Architecture characteristics define the qualities a system must exhibit to be successful. While functional requirements describe what the system does, architecture characteristics describe how well it does it.
+
+<blockquote class="pull-quote">
+<p>Architecture characteristics drive architectural decisions more than functional requirements do.</p>
+</blockquote>
 
 ## What Qualifies as an Architecture Characteristic?
 
@@ -89,13 +93,13 @@ Every characteristic involves trade-offs. You cannot optimize for everything. Th
 
 ### The Selection Process
 
-**1. Start with explicit requirements**: Stakeholders sometimes specify characteristics directly. "The system must support 100,000 concurrent users" makes scalability an explicit requirement.
-
-**2. Identify implicit needs**: Often, characteristics remain unstated. A customer-facing e-commerce site implicitly needs high availability and good performance, even if stakeholders don't say so. Domain knowledge reveals these implicit needs.
-
-**3. Focus on trade-offs and priorities**: Every characteristic you add constrains architectural choices and increases complexity. A system optimized for extreme scalability might sacrifice simplicity. A system prioritizing security might sacrifice performance.
-
-**4. Limit to 3-7 characteristics**: More than seven critical characteristics means you're trying to optimize for too much. Identify the characteristics that truly drive success and accept "good enough" for the rest.
+<div class="callout callout--tip">
+<p class="callout__title">The Selection Process</p>
+<p><strong>1. Start with explicit requirements</strong>: Stakeholders sometimes specify characteristics directly. "The system must support 100,000 concurrent users" makes scalability an explicit requirement.</p>
+<p><strong>2. Identify implicit needs</strong>: Often, characteristics remain unstated. A customer-facing e-commerce site implicitly needs high availability and good performance, even if stakeholders don't say so. Domain knowledge reveals these implicit needs.</p>
+<p><strong>3. Focus on trade-offs and priorities</strong>: Every characteristic you add constrains architectural choices and increases complexity. A system optimized for extreme scalability might sacrifice simplicity. A system prioritizing security might sacrifice performance.</p>
+<p><strong>4. Limit to 3-7 characteristics</strong>: More than seven critical characteristics means you're trying to optimize for too much. Identify the characteristics that truly drive success and accept "good enough" for the rest.</p>
+</div>
 
 Think of architecture characteristics as a budget. You have limited resources to allocate. Spending heavily on scalability means less investment in other areas. Choose wisely based on what actually matters for your system.
 
@@ -171,15 +175,47 @@ Fitness functions work best when they're fast, reliable, and clear. A fitness fu
 
 Architecture is the art of balancing trade-offs. Understanding common conflicts helps make informed decisions:
 
-**Performance vs. Security**: Encryption and security checks add latency. Fast systems often sacrifice security controls. Balance requires selective application: encrypt sensitive data while allowing less sensitive operations to run faster.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Performance vs. Security</h4>
+<ul>
+<li>Encryption and security checks add latency</li>
+<li>Fast systems often sacrifice security controls</li>
+<li>Balance: encrypt sensitive data, allow less sensitive operations to run faster</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Scalability vs. Consistency</h4>
+<ul>
+<li>Strong consistency sacrifices availability during partitions (CAP theorem)</li>
+<li>Eventually consistent systems scale better</li>
+<li>Balance: choose consistency model based on business requirements</li>
+</ul>
+</div>
+</div>
 
-**Scalability vs. Consistency**: Strongly consistent distributed systems sacrifice availability during partitions (CAP theorem). Eventually consistent systems scale better but create complexity in business logic.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Maintainability vs. Performance</h4>
+<ul>
+<li>Highly optimized code is harder to understand and modify</li>
+<li>Decide where optimization matters</li>
+<li>Balance: accept cleaner, slower code elsewhere</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Flexibility vs. Simplicity</h4>
+<ul>
+<li>Highly configurable systems are more complex</li>
+<li>Purpose-built systems are simpler</li>
+<li>Balance: add flexibility only where you have clear evidence it's needed</li>
+</ul>
+</div>
+</div>
 
-**Maintainability vs. Performance**: Highly optimized code is often harder to understand and modify. Decide where optimization matters and accept cleaner, slower code elsewhere.
-
-**Flexibility vs. Simplicity**: Highly configurable, extensible systems are more complex than purpose-built systems. Add flexibility only where you have clear evidence it's needed.
-
-The best architects recognize these conflicts early and facilitate explicit decisions rather than letting implicit trade-offs emerge by accident.
+<blockquote class="pull-quote">
+<p>The best architects recognize these conflicts early and facilitate explicit decisions rather than letting implicit trade-offs emerge by accident.</p>
+</blockquote>
 
 ---
 

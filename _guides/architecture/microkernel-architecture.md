@@ -9,6 +9,10 @@ tags: [architecture, monolithic, design-patterns, extensibility, practical]
 
 Microkernel architecture (also called plug-in architecture) separates core baseline functionality from extended or customizable features. The core system implements the minimal "happy path" behavior. Plug-ins add specialized capabilities, customizations, or variations without modifying the core.
 
+<blockquote class="pull-quote">
+<p>The core must remain stable. Frequent changes to core interfaces break plug-ins and create maintenance nightmares.</p>
+</blockquote>
+
 This pattern appears in product platforms sold to multiple customers, extensible applications like IDEs, and systems with well-defined variation points.
 
 ## How It Works
@@ -31,27 +35,29 @@ The registry answers questions like: Which plug-ins are available? Which plug-in
 
 Plug-ins implement specific functionality following contracts defined by the core. Each plug-in knows how to interact with the core but remains independent of other plug-ins.
 
-**Critical constraint**: Plug-ins communicate with the core but NOT with each other. If plug-ins depend on other plug-ins, you create coupling chains that defeat the architecture's purpose. When Plug-in A depends on Plug-in B, and both must be present and compatible, you've lost independent extension.
+<div class="callout callout--warning">
+<p class="callout__title">Critical Constraint</p>
+<p>Plug-ins communicate with the core but NOT with each other. If plug-ins depend on other plug-ins, you create coupling chains that defeat the architecture's purpose. When Plug-in A depends on Plug-in B, and both must be present and compatible, you've lost independent extension.</p>
+</div>
 
 Exceptions exist: some systems support plug-in dependencies with explicit dependency management (like Eclipse or VS Code extensions). But this adds significant complexity and should be avoided unless absolutely necessary.
 
 ## Communication Models
 
-### Point-to-Point (In-Process)
-
-Plug-ins deploy as libraries within the same process as the core. Communication uses direct function calls. This is simpler, faster, and requires less infrastructure.
-
-**Advantages**: Low latency, simple debugging, no network complexity, easier to develop and test.
-
-**Tradeoffs**: Couples deployment (core and all plug-ins deploy together), limits technology diversity (all plug-ins use the same language and runtime), plug-in failures can crash the entire system.
-
-### Remote (Distributed)
-
-Plug-ins deploy as separate processes or services. Communication uses APIs (REST, gRPC) or messaging. The core calls plug-ins over the network.
-
-**Advantages**: Independent deployment of plug-ins, technology diversity (plug-ins can use different languages), isolation (plug-in failures don't crash the core), independent scaling.
-
-**Tradeoffs**: Network latency, more complex infrastructure, harder debugging, requires API versioning and compatibility management.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Point-to-Point (In-Process)</h4>
+<p>Plug-ins deploy as libraries within the same process as the core. Communication uses direct function calls.</p>
+<p><strong>Advantages:</strong> Low latency, simple debugging, no network complexity, easier to develop and test.</p>
+<p><strong>Tradeoffs:</strong> Couples deployment (core and all plug-ins deploy together), limits technology diversity (all plug-ins use the same language and runtime), plug-in failures can crash the entire system.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Remote (Distributed)</h4>
+<p>Plug-ins deploy as separate processes or services. Communication uses APIs (REST, gRPC) or messaging. The core calls plug-ins over the network.</p>
+<p><strong>Advantages:</strong> Independent deployment of plug-ins, technology diversity (plug-ins can use different languages), isolation (plug-in failures don't crash the core), independent scaling.</p>
+<p><strong>Tradeoffs:</strong> Network latency, more complex infrastructure, harder debugging, requires API versioning and compatibility management.</p>
+</div>
+</div>
 
 ## Characteristics
 

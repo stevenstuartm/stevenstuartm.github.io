@@ -8,6 +8,11 @@ tags: [data-structures, algorithms, trees, advanced, interview-prep]
 ## Tries (Prefix Trees)
 
 ### Why Tries Exist
+
+<blockquote class="pull-quote">
+<p>Tries provide O(m) search time where m is string length, regardless of how many strings are stored. They power autocomplete and spell checkers.</p>
+</blockquote>
+
 Tries excel at string operations like autocomplete, spell checking, and prefix matching. They provide O(m) search time where m is the string length, regardless of how many strings are stored. Essential for text processing, search engines, and any application dealing with string prefixes.
 
 **Real impact:** Tries power autocomplete features, spell checkers, IP routing tables, and efficient string search in large datasets.

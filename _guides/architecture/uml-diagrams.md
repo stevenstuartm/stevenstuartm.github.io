@@ -7,7 +7,9 @@ description: "Practical UML diagram guide covering class diagrams, sequence diag
 tags: [architecture, modeling, documentation, uml, diagrams, practical]
 ---
 
-UML diagrams are standardized visual representations used throughout the software development lifecycle to model system architecture, behavior, and structure.
+<blockquote class="pull-quote">
+<p>UML diagrams are standardized visual representations used throughout the software development lifecycle to model system architecture, behavior, and structure.</p>
+</blockquote>
 
 ## Table of Contents
 
@@ -284,22 +286,26 @@ Deployment diagrams show the physical deployment of software components on hardw
 4. **Use Standards**: Follow UML conventions and notation
 5. **Review Regularly**: Validate diagrams with stakeholders
 
-### When to Create UML Diagrams
-
-**Always Create**:
-- Class diagrams for core domain models
-- Sequence diagrams for complex interactions
-- Use case diagrams for requirement validation
-
-**Create When Needed**:
-- Activity diagrams for complex business processes
-- Component diagrams for modular architectures
-- Deployment diagrams for distributed systems
-
-**Avoid Over-Modeling**:
-- Don't create diagrams for simple, well-understood concepts
-- Don't try to model every detail upfront
-- Focus on areas of high complexity or risk
+<div class="callout callout--tip">
+<p class="callout__title">When to Create UML Diagrams</p>
+<p><strong>Always Create:</strong></p>
+<ul>
+<li>Class diagrams for core domain models</li>
+<li>Sequence diagrams for complex interactions</li>
+<li>Use case diagrams for requirement validation</li>
+</ul>
+<p><strong>Create When Needed:</strong></p>
+<ul>
+<li>Activity diagrams for complex business processes</li>
+<li>Component diagrams for modular architectures</li>
+<li>Deployment diagrams for distributed systems</li>
+</ul>
+<p><strong>Avoid Over-Modeling:</strong></p>
+<ul>
+<li>Don't diagram simple, well-understood concepts</li>
+<li>Focus on areas of high complexity or risk</li>
+</ul>
+</div>
 
 ### Integration with Development
 

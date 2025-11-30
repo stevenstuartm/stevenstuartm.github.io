@@ -6,6 +6,11 @@ tags: [data-structures, algorithms, fundamentals, practical, interview-prep]
 ---
 
 ## Why Arrays Exist
+
+<blockquote class="pull-quote">
+<p>Direct memory access enables O(1) lookups by index. Arrays store elements in contiguous memory, providing the fastest possible access when you know the position.</p>
+</blockquote>
+
 Direct memory access enables O(1) lookups by index. Arrays store elements in contiguous memory locations, providing the fastest possible access to data when you know the position. Dynamic arrays solve the fixed-size limitation while maintaining the performance benefits.
 
 ## When to Use Arrays
@@ -28,17 +33,26 @@ Direct memory access enables O(1) lookups by index. Arrays store elements in con
 
 ## Static Arrays vs Dynamic Arrays
 
-### Static Arrays
-- **Fixed size** at creation time
-- **Contiguous memory** allocation
-- **No resizing** capability
-- **Lower overhead** (no extra capacity)
-
-### Dynamic Arrays
-- **Resizable** during runtime
-- **Contiguous memory** with growth capability
-- **Amortized O(1)** insertion at end
-- **Slight overhead** for growth management
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Static Arrays</h4>
+<ul>
+<li><strong>Fixed size</strong> at creation time</li>
+<li><strong>Contiguous memory</strong> allocation</li>
+<li><strong>No resizing</strong> capability</li>
+<li><strong>Lower overhead</strong> (no extra capacity)</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Dynamic Arrays</h4>
+<ul>
+<li><strong>Resizable</strong> during runtime</li>
+<li><strong>Contiguous memory</strong> with growth capability</li>
+<li><strong>Amortized O(1)</strong> insertion at end</li>
+<li><strong>Slight overhead</strong> for growth management</li>
+</ul>
+</div>
+</div>
 
 ---
 
@@ -288,10 +302,16 @@ Console.WriteLine($"After removals: {arr}");
 
 ### Why O(1) Amortized?
 
-When a dynamic array needs to resize:
-1. **Allocate** new array (usually 2x size)
-2. **Copy** all existing elements  
-3. **Update** pointer to new array
+<div class="callout callout--note">
+<p class="callout__title">Amortized Analysis Explained</p>
+<p>When a dynamic array needs to resize:</p>
+<ol>
+<li><strong>Allocate</strong> new array (usually 2x size)</li>
+<li><strong>Copy</strong> all existing elements</li>
+<li><strong>Update</strong> pointer to new array</li>
+</ol>
+<p>Individual operations: Most appends are O(1), resize append is O(n). But resizing happens infrequently enough that the average cost per operation is O(1).</p>
+</div>
 
 Individual operations:
 - Most appends: O(1)

@@ -7,6 +7,10 @@ description: "In-memory data grid architecture eliminating database bottlenecks 
 tags: [architecture, distributed-systems, scalability, performance, caching, practical]
 ---
 
+<blockquote class="pull-quote">
+<p>Space-based architecture eliminates the database bottleneck by keeping all active data in replicated in-memory grids, enabling extreme elasticity for unpredictable load.</p>
+</blockquote>
+
 Space-based architecture (also called tuple space or cloud architecture pattern) eliminates the database as a central bottleneck by keeping all active data in replicated in-memory data grids. This enables extreme scalability and elasticity for systems with highly variable, unpredictable load.
 
 The name comes from tuple space concept from distributed computing: shared memory spaces that processing units can read from and write to without direct coupling.
@@ -37,37 +41,42 @@ This architecture's key insight: the database is the bottleneck in most web appl
 
 How data distributes across processing units profoundly affects the architecture's characteristics:
 
-### Replicated Caching
-
-All data copies to every processing unit. Each unit has the complete dataset in memory.
-
-**Advantages**:
-- Fast reads (data is always local, no network calls)
-- Fault tolerance (losing a unit doesn't lose data)
-- Simple request routing (any unit can handle any request)
-
-**Tradeoffs**:
-- Limited by memory (every unit must hold the entire dataset)
-- Update propagation latency (changes must replicate to all units)
-- Write amplification (every update replicates N times)
-
-**When to use**: Moderate data volumes (gigabytes, not terabytes) with high read concurrency and acceptable update latency. Read-heavy workloads where most data is "hot."
-
-### Distributed Caching
-
-Data partitions across units, with each unit owning a subset of data.
-
-**Advantages**:
-- Scales to larger datasets (total dataset size = units × memory per unit)
-- Lower update overhead (changes only affect one unit's partition)
-
-**Tradeoffs**:
-- Request routing becomes complex (must route requests to units owning the data)
-- Slower reads when data is non-local (requires inter-unit communication)
-- Potential single points of failure (losing the unit with partition X loses that data unless partitions replicate)
-- Rebalancing complexity when adding/removing units
-
-**When to use**: Large datasets that won't fit in replicated cache. Write-heavy workloads. Domains where data naturally partitions (geographical, tenant-based, time-based).
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Replicated Caching</h4>
+<p>All data copies to every processing unit. Each unit has the complete dataset in memory.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Fast reads (data always local)</li>
+<li>Fault tolerance (losing a unit doesn't lose data)</li>
+<li>Simple request routing</li>
+</ul>
+<p><strong>Tradeoffs:</strong></p>
+<ul>
+<li>Limited by memory (every unit holds entire dataset)</li>
+<li>Update propagation latency</li>
+<li>Write amplification (updates replicate N times)</li>
+</ul>
+<p><strong>When to use:</strong> Moderate data volumes (gigabytes) with high read concurrency and acceptable update latency.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Distributed Caching</h4>
+<p>Data partitions across units, with each unit owning a subset of data.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Scales to larger datasets</li>
+<li>Lower update overhead</li>
+</ul>
+<p><strong>Tradeoffs:</strong></p>
+<ul>
+<li>Complex request routing</li>
+<li>Slower reads when data is non-local</li>
+<li>Potential single points of failure</li>
+<li>Rebalancing complexity</li>
+</ul>
+<p><strong>When to use:</strong> Large datasets, write-heavy workloads, naturally partitioned data (geographical, tenant-based).</p>
+</div>
+</div>
 
 ### Near-Cache (Hybrid)
 

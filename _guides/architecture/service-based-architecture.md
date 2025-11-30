@@ -7,9 +7,11 @@ description: "Pragmatic distributed architecture with coarse-grained domain serv
 tags: [architecture, distributed-systems, microservices, scalability, practical]
 ---
 
-Service-based architecture organizes a system into a small number of coarse-grained domain services (typically 4-12) sitting between the user interface and data layer. Each service represents a significant chunk of business capability: think "catalog service," "checkout service," "inventory service," not fine-grained functions.
+<blockquote class="pull-quote">
+<p>Service-based architecture is the pragmatic middle ground between monoliths and microservices—you get distributed system benefits without microservices' operational complexity.</p>
+</blockquote>
 
-This is the pragmatic middle ground between monoliths and microservices. You get distributed system benefits (independent scaling, technology diversity, team autonomy) without microservices' operational complexity.
+Service-based architecture organizes a system into a small number of coarse-grained domain services (typically 4-12) sitting between the user interface and data layer. Each service represents a significant chunk of business capability: think "catalog service," "checkout service," "inventory service," not fine-grained functions.
 
 ## How It Works
 
@@ -39,6 +41,11 @@ The coarse grain size is intentional. Having fewer, larger services reduces inte
 That's 5 services covering the entire domain. A microservices version might have 30-50 services with much finer-grained responsibilities.
 
 ## Data Topology Options
+
+<div class="callout callout--tip">
+<p class="callout__title">Critical Decision Point</p>
+<p>Data architecture is one of the most critical decisions in service-based architecture. The database topology you choose (monolithic, domain-based, or service-specific) fundamentally determines coupling, transaction complexity, and operational overhead.</p>
+</div>
 
 Data architecture is one of the most critical decisions in service-based architecture. Three primary approaches exist:
 

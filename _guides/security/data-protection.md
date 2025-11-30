@@ -9,19 +9,37 @@ tags: [security, encryption, data-protection, privacy, compliance]
 
 ## Data Classification
 
-### Government Classifications
-- **Unclassified**: General information
-- **Confidential**: Could reasonably damage national security
-- **Secret**: Could seriously damage national security
-- **Top Secret**: Could gravely damage national security
+<blockquote class="pull-quote">
+<p>You cannot protect what you do not know you have. Data classification is the foundation of every data protection strategy.</p>
+</blockquote>
 
-### Private Sector Classifications
-- **Public**: Freely available information
-- **Internal**: Restricted to organization members
-- **Confidential**: Limited access, business sensitive
-- **Restricted**: Highly sensitive, strict access controls
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Government Classifications</h4>
+<ul>
+<li><strong>Unclassified</strong>: General information</li>
+<li><strong>Confidential</strong>: Could reasonably damage national security</li>
+<li><strong>Secret</strong>: Could seriously damage national security</li>
+<li><strong>Top Secret</strong>: Could gravely damage national security</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Private Sector Classifications</h4>
+<ul>
+<li><strong>Public</strong>: Freely available information</li>
+<li><strong>Internal</strong>: Restricted to organization members</li>
+<li><strong>Confidential</strong>: Limited access, business sensitive</li>
+<li><strong>Restricted</strong>: Highly sensitive, strict access controls</li>
+</ul>
+</div>
+</div>
 
 ## Data States and Protection
+
+<div class="callout callout--note">
+<p class="callout__title">Protect Data in All Three States</p>
+<p>Comprehensive data protection requires encryption and controls across all three states: at rest (stored data), in transit (moving data), and in use (active processing). Each state presents unique challenges and requires specific security measures.</p>
+</div>
 
 ### Data at Rest
 - **Full Disk Encryption**: Transparent disk-level protection
@@ -52,6 +70,11 @@ tags: [security, encryption, data-protection, privacy, compliance]
   - Breach notification (72 hours)
   - Privacy by design
 - **Penalties**: Up to 4% of annual revenue or €20 million
+
+<div class="callout callout--warning">
+<p class="callout__title">GDPR Has Global Reach</p>
+<p>GDPR applies to any organization processing EU citizens' personal data, regardless of where the organization is located. If you have EU customers, you must comply with GDPR—or face significant penalties.</p>
+</div>
 
 ### Health Insurance Portability and Accountability Act (HIPAA)
 - **Scope**: Protected Health Information (PHI) in US

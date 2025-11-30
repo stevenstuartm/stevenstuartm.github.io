@@ -7,6 +7,10 @@ tags: [data-structures, algorithms, graphs, fundamentals, interview-prep]
 
 ## Why Graphs Exist
 
+<blockquote class="pull-quote">
+<p>Graphs model relationships between entities. They're the backbone of search engines, recommendation systems, and network protocols.</p>
+</blockquote>
+
 Graphs model relationships between entities, making them essential for solving connectivity problems. From social networks to GPS navigation to dependency management, graphs help us understand and navigate complex interconnected systems. They're the backbone of many modern algorithms that power search engines, recommendation systems, and network protocols.
 
 **Real impact:** Understanding graphs enables you to solve problems involving any kind of relationship or connection, whether it's finding the shortest route, detecting cycles in dependencies, or analyzing network structures.
@@ -508,8 +512,9 @@ public static class DependencyResolver
 | **DFS** | Depth-first | Pathfinding, cycle detection | Stack (or recursion) |
 | **BFS** | Level-by-level | Shortest path, nearest neighbor | Queue |
 
-**Key Insight:**
-- DFS explores as far as possible before backtracking
-- BFS explores all neighbors before going deeper
+<div class="callout callout--tip">
+<p class="callout__title">DFS vs BFS</p>
+<p>DFS explores as far as possible before backtracking (like maze solving). BFS explores all neighbors before going deeper (like ripples in water).</p>
+</div>
 
 ---

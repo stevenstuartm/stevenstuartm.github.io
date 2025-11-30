@@ -9,11 +9,16 @@ tags: [architecture, cost-analysis, decision-making, cloud-computing, practical,
 
 ## Overview
 
+<blockquote class="pull-quote">
+<p>The true cost of a system isn't just what you pay upfront; it's everything you'll spend over its lifetime.</p>
+</blockquote>
+
 Total Cost of Ownership (TCO) represents the complete cost of acquiring, deploying, operating, and maintaining a technology solution over its entire lifecycle. TCO analysis prevents costly mistakes by revealing hidden costs that often exceed initial investments, enabling architects to make economically sound decisions and set realistic budget expectations.
 
-> "The true cost of a system isn't just what you pay upfront; it's everything you'll spend over its lifetime."
-
-Understanding TCO matters because hidden costs (technical debt, opportunity cost, and operational overhead) frequently dominate total spending. A cloud migration might cost $50K upfront but $300K annually. A "simple" microservices split could add $400K in operational costs per year. Without TCO analysis, these surprises derail budgets and undermine business credibility.
+<div class="callout callout--warning">
+<p class="callout__title">Hidden Costs Dominate</p>
+<p>Hidden costs (technical debt, opportunity cost, and operational overhead) frequently exceed initial investments. A cloud migration might cost $50K upfront but $300K annually. A "simple" microservices split could add $400K in operational costs per year. Without TCO analysis, these surprises derail budgets and undermine business credibility.</p>
+</div>
 
 **Formula**: `TCO = Initial Costs + Ongoing Costs − Disposal Value`
 

@@ -13,6 +13,10 @@ Reliability patterns help systems handle failures gracefully, maintain availabil
 
 *Pattern described by Michael Nygard in "Release It!" (2007)*
 
+<blockquote class="pull-quote">
+<p>Circuit breakers prevent cascading failures by failing fast when a service is down, rather than waiting for timeouts to accumulate.</p>
+</blockquote>
+
 Prevents cascading failures by monitoring failures and "opening the circuit" to stop requests to a failing service, similar to an electrical circuit breaker. Provides fast failure and fallback responses instead of waiting for timeouts.
 
 **States**:
@@ -61,12 +65,11 @@ Automatically retries failed operations with appropriate delays and limits. Esse
   - *Best practice - prevents thundering herd problem*
   - Formula: `delay = base_delay * (2^attempt) + random(0, jitter)`
 
-**Considerations**:
-- **Only retry transient failures** (don't retry 400/401/403 HTTP errors)
-- Implement maximum retry limits (typically 3-5 attempts)
-- Ensure operations are idempotent
-- Consider using circuit breaker alongside retries
-- **Thundering herd problem**: Many clients retrying simultaneously can overwhelm recovering service
+<div class="callout callout--warning">
+<p class="callout__title">Retry Considerations</p>
+<p><strong>Only retry transient failures</strong> (don't retry 400/401/403 HTTP errors). Implement maximum retry limits (typically 3-5 attempts). Ensure operations are idempotent. Consider using circuit breaker alongside retries.</p>
+<p><strong>Thundering herd problem:</strong> Many clients retrying simultaneously can overwhelm a recovering service. Use jitter to desynchronize retries.</p>
+</div>
 
 **Example**: API client retrying failed HTTP requests with exponential backoff.
 

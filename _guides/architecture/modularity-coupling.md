@@ -9,6 +9,10 @@ tags: [architecture, modularity, coupling, cohesion, design-patterns, maintainab
 
 Modularity determines how well a system can be understood, changed, and maintained. Well-modularized systems have high cohesion within components and low coupling between components. Understanding how to measure and manage these properties is fundamental to architectural thinking.
 
+<blockquote class="pull-quote">
+<p>High cohesion means everything in the module belongs together because it serves a unified purpose.</p>
+</blockquote>
+
 ## Cohesion: What Belongs Together
 
 Cohesion measures how closely the elements within a module are related. High cohesion means everything in the module belongs together because it serves a unified purpose. Low cohesion means the module contains unrelated elements that happen to be grouped together.
@@ -65,9 +69,16 @@ Coupling measures how much one component depends on another. Low coupling means 
 
 Two primary metrics quantify coupling:
 
-**Afferent Coupling (Ca)** counts the number of components that depend on this component. High afferent coupling means many components rely on this one, making it harder to change without breaking dependents.
-
-**Efferent Coupling (Ce)** counts the number of components this component depends on. High efferent coupling means this component is fragile because changes to any dependency can break it.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Afferent Coupling (Ca)</h4>
+<p>Counts the number of components that depend on this component. High afferent coupling means many components rely on this one, making it harder to change without breaking dependents.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Efferent Coupling (Ce)</h4>
+<p>Counts the number of components this component depends on. High efferent coupling means this component is fragile because changes to any dependency can break it.</p>
+</div>
+</div>
 
 ### Derived Metrics
 
@@ -95,9 +106,11 @@ D = |A + I - 1|
 
 Components should fall along the "main sequence" where abstract, stable components (high A, low I) and concrete, unstable components (low A, high I) both have D values near zero.
 
-**Zone of Uselessness**: High abstractness, low instability. The component is abstract but nobody depends on it. It's over-engineered.
-
-**Zone of Pain**: Low abstractness, high instability. The component is concrete and rigid, yet many other components depend on it. Changes are painful and risky.
+<div class="callout callout--warning">
+<p class="callout__title">Danger Zones</p>
+<p><strong>Zone of Uselessness:</strong> High abstractness, low instability. The component is abstract but nobody depends on it. It's over-engineered.</p>
+<p><strong>Zone of Pain:</strong> Low abstractness, high instability. The component is concrete and rigid, yet many other components depend on it. Changes are painful and risky.</p>
+</div>
 
 ## Connascence: A More Precise View of Coupling
 

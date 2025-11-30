@@ -43,18 +43,20 @@ Coordinates access to shared resources across multiple distributed nodes to prev
 - Coordinating updates to shared state
 - Ensuring only one node performs a specific task
 
-**Challenges**:
+<div class="callout callout--warning">
+<p class="callout__title">Distributed Lock Challenges</p>
+<p><strong>Lock holder failure</strong>: Requires timeout/lease mechanism (lock expires automatically)</p>
+<p><strong>Network partitions</strong>: Can cause split-brain scenarios (two nodes think they have lock)</p>
+<p><strong>Performance impact</strong>: Distributed coordination adds latency</p>
+<p><strong>Deadlocks</strong>: Possible if not carefully designed</p>
+</div>
 
-- **Lock holder failure**: Requires timeout/lease mechanism (lock expires automatically)
-- **Network partitions**: Can cause split-brain scenarios (two nodes think they have lock)
-- **Performance impact**: Distributed coordination adds latency
-- **Deadlocks**: Possible if not carefully designed
-
-**Key Properties**:
-
-- **Mutual exclusion**: Only one node holds lock at a time
-- **Deadlock-free**: Lock eventually released even if holder crashes
-- **Fault tolerance**: Works despite node failures
+<div class="callout callout--note">
+<p class="callout__title">Key Properties Required</p>
+<p><strong>Mutual exclusion</strong>: Only one node holds lock at a time</p>
+<p><strong>Deadlock-free</strong>: Lock eventually released even if holder crashes</p>
+<p><strong>Fault tolerance</strong>: Works despite node failures</p>
+</div>
 
 **Example**: Multiple instances of order processing service using distributed lock to ensure only one instance processes each order.
 
@@ -71,7 +73,9 @@ If Instance 1 crashes while holding lock → Lock expires after 30s → Instance
 - **etcd**: Lock API with TTL
 - **Consul**: Session-based locks
 
-**Warning**: Distributed locks are complex. Consider using message queues or database constraints when possible.
+<blockquote class="pull-quote">
+<p>Distributed locks are complex. Consider using message queues or database constraints when possible.</p>
+</blockquote>
 
 ---
 
@@ -85,24 +89,32 @@ Ensures multiple nodes agree on a value or decision, even in the presence of fai
 - Implementing distributed databases (etcd, Consul, CockroachDB)
 - Building fault-tolerant systems with replicated state
 
-**Common Algorithms**:
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Paxos (1989)</h4>
+<ul>
+<li>Classic consensus algorithm by Leslie Lamport</li>
+<li>Notoriously difficult to understand</li>
+<li>Proven correct, widely studied</li>
+<li>Used in Google Chubby, Apache Cassandra (variant)</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Raft (2013)</h4>
+<ul>
+<li>Designed to be more understandable than Paxos</li>
+<li>Leader-based with strong consistency</li>
+<li>Clear leader election, log replication, safety guarantees</li>
+<li>Used in etcd, Consul, CockroachDB</li>
+<li>Majority (quorum) required for decisions</li>
+</ul>
+</div>
+</div>
 
-**Paxos** (*Leslie Lamport, 1989*):
-- Classic consensus algorithm, notoriously difficult to understand
-- Proven correct, widely studied
-- Used in Google Chubby, Apache Cassandra (variant)
-
-**Raft** (*Diego Ongaro & John Ousterhout, 2013*):
-- Designed to be more understandable than Paxos
-- Leader-based with strong consistency
-- Clear leader election, log replication, safety guarantees
-- Used in etcd, Consul, CockroachDB
-- Majority (quorum) required for decisions
-
-**PBFT - Practical Byzantine Fault Tolerance** (*Castro & Liskov, 1999*):
-- Tolerates Byzantine failures (malicious/arbitrary behavior)
-- Used in blockchain systems
-- More expensive: 3f+1 nodes needed to tolerate f failures
+<div class="callout callout--note">
+<p class="callout__title">PBFT - Practical Byzantine Fault Tolerance</p>
+<p>Tolerates Byzantine failures (malicious/arbitrary behavior). Used in blockchain systems. More expensive: 3f+1 nodes needed to tolerate f failures.</p>
+</div>
 
 **Example**: Distributed database using Raft consensus to ensure all replicas agree on transaction ordering and committed state.
 
@@ -112,7 +124,9 @@ Leader → Propose to followers → [Follower 1, Follower 2]
 Majority (2 of 3) agrees → Commit to log → Acknowledge client
 ```
 
-**CAP Theorem Consideration**: Consensus algorithms choose **Consistency + Partition Tolerance** over Availability during network partitions
+<blockquote class="pull-quote">
+<p>Consensus algorithms choose Consistency + Partition Tolerance over Availability during network partitions (CAP Theorem)</p>
+</blockquote>
 
 **Trade-offs**:
 - **Pros**: Strong consistency, proven correctness, fault tolerance

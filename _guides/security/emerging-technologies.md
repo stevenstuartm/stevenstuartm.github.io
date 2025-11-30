@@ -9,6 +9,10 @@ tags: [security, emerging, modern, cloud-security, future]
 
 ## Artificial Intelligence Security
 
+<blockquote class="pull-quote">
+<p>AI systems introduce new attack surfaces that traditional security controls were not designed to protect against.</p>
+</blockquote>
+
 ### AI/ML Security Challenges
 CISA and international partners released joint guidance on AI Data Security best practices in May 2025, highlighting critical risks across the AI lifecycle.
 
@@ -29,8 +33,35 @@ CISA and international partners released joint guidance on AI Data Security best
 ## Cloud Security
 
 ### Shared Responsibility Model
-- **Cloud Provider**: Physical security, infrastructure, platform services
-- **Customer**: Data, identity, applications, network controls, operating system
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Cloud Provider Responsibilities</h4>
+<ul>
+<li>Physical security</li>
+<li>Infrastructure security</li>
+<li>Platform services security</li>
+<li>Hypervisor and networking</li>
+</ul>
+<p><strong>Security OF the cloud</strong></p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Customer Responsibilities</h4>
+<ul>
+<li>Data encryption and classification</li>
+<li>Identity and access management</li>
+<li>Application security</li>
+<li>Network controls and firewall rules</li>
+<li>Operating system and patches</li>
+</ul>
+<p><strong>Security IN the cloud</strong></p>
+</div>
+</div>
+
+<div class="callout callout--warning">
+<p class="callout__title">Misunderstanding Shared Responsibility Causes Breaches</p>
+<p>Many cloud security breaches occur because organizations assume the cloud provider is responsible for all security. Understanding exactly where provider responsibility ends and customer responsibility begins is critical.</p>
+</div>
 
 ### Cloud Security Challenges
 - **Visibility**: Limited insight into cloud infrastructure
@@ -49,6 +80,12 @@ CISA and international partners released joint guidance on AI Data Security best
 ## Internet of Things (IoT) Security
 
 ### IoT Security Challenges
+
+<div class="callout callout--warning">
+<p class="callout__title">IoT Devices Are Often Security Weak Points</p>
+<p>IoT devices frequently ship with default credentials, lack secure update mechanisms, and remain deployed for years without patches. These devices can become entry points for attackers to compromise entire networks.</p>
+</div>
+
 - **Device Constraints**: Limited processing power and memory
 - **Update Management**: Difficult firmware patching
 - **Default Credentials**: Weak or unchanged default passwords

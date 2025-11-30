@@ -9,6 +9,10 @@ tags: [security, defense, controls, practical, implementation]
 
 ## Defense in Depth
 
+<blockquote class="pull-quote">
+<p>Security is not a single wall—it's a series of barriers where the failure of one layer does not compromise the entire system.</p>
+</blockquote>
+
 ### Layered Security Strategy
 1. **Physical Layer**: Facilities, hardware protection
 2. **Perimeter Layer**: Firewalls, intrusion prevention
@@ -36,20 +40,28 @@ tags: [security, defense, controls, practical, implementation]
 
 ## Access Control Models
 
-### Role-Based Access Control (RBAC)
-- **Structure**: Users → Roles → Permissions
-- **Benefits**: Simplified administration, consistent policies
-- **Challenges**: Role explosion, rigid structure
-- **Best Practices**: Regular role reviews, separation of duties
-
-### Attribute-Based Access Control (ABAC)
-- **Components**:
-  - **Subject**: User requesting access
-  - **Object**: Resource being accessed
-  - **Action**: Operation being performed
-  - **Environment**: Context (time, location, device)
-- **Benefits**: Fine-grained control, dynamic policies
-- **Challenges**: Complex implementation, policy management
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>RBAC (Role-Based)</h4>
+<ul>
+<li><strong>Structure</strong>: Users → Roles → Permissions</li>
+<li><strong>Benefits</strong>: Simplified administration, consistent policies</li>
+<li><strong>Challenges</strong>: Role explosion, rigid structure</li>
+<li><strong>Best Practices</strong>: Regular role reviews, separation of duties</li>
+</ul>
+<p><strong>Best for</strong>: Organizations with stable, well-defined roles</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>ABAC (Attribute-Based)</h4>
+<ul>
+<li><strong>Components</strong>: Subject, Object, Action, Environment</li>
+<li><strong>Benefits</strong>: Fine-grained control, dynamic policies</li>
+<li><strong>Challenges</strong>: Complex implementation, policy management</li>
+<li><strong>Context-aware</strong>: Time, location, device attributes</li>
+</ul>
+<p><strong>Best for</strong>: Complex, dynamic access requirements</p>
+</div>
+</div>
 
 ### Mandatory Access Control (MAC)
 - **Characteristics**: System-enforced security labels
@@ -59,6 +71,12 @@ tags: [security, defense, controls, practical, implementation]
 ## Encryption and Cryptography
 
 ### Symmetric Encryption
+
+<div class="callout callout--tip">
+<p class="callout__title">When to Use Symmetric Encryption</p>
+<p>Use symmetric encryption (like AES) for bulk data encryption where both parties can securely share the key. It's significantly faster than asymmetric encryption and ideal for encrypting large data volumes at rest or in transit.</p>
+</div>
+
 - **Characteristics**: Same key for encryption and decryption
 - **Algorithms**:
   - **AES (Advanced Encryption Standard)**: Industry standard
@@ -68,6 +86,12 @@ tags: [security, defense, controls, practical, implementation]
 - **Key Management**: Secure distribution and storage challenge
 
 ### Asymmetric Encryption
+
+<div class="callout callout--tip">
+<p class="callout__title">When to Use Asymmetric Encryption</p>
+<p>Use asymmetric encryption (like RSA or ECC) for key exchange, digital signatures, and scenarios where parties cannot securely share a symmetric key. The public key can be distributed freely while the private key remains secret.</p>
+</div>
+
 - **Characteristics**: Public/private key pairs
 - **Algorithms**:
   - **RSA**: Widely used, key sizes 2048+ bits

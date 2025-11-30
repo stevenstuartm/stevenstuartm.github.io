@@ -11,7 +11,9 @@ tags: [architecture, decision-making, adrs, trade-offs, documentation, practical
 
 Making architecture decisions is the first and most critical responsibility of an architect. Every other responsibility (analysis, staying current, ensuring compliance, leading teams) exists to support better decision-making.
 
-The challenge isn't just making good decisions. It's knowing when to decide, avoiding common traps, understanding what decisions actually matter architecturally, and capturing decisions so they remain valuable over time.
+<blockquote class="pull-quote">
+<p>The challenge isn't just making good decisions. It's knowing when to decide, avoiding common traps, understanding what decisions actually matter architecturally, and capturing decisions so they remain valuable over time.</p>
+</blockquote>
 
 ## Decision-Making Antipatterns
 
@@ -23,19 +25,22 @@ Fear of being wrong prevents making decisions. The architect endlessly analyzes,
 
 **The cost**: Paralysis. Teams can't move forward. Technical debt accumulates from inconsistent local decisions. Opportunities close while you're still analyzing.
 
-**How to overcome it**:
+<div class="callout callout--tip">
+<p class="callout__title">How to Overcome It</p>
+<p><strong>Last Responsible Moment</strong>: Decide when the cost of deferring exceeds the risk of deciding. If you need the decision to unblock work, and delaying won't materially improve the decision quality, decide now.</p>
+<p><strong>Collaborate to validate</strong>: Share your reasoning with trusted developers or architects. They'll spot issues you missed and give you confidence in viable decisions.</p>
+<p><strong>Accept that decisions evolve</strong>: Architecture decisions aren't carved in stone. If you're wrong, you can supersede the decision with a better one. Capture the learning and move forward.</p>
+</div>
 
-**Last Responsible Moment**: Decide when the cost of deferring exceeds the risk of deciding. If you need the decision to unblock work, and delaying won't materially improve the decision quality, decide now.
-
-**Collaborate to validate**: Share your reasoning with trusted developers or architects. They'll spot issues you missed and give you confidence in viable decisions.
-
-**Accept that decisions evolve**: Architecture decisions aren't carved in stone. If you're wrong, you can supersede the decision with a better one. Capture the learning and move forward.
-
-**Red flags you're doing this**:
-- Teams repeatedly asking "have you decided yet?"
-- You've gathered the same type of information multiple times
-- Developers making inconsistent local decisions because you haven't provided direction
-- You keep finding new factors to analyze without new insights
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags You're Doing This</p>
+<ul>
+<li>Teams repeatedly asking "have you decided yet?"</li>
+<li>You've gathered the same type of information multiple times</li>
+<li>Developers making inconsistent local decisions because you haven't provided direction</li>
+<li>You keep finding new factors to analyze without new insights</li>
+</ul>
+</div>
 
 ### Groundhog Day
 
@@ -89,29 +94,20 @@ Decisions get made in email threads, Slack conversations, or hallway discussions
 
 Not every decision needs an architect's involvement. Developers make hundreds of decisions daily: variable names, loop constructs, minor refactorings. These aren't architecturally significant.
 
-A decision is architecturally significant if it affects one or more of these:
-
-**Structure**: Architectural patterns or styles
-- Example: "We will use microservices" or "We'll use a layered monolith"
-- These decisions shape the entire system's organization
-
-**Characteristics**: Non-functional requirements like performance, scalability, security, availability
-- Example: "We must support 100K concurrent users with <100ms latency"
-- These drive architectural choices about caching, load balancing, database design
-
-**Dependencies**: Coupling points between components, services, or teams
-- Example: "Services will communicate via async messaging, not direct calls"
-- These decisions affect team autonomy and system resilience
-
-**Interfaces**: How components access each other, orchestration patterns
-- Example: "All external API access goes through an API gateway"
-- These decisions control system boundaries and integration patterns
-
-**Construction Techniques**: Platforms, frameworks, tools, languages that span multiple teams or components
-- Example: "We'll use Kubernetes for orchestration" or "All services use .NET"
-- These decisions affect hiring, training, operations, and long-term maintainability
-
-**When in doubt**: If the decision affects multiple teams, has long-term cost implications, or would be expensive to reverse, treat it as architecturally significant.
+<div class="callout callout--note">
+<p class="callout__title">A Decision is Architecturally Significant If It Affects</p>
+<p><strong>Structure</strong>: Architectural patterns or styles<br>
+Example: "We will use microservices" or "We'll use a layered monolith"</p>
+<p><strong>Characteristics</strong>: Non-functional requirements like performance, scalability, security, availability<br>
+Example: "We must support 100K concurrent users with &lt;100ms latency"</p>
+<p><strong>Dependencies</strong>: Coupling points between components, services, or teams<br>
+Example: "Services will communicate via async messaging, not direct calls"</p>
+<p><strong>Interfaces</strong>: How components access each other, orchestration patterns<br>
+Example: "All external API access goes through an API gateway"</p>
+<p><strong>Construction Techniques</strong>: Platforms, frameworks, tools, languages that span multiple teams or components<br>
+Example: "We'll use Kubernetes for orchestration" or "All services use .NET"</p>
+<p><strong>When in doubt</strong>: If the decision affects multiple teams, has long-term cost implications, or would be expensive to reverse, treat it as architecturally significant.</p>
+</div>
 
 ## Decision Frameworks
 

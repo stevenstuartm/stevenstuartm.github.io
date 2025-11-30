@@ -22,6 +22,10 @@ Four fundamental approaches to algorithm design, each suited for different probl
 
 *Term coined by Richard Bellman in the 1950s. "Programming" refers to optimization, not coding. Bellman chose "dynamic" to sound impressive to government funders who might not fund "mathematical" research.*
 
+<blockquote class="pull-quote">
+<p>Solve each subproblem once, store result for reuse. Transform exponential brute-force into polynomial time by caching.</p>
+</blockquote>
+
 **Core idea:** Solve each subproblem once, store result for reuse. Transform exponential brute-force into polynomial time by caching.
 
 ### When to Use
@@ -29,20 +33,32 @@ Four fundamental approaches to algorithm design, each suited for different probl
 - **Optimal substructure**: Optimal solution built from optimal subsolutions
 - Need optimal value (min/max cost, count ways, longest/shortest)
 
-**Key insight:** If you find yourself solving the same subproblem repeatedly in recursion, DP can help.
+<div class="callout callout--tip">
+<p class="callout__title">Recognition Pattern</p>
+<p>If you find yourself solving the same subproblem repeatedly in recursion, DP can help. Look for repeated function calls with identical parameters.</p>
+</div>
 
 ### Two Approaches
 
-**Memoization (Top-down):**
-- Start with recursive solution
-- Add caching (hash map/array) to store results
-- **Pros**: Only computes needed subproblems, easier to code from recursion
-- **Cons**: Recursion overhead, stack space
-
-**Tabulation (Bottom-up):**
-- Build table iteratively from base cases
-- **Pros**: No recursion overhead, often faster, predictable space
-- **Cons**: Computes all subproblems, harder to visualize
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Memoization (Top-down)</h4>
+<ul>
+<li>Start with recursive solution</li>
+<li>Add caching (hash map/array) to store results</li>
+<li><strong>Pros</strong>: Only computes needed subproblems, easier to code from recursion</li>
+<li><strong>Cons</strong>: Recursion overhead, stack space</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Tabulation (Bottom-up)</h4>
+<ul>
+<li>Build table iteratively from base cases</li>
+<li><strong>Pros</strong>: No recursion overhead, often faster, predictable space</li>
+<li><strong>Cons</strong>: Computes all subproblems, harder to visualize</li>
+</ul>
+</div>
+</div>
 
 **Complexity:** O(number of states × transitions per state)
 - Example: 2D DP table = O(m × n) states, O(1) per transition = O(m × n) total
@@ -267,6 +283,10 @@ public static void Subsets(int[] nums, int start, List<int> curr, List<List<int>
 | Greedy | O(n log n) typically | O(1) often | Local → Global optimal |
 | Divide & Conquer | O(n log n) often | O(log n) | Independent subproblems |
 | Backtracking | Exponential | O(depth) | All solutions, constraints |
+
+<blockquote class="pull-quote">
+<p>Repeated subproblems → DP. Local choices work → Greedy. Independent parts → Divide & Conquer. Need all solutions → Backtracking.</p>
+</blockquote>
 
 **Key Pattern Recognition:**
 - Repeated subproblems → DP

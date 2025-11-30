@@ -9,9 +9,11 @@ tags: [architecture, domain-driven-design, modeling, microservices, design-patte
 
 ## What is Domain-Driven Design?
 
-Domain-Driven Design (DDD) is an approach to software development that emphasizes collaboration between technical experts and domain experts to create models that reflect deep understanding of the business domain. DDD provides both strategic patterns for organizing large systems and tactical patterns for implementing domain logic.
+<blockquote class="pull-quote">
+<p>The most important part of software is understanding and modeling the business domain correctly. Technology choices matter, but getting the domain model wrong makes the best technology irrelevant.</p>
+</blockquote>
 
-**Core premise**: The most important part of software is understanding and modeling the business domain correctly. Technology choices matter, but getting the domain model wrong makes the best technology irrelevant.
+Domain-Driven Design (DDD) is an approach to software development that emphasizes collaboration between technical experts and domain experts to create models that reflect deep understanding of the business domain. DDD provides both strategic patterns for organizing large systems and tactical patterns for implementing domain logic.
 
 DDD was introduced by Eric Evans in his 2003 book *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Vaughn Vernon's *Implementing Domain-Driven Design* (2013) provided practical implementation guidance, particularly for distributed systems.
 
@@ -23,13 +25,17 @@ DDD is valuable when:
 - **Long-term maintenance matters**: The system will evolve over years, not months
 - **Multiple teams work on the system**: Bounded contexts provide clear ownership boundaries
 
-**DDD is not needed when**:
-- Domain is simple CRUD with minimal business logic
-- Technical complexity dominates (data pipelines, infrastructure automation)
-- No domain experts are available
-- The project is short-lived or disposable
-
-**Common mistake**: Applying tactical DDD patterns (aggregates, repositories) without strategic DDD (bounded contexts, ubiquitous language). The strategic patterns are where most of the value comes from.
+<div class="callout callout--warning">
+<p class="callout__title">When NOT to Use DDD</p>
+<p>DDD is not needed when:</p>
+<ul>
+<li>Domain is simple CRUD with minimal business logic</li>
+<li>Technical complexity dominates (data pipelines, infrastructure automation)</li>
+<li>No domain experts are available</li>
+<li>The project is short-lived or disposable</li>
+</ul>
+<p><strong>Common mistake:</strong> Applying tactical DDD patterns (aggregates, repositories) without strategic DDD (bounded contexts, ubiquitous language). The strategic patterns are where most of the value comes from.</p>
+</div>
 
 ## Strategic Design: Modeling the Domain
 
@@ -141,23 +147,33 @@ The ACL isolates your domain model from the legacy system's structure and termin
 
 Subdomains are logical divisions of the business domain, not the software model. They represent different areas of business concern.
 
-**Three types of subdomains**:
-
-**Core Domain**:
-- Provides competitive advantage
-- Differentiates your business from competitors
-- Justifies building custom software
-- Deserves the most investment and best developers
-
-**Supporting Subdomain**:
-- Necessary for the business but not differentiating
-- Could be built, bought, or outsourced
-- May be domain-specific enough that off-the-shelf tools don't fit
-
-**Generic Subdomain**:
-- Solved problems (authentication, payments, email)
-- Strong preference for off-the-shelf solutions
-- Minimal custom development
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Core Domain</h4>
+<ul>
+<li>Provides competitive advantage</li>
+<li>Differentiates your business from competitors</li>
+<li>Justifies building custom software</li>
+<li>Deserves the most investment and best developers</li>
+<li><strong>Strategy:</strong> Custom development with full DDD</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Supporting & Generic Subdomains</h4>
+<p><strong>Supporting:</strong></p>
+<ul>
+<li>Necessary but not differentiating</li>
+<li>Could be built, bought, or outsourced</li>
+<li><strong>Strategy:</strong> Custom or configure commercial software</li>
+</ul>
+<p><strong>Generic:</strong></p>
+<ul>
+<li>Solved problems (auth, payments, email)</li>
+<li>Strong preference for off-the-shelf solutions</li>
+<li><strong>Strategy:</strong> Buy, don't build</li>
+</ul>
+</div>
+</div>
 
 **Example subdomains for an insurance company**:
 
@@ -170,7 +186,9 @@ Subdomains are logical divisions of the business domain, not the software model.
 | Email delivery | **Generic** | Buy (SendGrid, AWS SES) |
 | Payment processing | **Generic** | Integrate (Stripe, PayPal) |
 
-**Strategic lesson**: Don't apply the same level of DDD rigor to every subdomain. Focus modeling effort on the core domain. Generic subdomains should use off-the-shelf solutions with minimal custom code.
+<blockquote class="pull-quote">
+<p>Don't apply the same level of DDD rigor to every subdomain. Focus modeling effort on the core domain. Generic subdomains should use off-the-shelf solutions with minimal custom code.</p>
+</blockquote>
 
 ## Tactical Design: Implementing the Domain Model
 
@@ -673,10 +691,16 @@ For detailed patterns, see [Data Management Patterns](data_management_patterns.h
 
 ### Anemic Domain Model
 
-**Problem**: Entities have only getters/setters with no behavior. All logic lives in services.
+<div class="callout callout--warning">
+<p class="callout__title">Anti-Pattern: Anemic Domain Model</p>
+<p><strong>Problem:</strong> Entities have only getters/setters with no behavior. All logic lives in services.</p>
+
+<p><strong>Why it's a problem:</strong> The domain model doesn't enforce invariants. Any code can violate business rules.</p>
+<p><strong>Solution:</strong> Put behavior on the entities.</p>
+</div>
 
 ```csharp
-// Anemic - just data
+// ❌ Anemic - just data
 public class Order
 {
     public OrderId Id { get; set; }
@@ -691,13 +715,8 @@ public class OrderService
         order.Lines.Add(line);
     }
 }
-```
 
-**Why it's a problem**: The domain model doesn't enforce invariants. Any code can violate business rules.
-
-**Solution**: Put behavior on the entities.
-```csharp
-// Rich domain model
+// ✅ Rich domain model
 public class Order
 {
     private readonly List<OrderLine> _lines;

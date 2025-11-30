@@ -9,6 +9,10 @@ tags: [data-structures, algorithms, heaps, priority-queues, practical]
 
 *Binary heap data structure introduced by J.W.J. Williams in 1964 for heapsort. Robert W. Floyd later improved the heap construction algorithm in 1964.*
 
+<blockquote class="pull-quote">
+<p>Heaps solve the problem of quickly accessing the "most important" element without maintaining full sorted order: O(1) peek and O(log n) insert/delete.</p>
+</blockquote>
+
 Efficiently maintain the minimum or maximum element while allowing dynamic insertions and deletions. Heaps solve the problem of quickly accessing the "most important" element in a changing dataset without maintaining full sorted order, achieving O(1) peek and O(log n) insert/delete.
 
 ## When to Use Heaps
@@ -258,11 +262,10 @@ int[] heap = BuildMinHeap(array);
 Console.WriteLine($"Min heap: [{string.Join(", ", heap)}]");
 ```
 
-### Why O(n) and not O(n log n)?
-- Most nodes are near the bottom (leaves need no work)
-- Nodes at height h: at most ⌈n/2^(h+1)⌉
-- Work at height h: at most h operations
-- Total work: Σ(h × n/2^(h+1)) = O(n)
+<div class="callout callout--tip">
+<p class="callout__title">Why Building a Heap is O(n)</p>
+<p>Most nodes are near the bottom (leaves need no work). Nodes at height h: at most ⌈n/2^(h+1)⌉. Work at height h: at most h operations. Total work: Σ(h × n/2^(h+1)) = O(n). This is faster than inserting n elements one by one, which would be O(n log n).</p>
+</div>
 
 ---
 

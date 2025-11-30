@@ -9,7 +9,11 @@ tags: [architecture, monolithic, domain-driven-design, modularity, practical]
 
 Modular monolith combines monolithic deployment with domain-driven component organization. Instead of organizing by technical layers, the system partitions by business domains or bounded contexts. Each module encapsulates everything needed for its domain: UI components, business logic, data access, and often domain-specific data models. But the entire system still deploys as a single unit.
 
-This architecture provides many benefits of microservices (domain autonomy, team independence, clear boundaries) without the operational complexity of distributed systems.
+<blockquote class="pull-quote">
+<p>Many benefits of microservices without the operational complexity of distributed systems.</p>
+</blockquote>
+
+This architecture provides domain autonomy, team independence, and clear boundaries while maintaining simple deployment and transactions.
 
 ## How It Works
 
@@ -37,49 +41,46 @@ Each module typically contains:
 
 Modules must communicate. Two patterns dominate:
 
-### Peer-to-Peer Communication
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Peer-to-Peer Communication</h4>
+<p>Modules call each other directly through interfaces. The Checkout module calls the Inventory module's <code>reserveStock()</code> method.</p>
+<p><strong>How it works:</strong> Modules depend on interfaces, not implementations. The Checkout module depends on <code>IInventoryService</code> interface. At runtime, the actual Inventory module implementation fulfills the interface.</p>
+<p><strong>Advantages:</strong> Simple, fast (in-process calls), easy to debug, low latency, straightforward to implement.</p>
+<p><strong>Tradeoffs:</strong> Creates direct coupling between modules. If the Inventory interface changes, Checkout must update. Changes propagate through dependency chains. Circular dependencies become possible if not carefully managed.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Mediator Communication</h4>
+<p>Modules communicate through a mediator abstraction layer that routes requests. Modules publish commands or events to the mediator. The mediator routes them to appropriate handlers in other modules.</p>
+<p><strong>How it works:</strong> Checkout publishes a <code>ReserveStockCommand</code>. The mediator routes it to the Inventory module's command handler. The handler processes the command and publishes a <code>StockReservedEvent</code>. The mediator routes the event to interested modules.</p>
+<p><strong>Advantages:</strong> Modules don't depend on each other directly. The Checkout module doesn't know the Inventory module exists. This decouples modules and reduces propagating changes.</p>
+<p><strong>Tradeoffs:</strong> Adds indirection and complexity. Debugging is harder (control flow goes through the mediator). The mediator can become a bottleneck. Requires establishing patterns for commands, events, and handlers.</p>
+</div>
+</div>
 
-Modules call each other directly through interfaces. The Checkout module calls the Inventory module's `reserveStock()` method. The Cart module calls the Catalog module's `getProduct()` method.
-
-**How it works**: Modules depend on interfaces, not implementations. The Checkout module depends on `IInventoryService` interface. At runtime, the actual Inventory module implementation fulfills the interface.
-
-**Advantages**: Simple, fast (in-process calls), easy to debug, low latency, straightforward to implement.
-
-**Tradeoffs**: Creates direct coupling between modules. If the Inventory interface changes, Checkout must update. Changes propagate through dependency chains. Circular dependencies become possible if not carefully managed.
-
-### Mediator Communication
-
-Modules communicate through a mediator abstraction layer that routes requests. Modules publish commands or events to the mediator. The mediator routes them to appropriate handlers in other modules.
-
-**How it works**: Checkout publishes a `ReserveStockCommand`. The mediator routes it to the Inventory module's command handler. The handler processes the command and publishes a `StockReservedEvent`. The mediator routes the event to interested modules.
-
-**Advantages**: Modules don't depend on each other directly. The Checkout module doesn't know the Inventory module exists. This decouples modules and reduces propagating changes.
-
-**Tradeoffs**: Adds indirection and complexity. Debugging is harder (control flow goes through the mediator). The mediator can become a bottleneck. Requires establishing patterns for commands, events, and handlers.
-
-Many systems use a hybrid approach: synchronous peer-to-peer calls for queries and mediator patterns for domain events and workflow coordination.
+<div class="callout callout--tip">
+<p class="callout__title">Hybrid Approach</p>
+<p>Many systems use a hybrid approach: synchronous peer-to-peer calls for queries and mediator patterns for domain events and workflow coordination.</p>
+</div>
 
 ## Data Topology Options
 
-### Shared Database with Module Schemas
-
-All modules share one database but each module owns specific tables/schemas. The Inventory module owns inventory-related tables. The Catalog module owns product tables. Modules access only their own tables.
-
-**Advantages**: Simple transactions across modules (same database), familiar development patterns, easy queries when needed.
-
-**Tradeoffs**: Schema coupling (other modules might be tempted to query your tables directly), harder to enforce boundaries, database can become a shared dependency that couples modules.
-
-**Enforcement**: Use database schemas, security permissions, or code review processes to prevent modules from accessing each other's tables.
-
-### Module-Specific Databases
-
-Each module has its own database. Despite deploying as a monolith, modules use separate datastores. The Inventory module uses its own database. The Catalog module uses its own database.
-
-**Advantages**: True data isolation, enforces module boundaries, enables different database types per module (Inventory uses PostgreSQL, Catalog uses MongoDB).
-
-**Tradeoffs**: Cross-module queries become complex, transactions spanning modules require distributed transaction patterns (or workflow-based consistency), higher operational complexity.
-
-**When to use**: When you're preparing to eventually extract modules as microservices, or when data isolation is critical for security or compliance.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Shared Database with Module Schemas</h4>
+<p>All modules share one database but each module owns specific tables/schemas. The Inventory module owns inventory-related tables. The Catalog module owns product tables. Modules access only their own tables.</p>
+<p><strong>Advantages:</strong> Simple transactions across modules (same database), familiar development patterns, easy queries when needed.</p>
+<p><strong>Tradeoffs:</strong> Schema coupling (other modules might be tempted to query your tables directly), harder to enforce boundaries, database can become a shared dependency that couples modules.</p>
+<p><strong>Enforcement:</strong> Use database schemas, security permissions, or code review processes to prevent modules from accessing each other's tables.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Module-Specific Databases</h4>
+<p>Each module has its own database. Despite deploying as a monolith, modules use separate datastores. The Inventory module uses its own database. The Catalog module uses its own database.</p>
+<p><strong>Advantages:</strong> True data isolation, enforces module boundaries, enables different database types per module (Inventory uses PostgreSQL, Catalog uses MongoDB).</p>
+<p><strong>Tradeoffs:</strong> Cross-module queries become complex, transactions spanning modules require distributed transaction patterns (or workflow-based consistency), higher operational complexity.</p>
+<p><strong>When to use:</strong> When you're preparing to eventually extract modules as microservices, or when data isolation is critical for security or compliance.</p>
+</div>
+</div>
 
 ## Characteristics
 

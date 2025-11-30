@@ -9,6 +9,10 @@ tags: [data-structures, algorithms, hash-tables, performance, practical, fundame
 
 *Concept pioneered by Hans Peter Luhn at IBM (1953), formalized as "hash tables" in the 1960s*
 
+<blockquote class="pull-quote">
+<p>Provides average O(1) lookups by trading space for time using mathematical hashing. This fundamental trade-off powers most modern software.</p>
+</blockquote>
+
 Provides average O(1) lookups by trading space for time using mathematical hashing. This is the fundamental trade-off that powers most modern software, from database indexes to compiler symbol tables.
 
 ## When to Use Hash Tables
@@ -41,19 +45,31 @@ Provides average O(1) lookups by trading space for time using mathematical hashi
 
 ## Collision Resolution Strategies
 
-**The Problem:** Multiple keys may hash to the same index. With n items and m slots, by the pigeonhole principle, collisions are inevitable when n > m.
+<div class="callout callout--note">
+<p class="callout__title">The Collision Problem</p>
+<p>Multiple keys may hash to the same index. With n items and m slots, by the pigeonhole principle, collisions are inevitable when n > m.</p>
+</div>
 
-### Separate Chaining (Most Common)
-- Each array slot holds a linked list (or dynamic array) of key-value pairs
-- **Pros:** Simple, never "full", handles high load factors (even > 1.0)
-- **Cons:** Extra memory for pointers, poor cache locality
-- **Used by:** Java's HashMap, Python's dict (historically)
-
-### Open Addressing (Linear Probing)
-- When collision occurs, probe next slot(s) until finding empty space
-- **Pros:** Better cache performance, no pointer overhead, all data in one array
-- **Cons:** Clustering issues, table can become full, deletions tricky
-- **Variants:** Linear probing (check i+1, i+2...), Quadratic probing (check i+1², i+2²...), Double hashing
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Separate Chaining (Most Common)</h4>
+<ul>
+<li>Each array slot holds a linked list (or dynamic array) of key-value pairs</li>
+<li><strong>Pros:</strong> Simple, never "full", handles high load factors (even > 1.0)</li>
+<li><strong>Cons:</strong> Extra memory for pointers, poor cache locality</li>
+<li><strong>Used by:</strong> Java's HashMap, Python's dict (historically)</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Open Addressing (Linear Probing)</h4>
+<ul>
+<li>When collision occurs, probe next slot(s) until finding empty space</li>
+<li><strong>Pros:</strong> Better cache performance, no pointer overhead, all data in one array</li>
+<li><strong>Cons:</strong> Clustering issues, table can become full, deletions tricky</li>
+<li><strong>Variants:</strong> Linear probing, Quadratic probing, Double hashing</li>
+</ul>
+</div>
+</div>
 
 ### Modern Approach
 Many modern implementations use hybrid strategies or sophisticated open addressing:
