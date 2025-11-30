@@ -22,6 +22,10 @@ tags: [infrastructure, iac, governance, compliance, security, practical]
 
 **Goal:** Ensure infrastructure remains compliant, properly tagged, and doesn't drift from IaC definitions.
 
+<blockquote class="pull-quote">
+<p>Governance that only detects violations is too late. Preventive controls that block non-compliant changes before they happen are the goal.</p>
+</blockquote>
+
 **Key challenges:**
 - Developers creating resources without required tags
 - Manual changes causing drift from IaC templates
@@ -40,6 +44,11 @@ tags: [infrastructure, iac, governance, compliance, security, practical]
 ## Tag Enforcement
 
 Ensure all resources have required tags (environment, layer, domain) using AWS Organizations and preventive controls.
+
+<div class="callout callout--tip">
+<p class="callout__title">Tagging Strategy</p>
+<p>Start with 3-5 required tags: environment, layer, and owner are universally useful. Add domain, cost-center, or compliance tags as organizational needs dictate. Too many required tags create friction.</p>
+</div>
 
 ### Tag Policies (AWS Organizations)
 
@@ -443,6 +452,10 @@ ComplianceDashboard:
 
 Block non-compliant infrastructure changes before they happen.
 
+<blockquote class="pull-quote">
+<p>Detection finds problems. Prevention stops them. The best governance controls prevent non-compliant changes from ever reaching production.</p>
+</blockquote>
+
 ### Service Control Policies (SCPs)
 
 **What they do:** Prevent resource creation without required tags at the organization level.
@@ -591,6 +604,29 @@ public class RequireTagsHook : ICloudFormationHook
 ## Automated Remediation
 
 Automatically fix compliance violations and drift.
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Detective Controls</h4>
+<ul>
+<li><strong>Timing:</strong> After the violation occurs</li>
+<li><strong>Tools:</strong> AWS Config, drift detection</li>
+<li><strong>Response:</strong> Alert and remediate</li>
+<li><strong>Risk:</strong> Window of exposure exists</li>
+<li><strong>Use:</strong> Monitoring and visibility</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Preventive Controls</h4>
+<ul>
+<li><strong>Timing:</strong> Before the violation occurs</li>
+<li><strong>Tools:</strong> SCPs, IAM boundaries, hooks</li>
+<li><strong>Response:</strong> Block the change</li>
+<li><strong>Risk:</strong> No exposure window</li>
+<li><strong>Use:</strong> Enforce critical requirements</li>
+</ul>
+</div>
+</div>
 
 ### AWS Config Remediation Actions
 

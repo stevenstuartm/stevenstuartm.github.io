@@ -22,6 +22,10 @@ tags: [infrastructure, deployment, blue-green, canary, practical, reliability]
 
 Deployment strategies define how new versions of applications are released to production environments. Each strategy offers distinct advantages and challenges, making them suitable for different scenarios. The choice depends on factors such as risk tolerance, infrastructure constraints, and business requirements.
 
+<blockquote class="pull-quote">
+<p>The right deployment strategy minimizes risk while maximizing your ability to deliver value quickly. There is no one-size-fits-all solution.</p>
+</blockquote>
+
 **Key Objectives:**
 - Minimize downtime and service interruptions
 - Reduce deployment risks and enable quick rollbacks
@@ -56,9 +60,37 @@ Rolling deployment is the default strategy in Kubernetes and many other orchestr
 - Teams comfortable with gradual deployment processes
 - Systems where version inconsistencies are acceptable
 
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Rolling Deployment</h4>
+<ul>
+<li><strong>Cost:</strong> Low - uses existing infrastructure</li>
+<li><strong>Downtime:</strong> Minimal during rollout</li>
+<li><strong>Rollback:</strong> Slower - reverse the process</li>
+<li><strong>Risk:</strong> Gradual impact on users</li>
+<li><strong>Best for:</strong> Cost-sensitive environments</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Blue-Green Deployment</h4>
+<ul>
+<li><strong>Cost:</strong> High - double infrastructure</li>
+<li><strong>Downtime:</strong> Zero during switch</li>
+<li><strong>Rollback:</strong> Instant - flip load balancer</li>
+<li><strong>Risk:</strong> All-or-nothing impact</li>
+<li><strong>Best for:</strong> Mission-critical systems</li>
+</ul>
+</div>
+</div>
+
 ## Blue-Green Deployment
 
 Blue-green uses two environments to ensure smooth transitions, while canary gradually rolls out updates to minimize impact. Both strategies improve rollback capabilities and user experience. Blue-Green deployment is a technique that reduces downtime and risk by running two identical production environments called Blue and Green.
+
+<div class="callout callout--tip">
+<p class="callout__title">Zero Downtime Guarantee</p>
+<p>Blue-Green deployment is the only strategy that truly guarantees zero downtime during deployment. The instant traffic switch means users experience no interruption whatsoever.</p>
+</div>
 
 ### How It Works
 1. **Blue Environment**: Current production environment serving live traffic
@@ -88,6 +120,10 @@ Blue-green uses two environments to ensure smooth transitions, while canary grad
 ## Canary Release
 
 A canary deployment is a deployment strategy that releases an application or service incrementally to a subset of users. The canary technique targets certain users to receive access to the new application version, rather than certain servers.
+
+<blockquote class="pull-quote">
+<p>Canary release is the lowest risk deployment strategy. Issues are discovered incrementally with limited blast radius.</p>
+</blockquote>
 
 ### How It Works
 1. **Deploy New Version**: Release to small subset of infrastructure (2-5% of traffic)
@@ -161,6 +197,11 @@ A/B Testing deployment runs experiments comparing different versions simultaneou
 ## Chaos Engineering Testing
 
 Chaos Monkey Testing is a form of resilience testing where random failures are injected into a system to test its ability to withstand and recover from unexpected disruptions. Chaos experiments range from simple manual actions in test environments to complex automated tests in production.
+
+<div class="callout callout--warning">
+<p class="callout__title">Production Risk Warning</p>
+<p>Chaos engineering tests are designed to break things in production. Start small in non-production environments and gradually expand scope. Always have rollback mechanisms and safety measures in place.</p>
+</div>
 
 ### Core Principles
 Chaos engineering is made up of five main principles:

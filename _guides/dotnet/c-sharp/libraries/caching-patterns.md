@@ -34,17 +34,31 @@ public async Task<Product> GetProductAsync(int id)
 
 ## Choosing Between Cache Types
 
-Before diving into implementations, understand which type fits your scenario.
+<div class="callout callout--tip">
+<p class="callout__title">Cache Type Decision Guide</p>
+<p>Choose your cache type based on deployment topology and consistency requirements. The wrong choice can cause subtle bugs in production.</p>
+</div>
 
-**IMemoryCache (in-process)** stores data in application memory. It's fast (no serialization, no network) but each application instance has its own cache. Use it when:
-- You have a single application instance, or
-- Cache consistency across instances doesn't matter (e.g., each instance can compute its own cached values), or
-- Latency is critical and you're caching frequently-accessed, read-heavy data
-
-**IDistributedCache** shares cached data across application instances via an external store like Redis or SQL Server. Use it when:
-- You have multiple application instances that need cache consistency
-- Cached data must survive application restarts
-- You're caching expensive computations that shouldn't be repeated per-instance
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>IMemoryCache (In-Process)</h4>
+<ul>
+<li>Fast: no serialization, no network</li>
+<li>Each instance has its own cache</li>
+<li>Use for: single instance, or latency-critical read-heavy data</li>
+<li>Trade-off: no cache consistency across instances</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>IDistributedCache</h4>
+<ul>
+<li>Shared across instances via external store (Redis, SQL)</li>
+<li>Survives application restarts</li>
+<li>Use for: multi-instance deployments needing consistency</li>
+<li>Trade-off: serialization overhead, network latency</li>
+</ul>
+</div>
+</div>
 
 **Hybrid approach**: Use both. IMemoryCache as an L1 cache for hot data with very short TTL, backed by IDistributedCache as L2 for shared, longer-lived data. .NET 9's HybridCache formalizes this pattern.
 
@@ -401,6 +415,10 @@ await sub.PublishAsync("notifications", "Hello!");
 ## Caching Patterns
 
 ### Cache-Aside (Lazy Loading)
+
+<blockquote class="pull-quote">
+<p>Cache-aside is the most common pattern: load from cache, miss from source, populate cache.</p>
+</blockquote>
 
 Application manages cache reads and writes.
 

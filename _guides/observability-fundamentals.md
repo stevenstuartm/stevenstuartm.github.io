@@ -24,6 +24,10 @@ Observability is the ability to understand a system's internal state based on it
 
 ## Observability vs Monitoring
 
+<blockquote class="pull-quote">
+<p>Observability is a broader version of monitoring that allows operations teams to be proactive and resolve sophisticated issues faster.</p>
+</blockquote>
+
 Understanding the distinction between monitoring and observability is crucial for implementing effective system visibility strategies.
 
 | Aspect | Monitoring | Observability |
@@ -36,8 +40,6 @@ Understanding the distinction between monitoring and observability is crucial fo
 | **Approach** | Reactive: Responds to known problems | Proactive: Discovers unknown unknowns |
 | **Data Sources** | Predefined metrics and alerts | Multiple correlated data sources |
 | **Question Answered** | "Is the system working?" | "Why is the system not working?" |
-
-Observability is a broader version of monitoring that allows operations teams to be proactive and resolve sophisticated issues faster.
 
 ## Events: The Foundation
 
@@ -85,12 +87,16 @@ Logs are detailed chronological records of specific events that occur within a s
 - **Ephemeral Nature**: Container logs disappear when containers shut down
 - **Configuration Dependent**: Only capture what they're configured to log
 
-#### Implementation Best Practices
-1. **Structured Logging**: Use consistent JSON format for easier parsing
-2. **Correlation IDs**: Include request IDs to trace events across services
-3. **Log Levels**: Use appropriate levels (DEBUG, INFO, WARN, ERROR, FATAL)
-4. **Centralized Collection**: Aggregate logs from all services and infrastructure
-5. **Retention Policies**: Balance storage costs with investigation needs
+<div class="callout callout--tip">
+<p class="callout__title">Logging Best Practices</p>
+<ol>
+<li><strong>Structured Logging</strong>: Use consistent JSON format for easier parsing</li>
+<li><strong>Correlation IDs</strong>: Include request IDs to trace events across services</li>
+<li><strong>Log Levels</strong>: Use appropriate levels (DEBUG, INFO, WARN, ERROR, FATAL)</li>
+<li><strong>Centralized Collection</strong>: Aggregate logs from all services and infrastructure</li>
+<li><strong>Retention Policies</strong>: Balance storage costs with investigation needs</li>
+</ol>
+</div>
 
 ### Metrics (Monitoring)
 
@@ -108,10 +114,14 @@ Metrics are numerical measurements of system performance and behavior that provi
 - **Business Metrics**: User registrations, revenue, conversion rates
 - **Infrastructure Metrics**: Container counts, load balancer health, database connections
 
-#### Key Metric Patterns
-- **RED Method**: Rate, Errors, Duration for user-facing services
-- **USE Method**: Utilization, Saturation, Errors for infrastructure resources
-- **Four Golden Signals**: Latency, Traffic, Errors, Saturation
+<div class="callout callout--note">
+<p class="callout__title">Key Metric Patterns</p>
+<ul>
+<li><strong>RED Method</strong>: Rate, Errors, Duration for user-facing services</li>
+<li><strong>USE Method</strong>: Utilization, Saturation, Errors for infrastructure resources</li>
+<li><strong>Four Golden Signals</strong>: Latency, Traffic, Errors, Saturation</li>
+</ul>
+</div>
 
 #### Advantages
 - **Real-Time Monitoring**: Provide immediate visibility into system health

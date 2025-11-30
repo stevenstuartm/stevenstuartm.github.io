@@ -130,6 +130,11 @@ WebServerInstance:
 
 ### YAML vs. JSON
 
+<div class="callout callout--tip">
+<p class="callout__title">Use YAML for CloudFormation Templates</p>
+<p>YAML is more readable, supports comments, and is less verbose than JSON. Use YAML unless you have a specific reason to use JSON.</p>
+</div>
+
 **YAML (recommended):**
 ```yaml
 Resources:

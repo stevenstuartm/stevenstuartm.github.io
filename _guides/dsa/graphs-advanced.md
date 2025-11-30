@@ -119,6 +119,10 @@ public static class ShortestPath
 
 *Developed by Peter Hart, Nils Nilsson, and Bertram Raphael at Stanford Research Institute in 1968*
 
+<blockquote class="pull-quote">
+<p>A* uses f(n) = g(n) + h(n): actual cost from start plus estimated cost to goal. Much faster than Dijkstra when you have a good heuristic.</p>
+</blockquote>
+
 **When to use:** Pathfinding with heuristic knowledge (games, GPS navigation, robotics)
 
 **Key properties:**

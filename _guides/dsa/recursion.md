@@ -8,6 +8,10 @@ tags: [algorithms, recursion, fundamentals, problem-solving, interview-prep]
 ## Why Recursion Exists
 Some problems are naturally self-similar, such as tree traversal, mathematical sequences, and divide-and-conquer algorithms. Recursion provides an elegant way to express solutions that work on progressively smaller versions of the same problem.
 
+<blockquote class="pull-quote">
+<p>Recursion provides an elegant way to express solutions that work on progressively smaller versions of the same problem.</p>
+</blockquote>
+
 ## When to Use Recursion
 
 **Use when:**
@@ -29,6 +33,11 @@ Some problems are naturally self-similar, such as tree traversal, mathematical s
 ---
 
 ## Essential Recursion Components
+
+<div class="callout callout--warning">
+<p class="callout__title">Critical: The Base Case</p>
+<p>The base case stops recursion. Without it, you get infinite recursion and stack overflow. Every recursive function must have at least one base case that doesn't call itself.</p>
+</div>
 
 ### 1. Base Case
 The condition that stops recursion. Without it, you get infinite recursion and stack overflow.
@@ -402,17 +411,26 @@ Console.WriteLine($"Found 7 at index: {index}"); // Found 7 at index: 3
 
 ### When to Choose Each
 
-**Recursion is better when:**
-- Problem naturally recursive (trees, fractals)
-- Code is much cleaner and easier to understand
-- Stack depth is reasonable
-- Performance is not critical
-
-**Iteration is better when:**
-- Simple loops suffice
-- Memory is limited
-- Performance is critical
-- Stack overflow is a concern
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Recursion is Better When</h4>
+<ul>
+<li>Problem naturally recursive (trees, fractals)</li>
+<li>Code is much cleaner and easier to understand</li>
+<li>Stack depth is reasonable</li>
+<li>Performance is not critical</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Iteration is Better When</h4>
+<ul>
+<li>Simple loops suffice</li>
+<li>Memory is limited</li>
+<li>Performance is critical</li>
+<li>Stack overflow is a concern</li>
+</ul>
+</div>
+</div>
 
 ### Converting Recursion to Iteration
 

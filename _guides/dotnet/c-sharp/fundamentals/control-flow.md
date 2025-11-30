@@ -209,15 +209,11 @@ double area = shape switch
 };
 ```
 
-### When to Use Statement vs Expression
-
-| Use Case | Prefer |
-|----------|--------|
-| Need to return/assign a value | Switch expression |
-| Multiple statements per case | Switch statement |
-| Side effects in each branch | Switch statement |
-| Simple mapping | Switch expression |
-| Complex logic per case | Switch statement |
+<div class="callout callout--tip">
+<p class="callout__title">When to Use Statement vs Expression</p>
+<p>Use <strong>switch expressions</strong> when you need to return or assign a value based on patterns—they're concise and readable for mapping scenarios.</p>
+<p>Use <strong>switch statements</strong> when each case needs multiple statements, side effects, or complex logic that doesn't fit neatly into a single expression.</p>
+</div>
 
 ## Loops
 
@@ -381,6 +377,11 @@ for (int i = 0; i < 100; i++)
     ProcessEvenNumber(i);
 }
 ```
+
+<div class="callout callout--warning">
+<p class="callout__title">goto (Use Sparingly)</p>
+<p>Jump to a labeled statement. Rarely appropriate, but valid for breaking nested loops. In most cases, extracting to a method with an early return is clearer.</p>
+</div>
 
 ### goto (Use Sparingly)
 

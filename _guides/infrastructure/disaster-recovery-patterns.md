@@ -30,6 +30,27 @@ Disaster Recovery (DR) strategies define how organizations prepare for and respo
 
 ## Key Concepts
 
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Recovery Point Objective (RPO)</h4>
+<p>RPO measures the maximum age of files that an organization must recover from backup storage for normal operations to resume after a disaster.</p>
+<ul>
+<li><strong>What it answers:</strong> How much data can we afford to lose?</li>
+<li><strong>Example:</strong> RPO of 1 hour = accepting up to 1 hour of data loss</li>
+<li><strong>Typical ranges:</strong> Minutes to hours for critical systems</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Recovery Time Objective (RTO)</h4>
+<p>RTO measures the targeted duration within which a business process must be restored after a disaster to avoid unacceptable consequences.</p>
+<ul>
+<li><strong>What it answers:</strong> How long can we afford to be down?</li>
+<li><strong>Example:</strong> RTO of 2 hours = systems must be restored within 2 hours</li>
+<li><strong>Typical ranges:</strong> Minutes for mission-critical systems</li>
+</ul>
+</div>
+</div>
+
 ### Recovery Point Objective (RPO)
 RPO measures the maximum age of files that an organization must recover from backup storage for normal operations to resume after a disaster. In other words, it determines how much data an organization can afford to lose.
 
@@ -183,6 +204,12 @@ A scaled-down version of a fully functional environment. This smaller, but alway
 - **RPO**: 5-15 minutes (based on replication lag)
 - **RTO**: 5-30 minutes (scaling time only)
 - **Cost**: Medium ongoing operational expense
+
+<div class="callout callout--tip">
+<p class="callout__title">Pilot Light vs. Warm Standby</p>
+<p><strong>Pilot Light:</strong> Cannot handle production traffic without initial action (turning on servers)</p>
+<p><strong>Warm Standby:</strong> Can immediately handle traffic at reduced capacity</p>
+</div>
 
 ### The key difference between warm standby and pilot light:
 - **Pilot Light**: Cannot handle production traffic without initial action (turning on servers)

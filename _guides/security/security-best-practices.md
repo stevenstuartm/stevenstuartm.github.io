@@ -20,6 +20,10 @@ tags: [security, best-practices, practical, implementation, checklist]
 
 ### Network Segmentation
 
+<blockquote class="pull-quote">
+<p>Network segmentation limits lateral movement during breaches. An attacker who compromises one zone cannot automatically access other network segments.</p>
+</blockquote>
+
 **Purpose:** Limit lateral movement and contain breaches within isolated network zones.
 
 **Implementation:**
@@ -334,6 +338,11 @@ class PatchManagement:
 ## Identity and Access Management
 
 ### Multi-Factor Authentication (MFA)
+
+<div class="callout callout--warning">
+<p class="callout__title">SMS MFA Vulnerability</p>
+<p>SMS/Voice-based MFA is vulnerable to SIM swapping attacks. Use hardware security keys, biometric authentication, or authenticator apps instead.</p>
+</div>
 
 **Implementation Hierarchy (Strongest to Weakest):**
 

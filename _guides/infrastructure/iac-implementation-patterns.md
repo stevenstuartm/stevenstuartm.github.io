@@ -23,6 +23,10 @@ tags: [infrastructure, iac, design-patterns, best-practices, practical]
 
 **Purpose:** Modules encapsulate resources that work together as a logical unit (e.g., a VPC with subnets, a database with backups). They're about **code reuse and abstraction**, not about deployment organization (that's layering).
 
+<blockquote class="pull-quote">
+<p>Think of modules as functions or libraries in programming: reusable building blocks you can use anywhere.</p>
+</blockquote>
+
 **Think of modules as:** Functions or libraries in programming; reusable building blocks you can use anywhere.
 
 ### Benefits
@@ -283,6 +287,13 @@ infrastructure/
 ---
 
 ## Layered Architecture
+
+<div class="callout callout--note">
+<p class="callout__title">Modules vs. Layers</p>
+<p><strong>Modules</strong> = Reusable code (VPC module, RDS module)</p>
+<p><strong>Layers</strong> = Deployment units that USE modules (foundation layer uses VPC module)</p>
+<p>Modules are about code reuse. Layers are about deployment organization and team ownership.</p>
+</div>
 
 **What it is:** Organizing infrastructure into separate deployment layers based on ownership and change frequency.
 

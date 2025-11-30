@@ -26,6 +26,10 @@ This guide focuses on responsibilities 7 and 8: leading teams and navigating org
 
 Architecture changes every iteration. Requirements shift, technology evolves, and understanding deepens through implementation. This demands tight collaboration between architects and development teams.
 
+<blockquote class="pull-quote">
+<p>Architects need developers to implement architecture and provide reality checks. Developers need architects to provide context, remove roadblocks, and make cross-cutting decisions. Neither succeeds without the other.</p>
+</blockquote>
+
 ### Breaking Down Barriers
 
 The architect-developer divide is one of the most destructive patterns in software organizations. It emerges when architects retreat to ivory towers, making decisions without implementation experience, while developers dismiss architectural guidance as disconnected from reality.
@@ -44,9 +48,16 @@ The architect-developer divide is one of the most destructive patterns in softwa
 
 Effective architects create a "room" for teams to work in: appropriate constraints that guide without strangling. The size and shape of this room depends on the team, the project, and the risk.
 
-**Too many constraints**: Teams lose autonomy and ownership. They become order-takers executing someone else's design. Innovation dies, and the architect becomes a bottleneck.
-
-**Too few constraints**: Teams reinvent solutions to solved problems, make inconsistent decisions, or violate critical architectural characteristics. Technical debt accumulates from lack of coordination.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Too Many Constraints</h4>
+<p>Teams lose autonomy and ownership. They become order-takers executing someone else's design. Innovation dies, and the architect becomes a bottleneck.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Too Few Constraints</h4>
+<p>Teams reinvent solutions to solved problems, make inconsistent decisions, or violate critical architectural characteristics. Technical debt accumulates from lack of coordination.</p>
+</div>
+</div>
 
 **The right balance**:
 - **Define non-negotiables**: What absolutely must be consistent (security patterns, data protection, cross-cutting concerns)
@@ -179,6 +190,11 @@ Communication overhead can exceed productivity gains from additional people. Nin
 - **Find parallelism**: Can you decompose work into independent streams?
 - **Reduce dependencies**: Can you restructure to enable parallel development?
 - **Don't add people without parallel work**: More people won't help if work can't be parallelized
+
+<div class="callout callout--warning">
+<p class="callout__title">Watch for Pluralistic Ignorance</p>
+<p>Everyone privately rejects a norm but assumes others accept it, so publicly goes along. Example: The team thinks daily standups are a waste of time, but nobody speaks up because everyone assumes others find them valuable.</p>
+</div>
 
 ### Pluralistic Ignorance
 

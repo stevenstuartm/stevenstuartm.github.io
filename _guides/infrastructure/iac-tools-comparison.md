@@ -21,6 +21,10 @@ tags: [infrastructure, iac, tools, comparison, decision-making, reference]
 
 Different IaC tools serve different purposes and excel in different scenarios. This guide helps you understand the landscape and choose the right tool for your needs.
 
+<blockquote class="pull-quote">
+<p>There is no universally best IaC tool. The right choice depends on your cloud strategy, team background, and organizational constraints.</p>
+</blockquote>
+
 ### Tool Categories
 
 **Cloud-Specific:**
@@ -76,6 +80,11 @@ Different IaC tools serve different purposes and excel in different scenarios. T
 - Teams already using AWS
 - Need for AWS-specific features
 - Organizations wanting AWS-managed solution
+
+<div class="callout callout--tip">
+<p class="callout__title">CloudFormation vs Terraform for AWS</p>
+<p>If you're AWS-only and want native integration with zero additional cost, choose CloudFormation. If you value multi-cloud flexibility and a larger community ecosystem, choose Terraform. Both are excellent tools for AWS infrastructure.</p>
+</div>
 
 **Resources:**
 - [AWS CloudFormation Documentation](https://docs.aws.amazon.com/cloudformation/){:target="_blank" rel="noopener noreferrer"}
@@ -147,11 +156,38 @@ Different IaC tools serve different purposes and excel in different scenarios. T
 
 ---
 
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Cloud-Specific Tools</h4>
+<ul>
+<li><strong>Integration:</strong> Deepest native integration</li>
+<li><strong>Features:</strong> Immediate access to new services</li>
+<li><strong>Cost:</strong> Free (built into cloud)</li>
+<li><strong>Lock-in:</strong> High - single cloud only</li>
+<li><strong>Examples:</strong> CloudFormation, ARM, Deployment Manager</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Multi-Cloud Tools</h4>
+<ul>
+<li><strong>Integration:</strong> Works across clouds</li>
+<li><strong>Features:</strong> Lags behind cloud-native tools</li>
+<li><strong>Cost:</strong> Free core (paid SaaS optional)</li>
+<li><strong>Lock-in:</strong> Low - cloud-agnostic</li>
+<li><strong>Examples:</strong> Terraform, Pulumi, OpenTofu</li>
+</ul>
+</div>
+</div>
+
 ## Multi-Cloud Tools
 
 ### Terraform (HashiCorp)
 
 **What it is:** Open-source, cloud-agnostic IaC tool using HashiCorp Configuration Language (HCL).
+
+<blockquote class="pull-quote">
+<p>Terraform is the industry standard for multi-cloud infrastructure as code. Its ecosystem, maturity, and provider support make it the default choice for most teams.</p>
+</blockquote>
 
 **Key features:**
 - Multi-cloud support (AWS, Azure, GCP, 1000+ providers)
@@ -295,6 +331,29 @@ namespace MyCdkApp
 - Complex logic in templates
 - Teams with strong programming background
 - Need for standard testing tools
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Declarative (HCL/YAML)</h4>
+<ul>
+<li><strong>Tools:</strong> Terraform, CloudFormation</li>
+<li><strong>Learning Curve:</strong> Moderate - new syntax</li>
+<li><strong>Complexity:</strong> Limited logic capabilities</li>
+<li><strong>Testing:</strong> External tools required</li>
+<li><strong>Best for:</strong> Ops teams, simple infrastructure</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Code-Based (TypeScript/Python)</h4>
+<ul>
+<li><strong>Tools:</strong> Pulumi, AWS CDK</li>
+<li><strong>Learning Curve:</strong> Low - familiar languages</li>
+<li><strong>Complexity:</strong> Full programming features</li>
+<li><strong>Testing:</strong> Native test frameworks</li>
+<li><strong>Best for:</strong> Dev teams, complex logic</li>
+</ul>
+</div>
+</div>
 
 **Example:**
 ```python
@@ -451,6 +510,11 @@ pulumi.export("website_url", bucket.website_endpoint)
 ---
 
 ## Choosing the Right Tool
+
+<div class="callout callout--note">
+<p class="callout__title">Decision Framework</p>
+<p>The right tool depends on four key factors: cloud strategy (single vs multi-cloud), team background (ops vs dev), primary use case (provisioning vs configuration), and organizational constraints (cost, licensing, support).</p>
+</div>
 
 ### Decision Framework
 

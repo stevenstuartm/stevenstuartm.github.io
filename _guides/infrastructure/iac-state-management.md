@@ -44,6 +44,10 @@ tags: [infrastructure, iac, state-management, terraform, practical]
 
 ## Do You Need State Management?
 
+<blockquote class="pull-quote">
+<p>Cloud-native IaC tools like CloudFormation, ARM Templates, and Deployment Manager handle state automatically. You don't need to manage state yourself.</p>
+</blockquote>
+
 **Cloud-native IaC tools handle state automatically**; you don't need to manage state yourself.
 
 ### Tools That Manage State for You
@@ -100,6 +104,11 @@ tags: [infrastructure, iac, state-management, terraform, practical]
 ---
 
 ## Local vs. Remote State
+
+<div class="callout callout--warning">
+<p class="callout__title">Never Use Local State for Teams</p>
+<p>Local state files are not suitable for teams or production environments. They lack locking, backup, versioning, and team sharing capabilities. Always use remote state for collaborative work.</p>
+</div>
 
 ### Local State
 

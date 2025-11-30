@@ -50,11 +50,13 @@ tags: [algorithms, complexity-analysis, fundamentals, theory]
 ## Mathematical Foundations
 
 ### Logarithms - The "Halving" Function
-**log₂(n) answers:** *"How many times do I divide by 2 to reach 1?"*
 
-Example: log₂(8) = 3 because 8 → 4 → 2 → 1 (3 steps)
-
-**Why it matters:** Binary search on 1 million items needs only ~20 comparisons (log₂(1,000,000) ≈ 20)
+<div class="callout callout--tip">
+<p class="callout__title">Understanding Logarithms</p>
+<p><strong>log₂(n) answers:</strong> "How many times do I divide by 2 to reach 1?"</p>
+<p>Example: log₂(8) = 3 because 8 → 4 → 2 → 1 (3 steps)</p>
+<p><strong>Why it matters:</strong> Binary search on 1 million items needs only ~20 comparisons.</p>
+</div>
 
 ### Growth Patterns
 **Polynomial (n^k):** Predictable growth

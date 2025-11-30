@@ -28,9 +28,34 @@ var adults = people
 
 ## Deferred vs Immediate Execution
 
+<blockquote class="pull-quote">
+<p>LINQ queries don't execute when you write them—they execute when you enumerate them. This deferred execution changes source data, re-execution behavior, and performance characteristics.</p>
+</blockquote>
+
 Understanding when queries execute is crucial for performance and correctness.
 
 ### Deferred Execution
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Deferred Execution</h4>
+<ul>
+<li>Where, Select, OrderBy</li>
+<li>Executes when enumerated</li>
+<li>Re-executes on each enumeration</li>
+<li>Sees data changes</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Immediate Execution</h4>
+<ul>
+<li>ToList, ToArray, Count, First</li>
+<li>Executes right away</li>
+<li>Materializes results</li>
+<li>Snapshot of data</li>
+</ul>
+</div>
+</div>
 
 Most LINQ operations don't execute immediately. The query is built and executed only when results are enumerated.
 
@@ -589,6 +614,11 @@ var results = await query.OrderBy(p => p.Name).ToListAsync();
 ## Performance Tips
 
 ### Avoid Multiple Enumeration
+
+<div class="callout callout--warning">
+<p class="callout__title">Multiple Enumeration Performance Trap</p>
+<p>Each enumeration of a deferred query re-executes the entire query. If you need the results more than once, materialize with <code>ToList()</code> or <code>ToArray()</code>.</p>
+</div>
 
 ```csharp
 // BAD - enumerates twice

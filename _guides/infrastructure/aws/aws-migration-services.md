@@ -22,6 +22,10 @@ Both services use continuous replication to minimize downtime and enable testing
 
 ## AWS Application Migration Service (MGN)
 
+<blockquote class="pull-quote">
+<p>AWS MGN transforms lift-and-shift from a high-risk manual process into an automated, testable workflow with sub-minute RPO and minutes of downtime.</p>
+</blockquote>
+
 ### What It Is
 
 AWS MGN is an automated lift-and-shift solution that replicates on-premises or cloud servers to AWS EC2 instances with minimal downtime.
@@ -131,6 +135,11 @@ for server in source_servers['items']:
 ```
 
 ### Testing Before Cutover
+
+<div class="callout callout--warning">
+<p class="callout__title">Critical Practice</p>
+<p>Always test migrated instances before cutover. Cutover failures in production are preventable with proper testing validation.</p>
+</div>
 
 **Critical practice**: Always test migrated instances before cutover.
 
@@ -341,13 +350,38 @@ def rollback_migration(source_server_id, original_ip):
 
 ## AWS Database Migration Service (DMS)
 
+<blockquote class="pull-quote">
+<p>DMS enables database migrations with minimal downtime through continuous CDC replication, supporting both homogeneous and heterogeneous migrations across 20+ database engines.</p>
+</blockquote>
+
 ### What It Is
 
 AWS DMS migrates databases to AWS with minimal downtime using continuous replication.
 
 **Supported migration types**:
-1. **Homogeneous**: Same database engine (Oracle→Oracle, MySQL→MySQL)
-2. **Heterogeneous**: Different engines (Oracle→PostgreSQL, SQL Server→Aurora)
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Homogeneous Migrations</h4>
+<ul>
+<li>Same database engine (Oracle→Oracle, MySQL→MySQL)</li>
+<li>No schema conversion required</li>
+<li>Simpler setup and execution</li>
+<li>Lower risk of compatibility issues</li>
+<li>Use DMS only for data replication</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Heterogeneous Migrations</h4>
+<ul>
+<li>Different engines (Oracle→PostgreSQL, SQL Server→Aurora)</li>
+<li>Requires AWS Schema Conversion Tool (SCT)</li>
+<li>Schema conversion needed before data migration</li>
+<li>Manual intervention for engine-specific features</li>
+<li>Use SCT for schema, DMS for data replication</li>
+</ul>
+</div>
+</div>
 
 **Key features**:
 - Continuous replication (sub-second lag)
@@ -364,9 +398,36 @@ Source Database → DMS Replication Instance → Target Database (AWS)
 ```
 
 **Replication modes**:
-- **Full Load**: Migrate existing data (one-time)
-- **Full Load + CDC**: Migrate existing data + ongoing changes (minimal downtime)
-- **CDC Only**: Replicate ongoing changes only (data already migrated)
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Full Load</h4>
+<ul>
+<li>Migrate existing data only (one-time)</li>
+<li>No ongoing replication</li>
+<li>Requires downtime during migration</li>
+<li>Use for offline migrations or test environments</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Full Load + CDC</h4>
+<ul>
+<li>Migrate existing data + replicate ongoing changes</li>
+<li>Continuous replication after initial load</li>
+<li>Minimal downtime (only during cutover)</li>
+<li>Recommended for production migrations</li>
+</ul>
+</div>
+<div class="content-card content-card--accent">
+<h4>CDC Only</h4>
+<ul>
+<li>Replicate ongoing changes only</li>
+<li>Assumes data already migrated</li>
+<li>Use for continuous replication or hybrid cloud</li>
+<li>Ideal for disaster recovery scenarios</li>
+</ul>
+</div>
+</div>
 
 ### Homogeneous Migration (MySQL → RDS MySQL)
 
@@ -695,6 +756,11 @@ target_postgres = dms.create_endpoint(
 
 ### Data Validation
 
+<div class="callout callout--tip">
+<p class="callout__title">Best Practice</p>
+<p>Always enable validation for production migrations. DMS can perform row-level validation to ensure data integrity and detect discrepancies between source and target databases.</p>
+</div>
+
 **Enable validation to ensure data integrity**:
 
 ```python
@@ -825,6 +891,11 @@ migrate_wave(wave_4, "Wave 4")
 
 ### Pattern 2: Database Migration with Zero Downtime
 
+<div class="callout callout--note">
+<p class="callout__title">Zero Downtime Pattern</p>
+<p>Using Full Load + CDC replication, you can achieve database migrations with less than 1 minute of downtime. The key is continuous replication during the migration period, followed by a quick cutover when CDC lag reaches near-zero.</p>
+</div>
+
 **Scenario**: Migrate production database with <1 minute downtime.
 
 ```
@@ -894,6 +965,11 @@ dms.start_replication_task(
 ---
 
 ## Cost Optimization
+
+<div class="callout callout--tip">
+<p class="callout__title">Cost Optimization Tip</p>
+<p>MGN offers 90 days free from first server replication. Complete your migrations within this window to avoid service charges entirely. After migration, always delete replication instances and finalize cutover to prevent ongoing costs.</p>
+</div>
 
 ### MGN Costs
 

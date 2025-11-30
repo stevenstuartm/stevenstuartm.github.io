@@ -9,6 +9,10 @@ tags: [c-sharp, dotnet, memory-management, garbage-collection, performance, adva
 
 ## Memory Fundamentals
 
+<blockquote class="pull-quote">
+<p>The garbage collector frees you from manual memory management, but understanding its behavior helps you avoid performance pitfalls and memory leaks.</p>
+</blockquote>
+
 The .NET runtime manages memory automatically through the garbage collector (GC). Understanding how it works helps you write efficient code and avoid memory-related issues.
 
 ### Stack vs Heap
@@ -27,13 +31,28 @@ public void MemoryExample()
 }
 ```
 
-| Aspect | Stack | Heap |
-|--------|-------|------|
-| Allocation speed | Very fast (pointer move) | Slower (GC managed) |
-| Deallocation | Automatic (scope exit) | GC determines when |
-| Size | Small (~1MB per thread) | Large (limited by RAM) |
-| Lifetime | Method scope | GC decides |
-| Content | Value types, references | Objects, arrays |
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Stack</h4>
+<ul>
+<li><strong>Allocation</strong>: Very fast (pointer move)</li>
+<li><strong>Deallocation</strong>: Automatic (scope exit)</li>
+<li><strong>Size</strong>: Small (~1MB per thread)</li>
+<li><strong>Lifetime</strong>: Method scope</li>
+<li><strong>Content</strong>: Value types, references</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Heap</h4>
+<ul>
+<li><strong>Allocation</strong>: Slower (GC managed)</li>
+<li><strong>Deallocation</strong>: GC determines when</li>
+<li><strong>Size</strong>: Large (limited by RAM)</li>
+<li><strong>Lifetime</strong>: GC decides</li>
+<li><strong>Content</strong>: Objects, arrays</li>
+</ul>
+</div>
+</div>
 
 ### The Managed Heap
 
@@ -234,12 +253,16 @@ public class UnmanagedWrapper : IDisposable
 }
 ```
 
-### Finalizer Costs
-
-- Objects with finalizers survive Gen0 collection (promoted to Gen1)
-- Finalizers run on dedicated thread (delays cleanup)
-- Finalizer exceptions can crash the app
-- Use only when wrapping unmanaged resources directly
+<div class="callout callout--warning">
+<p class="callout__title">Finalizer Costs</p>
+<ul>
+<li>Objects with finalizers survive Gen0 collection (promoted to Gen1)</li>
+<li>Finalizers run on dedicated thread (delays cleanup)</li>
+<li>Finalizer exceptions can crash the app</li>
+<li>Use only when wrapping unmanaged resources directly</li>
+</ul>
+<p>Prefer <code>SafeHandle</code> over manual finalizers whenever possible.</p>
+</div>
 
 ```csharp
 // Prefer SafeHandle over manual finalizers

@@ -9,7 +9,11 @@ tags: [c-sharp, dotnet, modern-csharp, nullable, null-safety, practical]
 
 ## The Null Problem
 
-Null reference exceptions are one of the most common runtime errors. Before C# 8.0, any reference type could be null, and the compiler couldn't help identify potential null dereferences.
+<blockquote class="pull-quote">
+<p>Null reference exceptions are one of the most common runtime errors.</p>
+</blockquote>
+
+Before C# 8.0, any reference type could be null, and the compiler couldn't help identify potential null dereferences.
 
 ```csharp
 // Without nullable reference types - compiles but crashes
@@ -195,7 +199,10 @@ public void Setup()
 private IService service = null!; // Will be set in Setup
 ```
 
-**Use ! sparingly**. Overuse defeats the purpose of null safety. Prefer proper null checks or restructuring code.
+<div class="callout callout--warning">
+<p class="callout__title">Use ! Sparingly</p>
+<p>Overuse defeats the purpose of null safety. Prefer proper null checks or restructuring code.</p>
+</div>
 
 ## Attributes for Advanced Scenarios
 
@@ -307,6 +314,27 @@ string result2 = NormalizePath(nonNull); // Result is non-nullable
 ```
 
 ## Nullable Value Types vs Nullable Reference Types
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Nullable Value Types (pre-C# 8.0)</h4>
+<ul>
+<li>Uses <code>Nullable&lt;T&gt;</code> wrapper struct</li>
+<li>Example: <code>int? nullableInt = null;</code></li>
+<li>Provides <code>HasValue</code> and <code>Value</code> properties</li>
+<li>Runtime overhead: extra struct wrapping</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Nullable Reference Types (C# 8.0+)</h4>
+<ul>
+<li>Compile-time annotation only</li>
+<li>Example: <code>string? nullableString = null;</code></li>
+<li>No runtime overhead or wrapper type</li>
+<li>At runtime, still just the reference type (or null)</li>
+</ul>
+</div>
+</div>
 
 ```csharp
 #nullable enable

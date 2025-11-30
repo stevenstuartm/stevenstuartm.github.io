@@ -9,6 +9,10 @@ tags: [c-sharp, dotnet, fundamentals, attributes, reflection, metadata, advanced
 
 ## Attributes Overview
 
+<blockquote class="pull-quote">
+<p>Attributes add declarative metadata to code, enabling frameworks and tools to modify behavior without changing the code itself.</p>
+</blockquote>
+
 Attributes add declarative metadata to code elements. They're used by compilers, frameworks, and runtime code to modify behavior.
 
 ```csharp
@@ -541,6 +545,11 @@ Console.WriteLine(current.Location);
 AssemblyName name = current.GetName();
 Console.WriteLine(name.Version);
 ```
+
+<div class="callout callout--warning">
+<p class="callout__title">Performance Considerations</p>
+<p>Reflection is slow compared to direct calls. Cache reflection results when used repeatedly to avoid repeated lookups.</p>
+</div>
 
 ## Performance Considerations
 

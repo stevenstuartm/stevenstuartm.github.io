@@ -21,6 +21,10 @@ tags: [infrastructure, iac, automation, fundamentals, devops, practical]
 
 **Infrastructure as Code (IaC)** is the practice of managing and provisioning infrastructure through machine-readable definition files rather than manual processes or interactive configuration tools.
 
+<blockquote class="pull-quote">
+<p>Infrastructure as Code treats infrastructure configuration as software code that can be version controlled, reviewed, tested, and automatically deployed with consistent results.</p>
+</blockquote>
+
 ### Core Definition
 
 IaC treats infrastructure configuration as software code that can be:
@@ -153,6 +157,31 @@ IaC treats infrastructure configuration as software code that can be:
 ---
 
 ## Core IaC Concepts
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Declarative (What)</h4>
+<p>Describe the desired end state; the tool figures out how to achieve it.</p>
+<ul>
+<li>Define desired state</li>
+<li>Tool determines steps to reach that state</li>
+<li>Idempotent by nature</li>
+<li>Easier to reason about</li>
+<li><strong>Tools:</strong> Terraform, CloudFormation, Pulumi</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Imperative (How)</h4>
+<p>Specify the exact steps to execute to achieve the desired state.</p>
+<ul>
+<li>Define specific actions</li>
+<li>Explicit control over execution</li>
+<li>Must handle state checking manually</li>
+<li>More flexible but more complex</li>
+<li><strong>Tools:</strong> Ansible, scripts, SDKs</li>
+</ul>
+</div>
+</div>
 
 ### Declarative vs. Imperative
 
@@ -332,6 +361,11 @@ resource "aws_instance" "web" {
 ---
 
 ## Security Considerations for IaC
+
+<div class="callout callout--warning">
+<p class="callout__title">Critical: Never Commit Secrets</p>
+<p>IaC templates often need credentials, API keys, and passwords. Hardcoding these in files that go into version control is a critical security risk. Always use secret management services and mark variables as sensitive.</p>
+</div>
 
 ### Never Commit Secrets to Code
 

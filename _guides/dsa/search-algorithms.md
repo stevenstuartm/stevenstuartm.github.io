@@ -109,6 +109,10 @@ Console.WriteLine($"All occurrences of 'tuna': [{string.Join(", ", allIndices)}]
 - **All cases:** O(log n)
 - **Space complexity:** O(1) iterative, O(log n) recursive (call stack)
 
+<blockquote class="pull-quote">
+<p>Binary search works by repeatedly dividing the search space in half. Each comparison eliminates half of the remaining elements.</p>
+</blockquote>
+
 ### Key Insight
 Binary search works by repeatedly dividing the search space in half. Each comparison eliminates half of the remaining elements.
 
@@ -205,6 +209,11 @@ Console.WriteLine($"Search for 8: {BinarySearch.SearchIterative(testArray, 8)}")
 - Use `Contains()` for membership testing
 - Use LINQ methods like `Where()`, `First()`, `Any()` for complex searches
 - Use `IndexOf()` and `FindIndex()` for finding positions
+
+<div class="callout callout--tip">
+<p class="callout__title">Interview Tip</p>
+<p>Always ask if data is sorted before choosing a search algorithm. This single question determines whether you should use O(n) linear search or O(log n) binary search.</p>
+</div>
 
 ## Key Interview Points
 

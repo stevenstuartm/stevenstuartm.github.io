@@ -9,6 +9,11 @@ tags: [c-sharp, dotnet, interop, pinvoke, com, native-code, advanced]
 
 ## Why Native Interop
 
+<div class="callout callout--note">
+<p class="callout__title">When You Need Native Interop</p>
+<p>Most .NET applications never need P/Invoke or COM. Consider native interop when you must call system APIs, integrate with legacy C/C++ libraries, or interact with hardware directly.</p>
+</div>
+
 Native interop bridges managed .NET code with unmanaged code:
 - **System APIs**: Windows API, Linux syscalls, macOS frameworks
 - **Legacy libraries**: Existing C/C++ libraries without managed wrappers
@@ -68,6 +73,27 @@ public static extern int NativeFunction(int param);
 | `FastCall` | Registers for first args | Performance APIs |
 
 ## LibraryImport (C# 12 / .NET 7+)
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>DllImport (Legacy)</h4>
+<ul>
+<li>Runtime code generation</li>
+<li>Reflection-based marshaling</li>
+<li>Not AOT-compatible</li>
+<li>Implicit boolean conversions</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>LibraryImport (Modern)</h4>
+<ul>
+<li>Source-generated marshaling</li>
+<li>Compile-time validation</li>
+<li>AOT-compatible</li>
+<li>Explicit marshaling required</li>
+</ul>
+</div>
+</div>
 
 Source-generated P/Invoke with better performance and AOT support.
 
@@ -236,6 +262,11 @@ public static extern unsafe void RegisterCallback(
 ```
 
 ## SafeHandle and Resource Management
+
+<div class="callout callout--tip">
+<p class="callout__title">Always Use SafeHandle</p>
+<p>Raw IntPtr handles can leak if exceptions occur. SafeHandle ensures native resources are cleaned up even when things go wrong, and it's critical for reliable interop code.</p>
+</div>
 
 ```csharp
 // SafeHandle for automatic cleanup

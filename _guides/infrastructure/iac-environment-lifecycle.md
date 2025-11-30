@@ -20,6 +20,10 @@ tags: [infrastructure, iac, environments, lifecycle, practical]
 
 When recreating environments (especially dev/test), many resources generate dynamic identifiers that other resources depend on.
 
+<blockquote class="pull-quote">
+<p>The solution to managing dynamic infrastructure identifiers is indirection. Use stable abstractions that point to changing resources.</p>
+</blockquote>
+
 ### The Problem
 
 **Resources generate unique identifiers each time:**
@@ -225,6 +229,11 @@ resource "aws_ssm_parameter" "db_password_arn" {
 
 Different infrastructure layers have different recreation frequencies.
 
+<div class="callout callout--tip">
+<p class="callout__title">Separation Principle</p>
+<p>Separate infrastructure by change frequency. Fast-changing application code should not live in the same state file as slow-changing networking infrastructure. This reduces blast radius and speeds up deployments.</p>
+</div>
+
 ### Layer Definitions
 
 **Foundation Layer (Weeks to Months)**
@@ -314,6 +323,11 @@ resource "aws_ssm_parameter" "db_endpoint" {
 ---
 
 ## Circular Dependency Resolution
+
+<div class="callout callout--warning">
+<p class="callout__title">Common Gotcha</p>
+<p>Circular dependencies are one of the most common IaC deployment failures. The fix is almost always the same: separate resource creation from rule/policy attachment.</p>
+</div>
 
 ### Common Scenarios
 
@@ -570,6 +584,29 @@ var key = $"{prefix}my-file.json";  // developers/alice/my-file.json
 | Short-lived feature branches | Dedicated (ephemeral) |
 | Production parity required | Dedicated |
 | Rapid app iteration | Shared data layer |
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Shared Data Layer</h4>
+<ul>
+<li><strong>Cost:</strong> Lowest - one database for all devs</li>
+<li><strong>Setup:</strong> Simple - deploy once</li>
+<li><strong>Isolation:</strong> Low - shared resources</li>
+<li><strong>Schema Changes:</strong> Difficult - affects everyone</li>
+<li><strong>Best for:</strong> Stable schemas, tight budgets</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Dedicated Environments</h4>
+<ul>
+<li><strong>Cost:</strong> Higher - per-developer resources</li>
+<li><strong>Setup:</strong> Complex - automate everything</li>
+<li><strong>Isolation:</strong> Complete - full separation</li>
+<li><strong>Schema Changes:</strong> Easy - isolated testing</li>
+<li><strong>Best for:</strong> Schema changes, production parity</li>
+</ul>
+</div>
+</div>
 
 ---
 

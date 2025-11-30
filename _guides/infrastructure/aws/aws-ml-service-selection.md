@@ -24,6 +24,10 @@ A systematic decision framework for selecting the right ML approach based on:
 
 ## The AWS ML Service Spectrum
 
+<blockquote class="pull-quote">
+<p>AWS ML services exist on a spectrum: AI Services for speed and simplicity, SageMaker for custom models with managed infrastructure, and DIY for extreme specialization. Choose the simplest tier that meets your requirements.</p>
+</blockquote>
+
 AWS offers three tiers of ML services, each suited for different scenarios:
 
 ### Tier 1: AI Services (Pre-Built, Fully Managed)
@@ -53,6 +57,42 @@ for label in response['Labels']:
 ```
 
 **When to use**: Common use cases with standard requirements (sentiment analysis, image classification, translation).
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>AI Services</h4>
+<ul>
+<li>Pre-trained models via API</li>
+<li>No ML expertise required</li>
+<li>Pay-per-use pricing</li>
+<li>Instant deployment</li>
+<li>Common use cases only</li>
+<li>Cost: $100-5K/month typically</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>SageMaker</h4>
+<ul>
+<li>Custom models, managed infrastructure</li>
+<li>ML expertise required</li>
+<li>Infrastructure + usage pricing</li>
+<li>Weeks to train and deploy</li>
+<li>Custom use cases and data</li>
+<li>Cost: $1K-10K/month + dev</li>
+</ul>
+</div>
+<div class="content-card content-card--accent">
+<h4>DIY</h4>
+<ul>
+<li>Self-managed ML infrastructure</li>
+<li>Full ML engineering team needed</li>
+<li>EC2/ECS/EKS costs + ops</li>
+<li>Months to build pipelines</li>
+<li>Extreme specialization only</li>
+<li>Cost: $10K+/month + team</li>
+</ul>
+</div>
+</div>
 
 ### Tier 2: SageMaker (Custom Models, Managed Infrastructure)
 
@@ -121,6 +161,11 @@ for epoch in range(num_epochs):
 
 ## Decision Framework: Choosing the Right Tier
 
+<div class="callout callout--tip">
+<p class="callout__title">Decision Framework Principle</p>
+<p>Always start with the simplest solution that meets requirements. Test AI Services first, move to SageMaker only when accuracy, customization, or latency requires it, and consider DIY only for extreme edge cases.</p>
+</div>
+
 ### Step 1: Use Case Mapping
 
 **Start with AI Services if your use case matches these categories**:
@@ -176,6 +221,11 @@ Ask these questions to determine if SageMaker is needed:
 
 ### Step 4: Cost-Benefit Analysis
 
+<div class="callout callout--warning">
+<p class="callout__title">TCO vs Service Cost</p>
+<p>Don't just compare service costs. Include development time, ongoing operations, retraining, and maintenance in your Total Cost of Ownership calculation. A $100/month AI Service can have lower TCO than a $500/month SageMaker solution when dev and ops costs are factored in.</p>
+</div>
+
 **Total Cost of Ownership (TCO) includes**:
 - Service/infrastructure costs
 - Development time (time-to-market)
@@ -197,6 +247,10 @@ Ask these questions to determine if SageMaker is needed:
 ## Detailed Service Selection Patterns
 
 ### Pattern 1: Start Simple, Upgrade When Needed
+
+<blockquote class="pull-quote">
+<p>Begin with AI Services to validate your use case. Only invest in custom SageMaker models after confirming that pre-built solutions don't meet your accuracy, latency, or customization requirements.</p>
+</blockquote>
 
 **Recommended approach**: Begin with AI Services, migrate to SageMaker only when required.
 
@@ -250,6 +304,11 @@ estimator.fit({'train': 's3://my-bucket/sentiment-training-data/'})
 **Outcome**: You invest in SageMaker only after validating that simpler solutions are insufficient.
 
 ### Pattern 2: Hybrid Approach (AI Services + SageMaker)
+
+<div class="callout callout--note">
+<p class="callout__title">Hybrid Approach</p>
+<p>You don't need to choose one tier exclusively. Use AI Services for 80% of common tasks (transcription, translation, PII detection) and SageMaker for 20% specialized models (domain-specific classification). This maximizes simplicity while enabling customization where it matters.</p>
+</div>
 
 Use AI Services for common tasks, SageMaker for specialized models.
 
@@ -730,6 +789,11 @@ predictor = estimator.deploy(
 ---
 
 ## Common Pitfalls
+
+<div class="callout callout--warning">
+<p class="callout__title">Avoid Premature Optimization</p>
+<p>The most common pitfall is building custom SageMaker models before testing AI Services. Always validate that simpler solutions are insufficient before investing months in custom model development.</p>
+</div>
 
 ### Pitfall 1: Premature Optimization (Building Custom Models Too Early)
 

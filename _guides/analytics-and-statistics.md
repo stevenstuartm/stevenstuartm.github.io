@@ -125,9 +125,11 @@ Use robust measures when you have outliers or skewed data.
 
 ## Statistical Distributions
 
-*A distribution shows you how your data is spread out: where most values cluster and how they trail off.*
+<blockquote class="pull-quote">
+<p>Think of a distribution as the "shape" your data makes when you plot it. Understanding this shape helps you choose the right statistics and spot unusual patterns.</p>
+</blockquote>
 
-Think of a distribution as the "shape" your data makes when you plot it. Understanding this shape helps you choose the right statistics and spot unusual patterns.
+*A distribution shows you how your data is spread out: where most values cluster and how they trail off.*
 
 ### Normal Distribution (The "Bell Curve")
 **What it looks like**: A symmetric hill where most data clusters in the middle, with fewer values at the extremes.
@@ -157,10 +159,14 @@ Think of a distribution as the "shape" your data makes when you plot it. Underst
 - **Example**: Test scores when most students do well, where scores cluster near 90-100, but a few low scores drag the average down
 - **Why it happens**: Scores can't go above 100%, but can drop to 0%
 
-### Why This Matters for Analysis
-- **Normal distribution**: Mean and median both work well
-- **Skewed distribution**: Use median instead of mean (the mean gets "fooled" by the tail)
-- **Choosing tests**: Many statistical tests assume normal distribution, so if your data is skewed, you may need different approaches
+<div class="callout callout--tip">
+<p class="callout__title">Why This Matters for Analysis</p>
+<ul>
+<li><strong>Normal distribution</strong>: Mean and median both work well</li>
+<li><strong>Skewed distribution</strong>: Use median instead of mean (the mean gets "fooled" by the tail)</li>
+<li><strong>Choosing tests</strong>: Many statistical tests assume normal distribution, so if your data is skewed, you may need different approaches</li>
+</ul>
+</div>
 
 ---
 
@@ -211,10 +217,14 @@ Think of a distribution as the "shape" your data makes when you plot it. Underst
 **Tools you use**: Hypothesis testing, confidence intervals, statistical significance tests
 **Real example**: A pharmaceutical company tests a drug on 500 patients and uses statistics to determine if it would work for the broader population.
 
-**Critical requirements**:
-- Your sample must be large enough (≥ 10% of population)
-- Your sample must be randomly selected (no cherry-picking)
-- Test one hypothesis at a time (avoid "fishing" for results)
+<div class="callout callout--warning">
+<p class="callout__title">Critical Requirements for Inferential Analysis</p>
+<ul>
+<li>Your sample must be large enough (≥ 10% of population)</li>
+<li>Your sample must be randomly selected (no cherry-picking)</li>
+<li>Test one hypothesis at a time (avoid "fishing" for results)</li>
+</ul>
+</div>
 
 **When to use**: When you want to make claims about a population but can only study a sample.
 

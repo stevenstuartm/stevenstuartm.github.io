@@ -145,6 +145,33 @@ public class EmailService
 
 ### Options Interfaces
 
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>IOptions&lt;T&gt;</h4>
+<ul>
+<li>Lifetime: Singleton</li>
+<li>Updates: No</li>
+<li>Use for: Static configuration</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>IOptionsSnapshot&lt;T&gt;</h4>
+<ul>
+<li>Lifetime: Scoped</li>
+<li>Updates: Per request</li>
+<li>Use for: Config that changes between requests</li>
+</ul>
+</div>
+<div class="content-card content-card--accent">
+<h4>IOptionsMonitor&lt;T&gt;</h4>
+<ul>
+<li>Lifetime: Singleton</li>
+<li>Updates: Yes, with callback</li>
+<li>Use for: Live updates, long-running services</li>
+</ul>
+</div>
+</div>
+
 | Interface | Lifetime | Updates | Use Case |
 |-----------|----------|---------|----------|
 | `IOptions<T>` | Singleton | No | Static configuration |
@@ -317,6 +344,11 @@ builder.Configuration
 ```
 
 ### Environment Variables
+
+<div class="callout callout--tip">
+<p class="callout__title">Environment Variable Naming Convention</p>
+<p>Use double underscores (<code>__</code>) to represent nesting in hierarchical configuration. Example: <code>MYAPP_ConnectionStrings__DefaultDb</code> maps to <code>configuration["ConnectionStrings:DefaultDb"]</code></p>
+</div>
 
 ```csharp
 // Automatic in Host builder

@@ -21,6 +21,10 @@ tags: [c-sharp, dotnet, timers, scheduling, async, background-tasks, practical]
 
 ## PeriodicTimer (.NET 6+)
 
+<blockquote class="pull-quote">
+<p>PeriodicTimer is the modern, async-native approach to periodic background work. Unlike callback-based timers, it prevents overlapping executions and integrates cleanly with cancellation.</p>
+</blockquote>
+
 The modern choice for async periodic work.
 
 ```csharp
@@ -52,6 +56,11 @@ Benefits:
 - Clean cancellation support
 - No callback threading issues
 - Prevents overlapping executions
+
+<div class="callout callout--tip">
+<p class="callout__title">Preventing Overlapping Executions</p>
+<p>PeriodicTimer waits for your work to complete before scheduling the next tick. System.Threading.Timer callbacks can overlap if work takes longer than the period, requiring manual guards.</p>
+</div>
 
 ## System.Threading.Timer
 
@@ -399,6 +408,27 @@ public class Throttle
 ```
 
 ## Choosing the Right Timer
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>PeriodicTimer (Preferred)</h4>
+<ul>
+<li>Async background loops</li>
+<li>BackgroundService integration</li>
+<li>Prevents overlapping work</li>
+<li>.NET 6+ only</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>System.Threading.Timer</h4>
+<ul>
+<li>Fire-and-forget callbacks</li>
+<li>Works on all .NET versions</li>
+<li>Lightweight and fast</li>
+<li>Requires overlap guards</li>
+</ul>
+</div>
+</div>
 
 | Scenario | Recommended Timer |
 |----------|-------------------|

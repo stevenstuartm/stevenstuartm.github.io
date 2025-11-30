@@ -9,6 +9,10 @@ tags: [c-sharp, dotnet, source-generators, metaprogramming, compilation, advance
 
 ## The Problem Source Generators Solve
 
+<blockquote class="pull-quote">
+<p>Source generators eliminate the choice between tedious hand-written boilerplate and slow runtime reflection. They generate code at compile time, achieving both convenience and performance.</p>
+</blockquote>
+
 Programming involves a lot of repetitive code. Consider these common scenarios:
 
 - Writing `ToString()` methods that list every property
@@ -18,6 +22,27 @@ Programming involves a lot of repetitive code. Consider these common scenarios:
 - Writing HTTP client methods that follow identical patterns
 
 Developers have traditionally solved this repetition in two ways, and both have significant drawbacks.
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Hand-Written Boilerplate</h4>
+<ul>
+<li>Tedious and error-prone</li>
+<li>Maintenance burden grows</li>
+<li>Easy to forget updates</li>
+<li>No runtime cost</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Runtime Reflection</h4>
+<ul>
+<li>Automatic and convenient</li>
+<li>No code to maintain</li>
+<li>Always stays synchronized</li>
+<li>Slow startup and execution</li>
+</ul>
+</div>
+</div>
 
 **Approach 1: Write it by hand.** This is tedious, error-prone, and creates maintenance burden. When you add a property to a class, you have to remember to update the `ToString()`, the serialization logic, and everywhere else that needs to know about it.
 
@@ -48,6 +73,11 @@ Your Code → Parse → Semantic Analysis → [Source Generators Run Here] → C
 A source generator receives read-only access to everything the compiler knows about your code: every class, method, property, and attribute. It analyzes this information and emits new C# source files. These generated files then get compiled alongside your original code as if you had written them yourself.
 
 Two constraints shape how generators work:
+
+<div class="callout callout--note">
+<p class="callout__title">Generators Add, Never Modify</p>
+<p>Source generators cannot change your existing code. They can only create new files. This is why <code>partial class</code> is everywhere—the generator adds a new partial definition that merges with your original.</p>
+</div>
 
 **Generators can only add code, never modify existing code.** If you have a `Person` class, a generator cannot change that class. It can only create new files. This is why you see `partial class` everywhere in generated code—the generator creates a new partial definition that the compiler merges with your original.
 

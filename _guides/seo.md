@@ -59,13 +59,17 @@ tags: [seo, web-development, marketing, practical, optimization]
 
 ## Quick Reference & Key Changes for 2025
 
-### Major 2025 Updates
-- **AI Overviews (AIO)** are now standard in search results; optimize for citations
-- **Interaction to Next Paint (INP)** replaced First Input Delay (FID) in Core Web Vitals
-- **E-E-A-T** (Experience, Expertise, Authoritativeness, Trust) is more critical than ever
-- **Mobile-first indexing** now carries more weight in rankings
-- **Forum content** (Reddit, Quora) getting priority in search results
-- **Zero-click searches** increasing; focus on featured snippets and knowledge panels
+<div class="callout callout--warning">
+<p class="callout__title">Major 2025 Updates</p>
+<ul>
+<li><strong>AI Overviews (AIO)</strong> are now standard in search results; optimize for citations</li>
+<li><strong>Interaction to Next Paint (INP)</strong> replaced First Input Delay (FID) in Core Web Vitals</li>
+<li><strong>E-E-A-T</strong> (Experience, Expertise, Authoritativeness, Trust) is more critical than ever</li>
+<li><strong>Mobile-first indexing</strong> now carries more weight in rankings</li>
+<li><strong>Forum content</strong> (Reddit, Quora) getting priority in search results</li>
+<li><strong>Zero-click searches</strong> increasing; focus on featured snippets and knowledge panels</li>
+</ul>
+</div>
 
 ### Top 8 SEO Priorities for 2025
 1. **Quality Content**: Original, helpful, expert-backed content
@@ -111,19 +115,32 @@ tags: [seo, web-development, marketing, practical, optimization]
 
 ## Technical SEO Checklist
 
-### Core Web Vitals (Critical for 2025)
-- [ ] **Largest Contentful Paint (LCP)**: Target < 2.5 seconds
-  - Optimize images (WebP format, proper sizing)
-  - Minimize server response times
-  - Remove unused CSS/JavaScript
-- [ ] **Interaction to Next Paint (INP)**: Target < 200ms
-  - Reduce JavaScript execution time
-  - Minimize main thread blocking
-  - Optimize event handlers
-- [ ] **Cumulative Layout Shift (CLS)**: Target < 0.1
-  - Set size attributes for images and videos
-  - Avoid inserting content above existing content
-  - Use CSS aspect-ratio for responsive media
+<div class="callout callout--warning">
+<p class="callout__title">Core Web Vitals (Critical for 2025)</p>
+<ul>
+<li><strong>Largest Contentful Paint (LCP)</strong>: Target &lt; 2.5 seconds
+  <ul>
+  <li>Optimize images (WebP format, proper sizing)</li>
+  <li>Minimize server response times</li>
+  <li>Remove unused CSS/JavaScript</li>
+  </ul>
+</li>
+<li><strong>Interaction to Next Paint (INP)</strong>: Target &lt; 200ms
+  <ul>
+  <li>Reduce JavaScript execution time</li>
+  <li>Minimize main thread blocking</li>
+  <li>Optimize event handlers</li>
+  </ul>
+</li>
+<li><strong>Cumulative Layout Shift (CLS)</strong>: Target &lt; 0.1
+  <ul>
+  <li>Set size attributes for images and videos</li>
+  <li>Avoid inserting content above existing content</li>
+  <li>Use CSS aspect-ratio for responsive media</li>
+  </ul>
+</li>
+</ul>
+</div>
 
 ### Site Structure & Navigation
 - [ ] **XML Sitemaps**: Generate and submit to search consoles
@@ -159,6 +176,10 @@ tags: [seo, web-development, marketing, practical, optimization]
 ### WCAG Accessibility (SEO Impact)
 
 Web Content Accessibility Guidelines (WCAG) compliance directly impacts SEO through improved user experience, reduced bounce rates, and better Core Web Vitals scores. Search engines prioritize accessible websites.
+
+<blockquote class="pull-quote">
+<p>Accessible sites typically have lower bounce rates and higher engagement, directly impacting SEO through improved user experience and Core Web Vitals scores.</p>
+</blockquote>
 
 **Why Accessibility Matters for SEO:**
 - Google's ranking algorithms favor sites with better user experience

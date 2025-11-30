@@ -8,6 +8,10 @@ tags: [data-structures, algorithms, fundamentals, practical, interview-prep]
 ## Overview
 Two fundamental abstract data types that restrict how elements are added and removed, creating specific behavioral patterns useful for many algorithms and system designs.
 
+<blockquote class="pull-quote">
+<p>Stacks enforce LIFO (Last In, First Out) while queues enforce FIFO (First In, First Out). This simple constraint makes them perfect for specific problem patterns.</p>
+</blockquote>
+
 ---
 
 ## Stacks (LIFO - Last In, First Out)
@@ -460,17 +464,26 @@ Console.WriteLine(IsValidParentheses("(]"));       // False
 
 ## Key Takeaways
 
-**Stacks are perfect for:**
-- Reversing things
-- Keeping track of state/history
-- Parsing nested structures
-- Recursive algorithm implementations
-
-**Queues are perfect for:**
-- Processing in order
-- Buffering between producers and consumers
-- Breadth-first algorithms
-- Scheduling and task management
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Stacks are Perfect For</h4>
+<ul>
+<li>Reversing things</li>
+<li>Keeping track of state/history</li>
+<li>Parsing nested structures</li>
+<li>Recursive algorithm implementations</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Queues are Perfect For</h4>
+<ul>
+<li>Processing in order</li>
+<li>Buffering between producers and consumers</li>
+<li>Breadth-first algorithms</li>
+<li>Scheduling and task management</li>
+</ul>
+</div>
+</div>
 
 **Interview focus:** Understand when to use each, how to implement with arrays or linked lists, and common applications like expression evaluation and tree traversal. Stack Applications
 

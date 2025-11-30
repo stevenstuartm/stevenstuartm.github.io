@@ -9,7 +9,11 @@ tags: [c-sharp, dotnet, modern-csharp, records, immutability, functional-program
 
 ## Why Immutability
 
-Immutable objects cannot be changed after creation. This eliminates entire categories of bugs related to shared state, makes code easier to reason about, and enables safe concurrent access without locks.
+<blockquote class="pull-quote">
+<p>Immutability eliminates entire categories of bugs related to shared state and enables safe concurrent access without locks.</p>
+</blockquote>
+
+Immutable objects cannot be changed after creation. This makes code easier to reason about and thread-safe by default.
 
 ```csharp
 // Mutable - can lead to bugs
@@ -211,21 +215,31 @@ var ip2 = ip with { X = 3 };
 
 ### Choosing Between Them
 
-The decision comes down to size, semantics, and how the type will be used.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Use Record Class When</h4>
+<ul>
+<li>Type contains 3+ fields or references other objects</li>
+<li>You need inheritance hierarchies</li>
+<li>Null is a meaningful state</li>
+<li>Object passed around extensively (avoids copying)</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Use Record Struct When</h4>
+<ul>
+<li>Small, primitive-like values (coordinates, money)</li>
+<li>Creating many short-lived instances</li>
+<li>Stack allocation benefits matter (GC pressure)</li>
+<li>Type should never be null</li>
+</ul>
+</div>
+</div>
 
-**Use record class when**:
-- The type contains more than 2-3 fields or references other objects
-- You need inheritance hierarchies
-- Null is a meaningful state (e.g., "no customer found")
-- The object will be passed around extensively (reference types avoid copying)
-
-**Use record struct when**:
-- The type represents a small, primitive-like value (coordinates, money, date ranges)
-- You're creating many short-lived instances in hot paths
-- Stack allocation benefits matter (avoiding GC pressure)
-- The type should never be null
-
-**Why size matters**: Value types are copied on assignment and when passed to methods. A record struct with 10 fields copies all 10 fields every time. For small types (16-24 bytes), copying is cheap. For larger types, the copying overhead exceeds the benefit of avoiding heap allocation.
+<div class="callout callout--note">
+<p class="callout__title">Why Size Matters</p>
+<p>Value types are copied on assignment and when passed to methods. A record struct with 10 fields copies all 10 fields every time. For small types (16-24 bytes), copying is cheap. For larger types, the copying overhead exceeds the benefit of avoiding heap allocation.</p>
+</div>
 
 ```csharp
 // Use record class for:

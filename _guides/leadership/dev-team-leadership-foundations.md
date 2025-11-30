@@ -15,17 +15,25 @@ This guide is not about leadership philosophy. It's about the concrete activitie
 
 ### Understand Your Authority and Constraints
 
+<blockquote class="pull-quote">
+<p>Don't assume your authority; get it explicitly defined.</p>
+</blockquote>
+
 Before you do anything visible, clarify what you can and cannot do:
 
-**Questions to answer immediately**:
-- Who can I hire and fire? (Do I make the final call or just recommend?)
-- What's my budget authority? (Can I approve purchases? What's the limit?)
-- Can I change processes, tooling, or SDLC practices?
-- Who do I report to, and what do they expect from me?
-- What meetings am I required to attend?
-- What are the current team commitments and deadlines?
+<div class="callout callout--warning">
+<p class="callout__title">Questions to Answer Immediately</p>
+<ul>
+<li>Who can I hire and fire? (Do I make the final call or just recommend?)</li>
+<li>What's my budget authority? (Can I approve purchases? What's the limit?)</li>
+<li>Can I change processes, tooling, or SDLC practices?</li>
+<li>Who do I report to, and what do they expect from me?</li>
+<li>What meetings am I required to attend?</li>
+<li>What are the current team commitments and deadlines?</li>
+</ul>
+</div>
 
-**How to get answers**: Schedule a 1:1 with your manager within the first 24 hours. Don't assume your authority; get it explicitly defined.
+**How to get answers**: Schedule a 1:1 with your manager within the first 24 hours.
 
 ### Inventory Current State
 
@@ -128,7 +136,22 @@ Understand what your team is responsible for:
 
 ### Deliver Early Wins
 
-Credibility comes from removing friction and demonstrating you're useful. Identify and deliver 2-3 quick wins within the first two weeks.
+<blockquote class="pull-quote">
+<p>Credibility comes from removing friction and demonstrating you're useful.</p>
+</blockquote>
+
+Identify and deliver 2-3 quick wins within the first two weeks.
+
+<div class="callout callout--tip">
+<p class="callout__title">How to Identify Quick Wins</p>
+<p>Your initial 1:1s will reveal them. Look for things that are:</p>
+<ul>
+<li>Complained about by multiple people</li>
+<li>Easy to fix or change</li>
+<li>High impact on daily workflow</li>
+<li>Within your authority to change</li>
+</ul>
+</div>
 
 **Examples of quick wins**:
 - Remove a wasteful meeting everyone hates
@@ -136,12 +159,6 @@ Credibility comes from removing friction and demonstrating you're useful. Identi
 - Get approval for a tool or license that's been requested
 - Resolve a longstanding team conflict over process
 - Improve documentation for a common task
-
-**How to identify quick wins**: Your initial 1:1s will reveal them. Look for things that are:
-- Complained about by multiple people
-- Easy to fix or change
-- High impact on daily workflow
-- Within your authority to change
 
 ### Establish Regular Communication Patterns
 
@@ -446,60 +463,54 @@ Someone quits or is fired, and you need to manage the impact.
 
 ## Common Failure Modes
 
-### You're Doing Too Much
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>You're Doing Too Much</h4>
+<p><strong>Symptoms</strong>:</p>
+<ul>
+<li>Working late and weekends regularly</li>
+<li>You're the bottleneck for decisions</li>
+<li>Team waits for you to tell them what to do</li>
+<li>Writing production code while managing</li>
+</ul>
+<p><strong>Fix</strong>: Delegate more aggressively, empower team decisions, stop IC work, focus on unblocking</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>You're Not Doing Enough</h4>
+<p><strong>Symptoms</strong>:</p>
+<ul>
+<li>Team is directionless or confused</li>
+<li>Blockers sit unresolved for days</li>
+<li>Stakeholders bypass you</li>
+<li>Conflicts simmer without resolution</li>
+</ul>
+<p><strong>Fix</strong>: Increase engagement, proactively remove blockers, assert authority, address conflicts</p>
+</div>
+</div>
 
-**Symptoms**:
-- You're working late and weekends regularly
-- You're the bottleneck for decisions
-- Team waits for you to tell them what to do
-- You're writing production code while also managing
-
-**Fix**:
-- Delegate more aggressively
-- Empower team to make decisions within boundaries
-- Stop doing IC (individual contributor) work unless absolutely necessary
-- Focus on unblocking others, not doing their work
-
-### You're Not Doing Enough
-
-**Symptoms**:
-- Team is directionless or confused about priorities
-- Blockers sit unresolved for days
-- Stakeholders bypass you and go directly to your team
-- Conflicts simmer without resolution
-
-**Fix**:
-- Increase engagement and visibility
-- Proactively remove blockers
-- Assert authority with stakeholders (they communicate through you)
-- Address conflicts directly instead of avoiding them
-
-### You've Lost Technical Credibility
-
-**Symptoms**:
-- Team dismisses your technical input
-- You can't participate in architecture or design discussions
-- You don't understand the codebase or technology anymore
-
-**Fix**:
-- Stay hands-on with code reviews
-- Build proof of concepts or prototypes
-- Pair with developers on complex work
-- Attend technical design discussions actively
-
-### You're Protecting the Team from Reality
-
-**Symptoms**:
-- You shield the team from stakeholder pressure or difficult feedback
-- Team doesn't understand business constraints or urgency
-- Developers are surprised when priorities shift
-- You absorb all conflict and stress yourself
-
-**Fix**:
-- Share context liberally (business drivers, constraints, trade-offs)
-- Involve team in priority discussions
-- Let them hear stakeholder feedback directly (in a structured way)
-- Build their ability to handle pressure, don't insulate them completely
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>You've Lost Technical Credibility</h4>
+<p><strong>Symptoms</strong>:</p>
+<ul>
+<li>Team dismisses your technical input</li>
+<li>Can't participate in design discussions</li>
+<li>Don't understand the codebase anymore</li>
+</ul>
+<p><strong>Fix</strong>: Stay hands-on with code reviews, build POCs, pair on complex work, attend technical discussions</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>You're Protecting the Team from Reality</h4>
+<p><strong>Symptoms</strong>:</p>
+<ul>
+<li>Shield team from stakeholder pressure</li>
+<li>Team doesn't understand business constraints</li>
+<li>Developers surprised by priority shifts</li>
+<li>You absorb all conflict and stress</li>
+</ul>
+<p><strong>Fix</strong>: Share context liberally, involve team in priorities, let them hear feedback directly, build resilience</p>
+</div>
+</div>
 
 ## Key Takeaways
 

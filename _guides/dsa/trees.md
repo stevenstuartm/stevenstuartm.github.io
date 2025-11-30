@@ -8,6 +8,10 @@ tags: [data-structures, algorithms, trees, practical, interview-prep]
 ## Why Trees Exist
 Hierarchical relationships are everywhere: file systems, decision making, organizing data for fast searches, and representing mathematical expressions. Trees provide a natural way to model and efficiently traverse these relationships.
 
+<blockquote class="pull-quote">
+<p>Binary search trees provide O(log n) search on average, making them ideal for dynamic datasets where insertion and deletion happen frequently.</p>
+</blockquote>
+
 ---
 
 ## General Trees

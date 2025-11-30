@@ -120,22 +120,32 @@ Allows different subnet sizes within the same network:
 
 ## Network Protocols
 
-### TCP (Transmission Control Protocol)
-- **Connection-oriented**: Establishes connection before data transfer
-- **Reliable**: Guarantees packet delivery and order
-- **Flow control**: Manages data transmission rate
-- **Use cases**: HTTP, HTTPS, SSH, FTP, email
-
-#### TCP Three-Way Handshake
-1. Client → Server: SYN
-2. Server → Client: SYN-ACK
-3. Client → Server: ACK
-
-### UDP (User Datagram Protocol)
-- **Connectionless**: No connection establishment
-- **Unreliable**: No delivery guarantee
-- **Low overhead**: Faster than TCP
-- **Use cases**: DNS, DHCP, streaming media, gaming
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>TCP (Transmission Control Protocol)</h4>
+<ul>
+<li><strong>Connection-oriented</strong>: Establishes connection before data transfer</li>
+<li><strong>Reliable</strong>: Guarantees packet delivery and order</li>
+<li><strong>Flow control</strong>: Manages data transmission rate</li>
+<li><strong>Use cases</strong>: HTTP, HTTPS, SSH, FTP, email</li>
+</ul>
+<p><strong>TCP Three-Way Handshake:</strong></p>
+<ol>
+<li>Client → Server: SYN</li>
+<li>Server → Client: SYN-ACK</li>
+<li>Client → Server: ACK</li>
+</ol>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>UDP (User Datagram Protocol)</h4>
+<ul>
+<li><strong>Connectionless</strong>: No connection establishment</li>
+<li><strong>Unreliable</strong>: No delivery guarantee</li>
+<li><strong>Low overhead</strong>: Faster than TCP</li>
+<li><strong>Use cases</strong>: DNS, DHCP, streaming media, gaming</li>
+</ul>
+</div>
+</div>
 
 ### HTTP/HTTPS
 - **HTTP** (Port 80): Hypertext Transfer Protocol
@@ -239,21 +249,36 @@ dig -x 8.8.8.8
 
 Load balancers distribute incoming requests across multiple servers.
 
-### Load Balancing Algorithms
-- **Round Robin**: Requests distributed sequentially
-- **Weighted Round Robin**: Servers assigned weights
-- **Least Connections**: Route to server with fewest active connections
-- **IP Hash**: Route based on client IP hash
-- **Geographic**: Route based on client location
+<div class="callout callout--note">
+<p class="callout__title">Load Balancing Algorithms</p>
+<ul>
+<li><strong>Round Robin</strong>: Requests distributed sequentially</li>
+<li><strong>Weighted Round Robin</strong>: Servers assigned weights</li>
+<li><strong>Least Connections</strong>: Route to server with fewest active connections</li>
+<li><strong>IP Hash</strong>: Route based on client IP hash</li>
+<li><strong>Geographic</strong>: Route based on client location</li>
+</ul>
+</div>
 
-### Types of Load Balancers
-- **Layer 4 (Transport)**: Routes based on IP and port
-- **Layer 7 (Application)**: Routes based on application data (HTTP headers, URLs)
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Layer 4 (Transport) Load Balancer</h4>
+<p>Routes based on IP and port</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Layer 7 (Application) Load Balancer</h4>
+<p>Routes based on application data (HTTP headers, URLs)</p>
+</div>
+</div>
 
-### Health Checks
-Load balancers monitor server health:
-- **Active checks**: Periodic health probes
-- **Passive checks**: Monitor response codes and timeouts
+<div class="callout callout--tip">
+<p class="callout__title">Health Checks</p>
+<p>Load balancers monitor server health through:</p>
+<ul>
+<li><strong>Active checks</strong>: Periodic health probes</li>
+<li><strong>Passive checks</strong>: Monitor response codes and timeouts</li>
+</ul>
+</div>
 
 ---
 

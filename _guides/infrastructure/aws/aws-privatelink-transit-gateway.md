@@ -52,6 +52,10 @@ Both integrate with VPN, Direct Connect, VPC, and each other for comprehensive n
 
 ## AWS PrivateLink
 
+<blockquote class="pull-quote">
+<p>PrivateLink enables private service connectivity to thousands of consumer VPCs without VPC peering or internet exposure. Traffic stays on the AWS network with fine-grained access control per service.</p>
+</blockquote>
+
 ### What PrivateLink Provides
 
 **Private Service Access**:
@@ -111,16 +115,31 @@ Consumer VPC:
 
 ### VPC Endpoint Types
 
-**Interface Endpoint** (ENI-based):
-- Elastic Network Interface with private IP address
-- Supports most AWS services (S3 via interface, DynamoDB, CloudWatch, etc.)
-- Supports custom services via PrivateLink
-- **Cost**: $0.01 per endpoint-hour + $0.01 per GB processed
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Interface Endpoint (ENI-based)</h4>
+<ul>
+<li>Elastic Network Interface with private IP</li>
+<li>Supports most AWS services and custom services</li>
+<li>Required for CloudWatch, KMS, Secrets Manager, etc.</li>
+<li>Cost: $0.01/hour + $0.01/GB (~$7.30/month + data)</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Gateway Endpoint (Route table-based)</h4>
+<ul>
+<li>Routes via route table entry (no ENI)</li>
+<li>Only supports S3 and DynamoDB</li>
+<li>Same functionality as Interface Endpoint</li>
+<li>Cost: Free (no hourly charge, no data processing fee)</li>
+</ul>
+</div>
+</div>
 
-**Gateway Endpoint** (Route table-based):
-- Free for S3 and DynamoDB only
-- Routes traffic via route table entry (no ENI)
-- **Cost**: Free (no hourly charge, no data processing fee)
+<div class="callout callout--tip">
+<p class="callout__title">Cost Optimization</p>
+<p>Always use Gateway Endpoints for S3 and DynamoDB. They're free and provide the same functionality as Interface Endpoints, which cost $7.30/month per endpoint.</p>
+</div>
 
 **Recommendation**: Use Gateway Endpoints for S3 and DynamoDB (free). Use Interface Endpoints for all other services.
 
@@ -168,6 +187,10 @@ Consumer VPC:
 - **Trade-off**: Pay $7.30/month per endpoint for fine-grained service access vs. full VPC access with peering
 
 ## AWS Transit Gateway
+
+<blockquote class="pull-quote">
+<p>Transit Gateway transforms N² VPC peering complexity into simple hub-and-spoke architecture, reducing 45 peering connections for 10 VPCs down to just 10 attachments while enabling transitive routing.</p>
+</blockquote>
 
 ### What Transit Gateway Provides
 
@@ -232,28 +255,34 @@ Consumer VPC:
 
 ### Transit Gateway vs. VPC Peering
 
-| Feature | Transit Gateway | VPC Peering |
-|---------|----------------|-------------|
-| **Scalability** | Up to 5,000 attachments | 125 peering connections per VPC |
-| **Management** | Centralized (single TGW) | Distributed (N² connections) |
-| **Transitive Routing** | Yes (A → TGW → B → TGW → C) | No (requires A ↔ C peering) |
-| **Cost** | $0.05/hour per attachment + $0.02/GB | Free hourly + $0.01/GB (same region) |
-| **Bandwidth** | 50 Gbps per AZ (bursts to 100 Gbps) | No limit (within VPC throughput) |
-| **Cross-Region** | Yes (TGW peering) | Yes (inter-region peering) |
-| **Hybrid (VPN/DX)** | Single attachment to all VPCs | Separate attachment per VPC |
-| **Network Inspection** | Centralized (route through firewall VPC) | Distributed (per VPC) |
-
-**When to Use TGW**:
-- >10 VPCs requiring full mesh connectivity
-- Need transitive routing
-- Hybrid connectivity (VPN/Direct Connect to multiple VPCs)
-- Centralized egress or network inspection
-
-**When to Use VPC Peering**:
-- <5 VPCs with simple connectivity
-- No transitive routing needed
-- Cost-sensitive (peering is cheaper for low data transfer)
-- Maximum bandwidth (no TGW throughput limit)
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Transit Gateway</h4>
+<ul>
+<li>Scalability: Up to 5,000 attachments</li>
+<li>Management: Centralized (single TGW)</li>
+<li>Transitive Routing: Yes (A → TGW → B → TGW → C)</li>
+<li>Cost: $0.05/hour per attachment + $0.02/GB</li>
+<li>Bandwidth: 50 Gbps per AZ (bursts to 100 Gbps)</li>
+<li>Hybrid: Single attachment to all VPCs</li>
+<li>Network Inspection: Centralized firewall VPC</li>
+</ul>
+<p><strong>When to Use</strong>: &gt;10 VPCs, transitive routing, hybrid connectivity, centralized inspection</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>VPC Peering</h4>
+<ul>
+<li>Scalability: 125 peering connections per VPC</li>
+<li>Management: Distributed (N² connections)</li>
+<li>Transitive Routing: No (requires A ↔ C peering)</li>
+<li>Cost: Free hourly + $0.01/GB (same region)</li>
+<li>Bandwidth: No limit (within VPC throughput)</li>
+<li>Hybrid: Separate attachment per VPC</li>
+<li>Network Inspection: Distributed (per VPC)</li>
+</ul>
+<p><strong>When to Use</strong>: &lt;5 VPCs, simple connectivity, cost-sensitive, maximum bandwidth</p>
+</div>
+</div>
 
 ### Transit Gateway Routing
 
@@ -304,6 +333,11 @@ VPC-Prod  VPC-Dev               VPC-EU-Prod VPC-EU-Dev
 **Use case**: Multi-region applications, disaster recovery, global services.
 
 ### Transit Gateway Network Isolation
+
+<div class="callout callout--warning">
+<p class="callout__title">Security Isolation</p>
+<p>The default TGW route table allows all attached VPCs to communicate. Always use custom route tables to isolate production from dev/test environments to prevent unauthorized access and meet compliance requirements.</p>
+</div>
 
 **Problem**: Default route table allows all VPCs to communicate. Need to isolate prod from dev.
 
@@ -358,6 +392,11 @@ Routes:
 
 ## PrivateLink + Transit Gateway Integration
 
+<div class="callout callout--note">
+<p class="callout__title">Integration Pattern</p>
+<p>PrivateLink and Transit Gateway solve different problems and can be used together. Use TGW for full VPC connectivity and PrivateLink for exposing specific services to hundreds of consumers without granting full VPC access.</p>
+</div>
+
 ### Use Case: Shared Services Architecture
 
 **Problem**: 50 VPCs need access to centralized services (DNS, Active Directory, monitoring, logging).
@@ -410,6 +449,11 @@ Routes:
 **Scalability**: Supports thousands of customers, provider infrastructure doesn't scale linearly.
 
 ## Common Pitfalls
+
+<div class="callout callout--warning">
+<p class="callout__title">Common Pitfalls</p>
+<p>The most expensive mistakes: forgetting TGW data processing costs, using Interface Endpoints for S3/DynamoDB instead of free Gateway Endpoints, and scaling VPC Peering beyond 10 VPCs.</p>
+</div>
 
 ### 1. Using VPC Peering for >10 VPCs
 

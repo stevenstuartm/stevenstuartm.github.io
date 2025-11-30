@@ -9,6 +9,10 @@ tags: [c-sharp, dotnet, fundamentals, exceptions, error-handling, reliability, p
 
 ## Exception Basics
 
+<blockquote class="pull-quote">
+<p>Exceptions represent errors or unexpected conditions that disrupt normal flow. They propagate up the call stack until caught or they terminate the application.</p>
+</blockquote>
+
 Exceptions represent errors or unexpected conditions that disrupt normal program flow. They propagate up the call stack until caught or they terminate the application.
 
 ```csharp
@@ -92,6 +96,11 @@ int value = isValid ? ComputeValue() : throw new InvalidOperationException("Inva
 // In expression-bodied members
 public string Name => _name ?? throw new InvalidOperationException("Name not set");
 ```
+
+<div class="callout callout--warning">
+<p class="callout__title">Re-throwing: Use throw, not throw ex</p>
+<p>When re-throwing an exception, use <code>throw;</code> without the exception variable. Using <code>throw ex;</code> loses the original stack trace, making debugging harder.</p>
+</div>
 
 ### Re-throwing
 

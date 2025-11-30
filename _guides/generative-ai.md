@@ -150,13 +150,16 @@ Local LLMs offer cost-effective and secure alternatives to cloud-based options. 
 
 Local AI tools offer significant advantages including complete data privacy, no subscription costs, offline operation, customization control, and reduced latency. In 2025, running LLMs locally has become increasingly practical for both individual developers and organizations.
 
-### **Why Choose Local AI?**
-
-**Privacy & Security**: Your data never leaves your device, making it perfect for sensitive projects
-**Cost Effectiveness**: Avoid recurring subscription fees and API costs, with potential long-term savings for high-volume usage
-**Offline Capability**: Work without internet connectivity, ideal for remote work or air-gapped environments
-**Customization**: Fine-tune models for specific tasks, inject domain knowledge, and control every aspect of the deployment
-**Performance**: Eliminate network delays and avoid rate limits
+<div class="callout callout--tip">
+<p class="callout__title">Why Choose Local AI?</p>
+<ul>
+<li><strong>Privacy & Security</strong>: Your data never leaves your device, making it perfect for sensitive projects</li>
+<li><strong>Cost Effectiveness</strong>: Avoid recurring subscription fees and API costs, with potential long-term savings for high-volume usage</li>
+<li><strong>Offline Capability</strong>: Work without internet connectivity, ideal for remote work or air-gapped environments</li>
+<li><strong>Customization</strong>: Fine-tune models for specific tasks, inject domain knowledge, and control every aspect of the deployment</li>
+<li><strong>Performance</strong>: Eliminate network delays and avoid rate limits</li>
+</ul>
+</div>
 
 ### **Text Generation (Local LLMs)**
 
@@ -288,9 +291,11 @@ AI models trained on vast amounts of text data to understand and generate human-
 
 *Revolutionary architecture introduced by Vaswani et al. in "Attention Is All You Need" (Google, 2017). This paper transformed NLP and enabled the current wave of AI capabilities.*
 
-The underlying neural network architecture that enables modern generative AI models to handle large amounts of data efficiently and generate complex outputs. The "T" in GPT stands for Transformer.
+<blockquote class="pull-quote">
+<p>The attention mechanism allows the model to focus on relevant parts of input when generating each output, similar to how humans focus on important words when understanding a sentence.</p>
+</blockquote>
 
-**Key innovation**: The **attention mechanism** allows the model to focus on relevant parts of input when generating each output, similar to how humans focus on important words when understanding a sentence.
+The underlying neural network architecture that enables modern generative AI models to handle large amounts of data efficiently and generate complex outputs. The "T" in GPT stands for Transformer.
 
 **Why transformers revolutionized AI**:
 - **Parallelization**: Unlike RNNs, can process entire sequences simultaneously (enabling GPU acceleration)
@@ -323,30 +328,26 @@ Prompt engineering is the practice of crafting inputs that guide AI models to ge
 
 ### Core Principles
 
-#### 1. **Give Direction**
-Describe the desired style in detail or reference a relevant persona.
+<div class="callout callout--note">
+<p class="callout__title">Five Essential Prompt Engineering Principles</p>
+<ol>
+<li><strong>Give Direction</strong>: Describe the desired style in detail or reference a relevant persona (e.g., "As a professional financial analyst...")</li>
+<li><strong>Specify Format</strong>: Define rules to follow and the required structure of the response</li>
+<li><strong>Provide Examples</strong>: Insert diverse test cases showing the task done correctly (few-shot prompting)</li>
+<li><strong>Evaluate Quality</strong>: Test prompts multiple times to ensure consistent, high-quality results</li>
+<li><strong>Divide Labor</strong>: Split complex tasks into multiple steps or use chained prompts</li>
+</ol>
+</div>
 
-**Examples**:
+**Direction Examples**:
 - "As a professional financial analyst who must follow regulatory compliance..."
 - "In the style of a technical documentation writer, explain..."
 - "Acting as an experienced marketing strategist..."
 
-#### 2. **Specify Format**
-Define rules to follow and the required structure of the response.
-
-**Examples**:
+**Format Examples**:
 - "Respond as a JSON object with the following fields..."
 - "Format as a bullet-point list with exactly 5 items"
 - "Structure as: Problem → Analysis → Recommendation"
-
-#### 3. **Provide Examples**
-Insert diverse test cases showing the task done correctly (few-shot prompting).
-
-#### 4. **Evaluate Quality**
-Test prompts multiple times to ensure consistent, high-quality results.
-
-#### 5. **Divide Labor**
-Split complex tasks into multiple steps or use chained prompts.
 
 ### Essential Techniques
 

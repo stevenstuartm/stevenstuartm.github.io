@@ -74,7 +74,10 @@ bool VerifyHmac(byte[] key, byte[] message, byte[] expectedMac)
 
 ## Password Hashing
 
-Never store passwords in plain text or with simple hashes. Use a password-specific algorithm.
+<div class="callout callout--warning">
+<p class="callout__title">Never Store Passwords in Plain Text</p>
+<p>Never store passwords in plain text or with simple hashes like SHA-256. Use a password-specific algorithm like PBKDF2, Argon2, or bcrypt.</p>
+</div>
 
 ### Rfc2898DeriveBytes (PBKDF2)
 
@@ -321,7 +324,25 @@ public static string DecryptString(string ciphertext, byte[] key)
 
 ### Constant-Time Comparison
 
-Always use for comparing secrets to prevent timing attacks.
+<blockquote class="pull-quote">
+<p>Always use constant-time comparison for secrets to prevent timing attacks.</p>
+</blockquote>
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Vulnerable Code</h4>
+<pre><code>// BAD: Timing attack vulnerable
+bool bad = hash1.SequenceEqual(hash2);</code></pre>
+<p>Short-circuits on first mismatch, leaking information about how much of the secret matches.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Secure Code</h4>
+<pre><code>// GOOD: Constant-time comparison
+bool good = CryptographicOperations
+    .FixedTimeEquals(hash1, hash2);</code></pre>
+<p>Always compares all bytes regardless of mismatches, preventing timing analysis.</p>
+</div>
+</div>
 
 ```csharp
 // BAD: Timing attack vulnerable

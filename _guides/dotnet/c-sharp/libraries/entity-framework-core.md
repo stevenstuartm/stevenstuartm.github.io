@@ -87,6 +87,27 @@ EF Core provides three ways to configure your model, listed here in order of pre
 
 When configurations conflict, higher precedence wins. For example, a Fluent API configuration overrides any Data Annotation on the same property.
 
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Fluent API (Recommended)</h4>
+<ul>
+<li>Keeps domain models clean (POCOs)</li>
+<li>More powerful (filtered indexes, cascade behavior)</li>
+<li>Centralized configuration</li>
+<li>Configuration classes can be unit tested</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Data Annotations</h4>
+<ul>
+<li>Dual-purpose validation (EF + ASP.NET)</li>
+<li>Self-documenting entities</li>
+<li>Less boilerplate for simple scenarios</li>
+<li>Suitable for prototypes and simple CRUD apps</li>
+</ul>
+</div>
+</div>
+
 ### Why Fluent API is Recommended
 
 Microsoft recommends Fluent API as the primary configuration approach for several reasons:
@@ -606,6 +627,33 @@ var customer = await GetCustomerById(context, customerId);
 ```
 
 ### Avoid N+1 Problems
+
+<blockquote class="pull-quote">
+<p>The N+1 problem is one of the most common performance issues in EF Core applications.</p>
+</blockquote>
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>N+1 Problem (Bad)</h4>
+<pre><code>// Triggers N+1 queries
+var customers = await context.Customers
+    .ToListAsync();
+foreach (var customer in customers)
+{
+    // Each iteration = 1 query
+    var orders = customer.Orders.ToList();
+}</code></pre>
+<p>Results in 1 query for customers + N queries for orders (one per customer).</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Eager Loading (Good)</h4>
+<pre><code>// Single query with JOIN
+var customers = await context.Customers
+    .Include(c => c.Orders)
+    .ToListAsync();</code></pre>
+<p>Results in 1 query that joins customers with orders.</p>
+</div>
+</div>
 
 ```csharp
 // BAD - N+1 queries

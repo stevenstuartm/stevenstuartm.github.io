@@ -20,6 +20,10 @@ tags: [infrastructure, iac, testing, validation, practical, automation]
 
 ## Why Test Infrastructure
 
+<blockquote class="pull-quote">
+<p>Infrastructure code is code. It deserves the same testing rigor as application code. Untested infrastructure is production gambling.</p>
+</blockquote>
+
 **Catch errors early:**
 - Syntax errors before deployment
 - Logic errors before production
@@ -78,11 +82,39 @@ tags: [infrastructure, iac, testing, validation, practical, automation]
 - Very slow
 - Run before production
 
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Static Analysis (70%)</h4>
+<ul>
+<li><strong>Speed:</strong> Instant (seconds)</li>
+<li><strong>Cost:</strong> Free</li>
+<li><strong>Coverage:</strong> Syntax, security, policy</li>
+<li><strong>When:</strong> Every commit</li>
+<li><strong>Value:</strong> Catch most issues immediately</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Integration Tests (9%)</h4>
+<ul>
+<li><strong>Speed:</strong> Slow (minutes to hours)</li>
+<li><strong>Cost:</strong> Real cloud costs</li>
+<li><strong>Coverage:</strong> End-to-end functionality</li>
+<li><strong>When:</strong> Before merge/deploy</li>
+<li><strong>Value:</strong> Validate actual behavior</li>
+</ul>
+</div>
+</div>
+
 ---
 
 ## Static Analysis
 
 **What it is:** Analyze code without executing it.
+
+<div class="callout callout--tip">
+<p class="callout__title">Fast Feedback Loop</p>
+<p>Static analysis is the fastest and cheapest testing layer. Run it on every commit. Catch 70% of issues before any deployment happens. Tools like tflint, cfn-lint, and Checkov should be mandatory in your CI pipeline.</p>
+</div>
 
 ### Tools
 
@@ -218,6 +250,10 @@ Run static analysis automatically on every commit or pull request:
 ## Compliance Testing
 
 **What it is:** Validate infrastructure against organizational policies and regulatory requirements using policy-as-code.
+
+<blockquote class="pull-quote">
+<p>Compliance as code means policies are enforced automatically, not discovered during audits. Shift compliance left into the development process.</p>
+</blockquote>
 
 ### Policy-as-Code Tools
 

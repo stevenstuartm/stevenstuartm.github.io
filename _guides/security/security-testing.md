@@ -9,23 +9,37 @@ tags: [security, testing, sast, dast, practical, automation]
 
 ## Testing Methodologies
 
-### Static Application Security Testing (SAST)
-- **Approach**: Source code analysis without execution
-- **Benefits**: Early detection, comprehensive coverage
-- **Limitations**: False positives, no runtime context
-- **Tools**: SonarQube, Checkmarx, Veracode
+<blockquote class="pull-quote">
+<p>No single testing approach finds all vulnerabilities—comprehensive security requires layering SAST, DAST, and IAST throughout the development lifecycle.</p>
+</blockquote>
 
-### Dynamic Application Security Testing (DAST)
-- **Approach**: Black-box testing of running applications
-- **Benefits**: Runtime vulnerability detection
-- **Limitations**: Limited code coverage, requires running app
-- **Tools**: OWASP ZAP, Burp Suite, Rapid7
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>SAST (Static Analysis)</h4>
+<ul>
+<li><strong>Approach</strong>: Source code analysis without execution</li>
+<li><strong>Benefits</strong>: Early detection, comprehensive coverage</li>
+<li><strong>Limitations</strong>: False positives, no runtime context</li>
+<li><strong>Tools</strong>: SonarQube, Checkmarx, Veracode</li>
+</ul>
+<p><strong>When</strong>: During development, in IDE and CI/CD</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>DAST (Dynamic Analysis)</h4>
+<ul>
+<li><strong>Approach</strong>: Black-box testing of running applications</li>
+<li><strong>Benefits</strong>: Runtime vulnerability detection</li>
+<li><strong>Limitations</strong>: Limited code coverage, requires running app</li>
+<li><strong>Tools</strong>: OWASP ZAP, Burp Suite, Rapid7</li>
+</ul>
+<p><strong>When</strong>: During testing, staging, and pre-production</p>
+</div>
+</div>
 
-### Interactive Application Security Testing (IAST)
-- **Approach**: Instrumentation-based testing during runtime
-- **Benefits**: Low false positives, accurate results
-- **Limitations**: Performance impact, deployment complexity
-- **Integration**: Works within existing testing frameworks
+<div class="callout callout--note">
+<p class="callout__title">IAST and RASP</p>
+<p><strong>Interactive Application Security Testing (IAST)</strong> uses instrumentation-based testing during runtime, offering low false positives and accurate results with some performance impact. <strong>Runtime Application Self-Protection (RASP)</strong> provides real-time protection within applications, offering zero-day protection and contextual analysis but with performance overhead and deployment changes.</p>
+</div>
 
 ### Runtime Application Self-Protection (RASP)
 - **Approach**: Real-time protection within applications
@@ -44,6 +58,12 @@ tags: [security, testing, sast, dast, practical, automation]
 6. **Reporting**: Findings and recommendations
 
 ### Testing Types
+
+<div class="callout callout--tip">
+<p class="callout__title">Purple Team for Maximum Learning</p>
+<p>Purple team exercises combine red team attacks with blue team defense in a collaborative format. This approach maximizes learning and improvement by sharing tactics, techniques, and defensive gaps in real time rather than only reporting findings after the fact.</p>
+</div>
+
 - **Black Box**: No prior knowledge
 - **White Box**: Full system knowledge
 - **Gray Box**: Limited knowledge
@@ -53,6 +73,12 @@ tags: [security, testing, sast, dast, practical, automation]
 ## Vulnerability Assessment
 
 ### Automated Scanning
+
+<div class="callout callout--warning">
+<p class="callout__title">Automation Finds Known Issues, Not Novel Vulnerabilities</p>
+<p>Automated scanners excel at finding known vulnerability patterns and misconfigurations, but they miss business logic flaws, novel attack vectors, and context-specific issues. Always complement automated scanning with manual testing.</p>
+</div>
+
 - **Network Scanners**: Nessus, Rapid7, Qualys
 - **Web Application Scanners**: OWASP ZAP, Burp Suite
 - **Infrastructure Scanners**: OpenVAS, Nmap

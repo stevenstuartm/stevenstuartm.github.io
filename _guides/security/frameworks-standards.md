@@ -20,6 +20,10 @@ tags: [security, frameworks, standards, compliance, reference]
 
 Released February 2024, NIST CSF 2.0 expanded beyond critical infrastructure to serve all organization types and sizes. Widely adopted globally as a voluntary framework for managing cybersecurity risk.
 
+<blockquote class="pull-quote">
+<p>NIST CSF 2.0 provides a common language for communicating cybersecurity risk across organizational levels, from technical teams to executive leadership.</p>
+</blockquote>
+
 ### Core Functions
 
 **1. Govern (NEW)**
@@ -115,6 +119,11 @@ Recovery planning, improvements, and communications.
 ## OWASP Standards
 
 *Open Web Application Security Project (OWASP) founded in 2001 as a nonprofit foundation. The OWASP Top 10 has been the de facto standard for web application security since its first publication in 2003.*
+
+<div class="callout callout--note">
+<p class="callout__title">OWASP Top 10 Update</p>
+<p>Currently collecting data for 2025 update (contributions until July 31, 2025). The Top 10 is updated approximately every 3-4 years based on community data and security research.</p>
+</div>
 
 ### OWASP Top 10 Web Application Security Risks (2021)
 

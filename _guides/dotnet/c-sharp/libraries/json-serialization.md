@@ -114,6 +114,27 @@ var data = await response.Content.ReadFromJsonAsync<Product>();
 
 ### Choosing How to Work with JSON
 
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>JsonDocument (Read-Only)</h4>
+<ul>
+<li>Pooled and highly efficient</li>
+<li>Extract specific values</li>
+<li>No object allocation for full tree</li>
+<li>Disposed after use</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>JsonNode (Mutable)</h4>
+<ul>
+<li>In-memory representation</li>
+<li>Modify JSON dynamically</li>
+<li>Build JSON programmatically</li>
+<li>Stays in memory</li>
+</ul>
+</div>
+</div>
+
 System.Text.Json offers multiple approaches depending on your needs.
 
 | Approach | Use When |
@@ -245,6 +266,11 @@ public class Teacher : Person
 ```
 
 ## Source Generation
+
+<div class="callout callout--tip">
+<p class="callout__title">Source Generation for Production</p>
+<p>Eliminates reflection overhead, enables AOT compilation, and makes trimming work correctly. Use it for production applications where startup time and deployment size matter.</p>
+</div>
 
 Compile-time generated serialization for better performance and AOT support.
 

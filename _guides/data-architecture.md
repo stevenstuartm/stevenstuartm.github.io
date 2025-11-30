@@ -21,7 +21,9 @@ tags: [architecture, data-architecture, databases, data-modeling, design-pattern
 
 ### ACID Properties
 
-ACID properties ensure your database doesn't lose or corrupt data when multiple operations happen at once.
+<blockquote class="pull-quote">
+<p>ACID properties ensure your database doesn't lose or corrupt data when multiple operations happen at once.</p>
+</blockquote>
 
 **Atomicity**: All or nothing. If you're transferring $100 between bank accounts, either both the deduction AND addition happen, or neither does. No money disappears into thin air.
 
@@ -95,17 +97,29 @@ Break big problems into smaller pieces that can run in parallel, then combine th
 
 ### Batch vs Real-time Processing
 
-**Batch Processing**:
-- **Good for**: Historical analysis, complex calculations, cost efficiency
-- **Example**: Nightly processing of the day's sales data for reporting
-- **Tradeoff**: High latency but comprehensive and reliable
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Batch Processing</h4>
+<ul>
+<li><strong>Good for</strong>: Historical analysis, complex calculations, cost efficiency</li>
+<li><strong>Example</strong>: Nightly processing of the day's sales data for reporting</li>
+<li><strong>Tradeoff</strong>: High latency but comprehensive and reliable</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Real-time Processing</h4>
+<ul>
+<li><strong>Good for</strong>: Immediate responses, monitoring, personalization</li>
+<li><strong>Example</strong>: Fraud detection on credit card transactions</li>
+<li><strong>Tradeoff</strong>: Low latency but limited historical context</li>
+</ul>
+</div>
+</div>
 
-**Real-time Processing**:
-- **Good for**: Immediate responses, monitoring, personalization
-- **Example**: Fraud detection on credit card transactions
-- **Tradeoff**: Low latency but limited historical context
-
-**Lambda Architecture**: Run both batch and real-time processing, combine the results. Get comprehensive analysis AND fast responses, but double the complexity.
+<div class="callout callout--note">
+<p class="callout__title">Lambda Architecture</p>
+<p>Run both batch and real-time processing, combine the results. Get comprehensive analysis AND fast responses, but double the complexity.</p>
+</div>
 
 ---
 
@@ -113,25 +127,39 @@ Break big problems into smaller pieces that can run in parallel, then combine th
 
 ### Data Warehouse vs Data Lake vs Data Lakehouse
 
-**Data Warehouse**:
-- **What**: Structured data, optimized for business reporting
-- **Best for**: Executive dashboards, financial reports, regulatory compliance
-- **Think**: Your company's "source of truth" for business metrics
-- **Examples**: Snowflake, BigQuery, Redshift
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Data Warehouse</h4>
+<ul>
+<li><strong>What</strong>: Structured data, optimized for business reporting</li>
+<li><strong>Best for</strong>: Executive dashboards, financial reports, regulatory compliance</li>
+<li><strong>Think</strong>: Your company's "source of truth" for business metrics</li>
+<li><strong>Examples</strong>: Snowflake, BigQuery, Redshift</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Data Lake</h4>
+<ul>
+<li><strong>What</strong>: Store any type of data in raw format, figure out structure later</li>
+<li><strong>Best for</strong>: Data science, machine learning, exploratory analysis</li>
+<li><strong>Think</strong>: A big bucket where you dump everything, organize it when needed</li>
+<li><strong>Challenge</strong>: Can become a "data swamp" without proper organization</li>
+</ul>
+</div>
+</div>
 
-**Data Lake**:
-- **What**: Store any type of data in raw format, figure out structure later
-- **Best for**: Data science, machine learning, exploratory analysis
-- **Think**: A big bucket where you dump everything, organize it when needed
-- **Challenge**: Can become a "data swamp" without proper organization
+<div class="callout callout--note">
+<p class="callout__title">Data Lakehouse</p>
+<p><strong>What</strong>: Combines warehouse performance with lake flexibility</p>
+<p><strong>Best for</strong>: Organizations that want both structured reporting AND data science</p>
+<p><strong>Think</strong>: One system instead of maintaining separate warehouse and lake</p>
+<p><strong>Examples</strong>: Databricks Delta Lake, Apache Iceberg</p>
+</div>
 
-**Data Lakehouse**:
-- **What**: Combines warehouse performance with lake flexibility
-- **Best for**: Organizations that want both structured reporting AND data science
-- **Think**: One system instead of maintaining separate warehouse and lake
-- **Examples**: Databricks Delta Lake, Apache Iceberg
-
-**Choosing**: Small company with clear reporting needs? Start with warehouse. Lots of unstructured data and data science? Consider lakehouse. Just getting started? Warehouse is simpler.
+<div class="callout callout--tip">
+<p class="callout__title">Choosing Your Architecture</p>
+<p>Small company with clear reporting needs? Start with warehouse. Lots of unstructured data and data science? Consider lakehouse. Just getting started? Warehouse is simpler.</p>
+</div>
 
 ### Data Mesh
 

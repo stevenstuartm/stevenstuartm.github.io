@@ -9,7 +9,11 @@ tags: [c-sharp, dotnet, modern-csharp, pattern-matching, functional-programming,
 
 ## What is Pattern Matching
 
-Pattern matching allows you to test whether a value has a particular shape and extract information from it. It's more expressive than traditional if-else chains and produces cleaner, more declarative code.
+<blockquote class="pull-quote">
+<p>Pattern matching produces cleaner, more declarative code than traditional if-else chains.</p>
+</blockquote>
+
+Pattern matching allows you to test whether a value has a particular shape and extract information from it.
 
 ```csharp
 // Traditional approach
@@ -85,6 +89,11 @@ public double CalculateArea(object shape)
 ```
 
 ### Switch Expression (C# 8.0)
+
+<div class="callout callout--tip">
+<p class="callout__title">Switch Expressions vs Switch Statements</p>
+<p>Switch expressions are expression-based (return a value directly) rather than statement-based. They're more concise and require handling all cases.</p>
+</div>
 
 ```csharp
 public double CalculateArea(object shape) => shape switch

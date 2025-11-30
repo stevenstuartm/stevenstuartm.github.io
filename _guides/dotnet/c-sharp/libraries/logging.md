@@ -132,6 +132,11 @@ builder.Logging
 
 ## Log Scopes
 
+<div class="callout callout--tip">
+<p class="callout__title">Use Scopes for Correlation</p>
+<p>Log scopes add context to all log entries within a block—like request IDs, user IDs, or transaction IDs. This makes correlated events searchable across distributed systems.</p>
+</div>
+
 Add contextual information to a group of log entries.
 
 ```csharp
@@ -214,6 +219,10 @@ builder.Logging.AddEventLog(settings =>
 ## High-Performance Logging
 
 ### Source-Generated Logging (C# 9+)
+
+<blockquote class="pull-quote">
+<p>Source-generated logging eliminates all reflection, boxing, and string parsing at runtime. For high-throughput applications, this dramatically reduces allocation pressure.</p>
+</blockquote>
 
 Eliminates boxing and parsing overhead at runtime.
 

@@ -23,6 +23,10 @@ A systematic approach to planning and executing AWS migrations using:
 
 ## The 6 Rs Migration Framework
 
+<blockquote class="pull-quote">
+<p>The 6 Rs framework provides a decision model for application migrations: from quick rehosting for speed to strategic refactoring for maximum cloud-native benefits.</p>
+</blockquote>
+
 AWS defines six migration strategies (the "6 Rs") for moving applications to the cloud. Each strategy represents a different level of effort and business value.
 
 ### 1. Rehost (Lift-and-Shift)
@@ -36,17 +40,28 @@ AWS defines six migration strategies (the "6 Rs") for moving applications to the
 - Need to exit data center quickly
 - Applications with unpredictable behavior (risky to change)
 
-**Benefits**:
-- ✅ Fastest migration path (weeks vs months)
-- ✅ Lowest risk (no code changes)
-- ✅ Immediate infrastructure cost savings (30-50%)
-- ✅ Foundation for future optimization
-
-**Limitations**:
-- ❌ Minimal cloud-native benefits
-- ❌ Still managing servers (EC2 instances)
-- ❌ Leaves technical debt intact
-- ❌ Higher long-term operational costs vs serverless/managed services
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Rehost Benefits</h4>
+<ul>
+<li>Fastest migration path (weeks vs months)</li>
+<li>Lowest risk (no code changes)</li>
+<li>Immediate infrastructure cost savings (30-50%)</li>
+<li>Foundation for future optimization</li>
+<li>Minimal cloud expertise required</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Rehost Limitations</h4>
+<ul>
+<li>Minimal cloud-native benefits</li>
+<li>Still managing servers (EC2 instances)</li>
+<li>Leaves technical debt intact</li>
+<li>Higher long-term operational costs vs serverless/managed services</li>
+<li>Doesn't leverage AWS-managed services</li>
+</ul>
+</div>
+</div>
 
 **Example**:
 ```bash
@@ -387,6 +402,10 @@ aws ec2 terminate-instances --instance-ids i-0123456789abcdef0
 
 ## Decision Framework: Choosing the Right R
 
+<blockquote class="pull-quote">
+<p>Not all applications should migrate the same way. Assess each application's business criticality, technical complexity, and usage patterns to choose the right R.</p>
+</blockquote>
+
 ### Step 1: Application Assessment
 
 Create an inventory of all applications with these attributes:
@@ -472,6 +491,11 @@ for app in applications:
 
 ### Step 2: Cost-Benefit Analysis
 
+<div class="callout callout--tip">
+<p class="callout__title">ROI Calculation Tip</p>
+<p>Don't just compare upfront migration costs. Calculate total 3-year costs including migration, ongoing cloud infrastructure, and operational savings to determine true ROI for each migration strategy.</p>
+</div>
+
 Calculate ROI for each migration strategy:
 
 ```
@@ -501,6 +525,11 @@ Total Costs (3 years):
 **Decision**: Replatform offers best 3-year ROI. Refactor only if 5-year horizon or strategic value justifies higher upfront cost.
 
 ### Step 3: Dependency Mapping
+
+<div class="callout callout--warning">
+<p class="callout__title">Critical Rule</p>
+<p>Always migrate dependencies before dependent applications. Migrating a web app before its database will result in broken functionality post-migration.</p>
+</div>
 
 **Critical rule**: Migrate dependencies before dependent applications.
 
@@ -561,6 +590,10 @@ print("Migration sequence:", migration_order)
 ---
 
 ## AWS Cloud Adoption Framework (CAF)
+
+<blockquote class="pull-quote">
+<p>Successful cloud migrations require more than technical execution. The AWS CAF addresses organizational readiness across Business, People, Governance, Platform, Security, and Operations perspectives.</p>
+</blockquote>
 
 The AWS CAF provides organizational guidance for cloud transformation across six perspectives.
 
@@ -843,6 +876,11 @@ remediation_actions = {
 
 ## Migration Planning: Phased Approach
 
+<div class="callout callout--note">
+<p class="callout__title">Migration Phases</p>
+<p>Successful migrations follow a phased approach: Assess (understand current state), Mobilize (prepare organization and environment), Migrate (execute waves), and Operate (optimize continuously).</p>
+</div>
+
 ### Phase 1: Assess (2-4 months)
 
 **Objective**: Understand current state and build migration plan.
@@ -878,6 +916,11 @@ remediation_actions = {
 ```
 
 ### Phase 2: Mobilize (1-3 months)
+
+<div class="callout callout--tip">
+<p class="callout__title">Pilot Migration First</p>
+<p>Before executing large-scale migration waves, always pilot with 1-2 low-risk applications. This validates your processes, tooling, and team readiness while minimizing business risk.</p>
+</div>
 
 **Objective**: Prepare organization and AWS environment for migration.
 
@@ -1172,6 +1215,11 @@ aws datasync describe-task-execution \
 ---
 
 ## Common Pitfalls
+
+<div class="callout callout--warning">
+<p class="callout__title">Migration Pitfalls</p>
+<p>The most common migration failures stem from inadequate assessment, lack of testing, and missing rollback plans. Avoid these pitfalls by following proven migration practices.</p>
+</div>
 
 ### Pitfall 1: Migrating Without Assessment
 

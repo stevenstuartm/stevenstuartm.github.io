@@ -375,6 +375,34 @@ var loaded = Player.ReadFrom(reader);
 
 ### Binary vs JSON
 
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Binary Serialization</h4>
+<ul>
+<li><strong>Size:</strong> Compact</li>
+<li><strong>Speed:</strong> Faster</li>
+<li><strong>Readability:</strong> Not human-readable</li>
+<li><strong>Debugging:</strong> Difficult</li>
+<li><strong>Use case:</strong> Performance-critical, network protocols</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>JSON Serialization</h4>
+<ul>
+<li><strong>Size:</strong> Larger (text-based)</li>
+<li><strong>Speed:</strong> Slower</li>
+<li><strong>Readability:</strong> Human-readable</li>
+<li><strong>Debugging:</strong> Easy</li>
+<li><strong>Use case:</strong> APIs, config files, data exchange</li>
+</ul>
+</div>
+</div>
+
+<div class="callout callout--tip">
+<p class="callout__title">When to Use Binary</p>
+<p>Use binary serialization only when size/speed justify the debugging difficulty. For most cases, prefer JSON for interoperability and maintainability.</p>
+</div>
+
 | Aspect | Binary | JSON |
 |--------|--------|------|
 | Size | Compact | Larger (text) |

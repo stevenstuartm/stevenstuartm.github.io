@@ -15,6 +15,10 @@ tags: [security, fundamentals, cia-triad, defense-in-depth, zero-trust, practica
 
 ## CIA Triad
 
+<blockquote class="pull-quote">
+<p>The CIA triad—Confidentiality, Integrity, Availability—is the foundation upon which all security decisions are built.</p>
+</blockquote>
+
 The foundational framework for information security:
 
 ### Confidentiality
@@ -64,6 +68,12 @@ Systems and data accessible when needed by authorized users.
 ## Security Principles
 
 ### Least Privilege
+
+<div class="callout callout--warning">
+<p class="callout__title">Over-Privileged Accounts Are Security Time Bombs</p>
+<p>When every service runs as admin and every user has more permissions than needed, a single compromise can cascade into complete system takeover. Grant minimum necessary access for each job function.</p>
+</div>
+
 Grant minimum necessary access for job function.
 
 **Application:**
@@ -228,9 +238,29 @@ If an attacker bypasses the firewall, they still face:
 ## Trust Models
 
 ### Traditional Perimeter Security
-- **Assumption:** Internal network is trusted
-- **Problem:** Insider threats, lateral movement after breach
-- **Status:** Outdated for modern environments
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Traditional Perimeter Model</h4>
+<ul>
+<li><strong>Assumption</strong>: Internal network is trusted</li>
+<li><strong>Security</strong>: Hard exterior, soft interior</li>
+<li><strong>Problem</strong>: Insider threats, lateral movement after breach</li>
+<li><strong>Status</strong>: Outdated for modern environments</li>
+</ul>
+<p><strong>Analogy</strong>: Castle with walls (breach the wall, access everything)</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Zero Trust Architecture</h4>
+<ul>
+<li><strong>Principle</strong>: "Never trust, always verify"</li>
+<li><strong>Security</strong>: Verify every request, every time</li>
+<li><strong>Benefit</strong>: Limits lateral movement, contains breaches</li>
+<li><strong>Status</strong>: Modern standard for secure architectures</li>
+</ul>
+<p><strong>Analogy</strong>: Airport checkpoints (verify at every gate)</p>
+</div>
+</div>
 
 ### Zero Trust Architecture
 **Core Principle:** "Never trust, always verify"
@@ -260,6 +290,10 @@ if authenticate(user) AND authorize(user, resource) AND validate_device():
 ---
 
 ## Security by Design
+
+<blockquote class="pull-quote">
+<p>Security bolted on after development is expensive, fragile, and incomplete. Security designed in from the start is robust, cost-effective, and comprehensive.</p>
+</blockquote>
 
 Build security into the development lifecycle, not bolt it on later.
 

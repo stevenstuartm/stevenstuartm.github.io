@@ -9,6 +9,10 @@ tags: [c-sharp, dotnet, fundamentals, operators, pattern-matching, practical]
 
 ## Arithmetic Operators
 
+<blockquote class="pull-quote">
+<p>Integer division truncates by default. If you need decimal results, ensure at least one operand is a floating-point type.</p>
+</blockquote>
+
 Standard mathematical operations with predictable precedence matching mathematical convention.
 
 ```csharp
@@ -35,6 +39,11 @@ count -= 3;   // count = count - 3 → 12
 count *= 2;   // count = count * 2 → 24
 count /= 4;   // count = count / 4 → 6
 ```
+
+<div class="callout callout--warning">
+<p class="callout__title">Checked and Unchecked Arithmetic</p>
+<p>By default, integer overflow wraps silently. Use <code>checked</code> for explicit overflow detection in critical calculations. Use <code>unchecked</code> when intentional wrapping is needed, like in hash code implementations.</p>
+</div>
 
 ### Checked and Unchecked Arithmetic
 

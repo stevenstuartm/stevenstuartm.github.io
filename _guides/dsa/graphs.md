@@ -390,12 +390,16 @@ public static List<T> TopologicalSort<T>(Graph<T> graph)
 
 ### Breadth-First Search (BFS)
 
-**When to use:**
-- Finding shortest path in unweighted graphs
-- Level-order traversal
-- Finding minimum steps/moves
-- Web crawling
-- Social network analysis (degrees of separation)
+<div class="callout callout--tip">
+<p class="callout__title">When to Use BFS</p>
+<ul>
+<li>Finding shortest path in unweighted graphs</li>
+<li>Level-order traversal</li>
+<li>Finding minimum steps/moves</li>
+<li>Web crawling</li>
+<li>Social network analysis (degrees of separation)</li>
+</ul>
+</div>
 
 **Time Complexity:** O(V + E)
 

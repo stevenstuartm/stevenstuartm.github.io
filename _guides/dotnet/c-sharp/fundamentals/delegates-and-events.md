@@ -254,23 +254,30 @@ var results = getValue.GetInvocationList()
     .ToList();  // [1, 2, 3]
 ```
 
-## Choosing Between Delegates and Events
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Use Delegates (Func/Action)</h4>
+<ul>
+<li>Pass behavior as a parameter (strategies, callbacks, LINQ queries)</li>
+<li>The callback is one-to-one: one caller, one handler</li>
+<li>The caller should be able to invoke the delegate directly</li>
+<li>You're doing functional-style programming</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Use Events</h4>
+<ul>
+<li>Multiple subscribers may want to respond to something happening</li>
+<li>The publisher shouldn't know who's listening (loose coupling)</li>
+<li>Only the class that owns the event should be able to raise it</li>
+<li>You're implementing the observer/pub-sub pattern</li>
+</ul>
+</div>
+</div>
 
-Both enable callback-style programming, but they serve different purposes.
-
-**Use a delegate (Func/Action) when**:
-- You need to pass behavior as a parameter (strategies, callbacks, LINQ queries)
-- The callback is one-to-one: one caller, one handler
-- The caller should be able to invoke the delegate directly
-- You're doing functional-style programming
-
-**Use an event when**:
-- Multiple subscribers may want to respond to something happening
-- The publisher shouldn't know who's listening (loose coupling)
-- Only the class that owns the event should be able to raise it
-- You're implementing the observer/pub-sub pattern
-
-**Why events add restrictions**: An event can only be invoked by the class that declares it. Subscribers can add/remove handlers, but they cannot invoke the event or replace the handler list. This encapsulation is the key difference from public delegate fields.
+<blockquote class="pull-quote">
+<p>An event can only be invoked by the class that declares it. This encapsulation is the key difference from public delegate fields.</p>
+</blockquote>
 
 ```csharp
 // Delegate as parameter - caller controls when it runs

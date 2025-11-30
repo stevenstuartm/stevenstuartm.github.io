@@ -11,6 +11,10 @@ Understanding programming terminology is essential before diving into language-s
 
 ## Type System Concepts
 
+<blockquote class="pull-quote">
+<p>Understanding type system concepts like static vs dynamic typing and strong vs weak typing helps you predict how code behaves and why the compiler accepts or rejects certain operations.</p>
+</blockquote>
+
 The type system is how a programming language classifies and manages data. Understanding these distinctions helps you reason about code behavior and catch errors earlier.
 
 ### Statically Typed vs Dynamically Typed
@@ -65,13 +69,18 @@ These concepts matter when designing generic interfaces and understanding why ce
 
 How data behaves—whether it can change, how it is stored, and how it is passed around—fundamentally affects program correctness and reasoning.
 
-### Mutable vs Immutable
-
-**Mutable** data can be changed after creation. You can modify its contents without creating a new instance.
-
-**Immutable** data cannot be changed once created. Any "modification" produces a new instance with the altered values.
-
-Strings in C# are immutable. Concatenating strings creates new string objects rather than modifying existing ones. Lists are mutable; adding an item changes the existing list.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Mutable</h4>
+<p>Data can be changed after creation. You can modify its contents without creating a new instance.</p>
+<p><strong>Example</strong>: Lists are mutable; adding an item changes the existing list.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Immutable</h4>
+<p>Data cannot be changed once created. Any "modification" produces a new instance with the altered values.</p>
+<p><strong>Example</strong>: Strings in C# are immutable. Concatenating strings creates new string objects rather than modifying existing ones.</p>
+</div>
+</div>
 
 Immutability simplifies reasoning about code because data cannot change unexpectedly. It eliminates entire categories of bugs related to shared state and makes concurrent programming safer.
 

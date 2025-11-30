@@ -24,7 +24,34 @@ AWS Serverless Application Model (SAM) is an open-source framework that simplifi
 
 ## SAM vs CloudFormation vs CDK
 
+<blockquote class="pull-quote">
+<p>SAM reduces serverless infrastructure code from 200+ lines of CloudFormation to 50 lines while adding local testing capabilities.</p>
+</blockquote>
+
 ### Comparison
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>AWS SAM</h4>
+<ul>
+<li><strong>Syntax:</strong> YAML/JSON (simplified)</li>
+<li><strong>Learning curve:</strong> Low</li>
+<li><strong>Serverless focus:</strong> Optimized for serverless</li>
+<li><strong>Local testing:</strong> Built-in (sam local)</li>
+<li><strong>Best for:</strong> Pure serverless apps</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>AWS CDK</h4>
+<ul>
+<li><strong>Syntax:</strong> Programming languages (TypeScript, Python, etc.)</li>
+<li><strong>Learning curve:</strong> High</li>
+<li><strong>Serverless focus:</strong> Generic (good support)</li>
+<li><strong>Local testing:</strong> Requires SAM</li>
+<li><strong>Best for:</strong> Complex infra with logic</li>
+</ul>
+</div>
+</div>
 
 | Feature | SAM | CloudFormation | AWS CDK |
 |---------|-----|----------------|---------|
@@ -145,10 +172,14 @@ export class HelloWorldStack extends cdk.Stack {
 }
 ```
 
-**Decision**:
-- **Use SAM** for: Pure serverless applications (Lambda + API Gateway + DynamoDB + EventBridge)
-- **Use CDK** for: Complex infrastructure requiring programming logic, multi-service apps
-- **Use CloudFormation** for: Legacy systems, specific AWS features not yet in SAM/CDK
+<div class="callout callout--note">
+<p class="callout__title">When to Choose Each Tool</p>
+<ul>
+<li><strong>Use SAM</strong> for pure serverless applications (Lambda + API Gateway + DynamoDB + EventBridge)</li>
+<li><strong>Use CDK</strong> for complex infrastructure requiring programming logic and multi-service apps</li>
+<li><strong>Use CloudFormation</strong> for legacy systems or specific AWS features not yet in SAM/CDK</li>
+</ul>
+</div>
 
 ---
 

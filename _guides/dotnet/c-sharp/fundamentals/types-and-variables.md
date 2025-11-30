@@ -9,6 +9,10 @@ tags: [c-sharp, dotnet, fundamentals, types, memory-management, practical]
 
 ## The Type System
 
+<blockquote class="pull-quote">
+<p>The divide between value types and reference types affects performance, equality semantics, and how data flows through your application.</p>
+</blockquote>
+
 C# is a statically-typed language where every variable and expression has a type known at compile time. The type system divides into two fundamental categories: value types (stored on the stack or inline) and reference types (stored on the heap with stack-based references).
 
 Understanding this distinction matters because it affects performance, equality semantics, and how data flows through your application.
@@ -56,7 +60,10 @@ decimal taxRate = 0.0825m;
 decimal total = price * (1 + taxRate); // 21.6389175m - exact
 ```
 
-The `decimal` type exists specifically because `float` and `double` use binary floating-point representation, which cannot precisely represent base-10 fractions. Financial applications require exact decimal arithmetic.
+<div class="callout callout--warning">
+<p class="callout__title">Why decimal Matters for Money</p>
+<p>The <code>decimal</code> type exists specifically because <code>float</code> and <code>double</code> use binary floating-point representation, which cannot precisely represent base-10 fractions. Financial applications require exact decimal arithmetic.</p>
+</div>
 
 ```csharp
 // Why decimal matters for money
@@ -261,10 +268,14 @@ public class MathConstants
 double area = MathConstants.Pi * radius * radius;
 ```
 
-**const limitations**:
-- Only primitive types, string, and null
-- Value embedded in consuming assemblies (recompilation needed if changed)
-- Cannot be computed at runtime
+<div class="callout callout--note">
+<p class="callout__title">const Limitations</p>
+<ul>
+<li>Only primitive types, string, and null</li>
+<li>Value embedded in consuming assemblies (recompilation needed if changed)</li>
+<li>Cannot be computed at runtime</li>
+</ul>
+</div>
 
 ### readonly
 

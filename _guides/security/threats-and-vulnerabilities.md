@@ -34,6 +34,11 @@ tags: [security, threats, vulnerabilities, owasp, practical, defense]
 - **Timeline**: Long-term, persistent campaigns
 
 ### Insider Threats
+
+<blockquote class="pull-quote">
+<p>Not all insider threats are malicious—negligent insiders and compromised credentials are often more common and just as damaging as intentional sabotage.</p>
+</blockquote>
+
 - **Types**:
   - **Malicious**: Intentional harm by authorized users
   - **Negligent**: Accidental security breaches
@@ -49,6 +54,12 @@ tags: [security, threats, vulnerabilities, owasp, practical, defense]
 - **Usage**: Vulnerability scanners, patch management
 
 ### Common Vulnerability Scoring System (CVSS)
+
+<div class="callout callout--warning">
+<p class="callout__title">CVSS Scores Don't Tell the Whole Story</p>
+<p>A CVSS 9.8 vulnerability in an internet-facing authentication service is more urgent than a CVSS 9.8 in an isolated internal system. Always consider environmental context when prioritizing remediation efforts.</p>
+</div>
+
 - **Score Range**: 0.0 (no risk) to 10.0 (critical)
 - **Severity Ratings**:
   - **None**: 0.0
@@ -65,6 +76,12 @@ tags: [security, threats, vulnerabilities, owasp, practical, defense]
 - **Integration**: Maps to CVE entries for root cause analysis
 
 ### Zero-Day Vulnerabilities
+
+<div class="callout callout--note">
+<p class="callout__title">The Zero-Day Window</p>
+<p>Zero-day vulnerabilities are unknown to defenders, meaning there's no patch available. Once discovered and patched, they become "N-day" vulnerabilities. The most dangerous period is the "1-day" window immediately after patch release, when attackers race to exploit unpatched systems before defenders can apply updates.</p>
+</div>
+
 - **Definition**: Unknown vulnerabilities with no available patches
 - **Timeline**:
   - **Zero-day**: Vulnerability unknown to defenders

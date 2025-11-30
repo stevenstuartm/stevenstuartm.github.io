@@ -33,6 +33,11 @@ File.WriteAllBytes("copy.png", bytes);
 
 ## Path Operations
 
+<div class="callout callout--tip">
+<p class="callout__title">Always Use Path.Combine</p>
+<p>Never concatenate paths with string operations. <code>Path.Combine</code> handles cross-platform separators correctly.</p>
+</div>
+
 Use `Path` class for cross-platform path manipulation.
 
 ```csharp
@@ -99,6 +104,11 @@ while ((bytesRead = await stream.ReadAsync(buffer)) > 0)
 ```
 
 ### StreamReader
+
+<div class="callout callout--note">
+<p class="callout__title">StreamReader vs ReadAllText</p>
+<p>Use <code>StreamReader</code> for line-by-line processing of large files (memory efficient). Use <code>File.ReadAllText</code> for small files where you need all content at once.</p>
+</div>
 
 ```csharp
 using var reader = new StreamReader("file.txt");

@@ -9,6 +9,10 @@ tags: [c-sharp, dotnet, fundamentals, strings, text-processing, performance, pra
 
 ## String Fundamentals
 
+<blockquote class="pull-quote">
+<p>Strings are immutable—every modification creates a new string object. Use StringBuilder for building strings in loops.</p>
+</blockquote>
+
 Strings in C# are immutable reference types. Every modification creates a new string object.
 
 ```csharp
@@ -131,6 +135,15 @@ string jsonTemplate = $$"""
 
 ## String Comparison
 
+<div class="callout callout--tip">
+<p class="callout__title">Choosing the Right String Comparison</p>
+<ul>
+<li><strong>For identifiers, paths, keys</strong>: Use <code>Ordinal</code> or <code>OrdinalIgnoreCase</code> (fastest)</li>
+<li><strong>For user-facing text</strong>: Use <code>CurrentCulture</code></li>
+<li><strong>For persisted data</strong>: Use <code>InvariantCulture</code></li>
+</ul>
+</div>
+
 ### Comparison Types
 
 ```csharp
@@ -148,11 +161,6 @@ bool culture = string.Equals(a, b, StringComparison.CurrentCulture);
 
 // InvariantCulture - consistent across cultures
 bool invariant = string.Equals(a, b, StringComparison.InvariantCultureIgnoreCase);
-
-// Best practices
-// For identifiers, paths, keys: Ordinal/OrdinalIgnoreCase
-// For user-facing text: CurrentCulture
-// For persisted data: InvariantCulture
 ```
 
 ### Comparison Methods

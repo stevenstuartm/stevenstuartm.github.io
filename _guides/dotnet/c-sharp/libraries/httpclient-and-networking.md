@@ -36,6 +36,10 @@ await client.DeleteAsync("users/1");
 
 ## The HttpClient Lifetime Problem
 
+<blockquote class="pull-quote">
+<p>Creating new HttpClient instances causes socket exhaustion; reusing static instances breaks DNS updates. IHttpClientFactory solves both problems.</p>
+</blockquote>
+
 Creating HttpClient instances directly causes socket exhaustion.
 
 ```csharp
@@ -50,6 +54,11 @@ for (int i = 0; i < 1000; i++)
 // ALSO WRONG - static client doesn't respect DNS changes
 private static readonly HttpClient _client = new HttpClient();  // DNS cached forever
 ```
+
+<div class="callout callout--warning">
+<p class="callout__title">The HttpClient Dilemma</p>
+<p>Creating HttpClient instances in a <code>using</code> block causes socket exhaustion. Creating a static instance caches DNS forever. Both patterns are problematic in production code.</p>
+</div>
 
 ## IHttpClientFactory (Recommended)
 
@@ -80,6 +89,27 @@ public class MyService
 ```
 
 ### Named Clients
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Named Clients</h4>
+<ul>
+<li>Configure per-API settings</li>
+<li>Access via factory with name</li>
+<li>Good for multiple external APIs</li>
+<li>Simple configuration</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Typed Clients</h4>
+<ul>
+<li>Encapsulate HTTP logic in class</li>
+<li>Inject client directly</li>
+<li>Better for complex APIs</li>
+<li>Type-safe and testable</li>
+</ul>
+</div>
+</div>
 
 Configure different settings for different APIs.
 
@@ -244,6 +274,11 @@ await client.PostAsync("upload", multipart);
 ```
 
 ## Cancellation
+
+<div class="callout callout--tip">
+<p class="callout__title">Always Support Cancellation</p>
+<p>Cancellation tokens enable request timeouts, user-initiated cancellation, and graceful shutdown. Pass them through to all async HTTP operations.</p>
+</div>
 
 ```csharp
 // With CancellationToken

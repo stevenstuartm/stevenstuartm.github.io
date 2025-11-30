@@ -29,7 +29,11 @@ The theory and development of computer systems able to perform tasks that normal
 ### Machine Learning (ML)
 The use and development of computer systems that are able to learn and adapt without following explicit instructions, by using algorithms and statistical models to analyze and draw inferences from patterns in data.
 
-**Key insight**: Instead of programming every possible scenario (traditional programming), ML lets computers learn patterns from examples and make predictions about new, unseen data. Like teaching a child to recognize cats by showing them many cat pictures, rather than describing every possible cat feature.
+<blockquote class="pull-quote">
+<p>Instead of programming every possible scenario, ML lets computers learn patterns from examples and make predictions about new, unseen data.</p>
+</blockquote>
+
+**Key insight**: Like teaching a child to recognize cats by showing them many cat pictures, rather than describing every possible cat feature.
 
 ### Deep Learning
 A subset of machine learning that uses multilayered neural networks (called deep neural networks) to simulate the complex decision-making power of the human brain. Particularly effective for tasks like image recognition and natural language processing.
@@ -162,25 +166,24 @@ Machine learning programs that make decisions in a manner similar to the human b
 
 ### Common Training Problems
 
-#### Under-fitting
-- **Symptom**: Model works poorly on both training data and new data - it hasn't learned enough
-- **Visualization**: Creates overly simple relationships (like a straight line) that miss important patterns in the data
-- **Real-world analogy**: Like a student who barely studied for a test - they perform poorly on practice problems and the actual exam
-- **Causes**:
-  - Model too simple for the data complexity (using linear model for curved relationships)
-  - Insufficient or poor-quality training examples
-  - Not enough training time or iterations
-
-#### Over-fitting
-- **Symptom**: Model performs excellently on training data but poorly on new, unseen data - it memorized instead of learned
-- **Real-world analogy**: Like a student who memorized practice test answers but can't solve similar problems with different numbers
-- **Cause**: Model captures noise and specific details of training data rather than general patterns
-- **Visual**: Creates overly complex decision boundaries that perfectly fit training data but fail to generalize
-- **Solutions**:
-  - Increase training data size and diversity
-  - Reduce model complexity (fewer parameters/layers)
-  - Apply regularization techniques (penalties for complexity)
-  - Use cross-validation to detect overfitting early
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Under-fitting</h4>
+<ul>
+<li><strong>Symptom</strong>: Model works poorly on both training data and new data - it hasn't learned enough</li>
+<li><strong>Analogy</strong>: Like a student who barely studied for a test - they perform poorly on practice problems and the actual exam</li>
+<li><strong>Causes</strong>: Model too simple, insufficient training examples, not enough training time</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Over-fitting</h4>
+<ul>
+<li><strong>Symptom</strong>: Model performs excellently on training data but poorly on new, unseen data - it memorized instead of learned</li>
+<li><strong>Analogy</strong>: Like a student who memorized practice test answers but can't solve similar problems with different numbers</li>
+<li><strong>Solutions</strong>: Increase training data, reduce model complexity, apply regularization, use cross-validation</li>
+</ul>
+</div>
+</div>
 
 ### Modern Training Enhancements
 
@@ -200,9 +203,12 @@ Machine learning programs that make decisions in a manner similar to the human b
 
 ## Supervised Learning
 
+<blockquote class="pull-quote">
+<p>Supervised learning is like a teacher showing students math problems with solutions, then testing them on new problems.</p>
+</blockquote>
+
 ### Overview
 - **Method**: System learns from example inputs and their corresponding correct outputs, provided by human experts
-- **Learning process**: Like a teacher showing students math problems with solutions, then testing them on new problems
 - **Goal**: Learn a general rule that can map any new input to the correct output
 - **Mathematical representation**: Y = f(X), where Y is the predicted output (label), X is the input (features), and f is the learned transformation function
 - **Data requirement**: Needs labeled datasets, which can be expensive to create but provides clear learning objectives

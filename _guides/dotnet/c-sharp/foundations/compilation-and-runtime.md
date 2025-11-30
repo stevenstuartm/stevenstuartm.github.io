@@ -11,6 +11,10 @@ Understanding how .NET compiles and runs code helps you make informed decisions 
 
 ## The .NET Compilation Pipeline
 
+<blockquote class="pull-quote">
+<p>The two-stage compilation model—C# to IL, then IL to native code—is what enables .NET's cross-platform portability and runtime optimization capabilities.</p>
+</blockquote>
+
 When you build a C# project, the compiler does not produce machine code directly. Instead, it produces an intermediate representation that the runtime later converts to native code. This two-stage process enables cross-platform compatibility and runtime optimizations.
 
 ```
@@ -59,18 +63,25 @@ The CLR abstracts the underlying operating system, providing a consistent execut
 
 The JIT compiler has access to runtime information unavailable at build time: the exact CPU model, available instruction sets (AVX, SSE), and actual runtime behavior. This enables optimizations that ahead-of-time compilers cannot perform.
 
-### JIT Compilation Tradeoffs
-
-**Advantages:**
-- Optimizes for the exact hardware running the code
-- Can inline methods based on actual runtime types
-- No need to ship platform-specific binaries
-- Enables dynamic code generation and reflection
-
-**Disadvantages:**
-- Startup cost: first execution of each method incurs compilation time
-- Memory overhead: native code cache consumes RAM
-- Cannot optimize across assembly boundaries in some cases
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>JIT Advantages</h4>
+<ul>
+<li>Optimizes for the exact hardware running the code</li>
+<li>Can inline methods based on actual runtime types</li>
+<li>No need to ship platform-specific binaries</li>
+<li>Enables dynamic code generation and reflection</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>JIT Disadvantages</h4>
+<ul>
+<li>Startup cost: first execution of each method incurs compilation time</li>
+<li>Memory overhead: native code cache consumes RAM</li>
+<li>Cannot optimize across assembly boundaries in some cases</li>
+</ul>
+</div>
+</div>
 
 For long-running applications like web servers, JIT startup cost is amortized over many requests. For short-lived processes like CLI tools, startup time dominates total execution time.
 
@@ -132,17 +143,16 @@ dotnet publish -c Release
 
 The output is a single native executable for the target platform. No .NET runtime installation is required on the target machine.
 
-### AOT Limitations
-
-Native AOT imposes constraints because the compiler must know the complete program at build time:
-
-**No dynamic code generation**: `Reflection.Emit`, `Expression.Compile()`, and similar APIs that generate code at runtime do not work.
-
-**Limited reflection**: Reflection that relies on runtime metadata discovery may fail. Types and members must be statically reachable or explicitly preserved.
-
-**No dynamic assembly loading**: `Assembly.LoadFrom()` and similar APIs cannot load arbitrary assemblies at runtime.
-
-**Platform-specific output**: Each target platform requires a separate build. You cannot build once and run everywhere.
+<div class="callout callout--warning">
+<p class="callout__title">AOT Limitations</p>
+<p>Native AOT imposes constraints because the compiler must know the complete program at build time:</p>
+<ul>
+<li><strong>No dynamic code generation</strong>: <code>Reflection.Emit</code>, <code>Expression.Compile()</code>, and similar APIs that generate code at runtime do not work.</li>
+<li><strong>Limited reflection</strong>: Reflection that relies on runtime metadata discovery may fail. Types and members must be statically reachable or explicitly preserved.</li>
+<li><strong>No dynamic assembly loading</strong>: <code>Assembly.LoadFrom()</code> and similar APIs cannot load arbitrary assemblies at runtime.</li>
+<li><strong>Platform-specific output</strong>: Each target platform requires a separate build. You cannot build once and run everywhere.</li>
+</ul>
+</div>
 
 These limitations require using source generators instead of reflection for serialization, dependency injection, and similar concerns. The [Source Generators](source-generators.html) guide covers this topic in detail.
 

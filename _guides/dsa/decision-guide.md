@@ -33,23 +33,36 @@ tags: [algorithms, data-structures, decision-making, practical, reference]
 
 ## Modern Reality Check
 
-### Always Use Built-ins For:
-- **Sorting:** `Array.Sort()` and `List<T>.Sort()`
-- **Basic searching:** `Contains()`, `IndexOf()`, `Find()`
-- **Standard collections:** `List<T>`, `Dictionary<K,V>`, `HashSet<T>`
-- **String operations:** `Split()`, `string.Join()`, `Replace()`, Regex class
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Always Use Built-ins For</h4>
+<ul>
+<li><strong>Sorting:</strong> <code>Array.Sort()</code> and <code>List&lt;T&gt;.Sort()</code></li>
+<li><strong>Basic searching:</strong> <code>Contains()</code>, <code>IndexOf()</code>, <code>Find()</code></li>
+<li><strong>Standard collections:</strong> <code>List&lt;T&gt;</code>, <code>Dictionary&lt;K,V&gt;</code>, <code>HashSet&lt;T&gt;</code></li>
+<li><strong>String operations:</strong> <code>Split()</code>, <code>string.Join()</code>, <code>Replace()</code>, Regex class</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Implement Yourself For</h4>
+<ul>
+<li><strong>Interview questions</strong> (they want to see you can think algorithmically)</li>
+<li><strong>Highly specialized performance needs</strong> (after profiling proves bottleneck)</li>
+<li><strong>Learning/educational purposes</strong></li>
+<li><strong>Custom data structures</strong> for specific domain logic</li>
+</ul>
+</div>
+</div>
 
-### Implement Yourself For:
-- **Interview questions** (they want to see you can think algorithmically)
-- **Highly specialized performance needs** (after profiling proves bottleneck)
-- **Learning/educational purposes**
-- **Custom data structures** for specific domain logic
-
-### Study But Rarely Implement:
-- **Advanced tree balancing** (AVL, Red-Black trees)
-- **Complex graph algorithms** beyond DFS/BFS/Dijkstra
-- **String matching** beyond naive approach (use regex)
-- **Advanced sorting algorithms** (languages have hybrid algorithms)
+<div class="callout callout--note">
+<p class="callout__title">Study But Rarely Implement</p>
+<ul>
+<li>Advanced tree balancing (AVL, Red-Black trees)</li>
+<li>Complex graph algorithms beyond DFS/BFS/Dijkstra</li>
+<li>String matching beyond naive approach (use regex)</li>
+<li>Advanced sorting algorithms (languages have hybrid algorithms)</li>
+</ul>
+</div>
 
 ## Language-Specific Advice
 
@@ -117,6 +130,10 @@ tags: [algorithms, data-structures, decision-making, practical, reference]
 - **Learning exercise** to understand concepts deeply
 
 ## Bottom Line Philosophy
+
+<blockquote class="pull-quote">
+<p>Modern software development is about choosing the right abstraction and using well-tested libraries. Understanding algorithms deeply makes you better at recognizing patterns and solving new problems.</p>
+</blockquote>
 
 **Modern software development** is about choosing the right abstraction and using well-tested libraries. **Understanding algorithms deeply** makes you better at recognizing patterns and solving new problems, even when you use existing implementations.
 

@@ -9,7 +9,9 @@ tags: [c-sharp, dotnet, dependency-injection, ioc, design-patterns, architecture
 
 ## What is Dependency Injection
 
-Dependency Injection (DI) is a design pattern where objects receive their dependencies from external sources rather than creating them internally. This promotes loose coupling and testability.
+<blockquote class="pull-quote">
+<p>Dependency Injection promotes loose coupling by having objects receive dependencies from external sources rather than creating them internally.</p>
+</blockquote>
 
 ```csharp
 // Without DI - tightly coupled
@@ -90,7 +92,40 @@ Host.CreateDefaultBuilder(args)
 
 ## Service Lifetimes
 
-Choosing the wrong lifetime causes subtle bugs that surface under load or in production. Understanding why each lifetime exists helps you make the right choice.
+<div class="callout callout--warning">
+<p class="callout__title">Lifetime Choice Matters</p>
+<p>Choosing the wrong lifetime causes subtle bugs that surface under load or in production. Understanding why each lifetime exists helps you make the right choice.</p>
+</div>
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Transient</h4>
+<p>New instance created every time requested.</p>
+<ul>
+<li><strong>Use for:</strong> Lightweight, stateless services</li>
+<li><strong>Why:</strong> Avoids thread-safety concerns entirely</li>
+<li><strong>Trade-off:</strong> More allocations and GC pressure</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Scoped</h4>
+<p>One instance per scope (e.g., per HTTP request).</p>
+<ul>
+<li><strong>Use for:</strong> Database contexts, unit of work</li>
+<li><strong>Why:</strong> Share state within request, isolate across requests</li>
+<li><strong>Trade-off:</strong> Requires explicit scope creation in console apps</li>
+</ul>
+</div>
+<div class="content-card content-card--accent">
+<h4>Singleton</h4>
+<p>Single instance for application lifetime.</p>
+<ul>
+<li><strong>Use for:</strong> Caches, configuration, connection pools</li>
+<li><strong>Why:</strong> Expensive to create or naturally shared</li>
+<li><strong>Trade-off:</strong> Must be thread-safe; watch for captive dependencies</li>
+</ul>
+</div>
+</div>
 
 ### Transient
 

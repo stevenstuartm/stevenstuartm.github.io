@@ -28,6 +28,10 @@ Amazon Relational Database Service (RDS) is a managed database service that hand
 
 Amazon Aurora is a MySQL- and PostgreSQL-compatible relational database built for the cloud. Aurora delivers up to 5x the throughput of MySQL and 3x the throughput of PostgreSQL while providing commercial-grade availability and durability.
 
+<blockquote class="pull-quote">
+<p>Aurora delivers up to 5x the throughput of MySQL and 3x the throughput of PostgreSQL while providing commercial-grade availability and durability.</p>
+</blockquote>
+
 **What Makes Aurora Different**:
 - **Cloud-native storage**: Distributed, fault-tolerant storage layer that replicates data across 3 Availability Zones (6 copies)
 - **Performance**: Superior throughput compared to standard RDS engines
@@ -42,6 +46,31 @@ Amazon Aurora is a MySQL- and PostgreSQL-compatible relational database built fo
 - You need up to 15 read replicas (vs 5 for standard RDS)
 
 ## RDS vs Aurora: Decision Framework
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Amazon RDS</h4>
+<ul>
+<li><strong>Best for:</strong> Predictable workloads, engine compatibility</li>
+<li><strong>Performance:</strong> Standard engine performance</li>
+<li><strong>Storage:</strong> gp3, Provisioned IOPS (up to 64 TB)</li>
+<li><strong>Read Replicas:</strong> Up to 5</li>
+<li><strong>Failover:</strong> 60-120 seconds (Multi-AZ)</li>
+<li><strong>Pricing:</strong> Lower baseline cost</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Amazon Aurora</h4>
+<ul>
+<li><strong>Best for:</strong> Dynamic workloads, read-heavy, global apps</li>
+<li><strong>Performance:</strong> 5x MySQL, 3x PostgreSQL throughput</li>
+<li><strong>Storage:</strong> Auto-scaling (10 GB to 128 TB)</li>
+<li><strong>Read Replicas:</strong> Up to 15</li>
+<li><strong>Failover:</strong> &lt;35 seconds (Multi-AZ DB cluster)</li>
+<li><strong>Pricing:</strong> 20-30% premium, better performance/GB</li>
+</ul>
+</div>
+</div>
 
 | Dimension | Amazon RDS | Amazon Aurora |
 |-----------|------------|---------------|
@@ -81,7 +110,10 @@ RDS offers three instance families optimized for different workload characterist
 - **db.t4g** (Graviton2): 2-8 vCPUs, 0.5-32 GB RAM, baseline performance with burst credits
 - **Use case**: Development, testing, low-traffic applications with intermittent spikes
 
-**Graviton Advantage**: Graviton-based instances (m8g, r8g, t4g) provide up to 40% better price-performance compared to Intel/AMD equivalents.
+<div class="callout callout--tip">
+<p class="callout__title">Graviton Instance Advantage</p>
+<p>Graviton-based instances (m8g, r8g, t4g) provide up to 40% better price-performance compared to Intel/AMD equivalents. This is one of the easiest ways to reduce costs without sacrificing performance.</p>
+</div>
 
 ### Storage Types
 
@@ -168,6 +200,10 @@ Aurora Serverless v2 automatically scales database capacity based on application
 - Scaling happens in seconds without interrupting connections
 - Pay only for capacity used per second ($0.12/ACU hour in us-east-1)
 
+<blockquote class="pull-quote">
+<p>Aurora Serverless v2 can reduce costs by 66% for workloads idle 50% or more of the time, scaling from 0.5 ACUs to 256 ACUs in seconds.</p>
+</blockquote>
+
 **When to use Aurora Serverless v2**:
 - **Variable workloads**: Traffic patterns with unpredictable spikes (e.g., SaaS applications with usage variations)
 - **Development/test environments**: Only pay for capacity when actively used
@@ -222,15 +258,28 @@ Traditionally, Aurora charged per I/O request ($0.20 per million), which made co
 | **Standard** | $0.29/hour ($213/month) | $0.20/million I/Os | $213 + $200 = $413 |
 | **I/O-Optimized** | $0.348/hour ($255/month) | $0 | $255 |
 
-**When to use I/O-Optimized**:
-- I/O costs exceed 25% of total Aurora spend
-- Write-heavy workloads with unpredictable I/O patterns
-- Simplified cost forecasting (instance cost only)
-
-**When to use Standard**:
-- Read-heavy workloads with low I/O
-- I/O costs <25% of total spend
-- Predictable I/O patterns
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Aurora I/O-Optimized</h4>
+<p><strong>When to use:</strong></p>
+<ul>
+<li>I/O costs exceed 25% of total Aurora spend</li>
+<li>Write-heavy workloads with unpredictable I/O patterns</li>
+<li>Simplified cost forecasting (instance cost only)</li>
+</ul>
+<p><strong>Pricing:</strong> Higher instance cost, $0 I/O charges</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Aurora Standard</h4>
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Read-heavy workloads with low I/O</li>
+<li>I/O costs &lt;25% of total spend</li>
+<li>Predictable I/O patterns</li>
+</ul>
+<p><strong>Pricing:</strong> Lower instance cost, $0.20 per million I/Os</p>
+</div>
+</div>
 
 **Migration**: You can switch between Standard and I/O-Optimized configurations without downtime.
 
@@ -245,7 +294,10 @@ Blue/Green deployments allow you to create a staging environment (green) that's 
 4. Switch traffic from blue to green (<1 minute switchover)
 5. Blue environment remains available as rollback option
 
-**Switchover Time**: <1 minute downtime (vs hours for traditional major version upgrades)
+<div class="callout callout--tip">
+<p class="callout__title">Blue/Green Deployment Advantage</p>
+<p>Blue/Green deployments reduce major version upgrade downtime from hours to less than 1 minute. The blue environment remains available as a rollback option, making upgrades much safer.</p>
+</div>
 
 **Use cases**:
 - **Major version upgrades**: PostgreSQL 12 → 15, MySQL 5.7 → 8.0

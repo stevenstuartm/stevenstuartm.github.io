@@ -9,6 +9,11 @@ tags: [c-sharp, dotnet, unsafe, pointers, memory, interop, advanced]
 
 ## When to Use Unsafe Code
 
+<div class="callout callout--warning">
+<p class="callout__title">Unsafe Code Is Rarely Necessary</p>
+<p>Modern C# provides safe alternatives like <code>Span&lt;T&gt;</code>, <code>Memory&lt;T&gt;</code>, and <code>ref</code> that deliver nearly identical performance without sacrificing safety. Use unsafe code only when absolutely required.</p>
+</div>
+
 Unsafe code bypasses .NET's memory safety guarantees. Use it only when:
 
 - **Interoperating with native code** that expects pointers
@@ -153,6 +158,10 @@ public struct Point
 
 ## The fixed Statement
 
+<blockquote class="pull-quote">
+<p>The garbage collector can move objects at any time. The fixed statement pins an object in place so native code can safely access it through a pointer.</p>
+</blockquote>
+
 Managed objects can be moved by the GC. The `fixed` statement pins objects in memory.
 
 ```csharp
@@ -229,6 +238,11 @@ public struct SafeBuffer
 ```
 
 ## stackalloc
+
+<div class="callout callout--tip">
+<p class="callout__title">Prefer Span&lt;T&gt; Over Raw Pointers</p>
+<p>Modern C# allows <code>Span&lt;T&gt; span = stackalloc T[size]</code> without unsafe code. This gives you stack allocation with bounds checking and without pointer arithmetic risks.</p>
+</div>
 
 Allocate on the stack without GC involvement.
 
@@ -558,6 +572,27 @@ unsafe void ProcessImageFast(byte* pixels, int width, int height)
 ```
 
 ## Safe Alternatives to Consider
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Unsafe Approach</h4>
+<ul>
+<li>Direct pointer manipulation</li>
+<li>No bounds checking</li>
+<li>Requires unsafe keyword</li>
+<li>Memory corruption risks</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Safe Alternative</h4>
+<ul>
+<li>Span&lt;T&gt; and Memory&lt;T&gt;</li>
+<li>Automatic bounds checking</li>
+<li>Same performance characteristics</li>
+<li>GC-safe and verifiable</li>
+</ul>
+</div>
+</div>
 
 | Unsafe Pattern | Safe Alternative |
 |----------------|------------------|

@@ -70,6 +70,10 @@ public class BaseService
 
 ## Parameter Passing
 
+<blockquote class="pull-quote">
+<p>Understanding the difference between value, ref, out, and in parameters is essential for controlling how data flows through your methods.</p>
+</blockquote>
+
 ### Value Parameters (Default)
 
 A copy of the value is passed. Changes inside the method don't affect the original.
@@ -131,6 +135,11 @@ if (int.TryParse(input, out _))
     Console.WriteLine("Valid number");
 }
 ```
+
+<div class="callout callout--tip">
+<p class="callout__title">In Parameters for Large Structs</p>
+<p>Use <code>in</code> parameters for large structs (> 16 bytes) to avoid copying overhead while preventing accidental modification. This is particularly valuable in performance-critical code.</p>
+</div>
 
 ### In Parameters (C# 7.2)
 

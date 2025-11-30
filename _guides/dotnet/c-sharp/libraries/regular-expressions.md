@@ -154,6 +154,11 @@ var pattern2 = @"(?m)^line start";      // (?m) enables multiline
 
 ## Source-Generated Regex (.NET 7+)
 
+<div class="callout callout--tip">
+<p class="callout__title">Source Generation for Regex</p>
+<p>Generated regex compiles the pattern to IL at build time, eliminating runtime compilation overhead and enabling AOT deployment. Use it for frequently-used patterns.</p>
+</div>
+
 Compile-time generation for better performance and AOT support.
 
 ```csharp
@@ -180,6 +185,27 @@ Benefits:
 
 ### Compile for Reuse
 
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Static Regex Methods (Slow)</h4>
+<ul>
+<li>Regex.IsMatch(input, pattern)</li>
+<li>Compiles pattern every call</li>
+<li>Internal cache helps but not guaranteed</li>
+<li>Avoid in hot paths</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Compiled/Generated (Fast)</h4>
+<ul>
+<li>Static readonly Regex instance</li>
+<li>Compiles once, reuse forever</li>
+<li>Or use [GeneratedRegex]</li>
+<li>Optimal for repeated use</li>
+</ul>
+</div>
+</div>
+
 ```csharp
 // BAD: Creates new Regex each call
 public bool Validate(string input)
@@ -201,6 +227,11 @@ private static partial Regex NumberRegex();
 ```
 
 ### Set Timeout
+
+<div class="callout callout--warning">
+<p class="callout__title">Catastrophic Backtracking</p>
+<p>Certain regex patterns can cause exponential time complexity when matching fails. Always set timeouts for untrusted input or complex patterns to prevent denial-of-service.</p>
+</div>
 
 ```csharp
 // Prevent catastrophic backtracking

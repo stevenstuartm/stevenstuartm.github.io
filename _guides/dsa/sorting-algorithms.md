@@ -8,6 +8,10 @@ tags: [algorithms, sorting, complexity-analysis, practical, interview-prep]
 ## Why Sorting Exists
 Sorted data enables binary search (O(log n) vs O(n)) and makes many operations faster: searching, finding duplicates, merging datasets, and range queries. Sorting is often a preprocessing step that makes everything else efficient.
 
+<blockquote class="pull-quote">
+<p>Sorted data enables binary search (O(log n) vs O(n)). Sorting is often a preprocessing step that makes everything else efficient.</p>
+</blockquote>
+
 ## Algorithm Selection Guide
 
 | Algorithm | Best Case | Average | Worst Case | Space | When to Use |
@@ -117,6 +121,11 @@ Console.WriteLine($"Sorted: [{string.Join(", ", sortedNumbers)}]");
 - Small datasets (overhead not worth it, use insertion sort for n < 10-20)
 
 **Modern reality:** Often the algorithm behind language built-ins (Python's Timsort is derived from merge sort). Use `Array.Sort()` and `List<T>.Sort()` instead of implementing.
+
+<div class="callout callout--tip">
+<p class="callout__title">Merge Sort Advantage</p>
+<p>Merge sort has consistent O(n log n) performance in all cases. Unlike quick sort, it never degrades to O(n²), making it ideal when worst-case guarantees matter.</p>
+</div>
 
 ### Time Complexity
 - **Best case:** O(n log n)

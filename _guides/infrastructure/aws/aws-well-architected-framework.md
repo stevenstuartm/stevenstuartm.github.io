@@ -29,6 +29,10 @@ The framework helps architects:
 - **Identify areas for improvement** in existing architectures
 - **Understand the business impact** of architectural decisions
 
+<blockquote class="pull-quote">
+<p>The Well-Architected Framework is a lens for decision-making, not a compliance checklist. Every architectural decision involves trade-offs.</p>
+</blockquote>
+
 ### Not a Checklist
 
 The framework provides guiding principles, not mandatory requirements. Every architectural decision involves trade-offs. The framework helps you understand what you're optimizing for and what you're sacrificing.
@@ -263,6 +267,11 @@ Track metrics for each pillar. As the workload evolves and AWS releases new serv
 Every architectural decision involves trade-offs. Optimizing for one pillar often means compromising another.
 
 ### Common Trade-Offs
+
+<div class="callout callout--note">
+<p class="callout__title">Understanding Trade-Offs</p>
+<p>Every optimization improves some pillars while compromising others. The framework helps you make intentional trade-offs based on your specific requirements.</p>
+</div>
 
 | Optimization | Gain | Trade-Off |
 |--------------|------|-----------|
