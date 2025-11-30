@@ -69,46 +69,46 @@
           "name": "Foundations",
           "description": "Core concepts and principles of software architecture",
           "guides": [
-            "ArchitectureFoundations.md",
-            "modularity-coupling.md",
-            "architecture-characteristics.md",
-            "distributed-computing.md"
+            "architecture/ArchitectureFoundations.md",
+            "architecture/modularity-coupling.md",
+            "architecture/architecture-characteristics.md",
+            "architecture/distributed-computing.md"
           ]
         },
         {
           "name": "Styles",
           "description": "Architectural styles from monolithic to distributed",
           "guides": [
-            "ArchitectureStyles.md",
-            "layered-architecture.md",
-            "pipeline-architecture.md",
-            "microkernel-architecture.md",
-            "modular-monolith-architecture.md",
-            "service-based-architecture.md",
-            "event-driven-architecture.md",
-            "microservices-architecture.md",
-            "soa-architecture.md",
-            "space-based-architecture.md"
+            "architecture/ArchitectureStyles.md",
+            "architecture/layered-architecture.md",
+            "architecture/pipeline-architecture.md",
+            "architecture/microkernel-architecture.md",
+            "architecture/modular-monolith-architecture.md",
+            "architecture/service-based-architecture.md",
+            "architecture/event-driven-architecture.md",
+            "architecture/microservices-architecture.md",
+            "architecture/soa-architecture.md",
+            "architecture/space-based-architecture.md"
           ]
         },
         {
           "name": "Governance",
           "description": "Architecture governance frameworks, processes, and tools",
           "guides": [
-            "governance.md",
-            "governance-frameworks.md",
-            "governance-tools.md"
+            "architecture/governance.md",
+            "architecture/governance-frameworks.md",
+            "architecture/governance-tools.md"
           ]
         },
         {
           "name": "Design",
           "description": "Component design and risk analysis",
           "guides": [
-            "DesignImplementation.md",
-            "domain-driven-design.md",
-            "api-design-architecture.md",
-            "testing-strategy-architecture.md",
-            "performance-engineering.md"
+            "architecture/DesignImplementation.md",
+            "architecture/domain-driven-design.md",
+            "architecture/api-design-architecture.md",
+            "architecture/testing-strategy-architecture.md",
+            "architecture/performance-engineering.md"
           ]
         },
         {
@@ -116,24 +116,24 @@
           "description": "Visual modeling and diagramming techniques",
           "guides": [
             "architecture/c4-model.md",
-            "uml-diagrams.md"
+            "architecture/uml-diagrams.md"
           ]
         },
         {
           "name": "Patterns",
           "description": "Architectural and design patterns for distributed systems",
           "guides": [
-            "communication_patterns.md",
-            "messaging_patterns.md",
-            "coordination_patterns.md",
-            "orchestration_choreography.md",
-            "integration_patterns.md",
-            "data_management_patterns.md",
-            "performance_scalability_patterns.md",
-            "reliability_patterns.md",
-            "deployment_infrastructure_patterns.md",
-            "legacy-modernization-strategies.md",
-            "service-mesh-architecture.md"
+            "architecture/communication_patterns.md",
+            "architecture/messaging_patterns.md",
+            "architecture/coordination_patterns.md",
+            "architecture/orchestration_choreography.md",
+            "architecture/integration_patterns.md",
+            "architecture/data_management_patterns.md",
+            "architecture/performance_scalability_patterns.md",
+            "architecture/reliability_patterns.md",
+            "architecture/deployment_infrastructure_patterns.md",
+            "architecture/legacy-modernization-strategies.md",
+            "architecture/service-mesh-architecture.md"
           ]
         },
         {
@@ -147,8 +147,8 @@
           "name": "Business & Economics",
           "description": "Cost analysis, ROI, and financial aspects of architecture",
           "guides": [
-            "total-cost-of-ownership.md",
-            "return-on-investment.md"
+            "architecture/total-cost-of-ownership.md",
+            "architecture/return-on-investment.md"
           ]
         }
       ]
@@ -159,37 +159,37 @@
           "name": "Security Fundamentals",
           "description": "Core security concepts and principles",
           "guides": [
-            "security-foundations.md",
-            "frameworks-standards.md",
-            "security-best-practices.md"
+            "security/security-foundations.md",
+            "security/frameworks-standards.md",
+            "security/security-best-practices.md"
           ]
         },
         {
           "name": "Threats & Defense",
           "description": "Understanding and defending against security threats",
           "guides": [
-            "threats-and-vulnerabilities.md",
-            "modern-attack-vectors.md",
-            "security-controls-defense.md"
+            "security/threats-and-vulnerabilities.md",
+            "security/modern-attack-vectors.md",
+            "security/security-controls-defense.md"
           ]
         },
         {
           "name": "Application Security",
           "description": "Securing applications and data",
           "guides": [
-            "application-security.md",
-            "data-protection.md",
-            "security-testing.md"
+            "security/application-security.md",
+            "security/data-protection.md",
+            "security/security-testing.md"
           ]
         },
         {
           "name": "Governance & Response",
           "description": "Compliance, incident response, and governance",
           "guides": [
-            "compliance-governance.md",
-            "incident-response-recovery.md",
-            "emerging-technologies.md",
-            "security-tools-resources.md"
+            "security/compliance-governance.md",
+            "security/incident-response-recovery.md",
+            "security/emerging-technologies.md",
+            "security/security-tools-resources.md"
           ]
         }
       ]
@@ -200,49 +200,49 @@
           "name": "Fundamentals",
           "description": "Core data structures and complexity analysis",
           "guides": [
-            "big-o-basics.md",
-            "asymptotic-notation.md",
-            "complexity-cheatsheet.md",
-            "decision-guide.md",
-            "algorithm-design.md"
+            "dsa/big-o-basics.md",
+            "dsa/asymptotic-notation.md",
+            "dsa/complexity-cheatsheet.md",
+            "dsa/decision-guide.md",
+            "dsa/algorithm-design.md"
           ]
         },
         {
           "name": "Linear Data Structures",
           "description": "Arrays, lists, stacks, and queues",
           "guides": [
-            "arrays-lists.md",
-            "linked-lists.md",
-            "stacks-queues.md"
+            "dsa/arrays-lists.md",
+            "dsa/linked-lists.md",
+            "dsa/stacks-queues.md"
           ]
         },
         {
           "name": "Trees & Heaps",
           "description": "Tree structures and heap-based data structures",
           "guides": [
-            "trees-basics.md",
-            "trees.md",
-            "trees-advanced.md",
-            "heaps.md"
+            "dsa/trees-basics.md",
+            "dsa/trees.md",
+            "dsa/trees-advanced.md",
+            "dsa/heaps.md"
           ]
         },
         {
           "name": "Graphs",
           "description": "Graph structures and algorithms",
           "guides": [
-            "graphs-basics.md",
-            "graphs.md",
-            "graphs-advanced.md"
+            "dsa/graphs-basics.md",
+            "dsa/graphs.md",
+            "dsa/graphs-advanced.md"
           ]
         },
         {
           "name": "Hash Tables & Algorithms",
           "description": "Hashing, searching, sorting, and recursion",
           "guides": [
-            "hash-tables.md",
-            "search-algorithms.md",
-            "sorting-algorithms.md",
-            "recursion.md"
+            "dsa/hash-tables.md",
+            "dsa/search-algorithms.md",
+            "dsa/sorting-algorithms.md",
+            "dsa/recursion.md"
           ]
         }
       ]
