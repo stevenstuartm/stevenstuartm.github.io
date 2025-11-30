@@ -9,6 +9,10 @@ tags: [architecture, monolithic, design-patterns, fundamentals, practical]
 
 Layered architecture organizes a system by technical capability rather than business function. The classic example has four layers: presentation (UI), business logic, persistence (data access), and database. Each layer depends only on the layer directly below it, creating a clean separation of technical concerns.
 
+<blockquote class="pull-quote">
+<p>Closed layers provide better isolation; changes to one layer don't ripple through others.</p>
+</blockquote>
+
 ## How It Works
 
 The presentation layer handles user interaction and delegates business operations to the business layer. The business layer implements domain logic and uses the persistence layer to read and write data. The persistence layer abstracts database access. The database stores the data.
@@ -17,25 +21,34 @@ Layers can be "closed" (forcing requests through every layer) or "open" (allowin
 
 ### Closed vs Open Layers
 
-**Closed layers** force requests to flow through every layer in sequence. The presentation layer must call the business layer, which must call the persistence layer, which accesses the database. No skipping allowed.
-
-This strict flow provides isolation. If the persistence layer changes how it accesses the database, the business layer doesn't care; it only knows the persistence layer's interface. Changes are contained within layers.
-
-**Open layers** allow components to skip layers when appropriate. For example, if the presentation layer needs to read static reference data that requires no business logic, it might call the persistence layer directly, bypassing the business layer.
-
-Open layers improve performance by eliminating unnecessary pass-through calls. But they create dependencies that cross layers, making changes riskier. Use open layers sparingly and only when the performance benefit justifies the coupling cost.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Closed Layers</h4>
+<p>Force requests to flow through every layer in sequence. The presentation layer must call the business layer, which must call the persistence layer, which accesses the database. No skipping allowed.</p>
+<p><strong>Benefit:</strong> Strict flow provides isolation. If the persistence layer changes how it accesses the database, the business layer doesn't care; it only knows the persistence layer's interface. Changes are contained within layers.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Open Layers</h4>
+<p>Allow components to skip layers when appropriate. For example, if the presentation layer needs to read static reference data that requires no business logic, it might call the persistence layer directly, bypassing the business layer.</p>
+<p><strong>Benefit:</strong> Improve performance by eliminating unnecessary pass-through calls. But they create dependencies that cross layers, making changes riskier. Use open layers sparingly and only when the performance benefit justifies the coupling cost.</p>
+</div>
+</div>
 
 ## The Sinkhole Antipattern
 
-The sinkhole antipattern happens when too many requests pass straight through layers without any processing. If 80% of your requests flow from presentation to persistence without significant business logic, you're paying the cost of layers without getting their benefits.
+<blockquote class="pull-quote">
+<p>If 80% of your requests flow from presentation to persistence without significant business logic, you're paying the cost of layers without getting their benefits.</p>
+</blockquote>
 
-This suggests one of two problems:
+The sinkhole antipattern happens when too many requests pass straight through layers without any processing.
 
-**Wrong layer boundaries**: Maybe you're organizing by the wrong technical concerns. The system's natural structure doesn't align with the layering model.
-
-**Primarily CRUD operations**: If the system is mostly create, read, update, delete operations with minimal business logic, layered architecture adds ceremony without value. Consider a simpler architecture that embraces the CRUD nature rather than fighting it.
-
-The 80/20 rule applies here. If 20% or fewer of your requests pass through without logic, that's acceptable. If more than 80% are pass-throughs, you have a sinkhole problem.
+<div class="callout callout--warning">
+<p class="callout__title">Signs of a Sinkhole Problem</p>
+<p>This suggests one of two problems:</p>
+<p><strong>Wrong layer boundaries:</strong> Maybe you're organizing by the wrong technical concerns. The system's natural structure doesn't align with the layering model.</p>
+<p><strong>Primarily CRUD operations:</strong> If the system is mostly create, read, update, delete operations with minimal business logic, layered architecture adds ceremony without value. Consider a simpler architecture that embraces the CRUD nature rather than fighting it.</p>
+<p>The 80/20 rule applies here. If 20% or fewer of your requests pass through without logic, that's acceptable. If more than 80% are pass-throughs, you have a sinkhole problem.</p>
+</div>
 
 ## Topology Details
 

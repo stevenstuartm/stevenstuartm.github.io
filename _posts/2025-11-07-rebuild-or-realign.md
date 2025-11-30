@@ -9,7 +9,9 @@ tags: [architecture, leadership, decision-making, aaa-cycle]
 
 I've watched this pattern repeat across different organizations and technical domains. A team rebuilds a system using new technology, celebrates the dramatic improvements, and credits the new stack. But when you examine what actually changed, the technology rarely drove the gains. The improvements came from being forced to understand what they were building, align with business value, and apply operational discipline. That work could have happened without the rebuild.
 
-The critical error is assuming the new runtime, framework, or platform created the success. Ignorance was the actual constraint, and rebuilding forced teams to confront it.
+<blockquote class="pull-quote">
+<p>The critical error is assuming the new runtime, framework, or platform created the success. Ignorance was the actual constraint, and rebuilding forced teams to confront it.</p>
+</blockquote>
 
 This misattribution creates dangerous organizational patterns. Teams propose rebuilds when the real problem is dysfunction, not technical limitations. The rebuild becomes a moving target that allows leadership to avoid accountability, celebrate "innovation" while making things worse, and mask problems that were never technical to begin with.
 
@@ -27,7 +29,11 @@ The root cause was never the cloud provider or its pricing. It was absence of op
 
 **Framework modernizations**: "We rebuilt with React and our UI is much faster." Was it React's virtual DOM, or was it the rebuild that forced you to eliminate unnecessary re-renders, implement proper state management, and optimize bundle sizes?
 
-The new runtime gets credit, the new provider gets credit, and the new framework gets credit. But the realignment did the work. You could have achieved the same benefits by fixing the N+1 queries in Node.js, right-sizing the existing infrastructure, and optimizing the existing UI code. The technology wasn't the blocker. Ignorance was.
+<blockquote class="pull-quote">
+<p>The new runtime gets credit, the new provider gets credit, and the new framework gets credit. But the realignment did the work.</p>
+</blockquote>
+
+You could have achieved the same benefits by fixing the N+1 queries in Node.js, right-sizing the existing infrastructure, and optimizing the existing UI code. The technology wasn't the blocker. Ignorance was.
 
 ## When Rebuilds Masquerade as Solutions to Organizational Problems
 
@@ -116,4 +122,6 @@ Use the AAA Cycle to test whether a rebuild addresses real problems:
 
 Fix the organization, and the technology often fixes itself. Rebuild without fixing the organization, and you'll be proposing another rebuild in three years.
 
-The question isn't "Should we rebuild?" The question is "Do we understand why we're considering it, and are we willing to be accountable for the outcome?"
+<blockquote class="pull-quote">
+<p>The question isn't "Should we rebuild?" The question is "Do we understand why we're considering it, and are we willing to be accountable for the outcome?"</p>
+</blockquote>

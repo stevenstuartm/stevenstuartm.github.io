@@ -9,7 +9,11 @@ description: "Building real projects teaches more than passive learning platform
 
 I cancelled all my learning platform subscriptions a while back, and I haven't looked back. Not because those platforms are worthless, but because I realized they were optimizing for the wrong outcome. They sell completion badges and the feeling of progress, not actual capability.
 
-That green checkmark feels good, but it doesn't mean you can build something without the training wheels. Real learning happens when you're forced to set up your own environment, debug obscure errors, and ship something that people might actually use. Passive consumption creates the illusion of progress while keeping you dependent on structured guidance.
+<blockquote class="pull-quote">
+<p>Real learning happens when you're forced to set up your own environment, debug obscure errors, and ship something that people might actually use.</p>
+</blockquote>
+
+That green checkmark feels good, but it doesn't mean you can build something without the training wheels. Passive consumption creates the illusion of progress while keeping you dependent on structured guidance.
 
 ## The Problem with Sandboxed Learning
 
@@ -33,6 +37,8 @@ The deeper issue is that these platforms optimize for engagement and completion 
 
 Real learning is breaking things and fixing them. It's reading error messages until they make sense instead of just copying solutions. It's shipping something people actually use and iterating based on real feedback. It's copying code you don't fully understand, then digging in until you do.
 
-The pattern is simple: do something, fail at it, learn why you failed, improve, and repeat. There's no substitute for that cycle. No platform can give it to you because it requires struggle, and struggle doesn't convert well into monthly recurring revenue.
+<blockquote class="pull-quote">
+<p>The pattern is simple: do something, fail at it, learn why you failed, improve, and repeat. No platform can give it to you because it requires struggle.</p>
+</blockquote>
 
 Learning platforms have a place for discovering new topics or getting a structured overview, but they can't replace building. If you want to actually get better, cancel the subscriptions and start shipping.

@@ -13,7 +13,9 @@ JSON Web Tokens (JWTs) have become ubiquitous in modern web applications, but th
 
 JWTs are immutable by design. Once signed and issued, the claims inside cannot be changed until expiration. This works for authentication because your identity doesn't change mid-session, but authorization is inherently dynamic. A user's subscription expires mid-day but they retain full access for another hour. An employee gets terminated but their JWT still grants system access until token expiration. A security breach requires immediate permission revocation, but you're stuck waiting for tokens to age out. A customer upgrades their plan but doesn't see new features until the next token refresh.
 
-The immutability creates a window where reality and permissions diverge. With typical one-hour tokens, that's up to 60 minutes of exposure for security incidents or confused users wondering why their upgrade "didn't work."
+<blockquote class="pull-quote">
+<p>The immutability creates a window where reality and permissions diverge. With typical one-hour tokens, that's up to 60 minutes of exposure for security incidents.</p>
+</blockquote>
 
 ## Shortening Lifetimes Doesn't Solve It
 
@@ -74,4 +76,6 @@ With JWT-based authorization, you need client updates for new token structures, 
 
 As systems grow, simple role checks evolve into feature flags, subscription tiers, usage quotas, and time-based access. The coupling between token format and authorization logic constrains how quickly you can adapt.
 
-Use JWTs for what they're good at: cryptographically signed, time-limited proof of identity. For authorization, the 5ms latency cost of real-time grant checking is negligible compared to the security risks and operational complexity of embedding mutable data in immutable tokens.
+<blockquote class="pull-quote">
+<p>Use JWTs for what they're good at: cryptographically signed, time-limited proof of identity. For authorization, the 5ms latency cost of real-time grant checking is negligible compared to the security risks.</p>
+</blockquote>

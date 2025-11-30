@@ -13,7 +13,9 @@ Every time Microsoft announces a new UI framework, I find myself asking the same
 
 Microsoft has abandoned UI frameworks before, and the pattern is consistent. Web Forms promised to hide HTML complexity and let developers build web apps like Windows Forms. WPF was supposed to be the future of desktop development but became a niche technology. Silverlight arrived with fanfare and disappeared so completely that we barely mention it. Universal Apps claimed you could run everywhere, then died quietly. MAUI was meant to unify mobile and desktop development, and it's struggling to gain traction.
 
-Each framework promised cross-platform simplicity. Each followed a similar trajectory: initial enthusiasm, gradual adoption challenges, then abandonment or maintenance mode while Microsoft moved on to the next approach.
+<blockquote class="pull-quote">
+<p>Each framework promised cross-platform simplicity. Each followed a similar trajectory: initial enthusiasm, gradual adoption challenges, then abandonment or maintenance mode.</p>
+</blockquote>
 
 ## What Makes Blazor Different
 
@@ -43,4 +45,10 @@ The actual usage pattern matters more than potential capabilities. Most Blazor d
 
 Use Blazor where it delivers clear value today: internal enterprise applications in .NET organizations where code sharing matters, or specific scenarios requiring client-side .NET execution. Don't architect long-term systems assuming Blazor will be supported forever or that its ecosystem will grow to match JavaScript's maturity.
 
-Microsoft has stopped fighting the web and started complementing it. That shift represents genuine progress. Blazor survives by being useful for a specific segment (internal .NET enterprise apps) rather than trying to replace the entire web ecosystem. Whether that's enough to keep it supported long-term remains uncertain, but it's a more realistic foundation than previous attempts.
+Microsoft has stopped fighting the web and started complementing it. That shift represents genuine progress.
+
+<blockquote class="pull-quote">
+<p>Blazor survives by being useful for a specific segment rather than trying to replace the entire web ecosystem.</p>
+</blockquote>
+
+Whether that's enough to keep it supported long-term remains uncertain, but it's a more realistic foundation than previous attempts.

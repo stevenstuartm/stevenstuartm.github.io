@@ -11,7 +11,9 @@ tags: [agile, requirements, aaa-cycle, estimation]
 
 You cannot deliver value without agreement on what constitutes value. You cannot have agreement without discovery of what you're actually building. And you cannot apply discovery to improve the agreement if you're afraid of "documentation" and refuse to step outside pointless timeboxes and absurd estimations based on nothing but assumptions.
 
-**Without agreement on what constitutes value, you're not iterating toward anything. You're operating on hope, not discipline.**
+<blockquote class="pull-quote">
+<p>Without agreement on what constitutes value, you're not iterating toward anything. You're operating on hope, not discipline.</p>
+</blockquote>
 
 ## Misalignment Disguised as Agreement
 
@@ -65,7 +67,11 @@ But spikes create political and metric chaos in Scrum:
 
 Teams resort to absurdities: estimating the exploration itself (defeating the purpose), hiding spikes as "technical tasks" within stories (obscuring what's actually happening), or skipping spikes entirely and guessing (back to building on sand).
 
-The spike problem reveals a fundamental tension: frameworks like Scrum optimize for predictable metrics while real work requires validated understanding. Discovery threatens the illusion of control.
+<blockquote class="pull-quote">
+<p>Frameworks like Scrum optimize for predictable metrics while real work requires validated understanding. Discovery threatens the illusion of control.</p>
+</blockquote>
+
+The spike problem reveals a fundamental tension.
 
 This tension exists in most organizations. Teams recognize when they're misaligned: estimates feel like guesses and commitments feel fictional. But introducing discipline like assumption testing creates friction: it reveals uncertainty, delays commitment, and challenges established metrics. The question becomes: how do misaligned teams regain alignment within systems that resist it?
 
@@ -191,21 +197,32 @@ The abstraction is the point. Scrum keeps everyone in the dark so failure looks 
 
 ### Framework Comparison
 
-**Interval-based frameworks** (Scrum, traditional sprints):
-- Organize around fixed time periods
-- Success = finishing when the interval ends
-- Metrics focus on velocity and sprint completion
-- Discovery threatens the schedule
-- "Done" means "the sprint is over"
-- **Corrupts alignment** by making the timebox the commitment instead of the feature
-
-**Flow-based frameworks** (Kanban, continuous delivery):
-- Organize around completing defined features
-- Success = delivering the agreed outcome
-- Metrics focus on lead time and value delivered
-- Discovery informs scope adjustment within the feature
-- "Done" means "we delivered what we agreed to build"
-- **Supports alignment** because there's no artificial deadline creating pressure to ship incomplete work
+<div class="comparison">
+<div class="content-card content-card--accent-warning">
+<h4>Interval-Based Frameworks</h4>
+<p><em>Scrum, traditional sprints</em></p>
+<ul>
+<li>Organize around fixed time periods</li>
+<li>Success = finishing when the interval ends</li>
+<li>Metrics focus on velocity and sprint completion</li>
+<li>Discovery threatens the schedule</li>
+<li>"Done" means "the sprint is over"</li>
+<li><strong>Corrupts alignment</strong> by making the timebox the commitment instead of the feature</li>
+</ul>
+</div>
+<div class="content-card content-card--accent">
+<h4>Flow-Based Frameworks</h4>
+<p><em>Kanban, continuous delivery</em></p>
+<ul>
+<li>Organize around completing defined features</li>
+<li>Success = delivering the agreed outcome</li>
+<li>Metrics focus on lead time and value delivered</li>
+<li>Discovery informs scope adjustment within the feature</li>
+<li>"Done" means "we delivered what we agreed to build"</li>
+<li><strong>Supports alignment</strong> because there's no artificial deadline</li>
+</ul>
+</div>
+</div>
 
 Flow-based approaches naturally support the discipline of agreement. You define an initial outcome and commit to delivering value, not hitting a timeline. When discovery reveals complexity or better approaches, you reconsolidate the agreement by adjusting scope within the feature boundary, extending the work, or pivoting based on what you learned. The feature commitment creates accountability to an outcome, not to a calendar.
 
@@ -236,4 +253,6 @@ Or you can demand discipline:
 
 You cannot iterate toward value without agreement on what constitutes value. Without genuine agreement on outcomes, you're just building things and hoping they matter.
 
-That's not agile. That's hope masquerading as a process.
+<blockquote class="pull-quote">
+<p>That's not agile. That's hope masquerading as a process.</p>
+</blockquote>

@@ -9,9 +9,11 @@ tags: [architecture, performance, scalability, optimization, profiling, capacity
 
 ## What is Performance Engineering?
 
-Performance engineering is the systematic practice of ensuring systems meet performance requirements throughout their lifecycle, from design through operation. It encompasses defining performance requirements, measuring current performance, identifying bottlenecks, optimizing critical paths, and planning for future capacity.
+<blockquote class="pull-quote">
+<p>Performance is a feature, not an afterthought. Systems that address performance requirements early in design avoid costly rewrites later.</p>
+</blockquote>
 
-**Core principle**: Performance is a feature, not an afterthought. Systems that address performance requirements early in design avoid costly rewrites later.
+Performance engineering is the systematic practice of ensuring systems meet performance requirements throughout their lifecycle, from design through operation. It encompasses defining performance requirements, measuring current performance, identifying bottlenecks, optimizing critical paths, and planning for future capacity.
 
 **Performance vs optimization**: Performance engineering focuses on meeting defined requirements. Premature optimization wastes effort on parts of the system that don't matter. Performance engineering identifies what matters, measures it, and optimizes intentionally.
 
@@ -55,6 +57,11 @@ p95: 150ms
 p99: 800ms    ← Many users experience this
 p99.9: 5000ms ← Some users see this nightmare
 ```
+
+<div class="callout callout--warning">
+<p class="callout__title">Never Trust Averages</p>
+<p>Average latency hides the user experience for a significant percentage of requests. Always use percentiles (p95, p99) to understand real performance. The worst 1% of requests often indicates systemic problems.</p>
+</div>
 
 **Percentile selection guidance**:
 - **p50 (median)**: Typical user experience
@@ -189,6 +196,10 @@ Simulate production traffic to validate performance under stress.
 
 ### The Optimization Hierarchy
 
+<blockquote class="pull-quote">
+<p>Measure before optimizing. Profile to find actual bottlenecks. Optimizing the wrong thing wastes effort.</p>
+</blockquote>
+
 Optimize in this order for maximum impact:
 
 **1. Algorithmic complexity** (biggest impact)
@@ -217,8 +228,6 @@ Optimize in this order for maximum impact:
 - String concatenation optimizations
 - Reducing object allocations
 - Inline functions
-
-**Guidance**: Measure before optimizing. Profile to find actual bottlenecks. Optimizing the wrong thing wastes effort.
 
 ### Caching Strategies
 

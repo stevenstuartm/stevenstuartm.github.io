@@ -11,7 +11,11 @@ Every few months, someone declares SEO dead. Startups abandon organic search str
 
 The narrative misses the point. SEO works perfectly well if you search for CNN, Mayo Clinic, or Amazon. Established brands and authoritative sources rank exactly as designed. When you need something tested and proven and you already know what you're looking for, SEO delivers.
 
-The problem isn't that SEO broke. The problem is that it takes 2-5 years to build authority, and modern businesses can't wait that long. SEO functions as designed, and that design creates structural advantages for incumbents.
+<blockquote class="pull-quote">
+<p>The problem isn't that SEO broke. The problem is that it takes 2-5 years to build authority, and modern businesses can't wait that long.</p>
+</blockquote>
+
+SEO functions as designed, and that design creates structural advantages for incumbents.
 
 ## What Actually Changed
 
@@ -32,6 +36,10 @@ The flood toward alternative platforms doesn't prove SEO is broken; it proves bu
 
 If AI models train primarily on "high-quality web content," they train overwhelmingly on content from established, high-authority domains. That means perspectives that achieved authority years ago, commercial content optimized for ranking rather than truth, and a narrow set of dominant publishers. What gets filtered out: emerging voices, contrarian perspectives, independent research, and non-Western or non-commercial content.
 
+<blockquote class="pull-quote">
+<p>AI models trained on SEO-dominated content generate content optimized for SEO. That content ranks well because it matches existing authority patterns. Diversity collapses over time.</p>
+</blockquote>
+
 The feedback loop is insidious. AI models trained on SEO-dominated content generate content optimized for SEO. That content ranks well because it matches existing authority patterns. The next generation trains on even more homogeneous data. Diversity collapses over time.
 
 Some models now train on diverse sources like Reddit discussions, GitHub repositories, and paywalled academic content specifically to escape this trap. But SEO's authority bias doesn't just create discovery problems for businesses. It shapes what knowledge gets encoded into AI systems.
@@ -44,7 +52,11 @@ But those democratic "votes" became the gatekeeping mechanism they were supposed
 
 The promise decayed into algorithmic gatekeeping that serves Google's advertising revenue. Search advertising generated approximately $175 billion for Google in 2023, roughly 58% of Alphabet's total revenue. Google's search engine exists primarily to serve ads. This explains why Google killed Google Reader (which competed with web traffic), why AMP attempted to keep content within Google's ecosystem, and why search results increasingly feature Google-owned properties.
 
-New voices get excluded twice: once from search results due to authority requirements, and once from AI knowledge bases because models train on SEO-dominated content. This mirrors pre-internet gatekeeping, when only established publishers could reach mass audiences. The internet promised to democratize that access. SEO re-centralized it through algorithmic authority. The difference is that SEO's barriers are algorithmic and opaque. You can't argue with an algorithm or pitch your case to a human gatekeeper.
+<blockquote class="pull-quote">
+<p>New voices get excluded twice: once from search results due to authority requirements, and once from AI knowledge bases because models train on SEO-dominated content.</p>
+</blockquote>
+
+This mirrors pre-internet gatekeeping, when only established publishers could reach mass audiences. The internet promised to democratize that access. SEO re-centralized it through algorithmic authority. The difference is that SEO's barriers are algorithmic and opaque. You can't argue with an algorithm or pitch your case to a human gatekeeper.
 
 ## What Comes Next
 

@@ -9,7 +9,11 @@ description: "High mortgage rates create a housing lock-in effect that prevents 
 
 I'm trying to sell my house right now, and the math is brutal. Moving means either accepting a mortgage rate that's nearly double what I locked in three years ago, or selling below market value to compensate for the buyer's higher financing costs. Either way, the financial loss is significant enough to make me reconsider whether relocation is even worth it.
 
-This isn't just a personal problem. Millions of homeowners face the same calculation, and it's creating what economists call the "housing lock-in effect." When mortgage rates spike, people with low rates can't afford to move. The implications for employers and talent acquisition could be significant.
+<blockquote class="pull-quote">
+<p>This isn't just a personal problem. Millions of homeowners face the same calculation, and it's creating what economists call the "housing lock-in effect."</p>
+</blockquote>
+
+The implications for employers and talent acquisition could be significant.
 
 ## What the Data Shows
 
@@ -46,4 +50,6 @@ But those constraints don't change the underlying math. If you need senior talen
 
 Has this influenced your career decisions? Have you turned down opportunities because relocating would cost you a low mortgage rate? Have you seen companies struggle to hire because they won't offer remote work?
 
-The housing market won't stay frozen forever, but while it does, the companies that adapt to geographic immobility might build a talent advantage that outlasts the mortgage rate cycle.
+<blockquote class="pull-quote">
+<p>The companies that adapt to geographic immobility might build a talent advantage that outlasts the mortgage rate cycle.</p>
+</blockquote>

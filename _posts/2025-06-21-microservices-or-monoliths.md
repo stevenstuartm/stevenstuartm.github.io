@@ -9,7 +9,9 @@ description: "Why monoliths are effective for discovery and microservices are op
 
 I know, I know. It is another post about microservices versus monoliths. The debate feels exhausted at this point. Yet every time I start a new project, I find myself weighing the same questions. Not because the answer is unclear, but because the answer genuinely depends on where you are and what you're trying to learn.
 
-There's no universal prescription here. What I've learned is that the choice isn't about finding the "right" architecture in the abstract. It's about choosing what fits your context, your constraints, and most importantly, what you need to discover.
+<blockquote class="pull-quote">
+<p>The choice isn't about finding the "right" architecture in the abstract. It's about choosing what fits your context, your constraints, and most importantly, what you need to discover.</p>
+</blockquote>
 
 ## Core Principles
 
@@ -43,4 +45,6 @@ Start with **domain-based services**: modular monoliths organized along natural 
 - An easy migration path to microservices when the time comes
 - Faster initial development than building distributed systems from day one
 
-Split into microservices when there's actual evidence it's needed: independent scaling requirements, team coordination becoming a bottleneck, or specific technology needs that justify taking on the operational complexity of distributed systems.
+<blockquote class="pull-quote">
+<p>Split into microservices when there's actual evidence it's needed: independent scaling requirements, team coordination becoming a bottleneck, or specific technology needs that justify the operational complexity.</p>
+</blockquote>

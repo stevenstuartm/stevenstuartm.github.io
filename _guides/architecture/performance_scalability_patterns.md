@@ -11,6 +11,10 @@ These patterns optimize system performance, handle increased load, and ensure sy
 
 ## Throttling and Rate Limiting
 
+<blockquote class="pull-quote">
+<p>Rate limiting protects your system from overload, but choosing the right algorithm determines whether you allow bursts or enforce smooth traffic.</p>
+</blockquote>
+
 Controls the rate of requests to prevent system overload and ensure fair resource usage. Essential for API protection and multi-tenant systems.
 
 **Use When**:
@@ -49,6 +53,11 @@ Controls the rate of requests to prevent system overload and ensure fair resourc
 - Hybrid approach: fixed windows with weighted count
 - **Pros**: Good accuracy, lower memory than log
 - **Used by**: CloudFlare, Redis
+
+<div class="callout callout--tip">
+<p class="callout__title">Algorithm Selection</p>
+<p>Token bucket is the most common choice for APIs, as it allows bursts while ensuring long-term rate compliance. Use leaky bucket when you need predictable, smooth output rates.</p>
+</div>
 
 **Example**: API gateway limiting each API key to 1000 requests per hour, with burst allowance of 100 requests per minute using token bucket.
 
@@ -163,13 +172,34 @@ User ID 9012 → hash(9012) % 4 = 0 → Shard 0
 
 ### Cache Strategies
 
-**Cache-Aside** (Lazy Loading):
-- **Pros**: Only cache what's needed, simple to implement
-- **Cons**: Cache misses impact performance, manual invalidation
-
-**Cache-Through** (Write-Through):
-- **Pros**: Data always in cache, simpler application code
-- **Cons**: Every write pays cache penalty, unused data cached
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Cache-Aside (Lazy Loading)</h4>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Only cache what's needed</li>
+<li>Simple to implement</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Cache misses impact performance</li>
+<li>Manual invalidation required</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Cache-Through (Write-Through)</h4>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Data always in cache</li>
+<li>Simpler application code</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Every write pays cache penalty</li>
+<li>Unused data gets cached</li>
+</ul>
+</div>
+</div>
 
 ### Sharding Considerations
 

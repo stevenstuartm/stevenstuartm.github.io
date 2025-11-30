@@ -11,7 +11,9 @@ tags: [architecture, api-design, rest, graphql, integration, microservices, desi
 
 API (Application Programming Interface) design is the practice of creating stable, maintainable contracts between software components. API architecture addresses how APIs integrate into broader system design, including versioning, security, governance, and evolution over time.
 
-APIs are architectural boundaries. They define how systems communicate, what data they exchange, and how dependencies propagate. Poor API design creates technical debt that cascades through every service that consumes it. Good API design enables independent evolution, clear contracts, and sustainable growth.
+<blockquote class="pull-quote">
+<p>APIs are architectural boundaries. They define how systems communicate, what data they exchange, and how dependencies propagate. Poor API design creates technical debt that cascades through every service that consumes it.</p>
+</blockquote>
 
 ## Core API Design Principles
 
@@ -33,20 +35,45 @@ Design the API contract before implementing either client or server. This forces
 
 API contracts must be stable. Breaking changes force all clients to update simultaneously, creating coordination overhead and deployment risk. Prefer extending APIs over modifying them.
 
-**Key stability rules**:
-- Never remove fields or endpoints without deprecation process
-- Never change field types or semantics
-- Never make optional fields required
-- Never change error response structures
-- Always add new fields as optional
+<div class="callout callout--warning">
+<p class="callout__title">API Stability Rules</p>
+<p><strong>Never</strong>:</p>
+<ul>
+<li>Remove fields or endpoints without deprecation process</li>
+<li>Change field types or semantics</li>
+<li>Make optional fields required</li>
+<li>Change error response structures</li>
+</ul>
+<p><strong>Always</strong>:</p>
+<ul>
+<li>Add new fields as optional</li>
+</ul>
+</div>
 
 ### Resource-Oriented vs Operation-Oriented
 
-APIs generally follow two models:
-
-**Resource-oriented (REST)**: Models the domain as resources (nouns) with standard operations (GET, POST, PUT, DELETE). Works well when the domain maps cleanly to entities.
-
-**Operation-oriented (RPC-style)**: Models the domain as operations (verbs). Works well for complex business operations that don't map to CRUD.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Resource-Oriented (REST)</h4>
+<ul>
+<li>Models domain as resources (nouns)</li>
+<li>Standard operations: GET, POST, PUT, DELETE</li>
+<li>Works well for entities and CRUD</li>
+<li>Example: GET /orders/{id}</li>
+<li>Leverages HTTP semantics</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Operation-Oriented (RPC-style)</h4>
+<ul>
+<li>Models domain as operations (verbs)</li>
+<li>Custom operations for workflows</li>
+<li>Works well for complex business logic</li>
+<li>Example: POST /orders/{id}/cancel</li>
+<li>More explicit about intent</li>
+</ul>
+</div>
+</div>
 
 Neither is universally better, so choose based on your domain. Most systems use both: resource-oriented for data access and operation-oriented for workflows.
 
@@ -215,19 +242,31 @@ GET /orders?fields=id,status,total
 
 ### When to Use GraphQL
 
-**GraphQL works well when**:
-- Clients need flexible queries across multiple resources
-- Over-fetching or under-fetching is a performance problem
-- You have diverse client types (mobile, web, partners) with different data needs
-- Schema evolution and introspection are valuable
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>GraphQL Works Well When</h4>
+<ul>
+<li>Clients need flexible queries across multiple resources</li>
+<li>Over-fetching or under-fetching is a performance problem</li>
+<li>Diverse client types (mobile, web, partners) with different data needs</li>
+<li>Schema evolution and introspection are valuable</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>REST Works Better When</h4>
+<ul>
+<li>Simple CRUD dominates</li>
+<li>Caching with HTTP semantics is critical</li>
+<li>Operations are naturally resource-oriented</li>
+<li>Tooling and organizational expertise favor REST</li>
+</ul>
+</div>
+</div>
 
-**REST works better when**:
-- Simple CRUD dominates
-- Caching with HTTP semantics is critical
-- Operations are naturally resource-oriented
-- Tooling and organizational expertise favor REST
-
-**Common mistake**: Using GraphQL for everything. GraphQL adds complexity. Use it when flexibility justifies the cost.
+<div class="callout callout--warning">
+<p class="callout__title">Common Mistake</p>
+<p>Using GraphQL for everything. GraphQL adds complexity. Use it when flexibility justifies the cost.</p>
+</div>
 
 ### Schema Design Principles
 
@@ -405,19 +444,24 @@ GET /orders?version=2
 
 ### Recommendation: URI Versioning for Major Versions
 
-**Use URI versioning for major versions** (`/v1/`, `/v2/`) when breaking changes occur. Between major versions, make backward-compatible changes only:
-- Add optional fields
-- Add new endpoints
-- Add new query parameters with defaults
-- Deprecate fields (mark deprecated but don't remove)
-
-**Major version increment triggers**:
-- Removing endpoints or fields
-- Changing field types or semantics
-- Changing authentication mechanisms
-- Changing error response format
-
-**Goal**: Stay on a single major version as long as possible. Each additional version is code you must maintain.
+<div class="callout callout--tip">
+<p class="callout__title">Best Practice: URI Versioning</p>
+<p><strong>Use URI versioning for major versions</strong> (<code>/v1/</code>, <code>/v2/</code>) when breaking changes occur. Between major versions, make backward-compatible changes only:</p>
+<ul>
+<li>Add optional fields</li>
+<li>Add new endpoints</li>
+<li>Add new query parameters with defaults</li>
+<li>Deprecate fields (mark deprecated but don't remove)</li>
+</ul>
+<p><strong>Major version increment triggers</strong>:</p>
+<ul>
+<li>Removing endpoints or fields</li>
+<li>Changing field types or semantics</li>
+<li>Changing authentication mechanisms</li>
+<li>Changing error response format</li>
+</ul>
+<p><strong>Goal</strong>: Stay on a single major version as long as possible. Each additional version is code you must maintain.</p>
+</div>
 
 ## API Security
 

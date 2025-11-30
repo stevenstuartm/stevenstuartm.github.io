@@ -9,7 +9,11 @@ description: "AI assistants generate code faster, but only if you already know w
 
 I know, I know: another post about AI code generation. The hype cycle feels exhausting. But after months of using Claude, Gemini, and Cursor daily, I've noticed something that keeps nagging at me. The skills AI promises to eliminate are precisely the skills you need to use it effectively.
 
-AI code generation is powerful, but only when you maintain agency. The assistant can generate hundreds of lines of code in seconds, but you need to validate every line, understand the trade-offs, and recognize when it's confidently wrong. That requires domain knowledge, experience with the technology, and the judgment to make decisions: exactly what we hoped AI would let us skip.
+<blockquote class="pull-quote">
+<p>AI code generation is powerful, but only when you maintain agency. The skills AI promises to eliminate are precisely the skills you need to use it effectively.</p>
+</blockquote>
+
+The assistant can generate hundreds of lines of code in seconds, but you need to validate every line, understand the trade-offs, and recognize when it's confidently wrong. That requires domain knowledge, experience with the technology, and the judgment to make decisions: exactly what we hoped AI would let us skip.
 
 Here are the ironies I've encountered:
 
@@ -43,4 +47,6 @@ I now spend more time upfront learning the technology, frameworks, and APIs myse
 
 ## What This Means for Using AI
 
-Use AI to assist you, but learn the domain and maintain agency over decisions. AI doesn't eliminate the need for expertise; it amplifies it.
+<blockquote class="pull-quote">
+<p>AI doesn't eliminate the need for expertise; it amplifies it.</p>
+</blockquote>

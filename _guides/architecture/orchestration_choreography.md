@@ -11,6 +11,10 @@ These patterns define how multiple services coordinate to complete complex busin
 
 ## Orchestration Pattern
 
+<blockquote class="pull-quote">
+<p>Centralized orchestration provides visibility and control at the cost of creating a coordination bottleneck.</p>
+</blockquote>
+
 Centralized approach where a single orchestrator service controls and coordinates the execution of multiple services in a specific sequence.
 
 **Use When**:
@@ -126,6 +130,11 @@ Book Flight → FlightReserved event
 
 ---
 
+<div class="callout callout--tip">
+<p class="callout__title">Choosing Between Patterns</p>
+<p>Use orchestration when you need visibility into complex workflows and centralized error handling. Use choreography when service independence and loose coupling are more important than workflow visibility.</p>
+</div>
+
 ## Quick Reference
 
 ### Pattern Comparison
@@ -144,16 +153,42 @@ Book Flight → FlightReserved event
 
 ### Trade-offs
 
-**Orchestration**:
-- **Pros**: Easy to monitor, clear workflow, centralized error handling
-- **Cons**: Single point of failure, potential bottleneck
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Orchestration</h4>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Easy to monitor workflows</li>
+<li>Clear workflow visualization</li>
+<li>Centralized error handling</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Single point of failure</li>
+<li>Potential bottleneck</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Choreography</h4>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Loose coupling</li>
+<li>No single point of failure</li>
+<li>High scalability</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Hard to monitor</li>
+<li>Complex debugging</li>
+<li>No workflow visibility</li>
+</ul>
+</div>
+</div>
 
-**Choreography**:
-- **Pros**: Loose coupling, no single point of failure, high scalability
-- **Cons**: Hard to monitor, complex debugging, no workflow visibility
-
-**Saga**:
-- **Pros**: Maintains consistency without distributed transactions
-- **Cons**: Complexity of compensating actions, eventual consistency
+<div class="callout callout--note">
+<p class="callout__title">Saga Pattern</p>
+<p><strong>Pros:</strong> Maintains consistency without distributed transactions</p>
+<p><strong>Cons:</strong> Complexity of compensating actions, eventual consistency</p>
+</div>
 
 ---

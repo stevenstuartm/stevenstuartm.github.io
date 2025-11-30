@@ -9,7 +9,9 @@ description: "Better technologies exist and sit unused because switching costs c
 
 We've innovated incredible technologies over the past decade. Rust eliminates entire classes of memory safety bugs. Modern type systems catch errors at compile time that would have been production incidents. Improved runtimes deliver performance that would have required manual optimization five years ago. On paper, we have objectively better tools than what runs most production systems.
 
-But here's the uncomfortable question: can we afford to adopt them? The switching cost trap threatens to leave optimal technologies unused while we maintain legacy systems indefinitely and watch expertise in better tools become increasingly scarce.
+<blockquote class="pull-quote">
+<p>The switching cost trap threatens to leave optimal technologies unused while we maintain legacy systems indefinitely and watch expertise in better tools become increasingly scarce.</p>
+</blockquote>
 
 ## How Economic Conditions Changed the Game
 
@@ -59,4 +61,10 @@ Adoption might accelerate if better technologies become accessible without full 
 
 Another path is greenfield displacement. New products and companies adopt better technologies while legacy systems slowly sunset. This is slow but inevitable if better technologies genuinely improve outcomes. The question is whether this happens fast enough or if we spend decades maintaining increasingly fragile systems.
 
-We're not headed for inevitable stagnation, but we're also not guaranteed automatic progress. Better technology exists and sits unused because switching costs create rational reasons to maintain the status quo. Breaking that cycle requires either forcing functions that make inaction expensive or adoption paths that actually reach completion rather than becoming permanent hybrid states that double our maintenance burden.
+We're not headed for inevitable stagnation, but we're also not guaranteed automatic progress.
+
+<blockquote class="pull-quote">
+<p>Better technology exists and sits unused because switching costs create rational reasons to maintain the status quo.</p>
+</blockquote>
+
+Breaking that cycle requires either forcing functions that make inaction expensive or adoption paths that actually reach completion rather than becoming permanent hybrid states that double our maintenance burden.

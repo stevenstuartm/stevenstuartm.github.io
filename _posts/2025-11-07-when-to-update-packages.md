@@ -9,7 +9,11 @@ tags: [dependency-management, distributed-systems, risk-management, testing]
 
 Occasionally, PR lands in your repository with a package update. You could spend twenty minutes reading the changelog, running targeted tests, and evaluating whether this change actually matters. Or you could click merge and hope for the best.
 
-Most teams pick one of two reflexes: always merge immediately to "stay current," or ignore updates entirely until forced. Both approaches treat package updates like chores, something to batch process or avoid. That's the wrong framing. Updates are investments. They consume time and introduce risk, which means they deserve the same deliberate evaluation you'd apply to any other technical decision.
+Most teams pick one of two reflexes: always merge immediately to "stay current," or ignore updates entirely until forced. Both approaches treat package updates like chores, something to batch process or avoid. That's the wrong framing.
+
+<blockquote class="pull-quote">
+<p>Updates are investments. They consume time and introduce risk, which means they deserve the same deliberate evaluation you'd apply to any other technical decision.</p>
+</blockquote>
 
 ## The Distributed Systems Uniformity Trap
 
@@ -77,9 +81,13 @@ Recently, AWS released version 4 of many of their .NET SDK packages with a serie
 
 The most damaging change wasn't a breaking API; it was a critical bug introduced in the SDK core authentication workflow. The bug created silent deadlocks when calling AWS services under specific load conditions. Services appeared healthy in development and early testing but locked up under production traffic patterns.
 
-This example reinforces two truths:
-1. **Upfront due diligence has limits**: You can review changelogs, run regression tests, and validate functionality, but some bugs only surface under production conditions
-2. **Ongoing vigilance matters**: Staying plugged into ticket systems, community forums, and issue trackers helps you catch problems before they spread
+<div class="callout callout--warning">
+<p class="callout__title">Two Truths From the AWS SDK Incident</p>
+<ul>
+<li><strong>Upfront due diligence has limits</strong>: You can review changelogs, run regression tests, and validate functionality, but some bugs only surface under production conditions</li>
+<li><strong>Ongoing vigilance matters</strong>: Staying plugged into ticket systems, community forums, and issue trackers helps you catch problems before they spread</li>
+</ul>
+</div>
 
 Even trusted sources ship bugs. Intentional updates include monitoring what happens after updates ship, not just before.
 
@@ -125,6 +133,10 @@ Shipping fast and thinking deliberately aren't opposites. Teams that update thou
 
 Team leads set the tone. If leadership treats updates as chores to batch and rush through, teams will cut corners. If leadership models intentional decision-making (asking hard questions, prioritizing based on value, and accepting that "not yet" is sometimes the right answer), teams will follow.
 
-Package updates are investment decisions, not hygiene tasks. Treat them with the same rigor you apply to feature development. "Always update" and "never update" both fail. Context-driven decisions based on value and risk win.
+<blockquote class="pull-quote">
+<p>Package updates are investment decisions, not hygiene tasks. Treat them with the same rigor you apply to feature development.</p>
+</blockquote>
+
+"Always update" and "never update" both fail. Context-driven decisions based on value and risk win.
 
 In distributed systems, coordinate at contract boundaries, not version numbers. Even trusted vendors ship bugs, which means due diligence includes monitoring after updates ship, not just before. Test deliberately based on what changed and production patterns rather than exhaustively out of fear.

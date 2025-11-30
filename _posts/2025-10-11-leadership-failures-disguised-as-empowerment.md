@@ -9,7 +9,9 @@ tags: [leadership, management, culture, organizational-health]
 
 I've been thinking about the management practices that we all encounter: the ones that feel wrong but are hard to name. Personal development goals that feel invasive. "We're a family" rhetoric that breeds guilt. Criticism so vague it becomes impossible to address. Performance improvement plans that feel predetermined. "Unlimited PTO" that results in taking less vacation.
 
-These aren't random management mistakes. They share a common pattern: leadership externalizing its own failures onto employees while maintaining control through ambiguity and emotional manipulation.
+<blockquote class="pull-quote">
+<p>These aren't random management mistakes. They share a common pattern: leadership externalizing its own failures onto employees while maintaining control through ambiguity and emotional manipulation.</p>
+</blockquote>
 
 Recognizing this pattern helps you spot unhealthy organizations before they damage your career. If you're in leadership, it helps you avoid perpetuating these failures.
 
@@ -46,7 +48,11 @@ Notice what's missing? Specifics. Examples. Timestamps. Observable behaviors. Co
 
 Vague criticism serves leadership in several ways. Without specific examples, you cannot respond meaningfully. "I haven't heard these concerns" is met with "well, they exist." If you don't know what you did wrong, everything becomes suspect. You second-guess every decision and interaction. When leadership decides to terminate or deny promotion, vague historical criticism provides documented justification without the messy work of actually documenting issues when they occurred.
 
-You cannot improve if you don't know what's wrong, but the vagueness isn't a bug. It's a feature. The goal isn't your improvement; it's maintaining management's unaccountable authority.
+<blockquote class="pull-quote">
+<p>You cannot improve if you don't know what's wrong, but the vagueness isn't a bug. It's a feature.</p>
+</blockquote>
+
+The goal isn't your improvement; it's maintaining management's unaccountable authority.
 
 Healthy organizations provide specific, timely, actionable feedback. "In yesterday's meeting, when you interrupted Sarah twice during her presentation, it undermined her credibility with the client. In future meetings, please let presenters finish their points." This is feedback someone can act on.
 
@@ -108,6 +114,6 @@ These management anti-patterns aren't accidental. They're systematic ways organi
 
 Recognizing this pattern helps you identify toxic organizations and build or advocate for healthy ones. Organizations succeed when leadership provides clarity, accountability flows in all directions, and professional boundaries are respected.
 
-The next time someone talks about "personal goals," "family culture," or gives you vague criticism, ask yourself: is this empowerment, or is this a leadership failure disguised as empowerment?
-
-That question might save your career.
+<blockquote class="pull-quote">
+<p>Is this empowerment, or is this a leadership failure disguised as empowerment? That question might save your career.</p>
+</blockquote>

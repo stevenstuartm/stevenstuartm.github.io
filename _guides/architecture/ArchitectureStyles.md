@@ -9,7 +9,11 @@ tags: [architecture, design-patterns, monolithic, distributed-systems, microserv
 
 Architecture styles are named patterns that describe how to organize a system's components, data, and communication. Each style represents a set of design decisions that directly influence the system's structural characteristics: its scalability, maintainability, performance, and resilience. Understanding architecture styles gives you a vocabulary for comparing approaches and making informed tradeoffs based on what your system actually needs.
 
-When you choose an architecture style, you're not just picking a topology. You're selecting defaults for how components communicate, where data lives, how the system deploys, and which characteristics the architecture naturally supports. A layered monolith makes modularity easy but scalability hard. Microservices make independent deployment easy but operational complexity inevitable. Event-driven architectures make responsiveness easy but debugging and state management hard.
+<blockquote class="pull-quote">
+<p>When you choose an architecture style, you're not just picking a topology. You're selecting defaults for how components communicate, where data lives, how the system deploys, and which characteristics the architecture naturally supports.</p>
+</blockquote>
+
+A layered monolith makes modularity easy but scalability hard. Microservices make independent deployment easy but operational complexity inevitable. Event-driven architectures make responsiveness easy but debugging and state management hard.
 
 The goal isn't to find the "best" style; it's to match the style's strengths to your system's priorities.
 
@@ -33,7 +37,10 @@ Architecture style selection starts with understanding what matters most to your
 
 **What are your top architectural characteristics?** If evolvability and independent deployment matter most, distributed styles like microservices become relevant. If simplicity and development speed matter most, monolithic styles like modular monoliths or layered architectures may fit better. Start with the characteristics you identified during the Align phase (see [Architecture Foundations](/study-guides/architecture/ArchitectureFoundations.html#architecture-characteristics)).
 
-**Monolith or distributed?** This question alone eliminates half your options. Distributed architectures make scaling and independent deployment easier but introduce network failures, eventual consistency, and operational complexity. Monolithic architectures keep things simple but limit how you scale and deploy. If you don't need the benefits of distribution, don't pay its costs.
+<div class="callout callout--warning">
+<p class="callout__title">The Monolith vs. Distributed Decision</p>
+<p>This question alone eliminates half your options. Distributed architectures make scaling and independent deployment easier but introduce network failures, eventual consistency, and operational complexity. Monolithic architectures keep things simple but limit how you scale and deploy. If you don't need the benefits of distribution, don't pay its costs.</p>
+</div>
 
 **Where should data live?** Data topology drives many downstream decisions. A single shared database keeps transactions simple but couples services tightly. Domain-specific databases provide autonomy but make cross-domain queries harder. Per-service databases maximize independence but force you to deal with eventual consistency and sagas for transactions.
 
@@ -48,6 +55,31 @@ The decision isn't about finding the perfect style; it's to find the style whose
 ---
 
 ## Monolithic Styles
+
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Monolithic Architectures</h4>
+<ul>
+<li>Deploy as a single unit</li>
+<li>Shared process space and memory</li>
+<li>Simple deployment and development</li>
+<li>Limited scalability options</li>
+<li>Easy transactions and consistency</li>
+<li>Lower operational complexity</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Distributed Architectures</h4>
+<ul>
+<li>Multiple independently deployed units</li>
+<li>Isolated process spaces</li>
+<li>Complex deployment and operations</li>
+<li>Fine-grained scalability</li>
+<li>Eventual consistency challenges</li>
+<li>Higher operational overhead</li>
+</ul>
+</div>
+</div>
 
 Monolithic architectures deploy as a single unit. All components share the same process space, memory, and resources. This simplicity is both their greatest strength and their primary limitation.
 
@@ -89,7 +121,9 @@ Combines monolithic deployment with domain-driven component organization. Partit
 
 Distributed architectures split the system into multiple independently deployed components. This enables scaling, resilience, and team autonomy. However, it introduces network failures, eventual consistency, and operational complexity.
 
-Every distributed architecture pays these costs. The question is whether the benefits justify them.
+<blockquote class="pull-quote">
+<p>Every distributed architecture pays these costs. The question is whether the benefits justify them.</p>
+</blockquote>
 
 ### [Service-Based Architecture](/study-guides/architecture/service-based-architecture.html)
 
@@ -189,13 +223,17 @@ From your Align phase (see [Architecture Foundations](/study-guides/architecture
 
 ### Start Simple, Evolve as Needed
 
-Most systems should start with simpler architectures and evolve toward complexity only when benefits justify costs:
-
-1. **Start**: Layered monolith or modular monolith
-2. **Evolve**: Extract coarse-grained services (service-based architecture)
-3. **Evolve**: Refine to fine-grained microservices if needed
-4. **Add**: Event-driven patterns for asynchronous workflows
-5. **Add**: Space-based patterns for elastic hot paths
+<div class="callout callout--tip">
+<p class="callout__title">Evolution Path for Most Systems</p>
+<p>Most systems should start with simpler architectures and evolve toward complexity only when benefits justify costs:</p>
+<ol>
+<li><strong>Start</strong>: Layered monolith or modular monolith</li>
+<li><strong>Evolve</strong>: Extract coarse-grained services (service-based architecture)</li>
+<li><strong>Evolve</strong>: Refine to fine-grained microservices if needed</li>
+<li><strong>Add</strong>: Event-driven patterns for asynchronous workflows</li>
+<li><strong>Add</strong>: Space-based patterns for elastic hot paths</li>
+</ol>
+</div>
 
 ### Match Style to System Lifecycle
 

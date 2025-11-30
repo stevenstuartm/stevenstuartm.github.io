@@ -9,7 +9,11 @@ description: "Key characteristics that define effective leaders and mentors in s
 
 I've worked with engineers who had senior titles but didn't lead anyone. I've also worked with junior engineers who mentored half the team. The difference wasn't in their resume or their technical depth; it was in how they approached their work, their growth, and their responsibility to others.
 
-Leadership and mentorship in software development aren't granted by org charts. They emerge from patterns of behavior that compound over time. Here are the questions that reveal those characteristics.
+<blockquote class="pull-quote">
+<p>Leadership and mentorship in software development aren't granted by org charts. They emerge from patterns of behavior that compound over time.</p>
+</blockquote>
+
+Here are the questions that reveal those characteristics.
 
 ## 1. Do You Accumulate Experience or Repeat It?
 
@@ -57,4 +61,6 @@ Leadership in software development isn't granted by titles or org charts. It eme
 
 These characteristics compound over time. An engineer who mentors junior developers creates space for their own growth. An engineer who questions their own assumptions catches problems earlier. An engineer who takes accountability for quality after deployment builds more robust systems. The result isn't just better code; it's stronger teams and healthier organizations.
 
-None of this requires permission. You don't need a promotion to mentor someone, to ask better questions, or to hold yourself to higher standards. Leadership starts with how you show up to your work every day.
+<blockquote class="pull-quote">
+<p>None of this requires permission. You don't need a promotion to mentor someone, to ask better questions, or to hold yourself to higher standards.</p>
+</blockquote>

@@ -11,7 +11,11 @@ Most engineering teams have a backlog of work they call "tech debt." Developers 
 
 The pattern plays out the same way every time. Developers say "we need to pay down tech debt," and stakeholders hear "we want to spend time fixing our own mistakes instead of delivering features." The term positions engineering work as backward-looking cleanup rather than forward-looking value creation. It's defensive, it's ambiguous, and it guarantees the work never gets prioritized.
 
-The problem runs deeper than terminology. "Tech debt" is a self-fulfilling prophecy that perpetuates the communication gap that created it in the first place.
+<blockquote class="pull-quote">
+<p>"Tech debt" is a self-fulfilling prophecy that perpetuates the communication gap that created it in the first place.</p>
+</blockquote>
+
+The problem runs deeper than terminology.
 
 Consider how this cycle forms. Poor communication between developers and stakeholders leads to decisions made under unclear constraints. Those decisions create consequences that need to be addressed later. Developers label those consequences "tech debt" and communicate them back using the same ineffective language that created the problem. Stakeholders don't understand or prioritize the work. The problem festers, communication deteriorates further, and the cycle repeats. If you couldn't communicate effectively enough to prevent the problem, using the same ineffective communication pattern to solve it guarantees failure.
 
@@ -33,7 +37,11 @@ Consider how different this looks with context. If the architect had documented 
 
 The architect becomes the translator between constraints, decisions, and evolution paths. Without that translation, the cycle repeats: poor communication creates problems, vague language prevents fixes, and the gap widens.
 
-"Tech debt" is ubiquitous in the industry and yet rarely gets prioritized. The term itself guarantees the outcome. It's a communication failure masquerading as a technical problem.
+<blockquote class="pull-quote">
+<p>"Tech debt" is ubiquitous in the industry and yet rarely gets prioritized. The term itself guarantees the outcome.</p>
+</blockquote>
+
+It's a communication failure masquerading as a technical problem.
 
 ## An Alternative: Categories That Communicate Impact
 
@@ -41,69 +49,74 @@ Developers can keep using "tech debt" internally as shorthand within engineering
 
 One approach is to categorize work by business impact: **Corrections**, **Optimizations**, and **Re-Alignments**.
 
-### Corrections: Problems Causing Harm Now
+<div class="callout callout--warning">
+<p class="callout__title">Corrections: Problems Causing Harm Now</p>
+<p><strong>What it is</strong>: Mistakes, tradeoffs, or outdated decisions actively harming the business right now.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li>Security vulnerabilities exposing customer data</li>
+<li>Bugs causing support escalations or customer churn</li>
+<li>Reliability issues causing downtime or SLA violations</li>
+</ul>
+<p><strong>Why this works</strong>: Stakeholders already understand bugs and security problems as priorities because they're causing measurable harm today.</p>
+<p><strong>Language to use</strong>:</p>
+<ul>
+<li>"We have a security vulnerability that exposes customer payment data. The fix takes 2 weeks."</li>
+<li>"This bug is costing us $30K per month in support escalations. Fixing it unblocks the support team."</li>
+<li>"The authentication service has 99.5% uptime. Our SLA guarantees 99.9%. The gap creates $100K annual credit exposure. Fixing the root cause takes 3 weeks and eliminates the SLA risk."</li>
+</ul>
+<p>Corrections communicate urgency. The business is being hurt now, and addressing it stops the bleeding immediately.</p>
+</div>
 
-**What it is**: Mistakes, tradeoffs, or outdated decisions actively harming the business right now.
+<div class="callout callout--tip">
+<p class="callout__title">Optimizations: Improving Efficiency and Cost</p>
+<p><strong>What it is</strong>: Mistakes, tradeoffs, or outdated decisions affecting cost, performance, or efficiency.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li>Database queries causing slow page loads (affecting conversion rates)</li>
+<li>Infrastructure configuration costing more than necessary (budget impact)</li>
+<li>Manual deployment process taking hours per release (velocity impact)</li>
+<li>Inefficient algorithms causing excessive cloud compute costs</li>
+</ul>
+<p><strong>Why this works</strong>: Stakeholders understand optimization as improving what exists. It's not "paying debt," it's "increasing margin" or "improving user experience."</p>
+<p><strong>Language to use</strong>:</p>
+<ul>
+<li>"Our cloud costs are $50K per month. A 3-week optimization brings that to $20K per month—$360K annual savings."</li>
+<li>"Checkout page loads in 8 seconds. Optimizing to 2 seconds increases conversion by 15% based on industry benchmarks. The work takes 4 weeks and projects to $500K additional annual revenue."</li>
+<li>"Automating deployments cuts release time from 4 hours to 15 minutes, letting us ship features faster. The automation work takes 2 weeks and doubles deployment frequency."</li>
+</ul>
+<p>Optimizations communicate efficiency gains with measurable ROI. The business improves margins, performance, or velocity.</p>
+</div>
 
-**Examples**:
-- Security vulnerabilities exposing customer data
-- Bugs causing support escalations or customer churn
-- Reliability issues causing downtime or SLA violations
-
-**Why this works**: Stakeholders already understand bugs and security problems as priorities because they're causing measurable harm today.
-
-**Language to use**:
-- "We have a security vulnerability that exposes customer payment data. The fix takes 2 weeks."
-- "This bug is costing us $30K per month in support escalations. Fixing it unblocks the support team."
-- "The authentication service has 99.5% uptime. Our SLA guarantees 99.9%. The gap creates $100K annual credit exposure. Fixing the root cause takes 3 weeks and eliminates the SLA risk."
-
-Corrections communicate urgency. The business is being hurt now, and addressing it stops the bleeding immediately.
-
-### Optimizations: Improving Efficiency and Cost
-
-**What it is**: Mistakes, tradeoffs, or outdated decisions affecting cost, performance, or efficiency.
-
-**Examples**:
-- Database queries causing slow page loads (affecting conversion rates)
-- Infrastructure configuration costing more than necessary (budget impact)
-- Manual deployment process taking hours per release (velocity impact)
-- Inefficient algorithms causing excessive cloud compute costs
-
-**Why this works**: Stakeholders understand optimization as improving what exists. It's not "paying debt," it's "increasing margin" or "improving user experience."
-
-**Language to use**:
-- "Our cloud costs are $50K per month. A 3-week optimization brings that to $20K per month—$360K annual savings."
-- "Checkout page loads in 8 seconds. Optimizing to 2 seconds increases conversion by 15% based on industry benchmarks. The work takes 4 weeks and projects to $500K additional annual revenue."
-- "Automating deployments cuts release time from 4 hours to 15 minutes, letting us ship features faster. The automation work takes 2 weeks and doubles deployment frequency."
-
-Optimizations communicate efficiency gains with measurable ROI. The business improves margins, performance, or velocity.
-
-### Re-Alignments: Unlocking Future Capabilities
-
-**What it is**: Mistakes, tradeoffs, or outdated decisions that, when fixed, unblock new features, integrations, or business capabilities.
-
-**Examples**:
-- Monolithic architecture preventing independent team scaling
-- API design preventing mobile app development
-- Data model preventing real-time analytics feature
-- Vendor lock-in preventing multi-cloud strategy
-- Legacy authentication system preventing enterprise SSO integrations
-
-**Why this works**: Stakeholders understand opportunity cost. If the current architecture blocks a $2M revenue opportunity, fixing it isn't "paying debt"; it's "unlocking growth."
-
-**Language to use**:
-- "We can't build the mobile app until we redesign the API. The redesign takes 6 weeks and unblocks a $2M annual opportunity."
-- "Our current data model prevents real-time dashboards (top customer request). Re-aligning the schema takes 4 weeks and delivers the feature."
-- "The monolith prevents us from scaling the checkout team independently. Splitting it out takes 8 weeks and doubles that team's velocity."
-- "Moving to OAuth 2.0 unblocks enterprise SSO integrations. The $500K deal waiting on this capability closes once we deliver it. The migration takes 5 weeks."
-
-Re-Alignments communicate strategic value. The business unlocks capabilities that enable growth, close deals, or meet customer demands.
+<div class="callout callout--note">
+<p class="callout__title">Re-Alignments: Unlocking Future Capabilities</p>
+<p><strong>What it is</strong>: Mistakes, tradeoffs, or outdated decisions that, when fixed, unblock new features, integrations, or business capabilities.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li>Monolithic architecture preventing independent team scaling</li>
+<li>API design preventing mobile app development</li>
+<li>Data model preventing real-time analytics feature</li>
+<li>Vendor lock-in preventing multi-cloud strategy</li>
+<li>Legacy authentication system preventing enterprise SSO integrations</li>
+</ul>
+<p><strong>Why this works</strong>: Stakeholders understand opportunity cost. If the current architecture blocks a $2M revenue opportunity, fixing it isn't "paying debt"; it's "unlocking growth."</p>
+<p><strong>Language to use</strong>:</p>
+<ul>
+<li>"We can't build the mobile app until we redesign the API. The redesign takes 6 weeks and unblocks a $2M annual opportunity."</li>
+<li>"Our current data model prevents real-time dashboards (top customer request). Re-aligning the schema takes 4 weeks and delivers the feature."</li>
+<li>"The monolith prevents us from scaling the checkout team independently. Splitting it out takes 8 weeks and doubles that team's velocity."</li>
+<li>"Moving to OAuth 2.0 unblocks enterprise SSO integrations. The $500K deal waiting on this capability closes once we deliver it. The migration takes 5 weeks."</li>
+</ul>
+<p>Re-Alignments communicate strategic value. The business unlocks capabilities that enable growth, close deals, or meet customer demands.</p>
+</div>
 
 ## The Shift in Framing
 
 The difference between "tech debt" and this alternative framework is the difference between defensive justification and strategic investment. When you say "we have tech debt that needs to be paid down" or "we need to slow down feature delivery to clean things up," you're asking stakeholders to accept past mistakes and fund backward-looking cleanup. When you say "we can save $360K annually with a 3-week optimization" or "we can unlock $2M in revenue by redesigning the API," you're presenting forward-looking opportunities with clear ROI.
 
-Stakeholders invest in opportunities. They resist paying for past mistakes.
+<blockquote class="pull-quote">
+<p>Stakeholders invest in opportunities. They resist paying for past mistakes.</p>
+</blockquote>
 
 ## Preventing the Problem: The Architect's Role
 

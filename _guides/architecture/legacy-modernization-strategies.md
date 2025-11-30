@@ -11,6 +11,10 @@ tags: [architecture, legacy-systems, modernization, migration, risk-management, 
 
 Legacy modernization is the process of evolving existing systems to meet current business needs, leverage modern technologies, improve maintainability, and reduce technical debt. Unlike greenfield development, modernization requires working with existing code, data, integrations, and users who depend on the system functioning continuously.
 
+<blockquote class="pull-quote">
+<p>Modernize without disrupting the business. You can't shut down production for six months to rebuild.</p>
+</blockquote>
+
 **Why systems become legacy**:
 - Technology stack outdated (unsupported frameworks, languages, platforms)
 - Architecture no longer meets scale or performance requirements
@@ -23,6 +27,11 @@ Legacy modernization is the process of evolving existing systems to meet current
 ## Brownfield vs Greenfield Decision Framework
 
 The first decision is whether to modernize incrementally (brownfield) or rebuild from scratch (greenfield).
+
+<div class="callout callout--tip">
+<p class="callout__title">Default to Brownfield</p>
+<p>Default to brownfield unless you have strong justification for greenfield. Most "we need to rewrite" decisions are wrong.</p>
+</div>
 
 ### Greenfield (Rebuild from Scratch)
 
@@ -69,11 +78,14 @@ The first decision is whether to modernize incrementally (brownfield) or rebuild
 - Technical debt grows while modernizing
 - Requires discipline (easy to keep adding hacks to legacy code)
 
-**Recommendation**: Default to brownfield unless you have strong justification for greenfield. Most "we need to rewrite" decisions are wrong.
 
 ## The Strangler Fig Pattern
 
-The strangler fig pattern gradually replaces legacy system functionality with new implementation, running old and new systems in parallel until the legacy system can be retired.
+<blockquote class="pull-quote">
+<p>Gradually replace legacy system functionality with new implementation, running old and new systems in parallel until the legacy system can be retired.</p>
+</blockquote>
+
+The strangler fig pattern is the core pattern for incremental modernization.
 
 **Pattern origin**: Named after strangler fig trees that grow around host trees, eventually replacing them entirely.
 
@@ -305,7 +317,9 @@ public class Order
 
 ## Data Migration Strategies
 
-Data migration is often the riskiest part of modernization. Data is the only irreplaceable asset.
+<blockquote class="pull-quote">
+<p>Data migration is often the riskiest part of modernization. Data is the only irreplaceable asset.</p>
+</blockquote>
 
 ### Phased Data Migration
 

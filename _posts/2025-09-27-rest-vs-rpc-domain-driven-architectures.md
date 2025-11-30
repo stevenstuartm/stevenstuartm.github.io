@@ -9,7 +9,11 @@ description: "Why REST's resource-centric design conflicts with domain-driven ar
 
 I've spent years watching teams wrestle with REST in domain-driven systems. The pattern keeps repeating: start with clean REST endpoints, then gradually compromise as business operations don't map to resource CRUD. By the time you're done, you've abandoned most REST principles anyway while keeping the complexity.
 
-The mismatch isn't accidental. REST's resource-centric model assumes a world of global, consistent entities. Domain-driven design deliberately rejects that assumption. When you build systems around bounded contexts and business capabilities, RPC-style APIs provide better alignment without the architectural contortions.
+<blockquote class="pull-quote">
+<p>REST's resource-centric model assumes a world of global, consistent entities. Domain-driven design deliberately rejects that assumption.</p>
+</blockquote>
+
+The mismatch isn't accidental. When you build systems around bounded contexts and business capabilities, RPC-style APIs provide better alignment without the architectural contortions.
 
 ## Bounded Contexts Break REST's Core Assumptions
 
@@ -53,4 +57,8 @@ Documentation becomes clearer because each endpoint serves a single purpose. Com
 
 REST works well for entity-driven systems with globally consistent resources. Media libraries, inventory systems, and configuration management often fit this model. Resources have stable identities and standard CRUD operations align with business needs.
 
-Domain-driven systems with business operations and bounded contexts align better with RPC. Use explicit, verb-based endpoints that map directly to business capabilities. Stop forcing operations into resource updates. Stop pretending different bounded contexts can share resource definitions.
+<blockquote class="pull-quote">
+<p>Domain-driven systems with business operations and bounded contexts align better with RPC. Use explicit, verb-based endpoints that map directly to business capabilities.</p>
+</blockquote>
+
+Stop forcing operations into resource updates. Stop pretending different bounded contexts can share resource definitions.

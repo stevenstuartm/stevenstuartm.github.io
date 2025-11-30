@@ -15,6 +15,10 @@ But platforms mature. They internalize the patterns that third-party tools pione
 
 This pattern repeats across the tech industry. Early platforms start with manual operations and no standardization. Third-party tools emerge to solve those limitations and prove out the patterns. The platform matures and internalizes what worked. Practitioners eventually recognize the native advantages and shift back toward the platform.
 
+<blockquote class="pull-quote">
+<p>Third-party tools emerge to solve platform limitations and prove out patterns. The platform matures and internalizes what worked. Practitioners eventually recognize the native advantages.</p>
+</blockquote>
+
 We've seen this with mobile development, where cross-platform frameworks gave way to native toolkits as iOS and Android matured. We've seen it with databases, where heavy ORMs became less necessary as platforms added native features for common patterns. Now we're seeing it with infrastructure as code.
 
 ## What the Market Data Shows
@@ -57,7 +61,11 @@ This advantage catches people off guard because it's relatively new. CloudFormat
 
 Terraform requires manually identifying resources, generating or writing code, importing resources individually, fixing relationship errors, and configuring the state backend. The same 50 resources take 4-8 hours.
 
-The difference isn't tooling quality; it's that platforms know your infrastructure because they run it. Third-party tools must reverse-engineer what the platform already understands natively.
+<blockquote class="pull-quote">
+<p>The difference isn't tooling quality; it's that platforms know your infrastructure because they run it.</p>
+</blockquote>
+
+Third-party tools must reverse-engineer what the platform already understands natively.
 
 Source: AWS CloudFormation documentation and practitioner reports
 
@@ -77,4 +85,8 @@ Platform vendors invest billions in developer experience. Native tools receive f
 
 Platforms mature and internalize what third-party tools pioneered. Cloud-native IaC tools now offer advantages that compound over time: automatic state management, unified security, complete resource coverage, direct support, and zero operational overhead. The market data shows practitioners recognizing this shift, even if they're not acting on it yet.
 
-Choose platform-native solutions unless you have specific, articulable reasons not to. If those reasons exist (genuine multi-platform orchestration, active multi-cloud workload distribution, massive existing codebases), then Terraform and OpenTofu remain solid choices. But for most organizations operating primarily on a single cloud platform, the calculus has shifted. The advantages that made Terraform the default choice a decade ago have been inverted by platform maturity.
+<blockquote class="pull-quote">
+<p>Choose platform-native solutions unless you have specific, articulable reasons not to.</p>
+</blockquote>
+
+If those reasons exist (genuine multi-platform orchestration, active multi-cloud workload distribution, massive existing codebases), then Terraform and OpenTofu remain solid choices. But for most organizations operating primarily on a single cloud platform, the calculus has shifted. The advantages that made Terraform the default choice a decade ago have been inverted by platform maturity.

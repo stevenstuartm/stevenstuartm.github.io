@@ -9,6 +9,10 @@ tags: [architecture, design-patterns, component-design, risk-analysis, practical
 
 ## Component Design
 
+<blockquote class="pull-quote">
+<p>Bounded contexts prevent the anti-pattern of unified models. Instead of one bloated Customer entity, each context creates its own model optimized for its needs.</p>
+</blockquote>
+
 ### Bounded Contexts (DDD)
 
 *Core concept from Eric Evans' Domain-Driven Design (2003)*
@@ -50,18 +54,31 @@ Think in **logical components** (not classes) interacting to perform business fu
 
 ### Logical vs Physical Architecture
 
-**Logical**:
-- Shows components and interactions
-- Matches directory structures and namespaces
-- Independent of deployment
-- Focus: What the system does
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Logical Architecture</h4>
+<ul>
+<li>Shows components and interactions</li>
+<li>Matches directory structures and namespaces</li>
+<li>Independent of deployment</li>
+<li><strong>Focus:</strong> What the system does</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Physical Architecture</h4>
+<ul>
+<li>Services, UIs, databases</li>
+<li>Deployment topology</li>
+<li>Infrastructure decisions</li>
+<li><strong>Focus:</strong> Where things run</li>
+</ul>
+</div>
+</div>
 
-**Physical**:
-- Services, UIs, databases
-- Deployment topology
-- Focus: Where things run
-
-**Best Practice**: Create logical first, then physical. Logical guides code organization and team guidance.
+<div class="callout callout--tip">
+<p class="callout__title">Best Practice</p>
+<p>Create logical architecture first, then physical. Logical guides code organization and team guidance.</p>
+</div>
 
 ### Identifying Core Components
 
@@ -71,11 +88,12 @@ Think in **logical components** (not classes) interacting to perform business fu
 
 **3. Avoid The Entity Trap**:
 
-Don't create components based on entities (Customer Manager, Order Manager).
-
-**Entity Trap Problems**: Ambiguous names | Dumping grounds | Too coarse-grained | Hard to maintain/test/deploy
-
-**If truly CRUD-based**: Use CRUD framework instead of architecture.
+<div class="callout callout--warning">
+<p class="callout__title">The Entity Trap</p>
+<p>Don't create components based on entities (Customer Manager, Order Manager).</p>
+<p><strong>Problems:</strong> Ambiguous names | Dumping grounds | Too coarse-grained | Hard to maintain/test/deploy</p>
+<p><strong>If truly CRUD-based:</strong> Use a CRUD framework instead of custom architecture.</p>
+</div>
 
 ### Iterative Refinement
 
@@ -170,9 +188,11 @@ Collaborative exercise to determine risk within specific dimension.
 
 ## Diagramming Architecture
 
-### Importance
+<blockquote class="pull-quote">
+<p>No matter how brilliant your ideas, if you can't convince managers to fund and developers to build them, they won't happen.</p>
+</blockquote>
 
-No matter how brilliant your ideas, if you can't convince managers to fund and developers to build them, they won't happen.
+### Importance
 
 ### Representational Consistency
 

@@ -19,7 +19,11 @@ This sounds exactly like what modern frameworks encourage through dependency inj
 
 But Cockburn's implementation was specific. Hexagonal architecture treats the UI and database identically as external actors. It positions multiple driving mechanisms (REST endpoints, CLI tools, automated tests, batch scripts) as first-class equals, not as primary interface with secondary test harnesses. It defines ports as distinct boundaries with swappable adapters that can change at runtime or between deployments.
 
-The gap emerges when developers use framework DI to achieve testability and call it "hexagonal architecture" while still organizing code in standard layers: Controller → Service → Repository. They've met the goals but haven't implemented the structure.
+<blockquote class="pull-quote">
+<p>The gap emerges when developers use framework DI to achieve testability and call it "hexagonal architecture" while still organizing code in standard layers.</p>
+</blockquote>
+
+They've met the goals but haven't implemented the structure.
 
 ## What Most Teams Are Actually Building
 
@@ -49,4 +53,8 @@ Hexagonal architecture appears in courses, certifications, and job requirements.
 
 **Team alignment**: Avoiding confusion when discussing patterns prevents miscommunication. If one developer thinks "hexagonal" means symmetric actors and another thinks it means "has repository interfaces," you're not actually aligned on design decisions.
 
-Modern frameworks achieve hexagonal architecture's original goals through different structural means. Unless you're explicitly implementing symmetric drivers and swappable adapters, you're likely using layered architecture with dependency injection. That's perfectly valid for most systems, and there's no need to retrofit the hexagonal label onto standard practices.
+<blockquote class="pull-quote">
+<p>Modern frameworks achieve hexagonal architecture's original goals through different structural means. Unless you're explicitly implementing symmetric drivers and swappable adapters, you're likely using layered architecture with dependency injection.</p>
+</blockquote>
+
+That's perfectly valid for most systems, and there's no need to retrofit the hexagonal label onto standard practices.

@@ -7,7 +7,11 @@ series: "Architecture Insights"
 tags: [architecture, configuration-management, security, aws, devops]
 ---
 
-Configuration management seems straightforward until you experience the cascade of problems it creates: production incidents from misconfigured deployments, secrets leaked in Git history, environment-specific bugs that work locally but fail in production. Teams commonly store configuration files alongside application code because it feels intuitive and convenient. This pattern creates long-term problems that compound over time.
+<blockquote class="pull-quote">
+<p>Configuration management seems straightforward until you experience the cascade of problems it creates: production incidents from misconfigured deployments, secrets leaked in Git history, environment-specific bugs that work locally but fail in production.</p>
+</blockquote>
+
+Teams commonly store configuration files alongside application code because it feels intuitive and convenient. This pattern creates long-term problems that compound over time.
 
 ## Problems with Localized Configs
 
@@ -55,7 +59,11 @@ Parameters organize hierarchically. Teams can grant developers access to dev con
 
 Moving to a distributed config store trades one form of complexity for another. Configuration updates become more like database migrations with more ceremony, more steps, and more intentionality.
 
-This feels heavier because it is heavier. Configuration changes in production systems should be intentional and controlled. The ceremony forces thinking about backwards compatibility, rollback procedures, impact on dependent services, and audit trails. What feels like friction is actually the appropriate amount of care for changes that can break production systems.
+<blockquote class="pull-quote">
+<p>What feels like friction is actually the appropriate amount of care for changes that can break production systems.</p>
+</blockquote>
+
+This feels heavier because it is heavier. Configuration changes in production systems should be intentional and controlled. The ceremony forces thinking about backwards compatibility, rollback procedures, impact on dependent services, and audit trails.
 
 ## What Belongs in Local Configs
 
@@ -113,5 +121,7 @@ Audit trails provide visibility that localized configs never could. Teams know e
 
 Localized configs feel simple and convenient while creating long-term problems with security and deployment complexity. Distributed configuration stores trade upfront setup complexity for ongoing operational benefits: better security, environment independence, and audit trails.
 
-Configuration updates require the same care as database migrations. In environments where configuration errors cause production outages as often as code bugs, that care is appropriate rather than burdensome.
+<blockquote class="pull-quote">
+<p>Configuration updates require the same care as database migrations. In environments where configuration errors cause production outages as often as code bugs, that care is appropriate rather than burdensome.</p>
+</blockquote>
 

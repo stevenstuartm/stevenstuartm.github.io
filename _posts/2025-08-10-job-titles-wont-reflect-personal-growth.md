@@ -9,7 +9,9 @@ description: "Job titles rarely reflect what you actually do or how you think ab
 
 Every company seems to use different titles for the same work. One place calls you a "software engineer" when you're writing code someone else designed. Another calls you a "developer" when you're making architectural decisions that affect the entire system. The industry won't standardize these terms because they've become seniority markers and HR categories rather than meaningful distinctions about how people work.
 
-But the distinctions still matter. Not for your business card, but for understanding how you approach problems and where you want to grow.
+<blockquote class="pull-quote">
+<p>The distinctions still matter. Not for your business card, but for understanding how you approach problems and where you want to grow.</p>
+</blockquote>
 
 ## Three Ways of Working
 
@@ -47,4 +49,8 @@ Neither approach is inherently better, but understanding your natural fit helps 
 
 Your growth happens through what you learn and practice, not through what others call you. Job titles are currency in the hiring market and political tokens inside organizations. They matter for compensation and access, but they're unreliable indicators of actual capability or working style.
 
-Know what kind of work energizes you. Develop skills aligned with that direction. When your title and your work diverge, decide whether to find a better match or focus on learning despite the constraints. Let your capabilities and how you approach problems speak louder than whatever label appears on your business card.
+<blockquote class="pull-quote">
+<p>Let your capabilities and how you approach problems speak louder than whatever label appears on your business card.</p>
+</blockquote>
+
+Know what kind of work energizes you. Develop skills aligned with that direction. When your title and your work diverge, decide whether to find a better match or focus on learning despite the constraints.

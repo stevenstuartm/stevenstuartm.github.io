@@ -9,6 +9,10 @@ tags: [architecture, design-patterns, integration, etl, routing, practical]
 
 Integration patterns define how different systems and services work together, enabling data flow and coordination between disparate components.
 
+<blockquote class="pull-quote">
+<p>Each filter is independent and single-purpose.</p>
+</blockquote>
+
 ## Pipes and Filters
 
 *Pattern from Enterprise Integration Patterns by Gregor Hohpe and Bobby Woolf (2003), with roots in Unix philosophy*
@@ -28,11 +32,15 @@ Processes data through a series of processing steps (filters) connected by chann
 - **Tester**: Filters/validates data (e.g., validator, filter)
 - **Consumer**: Terminal point (e.g., database writer, file writer)
 
-**Limitations**:
-- Not suitable for interactive applications requiring low latency
-- Cannot handle transactions across multiple filters
-- Debugging can be complex in long pipelines
-- No built-in error handling across pipeline
+<div class="callout callout--warning">
+<p class="callout__title">Limitations</p>
+<ul>
+<li>Not suitable for interactive applications requiring low latency</li>
+<li>Cannot handle transactions across multiple filters</li>
+<li>Debugging can be complex in long pipelines</li>
+<li>No built-in error handling across pipeline</li>
+</ul>
+</div>
 
 **Example**: Image processing pipeline where an uploaded image passes through filters for resizing, watermarking, format conversion, and thumbnail generation.
 
@@ -55,10 +63,14 @@ Sends a request to multiple services in parallel and aggregates their responses 
 - Can benefit from parallel processing
 - Partial results are acceptable if some services are unavailable
 
-**Considerations**:
-- Overall response time limited by the slowest service
-- Need to handle partial failures gracefully
-- May require result aggregation and deduplication
+<div class="callout callout--tip">
+<p class="callout__title">Key Considerations</p>
+<ul>
+<li>Overall response time limited by the slowest service</li>
+<li>Need to handle partial failures gracefully</li>
+<li>May require result aggregation and deduplication</li>
+</ul>
+</div>
 
 **Example**: Travel booking system that simultaneously queries multiple airlines, hotels, and car rental services to provide comprehensive search results.
 

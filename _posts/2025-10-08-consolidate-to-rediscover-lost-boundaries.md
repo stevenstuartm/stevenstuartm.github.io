@@ -9,7 +9,9 @@ description: "When distributed systems lose their rationale through team churn, 
 
 Every few years, I encounter the same scenario: a distributed system where nobody remembers why things are split the way they are. Components were divided early based on assumptions that no longer hold. Databases are fragmented across services with unclear ownership. Team churn erased the rationale for boundaries. Deployments require coordinating releases across multiple services and database migrations. You have distributed complexity without distributed benefits.
 
-This is a distributed monolith: services that are technically separate but functionally coupled. They share data through back-channel integrations and fail together in production. The architecture diagram shows independence that doesn't exist in practice.
+<blockquote class="pull-quote">
+<p>This is a distributed monolith: services that are technically separate but functionally coupled. The architecture diagram shows independence that doesn't exist in practice.</p>
+</blockquote>
 
 ## Why Standard Approaches Fall Short
 
@@ -57,4 +59,6 @@ The consolidation pattern works because so many systems lack this discipline. Bo
 
 This doesn't work for every system. Some genuinely benefit from their current distribution. Some teams can successfully refactor in place with strong domain knowledge. But for teams facing unclear boundaries and knowledge loss, consolidation provides a pragmatic path to appropriate boundaries informed by reality: measured coupling and cohesion, aligned topologies, and documented rationale.
 
-The goal isn't to stay consolidated forever. It's to gain enough understanding to split correctly when the time comes.
+<blockquote class="pull-quote">
+<p>The goal isn't to stay consolidated forever. It's to gain enough understanding to split correctly when the time comes.</p>
+</blockquote>

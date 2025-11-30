@@ -11,7 +11,9 @@ I spent years believing that focus meant exclusion: pick one thing, master it co
 
 When you channel all your energy into one area, everything else atrophies. You develop strength in isolation while losing functional capability across domains. Like someone who only exercises their biceps while ignoring their legs, you end up less capable overall despite having one impressive strength.
 
-Focus isn't about exclusion; it's about presence.
+<blockquote class="pull-quote">
+<p>Focus isn't about exclusion; it's about presence.</p>
+</blockquote>
 
 ## How Single-Minded Focus Limits You
 
@@ -61,4 +63,6 @@ Build deliberately across domains rather than accidentally within one. If you've
 
 This doesn't mean abandoning expertise. Expertise in isolation is less valuable than competence across connected domains.
 
-Focus isn't about saying no to everything except one thing. It's about being fully present with whatever deserves your attention right now, knowing that what deserves attention will shift as you discover what matters.
+<blockquote class="pull-quote">
+<p>Focus isn't about saying no to everything except one thing. It's about being fully present with whatever deserves your attention right now.</p>
+</blockquote>

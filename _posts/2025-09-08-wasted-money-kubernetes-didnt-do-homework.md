@@ -11,7 +11,11 @@ Two years ago, I adopted Kubernetes for a project running about 20 containers. I
 
 Last month I migrated to AWS ECS Fargate. The costs dropped immediately, operations simplified dramatically, and I finally admitted what should have been obvious from the start: I never needed Kubernetes in the first place.
 
-This isn't a criticism of Kubernetes. It's a criticism of my own decision-making. As an architect, my job is to evaluate tradeoffs before making commitments. Instead, I got caught up in industry hype and skipped the most basic step: asking whether the technology actually fit the problem.
+<blockquote class="pull-quote">
+<p>This isn't a criticism of Kubernetes. It's a criticism of my own decision-making.</p>
+</blockquote>
+
+As an architect, my job is to evaluate tradeoffs before making commitments. Instead, I got caught up in industry hype and skipped the most basic step: asking whether the technology actually fit the problem.
 
 ## The Questions I Didn't Ask
 
@@ -55,4 +59,6 @@ The boring, simple solution is usually the right solution. Managed services ofte
 
 As architects, we're supposed to protect our organizations from expensive assumptions. That means asking hard questions about our specific context before committing to trendy technologies, even when the entire industry seems to be moving in one direction.
 
-Kubernetes didn't fail me; I failed to do my homework.
+<blockquote class="pull-quote">
+<p>Kubernetes didn't fail me; I failed to do my homework.</p>
+</blockquote>

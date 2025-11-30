@@ -7,9 +7,9 @@ tags: [software-design, best-practices, architecture]
 description: "Good code isn't clever or fast; it's adaptable. Systems that survive change, not chase perfection, win over time."
 ---
 
-Good code isn't about cleverness or premature optimization.
-
-Good code adapts.
+<blockquote class="pull-quote">
+<p>Good code isn't about cleverness or premature optimization. Good code adapts.</p>
+</blockquote>
 
 The systems that survive aren't the ones written perfectly from the start. They're the ones that bend without breaking when requirements shift, technologies evolve, and teams discover what they didn't know upfront. Building for change beats chasing premature perfection every time.
 
@@ -49,4 +49,6 @@ Principles mean nothing without application. Here's what adaptable systems actua
 
 Perfect code written for yesterday's requirements fails when reality shifts. Adaptable code survives because it expects change.
 
-Requirements evolve, technologies improve, and teams learn. The survivors aren't the ones who got it right the first time. They're the ones who built systems flexible enough to get it right the tenth time.
+<blockquote class="pull-quote">
+<p>The survivors aren't the ones who got it right the first time. They're the ones who built systems flexible enough to get it right the tenth time.</p>
+</blockquote>

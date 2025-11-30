@@ -17,7 +17,11 @@ When an architect spends a day designing a system properly, they're making decis
 
 That single day of design can prevent weeks of debugging production issues, months of customer complaints about reliability, quarters of lost revenue from churn, and years of decreased market confidence.
 
-The problem? **These costs are delayed and distributed.** When a system fails six months later, nobody connects it to architectural shortcuts taken under pressure. When customer churn increases gradually, it's blamed on sales or marketing. When engineering productivity drops because every change breaks something else, it's blamed on "poor performers" rather than the architecture.
+<blockquote class="pull-quote">
+<p>These costs are delayed and distributed. When a system fails six months later, nobody connects it to architectural shortcuts taken under pressure.</p>
+</blockquote>
+
+When customer churn increases gradually, it's blamed on sales or marketing. When engineering productivity drops because every change breaks something else, it's blamed on "poor performers" rather than the architecture.
 
 Engineering organizations can become fire departments, racing from incident to incident, unable to ship new features without breaking existing ones. Some companies go public primarily to raise funds to hire enough developers to manage the chaos or rebuild the foundation while keeping the lights on. Technical debt becomes a financial instrument, which is a terrible position.
 
@@ -33,7 +37,9 @@ Google wasn't the first search engine. Facebook wasn't the first social network.
 
 The second mover often ships faster in terms of time-to-value because they build on solid foundations rather than constantly firefighting. They iterate quickly because their architecture supports change.
 
-Being first means nothing if you're first to disappoint customers.
+<blockquote class="pull-quote">
+<p>Being first means nothing if you're first to disappoint customers.</p>
+</blockquote>
 
 ## AI and the Acceleration of Technical Debt
 
@@ -110,4 +116,6 @@ The balance isn't achieved by splitting the difference between speed and quality
 
 Get better at communicating business value. Create incentives that reward sustainable velocity. Accept that going fast requires building thoughtfully.
 
-You'll pay the cost of technical debt either up front when it's cheap, or later when it's exponentially more expensive.
+<blockquote class="pull-quote">
+<p>You'll pay the cost of technical debt either up front when it's cheap, or later when it's exponentially more expensive.</p>
+</blockquote>

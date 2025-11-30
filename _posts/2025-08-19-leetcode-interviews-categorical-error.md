@@ -9,7 +9,11 @@ description: "Algorithm interviews optimize for pattern memorization while ignor
 
 Coding tests can effectively filter out candidates who can't write working code. That's a legitimate purpose. The problem emerges when organizations test for low-level algorithm optimization skills for roles that require entirely different capabilities: system design, debugging distributed systems, architectural decision-making, or cross-functional collaboration.
 
-A senior engineer who can architect scalable systems and debug production failures shouldn't be rejected because they can't optimize a binary tree traversal in thirty minutes, especially when the role involves zero low-level algorithm work. The interview tests for skills the job doesn't require while ignoring skills that define success in the role.
+<blockquote class="pull-quote">
+<p>A senior engineer who can architect scalable systems and debug production failures shouldn't be rejected because they can't optimize a binary tree traversal in thirty minutes.</p>
+</blockquote>
+
+The interview tests for skills the job doesn't require while ignoring skills that define success in the role.
 
 ## The Mismatch Between Test and Role
 
@@ -45,6 +49,10 @@ Build your algorithmic foundation because it matters for real work. Understandin
 
 But recognize that grinding LeetCode is interview preparation, not professional development. The hours spent memorizing dynamic programming patterns could be spent building systems, contributing to open source, or learning distributed systems concepts. Those investments develop professional capability while LeetCode grinding only develops interview performance.
 
-Strong engineers architect scalable systems, debug production failures, and collaborate across teams to ship features. Whether they can solve algorithm puzzles in thirty minutes is irrelevant. The problem isn't capability; it's an interview process that measures the wrong thing.
+<blockquote class="pull-quote">
+<p>Strong engineers architect scalable systems, debug production failures, and collaborate across teams to ship features. Whether they can solve algorithm puzzles in thirty minutes is irrelevant.</p>
+</blockquote>
+
+The problem isn't capability; it's an interview process that measures the wrong thing.
 
 The industry needs better evaluation methods that resemble actual work and measure capabilities that matter for job success. Until that changes, engineers are stuck preparing for interviews that don't reflect the job while companies miss strong candidates who don't perform well on algorithm puzzles.

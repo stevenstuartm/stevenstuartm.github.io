@@ -9,6 +9,10 @@ tags: [architecture, design-patterns, messaging, reliability, distributed-system
 
 Messaging patterns ensure reliable, consistent, and efficient message handling in distributed systems.
 
+<blockquote class="pull-quote">
+<p>The dual-write problem: Writing to a database AND message broker atomically isn't possible without distributed transactions.</p>
+</blockquote>
+
 ## Transactional Outbox
 
 *Pattern from Chris Richardson's Microservices Patterns (2018), solving the dual-write problem*
@@ -44,9 +48,24 @@ PUBLISH to message broker
 UPDATE outbox SET published = true, published_at = NOW() WHERE id = ...
 ```
 
-**Implementation Options**:
-- **Polling**: Periodically query outbox table (simple, adds latency)
-- **Change Data Capture (CDC)**: Stream database changes (lower latency, more complex)
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Polling</h4>
+<p>Periodically query outbox table</p>
+<ul>
+<li><strong>Pros:</strong> Simple to implement</li>
+<li><strong>Cons:</strong> Adds latency</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Change Data Capture (CDC)</h4>
+<p>Stream database changes in near real-time</p>
+<ul>
+<li><strong>Pros:</strong> Lower latency</li>
+<li><strong>Cons:</strong> More complex setup</li>
+</ul>
+</div>
+</div>
 
 **Tools**: Debezium (CDC), custom polling service
 

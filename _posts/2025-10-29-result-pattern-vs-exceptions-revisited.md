@@ -57,7 +57,11 @@ In the second option, which can vary greatly depending on the language or librar
 
 The Result vs Exception debate has existed for decades. So why does it matter more now?
 
-**Distributed systems made expected failures more frequent**. In monolithic applications, exceptions for validation or not-found scenarios were tolerable. In modern distributed systems with microservices and service meshes, expected failures happen constantly at scale: circuit breaker fallbacks, timeout retries, validation of user input, partial batch results. Treating these frequent outcomes as exceptions creates friction.
+<blockquote class="pull-quote">
+<p>In modern distributed systems, expected failures happen constantly at scale: circuit breaker fallbacks, timeout retries, validation of user input, partial batch results.</p>
+</blockquote>
+
+**Distributed systems made expected failures more frequent**. In monolithic applications, exceptions for validation or not-found scenarios were tolerable. Treating these frequent outcomes as exceptions creates friction.
 
 Exceptions serialize across service boundaries as HTTP errors, generate stack traces for telemetry systems, and require try-catch blocks at every service call. Results are just data. They compose, serialize cleanly, and don't trigger observability overhead.
 
@@ -193,25 +197,36 @@ Making it syntactically easy to handle errors inline encourages developers to sc
 
 ## Which Arguments Hold Up?
 
-**Result arguments that stand:**
-- Performance impact is measurable and matters at scale
-- Information leakage is default behavior with exceptions, requires prevention with Results
-- Type signatures are more reliable than documentation for indicating failure
-- Iteration and parallelism can live at appropriate abstraction levels
-
-**Result arguments that weaken:**
-- Good architecture required either way (orchestration layers needed for both approaches)
-- Scattered error handling risk remains (centralizing error logic is a discipline issue for both)
-
-**Exception arguments that stand:**
-- Implicit propagation reduces boilerplate in intermediate layers
-- Framework integration is smoother without constant translation
-- Orchestration layers remain valuable for consolidating error handling decisions for both Results and exceptions
-
-**Exception arguments that weaken:**
-- Documentation requires discipline to maintain (documentation rots in practice)
-- Clean happy-path code hides what can fail (invisible failure modes in method signatures)
-- Performance overhead is real even if labeled "exceptional" (definitions don't change costs)
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Result Arguments That Stand</h4>
+<ul>
+<li>Performance impact is measurable and matters at scale</li>
+<li>Information leakage is default behavior with exceptions, requires prevention with Results</li>
+<li>Type signatures are more reliable than documentation for indicating failure</li>
+<li>Iteration and parallelism can live at appropriate abstraction levels</li>
+</ul>
+<p><strong>Arguments that weaken:</strong></p>
+<ul>
+<li>Good architecture required either way (orchestration layers needed for both approaches)</li>
+<li>Scattered error handling risk remains (centralizing error logic is a discipline issue for both)</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-warning">
+<h4>Exception Arguments That Stand</h4>
+<ul>
+<li>Implicit propagation reduces boilerplate in intermediate layers</li>
+<li>Framework integration is smoother without constant translation</li>
+<li>Orchestration layers remain valuable for consolidating error handling decisions</li>
+</ul>
+<p><strong>Arguments that weaken:</strong></p>
+<ul>
+<li>Documentation requires discipline to maintain (documentation rots in practice)</li>
+<li>Clean happy-path code hides what can fail (invisible failure modes)</li>
+<li>Performance overhead is real even if labeled "exceptional"</li>
+</ul>
+</div>
+</div>
 
 ## What the Evidence Says
 
@@ -231,7 +246,11 @@ If structural arguments favor Results, why does the exception camp remain strong
 
 **The Frozen Caveman pattern** also contributes: "Exceptions work if done correctly, and I've learned how to do them correctly." This solves yesterday's problem (poor exception handling) rather than today's problem. When a large portion of operations return expected failures (distributed system timeouts, offline-first sync conflicts, parallel batch processing), exceptions require working around their design, not just using them correctly.
 
-## Where the Evidence Points
+## What I Learned
+
+<blockquote class="pull-quote">
+<p>Result types should be the default for domain operations—not because they're perfect, but because the structural advantages outweigh the execution risks.</p>
+</blockquote>
 
 Despite my preferences, the evidence (at least conceptually) has led me to conclude that Result types should be the default for domain operations. Not because Results are perfect (C# doesn't enforce them, they create framework friction, and misuse can scatter error handling), but because the structural advantages outweigh the execution risks. Performance at scale, safe boundaries by default, visible failure modes, and natural iteration patterns matter more than implicit propagation convenience.
 

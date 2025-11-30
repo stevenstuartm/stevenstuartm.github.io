@@ -7,7 +7,11 @@ tags: [learning, teaching, knowledge-management, personal-growth]
 description: "Understanding emerges from acknowledged ignorance expanded through research and compressed through teaching. A methodology for accelerated learning."
 ---
 
-I used to think experts explained things simply because they had figured out what mattered and stripped away the rest. Turns out that's backwards. Experts explain simply because they researched deeply enough to compress what they learned into patterns. The simplicity comes after the expansion, not before.
+<blockquote class="pull-quote">
+<p>Experts explain simply because they researched deeply enough to compress what they learned into patterns. The simplicity comes after the expansion, not before.</p>
+</blockquote>
+
+I used to think experts explained things simply because they had figured out what mattered and stripped away the rest. Turns out that's backwards.
 
 This realization changed how I learn. Instead of trying to find the shortest path to understanding, I now embrace the messy expansion phase and focus on compression as the actual learning mechanism. Teaching forces that compression. Writing forces it even more.
 
@@ -17,7 +21,11 @@ Raw information is verbose. Understanding is discovering the pattern that compre
 
 A novice oversimplifies because they don't know what they're missing. An intermediate developer recites every detail they learned because they haven't found the pattern yet. An expert distills it to a few precise sentences because they've organized those same facts around core principles.
 
-Compression isn't eliminating details. It's internalizing them deeply enough to regenerate them from fundamentals. The expert knows more facts than the intermediate; they've just compressed those facts into fewer, more powerful concepts.
+<blockquote class="pull-quote">
+<p>Compression isn't eliminating details. It's internalizing them deeply enough to regenerate them from fundamentals.</p>
+</blockquote>
+
+The expert knows more facts than the intermediate; they've just compressed those facts into fewer, more powerful concepts.
 
 You cannot compress what you don't realize is verbose. This requires **acknowledged ignorance**, recognizing the gap between what you know and what you understand.
 

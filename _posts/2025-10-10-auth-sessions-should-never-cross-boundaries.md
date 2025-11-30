@@ -9,7 +9,11 @@ tags: [security, architecture, authentication, distributed-systems, event-driven
 
 It is tempting to treat user authentication sessions as ambient context. You pass them through API layers, into service calls, across event processors, and through background jobs. If a component needs to know who the user is, it needs the user's session, right?
 
-This conflates authentication with context. You're treating an external trust artifact as internal state, and the result is coupling, performance waste, and systems that break in asynchronous scenarios, event-driven architectures, and integration patterns.
+<blockquote class="pull-quote">
+<p>This conflates authentication with context. You're treating an external trust artifact as internal state.</p>
+</blockquote>
+
+The result is coupling, performance waste, and systems that break in asynchronous scenarios, event-driven architectures, and integration patterns.
 
 ## Sessions Validate at Boundaries, Context Flows Internally
 
@@ -83,4 +87,6 @@ User authentication sessions serve one purpose: validating identity at a securit
 
 Propagating sessions through internal flows treats authentication as global state, couples components to auth mechanisms, wastes resources on redundant validation, and breaks in event-driven architectures, background jobs, approval workflows, webhook integrations, and async processing.
 
-This isn't about microservices versus monoliths. It's about recognizing architectural boundaries and respecting them. Pass the context you need, not the artifact you don't. Components shouldn't depend on external auth formats. Authentication artifacts belong at boundaries, not in internal flows.
+<blockquote class="pull-quote">
+<p>This isn't about microservices versus monoliths. It's about recognizing architectural boundaries and respecting them. Authentication artifacts belong at boundaries, not in internal flows.</p>
+</blockquote>

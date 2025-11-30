@@ -11,7 +11,9 @@ I've been thinking about TDD's place in modern development, and I keep running i
 
 This feels wasteful. Many experienced developers achieve similar results through focused discovery followed by disciplined testing, delivering quality code without strict TDD adherence. The debates get heated: advocates measure test coverage and celebrate red-green-refactor while skeptics count rewritten tests as waste.
 
-But I think we're framing TDD wrong in a way that creates division rather than surfacing value. Both sides may be missing the greater potential.
+<blockquote class="pull-quote">
+<p>I think we're framing TDD wrong in a way that creates division rather than surfacing value. Both sides may be missing the greater potential.</p>
+</blockquote>
 
 ## Testing Assumptions, Not Just Code
 
@@ -37,4 +39,6 @@ Don't measure success by coverage percentage. Measure it by how many wrong assum
 
 Stop debating "test-first versus test-after" and start asking: What assumptions are we making about user needs? What's the fastest way to validate them? Sometimes that's writing a test first, other times it's building a prototype first, and sometimes it's showing mockups to users first. The goal isn't perfect tests; it's perfect understanding.
 
-The greatest value of TDD isn't in the tests that pass. It's in the tests that change because they revealed assumptions worth questioning. That's not waste. That's exactly the kind of failure worth having early.
+<blockquote class="pull-quote">
+<p>The greatest value of TDD isn't in the tests that pass. It's in the tests that change because they revealed assumptions worth questioning.</p>
+</blockquote>

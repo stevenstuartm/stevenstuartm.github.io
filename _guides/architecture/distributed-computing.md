@@ -9,6 +9,10 @@ tags: [architecture, distributed-systems, microservices, scalability, decision-m
 
 Distributed systems promise scalability, resilience, and flexibility, but they introduce significant complexity. Understanding the fundamental challenges and decision frameworks helps architects choose the right level of distribution for their context.
 
+<blockquote class="pull-quote">
+<p>The network is reliable. Latency is zero. Bandwidth is infinite. These assumptions seem reasonable—until production proves otherwise.</p>
+</blockquote>
+
 ## The Fallacies of Distributed Computing
 
 *Originally identified by Peter Deutsch (1994), later expanded by James Gosling and others at Sun Microsystems*
@@ -91,6 +95,10 @@ Invest in observability from the start. Implement distributed tracing, structure
 
 *Concept from Mark Richards & Neal Ford's Fundamentals of Software Architecture (2020)*
 
+<blockquote class="pull-quote">
+<p>An architecture quantum is the smallest useful piece of the system that can be deployed on its own—determining deployment strategy, scalability approach, and team organization.</p>
+</blockquote>
+
 An architecture quantum is an independently deployable artifact with high functional cohesion and synchronous connascence. Think of it as the smallest useful piece of the system that can be deployed on its own.
 
 ### Understanding the Components
@@ -123,38 +131,39 @@ The right number of quanta depends on your context. Start with one quantum unles
 
 The choice between monolithic and distributed architecture is not binary. It's a spectrum with many options in between. Understanding when distribution makes sense prevents both over-engineering and under-engineering.
 
-### When to Choose Distributed Architecture
-
-**Different parts need different architecture characteristics**: The order processing component needs high availability and scalability, while the administrative reporting component doesn't. Separating them into different quanta allows independent optimization.
-
-**High scalability or availability requirements**: When you need to scale specific components independently, distribution makes sense. Scaling a monolith means scaling everything, even parts that don't need it.
-
-**Teams need independent deployment**: Large organizations with multiple teams working on different business domains benefit from independent deployment. Teams can release changes without coordinating with every other team.
-
-**Domain boundaries are clear**: Distribution works best when business domains have natural boundaries with minimal cross-domain transactions. Clear domains mean less distributed complexity.
-
-### When to Choose Monolithic Architecture
-
-**A single set of architecture characteristics suffices**: If the entire system has similar performance, scalability, and availability needs, a monolith is simpler. You avoid distributed complexity for no benefit.
-
-**Simpler deployment is preferred**: Monoliths are easier to deploy, test, and debug. One deployment pipeline, one version, one set of logs.
-
-**Smaller team or scope**: Small teams are more productive working on a single codebase. The coordination overhead of distributed systems slows down small teams.
-
-**Cost and complexity must be minimized**: Distributed systems require more infrastructure, more operational tooling, and more specialized skills. If budget or team capability is limited, monoliths make sense.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Choose Distributed Architecture When</h4>
+<ul>
+<li>Different parts need different architecture characteristics</li>
+<li>High scalability or availability requirements exist</li>
+<li>Teams need independent deployment</li>
+<li>Domain boundaries are clear and stable</li>
+<li>Organization has multiple teams</li>
+<li>Operational maturity is high</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Choose Monolithic Architecture When</h4>
+<ul>
+<li>A single set of architecture characteristics suffices</li>
+<li>Simpler deployment is preferred</li>
+<li>Smaller team or scope (1-10 engineers)</li>
+<li>Cost and complexity must be minimized</li>
+<li>Limited operational experience with distributed systems</li>
+<li>Domain boundaries are unclear or frequently changing</li>
+</ul>
+</div>
+</div>
 
 ### The Modular Monolith Middle Ground
 
-A modular monolith provides many benefits of distributed systems while retaining monolithic simplicity. Organize code into well-defined modules with clear boundaries and interfaces. Modules communicate through defined APIs rather than direct method calls.
-
-This approach provides:
-- Clear domain boundaries within a single deployable unit
-- Easier refactoring than a tangled monolith
-- A path to future distribution if needed
-- Lower operational complexity than microservices
-- Faster development than managing multiple services
-
-Many systems should start as modular monoliths and distribute only when specific needs justify the complexity.
+<div class="callout callout--tip">
+<p class="callout__title">The Modular Monolith Advantage</p>
+<p>A modular monolith provides many benefits of distributed systems while retaining monolithic simplicity. Organize code into well-defined modules with clear boundaries and interfaces.</p>
+<p><strong>Benefits:</strong> Clear domain boundaries | Easier refactoring | Path to future distribution | Lower operational complexity | Faster development</p>
+<p>Many systems should start as modular monoliths and distribute only when specific needs justify the complexity.</p>
+</div>
 
 ## Decision Framework
 

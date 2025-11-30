@@ -9,6 +9,10 @@ tags: [architecture, design-patterns, infrastructure, kubernetes, service-mesh, 
 
 These patterns address how applications are deployed, managed, and operated in distributed environments, focusing on infrastructure concerns and operational efficiency.
 
+<blockquote class="pull-quote">
+<p>The sidecar pattern separates cross-cutting concerns from application code, enabling consistent functionality across polyglot services without code changes.</p>
+</blockquote>
+
 ## Sidecar Pattern
 
 Deploys supporting functionality (logging, monitoring, configuration) in a separate process alongside the main application.
@@ -135,9 +139,28 @@ Data Plane (Envoy Sidecars):
 - **Consul Connect**: HashiCorp, multi-platform
 - **AWS App Mesh**: Managed service mesh for AWS
 
-**Trade-offs**:
-- **Pros**: Zero code changes, consistent policies, powerful traffic management
-- **Cons**: Operational complexity, resource overhead (CPU/memory for sidecars), latency increase (~1-5ms per hop)
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Service Mesh Benefits</h4>
+<ul>
+<li>Zero code changes required</li>
+<li>Consistent policies across all services</li>
+<li>Powerful traffic management (canary, A/B testing)</li>
+<li>Built-in observability and tracing</li>
+<li>Automatic mTLS encryption</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Service Mesh Costs</h4>
+<ul>
+<li>High operational complexity</li>
+<li>Resource overhead (CPU/memory for sidecars)</li>
+<li>Latency increase (~1-5ms per hop)</li>
+<li>Steep learning curve</li>
+<li>Additional failure points</li>
+</ul>
+</div>
+</div>
 
 ---
 
@@ -168,9 +191,12 @@ Data Plane (Envoy Sidecars):
 
 ### When to Avoid
 
-**Sidecar**: Adds complexity for simple apps
-**Ambassador**: Unnecessary for apps with few external calls
-**BFF**: Overkill for single client type
-**Service Mesh**: Too complex for <10 services
+<div class="callout callout--warning">
+<p class="callout__title">Complexity Warning</p>
+<p><strong>Sidecar:</strong> Adds complexity for simple apps<br>
+<strong>Ambassador:</strong> Unnecessary for apps with few external calls<br>
+<strong>BFF:</strong> Overkill for single client type<br>
+<strong>Service Mesh:</strong> Too complex for systems with fewer than 10 services</p>
+</div>
 
 ---
