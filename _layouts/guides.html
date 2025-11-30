@@ -110,6 +110,9 @@ layout: default
                                     {% assign show_order = true %}
                                 {% endif %}
 
+                                {% assign guide_words = guide.content | strip_html | number_of_words %}
+                                {% assign guide_minutes = guide_words | divided_by: 200 %}
+                                {% if guide_minutes < 1 %}{% assign guide_minutes = 1 %}{% endif %}
                                 <article class="guide-card filterable-item"
                                          data-title="{{ guide.title | downcase }}"
                                          data-description="{{ guide.description | downcase }}"
@@ -124,8 +127,7 @@ layout: default
                                         {% endif %}
                                         <h3>{{ guide.title }}</h3>
                                         <div class="guide-card-meta">
-                                            <span class="category-badge">{{ guide.category }}</span>
-                                            <span class="subcategory-badge">{{ subcategory.name }}</span>
+                                            <span class="reading-time-badge">{{ guide_minutes }} min</span>
                                         </div>
                                         {% if guide.description %}
                                         <p class="guide-excerpt">{{ guide.description }}</p>

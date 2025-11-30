@@ -39,17 +39,14 @@ layout: default
         <div class="post-meta">
             <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
             {% if page.author %} • <span>{{ page.author }}</span>{% endif %}
-            {% if page.series %}
-            <span class="category-badge">{{ page.series }}</span>
-            {% endif %}
         </div>
-        {% if page.tags %}
-        <div class="post-tags">
-            {% for tag in page.tags %}
-            <span class="tag">{{ tag }}</span>
-            {% endfor %}
+        {% assign words = content | strip_html | number_of_words %}
+        {% assign minutes = words | divided_by: 200 %}
+        {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+        <div class="reading-time">
+            <span class="reading-time-icon">📖</span>
+            <span class="reading-time-text">{{ minutes }} min read</span>
         </div>
-        {% endif %}
     </div>
 </header>
 
@@ -171,6 +168,12 @@ document.addEventListener('DOMContentLoaded', function() {
             tocToggle.classList.toggle('expanded');
             postToc.classList.toggle('expanded');
         }
+    }
+
+    // Expand TOC by default on desktop
+    if (window.innerWidth >= 1024) {
+        tocToggle.classList.add('expanded');
+        postToc.classList.add('expanded');
     }
 
     tocToggle.addEventListener('click', function() {

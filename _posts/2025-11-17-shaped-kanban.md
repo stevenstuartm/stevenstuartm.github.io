@@ -107,11 +107,15 @@ Shaped Kanban addresses a specific scenario: organizations with multiple team ty
 
 This approach may not fit every context. Small product teams with homogeneous work might thrive with standard Shape Up. Teams with strong existing discipline and well-defined work might succeed with plain Kanban. Organizations that need strict regulatory compliance might require more heavyweight processes.
 
-Shaped Kanban works best when:
-- Teams vary in type and cadence—features, platform, infrastructure
-- Work complexity varies significantly, from 3-day fixes to 6-week features
-- Coordination happens across teams without forcing artificial synchronization
-- Upfront work definition is valued but heavyweight documentation is not
+<div class="callout callout--tip">
+<p class="callout__title">When Shaped Kanban Works Best</p>
+<ul>
+<li>Teams vary in type and cadence—features, platform, infrastructure</li>
+<li>Work complexity varies significantly, from 3-day fixes to 6-week features</li>
+<li>Coordination happens across teams without forcing artificial synchronization</li>
+<li>Upfront work definition is valued but heavyweight documentation is not</li>
+</ul>
+</div>
 
 ## How Shaped Kanban Works
 
@@ -209,13 +213,13 @@ This is just sensible dependency management. Timeboxes force artificial synchron
 
 **Shaped Kanban can be abused just like Kanban can be abused.** The flexibility that makes it powerful also creates opportunities for dysfunction if discipline erodes.
 
-**WIP limits must actually limit work.** If WIP limits become suggestions rather than constraints and teams allow constant disruptions and context switching, the framework collapses into chaos. Kanban without strict WIP limits is just a glorified to-do list. The discipline of saying "no, we are at capacity" is what makes flow sustainable.
-
-**Priorities must be honored.** Bet on work you know has high value, deliver the original priorities, and let the circuit breakers do their job. Yes, exceptions will happen, but they better be world-ending critical items. If every urgent request bypasses the queue, if priorities shift weekly based on whoever yells loudest, if circuit breakers get extended without genuine stakeholder agreement, you are not practicing disciplined flow. You are practicing reactive chaos with a Kanban board.
-
-**Circuit breakers must trip.** When work hits its time boundary or invalidates critical assumptions, stop and reassess. Do not extend deadlines reflexively. Do not ignore failed assumptions and ship anyway. The circuit breaker exists to force honest conversations about whether to continue, reshape, or abandon work. If you never let circuit breakers trip, they are theater.
-
-**Flexibility requires discipline.** The entire premise of Shaped Kanban is that practical, clear discipline makes the approach stand out among all the rest. Without that discipline, you have just removed the one forcing function that timeboxes provided (calendar accountability) while keeping all the dysfunction: poorly defined work, shifting priorities, and endless scope creep.
+<div class="callout callout--warning">
+<p class="callout__title">How This Approach Can Fail</p>
+<p><strong>WIP limits must actually limit work.</strong> If WIP limits become suggestions rather than constraints and teams allow constant disruptions and context switching, the framework collapses into chaos. Kanban without strict WIP limits is just a glorified to-do list.</p>
+<p><strong>Priorities must be honored.</strong> Bet on work you know has high value, deliver the original priorities, and let the circuit breakers do their job. If every urgent request bypasses the queue or priorities shift weekly, you are practicing reactive chaos with a Kanban board.</p>
+<p><strong>Circuit breakers must trip.</strong> When work hits its time boundary or invalidates critical assumptions, stop and reassess. Do not extend deadlines reflexively. If you never let circuit breakers trip, they are theater.</p>
+<p><strong>Flexibility requires discipline.</strong> Without discipline, you have just removed the one forcing function that timeboxes provided while keeping all the dysfunction: poorly defined work, shifting priorities, and endless scope creep.</p>
+</div>
 
 Timeboxes enforce rhythm mechanically while Shaped Kanban requires you to enforce rhythm through actual alignment and genuine agreement. That is harder. If your organization cannot maintain that discipline, timeboxes might be the lesser evil.
 

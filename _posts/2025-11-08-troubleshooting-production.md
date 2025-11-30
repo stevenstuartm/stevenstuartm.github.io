@@ -135,17 +135,26 @@ The real fix emerges when you stop asking "why" and start seeing patterns. If th
 
 Distinguish mitigation from fix:
 
-**Mitigation** (restores service quickly):
-- Restart the service
-- Route traffic around failing component
-- Increase resource limits
-- Roll back the deployment
-
-**Fix** (prevents recurrence):
-- Address root cause
-- Add monitoring and alerting
-- Improve test coverage
-- Update runbooks
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Mitigation (restores service quickly)</h4>
+<ul>
+<li>Restart the service</li>
+<li>Route traffic around failing component</li>
+<li>Increase resource limits</li>
+<li>Roll back the deployment</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Fix (prevents recurrence)</h4>
+<ul>
+<li>Address root cause</li>
+<li>Add monitoring and alerting</li>
+<li>Improve test coverage</li>
+<li>Update runbooks</li>
+</ul>
+</div>
+</div>
 
 Both have value, but don't confuse them. Document the chain clearly:
 - What we did to restore service (mitigation)
@@ -168,11 +177,15 @@ Establish clear roles upfront:
 
 Without role clarity, you get duplicate work, missed actions, and no record of what's been tried. The scribe role seems like a luxury, but it becomes critical when you need to reconstruct what happened.
 
-Red flags:
-- Multiple people issuing commands simultaneously
-- No one writing down what's being tried
-- Same hypothesis tested multiple times by different people
-- Unclear who has authority to make rollback decisions
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags</p>
+<ul>
+<li>Multiple people issuing commands simultaneously</li>
+<li>No one writing down what's being tried</li>
+<li>Same hypothesis tested multiple times by different people</li>
+<li>Unclear who has authority to make rollback decisions</li>
+</ul>
+</div>
 
 Apply the troubleshooting principles collectively through clear communication standards:
 - For reproduction: "Can anyone reproduce this issue? If yes, document exactly how. If no, that's our first priority."
@@ -184,22 +197,26 @@ The incident commander explicitly approves changes and ensures only one change h
 ### Hero mentality
 Hero mentality in war rooms creates single points of failure and prevents knowledge sharing.
 
-What hero mentality looks like:
-- "I'll handle this alone; everyone else stay out"
-- Making changes without communicating what or why
-- Refusing to hand off when fatigued because "only I understand this"
-
-Why this fails predictably:
-- One person can't sustain extended incident response (burnout is real)
-- When heroes fix things alone, understanding doesn't spread
-- Fatigue increases error rates; fresh perspective helps
-- If the hero is unavailable next time, the team starts from zero
-
-The collaborative alternative:
-- Explain your reasoning as you investigate
-- Ask for input before making significant changes
-- Hand off to fresh teammates when fatigued
-- Document decisions so others can understand and continue
+<div class="comparison">
+<div class="content-card content-card--accent-warning">
+<h4>Hero Mentality</h4>
+<ul>
+<li>"I'll handle this alone; everyone else stay out"</li>
+<li>Making changes without communicating what or why</li>
+<li>Refusing to hand off when fatigued because "only I understand this"</li>
+</ul>
+<p><strong>Why this fails:</strong> One person can't sustain extended incident response. When heroes fix things alone, understanding doesn't spread. Fatigue increases error rates. If the hero is unavailable next time, the team starts from zero.</p>
+</div>
+<div class="content-card content-card--accent">
+<h4>Collaborative Alternative</h4>
+<ul>
+<li>Explain your reasoning as you investigate</li>
+<li>Ask for input before making significant changes</li>
+<li>Hand off to fresh teammates when fatigued</li>
+<li>Document decisions so others can understand and continue</li>
+</ul>
+</div>
+</div>
 
 Celebrate collaborative wins, not individual heroics. Value knowledge transfer as highly as problem resolution.
 

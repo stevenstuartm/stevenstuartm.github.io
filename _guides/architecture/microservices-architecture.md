@@ -128,59 +128,54 @@ A service mesh provides a unified control plane managing all sidecars consistent
 | **Fault Tolerance** | ⭐⭐⭐⭐ | Failures isolated to individual services |
 | **Cost** | ⭐ | High operational cost and infrastructure complexity |
 
-## When Microservices Architecture Fits
-
-**Large systems where different parts need different operational characteristics**: Some services need 99.99% availability while others tolerate downtime. Some need extreme scalability while others have minimal load. Microservices let you optimize each service independently.
-
-**Organizations with mature DevOps practices**: Automated deployment pipelines, comprehensive observability, container orchestration, and sophisticated monitoring. Without this maturity, managing dozens of services becomes overwhelming.
-
-**Teams organized by business domains who need true independence**: Each team owns services end-to-end. They can deploy without coordinating with other teams. Teams move at their own pace.
-
-**Systems where evolvability matters more than simplicity**: When requirements change constantly and you need to evolve different parts of the system at different rates without affecting others.
-
-**High-scale consumer applications**: Systems handling millions of users where different capabilities have wildly different scaling needs. Social feeds, recommendations, user profiles all scale differently.
-
-## When to Avoid Microservices Architecture
-
-**Simple domains where a modular monolith would suffice**: If the domain is straightforward and doesn't justify the operational complexity. Many systems that adopt microservices would be better served by well-structured monoliths.
-
-**Organizations without operational maturity**: Managing distributed systems requires sophisticated tooling, monitoring, and processes. If you don't have mature CI/CD, observability, and incident response, microservices will overwhelm your team.
-
-**Small teams that would spend more time on infrastructure than features**: If your team spends more time managing Kubernetes, service meshes, and observability than building business features, the architecture is wrong for your scale.
-
-**Systems requiring frequent distributed transactions**: If your workflows constantly need strong consistency across services, you're fighting the architecture. Microservices embrace eventual consistency.
-
-**Tight deadlines requiring fast delivery**: Building microservices takes longer than building monoliths initially. If speed to market matters most and you can refactor later, start with a monolith.
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>When Microservices Fits</h4>
+<ul>
+<li><strong>Large systems</strong> where different parts need different operational characteristics</li>
+<li><strong>Organizations with mature DevOps practices</strong>: automated pipelines, observability, container orchestration</li>
+<li><strong>Teams organized by business domains</strong> who need true independence</li>
+<li><strong>Systems where evolvability matters more than simplicity</strong></li>
+<li><strong>High-scale consumer applications</strong> with wildly different scaling needs</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-warning">
+<h4>When to Avoid Microservices</h4>
+<ul>
+<li><strong>Simple domains</strong> where a modular monolith would suffice</li>
+<li><strong>Organizations without operational maturity</strong>: no mature CI/CD, observability, or incident response</li>
+<li><strong>Small teams</strong> that would spend more time on infrastructure than features</li>
+<li><strong>Systems requiring frequent distributed transactions</strong></li>
+<li><strong>Tight deadlines</strong> requiring fast delivery</li>
+</ul>
+</div>
+</div>
 
 ## Common Antipatterns
 
-### Grains of Sand
-
-Services become so fine-grained that operational overhead drowns out benefits. Managing hundreds of tiny services becomes harder than managing a monolith.
-
-**Example**: Separate services for "Calculate Tax," "Validate Address," "Format Phone Number." These are functions, not services.
-
-**Solution**: Services should represent cohesive business capabilities, not individual functions. If a service has only 2-3 operations and can't function independently, it's too small.
-
-### Shared Libraries Breaking Bounded Contexts
-
-Teams create shared libraries for "reuse." Services depend on these libraries. When libraries change, all dependent services must redeploy. You've lost independent deployability.
-
-**Solution**: Duplicate code rather than share if the duplication maintains independence. Shared libraries are acceptable only for truly cross-cutting concerns (logging frameworks, telemetry SDKs) provided by the platform team, not domain logic.
-
-### Distributed Monolith
-
-Services depend so tightly on each other that they can't change independently. Every change requires coordinating deployments across multiple services. You have distributed system complexity without distributed system benefits.
-
-**Symptoms**: Cascade deployments (must deploy A, then B, then C), services sharing databases, services sharing libraries, services making many synchronous calls to each other.
-
-**Solution**: Redesign service boundaries. Services should be loosely coupled. Use asynchronous messaging for coordination. Accept eventual consistency.
-
-### Chatty Communication
-
-Services make many fine-grained calls to each other. Network latency kills performance. The system becomes slower than a monolith.
-
-**Solution**: Coarsen APIs. Services should have coarse-grained interfaces that minimize round trips. Or cache frequently accessed data locally (accepting eventual consistency).
+<div class="card-group">
+<div class="content-card content-card--accent-warning">
+<h4>Grains of Sand</h4>
+<p>Services become so fine-grained that operational overhead drowns out benefits.</p>
+<p><em>Example: Separate services for "Calculate Tax," "Validate Address," "Format Phone Number."</em></p>
+<p><strong>Solution</strong>: Services should represent cohesive business capabilities, not individual functions.</p>
+</div>
+<div class="content-card content-card--accent-warning">
+<h4>Shared Libraries Breaking Bounded Contexts</h4>
+<p>Teams create shared libraries for "reuse." When libraries change, all dependent services must redeploy.</p>
+<p><strong>Solution</strong>: Duplicate code rather than share if the duplication maintains independence.</p>
+</div>
+<div class="content-card content-card--accent-warning">
+<h4>Distributed Monolith</h4>
+<p>Services depend so tightly on each other that they can't change independently. Every change requires coordinating deployments.</p>
+<p><strong>Solution</strong>: Redesign service boundaries. Use asynchronous messaging. Accept eventual consistency.</p>
+</div>
+<div class="content-card content-card--accent-warning">
+<h4>Chatty Communication</h4>
+<p>Services make many fine-grained calls to each other. Network latency kills performance.</p>
+<p><strong>Solution</strong>: Coarsen APIs with interfaces that minimize round trips. Cache frequently accessed data locally.</p>
+</div>
+</div>
 
 ## Evolution and Alternatives
 

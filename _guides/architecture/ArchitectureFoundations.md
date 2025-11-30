@@ -51,13 +51,12 @@ Architects must develop technical breadth rather than depth. Breadth means knowi
 
 The goal is to move technologies and concepts from "unknown unknowns" (things you don't know you don't know) into "known unknowns" (things you know exist but don't deeply understand). When a decision requires deep knowledge, you can then invest time to move that specific area into "knowns."
 
-**Common dysfunctions** emerge when architects mismanage breadth and depth:
-
-**Trying to maintain expertise in too many areas** leads to burnout. You cannot be an expert in everything. Accept that breadth means surface-level knowledge in most areas.
-
-**Stale expertise** occurs when outdated knowledge is treated as current. An architect with deep Java experience from 2010 may not recognize how modern Java has evolved. Past expertise must be continuously refreshed or acknowledged as dated.
-
-**Frozen Caveman antipattern** describes reverting to irrational concerns based on past trauma instead of objective assessment. An architect who experienced a catastrophic Redis failure may oppose all in-memory caching solutions, even when the original failure resulted from misconfiguration rather than technology limitations.
+<div class="callout callout--warning">
+<p class="callout__title">Common Dysfunctions</p>
+<p><strong>Trying to maintain expertise in too many areas</strong> leads to burnout. You cannot be an expert in everything. Accept that breadth means surface-level knowledge in most areas.</p>
+<p><strong>Stale expertise</strong> occurs when outdated knowledge is treated as current. An architect with deep Java experience from 2010 may not recognize how modern Java has evolved.</p>
+<p><strong>Frozen Caveman antipattern</strong> describes reverting to irrational concerns based on past trauma instead of objective assessment.</p>
+</div>
 
 ### Core Architectural Skills
 
@@ -84,7 +83,10 @@ Common business justifications map to architectural priorities:
 
 Architects must stay technically current through hands-on coding, but they must avoid the Bottleneck Trap. When architects own critical-path code, they become blockers. Every feature waits for the architect's availability, and delivery velocity drops.
 
-Instead, architects should delegate framework code to senior developers and focus their coding efforts on non-critical areas: proof-of-concepts, technical debt reduction, bug fixes, automation tooling, and code reviews. Working on features one to three iterations ahead of the main team keeps architects connected to the codebase without blocking progress.
+<div class="callout callout--tip">
+<p class="callout__title">Recommended Approach</p>
+<p>Architects should delegate framework code to senior developers and focus their coding efforts on non-critical areas: proof-of-concepts, technical debt reduction, bug fixes, automation tooling, and code reviews. Working on features one to three iterations ahead of the main team keeps architects connected to the codebase without blocking progress.</p>
+</div>
 
 
 ---
@@ -93,21 +95,20 @@ Instead, architects should delegate framework code to senior developers and focu
 
 When organizing system components, architects face a fundamental choice: partition by technical capabilities or by business domains. This decision profoundly affects team structure, communication patterns, and long-term maintainability.
 
-### Technical Partitioning
-
-Technical partitioning organizes the system by technical capabilities: presentation layer, business logic layer, and persistence layer. Each layer contains code related to a specific technical concern, regardless of which business domain it serves.
-
-This approach provides clear technical separation and aligns naturally with traditional layered architecture patterns. Developers with specialized skills (frontend, backend, database) can focus on their areas of expertise.
-
-However, technical partitioning creates high global coupling. A single business feature often requires changes across all layers, forcing coordination between multiple teams. Domain concepts scatter across layers, making it harder to understand business workflows. Migrating to distributed architecture becomes difficult because technical layers don't map cleanly to service boundaries.
-
-### Domain Partitioning
-
-Domain partitioning organizes the system by business domains or workflows, following Domain-Driven Design principles. Each partition contains all the technical layers needed to deliver business capability within a specific domain.
-
-This approach models the business more naturally and supports cross-functional teams that own complete vertical slices of functionality. Migrating to distributed architecture becomes simpler because domain boundaries provide natural service boundaries.
-
-The trade-off is that customization code (such as authentication or logging) appears in multiple places rather than being centralized. Maintaining consistency across domains requires discipline and shared standards.
+<div class="comparison">
+<div class="content-card">
+<h4>Technical Partitioning</h4>
+<p>Organizes the system by technical capabilities: presentation layer, business logic layer, and persistence layer. Each layer contains code related to a specific technical concern, regardless of which business domain it serves.</p>
+<p><strong>Advantages:</strong> Clear technical separation, aligns with traditional layered architecture patterns, developers with specialized skills can focus on their areas.</p>
+<p><strong>Trade-offs:</strong> High global coupling, single business feature requires changes across all layers, domain concepts scatter across layers, difficult to migrate to distributed architecture.</p>
+</div>
+<div class="content-card">
+<h4>Domain Partitioning</h4>
+<p>Organizes the system by business domains or workflows, following Domain-Driven Design principles. Each partition contains all the technical layers needed to deliver business capability within a specific domain.</p>
+<p><strong>Advantages:</strong> Models the business more naturally, supports cross-functional teams owning vertical slices, natural service boundaries for distributed architecture.</p>
+<p><strong>Trade-offs:</strong> Customization code appears in multiple places, maintaining consistency requires discipline, shared standards needed across domains.</p>
+</div>
+</div>
 
 ### Conway's Law
 
@@ -129,26 +130,25 @@ The **Inverse Conway Maneuver** deliberately structures teams to encourage the d
 
 Team organization directly affects architecture through Conway's Law, but not all team structures are equal. Matthew Skelton and Manuel Pais identified four fundamental team types that optimize software delivery:
 
-### Stream-Aligned Teams
-
-Stream-aligned teams align to a flow of work from a business domain. They focus on a single business domain, moving quickly to deliver discrete value. This is the primary team type in most organizations.
-
-Think of a checkout team, inventory team, or customer service team. Each owns a complete vertical slice of functionality within their domain and can deliver value independently.
-
-### Enabling Teams
-
-Enabling teams bridge capability gaps across stream-aligned teams. They provide research, learning, and specialized knowledge to help teams overcome obstacles.
-
-These teams offer temporary assistance rather than creating permanent dependencies. An enabling team might help multiple stream-aligned teams adopt Kubernetes, then move on to the next capability gap once teams become self-sufficient.
-
-### Complicated-Subsystem Teams
-
-Complicated-subsystem teams build and maintain systems requiring specialized knowledge that would overwhelm stream-aligned teams. Examples include video processing engines, mathematical algorithm libraries, or real-time trading systems.
-
-These teams reduce cognitive load on stream-aligned teams by encapsulating complexity behind clean interfaces. The stream-aligned team can use the subsystem without needing to understand its internal details.
-
-### Platform Teams
-
-Platform teams provide internal products that accelerate stream-aligned teams. They build self-service APIs, tools, and services that form the foundation other teams build upon.
-
-Platform teams treat other teams as customers. They don't just provide infrastructure; they provide a product experience that makes stream-aligned teams more productive. A good platform team reduces the burden on stream-aligned teams without creating dependencies or bottlenecks.
+<div class="card-group">
+<div class="content-card content-card--accent">
+<h4>Stream-Aligned Teams</h4>
+<p>Align to a flow of work from a business domain. They focus on a single business domain, moving quickly to deliver discrete value. This is the primary team type in most organizations.</p>
+<p><em>Examples: checkout team, inventory team, customer service team</em></p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Enabling Teams</h4>
+<p>Bridge capability gaps across stream-aligned teams. They provide research, learning, and specialized knowledge to help teams overcome obstacles.</p>
+<p>These teams offer temporary assistance rather than creating permanent dependencies.</p>
+</div>
+<div class="content-card content-card--accent-warning">
+<h4>Complicated-Subsystem Teams</h4>
+<p>Build and maintain systems requiring specialized knowledge that would overwhelm stream-aligned teams.</p>
+<p><em>Examples: video processing engines, mathematical algorithm libraries, real-time trading systems</em></p>
+</div>
+<div class="content-card content-card--accent">
+<h4>Platform Teams</h4>
+<p>Provide internal products that accelerate stream-aligned teams. They build self-service APIs, tools, and services that form the foundation other teams build upon.</p>
+<p>They treat other teams as customers, providing product experiences that make stream-aligned teams more productive.</p>
+</div>
+</div>

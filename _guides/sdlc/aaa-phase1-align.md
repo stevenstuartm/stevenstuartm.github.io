@@ -62,11 +62,15 @@ Align applies at every level of work:
 - Demonstrate genuine interest in stakeholder needs, not just their requirements
 - In every meeting, ask "Who else should be involved?"
 
-**Red Flags**:
-- Missing key stakeholders (operations, security, compliance, end users)
-- Vague success criteria ("make it faster")
-- Stakeholders who don't understand what alignment involves
-- Pressure to "start coding" without proper discovery
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags</p>
+<ul>
+<li>Missing key stakeholders (operations, security, compliance, end users)</li>
+<li>Vague success criteria ("make it faster")</li>
+<li>Stakeholders who don't understand what alignment involves</li>
+<li>Pressure to "start coding" without proper discovery</li>
+</ul>
+</div>
 
 ---
 
@@ -98,12 +102,16 @@ Align applies at every level of work:
 - Document acceptance criteria clearly so there's no ambiguity later
 - Think holistically about how requirements impact architecture
 
-**Red Flags**:
-- Gold plating (collecting every nice-to-have)
-- Vague, unmeasurable requirements ("fast," "scalable," "user-friendly")
-- No prioritization or everything is P0
-- Analysis paralysis (too long in discovery)
-- Accepting vague requirements without pushing for specifics
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags</p>
+<ul>
+<li>Gold plating (collecting every nice-to-have)</li>
+<li>Vague, unmeasurable requirements ("fast," "scalable," "user-friendly")</li>
+<li>No prioritization or everything is P0</li>
+<li>Analysis paralysis (too long in discovery)</li>
+<li>Accepting vague requirements without pushing for specifics</li>
+</ul>
+</div>
 
 ---
 
@@ -138,12 +146,16 @@ Align applies at every level of work:
 - Budget time for organizational overhead (approvals, procurement, access delays)
 - Be honest about uncertainties—don't sugarcoat risks
 
-**Red Flags**:
-- Treating preferences as constraints
-- Missing organizational/political risks
-- Risk lists without mitigation strategies
-- Assuming assumptions are validated without testing them
-- Underestimating non-technical delays (approvals, access provisioning)
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags</p>
+<ul>
+<li>Treating preferences as constraints</li>
+<li>Missing organizational/political risks</li>
+<li>Risk lists without mitigation strategies</li>
+<li>Assuming assumptions are validated without testing them</li>
+<li>Underestimating non-technical delays (approvals, access provisioning)</li>
+</ul>
+</div>
 
 ---
 
@@ -176,12 +188,16 @@ Align applies at every level of work:
 - Explain methodology and assumptions clearly
 - Flag high-uncertainty areas for stakeholder awareness
 
-**Red Flags**:
-- False precision ("4.3 months")
-- Anchoring bias (stakeholder suggests timeline, skews your estimate)
-- Ignoring non-development work (testing, deployment, documentation)
-- No contingency buffer (typically 20-30%)
-- Estimating without team input
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags</p>
+<ul>
+<li>False precision ("4.3 months")</li>
+<li>Anchoring bias (stakeholder suggests timeline, skews your estimate)</li>
+<li>Ignoring non-development work (testing, deployment, documentation)</li>
+<li>No contingency buffer (typically 20-30%)</li>
+<li>Estimating without team input</li>
+</ul>
+</div>
 
 ---
 
@@ -227,23 +243,29 @@ During Align, visualization serves discovery. The goal is to ensure stakeholders
 - You're still discovering what the problem actually is (too early to diagram)
 - Creating the diagram would take longer than the value it provides
 
-### How to Do This Well
+<div class="callout callout--tip">
+<p class="callout__title">How to Do This Well</p>
+<ul>
+<li><strong>Keep it simple</strong> - Use the minimum formality needed for clarity</li>
+<li><strong>Make it collaborative</strong> - Sketch together with stakeholders, don't present finished diagrams</li>
+<li><strong>Focus on boundaries</strong> - What's in scope? What's out? Who owns what?</li>
+<li><strong>Iterate quickly</strong> - Diagrams should evolve as understanding evolves</li>
+<li><strong>Don't over-invest</strong> - These are discovery tools, not deliverables</li>
+<li><strong>Test understanding</strong> - Ask stakeholders to explain the diagram back to you</li>
+</ul>
+</div>
 
-- **Keep it simple** - Use the minimum formality needed for clarity
-- **Make it collaborative** - Sketch together with stakeholders, don't present finished diagrams
-- **Focus on boundaries** - What's in scope? What's out? Who owns what?
-- **Iterate quickly** - Diagrams should evolve as understanding evolves
-- **Don't over-invest** - These are discovery tools, not deliverables
-- **Test understanding** - Ask stakeholders to explain the diagram back to you
-
-### Red Flags
-
-- ❌ Creating UML class diagrams during Align—you don't know the solution yet
-- ❌ Spending hours on polished diagrams before you've agreed on the problem
-- ❌ Using diagrams to avoid conversations ("here's the architecture, read it")
-- ❌ Formal notation that stakeholders don't understand
-- ❌ Diagrams that become stale immediately because they're not maintained
-- ❌ Diagramming the solution when you're supposed to be understanding the problem
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags</p>
+<ul>
+<li>Creating UML class diagrams during Align—you don't know the solution yet</li>
+<li>Spending hours on polished diagrams before you've agreed on the problem</li>
+<li>Using diagrams to avoid conversations ("here's the architecture, read it")</li>
+<li>Formal notation that stakeholders don't understand</li>
+<li>Diagrams that become stale immediately because they're not maintained</li>
+<li>Diagramming the solution when you're supposed to be understanding the problem</li>
+</ul>
+</div>
 
 ---
 

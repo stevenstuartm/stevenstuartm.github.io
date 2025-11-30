@@ -37,11 +37,13 @@ layout: default
                 <a href="{{ '/study-guides.html' | relative_url }}#{{ page.category | slugify }}" class="category">{{ page.category }}</a>
             </nav>
             <h1 class="guide-title">{{ page.title }}</h1>
-            {% if page.category %}
-            <div class="guide-meta">
-                <span class="category-badge">{{ page.category }}</span>
+            {% assign words = content | strip_html | number_of_words %}
+            {% assign minutes = words | divided_by: 200 %}
+            {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+            <div class="reading-time">
+                <span class="reading-time-icon">📖</span>
+                <span class="reading-time-text">{{ minutes }} min read</span>
             </div>
-            {% endif %}
         </div>
     </header>
 
@@ -151,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const guideContainer = document.getElementById('guideContainer');
 
     if (!tocToggle || !guideToc || !guideContainer) return;
-    
+
     function toggleTOC(forceClose = false) {
         if (forceClose) {
             tocToggle.classList.remove('expanded');
@@ -160,6 +162,12 @@ document.addEventListener('DOMContentLoaded', function() {
             tocToggle.classList.toggle('expanded');
             guideToc.classList.toggle('expanded');
         }
+    }
+
+    // Expand TOC by default on desktop
+    if (window.innerWidth >= 1024) {
+        tocToggle.classList.add('expanded');
+        guideToc.classList.add('expanded');
     }
 
     tocToggle.addEventListener('click', function() {
