@@ -1,6 +1,8 @@
 ---
 title: "Behavioral Patterns"
-category: Object-Oriented Programming
+layout: guide
+category: Programming Patterns
+subcategory: GoF Patterns
 description: "Behavioral design patterns for object communication including Observer, Strategy, Command, Template Method, Chain of Responsibility, and State patterns."
 tags: [oop, design-patterns, behavioral-patterns, strategy, observer, practical]
 ---

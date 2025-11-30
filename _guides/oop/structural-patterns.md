@@ -1,6 +1,8 @@
 ---
 title: "Structural Patterns"
-category: Object-Oriented Programming
+layout: guide
+category: Programming Patterns
+subcategory: GoF Patterns
 description: "Structural design patterns including Adapter, Bridge, Composite, Decorator, Facade, Flyweight, and Proxy for flexible object composition."
 tags: [oop, design-patterns, structural-patterns, adapter, decorator, practical]
 ---

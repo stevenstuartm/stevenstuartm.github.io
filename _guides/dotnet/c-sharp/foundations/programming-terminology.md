@@ -1,0 +1,421 @@
+---
+title: "Programming Terminology"
+layout: guide
+category: ".NET & C#"
+subcategory: "Foundations"
+description: "Essential programming concepts and terminology that form the foundation for understanding C# and modern software development"
+tags: [fundamentals, terminology, type-system, concepts, reference]
+---
+
+Understanding programming terminology is essential before diving into language-specific features. These concepts appear throughout technical discussions, documentation, and code reviews. This guide organizes fundamental terms by category, explaining what each means and why it matters.
+
+## Type System Concepts
+
+The type system is how a programming language classifies and manages data. Understanding these distinctions helps you reason about code behavior and catch errors earlier.
+
+### Statically Typed vs Dynamically Typed
+
+**Statically typed** languages determine variable types at compile time. The compiler knows what type each variable holds before the program runs, enabling early error detection.
+
+**Dynamically typed** languages determine types at runtime. Variables can hold any type, and type errors only surface when the code executes.
+
+C# is statically typed. When you declare `int count = 5`, the compiler knows `count` is an integer and will reject `count = "hello"` before the program runs. Python, by contrast, is dynamically typed and would only fail at runtime.
+
+The tradeoff: static typing catches errors earlier and enables better tooling (autocomplete, refactoring), while dynamic typing offers flexibility and faster prototyping.
+
+### Strongly Typed vs Weakly Typed
+
+**Strongly typed** languages enforce type rules strictly. You cannot implicitly treat one type as another without explicit conversion.
+
+**Weakly typed** languages allow implicit type coercion, automatically converting between types in ways that can be surprising.
+
+C# is strongly typed. Adding a string to an integer requires explicit conversion. JavaScript is weakly typed, so `"5" + 3` produces `"53"` through implicit coercion.
+
+Strong typing prevents subtle bugs where the language "helpfully" converts types in unexpected ways.
+
+### Type Inference
+
+**Type inference** allows the compiler to deduce types from context rather than requiring explicit declarations.
+
+In C#, `var items = new List<string>()` infers that `items` is `List<string>`. You get the safety of static typing without verbose declarations.
+
+Type inference is not dynamic typing. The type is still fixed at compile time; you simply let the compiler figure it out.
+
+### Nominal vs Structural Typing
+
+**Nominal typing** determines type compatibility by explicit declarations. Two types are compatible only if they share a declared relationship (inheritance, interface implementation).
+
+**Structural typing** determines compatibility by shape. If two types have the same structure (same properties and methods), they are compatible regardless of their names.
+
+C# uses nominal typing. A class must explicitly implement an interface; having matching methods is not enough. TypeScript uses structural typing, where any object with the right shape satisfies a type requirement.
+
+### Covariance and Contravariance
+
+These terms describe how type relationships work with generic types.
+
+**Covariance** preserves the type hierarchy. If `Dog` is a subtype of `Animal`, then `IEnumerable<Dog>` can be used where `IEnumerable<Animal>` is expected. You can substitute a more specific type.
+
+**Contravariance** reverses the hierarchy. An `Action<Animal>` can be used where `Action<Dog>` is expected because a method that handles any animal can certainly handle dogs.
+
+**Invariance** means no substitution is allowed. A `List<Dog>` cannot be used as `List<Animal>` because you could add a `Cat` to it through the `Animal` reference.
+
+These concepts matter when designing generic interfaces and understanding why certain type substitutions are allowed or forbidden.
+
+## Data Characteristics
+
+How data behaves—whether it can change, how it is stored, and how it is passed around—fundamentally affects program correctness and reasoning.
+
+### Mutable vs Immutable
+
+**Mutable** data can be changed after creation. You can modify its contents without creating a new instance.
+
+**Immutable** data cannot be changed once created. Any "modification" produces a new instance with the altered values.
+
+Strings in C# are immutable. Concatenating strings creates new string objects rather than modifying existing ones. Lists are mutable; adding an item changes the existing list.
+
+Immutability simplifies reasoning about code because data cannot change unexpectedly. It eliminates entire categories of bugs related to shared state and makes concurrent programming safer.
+
+### Value Types vs Reference Types
+
+**Value types** store data directly. Assigning a value type copies the data itself.
+
+**Reference types** store a reference (pointer) to data stored elsewhere. Assigning a reference type copies the reference, not the data—both variables point to the same object.
+
+In C#, `int`, `double`, `bool`, and `struct` are value types. Classes, arrays, and strings are reference types.
+
+Understanding this distinction explains why modifying a passed object affects the original, while modifying a passed integer does not.
+
+### Nullable
+
+A **nullable** type can hold either a value or the absence of a value (null).
+
+Value types in C# are non-nullable by default; `int` cannot be null. Adding `?` creates a nullable version: `int?` can hold an integer or null.
+
+With nullable reference types enabled, C# distinguishes between `string` (never null) and `string?` (might be null), helping catch null reference errors at compile time.
+
+### Boxing and Unboxing
+
+**Boxing** wraps a value type in an object, storing it on the heap. **Unboxing** extracts the value type from the object.
+
+When you assign an `int` to an `object` variable, boxing occurs. The integer value is copied to a heap-allocated object. Unboxing reverses this, copying the value back.
+
+Boxing has performance costs (heap allocation, copying) and should be avoided in performance-critical code. It commonly occurs when using non-generic collections or APIs that accept `object`.
+
+## Function and Method Behavior
+
+How functions behave—whether they have side effects, whether calling them multiple times is safe—affects testability, reliability, and reasoning about code.
+
+### Pure Functions
+
+A **pure function** has two properties: it always produces the same output for the same input, and it has no side effects.
+
+`Math.Sqrt(4)` is pure. It always returns 2 and changes nothing else. A function that reads from a database or modifies global state is not pure.
+
+Pure functions are easier to test (no setup required), easier to reason about (output depends only on input), and safe to cache or parallelize.
+
+### Side Effects
+
+A **side effect** is any observable change outside the function's return value. This includes modifying global state, writing to files, sending network requests, or mutating input parameters.
+
+Side effects are necessary for useful programs—you eventually need to save data or display output. The goal is to isolate side effects, keeping the core logic pure and pushing effects to the edges of the system.
+
+### Idempotent
+
+An **idempotent** operation produces the same result whether executed once or multiple times.
+
+Setting a value is idempotent: setting `x = 5` ten times leaves `x` at 5. Incrementing is not idempotent: incrementing ten times produces a different result than incrementing once.
+
+Idempotency is critical in distributed systems and APIs. An idempotent HTTP PUT means retrying a failed request is safe—you will not accidentally create duplicates or corrupt data.
+
+### Deterministic vs Non-Deterministic
+
+A **deterministic** function always produces the same output for the same input. A **non-deterministic** function may produce different outputs for the same input.
+
+`Math.Max(3, 5)` is deterministic. `Random.Next()` and `DateTime.Now` are non-deterministic—they return different values on different calls.
+
+Deterministic code is easier to test and debug because behavior is reproducible.
+
+### Arity
+
+**Arity** refers to the number of arguments a function accepts.
+
+- **Nullary**: zero arguments
+- **Unary**: one argument
+- **Binary**: two arguments
+- **Ternary**: three arguments
+- **Variadic**: variable number of arguments
+
+The term appears in discussions of functional programming and operator design.
+
+## Execution Models
+
+Understanding how code executes—sequentially, concurrently, or in parallel—is essential for writing responsive and efficient applications.
+
+### Synchronous vs Asynchronous
+
+**Synchronous** execution completes operations in sequence. Each operation must finish before the next begins. The caller waits (blocks) until the operation completes.
+
+**Asynchronous** execution allows operations to proceed without waiting for completion. The caller can continue other work while the operation runs, receiving notification when it finishes.
+
+Asynchronous programming is essential for I/O operations (network, disk) where waiting would waste resources. C#'s `async/await` makes asynchronous code read like synchronous code while preserving non-blocking behavior.
+
+### Blocking vs Non-Blocking
+
+**Blocking** operations halt execution until they complete. The thread cannot do anything else while waiting.
+
+**Non-blocking** operations return immediately, allowing the thread to continue. Completion is signaled through callbacks, events, or polling.
+
+A blocking file read pauses the thread until data arrives. A non-blocking read initiates the operation and returns immediately; you check later or receive a callback when data is available.
+
+### Concurrent vs Parallel
+
+**Concurrent** execution handles multiple tasks by interleaving them. Tasks make progress but not necessarily simultaneously. A single CPU can run concurrent tasks by switching between them.
+
+**Parallel** execution runs multiple tasks simultaneously. This requires multiple processors or cores.
+
+Concurrency is about structure—dealing with multiple things at once. Parallelism is about execution—doing multiple things at once. A web server handles concurrent requests (many in progress) but may not process them in parallel (if limited to one CPU).
+
+### Thread-Safe
+
+**Thread-safe** code functions correctly when accessed by multiple threads simultaneously.
+
+Thread safety requires handling shared state carefully. Without synchronization, concurrent access can cause race conditions, corrupted data, or crashes.
+
+Immutable data is inherently thread-safe because it cannot change. Mutable shared state requires locks, atomic operations, or other synchronization mechanisms.
+
+### Race Condition
+
+A **race condition** occurs when program behavior depends on the relative timing of events, such as thread scheduling.
+
+If two threads read a counter, increment it, and write it back without synchronization, the final value depends on execution order. Both might read 5, increment to 6, and write 6—losing an increment.
+
+Race conditions cause intermittent, hard-to-reproduce bugs. They are avoided through proper synchronization or by eliminating shared mutable state.
+
+### Deadlock
+
+A **deadlock** occurs when two or more operations wait for each other indefinitely, creating a cycle where none can proceed.
+
+Thread A holds lock 1 and waits for lock 2. Thread B holds lock 2 and waits for lock 1. Neither can proceed.
+
+Deadlocks are prevented by careful lock ordering, timeout mechanisms, or avoiding locks altogether through immutable data or lock-free algorithms.
+
+## System Integration
+
+When systems interact—between languages, between layers, or across networks—specific concepts describe the challenges and solutions.
+
+### Interoperability
+
+**Interoperability** is the ability of different systems, languages, or components to work together.
+
+C# interoperates with native code through P/Invoke, with COM components through interop assemblies, and with other .NET languages through the Common Language Runtime.
+
+Interoperability enables leveraging existing libraries, integrating legacy systems, and building polyglot applications where different languages handle different concerns.
+
+### Impedance Mismatch
+
+**Impedance mismatch** describes the friction when translating between different paradigms or representations.
+
+The classic example is object-relational impedance mismatch: objects have inheritance, encapsulation, and behavior; relational databases have tables, rows, and joins. Mapping between them requires compromises and translation code.
+
+Similar mismatches occur between different API styles (REST vs GraphQL), data formats (XML vs JSON), or programming paradigms (OOP vs functional).
+
+### Marshalling
+
+**Marshalling** transforms data for transmission between different environments—across process boundaries, between managed and unmanaged code, or over networks.
+
+When calling native code from C#, parameters are marshalled: converted to formats the native code expects, passed across the boundary, and results converted back.
+
+Marshalling has performance costs and can fail if types are not compatible. Understanding marshalling is essential when working with interop scenarios.
+
+### Serialization and Deserialization
+
+**Serialization** converts in-memory objects to a format suitable for storage or transmission (JSON, XML, binary). **Deserialization** reverses this, reconstructing objects from the serialized format.
+
+Serialization enables persistence (saving to files or databases), communication (sending objects over networks), and caching (storing computed results).
+
+Different formats trade off human readability (JSON, XML) against compactness and speed (binary formats like Protocol Buffers).
+
+## Memory and Resource Management
+
+How a language manages memory and resources affects performance, safety, and the code you must write.
+
+### Garbage Collection
+
+**Garbage collection** (GC) automatically reclaims memory that is no longer reachable. The runtime tracks object references and frees objects when nothing refers to them.
+
+C# uses garbage collection, eliminating manual memory management and the memory leaks and dangling pointers common in languages like C. The tradeoff is occasional GC pauses and less predictable performance.
+
+Understanding GC helps you avoid patterns that create excessive allocations or prevent objects from being collected.
+
+### Managed vs Unmanaged Code
+
+**Managed code** runs under runtime supervision (the CLR in .NET). The runtime handles memory management, type safety, and security.
+
+**Unmanaged code** runs directly on the hardware without runtime services. C and C++ produce unmanaged code with manual memory management and direct hardware access.
+
+C# primarily produces managed code but can interoperate with unmanaged code when necessary for performance or accessing system APIs.
+
+### Disposable Resources
+
+**Disposable resources** require explicit cleanup beyond garbage collection. File handles, database connections, and network sockets must be released promptly rather than waiting for eventual garbage collection.
+
+The `IDisposable` interface and `using` statement in C# provide deterministic cleanup. When a `using` block exits, the resource is immediately released regardless of how the block exits (normal completion or exception).
+
+### Memory Leak
+
+A **memory leak** occurs when memory is allocated but never freed, causing memory usage to grow indefinitely.
+
+In garbage-collected languages, leaks typically occur through unintended references—event handlers that are never unsubscribed, static collections that grow forever, or caches without eviction.
+
+While the garbage collector prevents traditional leaks, failing to release references effectively leaks memory by preventing collection.
+
+## Abstraction and Design
+
+These concepts describe how we structure and organize code for maintainability and clarity.
+
+### Encapsulation
+
+**Encapsulation** bundles data with the operations that act on it and restricts direct access to internal details.
+
+A class encapsulates its state by exposing public methods while keeping fields private. External code interacts through the defined interface, not by manipulating internal data directly.
+
+Encapsulation enables changing implementation details without affecting code that uses the class.
+
+### Abstraction
+
+**Abstraction** hides complexity by exposing only essential features while concealing implementation details.
+
+A database connection abstraction lets you execute queries without knowing the network protocol, connection pooling, or query parsing. You work with the concept of "database operations" rather than low-level details.
+
+Good abstractions simplify code by letting you think at higher levels. Poor abstractions leak details or hide information you actually need.
+
+### Polymorphism
+
+**Polymorphism** allows different types to be treated uniformly through a common interface.
+
+If `Dog` and `Cat` both implement `IAnimal` with a `Speak()` method, code can work with `IAnimal` without knowing the specific type. Each type provides its own implementation, and the correct one is called automatically.
+
+Polymorphism enables extensible designs where new types can be added without modifying existing code.
+
+### Coupling and Cohesion
+
+**Coupling** measures how dependent modules are on each other. **Cohesion** measures how related the elements within a module are.
+
+Low coupling and high cohesion are desirable. A module should do one thing well (high cohesion) without depending heavily on others (low coupling).
+
+Tight coupling makes changes ripple through the system. Poor cohesion creates modules that are hard to understand and maintain.
+
+### Dependency Injection
+
+**Dependency injection** provides dependencies to a component rather than having it create them internally.
+
+Instead of a service creating its own database connection, the connection is passed in (injected). This decouples the service from specific implementations and enables testing with mock dependencies.
+
+Dependency injection supports the Dependency Inversion Principle: high-level modules should not depend on low-level modules; both should depend on abstractions.
+
+## Error Handling Concepts
+
+How programs handle unexpected situations affects reliability and debuggability.
+
+### Exception
+
+An **exception** is an event that disrupts normal program flow, typically representing an error condition.
+
+Exceptions propagate up the call stack until caught by an exception handler. This separates error handling from normal logic and ensures errors cannot be silently ignored.
+
+### Throwing vs Catching
+
+**Throwing** an exception signals that something went wrong. **Catching** an exception handles the error condition.
+
+Code should throw exceptions for truly exceptional conditions—situations the immediate code cannot handle. Catch exceptions at levels where meaningful recovery is possible, not just to suppress errors.
+
+### Fail-Fast
+
+**Fail-fast** systems stop immediately when encountering an error rather than continuing in a potentially corrupted state.
+
+Failing fast makes problems obvious and prevents cascading failures or data corruption. A null check at method entry that throws immediately is fail-fast; silently using a default value is not.
+
+### Defensive Programming
+
+**Defensive programming** anticipates potential problems and handles them explicitly through validation, checks, and fallbacks.
+
+Validating inputs, checking preconditions, and handling edge cases explicitly makes code more robust. The balance is avoiding excessive checks that obscure the main logic.
+
+## API and Contract Concepts
+
+These concepts describe how components communicate and what guarantees they provide.
+
+### Contract
+
+A **contract** defines the obligations and guarantees between caller and callee.
+
+A method contract might specify: "If you pass a non-negative integer, I will return its square root. If you pass a negative number, I will throw an exception."
+
+Contracts can be implicit (documented behavior) or explicit (enforced through types, assertions, or contract libraries).
+
+### Precondition and Postcondition
+
+A **precondition** is what must be true before an operation executes. A **postcondition** is what the operation guarantees to be true after it completes.
+
+For a `Divide(a, b)` method, a precondition is `b != 0`. A postcondition might be `result * b == a`.
+
+Clear preconditions and postconditions make code behavior explicit and enable reasoning about correctness.
+
+### Invariant
+
+An **invariant** is a condition that remains true throughout a particular scope—a loop, an object's lifetime, or a system's operation.
+
+A class invariant might be "balance is always non-negative." Every method must preserve this invariant: it can assume the invariant holds on entry and must ensure it holds on exit.
+
+### Idempotent (API Context)
+
+In API design, **idempotency** means making the same request multiple times has the same effect as making it once.
+
+HTTP GET and DELETE are idempotent by specification. A well-designed API makes PUT idempotent. POST typically is not idempotent—repeated calls may create multiple resources.
+
+Idempotency enables safe retries and simpler error handling in distributed systems.
+
+## Composition and Reuse
+
+How we combine and reuse code affects flexibility and maintainability.
+
+### Inheritance vs Composition
+
+**Inheritance** creates new types by extending existing ones, inheriting their behavior. **Composition** creates new functionality by combining existing objects.
+
+Inheritance creates tight coupling between parent and child. Composition is more flexible—you can change composed objects at runtime and avoid the fragile base class problem.
+
+The principle "favor composition over inheritance" suggests using inheritance for genuine "is-a" relationships and composition for code reuse.
+
+### Delegation
+
+**Delegation** forwards work to another object rather than implementing it directly.
+
+A class might implement an interface by delegating all calls to an internal object that does the actual work. This enables composition and the decorator pattern.
+
+### Higher-Order Functions
+
+A **higher-order function** takes functions as arguments or returns functions as results.
+
+LINQ methods like `Where` and `Select` are higher-order functions—they accept functions (lambdas) that specify filtering or transformation logic.
+
+Higher-order functions enable powerful abstractions like mapping, filtering, and reducing collections without writing explicit loops.
+
+### Closure
+
+A **closure** is a function that captures variables from its enclosing scope.
+
+When a lambda in C# references a variable from the containing method, it captures that variable. The lambda can access and modify the variable even after the containing method returns.
+
+Closures enable powerful patterns but can cause subtle bugs if you capture loop variables incorrectly or inadvertently extend object lifetimes.
+
+## Key Takeaways
+
+- **Type system concepts** (static/dynamic, strong/weak, variance) determine how the compiler helps prevent errors
+- **Data characteristics** (mutability, value/reference) affect how data flows through your program and whether changes are isolated or shared
+- **Function behavior** (purity, idempotency, determinism) determines testability and reliability
+- **Execution models** (sync/async, concurrent/parallel) enable responsive and efficient programs
+- **Integration concepts** (interop, marshalling, serialization) describe how systems communicate across boundaries
+- **Design concepts** (encapsulation, coupling, dependency injection) guide code organization for maintainability
+
+These terms form a shared vocabulary for discussing software design and implementation. When you encounter them in documentation, code reviews, or technical discussions, you will understand not just the definition but the implications for your code.

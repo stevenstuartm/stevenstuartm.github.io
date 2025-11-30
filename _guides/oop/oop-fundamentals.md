@@ -1,6 +1,8 @@
 ---
 title: "OOP Fundamentals"
-category: Object-Oriented Programming
+layout: guide
+category: Programming Patterns
+subcategory: OOP Foundations
 description: "Master the four pillars of object-oriented programming: abstraction, encapsulation, inheritance, and polymorphism with practical C# examples and modern best practices."
 tags: [oop, fundamentals, encapsulation, inheritance, polymorphism, practical]
 ---

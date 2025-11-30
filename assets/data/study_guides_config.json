@@ -247,26 +247,25 @@
         }
       ]
     },
-    "Object-Oriented Programming": {
+    "Programming Patterns": {
       "subcategories": [
         {
           "name": "OOP Foundations",
-          "description": "Core OOP concepts and principles",
+          "description": "Core object-oriented concepts and principles",
           "guides": [
-            "oop-fundamentals.md",
-            "solid-principles.md",
-            "modern-best-practices.md",
-            "oop-quick-reference.md"
+            "oop/oop-fundamentals.md",
+            "oop/solid-principles.md",
+            "oop/modern-best-practices.md",
+            "oop/oop-quick-reference.md"
           ]
         },
         {
-          "name": "Design Patterns",
-          "description": "Common design patterns and their applications",
+          "name": "GoF Patterns",
+          "description": "Gang of Four design patterns and their applications",
           "guides": [
-            "creational-patterns.md",
-            "structural-patterns.md",
-            "behavioral-patterns.md",
-            "result-pattern.md"
+            "oop/creational-patterns.md",
+            "oop/structural-patterns.md",
+            "oop/behavioral-patterns.md"
           ]
         }
       ]
@@ -512,6 +511,99 @@
           "guides": [
             "machine-learning.md",
             "generative-ai.md"
+          ]
+        }
+      ]
+    },
+    ".NET & C#": {
+      "subcategories": [
+        {
+          "name": "Foundations",
+          "description": "Essential programming concepts and terminology that underpin C# and modern software development",
+          "guides": [
+            "dotnet/c-sharp/foundations/programming-terminology.md",
+            "dotnet/c-sharp/foundations/compilation-and-runtime.md"
+          ]
+        },
+        {
+          "name": "Language Fundamentals",
+          "description": "Core C# language features: types, operators, control flow, methods, and more",
+          "guides": [
+            "dotnet/c-sharp/fundamentals/types-and-variables.md",
+            "dotnet/c-sharp/fundamentals/operators-and-expressions.md",
+            "dotnet/c-sharp/fundamentals/control-flow.md",
+            "dotnet/c-sharp/fundamentals/methods-and-parameters.md",
+            "dotnet/c-sharp/fundamentals/delegates-and-events.md",
+            "dotnet/c-sharp/fundamentals/strings-and-text.md",
+            "dotnet/c-sharp/fundamentals/exceptions-and-errors.md",
+            "dotnet/c-sharp/fundamentals/attributes-and-reflection.md",
+            "dotnet/c-sharp/fundamentals/memory-management.md"
+          ]
+        },
+        {
+          "name": "Object-Oriented Programming",
+          "description": "Classes, structs, records, interfaces, inheritance, and properties",
+          "guides": [
+            "dotnet/c-sharp/oop/classes-and-structs.md",
+            "dotnet/c-sharp/oop/interfaces-and-inheritance.md",
+            "dotnet/c-sharp/oop/properties-and-indexers.md"
+          ]
+        },
+        {
+          "name": "Modern Features",
+          "description": "Modern C# features: nullable types, pattern matching, and records",
+          "guides": [
+            "dotnet/c-sharp/modern/nullable-reference-types.md",
+            "dotnet/c-sharp/modern/pattern-matching.md",
+            "dotnet/c-sharp/modern/records-and-immutability.md"
+          ]
+        },
+        {
+          "name": "Async & Concurrency",
+          "description": "Asynchronous programming, parallel processing, streaming, and synchronization",
+          "guides": [
+            "dotnet/c-sharp/async/async-await-fundamentals.md",
+            "dotnet/c-sharp/async/parallel-and-concurrent.md",
+            "dotnet/c-sharp/async/streaming-and-pipelines.md",
+            "dotnet/c-sharp/async/synchronization-primitives.md"
+          ]
+        },
+        {
+          "name": "Collections & Data",
+          "description": "Collections, generics, Span, Memory, and high-performance data handling",
+          "guides": [
+            "dotnet/c-sharp/collections/collections-overview.md",
+            "dotnet/c-sharp/collections/generics.md",
+            "dotnet/c-sharp/collections/span-and-memory.md"
+          ]
+        },
+        {
+          "name": "Core Libraries",
+          "description": "Essential .NET libraries: LINQ, Entity Framework, DI, networking, configuration, logging, and common utilities",
+          "guides": [
+            "dotnet/c-sharp/libraries/linq.md",
+            "dotnet/c-sharp/libraries/entity-framework-core.md",
+            "dotnet/c-sharp/libraries/console-and-environment.md",
+            "dotnet/c-sharp/libraries/dependency-injection.md",
+            "dotnet/c-sharp/libraries/httpclient-and-networking.md",
+            "dotnet/c-sharp/libraries/caching-patterns.md",
+            "dotnet/c-sharp/libraries/configuration-and-options.md",
+            "dotnet/c-sharp/libraries/logging.md",
+            "dotnet/c-sharp/libraries/json-serialization.md",
+            "dotnet/c-sharp/libraries/regular-expressions.md",
+            "dotnet/c-sharp/libraries/timers-and-scheduling.md",
+            "dotnet/c-sharp/libraries/file-system.md",
+            "dotnet/c-sharp/libraries/cryptography-basics.md"
+          ]
+        },
+        {
+          "name": "Advanced Topics",
+          "description": "Source generators, unsafe code, expression trees, and native interop",
+          "guides": [
+            "dotnet/c-sharp/advanced/source-generators.md",
+            "dotnet/c-sharp/advanced/unsafe-code-and-pointers.md",
+            "dotnet/c-sharp/advanced/expression-trees.md",
+            "dotnet/c-sharp/advanced/native-interop.md"
           ]
         }
       ]

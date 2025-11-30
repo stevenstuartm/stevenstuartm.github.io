@@ -1,6 +1,8 @@
 ---
 title: "Creational Patterns"
-category: Object-Oriented Programming
+layout: guide
+category: Programming Patterns
+subcategory: GoF Patterns
 description: "Creational design patterns including Builder, Factory Method, Abstract Factory, Singleton, and Prototype with modern C# implementations and best practices."
 tags: [oop, design-patterns, creational-patterns, factory, singleton, practical]
 ---

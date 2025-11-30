@@ -1,6 +1,8 @@
 ---
 title: "SOLID Principles"
-category: Object-Oriented Programming
+layout: guide
+category: Programming Patterns
+subcategory: OOP Foundations
 description: "Deep dive into SOLID principles: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion with practical examples."
 tags: [oop, design-patterns, solid, fundamentals, maintainability, practical]
 ---
