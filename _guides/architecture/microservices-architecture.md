@@ -9,6 +9,10 @@ tags: [architecture, distributed-systems, microservices, scalability, domain-dri
 
 Microservices architecture, popularized by Martin Fowler and James Lewis in 2014, takes distributed architecture to its logical extreme. The system splits into many fine-grained services, each representing a small, focused business capability. Each service owns its data, deploys independently, and can use different technologies. This maximizes evolvability and team autonomy but requires significant operational maturity.
 
+<blockquote class="pull-quote">
+<p>Each service owns its data, deploys independently, and can use different technologies.</p>
+</blockquote>
+
 ## How It Works
 
 Each microservice represents a bounded context from Domain-Driven Design: a cohesive business capability with clear boundaries. Services follow a "share nothing" philosophy. They don't share databases, libraries, or runtime dependencies. Communication happens exclusively through well-defined APIs (REST, gRPC, messaging).
@@ -56,6 +60,10 @@ How much inter-service communication does a workflow require? The more services 
 If completing an order requires 15 service calls, you have too many services or wrong boundaries. Either consolidate services or rethink the workflow to reduce coordination.
 
 High choreography (many services communicating to accomplish a task) suggests wrong boundaries. Services should be relatively independent, not constantly collaborating.
+
+<blockquote class="pull-quote">
+<p>If you need frequent distributed transactions, the services belong together.</p>
+</blockquote>
 
 ## Data Management
 
@@ -115,6 +123,10 @@ A service mesh provides a unified control plane managing all sidecars consistent
 - Resilience (retries, circuit breakers, rate limiting)
 
 **When needed**: When you have many services and managing operational concerns individually becomes unwieldy. Service meshes add complexity, so adopt them when the operational burden justifies it.
+
+<blockquote class="pull-quote">
+<p>The service doesn't implement operational concerns. The sidecar handles the complexity.</p>
+</blockquote>
 
 ## Characteristics
 

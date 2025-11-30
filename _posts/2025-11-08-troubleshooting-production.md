@@ -11,7 +11,11 @@ I've watched engineers spin for hours during production incidents, not because t
 
 Most troubleshooting failures aren't from lack of effort. Engineers work hard during incidents. The failures come from investigating without reproduction, treating assumptions as facts, fixing symptoms instead of causes, and changing multiple things simultaneously. These mistakes extend outages, create incomplete fixes, and guarantee you'll fight the same incident again.
 
-The teams that resolve incidents fastest are the ones disciplined enough to slow down and understand what they're fixing. Whether you're investigating alone at 2 AM or coordinating a war room with twenty people, the principles are the same.
+<blockquote class="pull-quote">
+<p>The teams that resolve incidents fastest are the ones disciplined enough to slow down and understand what they're fixing.</p>
+</blockquote>
+
+Whether you're investigating alone at 2 AM or coordinating a war room with twenty people, the principles are the same.
 
 ## Gather Facts, Not Interpretations
 
@@ -64,6 +68,10 @@ Almost nothing in troubleshooting starts or finishes without reproduction. Miss 
 
 If you can trigger the issue deliberately, you know the conditions that cause it. You understand not just that something broke, but why it breaks. Without that understanding, you're guessing about the problem and about whether your fix actually works.
 
+<blockquote class="pull-quote">
+<p>Without reproduction, you're guessing about the problem and guessing about the fix.</p>
+</blockquote>
+
 Consider the typical pattern: users report intermittent login failures, you check logs, see authentication errors, and update the session configuration. The errors stop. Did you fix it? Maybe the config helped, maybe the issue stopped on its own, maybe it's happening less frequently but you're not seeing it. You have no way to know, which means the next time it happens you start from zero again.
 
 Compare that to actually reproducing the issue. You discover failures occur when the session store becomes unavailable, and you can trigger it by stopping the session store. Now you know what's happening. After your fix, stopping the session store no longer causes failures because you added failover logic. You proved the fix works.
@@ -96,6 +104,10 @@ The most common mistake is assuming intermittent means irreproducible. Intermitt
 Another pattern: stopping investigation once you find correlation. Correlation shows you where to look; reproduction proves causation. Just because deployments happen before errors doesn't mean deployments cause errors. Reproduce the issue by deploying to prove the connection.
 
 Then there's declaring victory too early: the issue hasn't recurred in an hour, so you close the incident, and it happens again the next day. Absence of the problem isn't proof you fixed it. Reproduction before and after the fix is proof.
+
+<blockquote class="pull-quote">
+<p>Correlation shows you where to look; reproduction proves causation.</p>
+</blockquote>
 
 ## Change One Thing at a Time
 

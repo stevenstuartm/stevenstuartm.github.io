@@ -17,6 +17,10 @@ Timeboxes attempt to enforce through calendar boundaries what discipline should 
 
 **Delivery cycles should match the work, not predetermined calendar blocks.**
 
+<blockquote class="pull-quote">
+<p>Timeboxes attempt to enforce through calendar boundaries what discipline should provide naturally.</p>
+</blockquote>
+
 ## A Solution: Shaped Kanban
 
 What if you could have discipline without timeboxes?
@@ -84,6 +88,10 @@ Training wheels build confidence while you learn to ride, but the goal is removi
 "We can't remove sprints; how would we know when things are done?" That question reveals the dysfunction. If you don't know when work is done without a calendar, you never developed genuine agreement on what "done" means.
 
 Timeboxes don't teach alignment. They substitute process compliance for shared understanding.
+
+<blockquote class="pull-quote">
+<p>When alignment exists, delivery cycles follow naturally. When alignment doesn't exist, timeboxes just create the illusion of progress.</p>
+</blockquote>
 
 **Start from alignment and discipline, not from artificial constraints.** Teams with genuine discipline naturally operate with tempo: shaping work to understood scope, committing when ready, building with focus, and shipping when done. The tempo is real but contextual. Sometimes a feature takes 3 days while another takes 6 weeks. The rhythm comes from alignment discipline, not from artificial sprint boundaries.
 
@@ -171,7 +179,9 @@ This discipline enables multi-cycle flexibility. Develop multiple features in pa
 
 This is not "move fast and break things" chaos. It is disciplined flow with constraints based on capacity and feature complexity, not arbitrary calendars.
 
-"Done" means the feature delivers the agreed value, period. Not "the sprint ended so we call it done."
+<blockquote class="pull-quote">
+<p>"Done" means the feature delivers the agreed value, period. Not "the sprint ended so we call it done."</p>
+</blockquote>
 
 ## Shaped Kanban and the AAA Cycle
 

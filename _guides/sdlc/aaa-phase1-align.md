@@ -26,6 +26,10 @@ Regardless of project size or methodology, alignment follows these steps:
 
 The depth and formality scale with scope and risk, but these questions remain constant.
 
+<blockquote class="pull-quote">
+<p>Understand the problem before committing to a solution.</p>
+</blockquote>
+
 ### Recursive Application
 
 Align applies at every level of work:
@@ -175,6 +179,10 @@ Align applies at every level of work:
 - Explain methodology and assumptions
 - Flag high-uncertainty areas
 
+<blockquote class="pull-quote">
+<p>Be realistic, not optimistic. Frame alignment as risk mitigation.</p>
+</blockquote>
+
 **Feasibility Assessment**:
 - Go: Estimates fit within constraints
 - No-Go: Not feasible, recommend cancellation
@@ -208,6 +216,10 @@ Align applies at every level of work:
 **Use diagrams to build shared understanding, not to create documentation.**
 
 During Align, visualization serves discovery. The goal is to ensure stakeholders share the same mental model of the problem space, system boundaries, and key relationships. These are working artifacts, not formal documentation.
+
+<blockquote class="pull-quote">
+<p>Use diagrams to build shared understanding, not to create documentation.</p>
+</blockquote>
 
 ### What Works at This Stage
 

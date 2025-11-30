@@ -33,6 +33,10 @@ Software architecture encompasses five interconnected dimensions:
 
 Together, these five dimensions create a complete picture of the system's architecture. Neglecting any dimension leads to incomplete architectural thinking.
 
+<blockquote class="pull-quote">
+<p>Characteristics drive architectural decisions more than functional requirements do.</p>
+</blockquote>
+
 ## Architectural Thinking
 
 ### Architecture vs Design
@@ -50,6 +54,10 @@ The distinction isn't always clear-cut, but recognizing the difference helps arc
 Architects must develop technical breadth rather than depth. Breadth means knowing a little about many technologies, patterns, and domains. Depth means expert-level knowledge in a narrow area. While developers benefit from deep expertise in specific technologies, architects need broad awareness across the technology landscape.
 
 The goal is to move technologies and concepts from "unknown unknowns" (things you don't know you don't know) into "known unknowns" (things you know exist but don't deeply understand). When a decision requires deep knowledge, you can then invest time to move that specific area into "knowns."
+
+<blockquote class="pull-quote">
+<p>Breadth means knowing a little about many technologies, patterns, and domains. Depth means expert-level knowledge in a narrow area.</p>
+</blockquote>
 
 <div class="callout callout--warning">
 <p class="callout__title">Common Dysfunctions</p>
@@ -119,6 +127,10 @@ When organizing system components, architects face a fundamental choice: partiti
 Conway's Law observes that team structure directly influences system architecture. If you organize teams by technical specialty (frontend team, backend team, database team), you'll likely build a technically-partitioned, layered architecture. If you organize teams by business domain (checkout team, inventory team, payments team), you'll likely build a domain-partitioned architecture.
 
 This happens because people design systems that reflect their communication patterns. Frontend and backend developers who rarely talk will build systems with rigid boundaries between presentation and business logic. Cross-functional teams that collaborate daily will build more integrated vertical slices.
+
+<blockquote class="pull-quote">
+<p>People design systems that reflect their communication patterns.</p>
+</blockquote>
 
 The **Inverse Conway Maneuver** deliberately structures teams to encourage the desired architecture. If you want a domain-partitioned architecture, organize cross-functional teams around business domains first. The architecture will follow naturally.
 

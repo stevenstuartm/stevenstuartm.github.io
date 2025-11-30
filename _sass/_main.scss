@@ -1795,6 +1795,63 @@ main {
     margin-bottom: var(--spacing-sm);
 }
 
+/* ===== Pull Quotes ===== */
+/* Highlighted quotes to break up long prose sections */
+
+.pull-quote {
+    position: relative;
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    background: var(--color-bg-alt);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    font-size: 1.15em;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.pull-quote::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    font-size: 4em;
+    font-family: Georgia, serif;
+    color: var(--color-primary);
+    opacity: 0.2;
+    line-height: 1;
+}
+
+.pull-quote p {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.pull-quote cite {
+    display: block;
+    margin-top: var(--spacing-sm);
+    font-size: 0.85em;
+    font-style: normal;
+    color: var(--color-text-light);
+}
+
+/* Alternate pull quote style - centered */
+.pull-quote--centered {
+    text-align: center;
+    border-left: none;
+    border-top: 2px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    border-radius: 0;
+    padding: var(--spacing-lg);
+}
+
+.pull-quote--centered::before {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 /* ===== Variable Paragraph Density ===== */
 /* Extra breathing room around dense content elements */
 
