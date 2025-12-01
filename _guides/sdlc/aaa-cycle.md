@@ -11,13 +11,11 @@ tags: [sdlc, methodology, collaboration, stakeholder-management, leadership, fun
 
 AAA is a **guiding discipline and principle** for software development: a way of thinking that provides guardrails against the most common mistakes organizations and development teams make. It is a philosophy that transcends any specific methodology, operating from the software architect's perspective on what truly matters.
 
+### AAA as a Way of Valuing
+
 <blockquote class="pull-quote">
 <p>AAA is about how we value before how we work.</p>
 </blockquote>
-
-### AAA as a Way of Valuing
-
-AAA is about **how we value** before **how we work**:
 
 <div class="card-group">
 <div class="content-card content-card--accent">

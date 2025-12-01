@@ -36,7 +36,7 @@ The architect-developer divide is one of the most destructive patterns in softwa
 
 **How to prevent it**:
 
-**Form strong bidirectional relationships**: Architects need developers to implement architecture and provide reality checks. Developers need architects to provide context, remove roadblocks, and make cross-cutting decisions. Neither succeeds without the other.
+**Form strong bidirectional relationships**: Build trust through regular interaction, shared context, and mutual respect. Neither architects nor developers succeed in isolation.
 
 **Stay connected to implementation**: Write code. Not production code if you're stretched thin, but proofs of concept, prototypes, and tool evaluations. You need hands-on experience to understand what you're asking teams to do.
 

@@ -51,13 +51,13 @@ The distinction isn't always clear-cut, but recognizing the difference helps arc
 
 ### Technical Breadth vs Depth
 
-Architects must develop technical breadth rather than depth. Breadth means knowing a little about many technologies, patterns, and domains. Depth means expert-level knowledge in a narrow area. While developers benefit from deep expertise in specific technologies, architects need broad awareness across the technology landscape.
+<blockquote class="pull-quote">
+<p>Architects must develop technical breadth rather than depth.</p>
+</blockquote>
+
+Breadth means knowing a little about many technologies, patterns, and domains. Depth means expert-level knowledge in a narrow area. While developers benefit from deep expertise in specific technologies, architects need broad awareness across the technology landscape.
 
 The goal is to move technologies and concepts from "unknown unknowns" (things you don't know you don't know) into "known unknowns" (things you know exist but don't deeply understand). When a decision requires deep knowledge, you can then invest time to move that specific area into "knowns."
-
-<blockquote class="pull-quote">
-<p>Breadth means knowing a little about many technologies, patterns, and domains. Depth means expert-level knowledge in a narrow area.</p>
-</blockquote>
 
 <div class="callout callout--warning">
 <p class="callout__title">Common Dysfunctions</p>

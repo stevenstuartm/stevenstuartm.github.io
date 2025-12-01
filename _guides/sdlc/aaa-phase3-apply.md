@@ -13,10 +13,6 @@ tags: [sdlc, aaa-cycle, implementation, delivery, governance, practical]
 
 **Execute the agreed plan with discipline while maintaining continuous alignment.** This is sustained execution with governance, quality assurance, stakeholder communication, and value delivery.
 
-<blockquote class="pull-quote">
-<p>Apply is not blind execution; it's disciplined delivery that honors the agreement while maintaining the courage to pause when discovery demands it.</p>
-</blockquote>
-
 ### The Universal Pattern
 
 Regardless of project size or methodology, application follows these steps:
@@ -49,7 +45,9 @@ Apply applies at every level of work:
 
 ## The Core Value: Honoring the Agreement While Learning
 
-**Apply is not blind execution.** It's disciplined delivery that honors what was agreed in Phase 2 while maintaining the courage to pause and realign when discovery demands it.
+<blockquote class="pull-quote">
+<p>Apply is not blind execution; it's disciplined delivery that honors the agreement while maintaining the courage to pause when discovery demands it.</p>
+</blockquote>
 
 Discovery during implementation is inevitable:
 - Implementation reveals hidden complexity

@@ -124,10 +124,6 @@ A service mesh provides a unified control plane managing all sidecars consistent
 
 **When needed**: When you have many services and managing operational concerns individually becomes unwieldy. Service meshes add complexity, so adopt them when the operational burden justifies it.
 
-<blockquote class="pull-quote">
-<p>The service doesn't implement operational concerns. The sidecar handles the complexity.</p>
-</blockquote>
-
 ## Characteristics
 
 | Characteristic | Rating | Notes |

@@ -119,11 +119,11 @@ Blue-green uses two environments to ensure smooth transitions, while canary grad
 
 ## Canary Release
 
-A canary deployment is a deployment strategy that releases an application or service incrementally to a subset of users. The canary technique targets certain users to receive access to the new application version, rather than certain servers.
-
 <blockquote class="pull-quote">
 <p>Canary release is the lowest risk deployment strategy. Issues are discovered incrementally with limited blast radius.</p>
 </blockquote>
+
+A canary deployment releases an application or service incrementally to a subset of users. The canary technique targets certain users to receive access to the new application version, rather than certain servers.
 
 ### How It Works
 1. **Deploy New Version**: Release to small subset of infrastructure (2-5% of traffic)
@@ -141,10 +141,8 @@ Load balancer can route traffic based on:
 - **Feature Flags**: Application-level routing controls
 
 ### Advantages
-- **Lowest Risk**: Canary release is the lowest risk-prone, compared to all other deployment strategies
 - **Real User Testing**: Test with actual production traffic and users
 - **Cost Efficient**: No need for duplicate environments
-- **Gradual Validation**: Issues discovered incrementally with limited impact
 - **Data-Driven Decisions**: Rich metrics for rollout decisions
 
 ### Disadvantages

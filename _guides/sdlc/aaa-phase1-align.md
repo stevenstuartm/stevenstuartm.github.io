@@ -26,10 +26,6 @@ Regardless of project size or methodology, alignment follows these steps:
 
 The depth and formality scale with scope and risk, but these questions remain constant.
 
-<blockquote class="pull-quote">
-<p>Understand the problem before committing to a solution.</p>
-</blockquote>
-
 ### Recursive Application
 
 Align applies at every level of work:
@@ -189,7 +185,6 @@ Align applies at every level of work:
 - Pivot: Adjust scope/timeline/approach to make feasible
 
 **How to Do This Well**:
-- Be realistic, not optimistic—frame alignment as risk mitigation
 - Involve the team—engineers doing the work should validate estimates
 - Show your work and include contingency explicitly
 - Provide ranges ("4-6 months") not false precision ("4.3 months")
@@ -213,13 +208,11 @@ Align applies at every level of work:
 
 ### Purpose
 
-**Use diagrams to build shared understanding, not to create documentation.**
-
-During Align, visualization serves discovery. The goal is to ensure stakeholders share the same mental model of the problem space, system boundaries, and key relationships. These are working artifacts, not formal documentation.
-
 <blockquote class="pull-quote">
 <p>Use diagrams to build shared understanding, not to create documentation.</p>
 </blockquote>
+
+During Align, visualization serves discovery. The goal is to ensure stakeholders share the same mental model of the problem space, system boundaries, and key relationships. These are working artifacts, not formal documentation.
 
 ### What Works at This Stage
 

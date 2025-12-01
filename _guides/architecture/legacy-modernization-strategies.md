@@ -81,13 +81,11 @@ The first decision is whether to modernize incrementally (brownfield) or rebuild
 
 ## The Strangler Fig Pattern
 
+The strangler fig pattern is the core pattern for incremental modernization, named after strangler fig trees that grow around host trees, eventually replacing them entirely.
+
 <blockquote class="pull-quote">
-<p>Gradually replace legacy system functionality with new implementation, running old and new systems in parallel until the legacy system can be retired.</p>
+<p>Run old and new systems in parallel. Migrate capability by capability until the legacy system can be retired.</p>
 </blockquote>
-
-The strangler fig pattern is the core pattern for incremental modernization.
-
-**Pattern origin**: Named after strangler fig trees that grow around host trees, eventually replacing them entirely.
 
 **How it works**:
 

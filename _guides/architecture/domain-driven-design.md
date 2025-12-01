@@ -147,6 +147,10 @@ The ACL isolates your domain model from the legacy system's structure and termin
 
 Subdomains are logical divisions of the business domain, not the software model. They represent different areas of business concern.
 
+<blockquote class="pull-quote">
+<p>Don't apply the same level of DDD rigor to every subdomain. Focus modeling effort on the core domain.</p>
+</blockquote>
+
 <div class="comparison">
 <div class="content-card content-card--accent">
 <h4>Core Domain</h4>
@@ -185,10 +189,6 @@ Subdomains are logical divisions of the business domain, not the software model.
 | Authentication | **Generic** | Buy (Okta, Auth0, Azure AD) |
 | Email delivery | **Generic** | Buy (SendGrid, AWS SES) |
 | Payment processing | **Generic** | Integrate (Stripe, PayPal) |
-
-<blockquote class="pull-quote">
-<p>Don't apply the same level of DDD rigor to every subdomain. Focus modeling effort on the core domain. Generic subdomains should use off-the-shelf solutions with minimal custom code.</p>
-</blockquote>
 
 ## Tactical Design: Implementing the Domain Model
 
