@@ -28,6 +28,10 @@ tags: [aws, kms, secrets-manager, encryption, key-management, security, secrets-
 
 ## What Problems KMS & Secrets Manager Solve
 
+<blockquote class="pull-quote">
+<p>Hardcoded RDS password in GitHub repo; repo made public; database compromised within 3 hours. Manual secret rotation takes 6 hours and is only done once per year due to complexity.</p>
+</blockquote>
+
 ### Without Centralized Key and Secret Management
 
 **Security Challenges:**
@@ -85,7 +89,10 @@ tags: [aws, kms, secrets-manager, encryption, key-management, security, secrets-
 
 **AWS Key Management Service (KMS)** is a managed service for creating and controlling encryption keys.
 
-**Core Concept:** KMS creates and stores Customer Master Keys (CMKs). You use CMKs to encrypt and decrypt data. CMKs never leave AWS HSMs unencrypted.
+<div class="callout callout--note">
+<p class="callout__title">Core Concept</p>
+<p>KMS creates and stores Customer Master Keys (CMKs). You use CMKs to encrypt and decrypt data. CMKs never leave AWS HSMs unencrypted.</p>
+</div>
 
 ### Key Types
 
@@ -165,6 +172,10 @@ aws kms enable-key-rotation \
   --key-id 12345678-1234-1234-1234-123456789012
 ```
 
+<blockquote class="pull-quote">
+<p>KMS automatic rotation generates new key material every 365 days. Old key material is retained for decryption, so applications don't need to change and encrypted data remains accessible.</p>
+</blockquote>
+
 **How Rotation Works:**
 
 ```
@@ -189,7 +200,10 @@ Year 2: CMK automatically generates key material version 2
 
 **AWS Secrets Manager** is a managed service for storing, retrieving, and rotating secrets (passwords, API keys, credentials).
 
-**Core Concept:** Store secrets in Secrets Manager. Applications retrieve secrets at runtime via API. Secrets automatically rotate on schedule.
+<div class="callout callout--tip">
+<p class="callout__title">Core Concept</p>
+<p>Store secrets in Secrets Manager. Applications retrieve secrets at runtime via API. Secrets automatically rotate on schedule.</p>
+</div>
 
 ### Secret Types
 

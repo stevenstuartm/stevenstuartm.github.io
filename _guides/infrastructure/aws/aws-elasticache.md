@@ -9,6 +9,10 @@ tags: [aws, elasticache, redis, memcached, caching, performance, cost-optimizati
 
 ## What Is Amazon ElastiCache?
 
+<blockquote class="pull-quote">
+<p>ElastiCache offloads read traffic from databases to cache, achieving 50-90% database query reduction with sub-millisecond response times.</p>
+</blockquote>
+
 Amazon ElastiCache is a fully managed in-memory caching service that supports Redis, Valkey, and Memcached. ElastiCache delivers sub-millisecond latency for read-heavy and compute-intensive workloads by storing frequently accessed data in memory.
 
 **What Problems ElastiCache Solves**:
@@ -81,7 +85,10 @@ ElastiCache supports three engines: **Redis**, **Valkey** (Redis fork), and **Me
 - **Valkey**: Fully open source (BSD license), 33% lower ElastiCache Serverless pricing, backed by 40+ companies
 - **Redis**: Redis 7.2 is the last fully open source version; Redis 8.0 uses AGPLv3 (restrictive for commercial use)
 
-**AWS Recommendation** (2024-2025): ElastiCache for Valkey offers 33% lower Serverless pricing and 20% lower node-based pricing compared to Redis. For new deployments, Valkey is the recommended engine.
+<div class="callout callout--tip">
+<p class="callout__title">AWS Recommendation (2024-2025)</p>
+<p>ElastiCache for Valkey offers 33% lower Serverless pricing and 20% lower node-based pricing compared to Redis. For new deployments, Valkey is the recommended engine.</p>
+</div>
 
 ## ElastiCache Deployment Options
 

@@ -1050,7 +1050,7 @@ ContentRedaction={
 
 <div class="callout callout--warning">
 <p class="callout__title">Common Pitfall: Using Standard Voices</p>
-<p>Standard voices sound robotic and unnatural for customer-facing applications. Always use neural voices for production—the quality difference is significant despite being 4x more expensive.</p>
+<p>Standard voices sound robotic and unnatural for customer-facing applications. Always use neural voices for production. The quality difference is significant despite being 4x more expensive.</p>
 </div>
 
 **1. Using standard voices when neural voices are needed**

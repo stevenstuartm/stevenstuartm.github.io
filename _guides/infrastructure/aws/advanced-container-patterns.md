@@ -21,6 +21,10 @@ tags: [aws, containers, kubernetes, ecs, eks, microservices, architecture, scala
 
 ## What Problems Advanced Container Patterns Solve
 
+<blockquote class="pull-quote">
+<p>Running 100 vCPUs on Fargate costs $2,880/month vs $720/month on EC2 Spot. Capacity providers optimize costs by mixing Fargate (baseline), EC2 On-Demand (critical), and Spot (batch workloads).</p>
+</blockquote>
+
 **Basic container orchestration** (covered in AWS Container Services guide) handles:
 - Running containers on ECS/EKS/Fargate
 - Load balancing with ALB/NLB

@@ -27,6 +27,10 @@ tags: [aws, cost-optimization, budgets, cost-explorer, savings-plans, reserved-i
 
 ## What Problems Cost Management Solves
 
+<blockquote class="pull-quote">
+<p>Finance asks "Why did AWS cost $150,000 last month instead of $100,000?" Without cost visibility, you're guessing. Cost Explorer shows the increase came from DynamoDB on-demand capacity traced to a specific application team.</p>
+</blockquote>
+
 AWS cost management tools address critical financial challenges in cloud infrastructure:
 
 **Visibility into cloud spend**: Finance asks "Why did AWS cost $150,000 last month instead of $100,000?" Without cost visibility, you're guessing. Cost Explorer shows the $50,000 increase came from DynamoDB on-demand capacity in us-east-1, traced to a specific application team.
@@ -37,7 +41,10 @@ AWS cost management tools address critical financial challenges in cloud infrast
 
 **Eliminating waste**: Trusted Advisor identifies 200 unattached EBS volumes costing $2,000/month, 15 idle RDS instances costing $8,000/month, and S3 buckets with Intelligent-Tiering potential saving $5,000/month. Total waste: $15,000/month.
 
-**Commitment-based savings**: Running steady-state workloads on On-Demand pricing costs $200,000/year. Savings Plans reduce the same workload to $120,000/year (40% savings) with no architectural changes.
+<div class="callout callout--tip">
+<p class="callout__title">Commitment-Based Savings</p>
+<p>Running steady-state workloads on On-Demand pricing costs $200,000/year. Savings Plans reduce the same workload to $120,000/year (40% savings) with no architectural changes.</p>
+</div>
 
 **Cost attribution across teams**: Organization has 30 development teams sharing AWS accounts. Without cost allocation, you can't tell which team drives costs. Cost allocation tags show Team A consumes 40% of budget, Team B consumes 25%, enabling accountability and chargeback.
 

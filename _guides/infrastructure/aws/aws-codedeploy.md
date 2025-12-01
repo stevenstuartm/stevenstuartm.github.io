@@ -27,6 +27,10 @@ tags: [aws, deployment, codedeploy, blue-green, canary, cicd, automation, devops
 
 ## What Problems CodeDeploy Solves
 
+<blockquote class="pull-quote">
+<p>CodeDeploy replaces the scramble to revert a bad deployment with an automatic rollback that recovers in under 5 minutes instead of 30.</p>
+</blockquote>
+
 AWS CodeDeploy automates application deployments to EC2, Lambda, and ECS:
 
 **Eliminate deployment downtime**: Manual deployments require stopping all instances, deploying code, and restarting. Users experience downtime. CodeDeploy performs rolling deployments, deploying to one instance at a time while others serve traffic. Zero downtime for users.
@@ -83,6 +87,11 @@ Each platform has different deployment capabilities and configurations.
 **Service-based (Lambda/ECS)**: CodeDeploy integrates directly with Lambda and ECS services to shift traffic and deploy new versions.
 
 ## Deployment Strategies
+
+<div class="callout callout--note">
+<p class="callout__title">Deployment Strategy Selection</p>
+<p>Start with in-place deployments for development and staging. Use blue/green for production applications requiring zero downtime and instant rollback capability.</p>
+</div>
 
 ### In-Place Deployment
 
@@ -903,6 +912,11 @@ echo "DB_PASSWORD=$DB_PASSWORD" >> /etc/myapp/config
 
 ## Common Pitfalls
 
+<div class="callout callout--warning">
+<p class="callout__title">Test Your Rollback Procedure</p>
+<p>Deployment rolls back automatically when needed, but if the rollback mechanism itself fails, your application ends up in a broken state. Periodically test rollbacks to verify they complete successfully.</p>
+</div>
+
 ### Lifecycle Hook Failures
 
 **Problem**: `ApplicationStart` hook fails, deployment aborted, but debugging information unclear.
@@ -988,6 +1002,10 @@ echo "DB_PASSWORD=$DB_PASSWORD" >> /etc/myapp/config
 **Solution**: Configure alarms for error rate, latency, and health metrics. Enable automatic rollback on alarm.
 
 ## Key Takeaways
+
+<blockquote class="pull-quote">
+<p>Canary deployments limit blast radius. Deploy to 10% of users first, monitor metrics, and proceed only if healthy. If issues are detected early, only 10% of users are affected.</p>
+</blockquote>
 
 **CodeDeploy automates deployments with zero downtime**: Blue/green deployments shift traffic from old version to new version without service interruption. Rolling deployments update instances gradually while maintaining availability.
 

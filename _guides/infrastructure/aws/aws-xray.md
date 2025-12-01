@@ -25,6 +25,10 @@ tags: [aws, observability, distributed-tracing, xray, monitoring, microservices,
 
 ## What Problems X-Ray Solves
 
+<blockquote class="pull-quote">
+<p>A request traverses Lambda → API Gateway → DynamoDB → SQS → another Lambda. The request takes 3 seconds, but which component caused the delay? X-Ray shows you the DynamoDB query consumed 2.8 seconds due to a missing index.</p>
+</blockquote>
+
 X-Ray is AWS's distributed tracing service that addresses critical observability challenges in modern architectures:
 
 **Root cause analysis for distributed systems**: A request traverses Lambda function → API Gateway → DynamoDB → SQS → another Lambda. The request takes 3 seconds, but which component caused the delay? X-Ray shows you that the DynamoDB query consumed 2.8 seconds due to a missing index.

@@ -28,6 +28,10 @@ tags: [aws, step-functions, orchestration, workflows, serverless, integration, a
 
 ## What Problems Step Functions Solves
 
+<blockquote class="pull-quote">
+<p>Step Functions provides visual workflow orchestration where you define workflows declaratively. It includes built-in error handling, automatic retries, and execution history for every workflow run.</p>
+</blockquote>
+
 ### Without Step Functions
 
 **Coordination Challenges:**
@@ -76,7 +80,10 @@ tags: [aws, step-functions, orchestration, workflows, serverless, integration, a
 
 **AWS Step Functions** is a serverless workflow orchestration service that coordinates distributed applications and microservices using visual workflows.
 
-**Core Concept:** Define workflow as state machine in Amazon States Language (ASL); Step Functions executes states, handles errors, tracks execution history.
+<div class="callout callout--note">
+<p class="callout__title">Core Concept</p>
+<p>Define workflow as state machine in Amazon States Language (ASL); Step Functions executes states, handles errors, and tracks execution history.</p>
+</div>
 
 ```
 Start → State 1 → State 2 → State 3 → End
@@ -215,10 +222,10 @@ Step Functions offers two workflow types optimized for different use cases.
 - Duration: 10M × 0.5 GB × 2 sec × $0.00001667 = $166.70
 - **Total: $176.70/month**
 
-**Compare to Standard:**
-- Standard: 10M executions × 10 states = 100M transitions = $2,499/month
-- Express: $176.70/month
-- **Savings: 93%** for high-volume short workflows
+<div class="callout callout--tip">
+<p class="callout__title">Cost Savings with Express</p>
+<p>Standard: 10M executions × 10 states = 100M transitions = $2,499/month. Express: $176.70/month. <strong>Savings: 93%</strong> for high-volume short workflows.</p>
+</div>
 
 ### Decision Matrix
 

@@ -10,7 +10,7 @@ tags: [security, tools, resources, reference, practical]
 ## Security Assessment Tools
 
 <blockquote class="pull-quote">
-<p>The best security tool is the one your team actually uses consistently—choose tools that integrate into existing workflows rather than creating new ones.</p>
+<p>The best security tool is the one your team actually uses consistently. Choose tools that integrate into existing workflows rather than creating new ones.</p>
 </blockquote>
 
 ### Vulnerability Scanners

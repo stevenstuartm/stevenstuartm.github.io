@@ -118,7 +118,7 @@ This approach may not fit every context. Small product teams with homogeneous wo
 <div class="callout callout--tip">
 <p class="callout__title">When Shaped Kanban Works Best</p>
 <ul>
-<li>Teams vary in type and cadence—features, platform, infrastructure</li>
+<li>Teams vary in type and cadence, including feature, platform, and infrastructure teams</li>
 <li>Work complexity varies significantly, from 3-day fixes to 6-week features</li>
 <li>Coordination happens across teams without forcing artificial synchronization</li>
 <li>Upfront work definition is valued but heavyweight documentation is not</li>

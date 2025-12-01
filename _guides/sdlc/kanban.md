@@ -27,6 +27,10 @@ tags: [sdlc, methodology, kanban, workflow, continuous-delivery, lean, practical
 
 **Kanban** is a visual workflow management method that emphasizes continuous flow, explicit work-in-progress limits, and incremental evolutionary change. Unlike frameworks that prescribe specific roles and ceremonies, Kanban is a change management approach that you overlay on your existing process.
 
+<blockquote class="pull-quote">
+<p>You don't "do Kanban"; you apply Kanban principles to what you already do.</p>
+</blockquote>
+
 **Core Philosophy:**
 - Start with what you do now
 - Agree to pursue incremental, evolutionary change
@@ -78,16 +82,30 @@ David J. Anderson applied these principles to software development at Microsoft 
 
 ### Kanban vs. Scrum
 
-| **Aspect** | **Scrum** | **Kanban** |
-|-----------|----------|-----------|
-| Change approach | Replace current process | Overlay on current process |
-| Roles | Prescribed (PO, SM, Dev Team) | Keep existing roles |
-| Cadence | Fixed sprints (1-4 weeks) | Continuous flow |
-| Commitment | Sprint commitment | No batched commitments |
-| Metrics | Velocity (story points) | Cycle time, throughput |
-| WIP limits | Implicit (sprint backlog) | Explicit per stage |
-| Prioritization | Sprint planning event | Continuous replenishment |
-| Change tolerance | Low (sprint commitment) | High (priorities can change) |
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Scrum</h4>
+<ul>
+<li>Replaces current process</li>
+<li>Prescribed roles (PO, SM, Dev Team)</li>
+<li>Fixed sprints (1-4 weeks)</li>
+<li>Sprint commitment required</li>
+<li>Metrics: Velocity (story points)</li>
+<li>Low change tolerance mid-sprint</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Kanban</h4>
+<ul>
+<li>Overlays on current process</li>
+<li>Keep existing roles</li>
+<li>Continuous flow</li>
+<li>No batched commitments</li>
+<li>Metrics: Cycle time, throughput</li>
+<li>High change tolerance</li>
+</ul>
+</div>
+</div>
 
 ---
 

@@ -73,7 +73,7 @@ tags: [security, encryption, data-protection, privacy, compliance]
 
 <div class="callout callout--warning">
 <p class="callout__title">GDPR Has Global Reach</p>
-<p>GDPR applies to any organization processing EU citizens' personal data, regardless of where the organization is located. If you have EU customers, you must comply with GDPR—or face significant penalties.</p>
+<p>GDPR applies to any organization processing EU citizens' personal data, regardless of where the organization is located. If you have EU customers, you must comply with GDPR or face significant penalties.</p>
 </div>
 
 ### Health Insurance Portability and Accountability Act (HIPAA)

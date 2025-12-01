@@ -91,7 +91,7 @@ Console.WriteLine(value); // Still 10
 
 ### Reference Parameters (ref)
 
-Pass by reference - the method operates on the original variable.
+Pass by reference: the method operates on the original variable.
 
 ```csharp
 public void Increment(ref int x)

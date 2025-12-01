@@ -18,7 +18,7 @@ tags: [architecture, governance, frameworks, leadership, compliance, standards]
 ## Choosing a Governance Approach
 
 <blockquote class="pull-quote">
-<p>Choose based on organization size, complexity, and regulatory requirements—not on what seems comprehensive or impressive.</p>
+<p>Choose based on organization size, complexity, and regulatory requirements, not on what seems comprehensive or impressive.</p>
 </blockquote>
 
 Before selecting a framework, understand your governance needs based on organization characteristics.
@@ -162,7 +162,7 @@ TOGAF emphasizes stakeholder management, requirements management (continuous thr
 
 <div class="callout callout--warning">
 <p class="callout__title">Common Mistake</p>
-<p>Implementing TOGAF by-the-book creates bureaucracy. Adapt it to your culture and needs. Don't try to use all phases—focus on phases B-D (architecture definition) and H (change management) for governance.</p>
+<p>Implementing TOGAF by-the-book creates bureaucracy. Adapt it to your culture and needs. Don't try to use all phases; focus on phases B-D (architecture definition) and H (change management) for governance.</p>
 </div>
 
 **How to implement:**

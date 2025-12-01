@@ -21,6 +21,10 @@ tags: [sdlc, leadership, team-organization, collaboration, structure]
 
 **Team architecture** refers to how development teams are structured, how they interact, and how architectural decisions are made and governed across the organization. Effective team architecture aligns team boundaries with system boundaries, promotes autonomy while maintaining consistency, and enables teams to deliver value independently.
 
+<blockquote class="pull-quote">
+<p>Conway's Law: Organizations design systems that mirror their communication structure.</p>
+</blockquote>
+
 ### Why Team Architecture Matters
 
 - **Conway's Law**: Organizations design systems that mirror their communication structure
@@ -35,58 +39,22 @@ tags: [sdlc, leadership, team-organization, collaboration, structure]
 
 ### Feature Teams vs. Component Teams
 
-#### Feature Teams
-
-**What they are:** Cross-functional teams organized around business features or customer-facing capabilities.
-
-**Structure:**
-- Include all skills needed to deliver end-to-end features (frontend, backend, database, etc.)
-- Own complete vertical slices of functionality
-- Responsible for full lifecycle (development, testing, deployment, maintenance)
-
-**When to use:**
-- Product-focused organizations
-- When delivering customer value quickly is priority
-- Teams working on distinct product areas
-- Organizations embracing microservices
-
-**Benefits:**
-- Faster delivery of customer value
-- Reduced handoffs and dependencies
-- Clear ownership and accountability
-- Better understanding of business domain
-
-**Challenges:**
-- Potential code duplication across teams
-- Maintaining technical consistency
-- Shared component ownership can be unclear
-
-#### Component Teams
-
-**What they are:** Teams organized around technical components or layers (UI team, API team, database team).
-
-**Structure:**
-- Specialized by technical layer or component
-- Deep expertise in specific technologies
-- Work on requests from multiple feature teams
-
-**When to use:**
-- Legacy systems with strong layer coupling
-- Highly specialized technical domains
-- Platform or infrastructure teams
-- Organizations with strong architectural governance
-
-**Benefits:**
-- Deep technical expertise
-- Consistency within technical domains
-- Efficient use of specialized skills
-- Easier to maintain technical standards
-
-**Challenges:**
-- Handoffs between teams slow delivery
-- Lack of end-to-end ownership
-- Harder to prioritize work
-- Risk of becoming bottlenecks
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Feature Teams</h4>
+<p>Cross-functional teams organized around business features or customer-facing capabilities.</p>
+<p><strong>Benefits:</strong> Faster delivery, reduced handoffs, clear ownership, better domain understanding.</p>
+<p><strong>Challenges:</strong> Potential code duplication, maintaining consistency, unclear shared ownership.</p>
+<p><strong>Best for:</strong> Product-focused orgs, microservices, distinct product areas.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Component Teams</h4>
+<p>Teams organized around technical components or layers (UI, API, database).</p>
+<p><strong>Benefits:</strong> Deep expertise, consistency within domains, efficient use of specialized skills.</p>
+<p><strong>Challenges:</strong> Handoffs slow delivery, lack of end-to-end ownership, risk of bottlenecks.</p>
+<p><strong>Best for:</strong> Legacy systems, specialized tech domains, platform teams.</p>
+</div>
+</div>
 
 ### Hybrid Models
 

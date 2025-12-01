@@ -24,6 +24,10 @@ tags: [aws, cicd, codepipeline, codebuild, automation, devops, deployment, funda
 
 ## What Problems CodePipeline & CodeBuild Solve
 
+<blockquote class="pull-quote">
+<p>CodePipeline reduces deployment from 4 hours of manual work to 15 minutes of automated consistency, enabling multiple daily deployments with smaller, safer changes.</p>
+</blockquote>
+
 AWS CodePipeline and CodeBuild automate software delivery from code commit to production deployment:
 
 **Eliminate manual deployments**: Before CI/CD, deploying code requires 15 manual steps: pull code, run tests, build artifacts, SSH into servers, copy files, restart services. One missed step causes production outage. CodePipeline automates all steps, ensuring consistency and reducing human error.
@@ -31,6 +35,11 @@ AWS CodePipeline and CodeBuild automate software delivery from code commit to pr
 **Accelerate release cycles**: Manual testing and deployment take 4 hours. Developers hesitate to deploy frequently, batching changes into risky monthly releases. CodePipeline reduces deployment to 15 minutes, enabling multiple daily deployments with smaller, safer changes.
 
 **Consistent build environments**: "It works on my machine" problems arise from environment differences. Developer has Node 18, production has Node 16. CodeBuild provides consistent Docker-based build environments, eliminating environment drift.
+
+<div class="callout callout--tip">
+<p class="callout__title">Docker-Based Consistency</p>
+<p>CodeBuild runs every build in a fresh Docker container, ensuring identical environments across all builds. No more environment drift between developer machines and production.</p>
+</div>
 
 **Multi-environment deployment**: Deploying to dev, staging, and production requires repeating deployment steps three times. CodePipeline orchestrates sequential deployments with approval gates, ensuring changes flow through all environments consistently.
 
@@ -693,6 +702,11 @@ With compression and lifecycle: 100 builds/day × 100 MB/artifact × 7-day reten
 
 ## Security Best Practices
 
+<div class="callout callout--warning">
+<p class="callout__title">Never Hardcode Secrets</p>
+<p>Database passwords or API keys hardcoded in buildspec.yml risk accidental exposure if committed to source control. Use Parameter Store or Secrets Manager for all sensitive values.</p>
+</div>
+
 ### IAM Permissions
 
 **Principle of least privilege**:
@@ -875,6 +889,10 @@ post_build:
 
 ## Common Pitfalls
 
+<blockquote class="pull-quote">
+<p>The most impactful optimization is build caching. Reducing build time from 5 minutes to 2 minutes saves 60% on build costs and accelerates feedback loops.</p>
+</blockquote>
+
 ### Artifact Bucket Not Cross-Region Replicated
 
 **Problem**: Pipeline in us-east-1 deploys to us-west-2. Artifact bucket only in us-east-1. Cross-region artifact retrieval is slow and expensive.
@@ -946,6 +964,11 @@ Savings: $0.02/minute → $0.005/minute = 75% cost reduction.
 **Solution**: Change execution mode to "queued" for deployment pipelines. Ensures all commits are deployed sequentially.
 
 ## Key Takeaways
+
+<div class="callout callout--tip">
+<p class="callout__title">Cost Optimization Quick Wins</p>
+<p>Right-size compute types (most builds work on SMALL), enable build caching, and set artifact lifecycle policies. These three changes can reduce CI/CD costs by 50-75%.</p>
+</div>
 
 **CodePipeline orchestrates the complete software delivery workflow**: Source → Build → Test → Deploy, automating manual steps and ensuring consistency across environments.
 

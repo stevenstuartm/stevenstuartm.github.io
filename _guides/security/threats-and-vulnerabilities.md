@@ -36,7 +36,7 @@ tags: [security, threats, vulnerabilities, owasp, practical, defense]
 ### Insider Threats
 
 <blockquote class="pull-quote">
-<p>Not all insider threats are malicious—negligent insiders and compromised credentials are often more common and just as damaging as intentional sabotage.</p>
+<p>Not all insider threats are malicious. Negligent insiders and compromised credentials are often more common and just as damaging as intentional sabotage.</p>
 </blockquote>
 
 - **Types**:

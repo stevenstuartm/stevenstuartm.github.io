@@ -112,8 +112,8 @@ Ensures multiple nodes agree on a value or decision, even in the presence of fai
 </div>
 
 <div class="callout callout--note">
-<p class="callout__title">PBFT - Practical Byzantine Fault Tolerance</p>
-<p>Tolerates Byzantine failures (malicious/arbitrary behavior). Used in blockchain systems. More expensive: 3f+1 nodes needed to tolerate f failures.</p>
+<p class="callout__title">PBFT (Practical Byzantine Fault Tolerance)</p>
+<p>Tolerates Byzantine failures (malicious or arbitrary behavior). Used in blockchain systems. More expensive: 3f+1 nodes needed to tolerate f failures.</p>
 </div>
 
 **Example**: Distributed database using Raft consensus to ensure all replicas agree on transaction ordering and committed state.

@@ -258,19 +258,19 @@ During Align, visualization serves discovery. The goal is to ensure stakeholders
 <div class="callout callout--tip">
 <p class="callout__title">How to Do This Well</p>
 <ul>
-<li><strong>Keep it simple</strong> - Use the minimum formality needed for clarity</li>
-<li><strong>Make it collaborative</strong> - Sketch together with stakeholders, don't present finished diagrams</li>
-<li><strong>Focus on boundaries</strong> - What's in scope? What's out? Who owns what?</li>
-<li><strong>Iterate quickly</strong> - Diagrams should evolve as understanding evolves</li>
-<li><strong>Don't over-invest</strong> - These are discovery tools, not deliverables</li>
-<li><strong>Test understanding</strong> - Ask stakeholders to explain the diagram back to you</li>
+<li><strong>Keep it simple</strong>: Use the minimum formality needed for clarity</li>
+<li><strong>Make it collaborative</strong>: Sketch together with stakeholders, don't present finished diagrams</li>
+<li><strong>Focus on boundaries</strong>: What's in scope? What's out? Who owns what?</li>
+<li><strong>Iterate quickly</strong>: Diagrams should evolve as understanding evolves</li>
+<li><strong>Don't over-invest</strong>: These are discovery tools, not deliverables</li>
+<li><strong>Test understanding</strong>: Ask stakeholders to explain the diagram back to you</li>
 </ul>
 </div>
 
 <div class="callout callout--warning">
 <p class="callout__title">Red Flags</p>
 <ul>
-<li>Creating UML class diagrams during Align—you don't know the solution yet</li>
+<li>Creating UML class diagrams during Align (you don't know the solution yet)</li>
 <li>Spending hours on polished diagrams before you've agreed on the problem</li>
 <li>Using diagrams to avoid conversations ("here's the architecture, read it")</li>
 <li>Formal notation that stakeholders don't understand</li>

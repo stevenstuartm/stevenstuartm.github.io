@@ -41,7 +41,7 @@ Records are reference types designed for immutable data with value-based equalit
 
 ### Positional Records
 
-The most concise syntax - generates constructor, properties, deconstruction, and equality.
+The most concise syntax, generating constructor, properties, deconstruction, and equality.
 
 ```csharp
 // One line defines a complete type

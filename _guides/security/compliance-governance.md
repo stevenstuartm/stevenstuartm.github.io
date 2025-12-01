@@ -17,7 +17,7 @@ tags: [security, compliance, governance, regulations, frameworks]
 5. **Risk Treatment**: Accept, mitigate, transfer, avoid
 
 <blockquote class="pull-quote">
-<p>Risk management is not about eliminating all risk—it's about understanding which risks to accept, mitigate, transfer, or avoid based on business priorities.</p>
+<p>Risk management is not about eliminating all risk; it's about understanding which risks to accept, mitigate, transfer, or avoid based on business priorities.</p>
 </blockquote>
 
 ### Risk Rating (OWASP Methodology)

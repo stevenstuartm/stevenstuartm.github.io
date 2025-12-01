@@ -26,6 +26,10 @@ tags: [sdlc, methodology, waterfall, sequential, documentation, regulated-indust
 
 **Waterfall** is a sequential software development methodology where each phase must be completed before moving to the next. Progress flows in one direction (like a waterfall), with formal gates between phases.
 
+<blockquote class="pull-quote">
+<p>Waterfall's creator, Winston Royce, actually warned against using it in his original 1970 paper.</p>
+</blockquote>
+
 **Core Philosophy:**
 - Sequential, linear progression through phases
 - Comprehensive upfront planning and requirements

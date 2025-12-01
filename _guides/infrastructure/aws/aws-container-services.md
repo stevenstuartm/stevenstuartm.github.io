@@ -24,6 +24,10 @@ tags: [aws, containers, ecs, eks, fargate, kubernetes, orchestration, cost-optim
 
 ## What Problems Containers Solve
 
+<blockquote class="pull-quote">
+<p>Containers package applications with all dependencies, eliminating "works on my machine" problems. The same container runs identically in development, staging, and production.</p>
+</blockquote>
+
 Containers address several key challenges compared to traditional EC2 instances and serverless Lambda functions.
 
 ### vs. EC2 Instances
@@ -98,10 +102,14 @@ ECS is AWS's native container orchestration service, designed for simplicity and
 - **Pricing**: $0.04048 per vCPU-hour, $0.004492 per GB-memory-hour (us-east-1, 2024)
 - **Use case**: Variable workloads, dev/test environments, microservices
 
-**ECS Managed Instances (2024 Recommendation)**:
-- AWS fully manages EC2 instances (provisioning, patching, scaling)
-- Best combination of performance, cost optimization, and operational simplicity
-- Recommended for new workloads requiring EC2 launch type
+<div class="callout callout--tip">
+<p class="callout__title">ECS Managed Instances (2024 Recommendation)</p>
+<ul>
+<li>AWS fully manages EC2 instances (provisioning, patching, scaling)</li>
+<li>Best combination of performance, cost optimization, and operational simplicity</li>
+<li>Recommended for new workloads requiring EC2 launch type</li>
+</ul>
+</div>
 
 ### Service Discovery and Load Balancing
 

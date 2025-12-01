@@ -24,6 +24,10 @@ tags: [aws, disaster-recovery, resilience, architecture, reliability, backup, rt
 
 ## What Problems Disaster Recovery Solves
 
+<blockquote class="pull-quote">
+<p>The US-EAST-1 outage in December 2021 lasted 7+ hours. Without DR, single-region deployments experience 100% downtime. Aggressive RTO/RPO targets exponentially increase cost and complexity.</p>
+</blockquote>
+
 **Disasters that cause data loss or downtime**:
 
 1. **Regional failures**: AWS region outages (rare but happen)
@@ -84,7 +88,10 @@ Data created in this window is lost
 | 1-4h | 5-15min | Warm Standby | Medium-High | 3-5× |
 | <1h | <1min | Multi-Site Active-Active | High | 6-10× |
 
-**Key insight**: Aggressive RTO/RPO targets exponentially increase cost and complexity.
+<div class="callout callout--warning">
+<p class="callout__title">Key Insight</p>
+<p>Aggressive RTO/RPO targets exponentially increase cost and complexity.</p>
+</div>
 
 ### Business Impact Analysis
 

@@ -28,6 +28,10 @@ tags: [aws, eventbridge, event-driven, serverless, integration, messaging, archi
 
 ## What Problems EventBridge Solves
 
+<blockquote class="pull-quote">
+<p>EventBridge decouples event producers from consumers. Producers publish once, consumers subscribe independently, and adding new consumers requires no changes to producer code.</p>
+</blockquote>
+
 ### Without EventBridge
 
 **Tight Coupling Issues:**
@@ -72,7 +76,10 @@ tags: [aws, eventbridge, event-driven, serverless, integration, messaging, archi
 
 **Amazon EventBridge** is a serverless event bus service that enables event-driven architectures by routing events from sources to targets based on rules.
 
-**Core Concept:** Event sources publish events to an event bus; rules evaluate events and route matching events to targets.
+<div class="callout callout--note">
+<p class="callout__title">Core Concept</p>
+<p>Event sources publish events to an event bus; rules evaluate events and route matching events to targets.</p>
+</div>
 
 ```
 Event Source → [Event Bus] → Rules (filtering + routing) → Targets
@@ -181,10 +188,14 @@ EventBridge supports 20+ target types:
 | **Events** | Another event bus (cross-account, cross-region) |
 | **Other** | CloudWatch Logs, Systems Manager Run Command, Redshift Data API |
 
-**Target Configuration:**
-- Each rule can have up to 5 targets
-- Same event delivered to all targets in parallel
-- Each target configured independently (different IAM roles, input transformations, retry policies)
+<div class="callout callout--tip">
+<p class="callout__title">Target Configuration</p>
+<ul>
+<li>Each rule can have up to 5 targets</li>
+<li>Same event delivered to all targets in parallel</li>
+<li>Each target configured independently (different IAM roles, input transformations, retry policies)</li>
+</ul>
+</div>
 
 ### Input Transformation
 

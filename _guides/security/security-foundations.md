@@ -16,7 +16,7 @@ tags: [security, fundamentals, cia-triad, defense-in-depth, zero-trust, practica
 ## CIA Triad
 
 <blockquote class="pull-quote">
-<p>The CIA triad—Confidentiality, Integrity, Availability—is the foundation upon which all security decisions are built.</p>
+<p>The CIA triad (Confidentiality, Integrity, Availability) is the foundation upon which all security decisions are built.</p>
 </blockquote>
 
 The foundational framework for information security:

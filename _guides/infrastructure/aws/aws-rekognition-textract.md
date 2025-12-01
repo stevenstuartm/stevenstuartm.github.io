@@ -9,6 +9,10 @@ tags: [aws, machine-learning, automation, cost-analysis, integration, practical]
 
 ## What Problems AWS Rekognition & Textract Solve
 
+<blockquote class="pull-quote">
+<p>Building custom ML models for face detection or text extraction requires months of data labeling and training. Rekognition and Textract provide pre-trained APIs you call with one line of code. Pay per image processed.</p>
+</blockquote>
+
 AWS Rekognition and Textract eliminate the complexity of building custom computer vision models by providing pre-trained APIs for common vision tasks: image analysis, video analysis, and document extraction.
 
 **Traditional computer vision challenges**:

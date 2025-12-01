@@ -7,6 +7,10 @@ description: "Interfaces, inheritance hierarchies, polymorphism, and default int
 tags: [c-sharp, dotnet, oop, interfaces, inheritance, polymorphism, practical]
 ---
 
+<blockquote class="pull-quote">
+<p>Program to interfaces, not implementations. When you depend on IRepository instead of SqlRepository, you can swap implementations, mock for testing, and evolve your system without cascading changes.</p>
+</blockquote>
+
 ## Interfaces
 
 Interfaces define contracts that types can implement. They specify what a type can do, not how it does it.
@@ -565,7 +569,7 @@ Both define contracts, but they serve different purposes.
 - You want to provide a partial implementation as a starting point
 - The relationship is truly "is-a" (a Dog IS an Animal)
 
-**Why this matters**: Inheritance creates tight coupling. When you inherit from a class, you take on its implementation details and any changes to the base class can break derived classes. Interfaces are pure contracts—implementing `IComparable` doesn't tie you to any specific implementation.
+**Why this matters**: Inheritance creates tight coupling. When you inherit from a class, you take on its implementation details and any changes to the base class can break derived classes. Interfaces are pure contracts; implementing `IComparable` doesn't tie you to any specific implementation.
 
 **Common pattern**: Use an interface for the public contract and an abstract class for shared implementation among related types.
 

@@ -338,7 +338,7 @@ if (maybeAge is int age)
 }
 ```
 
-Nullable value types are implemented as `Nullable<T>` - a generic struct that wraps the underlying value type.
+Nullable value types are implemented as `Nullable<T>`, a generic struct that wraps the underlying value type.
 
 ## Default Values
 

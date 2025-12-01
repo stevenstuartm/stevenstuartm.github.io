@@ -163,7 +163,7 @@ Different IaC tools serve different purposes and excel in different scenarios. T
 <li><strong>Integration:</strong> Deepest native integration</li>
 <li><strong>Features:</strong> Immediate access to new services</li>
 <li><strong>Cost:</strong> Free (built into cloud)</li>
-<li><strong>Lock-in:</strong> High - single cloud only</li>
+<li><strong>Lock-in:</strong> High; single cloud only</li>
 <li><strong>Examples:</strong> CloudFormation, ARM, Deployment Manager</li>
 </ul>
 </div>
@@ -173,7 +173,7 @@ Different IaC tools serve different purposes and excel in different scenarios. T
 <li><strong>Integration:</strong> Works across clouds</li>
 <li><strong>Features:</strong> Lags behind cloud-native tools</li>
 <li><strong>Cost:</strong> Free core (paid SaaS optional)</li>
-<li><strong>Lock-in:</strong> Low - cloud-agnostic</li>
+<li><strong>Lock-in:</strong> Low; cloud-agnostic</li>
 <li><strong>Examples:</strong> Terraform, Pulumi, OpenTofu</li>
 </ul>
 </div>
@@ -337,7 +337,7 @@ namespace MyCdkApp
 <h4>Declarative (HCL/YAML)</h4>
 <ul>
 <li><strong>Tools:</strong> Terraform, CloudFormation</li>
-<li><strong>Learning Curve:</strong> Moderate - new syntax</li>
+<li><strong>Learning Curve:</strong> Moderate; new syntax</li>
 <li><strong>Complexity:</strong> Limited logic capabilities</li>
 <li><strong>Testing:</strong> External tools required</li>
 <li><strong>Best for:</strong> Ops teams, simple infrastructure</li>
@@ -347,7 +347,7 @@ namespace MyCdkApp
 <h4>Code-Based (TypeScript/Python)</h4>
 <ul>
 <li><strong>Tools:</strong> Pulumi, AWS CDK</li>
-<li><strong>Learning Curve:</strong> Low - familiar languages</li>
+<li><strong>Learning Curve:</strong> Low; familiar languages</li>
 <li><strong>Complexity:</strong> Full programming features</li>
 <li><strong>Testing:</strong> Native test frameworks</li>
 <li><strong>Best for:</strong> Dev teams, complex logic</li>

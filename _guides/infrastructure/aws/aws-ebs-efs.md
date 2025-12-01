@@ -28,6 +28,10 @@ tags: [aws, ebs, efs, storage, block-storage, file-storage, performance, cost-op
 
 ## What Problems EBS and EFS Solve
 
+<blockquote class="pull-quote">
+<p>EBS delivers up to 256,000 IOPS for single-instance workloads like databases. EFS provides shared NFS storage accessible by thousands of instances, Lambda, and Fargate simultaneously.</p>
+</blockquote>
+
 AWS provides two primary block and file storage services that address different storage challenges:
 
 ### Amazon EBS (Elastic Block Store)
@@ -67,13 +71,17 @@ AWS provides two primary block and file storage services that address different 
 | **Pricing** | $0.08-$0.125/GB/month | $0.30/GB/month (Standard), $0.16/GB (One Zone) |
 | **Use Cases** | Databases, boot volumes, single-instance apps | Shared web content, code repositories, container storage |
 
-**Decision framework**:
-- **Single instance with high IOPS?** → EBS
-- **Multiple instances need shared access?** → EFS
-- **Database or boot volume?** → EBS
-- **Lambda or Fargate persistent storage?** → EFS
-- **Cost-sensitive?** → EBS (2-4x cheaper per GB)
-- **No capacity planning?** → EFS (auto-scales)
+<div class="callout callout--tip">
+<p class="callout__title">Decision Framework</p>
+<ul>
+<li><strong>Single instance with high IOPS?</strong> → EBS</li>
+<li><strong>Multiple instances need shared access?</strong> → EFS</li>
+<li><strong>Database or boot volume?</strong> → EBS</li>
+<li><strong>Lambda or Fargate persistent storage?</strong> → EFS</li>
+<li><strong>Cost-sensitive?</strong> → EBS (2-4x cheaper per GB)</li>
+<li><strong>No capacity planning?</strong> → EFS (auto-scales)</li>
+</ul>
+</div>
 
 ## Amazon EBS (Elastic Block Store)
 

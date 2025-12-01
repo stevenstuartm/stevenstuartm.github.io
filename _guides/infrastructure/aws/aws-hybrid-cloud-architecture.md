@@ -9,6 +9,10 @@ tags: [aws, hybrid-cloud, networking, connectivity, architecture, cost-analysis]
 
 ## What Problem This Solves
 
+<blockquote class="pull-quote">
+<p>Organizations need to maintain workloads both on-premises and in AWS during migrations, for compliance, or to leverage existing investments. The challenge is connecting these environments securely, reliably, and cost-effectively.</p>
+</blockquote>
+
 **The Hybrid Cloud Challenge**:
 Organizations often need to maintain workloads both on-premises and in AWS during migrations, for compliance reasons, or to leverage existing infrastructure investments. The challenge is connecting these environments securely, reliably, and cost-effectively while maintaining performance and meeting regulatory requirements.
 

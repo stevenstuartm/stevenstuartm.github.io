@@ -10,7 +10,7 @@ tags: [security, threats, modern, attack-vectors, defense]
 ## Social Engineering
 
 <blockquote class="pull-quote">
-<p>The weakest link in security is rarely the technology—it's the human being in front of the keyboard.</p>
+<p>The weakest link in security is rarely the technology; it's the human being in front of the keyboard.</p>
 </blockquote>
 
 ### Psychological Triggers
@@ -50,7 +50,7 @@ tags: [security, threats, modern, attack-vectors, defense]
 
 <div class="callout callout--warning">
 <p class="callout__title">SQL Injection Remains a Top Threat</p>
-<p>Despite being well-understood for decades, SQL injection continues to be a leading attack vector. Always use parameterized queries or prepared statements—never concatenate user input directly into SQL commands.</p>
+<p>Despite being well-understood for decades, SQL injection continues to be a leading attack vector. Always use parameterized queries or prepared statements. Never concatenate user input directly into SQL commands.</p>
 </div>
 
 - **Mechanism**: Malicious SQL code in user inputs
@@ -99,7 +99,7 @@ tags: [security, threats, modern, attack-vectors, defense]
 ### Advanced Persistent Threats (APT)
 
 <blockquote class="pull-quote">
-<p>APTs are not smash-and-grab attacks—they are calculated, long-term campaigns designed to remain undetected while extracting maximum value.</p>
+<p>APTs are not smash-and-grab attacks; they are calculated, long-term campaigns designed to remain undetected while extracting maximum value.</p>
 </blockquote>
 
 #### Characteristics

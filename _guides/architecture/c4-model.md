@@ -52,7 +52,7 @@ UML provides extensive notation for many purposes: class diagrams, sequence diag
 <h4>C4 Model Advantages</h4>
 <ul>
 <li><strong>Focused scope</strong>: Specifically targets software architecture diagramming</li>
-<li><strong>Simple notation</strong>: Boxes and lines with labels—no memorization required</li>
+<li><strong>Simple notation</strong>: Boxes and lines with labels, no memorization required</li>
 <li><strong>Stable abstractions</strong>: Documents architectural decisions that remain stable over time</li>
 <li><strong>Technology visibility</strong>: Makes technology choices explicit at each level</li>
 <li><strong>Hierarchy prevents chaos</strong>: Enforces discipline through levels (Context → Container → Component)</li>

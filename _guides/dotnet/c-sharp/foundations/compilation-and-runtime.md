@@ -12,7 +12,7 @@ Understanding how .NET compiles and runs code helps you make informed decisions 
 ## The .NET Compilation Pipeline
 
 <blockquote class="pull-quote">
-<p>The two-stage compilation model—C# to IL, then IL to native code—is what enables .NET's cross-platform portability and runtime optimization capabilities.</p>
+<p>The two-stage compilation model (C# to IL, then IL to native code) is what enables .NET's cross-platform portability and runtime optimization capabilities.</p>
 </blockquote>
 
 When you build a C# project, the compiler does not produce machine code directly. Instead, it produces an intermediate representation that the runtime later converts to native code. This two-stage process enables cross-platform compatibility and runtime optimizations.
@@ -216,7 +216,7 @@ public void DiscoverPlugins() { /* ... */ }
 public class PluginBase { }
 ```
 
-When you build with trimming enabled, the compiler reports warnings for code patterns that may break. Addressing these warnings—either by restructuring code or adding annotations—ensures trimmed applications work correctly.
+When you build with trimming enabled, the compiler reports warnings for code patterns that may break. Addressing these warnings (either by restructuring code or adding annotations) ensures trimmed applications work correctly.
 
 Source generators help by replacing reflection with static code generation. The JSON source generator, for example, produces trim-compatible serialization code.
 

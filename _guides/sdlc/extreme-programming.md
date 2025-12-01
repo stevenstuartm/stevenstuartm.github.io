@@ -25,6 +25,10 @@ tags: [sdlc, methodology, xp, engineering-practices, tdd, pair-programming, tech
 
 **Extreme Programming (XP)** is an Agile software development methodology that emphasizes technical excellence, engineering discipline, and continuous feedback. XP takes good practices to "extreme" levels: if code reviews are good, do them constantly (pair programming); if testing is good, test everything all the time (TDD).
 
+<blockquote class="pull-quote">
+<p>If code reviews are good, review constantly. If testing is good, test everything all the time.</p>
+</blockquote>
+
 **Core Philosophy:**
 - Technical excellence enables business agility
 - Feedback loops at multiple timescales (seconds to weeks)
@@ -152,11 +156,15 @@ Do the simplest thing that could possibly work. No speculative complexity. No "w
 - Complexity costs (maintenance, understanding, bugs)
 - Simple code is easier to change when needs actually emerge
 
-**Simple design principles:**
-1. Passes all tests
-2. Reveals intention (clear, readable code)
-3. No duplication (DRY)
-4. Minimal classes and methods (no unnecessary abstraction)
+<div class="callout callout--tip">
+<p class="callout__title">Simple Design Principles</p>
+<ol>
+<li>Passes all tests</li>
+<li>Reveals intention (clear, readable code)</li>
+<li>No duplication (DRY)</li>
+<li>Minimal classes and methods (no unnecessary abstraction)</li>
+</ol>
+</div>
 
 **Anti-patterns:**
 - Over-engineering (building for imagined future needs)

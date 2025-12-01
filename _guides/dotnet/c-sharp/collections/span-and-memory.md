@@ -7,9 +7,11 @@ description: "Zero-allocation programming with Span<T>, Memory<T>, ArrayPool, an
 tags: [c-sharp, dotnet, performance, span, memory, optimization, advanced]
 ---
 
-## Why Span and Memory
+<blockquote class="pull-quote">
+<p>In high-throughput scenarios, allocation is the enemy. A string.Substring() that allocates on every call can generate gigabytes of garbage per minute. Span eliminates this entirely by providing zero-allocation views into existing memory.</p>
+</blockquote>
 
-Traditional string and array operations often allocate new objects. In high-throughput scenarios, these allocations cause GC pressure and performance degradation. `Span<T>` and `Memory<T>` provide views into existing memory without allocation.
+## Why Span and Memory
 
 ```csharp
 // Traditional - allocates new string

@@ -13,6 +13,10 @@ tags: [sdlc, aaa-cycle, implementation, delivery, governance, practical]
 
 **Execute the agreed plan with discipline while maintaining continuous alignment.** This is sustained execution with governance, quality assurance, stakeholder communication, and value delivery.
 
+<blockquote class="pull-quote">
+<p>Apply is not blind execution; it's disciplined delivery that honors the agreement while maintaining the courage to pause when discovery demands it.</p>
+</blockquote>
+
 ### The Universal Pattern
 
 Regardless of project size or methodology, application follows these steps:
@@ -54,28 +58,39 @@ Discovery during implementation is inevitable:
 - Dependencies appear that change timelines
 - User feedback shifts priorities
 
-**This is not failure. This is the inevitable outcome of doing real work.**
+<div class="callout callout--note">
+<p class="callout__title">Discovery Is Not Failure</p>
+<p>This is the inevitable outcome of doing real work. Teams that ship based on broken assumptions, just to avoid "changing the plan," deliver work that misses the mark.</p>
+</div>
 
 The discipline of Apply is knowing when to:
 - **Continue**: Discovery confirms the approach; keep executing
 - **Adapt**: Minor adjustments within the agreed scope and architecture
 - **Pause and Realign**: Discovery invalidates core assumptions; cycle back to Align or Agree
 
-### Triggers for Reconsideration
+### When to Pause vs. Adapt
 
-**When to pause and reconsolidate the agreement**:
-
-- **Technical discovery**: Assumed approach won't work; a different solution is needed
-- **Scope discovery**: Original scope misunderstood; what was agreed doesn't match what's actually needed
-- **Dependency discovery**: Critical dependencies emerge that change timeline or feasibility
-- **Value discovery**: Building the feature reveals a better problem to solve
-- **Risk discovery**: Unforeseen risks make the agreed approach unacceptable
-
-**When NOT to pause** (adapt instead):
-- Minor technical adjustments within the architecture
-- Small scope clarifications that don't change the core agreement
-- Implementation details that don't affect stakeholders
-- Performance optimizations within agreed SLOs
+<div class="comparison">
+<div class="content-card content-card--accent-warning">
+<h4>Pause and Realign</h4>
+<ul>
+<li>Technical discovery: Assumed approach won't work</li>
+<li>Scope discovery: Original scope misunderstood</li>
+<li>Dependency discovery: Critical dependencies emerge</li>
+<li>Value discovery: Better problem to solve revealed</li>
+<li>Risk discovery: Unforeseen risks make approach unacceptable</li>
+</ul>
+</div>
+<div class="content-card content-card--accent">
+<h4>Adapt and Continue</h4>
+<ul>
+<li>Minor technical adjustments within the architecture</li>
+<li>Small scope clarifications that don't change the core agreement</li>
+<li>Implementation details that don't affect stakeholders</li>
+<li>Performance optimizations within agreed SLOs</li>
+</ul>
+</div>
+</div>
 
 **How to handle discovery**:
 1. Document what you learned (what assumption broke, what's now understood)
@@ -85,7 +100,9 @@ The discipline of Apply is knowing when to:
 5. Update the agreement and communicate changes
 6. Resume execution with the new understanding
 
-Realignment isn't scope creep or project failure. It's the discipline to incorporate learning and maintain integrity with stakeholders. Teams that ship based on broken assumptions, just to avoid "changing the plan," deliver work that misses the mark.
+<blockquote class="pull-quote">
+<p>Realignment isn't scope creep or project failure. It's the discipline to incorporate learning and maintain integrity with stakeholders.</p>
+</blockquote>
 
 ---
 
@@ -137,13 +154,17 @@ Realignment isn't scope creep or project failure. It's the discipline to incorpo
 - Continuously integrate and test changes
 - Gather feedback early and adapt based on learnings
 
-**Red Flags**:
-- Architecture astronauts (over-governing, creating bottlenecks)
-- No governance (inconsistent implementation, architectural drift)
-- Ignoring technical debt until unmanageable
-- Not documenting decisions with ADRs
-- Rigid adherence to plan when reality differs
-- Late architectural reviews (finding issues after merge)
+<div class="callout callout--warning">
+<p class="callout__title">Governance Red Flags</p>
+<ul>
+<li><strong>Architecture astronauts</strong>: Over-governing, creating bottlenecks</li>
+<li><strong>No governance</strong>: Inconsistent implementation, architectural drift</li>
+<li><strong>Ignoring technical debt</strong>: Until it's unmanageable</li>
+<li><strong>No ADRs</strong>: Decisions not documented for future reference</li>
+<li><strong>Rigid adherence to plan</strong>: When reality clearly differs</li>
+<li><strong>Late architectural reviews</strong>: Finding issues after merge</li>
+</ul>
+</div>
 
 ---
 
@@ -182,14 +203,17 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 - Hold regular sprint/iteration reviews with working software
 - Monitor risks continuously and implement mitigations
 
-**Red Flags**:
-- Communication vacuum (no updates until the end)
-- Yes to everything (accepting all changes, scope balloons)
-- Ignoring feedback (stakeholders give input but team doesn't respond)
-- No retrospectives (team doesn't reflect or improve)
-- Hiding problems (not escalating risks/issues early)
-- Losing stakeholder alignment during execution
-- Team stops communicating, stakeholders surprised at delivery
+<div class="callout callout--warning">
+<p class="callout__title">Stakeholder Alignment Red Flags</p>
+<ul>
+<li><strong>Communication vacuum</strong>: No updates until the end</li>
+<li><strong>Yes to everything</strong>: Accepting all changes, scope balloons</li>
+<li><strong>Ignoring feedback</strong>: Stakeholders give input but team doesn't respond</li>
+<li><strong>No retrospectives</strong>: Team doesn't reflect or improve</li>
+<li><strong>Hiding problems</strong>: Not escalating risks/issues early</li>
+<li><strong>Stakeholders surprised at delivery</strong>: Lost alignment during execution</li>
+</ul>
+</div>
 
 ---
 
@@ -224,15 +248,19 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 - **Pre-release**: All acceptance criteria met, no critical bugs, security scan clean
 - **Pre-production**: UAT passed, performance validated, rollback plan tested
 
-**Decision Point: Ready for Release**:
-- ✅ All acceptance criteria met
-- ✅ Test coverage targets achieved
-- ✅ No critical/high-severity bugs
-- ✅ Security scan passed
-- ✅ Performance meets SLOs
-- ✅ UAT completed and approved
-- ✅ Documentation complete
-- ✅ Monitoring and alerting configured
+<div class="callout callout--tip">
+<p class="callout__title">Ready for Release Checklist</p>
+<ul>
+<li>All acceptance criteria met</li>
+<li>Test coverage targets achieved</li>
+<li>No critical/high-severity bugs</li>
+<li>Security scan passed</li>
+<li>Performance meets SLOs</li>
+<li>UAT completed and approved</li>
+<li>Documentation complete</li>
+<li>Monitoring and alerting configured</li>
+</ul>
+</div>
 
 **How to Do This Well**:
 - Test early, test often—shift left on quality
@@ -244,15 +272,17 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 - Integrate security testing throughout development, not at the end
 - Ensure quality relentlessly—maintain standards under pressure
 
-**Red Flags**:
-- Testing as afterthought
-- Low test coverage or no coverage tracking
-- Slow or flaky tests that developers ignore
-- Ignoring security until the end
-- No UAT before deploying
-- Lowering quality bar to ship faster
-- Compromising quality for speed
-- Pressure to deliver leading to cut corners on testing
+<div class="callout callout--warning">
+<p class="callout__title">Quality Assurance Red Flags</p>
+<ul>
+<li><strong>Testing as afterthought</strong>: Not integrated into development</li>
+<li><strong>Low test coverage</strong>: Or no coverage tracking at all</li>
+<li><strong>Slow or flaky tests</strong>: Developers ignore them</li>
+<li><strong>Security deferred</strong>: Ignoring security until the end</li>
+<li><strong>No UAT</strong>: Deploying without user validation</li>
+<li><strong>Lowering the quality bar</strong>: Compromising quality for speed</li>
+</ul>
+</div>
 
 ---
 
@@ -297,19 +327,28 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 
 **Deployment Decision: Deploy or Rollback**:
 
-**Deploy** if:
-- ✅ Automation completed without errors
-- ✅ Health checks passing
-- ✅ Error rates within normal range
-- ✅ Performance meets SLOs
-- ✅ No critical issues
-
-**Rollback** if:
-- ❌ High error rates
-- ❌ Performance degradation
-- ❌ Health checks failing
-- ❌ Critical functionality broken
-- ❌ Security issue discovered
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Deploy</h4>
+<ul>
+<li>Automation completed without errors</li>
+<li>Health checks passing</li>
+<li>Error rates within normal range</li>
+<li>Performance meets SLOs</li>
+<li>No critical issues</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-warning">
+<h4>Rollback</h4>
+<ul>
+<li>High error rates</li>
+<li>Performance degradation</li>
+<li>Health checks failing</li>
+<li>Critical functionality broken</li>
+<li>Security issue discovered</li>
+</ul>
+</div>
+</div>
 
 **Operations Handoff**:
 - Train operations team
@@ -328,14 +367,17 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 - Involve operations early—engage them from Phase 2 onwards
 - Deploy reliably with proven automation strategies
 
-**Red Flags**:
-- Manual deployments (error-prone, slow)
-- No rollback plan or untested rollback procedure
-- Insufficient monitoring (flying blind in production)
-- Deploying on Fridays (no one around to fix issues)
-- Big bang releases (too much at once, high risk)
-- No operations handoff plan
-- Dev team owns production indefinitely or abrupt handoff
+<div class="callout callout--warning">
+<p class="callout__title">Deployment Red Flags</p>
+<ul>
+<li><strong>Manual deployments</strong>: Error-prone and slow</li>
+<li><strong>No rollback plan</strong>: Or untested rollback procedure</li>
+<li><strong>Insufficient monitoring</strong>: Flying blind in production</li>
+<li><strong>Deploying on Fridays</strong>: No one around to fix issues</li>
+<li><strong>Big bang releases</strong>: Too much at once, high risk</li>
+<li><strong>No operations handoff plan</strong>: Dev team owns production indefinitely</li>
+</ul>
+</div>
 
 ---
 
@@ -378,14 +420,18 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 - Release team members to other work
 - Plan for ongoing enhancements (if applicable)
 
-**Delivery Acceptance Criteria**:
-- ✅ All must-have requirements implemented
-- ✅ Acceptance criteria met and validated
-- ✅ UAT completed and approved
-- ✅ SLOs being met in production
-- ✅ Documentation complete
-- ✅ Operations team trained and ready
-- ✅ Stakeholders satisfied with delivery
+<div class="callout callout--tip">
+<p class="callout__title">Delivery Acceptance Criteria</p>
+<ul>
+<li>All must-have requirements implemented</li>
+<li>Acceptance criteria met and validated</li>
+<li>UAT completed and approved</li>
+<li>SLOs being met in production</li>
+<li>Documentation complete</li>
+<li>Operations team trained and ready</li>
+<li>Stakeholders satisfied with delivery</li>
+</ul>
+</div>
 
 **Post-Launch Considerations**:
 - **Warranty/Support Period**: Team available for post-launch issues (2-4 weeks typical)
@@ -403,12 +449,14 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 - Implement incrementally throughout the project
 - Reflect on the entire project and capture lessons learned
 
-**Red Flags**:
-- No clear acceptance criteria (project drags on indefinitely)
-- Poor documentation (operations struggles to support)
-- No retrospective (missing opportunity to learn)
-- Ghosting operations team (dev team disappears after launch)
-- Skipping celebration (not acknowledging effort)
-- No reflection on what went well or poorly
-- Repeating mistakes from project to project
-
+<div class="callout callout--warning">
+<p class="callout__title">Delivery Red Flags</p>
+<ul>
+<li><strong>No clear acceptance criteria</strong>: Project drags on indefinitely</li>
+<li><strong>Poor documentation</strong>: Operations struggles to support</li>
+<li><strong>No retrospective</strong>: Missing opportunity to learn</li>
+<li><strong>Ghosting operations</strong>: Dev team disappears after launch</li>
+<li><strong>Skipping celebration</strong>: Not acknowledging effort</li>
+<li><strong>Repeating mistakes</strong>: No reflection on what went poorly</li>
+</ul>
+</div>

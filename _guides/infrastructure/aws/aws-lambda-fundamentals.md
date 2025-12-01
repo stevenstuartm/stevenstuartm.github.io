@@ -23,6 +23,10 @@ tags: [aws, serverless, lambda, event-driven, cost-optimization, fundamentals]
 
 ## What Problems Lambda Solves
 
+<blockquote class="pull-quote">
+<p>A function invoked 100 times per day for 1 second each costs $0.06/month. The same workload on EC2 running 24/7 costs $15+ per month. Lambda eliminates the cost of idle capacity.</p>
+</blockquote>
+
 AWS Lambda provides event-driven compute capacity without managing servers, addressing fundamental infrastructure challenges that organizations face with traditional compute models.
 
 **Infrastructure challenges solved:**
@@ -41,7 +45,10 @@ AWS Lambda provides event-driven compute capacity without managing servers, addr
 
 **Full server control requirements**: Applications requiring custom OS configurations, kernel modules, or legacy dependencies incompatible with Lambda runtimes need EC2.
 
-**Execution times exceeding 15 minutes**: Lambda has a hard 15-minute timeout. Batch jobs, long-running analytics, or workflows exceeding this limit require EC2, ECS, or Step Functions.
+<div class="callout callout--note">
+<p class="callout__title">Hard Limit</p>
+<p><strong>Execution times exceeding 15 minutes</strong>: Lambda has a hard 15-minute timeout. Batch jobs, long-running analytics, or workflows exceeding this limit require EC2, ECS, or Step Functions.</p>
+</div>
 
 **Very high, sustained CPU requirements**: Applications with constant high CPU utilization benefit from dedicated EC2 capacity pricing models.
 
@@ -149,7 +156,10 @@ Lambda functions execute in three phases:
 - Clean up resources
 - Environment terminated after period of inactivity (typically 15-60 minutes)
 
-**Execution environment reuse**: Lambda reuses environments when possible to improve performance. Subsequent invocations skip the INIT phase. Database connections, SDK clients, and cached data persist across invocations in the same environment. Functions must be stateless; there's no guarantee of reuse.
+<div class="callout callout--tip">
+<p class="callout__title">Execution Environment Reuse</p>
+<p>Lambda reuses environments when possible to improve performance. Subsequent invocations skip the INIT phase. Database connections, SDK clients, and cached data persist across invocations in the same environment. Functions must be stateless; there's no guarantee of reuse.</p>
+</div>
 
 ### Cold Starts vs Warm Starts
 
@@ -181,7 +191,10 @@ Lambda functions execute in three phases:
 - Use sparingly—only for absolutely critical functions requiring guaranteed capacity
 - Common mistake: Assigning reserved concurrency to every function unnecessarily
 
-**Concurrency throttling**: When limit reached, additional invocations are throttled. Synchronous invocations return 429 error. Asynchronous invocations retry automatically with exponential backoff for up to 6 hours.
+<div class="callout callout--warning">
+<p class="callout__title">Concurrency Throttling</p>
+<p>When the limit is reached, additional invocations are throttled. Synchronous invocations return 429 error. Asynchronous invocations retry automatically with exponential backoff for up to 6 hours.</p>
+</div>
 
 ## Current Limitations and Constraints
 
@@ -242,7 +255,9 @@ Lambda allocates CPU power linearly in proportion to configured memory:
 - 512 MB, 2,000 ms execution → Cost: $0.0000166667
 - 1,024 MB, 800 ms execution → Cost: $0.0000133334 (20% cheaper despite 2x memory)
 
-Compute-intensive workloads benefit significantly from higher memory allocation because they receive more CPU.
+<blockquote class="pull-quote">
+<p>Compute-intensive workloads benefit significantly from higher memory allocation because they receive more CPU. Higher memory often results in lower total cost despite higher per-GB-second rate.</p>
+</blockquote>
 
 ### Function Initialization Best Practices
 
@@ -306,10 +321,14 @@ public async Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyReques
 
 **How to enable**: Toggle SnapStart setting in Lambda console for function versions.
 
-**Limitations**:
-- Cannot use with Provisioned Concurrency
-- Cannot use with Amazon EFS or ephemeral storage > 512 MB
-- Only supported for Java 11+ and .NET 8+
+<div class="callout callout--note">
+<p class="callout__title">SnapStart Limitations</p>
+<ul>
+<li>Cannot use with Provisioned Concurrency</li>
+<li>Cannot use with Amazon EFS or ephemeral storage &gt; 512 MB</li>
+<li>Only supported for Java 11+ and .NET 8+</li>
+</ul>
+</div>
 
 #### Provisioned Concurrency (For Critical Latency Requirements)
 

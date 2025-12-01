@@ -26,6 +26,10 @@ tags: [aws, observability, monitoring, cloudwatch, logging, metrics, fundamental
 
 ## What Problems CloudWatch Solves
 
+<blockquote class="pull-quote">
+<p>CloudWatch detects problems before users notice them. The goal is to receive alerts 10 minutes before complaints, not 10 minutes after.</p>
+</blockquote>
+
 CloudWatch is AWS's native monitoring and observability service that addresses critical operational challenges:
 
 **Unified monitoring across AWS services**: Over 70 AWS services automatically publish metrics to CloudWatch without configuration. You get immediate visibility into EC2 CPU utilization, Lambda invocations, DynamoDB consumed capacity, and hundreds of other metrics the moment you provision resources.
@@ -149,7 +153,10 @@ Custom metrics let you publish application-level metrics:
 - Each unique combination of dimensions creates a separate metric
 - Example: Metric `ResponseTime` with dimensions `{Service, Endpoint, StatusCode}` and 5 services × 20 endpoints × 5 status codes = 500 metric streams = $150/month
 
-**Avoid cardinality explosions**: Adding a dimension like `UserId` with millions of unique values creates millions of metrics. Use aggregation instead; track `ResponseTime` by `Service` and `Endpoint`, not by individual user.
+<div class="callout callout--warning">
+<p class="callout__title">Avoid Cardinality Explosions</p>
+<p>Adding a dimension like <code>UserId</code> with millions of unique values creates millions of metrics. Use aggregation instead; track <code>ResponseTime</code> by <code>Service</code> and <code>Endpoint</code>, not by individual user.</p>
+</div>
 
 ### CloudWatch Agent
 
@@ -834,6 +841,11 @@ X-Ray covered in separate guide: [AWS X-Ray for System Architects](/study-guides
 
 ## Common Pitfalls
 
+<div class="callout callout--warning">
+<p class="callout__title">Cost Management Is Critical</p>
+<p>CloudWatch costs can grow quickly without optimization. Default settings like never-expire logs and high-cardinality custom metrics lead to unexpected bills.</p>
+</div>
+
 ### High Costs from Unbounded Metrics
 
 **Problem**: Publishing custom metrics with high-cardinality dimensions creates thousands of metrics unexpectedly.
@@ -907,6 +919,10 @@ Example: Metric `RequestLatency` with dimensions `{UserId, Endpoint}` and 10,000
 - Deploy alarms in all regions with SNS topics that forward to central notification system
 
 ## Key Takeaways
+
+<blockquote class="pull-quote">
+<p>Observability is not just monitoring; it's operational intelligence that drives decisions and automation.</p>
+</blockquote>
 
 **CloudWatch is the foundation of AWS observability**: Over 70 AWS services publish metrics automatically, making CloudWatch essential for monitoring AWS workloads. You get immediate visibility without instrumentation.
 

@@ -9,7 +9,9 @@ tags: [c-sharp, dotnet, oop, properties, encapsulation, practical]
 
 ## Properties
 
-Properties provide controlled access to class data, encapsulating fields behind get and set accessors.
+<blockquote class="pull-quote">
+<p>Properties provide controlled access to class data, encapsulating fields behind get and set accessors while maintaining a simple field-like syntax for consumers.</p>
+</blockquote>
 
 ### Basic Property Syntax
 

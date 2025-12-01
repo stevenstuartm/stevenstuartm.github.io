@@ -28,6 +28,10 @@ tags: [aws, security, threat-detection, compliance, monitoring, security-posture
 
 ## What Problems Security Hub & GuardDuty Solve
 
+<blockquote class="pull-quote">
+<p>Compromised EC2 instance mining cryptocurrency goes undetected for weeks, costing $50,000. GuardDuty detects threats automatically with zero configuration using ML-powered analysis of CloudTrail, VPC Flow Logs, and DNS logs.</p>
+</blockquote>
+
 ### Without Centralized Security Monitoring
 
 **Security Visibility Challenges:**
@@ -81,7 +85,10 @@ tags: [aws, security, threat-detection, compliance, monitoring, security-posture
 
 **AWS GuardDuty** is a managed threat detection service that continuously monitors AWS accounts for malicious activity and unauthorized behavior.
 
-**Core Concept:** GuardDuty analyzes event data from multiple sources using ML models and threat intelligence to identify threats.
+<div class="callout callout--note">
+<p class="callout__title">Core Concept</p>
+<p>GuardDuty analyzes event data from multiple sources using ML models and threat intelligence to identify threats.</p>
+</div>
 
 **Data Sources (Analyzed Automatically):**
 1. **AWS CloudTrail Management Events**: API calls (who did what, when)

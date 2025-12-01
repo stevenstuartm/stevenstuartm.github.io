@@ -24,6 +24,10 @@ tags: [aws, s3, storage, object-storage, cost-optimization, security, fundamenta
 
 ## What Problems S3 Solves
 
+<blockquote class="pull-quote">
+<p>S3 provides 11 nines of durability (99.999999999%). For 10 million objects stored, you can expect to lose one object every 10,000 years on average.</p>
+</blockquote>
+
 Amazon S3 (Simple Storage Service) provides scalable, durable, and cost-effective object storage in the cloud, addressing fundamental data storage challenges:
 
 **Storage challenges solved:**
@@ -90,7 +94,10 @@ You can use S3 as a strongly consistent data store without building additional c
 **Durability** = probability data won't be lost over time
 **Availability** = probability you can access data when you need it
 
-One Zone storage classes store data in a single Availability Zone. If that AZ experiences an outage or is destroyed, data may be lost. Use One Zone classes only for reproducible data or when you have cross-region replication configured.
+<div class="callout callout--warning">
+<p class="callout__title">Single-AZ Risk</p>
+<p>One Zone storage classes store data in a single Availability Zone. If that AZ experiences an outage or is destroyed, data may be lost. Use One Zone classes only for reproducible data or when you have cross-region replication configured.</p>
+</div>
 
 ### Current Limitations and Constraints
 
@@ -171,7 +178,10 @@ Automatically moves objects between five access tiers based on actual usage:
 - When you want automatic cost optimization without manual lifecycle rules
 - When retrieval fees would be unpredictable or expensive
 
-**Best practice**: Use Intelligent-Tiering as the default for new data when access patterns are unknown. The monitoring fee ($0.30/year for 10,000 objects) is typically offset by storage savings after 30-90 days of infrequent access.
+<div class="callout callout--tip">
+<p class="callout__title">Best Practice</p>
+<p>Use Intelligent-Tiering as the default for new data when access patterns are unknown. The monitoring fee ($0.30/year for 10,000 objects) is typically offset by storage savings after 30-90 days of infrequent access.</p>
+</div>
 
 **Important**: Objects smaller than 128 KB are always stored in Frequent Access tier and not monitored. For workloads with many small files, use lifecycle policies to Standard-IA instead.
 
@@ -377,7 +387,10 @@ For each object in Glacier, S3 adds **40 KB of chargeable overhead** for metadat
 - Standard: 10 MB × $0.023 = $0.00023/month
 - Glacier Flexible: (10 MB + 40 MB overhead) × $0.0036 = $0.00018/month
 
-The overhead makes Glacier more expensive. **Only transition objects >128 KB to Glacier classes.**
+<div class="callout callout--warning">
+<p class="callout__title">Small Object Penalty</p>
+<p>The overhead makes Glacier more expensive for small files. Only transition objects larger than 128 KB to Glacier classes.</p>
+</div>
 
 **Best practice lifecycle policy** (general purpose):
 ```
@@ -459,7 +472,9 @@ After 30 days without access, objects automatically move to Infrequent Access ti
 | Glacier Flexible | $3.60 | $20.00 | $23.60 |
 | Glacier Deep Archive | $0.99 | $20.00 | $20.99 |
 
-**Key insight**: For data accessed more than once per month, Intelligent-Tiering or Standard-IA is cheaper than Glacier classes due to retrieval fees. Glacier is only cost-effective for rarely accessed data.
+<blockquote class="pull-quote">
+<p>For data accessed more than once per month, Intelligent-Tiering or Standard-IA is cheaper than Glacier classes due to retrieval fees. Glacier is only cost-effective for rarely accessed data.</p>
+</blockquote>
 
 ### Cost Monitoring Tools
 
@@ -477,7 +492,10 @@ After 30 days without access, objects automatically move to Infrequent Access ti
 - Recommends lifecycle policies based on actual usage
 - Free tool, export results to S3
 
-**Best practice**: Enable S3 Storage Lens (free tier) and review monthly. Create lifecycle policies based on Storage Class Analysis recommendations.
+<div class="callout callout--tip">
+<p class="callout__title">Cost Monitoring Best Practice</p>
+<p>Enable S3 Storage Lens (free tier) and review monthly. Create lifecycle policies based on Storage Class Analysis recommendations.</p>
+</div>
 
 ## Performance Optimization
 

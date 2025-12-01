@@ -10,7 +10,7 @@ tags: [c-sharp, dotnet, expression-trees, metaprogramming, linq, advanced]
 ## What Are Expression Trees
 
 <blockquote class="pull-quote">
-<p>Expression trees turn code into data. Instead of executing a lambda, you can inspect its structure, transform it, or translate it to another language—like SQL.</p>
+<p>Expression trees turn code into data. Instead of executing a lambda, you can inspect its structure, transform it, or translate it to another language like SQL.</p>
 </blockquote>
 
 Expression trees represent code as data structures. Instead of executing immediately, the code is captured as a tree that can be analyzed, modified, or compiled.
@@ -339,7 +339,7 @@ public class PropertyToDictVisitor : ExpressionVisitor
 
 <div class="callout callout--warning">
 <p class="callout__title">Compile() Is Expensive</p>
-<p>Compiling an expression tree to a delegate is slow—much slower than reflection. Always cache the compiled result when the same expression will be used repeatedly.</p>
+<p>Compiling an expression tree to a delegate is slow, much slower than reflection. Always cache the compiled result when the same expression will be used repeatedly.</p>
 </div>
 
 ```csharp

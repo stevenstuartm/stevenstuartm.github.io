@@ -249,7 +249,7 @@ If structural arguments favor Results, why does the exception camp remain strong
 ## What I Learned
 
 <blockquote class="pull-quote">
-<p>Result types should be the default for domain operations—not because they're perfect, but because the structural advantages outweigh the execution risks.</p>
+<p>Result types should be the default for domain operations, not because they're perfect, but because the structural advantages outweigh the execution risks.</p>
 </blockquote>
 
 Despite my preferences, the evidence (at least conceptually) has led me to conclude that Result types should be the default for domain operations. Not because Results are perfect (C# doesn't enforce them, they create framework friction, and misuse can scatter error handling), but because the structural advantages outweigh the execution risks. Performance at scale, safe boundaries by default, visible failure modes, and natural iteration patterns matter more than implicit propagation convenience.

@@ -8,7 +8,7 @@ tags: [architecture, monolithic, design-patterns, practical, data-processing]
 ---
 
 <blockquote class="pull-quote">
-<p>Pipeline architecture structures a system as a series of processing steps connected by data flow—think Unix command-line pipes at the application level.</p>
+<p>Pipeline architecture structures a system as a series of processing steps connected by data flow. Think of Unix command-line pipes at the application level.</p>
 </blockquote>
 
 Pipeline architecture structures a system as a series of processing steps connected by data flow. Think Unix command-line pipes: each filter reads input, transforms it, and writes output to the next stage. Data flows unidirectionally from source to destination through a sequence of transformations.

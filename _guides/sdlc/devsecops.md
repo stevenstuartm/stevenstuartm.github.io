@@ -21,6 +21,10 @@ tags: [sdlc, security, devops, automation, integration, practical]
 
 **DevSecOps** is the practice of integrating security into every phase of the software development lifecycle (SDLC), rather than treating it as a separate phase at the end. It extends the DevOps philosophy of collaboration and automation to include security as a shared responsibility across development, operations, and security teams.
 
+<blockquote class="pull-quote">
+<p>Security is everyone's job, not just the security team's.</p>
+</blockquote>
+
 ### Core Principles
 
 **1. Security as Code**
@@ -35,11 +39,15 @@ Treat security policies, configurations, and infrastructure as code that can be 
 **2. Shift-Left Security**
 Move security considerations earlier in the development process to catch issues when they're cheaper and easier to fix.
 
-**Why it matters:**
-- Finding vulnerabilities during development is 10-100x cheaper than finding them in production
-- Developers can fix issues while context is fresh
-- Security influences design from the start
-- Reduces risk of vulnerabilities reaching production
+<div class="callout callout--tip">
+<p class="callout__title">Why Shift-Left Matters</p>
+<ul>
+<li>Finding vulnerabilities during development is 10-100x cheaper than in production</li>
+<li>Developers can fix issues while context is fresh</li>
+<li>Security influences design from the start</li>
+<li>Reduces risk of vulnerabilities reaching production</li>
+</ul>
+</div>
 
 **3. Continuous Security**
 Integrate security checks into automated pipelines for ongoing validation throughout the development and deployment process.

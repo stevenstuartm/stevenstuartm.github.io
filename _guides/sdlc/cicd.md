@@ -25,6 +25,10 @@ tags: [sdlc, cicd, automation, devops, testing, security, practical]
 
 **CI/CD** is a set of practices that automate the integration, testing, and delivery of software changes, enabling teams to ship code faster, more reliably, and with higher quality.
 
+<blockquote class="pull-quote">
+<p>The goal of CI/CD is to make deployments boring: routine, repeatable, and reliable.</p>
+</blockquote>
+
 ### Core Components
 
 **Continuous Integration (CI):**
@@ -204,13 +208,28 @@ Code commit → CI build → Automated tests → Deploy to staging → More test
 
 ### CD vs. Continuous Deployment
 
-| Aspect | Continuous Delivery | Continuous Deployment |
-|--------|--------------------|-----------------------|
-| Production deployment | Manual approval required | Fully automated |
-| Release frequency | As needed (on-demand) | Every successful build |
-| Risk tolerance | Lower (manual gate provides control) | Higher (requires robust automation) |
-| Feedback speed | Moderate | Very fast |
-| Required maturity | Moderate | High |
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>Continuous Delivery</h4>
+<ul>
+<li>Manual approval required for production</li>
+<li>Release frequency: as needed (on-demand)</li>
+<li>Lower risk tolerance with manual gate</li>
+<li>Moderate feedback speed</li>
+<li>Moderate maturity required</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Continuous Deployment</h4>
+<ul>
+<li>Fully automated production deployment</li>
+<li>Release frequency: every successful build</li>
+<li>Higher risk tolerance required</li>
+<li>Very fast feedback from real users</li>
+<li>High maturity required</li>
+</ul>
+</div>
+</div>
 
 ### Prerequisites for CD/Continuous Deployment
 
@@ -461,11 +480,15 @@ Release Tag → Production Pipeline (deploy to prod)
 - Dramatically reduce test execution time
 - Tools: Pytest-xdist, Jest parallel, TestNG parallel
 
-**Flaky Test Management:**
-- Identify and quarantine flaky tests
-- Track flaky test trends
-- Fix or remove consistently flaky tests
-- Don't let flaky tests erode confidence
+<div class="callout callout--warning">
+<p class="callout__title">Flaky Test Management</p>
+<ul>
+<li><strong>Identify and quarantine</strong>: Track which tests fail intermittently</li>
+<li><strong>Track trends</strong>: Monitor flaky test rates over time</li>
+<li><strong>Fix or remove</strong>: Don't let flaky tests erode confidence</li>
+<li><strong>Never ignore</strong>: Flaky tests lead to ignored test suites</li>
+</ul>
+</div>
 
 **Test Data Management:**
 - Use factories/fixtures for test data
@@ -736,11 +759,15 @@ Release Tag → Production Pipeline (deploy to prod)
 
 ### Secrets Management Best Practices
 
-**1. Never Commit Secrets to Version Control**
-- Use `.gitignore` to exclude config files with secrets
-- Use environment variables or secret management tools
-- Run secret detection tools to catch accidents
-- Rotate immediately if a secret is exposed
+<div class="callout callout--warning">
+<p class="callout__title">Never Commit Secrets to Version Control</p>
+<ul>
+<li>Use <code>.gitignore</code> to exclude config files with secrets</li>
+<li>Use environment variables or secret management tools</li>
+<li>Run secret detection tools to catch accidents</li>
+<li>Rotate immediately if a secret is exposed</li>
+</ul>
+</div>
 
 **2. Use Dedicated Secrets Management Tools**
 
@@ -968,37 +995,37 @@ spec:
 - Use checksums to verify integrity
 - Review updates before adopting
 
-### Pipeline Security Checklist
-
-**Authentication & Authorization:**
-- [ ] MFA enabled for all users
-- [ ] RBAC configured with least privilege
-- [ ] Service accounts use minimal permissions
-- [ ] Regular access reviews conducted
-
-**Secrets Management:**
-- [ ] No secrets in code or pipeline definitions
-- [ ] Secrets stored in dedicated secrets manager
-- [ ] Secrets rotated regularly
-- [ ] Secrets masked in logs
-
-**Build Security:**
-- [ ] Build agents/runners hardened
-- [ ] Isolated build environments
-- [ ] Dependency versions pinned
-- [ ] Build artifacts signed
-
-**Monitoring & Auditing:**
-- [ ] All pipeline activities logged
-- [ ] Centralized log collection
-- [ ] Alerting on suspicious activities
-- [ ] Regular security audits
-
-**Compliance:**
-- [ ] Pipeline meets regulatory requirements
-- [ ] Audit trails maintained
-- [ ] Access controls documented
-- [ ] Incident response plan in place
+<div class="callout callout--tip">
+<p class="callout__title">Pipeline Security Checklist</p>
+<p><strong>Authentication &amp; Authorization:</strong></p>
+<ul>
+<li>MFA enabled for all users</li>
+<li>RBAC configured with least privilege</li>
+<li>Service accounts use minimal permissions</li>
+<li>Regular access reviews conducted</li>
+</ul>
+<p><strong>Secrets Management:</strong></p>
+<ul>
+<li>No secrets in code or pipeline definitions</li>
+<li>Secrets stored in dedicated secrets manager</li>
+<li>Secrets rotated regularly</li>
+<li>Secrets masked in logs</li>
+</ul>
+<p><strong>Build Security:</strong></p>
+<ul>
+<li>Build agents/runners hardened</li>
+<li>Isolated build environments</li>
+<li>Dependency versions pinned</li>
+<li>Build artifacts signed</li>
+</ul>
+<p><strong>Monitoring &amp; Auditing:</strong></p>
+<ul>
+<li>All pipeline activities logged</li>
+<li>Centralized log collection</li>
+<li>Alerting on suspicious activities</li>
+<li>Regular security audits</li>
+</ul>
+</div>
 
 ---
 
@@ -1350,14 +1377,18 @@ steps:
 | Team Skills | How steep is the learning curve? |
 | Support | What level of support is available? |
 
-**Decision matrix:**
-- **Small team, GitHub-based:** GitHub Actions
-- **GitLab users:** GitLab CI/CD
-- **Enterprise, need control:** Jenkins
-- **Fast Docker builds:** CircleCI
-- **Microsoft stack:** Azure DevOps
-- **AWS-centric:** AWS CodePipeline
-- **Multi-cloud, complex:** Jenkins or self-hosted GitLab
+<div class="callout callout--tip">
+<p class="callout__title">Platform Selection Guide</p>
+<ul>
+<li><strong>Small team, GitHub-based:</strong> GitHub Actions</li>
+<li><strong>GitLab users:</strong> GitLab CI/CD</li>
+<li><strong>Enterprise, need control:</strong> Jenkins</li>
+<li><strong>Fast Docker builds:</strong> CircleCI</li>
+<li><strong>Microsoft stack:</strong> Azure DevOps</li>
+<li><strong>AWS-centric:</strong> AWS CodePipeline</li>
+<li><strong>Multi-cloud, complex:</strong> Jenkins or self-hosted GitLab</li>
+</ul>
+</div>
 
 ---
 

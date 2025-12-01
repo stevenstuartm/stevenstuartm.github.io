@@ -11,15 +11,28 @@ tags: [sdlc, methodology, collaboration, stakeholder-management, leadership, fun
 
 AAA is a **guiding discipline and principle** for software development: a way of thinking that provides guardrails against the most common mistakes organizations and development teams make. It is a philosophy that transcends any specific methodology, operating from the software architect's perspective on what truly matters.
 
+<blockquote class="pull-quote">
+<p>AAA is about how we value before how we work.</p>
+</blockquote>
+
 ### AAA as a Way of Valuing
 
 AAA is about **how we value** before **how we work**:
 
-**Align**: We establish and value **human connection**. Before we talk about solutions, timelines, or technology, we connect with people. We understand their needs, their context, their constraints. Alignment is not about extracting requirements; it's about building understanding and trust.
-
-**Agree**: We value **shared commitment** on how we will seek to accomplish what we're now aligned on. Agreement isn't just about documentation or sign-off ceremonies; it's mutual understanding of the path forward and genuine commitment to walk it together.
-
-**Apply**: We value **delivering on agreements**. Notice that "deliver" is not the focus; applying the agreement is. We execute what we agreed to do, in the way we agreed to do it, because we value honoring the commitments made to the people we aligned with.
+<div class="card-group">
+<div class="content-card content-card--accent">
+<h4>Align</h4>
+<p>We establish and value <strong>human connection</strong>. Before we talk about solutions, timelines, or technology, we connect with people. Alignment is not about extracting requirements; it's about building understanding and trust.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Agree</h4>
+<p>We value <strong>shared commitment</strong> on how we will accomplish what we're aligned on. Agreement isn't just documentation or sign-offs; it's mutual understanding and genuine commitment to walk the path together.</p>
+</div>
+<div class="content-card content-card--accent-warning">
+<h4>Apply</h4>
+<p>We value <strong>delivering on agreements</strong>. Notice that "deliver" is not the focus; applying the agreement is. We honor the commitments made to the people we aligned with.</p>
+</div>
+</div>
 
 ### Why This Order Matters
 
@@ -29,7 +42,9 @@ Nearly every failed project makes the same mistake: it starts with solutions, ju
 2. **Human agreement comes first**: We secure genuine commitment before implementation begins
 3. **Applying the agreement comes first**: We honor what was agreed before declaring success
 
-When you walk into that first stakeholder meeting, you don't need a project plan. You need to connect with people, understand their world, and establish the foundation for meaningful agreement. AAA gives you the confidence to lead from this perspective.
+<blockquote class="pull-quote">
+<p>When you walk into that first stakeholder meeting, you don't need a project plan. You need to connect with people, understand their world, and establish the foundation for meaningful agreement.</p>
+</blockquote>
 
 ### Not a Checklist, But a Discipline
 
@@ -46,7 +61,10 @@ This discipline applies whether you're using Scrum sprints, Kanban flows, or wat
 
 Strict frameworks like Scrum often function as defensive mechanisms: ways to protect yourself from stakeholders and vice versa. They create systems of politics rather than trust. Yes, these frameworks are based on truth and provide valuable starting points for organizing teams. But they can become rigid checklists that substitute for genuine human connection.
 
-The problem isn't having structure; it's when that structure becomes a shield instead of a bridge. When "following the process" matters more than solving the problem. When ceremonies become rituals emptied of meaning. When adherence to the framework is how you defend yourself rather than how you deliver value.
+<div class="callout callout--note">
+<p class="callout__title">When Structure Becomes a Shield</p>
+<p>The problem isn't having structure; it's when that structure becomes a shield instead of a bridge. When "following the process" matters more than solving the problem. When ceremonies become rituals emptied of meaning.</p>
+</div>
 
 AAA calls us back to something more fundamental: **focusing on what we value**. Not "Agile" the branded methodology with capital-A ceremonies, but "agile" the principle of being responsive to reality. Not defensive processes that protect territories, but disciplines that build trust.
 
@@ -86,30 +104,28 @@ The same principles apply regardless of scale. Whether you're leading a multi-ye
 
 Most project failures stem from broken values, not broken processes:
 
-**Starting with solutions instead of connection**:
-- Architects propose technical designs before understanding the human context
-- Stakeholders are surprised because their actual needs were never deeply heard
-- Teams build the "right" solution to the wrong problem
-
-**Confusing documentation with agreement**:
-- Sign-offs are collected but genuine commitment is missing
-- Different stakeholders hold different understandings of what was "agreed"
-- Plans look good on paper but collapse when reality hits
-
-**Treating delivery as the goal**:
-- Teams chase feature completion over honoring commitments
-- Scope changes constantly because the original agreement wasn't valued
-- Success is measured by shipped code, not realized value
+<div class="callout callout--warning">
+<p class="callout__title">Common Failure Patterns</p>
+<ul>
+<li><strong>Starting with solutions instead of connection</strong>: Architects propose technical designs before understanding the human context. Teams build the "right" solution to the wrong problem.</li>
+<li><strong>Confusing documentation with agreement</strong>: Sign-offs are collected but genuine commitment is missing. Plans look good on paper but collapse when reality hits.</li>
+<li><strong>Treating delivery as the goal</strong>: Teams chase feature completion over honoring commitments. Success is measured by shipped code, not realized value.</li>
+</ul>
+</div>
 
 ### The AAA Perspective
 
-AAA provides guardrails by keeping these values front and center:
-
-- ✅ **Connection before solutions** - Understand people and their context before designing systems
-- ✅ **Genuine agreement before execution** - Secure real commitment, not just sign-offs
-- ✅ **Honoring commitments before chasing features** - Apply what was agreed, maintain alignment throughout
-- ✅ **Human needs throughout** - Technical decisions remain anchored in the people they serve
-- ✅ **Sustainable delivery** - Value is realized because the right things are built the right way
+<div class="callout callout--tip">
+<p class="callout__title">The AAA Perspective</p>
+<p>AAA provides guardrails by keeping these values front and center:</p>
+<ul>
+<li><strong>Connection before solutions</strong>: Understand people and their context before designing systems</li>
+<li><strong>Genuine agreement before execution</strong>: Secure real commitment, not just sign-offs</li>
+<li><strong>Honoring commitments before chasing features</strong>: Apply what was agreed, maintain alignment throughout</li>
+<li><strong>Human needs throughout</strong>: Technical decisions remain anchored in the people they serve</li>
+<li><strong>Sustainable delivery</strong>: Value is realized because the right things are built the right way</li>
+</ul>
+</div>
 
 ---
 
@@ -130,7 +146,9 @@ AAA provides guardrails by keeping these values front and center:
 
 **What Alignment Produces**: A foundation of mutual understanding with stakeholder commitment, not just signatures but real buy-in from people who feel heard.
 
-**Why This Guards Against Failure**: When you truly align with people and their needs, you avoid building elegant solutions to misunderstood problems. Technical decisions stay grounded in reality throughout the project.
+<blockquote class="pull-quote">
+<p>When you truly align with people and their needs, you avoid building elegant solutions to misunderstood problems.</p>
+</blockquote>
 
 [→ Detailed Phase 1 Guide](aaa-phase1-align.html){:target="_blank" rel="noopener noreferrer"}
 
@@ -151,7 +169,9 @@ AAA provides guardrails by keeping these values front and center:
 
 **What Agreement Produces**: Authentic commitment from stakeholders and teams. Everyone understands and believes in the path forward because they helped shape it.
 
-**Why This Guards Against Failure**: When people genuinely agree (versus grudgingly sign-off), they stay committed when challenges arise. Plans survive reality because they were built with reality in mind.
+<blockquote class="pull-quote">
+<p>When people genuinely agree (versus grudgingly sign-off), they stay committed when challenges arise.</p>
+</blockquote>
 
 [→ Detailed Phase 2 Guide](aaa-phase2-agree.html){:target="_blank" rel="noopener noreferrer"}
 
@@ -172,7 +192,9 @@ AAA provides guardrails by keeping these values front and center:
 
 **What Application Produces**: Working software that meets the needs you aligned on, built the way you agreed, delivered by maintaining human connection throughout.
 
-**Why This Guards Against Failure**: When you honor agreements instead of chasing features, scope stays stable. When you maintain connection, surprises get addressed early. Value is realized because the right things were built.
+<blockquote class="pull-quote">
+<p>When you honor agreements instead of chasing features, scope stays stable. Value is realized because the right things were built.</p>
+</blockquote>
 
 [→ Detailed Phase 3 Guide](aaa-phase3-apply.html){:target="_blank" rel="noopener noreferrer"}
 

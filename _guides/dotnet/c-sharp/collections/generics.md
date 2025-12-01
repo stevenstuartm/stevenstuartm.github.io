@@ -9,6 +9,10 @@ tags: [c-sharp, dotnet, generics, type-safety, reusability, practical]
 
 ## Why Generics
 
+<blockquote class="pull-quote">
+<p>Generics enable type-safe, reusable code without sacrificing performance, catching type errors at compile time and eliminating boxing overhead for value types.</p>
+</blockquote>
+
 Generics enable type-safe, reusable code without sacrificing performance.
 
 ```csharp

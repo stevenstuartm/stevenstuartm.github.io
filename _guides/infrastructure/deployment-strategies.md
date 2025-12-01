@@ -64,9 +64,9 @@ Rolling deployment is the default strategy in Kubernetes and many other orchestr
 <div class="content-card content-card--accent">
 <h4>Rolling Deployment</h4>
 <ul>
-<li><strong>Cost:</strong> Low - uses existing infrastructure</li>
+<li><strong>Cost:</strong> Low; uses existing infrastructure</li>
 <li><strong>Downtime:</strong> Minimal during rollout</li>
-<li><strong>Rollback:</strong> Slower - reverse the process</li>
+<li><strong>Rollback:</strong> Slower; reverse the process</li>
 <li><strong>Risk:</strong> Gradual impact on users</li>
 <li><strong>Best for:</strong> Cost-sensitive environments</li>
 </ul>
@@ -74,9 +74,9 @@ Rolling deployment is the default strategy in Kubernetes and many other orchestr
 <div class="content-card content-card--accent-secondary">
 <h4>Blue-Green Deployment</h4>
 <ul>
-<li><strong>Cost:</strong> High - double infrastructure</li>
+<li><strong>Cost:</strong> High; double infrastructure</li>
 <li><strong>Downtime:</strong> Zero during switch</li>
-<li><strong>Rollback:</strong> Instant - flip load balancer</li>
+<li><strong>Rollback:</strong> Instant; flip load balancer</li>
 <li><strong>Risk:</strong> All-or-nothing impact</li>
 <li><strong>Best for:</strong> Mission-critical systems</li>
 </ul>

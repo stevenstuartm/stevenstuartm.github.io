@@ -29,7 +29,7 @@ var adults = people
 ## Deferred vs Immediate Execution
 
 <blockquote class="pull-quote">
-<p>LINQ queries don't execute when you write them—they execute when you enumerate them. This deferred execution changes source data, re-execution behavior, and performance characteristics.</p>
+<p>LINQ queries don't execute when you write them; they execute when you enumerate them. This deferred execution changes source data, re-execution behavior, and performance characteristics.</p>
 </blockquote>
 
 Understanding when queries execute is crucial for performance and correctness.

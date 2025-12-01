@@ -9,6 +9,10 @@ tags: [aws, cloudfront, cdn, edge-computing, caching, performance, cost-optimiza
 
 ## What Problems CloudFront Solves
 
+<blockquote class="pull-quote">
+<p>CloudFront transforms content delivery from a bandwidth problem into a proximity problem. The fastest request is one that never travels far.</p>
+</blockquote>
+
 AWS CloudFront is a global Content Delivery Network (CDN) service that distributes content to users with low latency and high transfer speeds. It solves critical challenges for web applications and content delivery:
 
 **Performance Problems**:
@@ -132,7 +136,10 @@ Default Behavior: *
 
 ### Cache Hit Ratio Optimization
 
-**Target**: 85%+ cache hit ratio for cost and performance optimization.
+<div class="callout callout--tip">
+<p class="callout__title">Target Cache Hit Ratio</p>
+<p>Aim for 85%+ cache hit ratio. Each percentage point improvement reduces origin load and costs while improving user experience.</p>
+</div>
 
 **Strategies to improve cache hit ratio**:
 
@@ -270,6 +277,11 @@ exports.handler = async (event) => {
     return request;
 };
 ```
+
+<div class="callout callout--note">
+<p class="callout__title">Edge Compute Decision</p>
+<p>CloudFront Functions are 12x cheaper but limited to &lt;1ms execution with no network access. Use Lambda@Edge when you need external API calls, complex logic, or longer execution time.</p>
+</div>
 
 ### Decision Framework: CloudFront Functions vs. Lambda@Edge
 
@@ -630,6 +642,10 @@ Origin Shield is an **additional caching layer** between Regional Edge Caches an
 
 ## Common Pitfalls and How to Avoid Them
 
+<blockquote class="pull-quote">
+<p>The most common CloudFront mistakes aren't about caching too little; they're about accidentally creating millions of cache entries for identical content.</p>
+</blockquote>
+
 ### 1. Low Cache Hit Ratio Due to Unnecessary Cache Key Variations
 
 **Problem**: Including all query strings, headers, or cookies in cache key creates separate cache entries for identical content.
@@ -798,6 +814,11 @@ Origin Shield is an **additional caching layer** between Regional Edge Caches an
 **Cost Impact**: Adding headers at origin: 100M requests × $0.01 (EC2 compute) = $1,000/month. CloudFront Functions: $10/month. **Savings: $990/month.**
 
 ### 12. Caching Authenticated Content Without Careful Configuration
+
+<div class="callout callout--warning">
+<p class="callout__title">Critical Security Risk</p>
+<p>Caching authenticated content without including authentication tokens in the cache key can expose one user's data to another. This is a common and serious vulnerability.</p>
+</div>
 
 **Problem**: Caching authenticated API responses can leak user data to other users.
 

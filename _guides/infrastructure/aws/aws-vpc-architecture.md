@@ -25,6 +25,10 @@ tags: [infrastructure, aws, networking, vpc, security, practical]
 
 ## What is a VPC
 
+<blockquote class="pull-quote">
+<p>A VPC is your own private data center network in the cloud, providing network isolation, full control over IP addressing, and multiple layers of security.</p>
+</blockquote>
+
 **Amazon Virtual Private Cloud (VPC)** is a logically isolated network within AWS where you launch and connect AWS resources. Think of it as your own private data center network in the cloud.
 
 ### What Problems VPC Solves
@@ -79,7 +83,10 @@ Every VPC has a primary CIDR block that defines the IP address range for the ent
 - `172.16.0.0/12` (172.16.0.0 – 172.31.255.255)
 - `192.168.0.0/16` (192.168.0.0 – 192.168.255.255)
 
-**Planning Tip:** Choose a CIDR block large enough for growth but not so large that it wastes address space or conflicts with on-premises networks.
+<div class="callout callout--tip">
+<p class="callout__title">Planning Tip</p>
+<p>Choose a CIDR block large enough for growth but not so large that it wastes address space or conflicts with on-premises networks.</p>
+</div>
 
 ---
 
@@ -163,7 +170,10 @@ Each subnet is associated with a route table. When traffic leaves a resource in 
 | `10.0.0.0/16` | local | Traffic within VPC stays local |
 | `0.0.0.0/0` | nat-12345 | All other traffic goes to NAT gateway |
 
-**Key Concept:** The route table association determines whether a subnet is public or private. A public subnet has a route to an internet gateway; a private subnet does not.
+<div class="callout callout--note">
+<p class="callout__title">Key Concept</p>
+<p>The route table association determines whether a subnet is public or private. A public subnet has a route to an internet gateway; a private subnet does not.</p>
+</div>
 
 ### Internet Gateway (IGW)
 
@@ -212,7 +222,9 @@ Public Subnet 1a → NAT Gateway 1a → Private Subnet 1a
 Public Subnet 1b → NAT Gateway 1b → Private Subnet 1b
 ```
 
-**Trade-Off:** Multiple NAT gateways increase cost but improve availability and reduce cross-AZ data transfer charges.
+<blockquote class="pull-quote">
+<p>Deploy one NAT gateway per availability zone. If an AZ fails, resources in other AZs still have internet access. Multiple NAT gateways increase cost but improve availability and reduce cross-AZ data transfer charges.</p>
+</blockquote>
 
 ### NAT Instance (Legacy)
 

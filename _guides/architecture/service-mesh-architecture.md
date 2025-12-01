@@ -147,7 +147,7 @@ Gain visibility into service-to-service communication.
 
 <div class="callout callout--warning">
 <p class="callout__title">Service Meshes Add Complexity</p>
-<p>Service meshes add significant operational complexity, resource overhead, and a learning curve. Only adopt when the benefits clearly justify the cost—typically in large-scale microservices environments with polyglot architectures or strict security requirements.</p>
+<p>Service meshes add significant operational complexity, resource overhead, and a learning curve. Only adopt when the benefits clearly justify the cost, typically in large-scale microservices environments with polyglot architectures or strict security requirements.</p>
 </div>
 
 ### When Service Mesh Makes Sense

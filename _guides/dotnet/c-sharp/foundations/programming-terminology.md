@@ -67,7 +67,7 @@ These concepts matter when designing generic interfaces and understanding why ce
 
 ## Data Characteristics
 
-How data behaves—whether it can change, how it is stored, and how it is passed around—fundamentally affects program correctness and reasoning.
+How data behaves (whether it can change, how it is stored, and how it is passed around) affects program correctness and reasoning.
 
 <div class="comparison">
 <div class="content-card content-card--accent">
@@ -88,7 +88,7 @@ Immutability simplifies reasoning about code because data cannot change unexpect
 
 **Value types** store data directly. Assigning a value type copies the data itself.
 
-**Reference types** store a reference (pointer) to data stored elsewhere. Assigning a reference type copies the reference, not the data—both variables point to the same object.
+**Reference types** store a reference (pointer) to data stored elsewhere. Assigning a reference type copies the reference, not the data, so both variables point to the same object.
 
 In C#, `int`, `double`, `bool`, and `struct` are value types. Classes, arrays, and strings are reference types.
 
@@ -112,7 +112,7 @@ Boxing has performance costs (heap allocation, copying) and should be avoided in
 
 ## Function and Method Behavior
 
-How functions behave—whether they have side effects, whether calling them multiple times is safe—affects testability, reliability, and reasoning about code.
+How functions behave (whether they have side effects, whether calling them multiple times is safe) affects testability, reliability, and reasoning about code.
 
 ### Pure Functions
 
@@ -126,7 +126,7 @@ Pure functions are easier to test (no setup required), easier to reason about (o
 
 A **side effect** is any observable change outside the function's return value. This includes modifying global state, writing to files, sending network requests, or mutating input parameters.
 
-Side effects are necessary for useful programs—you eventually need to save data or display output. The goal is to isolate side effects, keeping the core logic pure and pushing effects to the edges of the system.
+Side effects are necessary for useful programs because you eventually need to save data or display output. The goal is to isolate side effects, keeping the core logic pure and pushing effects to the edges of the system.
 
 ### Idempotent
 
@@ -134,13 +134,13 @@ An **idempotent** operation produces the same result whether executed once or mu
 
 Setting a value is idempotent: setting `x = 5` ten times leaves `x` at 5. Incrementing is not idempotent: incrementing ten times produces a different result than incrementing once.
 
-Idempotency is critical in distributed systems and APIs. An idempotent HTTP PUT means retrying a failed request is safe—you will not accidentally create duplicates or corrupt data.
+Idempotency is critical in distributed systems and APIs. An idempotent HTTP PUT means retrying a failed request is safe; you will not accidentally create duplicates or corrupt data.
 
 ### Deterministic vs Non-Deterministic
 
 A **deterministic** function always produces the same output for the same input. A **non-deterministic** function may produce different outputs for the same input.
 
-`Math.Max(3, 5)` is deterministic. `Random.Next()` and `DateTime.Now` are non-deterministic—they return different values on different calls.
+`Math.Max(3, 5)` is deterministic. `Random.Next()` and `DateTime.Now` are non-deterministic because they return different values on different calls.
 
 Deterministic code is easier to test and debug because behavior is reproducible.
 
@@ -158,7 +158,7 @@ The term appears in discussions of functional programming and operator design.
 
 ## Execution Models
 
-Understanding how code executes—sequentially, concurrently, or in parallel—is essential for writing responsive and efficient applications.
+Understanding how code executes (sequentially, concurrently, or in parallel) is essential for writing responsive and efficient applications.
 
 ### Synchronous vs Asynchronous
 
@@ -182,7 +182,7 @@ A blocking file read pauses the thread until data arrives. A non-blocking read i
 
 **Parallel** execution runs multiple tasks simultaneously. This requires multiple processors or cores.
 
-Concurrency is about structure—dealing with multiple things at once. Parallelism is about execution—doing multiple things at once. A web server handles concurrent requests (many in progress) but may not process them in parallel (if limited to one CPU).
+Concurrency is about structure, dealing with multiple things at once. Parallelism is about execution, doing multiple things at once. A web server handles concurrent requests (many in progress) but may not process them in parallel (if limited to one CPU).
 
 ### Thread-Safe
 
@@ -196,7 +196,7 @@ Immutable data is inherently thread-safe because it cannot change. Mutable share
 
 A **race condition** occurs when program behavior depends on the relative timing of events, such as thread scheduling.
 
-If two threads read a counter, increment it, and write it back without synchronization, the final value depends on execution order. Both might read 5, increment to 6, and write 6—losing an increment.
+If two threads read a counter, increment it, and write it back without synchronization, the final value depends on execution order. Both might read 5, increment to 6, and write 6, losing an increment.
 
 Race conditions cause intermittent, hard-to-reproduce bugs. They are avoided through proper synchronization or by eliminating shared mutable state.
 
@@ -210,7 +210,7 @@ Deadlocks are prevented by careful lock ordering, timeout mechanisms, or avoidin
 
 ## System Integration
 
-When systems interact—between languages, between layers, or across networks—specific concepts describe the challenges and solutions.
+When systems interact (between languages, between layers, or across networks) specific concepts describe the challenges and solutions.
 
 ### Interoperability
 
@@ -230,7 +230,7 @@ Similar mismatches occur between different API styles (REST vs GraphQL), data fo
 
 ### Marshalling
 
-**Marshalling** transforms data for transmission between different environments—across process boundaries, between managed and unmanaged code, or over networks.
+**Marshalling** transforms data for transmission between different environments, whether across process boundaries, between managed and unmanaged code, or over networks.
 
 When calling native code from C#, parameters are marshalled: converted to formats the native code expects, passed across the boundary, and results converted back.
 
@@ -274,7 +274,7 @@ The `IDisposable` interface and `using` statement in C# provide deterministic cl
 
 A **memory leak** occurs when memory is allocated but never freed, causing memory usage to grow indefinitely.
 
-In garbage-collected languages, leaks typically occur through unintended references—event handlers that are never unsubscribed, static collections that grow forever, or caches without eviction.
+In garbage-collected languages, leaks typically occur through unintended references such as event handlers that are never unsubscribed, static collections that grow forever, or caches without eviction.
 
 While the garbage collector prevents traditional leaks, failing to release references effectively leaks memory by preventing collection.
 
@@ -336,7 +336,7 @@ Exceptions propagate up the call stack until caught by an exception handler. Thi
 
 **Throwing** an exception signals that something went wrong. **Catching** an exception handles the error condition.
 
-Code should throw exceptions for truly exceptional conditions—situations the immediate code cannot handle. Catch exceptions at levels where meaningful recovery is possible, not just to suppress errors.
+Code should throw exceptions for truly exceptional conditions, meaning situations the immediate code cannot handle. Catch exceptions at levels where meaningful recovery is possible, not just to suppress errors.
 
 ### Fail-Fast
 
@@ -372,7 +372,7 @@ Clear preconditions and postconditions make code behavior explicit and enable re
 
 ### Invariant
 
-An **invariant** is a condition that remains true throughout a particular scope—a loop, an object's lifetime, or a system's operation.
+An **invariant** is a condition that remains true throughout a particular scope, whether a loop, an object's lifetime, or a system's operation.
 
 A class invariant might be "balance is always non-negative." Every method must preserve this invariant: it can assume the invariant holds on entry and must ensure it holds on exit.
 
@@ -380,7 +380,7 @@ A class invariant might be "balance is always non-negative." Every method must p
 
 In API design, **idempotency** means making the same request multiple times has the same effect as making it once.
 
-HTTP GET and DELETE are idempotent by specification. A well-designed API makes PUT idempotent. POST typically is not idempotent—repeated calls may create multiple resources.
+HTTP GET and DELETE are idempotent by specification. A well-designed API makes PUT idempotent. POST typically is not idempotent; repeated calls may create multiple resources.
 
 Idempotency enables safe retries and simpler error handling in distributed systems.
 
@@ -392,7 +392,7 @@ How we combine and reuse code affects flexibility and maintainability.
 
 **Inheritance** creates new types by extending existing ones, inheriting their behavior. **Composition** creates new functionality by combining existing objects.
 
-Inheritance creates tight coupling between parent and child. Composition is more flexible—you can change composed objects at runtime and avoid the fragile base class problem.
+Inheritance creates tight coupling between parent and child. Composition is more flexible; you can change composed objects at runtime and avoid the fragile base class problem.
 
 The principle "favor composition over inheritance" suggests using inheritance for genuine "is-a" relationships and composition for code reuse.
 
@@ -406,7 +406,7 @@ A class might implement an interface by delegating all calls to an internal obje
 
 A **higher-order function** takes functions as arguments or returns functions as results.
 
-LINQ methods like `Where` and `Select` are higher-order functions—they accept functions (lambdas) that specify filtering or transformation logic.
+LINQ methods like `Where` and `Select` are higher-order functions that accept functions (lambdas) specifying filtering or transformation logic.
 
 Higher-order functions enable powerful abstractions like mapping, filtering, and reducing collections without writing explicit loops.
 

@@ -167,7 +167,7 @@ var ctx3 = scope2.ServiceProvider.GetRequiredService<IDbContext>();
 
 **Use for**: Services that should share state within a request/operation but not across them. Database contexts, unit of work patterns.
 
-**Why scoped**: Database contexts track entities and accumulate changes. You want all repository calls within a request to share the same context so they participate in the same unit of work and can be committed together. But you don't want one user's request to see another user's uncommitted changes—so each request gets its own instance.
+**Why scoped**: Database contexts track entities and accumulate changes. You want all repository calls within a request to share the same context so they participate in the same unit of work and can be committed together. But you don't want one user's request to see another user's uncommitted changes, so each request gets its own instance.
 
 **Trade-off**: Scoped services require explicit scope creation in background services and console apps. In web apps, the framework creates a scope per request automatically.
 
@@ -188,7 +188,7 @@ var config2 = provider.GetRequiredService<IConfigService>();
 
 **Why singleton**: Some resources are expensive to create (HTTP clients, database connection pools) or naturally shared (configuration). Creating one instance and reusing it avoids repeated initialization costs.
 
-**Trade-off**: Singletons must be thread-safe since they're shared across all requests concurrently. Any mutable state needs synchronization. The most common mistake is injecting a scoped service into a singleton—the scoped service becomes a "captive dependency" that lives forever instead of being disposed per request.
+**Trade-off**: Singletons must be thread-safe since they're shared across all requests concurrently. Any mutable state needs synchronization. The most common mistake is injecting a scoped service into a singleton. The scoped service becomes a "captive dependency" that lives forever instead of being disposed per request.
 
 ### Lifetime Comparison
 

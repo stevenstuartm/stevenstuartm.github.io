@@ -9,6 +9,10 @@ tags: [aws, data-architecture, analytics, etl, automation, cost-analysis, govern
 
 ## What Problems AWS Glue Solves
 
+<blockquote class="pull-quote">
+<p>Glue provides serverless ETL that automatically discovers data schemas, maintains a central metadata catalog, and runs PySpark/Python jobs at scale without managing infrastructure.</p>
+</blockquote>
+
 AWS Glue addresses the operational complexity and infrastructure burden of building and maintaining data pipelines at scale.
 
 **Traditional ETL challenges**:
@@ -39,7 +43,10 @@ The Data Catalog is a centralized metadata repository that stores table definiti
 - Connection details (JDBC URLs, credentials for data sources)
 - Classifier definitions (custom parsers for proprietary formats)
 
-**Integration points**: Athena, Redshift Spectrum, EMR, QuickSight, SageMaker, and Lake Formation all use the Data Catalog as their metadata layer. Define a table once in Glue, query it from multiple services.
+<div class="callout callout--tip">
+<p class="callout__title">Integration Points</p>
+<p>Athena, Redshift Spectrum, EMR, QuickSight, SageMaker, and Lake Formation all use the Data Catalog as their metadata layer. Define a table once in Glue, query it from multiple services.</p>
+</div>
 
 **Example catalog structure**:
 ```

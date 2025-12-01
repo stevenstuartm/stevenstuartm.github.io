@@ -22,6 +22,10 @@ tags: [aws, architecture, distributed-systems, scalability, reliability, multi-r
 
 ## What Problems Multi-Region Architecture Solves
 
+<blockquote class="pull-quote">
+<p>December 2021 US-EAST-1 outage took down major services for 7+ hours. Multi-region architecture provides regional failure tolerance, global performance, and aggressive DR targets.</p>
+</blockquote>
+
 **Single-region deployments introduce risks**:
 
 1. **Regional outages**: AWS regions have failed (US-EAST-1 outages in 2017, 2021, 2023)

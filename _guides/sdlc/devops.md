@@ -27,6 +27,10 @@ tags: [sdlc, devops, automation, culture, ci-cd, continuous-delivery]
 
 **DevOps** is a cultural and technical movement that integrates software development (Dev) and IT operations (Ops) to shorten the systems development lifecycle while delivering features, fixes, and updates frequently in close alignment with business objectives.
 
+<blockquote class="pull-quote">
+<p>DevOps is cultural transformation first, technical second.</p>
+</blockquote>
+
 **Core Philosophy:**
 - Break down silos between development and operations
 - Automate repetitive tasks (build, test, deploy)
@@ -37,17 +41,26 @@ tags: [sdlc, devops, automation, culture, ci-cd, continuous-delivery]
 
 **Key Characteristics:**
 
-DevOps is **not**:
-- A tool (Jenkins, Docker, Kubernetes)
-- A team or role ("DevOps Engineer")
-- Just automation
-- Only about speed
-
-DevOps **is**:
-- A cultural shift (collaboration over silos)
-- A set of practices (CI/CD, IaC, monitoring)
-- About both speed and stability
-- Shared responsibility and accountability
+<div class="comparison">
+<div class="content-card content-card--accent-warning">
+<h4>DevOps is NOT</h4>
+<ul>
+<li>A tool (Jenkins, Docker, Kubernetes)</li>
+<li>A team or role ("DevOps Engineer")</li>
+<li>Just automation</li>
+<li>Only about speed</li>
+</ul>
+</div>
+<div class="content-card content-card--accent">
+<h4>DevOps IS</h4>
+<ul>
+<li>A cultural shift (collaboration over silos)</li>
+<li>A set of practices (CI/CD, IaC, monitoring)</li>
+<li>About both speed and stability</li>
+<li>Shared responsibility and accountability</li>
+</ul>
+</div>
+</div>
 
 ### Why DevOps Emerged
 
@@ -198,35 +211,28 @@ DevOps:
 
 **Five pillars of DevOps culture:**
 
-**C - Culture:**
-- Collaboration over silos
-- Shared responsibility
-- Psychological safety
-- Learning from failure
-
-**A - Automation:**
-- Automate repetitive tasks
-- Reduce human error
-- Free people for creative work
-- Consistent and reliable
-
-**L - Lean:**
-- Focus on value stream
-- Eliminate waste
-- Small batch sizes
-- Continuous improvement
-
-**M - Measurement:**
-- Data-driven decisions
-- Four key metrics (DORA)
-- Observability and monitoring
-- Continuous feedback
-
-**S - Sharing:**
-- Open communication
-- Knowledge transfer
-- Blameless post-mortems
-- Inner source and open source
+<div class="card-group">
+<div class="content-card content-card--accent">
+<h4>Culture</h4>
+<p>Collaboration over silos, shared responsibility, psychological safety, learning from failure.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Automation</h4>
+<p>Automate repetitive tasks, reduce human error, free people for creative work.</p>
+</div>
+<div class="content-card content-card--accent-warning">
+<h4>Lean</h4>
+<p>Focus on value stream, eliminate waste, small batch sizes, continuous improvement.</p>
+</div>
+<div class="content-card content-card--accent">
+<h4>Measurement</h4>
+<p>Data-driven decisions, DORA metrics, observability and monitoring, continuous feedback.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Sharing</h4>
+<p>Open communication, knowledge transfer, blameless post-mortems, inner source and open source.</p>
+</div>
+</div>
 
 ---
 
@@ -348,7 +354,9 @@ Real user monitoring:
 - **Days**: Production monitoring, user feedback
 - **Weeks**: Post-mortems, retrospectives
 
-**Goal: Make feedback loops as fast as possible at every level.**
+<blockquote class="pull-quote">
+<p>Make feedback loops as fast as possible at every level.</p>
+</blockquote>
 
 **Metrics for feedback:**
 - **Mean Time to Detect (MTTD)**: How quickly we detect issues
@@ -711,13 +719,16 @@ After an incident, conduct a retrospective focused on learning rather than blame
 - What needs to change (systems, processes, tooling)?
 - Who owns each action? When will it be done?
 
-**Blameless principles:**
-
-- Focus on systems, not individuals
-- Assume everyone acted with good intentions
-- Humans make mistakes; systems should be resilient
-- Punishment prevents honesty
-- Learning requires psychological safety
+<div class="callout callout--tip">
+<p class="callout__title">Blameless Principles</p>
+<ul>
+<li>Focus on systems, not individuals</li>
+<li>Assume everyone acted with good intentions</li>
+<li>Humans make mistakes; systems should be resilient</li>
+<li>Punishment prevents honesty</li>
+<li>Learning requires psychological safety</li>
+</ul>
+</div>
 
 **Example questions:**
 
@@ -1522,25 +1533,30 @@ Goal is delivering value, not maximizing deploys. Metrics should tie to outcomes
 
 ---
 
-### Red Flags Summary
-
-**Cultural red flags:**
-- "DevOps team" as separate silo
-- Blame culture (not blameless)
-- No shared accountability
-- Lack of psychological safety
-
-**Process red flags:**
-- Focusing only on tools
-- Automation without understanding
-- No observability or monitoring
-- Manual processes remaining
-
-**Measurement red flags:**
-- Measuring activity, not outcomes
-- No DORA metrics tracked
-- Security ignored
-- Deployment frequency without value measurement
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags Summary</p>
+<p><strong>Cultural red flags:</strong></p>
+<ul>
+<li>"DevOps team" as separate silo</li>
+<li>Blame culture (not blameless)</li>
+<li>No shared accountability</li>
+<li>Lack of psychological safety</li>
+</ul>
+<p><strong>Process red flags:</strong></p>
+<ul>
+<li>Focusing only on tools</li>
+<li>Automation without understanding</li>
+<li>No observability or monitoring</li>
+<li>Manual processes remaining</li>
+</ul>
+<p><strong>Measurement red flags:</strong></p>
+<ul>
+<li>Measuring activity, not outcomes</li>
+<li>No DORA metrics tracked</li>
+<li>Security ignored</li>
+<li>Deployment frequency without value measurement</li>
+</ul>
+</div>
 
 ---
 

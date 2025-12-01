@@ -22,6 +22,10 @@ tags: [infrastructure, aws, iam, security, access-control, fundamentals]
 
 ## What is AWS Identity and Access Management
 
+<blockquote class="pull-quote">
+<p>Over 40% of cloud breaches originate from unnecessarily broad privileges. Over 80% of cloud breaches link to misconfigurations, often from overly permissive access.</p>
+</blockquote>
+
 **AWS Identity and Access Management (IAM)** controls who can access your AWS resources and what actions they can perform. Every API call to AWS goes through IAM for authentication (who are you?) and authorization (what can you do?).
 
 ### What Problems IAM Solves
@@ -53,7 +57,10 @@ tags: [infrastructure, aws, iam, security, access-control, fundamentals]
 4. AWS allows or denies the request
 ```
 
-**Key Principle:** IAM follows **deny by default**. Unless a policy explicitly allows an action, it's denied.
+<div class="callout callout--warning">
+<p class="callout__title">Key Principle</p>
+<p>IAM follows <strong>deny by default</strong>. Unless a policy explicitly allows an action, it's denied.</p>
+</div>
 
 ### AWS's 2024 Recommendation
 
@@ -200,11 +207,15 @@ aws s3 ls --profile my-profile
 # Credentials refresh automatically through the CLI
 ```
 
-**Why This is Better Than Access Keys:**
-- No long-term credentials stored on developer workstations
-- Credentials refresh automatically before expiration
-- Easy to revoke access centrally (update permission set or account assignment)
-- Complete audit trail (CloudTrail shows which user performed actions)
+<div class="callout callout--tip">
+<p class="callout__title">Why This is Better Than Access Keys</p>
+<ul>
+<li>No long-term credentials stored on developer workstations</li>
+<li>Credentials refresh automatically before expiration</li>
+<li>Easy to revoke access centrally (update permission set or account assignment)</li>
+<li>Complete audit trail (CloudTrail shows which user performed actions)</li>
+</ul>
+</div>
 
 ### When to Use IAM Identity Center
 
@@ -229,6 +240,10 @@ aws s3 ls --profile my-profile
 ### What is AWS Organizations?
 
 **AWS Organizations** enables centralized management of multiple AWS accounts. It provides consolidated billing, organizational hierarchy, and permission guardrails.
+
+<blockquote class="pull-quote">
+<p>AWS recommends multi-account architecture even for small organizations. Each account has separate IAM, resource limits, and API limits. This isolation contains security incidents and simplifies compliance.</p>
+</blockquote>
 
 **Why Multi-Account Architecture Matters:**
 

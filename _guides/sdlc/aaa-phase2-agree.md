@@ -13,6 +13,10 @@ tags: [sdlc, aaa-cycle, planning, architecture, collaboration, practical]
 
 **Transform aligned understanding into concrete, approved technical plans.** Design the solution, validate critical assumptions, and secure commitment on approach and resources.
 
+<blockquote class="pull-quote">
+<p>Agreement without understanding is not agreement; it's compliance waiting to fail.</p>
+</blockquote>
+
 ### The Universal Pattern
 
 Regardless of project size or methodology, agreement follows these steps:
@@ -90,13 +94,17 @@ Agree applies at every level of work:
 - Consider operations from the start—how will this be deployed, monitored, maintained?
 - Use proven patterns over novel approaches unless there's clear justification
 
-**Red Flags**:
-- Resume-driven architecture (choosing trendy tech, not what fits)
-- Over-engineering (building for scale you'll never need)
-- Under-engineering (ignoring future growth)
-- Ignoring operations (hard to deploy, monitor, maintain)
-- Not documenting decisions
-- Designing in a vacuum without team input
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags in Architecture Design</p>
+<ul>
+<li><strong>Resume-driven architecture</strong>: Choosing trendy tech, not what fits</li>
+<li><strong>Over-engineering</strong>: Building for scale you'll never need</li>
+<li><strong>Under-engineering</strong>: Ignoring future growth</li>
+<li><strong>Ignoring operations</strong>: Hard to deploy, monitor, maintain</li>
+<li><strong>Not documenting decisions</strong>: Future teams won't know why</li>
+<li><strong>Designing in a vacuum</strong>: No team input or buy-in</li>
+</ul>
+</div>
 
 ---
 
@@ -303,7 +311,9 @@ Sometimes prose and structured artifacts work better than diagrams:
 
 #### The AAA Principle for Documentation
 
-> Create the **minimum documentation** needed to achieve **genuine agreement** on **high-risk decisions**.
+<blockquote class="pull-quote">
+<p>Create the minimum documentation needed to achieve genuine agreement on high-risk decisions.</p>
+</blockquote>
 
 If a diagram doesn't help someone commit to a specific decision, don't create it. If prose or a simple table achieves the same clarity, use that instead.
 
@@ -343,12 +353,16 @@ If a diagram doesn't help someone commit to a specific decision, don't create it
 - Decide quickly: go/adjust/pivot based on findings
 - Delete POC code when done—resist the temptation to productionize it
 
-**Red Flags**:
-- POC becomes production code (quality shortcuts in production)
-- Testing easy things instead of real risks
-- No clear success criteria
-- POC drags on indefinitely without decisions
-- Ignoring or downplaying negative POC findings
+<div class="callout callout--warning">
+<p class="callout__title">POC Red Flags</p>
+<ul>
+<li><strong>POC becomes production code</strong>: Quality shortcuts in production</li>
+<li><strong>Testing easy things</strong>: Not addressing real risks</li>
+<li><strong>No clear success criteria</strong>: How do you know if it worked?</li>
+<li><strong>POC drags on indefinitely</strong>: No decisions being made</li>
+<li><strong>Ignoring negative findings</strong>: Downplaying results that contradict assumptions</li>
+</ul>
+</div>
 
 ---
 
@@ -387,12 +401,16 @@ If a diagram doesn't help someone commit to a specific decision, don't create it
 - Design for testability—architecture should make testing easy
 - Don't compromise on quality gates—they prevent production issues
 
-**Red Flags**:
-- Testing ice cream cone (too many E2E tests, not enough unit tests)
-- No automation (manual testing only)
-- Skipping or delaying security testing
-- Quality theater (tests exist but don't catch defects)
-- Under-investing in test infrastructure
+<div class="callout callout--warning">
+<p class="callout__title">Quality Strategy Red Flags</p>
+<ul>
+<li><strong>Testing ice cream cone</strong>: Too many E2E tests, not enough unit tests</li>
+<li><strong>No automation</strong>: Manual testing only</li>
+<li><strong>Skipping security testing</strong>: Delaying until it's too late</li>
+<li><strong>Quality theater</strong>: Tests exist but don't catch defects</li>
+<li><strong>Under-investing in infrastructure</strong>: Slow, unreliable test runs</li>
+</ul>
+</div>
 
 ---
 
@@ -424,21 +442,31 @@ If a diagram doesn't help someone commit to a specific decision, don't create it
 - Balanced between ambition and feasibility
 - More aggressive than current baseline (if improving existing system)
 
-**How to Do This Well**:
-- Don't chase "nines" without justification—understand the cost of each nine
-- Use percentiles (95th, 99th), not averages—averages hide outliers
-- Build in margin—SLO should be tighter than SLA to avoid breaches
-- Make targets visible with dashboards—transparency drives accountability
-- Use error budgets to balance reliability with feature velocity
-- Base targets on architecture capabilities—start conservative
+<div class="callout callout--tip">
+<p class="callout__title">SLO Best Practices</p>
+<ul>
+<li><strong>Don't chase "nines" blindly</strong>: Understand the cost of each additional nine</li>
+<li><strong>Use percentiles (95th, 99th)</strong>: Averages hide outliers that hurt users</li>
+<li><strong>Build in margin</strong>: SLO should be tighter than SLA to avoid breaches</li>
+<li><strong>Make targets visible</strong>: Dashboards drive accountability</li>
+<li><strong>Use error budgets</strong>: Balance reliability with feature velocity</li>
+</ul>
+</div>
 
-**Red Flags**:
-- Measuring the wrong things (vanity metrics)
-- No error budget (teams become risk-averse or burn out)
-- SLAs more aggressive than SLOs (no safety margin)
-- No monitoring plan for measuring SLIs
-- Targets that ignore dependency SLOs (unrealistic given downstream limitations)
-- Setting targets that sound good but are unachievable
+<blockquote class="pull-quote">
+<p>99.9% availability sounds impressive until you realize it allows 43.8 minutes of downtime per month.</p>
+</blockquote>
+
+<div class="callout callout--warning">
+<p class="callout__title">SLO Red Flags</p>
+<ul>
+<li><strong>Measuring vanity metrics</strong>: Not what actually matters to users</li>
+<li><strong>No error budget</strong>: Teams become risk-averse or burn out</li>
+<li><strong>SLAs more aggressive than SLOs</strong>: No safety margin</li>
+<li><strong>No monitoring plan</strong>: Can't measure what you can't see</li>
+<li><strong>Ignoring dependency SLOs</strong>: Unrealistic given downstream limitations</li>
+</ul>
+</div>
 
 ---
 
@@ -469,20 +497,27 @@ If a diagram doesn't help someone commit to a specific decision, don't create it
 - Identify critical path
 - Mark dependencies on external teams/vendors
 
-**How to Do This Well**:
-- Plan collaboratively with the team—their input improves accuracy and buy-in
-- Use historical velocity data when available
-- Provide ranges, not point estimates—acknowledge uncertainty
-- Make contingency buffer explicit (typically 20-30%)
-- Plan in waves: detailed for near-term, high-level for distant future
-- Listen to team concerns—they often identify real risks
+<div class="callout callout--tip">
+<p class="callout__title">Planning Best Practices</p>
+<ul>
+<li><strong>Plan collaboratively</strong>: Team input improves accuracy and buy-in</li>
+<li><strong>Use historical velocity</strong>: Data beats guessing</li>
+<li><strong>Provide ranges</strong>: Point estimates hide uncertainty</li>
+<li><strong>Make contingency explicit</strong>: 20-30% buffer for unknowns</li>
+<li><strong>Plan in waves</strong>: Detailed near-term, high-level distant future</li>
+</ul>
+</div>
 
-**Red Flags**:
-- Architect or PM creates plan without developer input
-- No buffer time for surprises
-- Ignoring team velocity data
-- Forgetting non-development work (meetings, reviews, support)
-- Unrealistic dependency assumptions
+<div class="callout callout--warning">
+<p class="callout__title">Planning Red Flags</p>
+<ul>
+<li><strong>No developer input</strong>: Architect or PM creates plan alone</li>
+<li><strong>No buffer time</strong>: Surprises are inevitable</li>
+<li><strong>Ignoring velocity data</strong>: Historical performance matters</li>
+<li><strong>Forgetting overhead</strong>: Meetings, reviews, support, context switching</li>
+<li><strong>Unrealistic dependencies</strong>: Assuming external teams deliver on time</li>
+</ul>
+</div>
 
 ---
 
@@ -527,12 +562,16 @@ For detailed guidance, see [Total Cost of Ownership](/study-guides/architecture/
 - Disaster recovery and backup
 - End-of-life and decommissioning
 
-**How to Do This Well**:
-- Include ongoing operational costs, not just upfront development
-- Account for scaling—costs change with growth
-- Factor in technical debt paydown over time
-- Build in contingency for unknowns (typically 15-25%)
-- Review cloud cost calculators and pricing models carefully
+<div class="callout callout--note">
+<p class="callout__title">TCO Best Practices</p>
+<ul>
+<li><strong>Include ongoing costs</strong>: Not just upfront development</li>
+<li><strong>Account for scaling</strong>: Costs change with growth</li>
+<li><strong>Factor in technical debt</strong>: Paydown costs over time</li>
+<li><strong>Build in contingency</strong>: 15-25% for unknowns</li>
+<li><strong>Review pricing models</strong>: Cloud calculators help but verify</li>
+</ul>
+</div>
 
 ---
 
@@ -568,12 +607,16 @@ Net Benefit = Total Benefits - Total Costs
 - How long until ROI is positive (payback period)?
 - What's the long-term ROI (3-5 years)?
 
-**How to Do This Well**:
-- Be conservative in benefit estimates, realistic in cost estimates
-- Show best-case, likely-case, worst-case scenarios
-- Include time value of money for multi-year projections
-- Tie benefits to measurable business metrics from Phase 1 success criteria
-- Prove business value clearly to secure commitment
+<div class="callout callout--tip">
+<p class="callout__title">ROI Best Practices</p>
+<ul>
+<li><strong>Be conservative on benefits</strong>: Realistic on costs</li>
+<li><strong>Show scenarios</strong>: Best-case, likely-case, worst-case</li>
+<li><strong>Include time value of money</strong>: For multi-year projections</li>
+<li><strong>Tie to Phase 1 metrics</strong>: Benefits must be measurable</li>
+<li><strong>Prove business value clearly</strong>: This secures commitment</li>
+</ul>
+</div>
 
 ---
 
@@ -603,12 +646,16 @@ Net Benefit = Total Benefits - Total Costs
 - Anticipate questions
 - Be transparent about risks and uncertainties
 
-**Signs of Readiness**:
-- ✅ Stakeholders can explain the approach to others
-- ✅ Technical team confident in the design
-- ✅ Budget and resources formally committed
-- ✅ Risks acknowledged and mitigation agreed
-- ✅ Timeline accepted as realistic
+<div class="callout callout--tip">
+<p class="callout__title">Signs of Readiness</p>
+<ul>
+<li>Stakeholders can explain the approach to others</li>
+<li>Technical team confident in the design</li>
+<li>Budget and resources formally committed</li>
+<li>Risks acknowledged and mitigation agreed</li>
+<li>Timeline accepted as realistic</li>
+</ul>
+</div>
 
 **How to Do This Well**:
 - Present in person, don't just email the plan

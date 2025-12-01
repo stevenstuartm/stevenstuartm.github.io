@@ -26,6 +26,10 @@ tags: [sdlc, methodology, lean, efficiency, waste-reduction]
 
 **Lean Software Development** is a principle-based approach that focuses on eliminating waste, optimizing the whole system, and delivering maximum value to customers. Unlike prescriptive frameworks (Scrum, SAFe), Lean provides guiding principles that teams adapt to their specific context.
 
+<blockquote class="pull-quote">
+<p>The goal is impact, not output. Working software nobody uses is waste, regardless of quality.</p>
+</blockquote>
+
 **Core Philosophy:**
 - Optimize for value delivery, not activity
 - Eliminate anything that doesn't add customer value (waste)
@@ -108,16 +112,30 @@ They translated Lean Manufacturing principles to software development, creating 
 
 ### Lean vs. Traditional Thinking
 
-| **Traditional Thinking** | **Lean Thinking** |
-|--------------------------|-------------------|
-| Maximize utilization (keep everyone busy) | Maximize flow (deliver value quickly) |
-| Prevent defects through process and review | Build quality in from the start |
-| Detailed upfront planning reduces risk | Learning through experiments reduces risk |
-| Measure velocity and story points | Measure cycle time and lead time |
-| Success = hitting the plan | Success = delivering valuable outcomes |
-| Handoffs between specialists | Cross-functional teams own end-to-end |
-| Batch work for efficiency | Small batches for fast feedback |
-| Individual performance matters | System performance matters |
+<div class="comparison">
+<div class="content-card content-card--accent-warning">
+<h4>Traditional Thinking</h4>
+<ul>
+<li>Maximize utilization (keep everyone busy)</li>
+<li>Prevent defects through process and review</li>
+<li>Detailed upfront planning reduces risk</li>
+<li>Measure velocity and story points</li>
+<li>Success = hitting the plan</li>
+<li>Batch work for efficiency</li>
+</ul>
+</div>
+<div class="content-card content-card--accent">
+<h4>Lean Thinking</h4>
+<ul>
+<li>Maximize flow (deliver value quickly)</li>
+<li>Build quality in from the start</li>
+<li>Learning through experiments reduces risk</li>
+<li>Measure cycle time and lead time</li>
+<li>Success = delivering valuable outcomes</li>
+<li>Small batches for fast feedback</li>
+</ul>
+</div>
+</div>
 
 ### What Lean Is NOT
 

@@ -9,6 +9,10 @@ tags: [aws, data-architecture, analytics, cost-analysis, performance, sql]
 
 ## What Problems AWS Athena Solves
 
+<blockquote class="pull-quote">
+<p>Athena runs SQL directly against S3 data without loading or transforming it first. You pay only for data scanned ($5 per TB), not for servers or idle capacity.</p>
+</blockquote>
+
 AWS Athena eliminates the infrastructure complexity and upfront cost of running SQL analytics on large datasets stored in S3.
 
 **Traditional analytics challenges**:
@@ -72,7 +76,10 @@ Athena reads multiple file formats with varying cost and performance characteris
 - **JSON**: Reads all columns = 1 TB scanned = $5.00
 - **Savings**: 96% cost reduction
 
-**Compression**: Always compress files. Athena decompresses automatically. Snappy provides good balance of compression ratio and query performance.
+<div class="callout callout--tip">
+<p class="callout__title">Compression Best Practice</p>
+<p>Always compress files. Athena decompresses automatically. Snappy provides good balance of compression ratio and query performance.</p>
+</div>
 
 ### Partitioning Strategy
 

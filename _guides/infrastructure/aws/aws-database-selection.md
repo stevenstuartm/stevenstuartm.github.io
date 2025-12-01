@@ -9,6 +9,10 @@ tags: [aws, database-selection, decision-framework, architecture, rds, dynamodb,
 
 ## Overview
 
+<blockquote class="pull-quote">
+<p>Choosing the right database is one of the most critical architectural decisions. Migrating between database types later is expensive and complex, so get it right the first time.</p>
+</blockquote>
+
 AWS offers multiple database services optimized for different workload patterns. Choosing the right database is one of the most critical architectural decisions, as migrating between database types later is expensive and complex.
 
 This guide provides decision frameworks to help you select between:

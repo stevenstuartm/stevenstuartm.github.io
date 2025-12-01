@@ -22,6 +22,10 @@ tags: [infrastructure, iac, aws, cloudformation, migration, practical]
 
 ## Overview
 
+<blockquote class="pull-quote">
+<p>CloudFormation import allows bringing existing resources under management without recreating them, gaining version control, drift detection, and automated deployments.</p>
+</blockquote>
+
 **Goal:** Bring AWS resources under CloudFormation management.
 
 **Two migration scenarios:**

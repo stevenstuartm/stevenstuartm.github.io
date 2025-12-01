@@ -7,6 +7,10 @@ description: "Arrays, lists, dictionaries, sets, spans, and choosing the right c
 tags: [c-sharp, dotnet, collections, data-structures, performance, practical]
 ---
 
+<blockquote class="pull-quote">
+<p>Choosing the right collection is often the difference between O(1) and O(n) operations. A HashSet.Contains() check that takes nanoseconds would take milliseconds with List.Contains() on large datasets.</p>
+</blockquote>
+
 ## Collection Types Overview
 
 C# provides a rich set of collection types for different scenarios.

@@ -28,6 +28,10 @@ tags: [aws, waf, shield, ddos, security, firewall, bot-control, rate-limiting, a
 
 ## What Problems WAF & Shield Solve
 
+<blockquote class="pull-quote">
+<p>SQL injection can extract 10M customer records. A 500 Gbps DDoS flood can cause 6 hours of downtime and $2M revenue loss. WAF and Shield provide automated protection at both application and network layers.</p>
+</blockquote>
+
 ### Without Application and Network Protection
 
 **Security Challenges:**
@@ -83,7 +87,10 @@ tags: [aws, waf, shield, ddos, security, firewall, bot-control, rate-limiting, a
 
 **AWS WAF** (Web Application Firewall) is a managed firewall that protects web applications from common web exploits at the application layer (OSI Layer 7).
 
-**Core Concept:** WAF inspects HTTP/HTTPS requests; allows, blocks, or counts requests based on rules.
+<div class="callout callout--note">
+<p class="callout__title">Core Concept</p>
+<p>WAF inspects HTTP/HTTPS requests; allows, blocks, or counts requests based on rules.</p>
+</div>
 
 **WAF Components:**
 

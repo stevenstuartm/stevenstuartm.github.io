@@ -27,6 +27,10 @@ tags: [aws, kinesis, streaming, real-time, data-processing, analytics, architect
 
 ## What Problems Kinesis Solves
 
+<blockquote class="pull-quote">
+<p>Kinesis delivers millisecond-latency real-time data ingestion with ordered delivery, replay capability up to 365 days, and automatic fan-out to multiple consumers.</p>
+</blockquote>
+
 ### Without Streaming Infrastructure
 
 **Real-Time Data Processing Challenges:**
@@ -110,9 +114,13 @@ Logical collection of shards that ingest and store data records.
 
 Basic unit of capacity and parallelism.
 
-**Shard Capacity:**
-- Write: 1 MB/sec or 1,000 records/sec
-- Read: 2 MB/sec (shared mode) or 2 MB/sec per consumer (enhanced fan-out)
+<div class="callout callout--note">
+<p class="callout__title">Shard Capacity</p>
+<ul>
+<li>Write: 1 MB/sec or 1,000 records/sec</li>
+<li>Read: 2 MB/sec (shared mode) or 2 MB/sec per consumer (enhanced fan-out)</li>
+</ul>
+</div>
 
 **3. Data Record**
 

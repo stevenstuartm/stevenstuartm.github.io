@@ -25,6 +25,10 @@ tags: [aws, cdk, infrastructure-as-code, cloudformation, typescript, python, iac
 
 ## What Problems CDK Solves
 
+<blockquote class="pull-quote">
+<p>CDK transforms infrastructure from configuration files into real code. It's testable, refactorable, and built with the same practices we apply to application development.</p>
+</blockquote>
+
 AWS CDK allows you to define cloud infrastructure using familiar programming languages instead of JSON/YAML:
 
 **Eliminate YAML/JSON verbosity**: CloudFormation template for VPC with subnets, route tables, and NAT gateways: 500+ lines of YAML. CDK TypeScript equivalent: 20 lines with `new ec2.Vpc(this, 'MyVpc', { maxAzs: 3 })`. CDK abstracts low-level details.
@@ -125,6 +129,11 @@ This creates an ECS Fargate service, ALB, target group, security groups, and IAM
 
 ## CDK vs CloudFormation
 
+<div class="callout callout--note">
+<p class="callout__title">CDK Generates CloudFormation</p>
+<p>CDK synthesizes to CloudFormation templates under the hood. There's no lock-in to a proprietary format. You can always inspect, export, and manage the generated templates through CloudFormation console.</p>
+</div>
+
 ### CloudFormation Template
 
 **VPC with public and private subnets** (abbreviated for space):
@@ -197,11 +206,28 @@ Total: 5 lines for same VPC (generates 40+ CloudFormation resources)
 
 ### Benefits Over CloudFormation
 
-**Conciseness**: 5 lines vs 150 lines
-**Abstraction**: Don't specify CIDR blocks, route tables, NAT gateway placement; CDK handles it
-**Best practices**: VPC automatically includes public/private subnets, internet gateway, NAT gateways
-**Type safety**: IDE autocomplete for `maxAzs`, compiler error if typo
-**Testable**: Can write unit tests for VPC configuration
+<div class="comparison">
+<div class="content-card content-card--accent">
+<h4>CDK Advantages</h4>
+<ul>
+<li><strong>Conciseness</strong>: 5 lines vs 150 lines</li>
+<li><strong>Abstraction</strong>: Don't specify CIDR blocks, route tables, NAT gateway placement</li>
+<li><strong>Best practices</strong>: VPC includes public/private subnets, gateways automatically</li>
+<li><strong>Type safety</strong>: IDE autocomplete, compiler errors on typos</li>
+<li><strong>Testable</strong>: Unit tests for infrastructure configuration</li>
+</ul>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>CloudFormation Strengths</h4>
+<ul>
+<li><strong>Direct control</strong>: Full access to all CloudFormation features</li>
+<li><strong>Declarative</strong>: Simple for small infrastructure</li>
+<li><strong>No build step</strong>: YAML/JSON used directly</li>
+<li><strong>Existing tooling</strong>: Wide ecosystem support</li>
+<li><strong>Learning curve</strong>: No programming knowledge required</li>
+</ul>
+</div>
+</div>
 
 ## Constructs
 
@@ -957,6 +983,11 @@ Aspects.of(app).add(new AwsSolutionsChecks({ verbose: true }));
 
 ## Common Pitfalls
 
+<div class="callout callout--warning">
+<p class="callout__title">Most Common CDK Mistakes</p>
+<p>The majority of CDK deployment failures come from forgetting to bootstrap, hardcoding resource names, and not reviewing synthesized CloudFormation before deploying to production.</p>
+</div>
+
 ### Not Bootstrapping Environment
 
 **Problem**: `cdk deploy` fails with "Policy contains a statement with one or more invalid principals."
@@ -1043,6 +1074,10 @@ code: lambda.Code.fromDockerBuild('lambda')
 **Solution**: Delete `cdk.context.json` or run `cdk context --clear` to refresh.
 
 ## Key Takeaways
+
+<blockquote class="pull-quote">
+<p>CDK's real power isn't just code generation; it's enabling the same development practices (testing, code review, refactoring) that make application code reliable.</p>
+</blockquote>
 
 **CDK enables infrastructure as code with familiar programming languages**: TypeScript, Python, Java, C#, Go instead of YAML/JSON. Leverage IDE autocomplete, type checking, and refactoring tools.
 

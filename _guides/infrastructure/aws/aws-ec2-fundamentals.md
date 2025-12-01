@@ -23,6 +23,10 @@ tags: [infrastructure, aws, cloud-computing, cost-analysis, practical, fundament
 
 ## What Problems EC2 Solves
 
+<blockquote class="pull-quote">
+<p>EC2 provides the control of traditional servers with the flexibility and economics of cloud computing. Launch instances in minutes and scale capacity as requirements change.</p>
+</blockquote>
+
 Amazon EC2 (Elastic Compute Cloud) provides resizable compute capacity in the cloud, addressing fundamental infrastructure challenges that organizations face:
 
 **Infrastructure challenges solved:**
@@ -154,6 +158,11 @@ Hardware accelerators (GPUs, FPGAs, inference processors) for specialized worklo
 - Graphics rendering and video processing
 - Financial modeling and risk analysis
 - Genomics research and computational chemistry
+
+<div class="callout callout--tip">
+<p class="callout__title">Instance Selection Strategy</p>
+<p>Start with a general purpose (M or T series) instance unless you know your workload is specifically compute, memory, or storage bound. With per-second billing, testing different instance types is cost-effective.</p>
+</div>
 
 ### Selection Criteria
 
@@ -465,6 +474,11 @@ Compute Optimizer offers four preset recommendation preferences:
 ## Security Best Practices
 
 ### IMDSv2 (Instance Metadata Service Version 2)
+
+<div class="callout callout--warning">
+<p class="callout__title">Critical Security Configuration</p>
+<p>IMDSv1 is vulnerable to SSRF attacks that can steal IAM role credentials. Always enforce IMDSv2 with <code>HttpTokens: required</code> in launch templates and use AWS Config rule <code>ec2-imdsv2-check</code> for compliance monitoring.</p>
+</div>
 
 #### Why IMDSv2 is Critical
 
@@ -1351,11 +1365,16 @@ Lambda is cost-effective for intermittent use, expensive for continuous operatio
 - **Phase 2**: Containerize components to ECS (modernization)
 - **Phase 3**: Decompose to microservices, move functions to Lambda (cloud-native)
 
-### Key Insight
-
-There's overlap between EC2, containers, and Lambda, but each service has limitations. The right choice depends on your specific requirements for control, operational overhead, execution time, cost model, and team expertise. Many architectures use multiple compute services, selecting the best fit for each component.
+<div class="callout callout--note">
+<p class="callout__title">Compute Service Selection</p>
+<p>There's overlap between EC2, containers, and Lambda, but each service has limitations.</p>
+</div> The right choice depends on your specific requirements for control, operational overhead, execution time, cost model, and team expertise. Many architectures use multiple compute services, selecting the best fit for each component.
 
 ## Common Pitfalls
+
+<blockquote class="pull-quote">
+<p>53% of organizations use no commitment discounts, leaving significant savings (up to 72%) on the table. Right-size first, then commit.</p>
+</blockquote>
 
 ### Security Misconfigurations
 

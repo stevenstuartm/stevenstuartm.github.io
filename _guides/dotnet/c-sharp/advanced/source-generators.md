@@ -46,7 +46,7 @@ Developers have traditionally solved this repetition in two ways, and both have 
 
 **Approach 1: Write it by hand.** This is tedious, error-prone, and creates maintenance burden. When you add a property to a class, you have to remember to update the `ToString()`, the serialization logic, and everywhere else that needs to know about it.
 
-**Approach 2: Use reflection at runtime.** Your program can inspect itself while running—discovering what properties a class has, what attributes are applied, and so on. This works, but reflection is slow. Every time your program runs, it spends time figuring out what it could have known at compile time.
+**Approach 2: Use reflection at runtime.** Your program can inspect itself while running, discovering what properties a class has, what attributes are applied, and so on. This works, but reflection is slow. Every time your program runs, it spends time figuring out what it could have known at compile time.
 
 Source generators offer a third approach: **generate the repetitive code automatically at compile time**. The compiler runs your generator, which examines your code and writes additional C# source files. These generated files compile alongside your handwritten code, producing a final program with no runtime overhead.
 
@@ -54,7 +54,7 @@ Source generators offer a third approach: **generate the repetitive code automat
 
 Understanding source generators matters for three reasons:
 
-**Performance without sacrifice.** Reflection-based approaches like traditional JSON serialization or dependency injection scanning have measurable runtime costs. Source generators eliminate this cost entirely. The generated code is identical to what you would write by hand—the compiler cannot tell the difference.
+**Performance without sacrifice.** Reflection-based approaches like traditional JSON serialization or dependency injection scanning have measurable runtime costs. Source generators eliminate this cost entirely. The generated code is identical to what you would write by hand, and the compiler cannot tell the difference.
 
 **You already use them.** If you use `System.Text.Json` with the `[JsonSerializable]` attribute, regex with `[GeneratedRegex]`, or high-performance logging with `[LoggerMessage]`, you're using source generators. Understanding how they work helps you use these features effectively and debug issues when they arise.
 
@@ -76,10 +76,10 @@ Two constraints shape how generators work:
 
 <div class="callout callout--note">
 <p class="callout__title">Generators Add, Never Modify</p>
-<p>Source generators cannot change your existing code. They can only create new files. This is why <code>partial class</code> is everywhere—the generator adds a new partial definition that merges with your original.</p>
+<p>Source generators cannot change your existing code. They can only create new files. This is why <code>partial class</code> is everywhere: the generator adds a new partial definition that merges with your original.</p>
 </div>
 
-**Generators can only add code, never modify existing code.** If you have a `Person` class, a generator cannot change that class. It can only create new files. This is why you see `partial class` everywhere in generated code—the generator creates a new partial definition that the compiler merges with your original.
+**Generators can only add code, never modify existing code.** If you have a `Person` class, a generator cannot change that class. It can only create new files. This is why you see `partial class` everywhere in generated code: the generator creates a new partial definition that the compiler merges with your original.
 
 **Generators must be deterministic and fast.** The compiler runs generators on every keystroke in an IDE. A slow generator makes IntelliSense lag. A non-deterministic generator causes confusing behavior. Modern generators use an "incremental" API that caches results and only regenerates when relevant code changes.
 
@@ -118,7 +118,7 @@ public partial class Validators
 }
 ```
 
-The generator produces actual C# code implementing the regex matching logic—not an interpreted pattern, but compiled IL instructions. This runs significantly faster than runtime-compiled regex for patterns used repeatedly.
+The generator produces actual C# code implementing the regex matching logic, not an interpreted pattern, but compiled IL instructions. This runs significantly faster than runtime-compiled regex for patterns used repeatedly.
 
 ### Logging Generation
 
@@ -152,7 +152,7 @@ The generated code includes the enabled check and avoids boxing value types, giv
 
 You may have noticed that all the examples above use `partial` classes and `partial` methods. This is fundamental to how source generators work.
 
-When you write `partial class AppJsonContext`, you're telling the compiler that this class definition is incomplete—other parts exist elsewhere. The source generator creates another file with `partial class AppJsonContext` containing the generated implementation. The compiler merges these partial definitions into a single class.
+When you write `partial class AppJsonContext`, you're telling the compiler that this class definition is incomplete, and other parts exist elsewhere. The source generator creates another file with `partial class AppJsonContext` containing the generated implementation. The compiler merges these partial definitions into a single class.
 
 Similarly, `partial` methods declare a method signature without implementation. The generator provides the implementation in a generated file. If you write:
 
@@ -166,7 +166,7 @@ The generator creates:
 public static partial Regex EmailRegex() => /* generated implementation */;
 ```
 
-This explains why forgetting the `partial` keyword causes source generator features to fail—without it, the compiler cannot merge your declaration with the generated implementation.
+This explains why forgetting the `partial` keyword causes source generator features to fail. Without it, the compiler cannot merge your declaration with the generated implementation.
 
 ## Writing Your Own Generator
 
@@ -239,7 +239,7 @@ When you encounter source generators in the wild or consider writing one, you'll
 
 The most common pattern uses an attribute to mark types that need generation. The `[JsonSerializable]`, `[GeneratedRegex]`, and `[LoggerMessage]` attributes all follow this pattern. You mark something with an attribute, and the generator finds it and generates corresponding code.
 
-This pattern works well because attributes are explicit—developers opt in deliberately—and the generator has a clear, narrow scope of what to process.
+This pattern works well because attributes are explicit. Developers opt in deliberately, and the generator has a clear, narrow scope of what to process.
 
 ### Interface-to-Implementation
 
@@ -251,7 +251,7 @@ This separates the contract (what operations exist) from the implementation deta
 
 Rather than marking individual types, some generators scan all types in an assembly looking for patterns. A dependency injection generator might find every class implementing `IService` and generate registration code automatically. This eliminates the need to manually register each service.
 
-The tradeoff is less explicit control—you have to understand what the generator looks for, and accidentally matching the pattern creates unexpected behavior.
+The tradeoff is less explicit control. You have to understand what the generator looks for, and accidentally matching the pattern creates unexpected behavior.
 
 ## Viewing and Debugging Generated Code
 
@@ -274,7 +274,7 @@ Most IDEs also let you navigate to generated code directly. In Visual Studio, yo
 
 ### Understanding Generator Errors
 
-When a generator fails, the error messages come from the generator itself, not from your code directly. Well-designed generators report diagnostics explaining what went wrong—for example, "Class 'Foo' must be partial to use this generator."
+When a generator fails, the error messages come from the generator itself, not from your code directly. Well-designed generators report diagnostics explaining what went wrong, for example, "Class 'Foo' must be partial to use this generator."
 
 If you see cryptic errors during compilation that mention generator assemblies, the generated code likely has a bug, or your code doesn't match what the generator expects. Viewing the generated files usually reveals the problem.
 
@@ -298,7 +298,7 @@ Source generators are powerful, but they're not the right tool for every situati
 
 Understanding source generators changes how you approach certain problems:
 
-**When you see `partial` in modern C# code, look for generated counterparts.** The keyword is a signal that code exists somewhere else—often from a generator.
+**When you see `partial` in modern C# code, look for generated counterparts.** The keyword is a signal that code exists somewhere else, often from a generator.
 
 **Startup time improvements often come from source generators.** If an application using reflection-based JSON or DI feels slow to start, source-generated alternatives can help.
 

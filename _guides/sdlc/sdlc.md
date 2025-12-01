@@ -38,7 +38,7 @@ The **Software Development Lifecycle (SDLC)** is a structured process for planni
 ### Core SDLC Principles
 
 <blockquote class="pull-quote">
-<p>Effective SDLCs build quality in from the start, iterate continuously, and collaborate across disciplines—not treating quality as an afterthought.</p>
+<p>Effective SDLCs build quality in from the start, iterate continuously, and collaborate across disciplines, not treating quality as an afterthought.</p>
 </blockquote>
 
 Regardless of methodology, effective SDLCs share common principles:

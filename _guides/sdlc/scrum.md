@@ -28,6 +28,10 @@ tags: [sdlc, methodology, agile, scrum, sprints, ceremonies]
 
 **Scrum** is a lightweight framework for developing, delivering, and sustaining complex products. It provides a structured approach to Agile software development through defined roles, time-boxed events (ceremonies), and specific artifacts.
 
+<blockquote class="pull-quote">
+<p>Knowledge comes from experience and decisions based on what is known, not from predictions and planning.</p>
+</blockquote>
+
 **Core Philosophy:**
 - Empirical process control (transparency, inspection, adaptation)
 - Iterative and incremental delivery
@@ -92,31 +96,20 @@ Scrum became the most widely adopted Agile framework because:
 
 Scrum is built on empirical process control theory, which asserts that knowledge comes from experience and making decisions based on what is known.
 
-**Three pillars:**
-
-**1. Transparency**
-
-Make the process and work visible to everyone:
-- Work items visible on backlog
-- Progress visible in burndown charts
-- Impediments visible to team and stakeholders
-- Definition of Done is clear and shared
-
-**2. Inspection**
-
-Regularly inspect artifacts and progress:
-- Daily Standup: Inspect progress toward sprint goal
-- Sprint Review: Inspect increment and adapt backlog
-- Sprint Retrospective: Inspect process and team dynamics
-- Continuous inspection during development
-
-**3. Adaptation**
-
-Adjust process or work based on inspection:
-- If sprint is off track, adapt approach
-- If increment doesn't meet expectations, adapt backlog
-- If process isn't working, adapt in retrospective
-- If priorities change, adapt backlog
+<div class="card-group">
+<div class="content-card content-card--accent">
+<h4>1. Transparency</h4>
+<p>Make the process and work visible: work items on backlog, progress in burndown charts, impediments visible to all, clear Definition of Done.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>2. Inspection</h4>
+<p>Regularly inspect artifacts and progress: Daily Standup, Sprint Review, Sprint Retrospective, and continuous inspection during development.</p>
+</div>
+<div class="content-card content-card--accent-warning">
+<h4>3. Adaptation</h4>
+<p>Adjust based on inspection: adapt approach if off track, adapt backlog if priorities change, adapt process in retrospectives.</p>
+</div>
+</div>
 
 ### Scrum Values
 

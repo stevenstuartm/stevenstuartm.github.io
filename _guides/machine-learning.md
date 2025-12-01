@@ -170,15 +170,15 @@ Machine learning programs that make decisions in a manner similar to the human b
 <div class="content-card content-card--accent">
 <h4>Under-fitting</h4>
 <ul>
-<li><strong>Symptom</strong>: Model works poorly on both training data and new data - it hasn't learned enough</li>
-<li><strong>Analogy</strong>: Like a student who barely studied for a test - they perform poorly on practice problems and the actual exam</li>
+<li><strong>Symptom</strong>: Model works poorly on both training data and new data; it hasn't learned enough</li>
+<li><strong>Analogy</strong>: Like a student who barely studied for a test; they perform poorly on practice problems and the actual exam</li>
 <li><strong>Causes</strong>: Model too simple, insufficient training examples, not enough training time</li>
 </ul>
 </div>
 <div class="content-card content-card--accent-secondary">
 <h4>Over-fitting</h4>
 <ul>
-<li><strong>Symptom</strong>: Model performs excellently on training data but poorly on new, unseen data - it memorized instead of learned</li>
+<li><strong>Symptom</strong>: Model performs excellently on training data but poorly on new, unseen data; it memorized instead of learned</li>
 <li><strong>Analogy</strong>: Like a student who memorized practice test answers but can't solve similar problems with different numbers</li>
 <li><strong>Solutions</strong>: Increase training data, reduce model complexity, apply regularization, use cross-validation</li>
 </ul>

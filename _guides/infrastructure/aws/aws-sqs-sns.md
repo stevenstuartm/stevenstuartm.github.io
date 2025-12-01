@@ -28,6 +28,10 @@ tags: [aws, sqs, sns, messaging, event-driven, distributed-systems, reliability,
 
 ## What Problems SQS & SNS Solve
 
+<blockquote class="pull-quote">
+<p>A payment service failure takes down the entire e-commerce checkout flow. Traffic spikes overwhelm order processing services, causing lost orders. With SQS &amp; SNS, messages are durably stored until successfully processed, and failures are isolated.</p>
+</blockquote>
+
 ### Without Decoupled Messaging
 
 **Synchronous Communication Problems:**
@@ -70,7 +74,10 @@ tags: [aws, sqs, sns, messaging, event-driven, distributed-systems, reliability,
 
 **Amazon Simple Queue Service (SQS)** is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications.
 
-**Core Concept:** Producers send messages to a queue; consumers poll the queue, process messages, and delete them when done.
+<div class="callout callout--note">
+<p class="callout__title">Core Concept</p>
+<p>Producers send messages to a queue; consumers poll the queue, process messages, and delete them when done.</p>
+</div>
 
 ```
 Producer → [SQS Queue] → Consumer
@@ -174,7 +181,11 @@ Publisher → [SNS Topic] → Subscriber 2 (Lambda)
 - Strict message ordering
 - Exactly-once message delivery
 - **Use when:** Order matters, no duplicates allowed
-- **Must use with FIFO SQS queues** (cannot subscribe Standard SQS to FIFO SNS)
+
+<div class="callout callout--warning">
+<p class="callout__title">FIFO Compatibility</p>
+<p>FIFO SNS topics must use FIFO SQS queues; you cannot subscribe Standard SQS to FIFO SNS.</p>
+</div>
 
 ---
 

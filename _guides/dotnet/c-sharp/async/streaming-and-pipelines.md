@@ -7,9 +7,11 @@ description: "IAsyncEnumerable, System.IO.Pipelines, channels, and high-performa
 tags: [c-sharp, dotnet, async, streaming, performance, pipelines, advanced]
 ---
 
-## Streaming Overview
+<blockquote class="pull-quote">
+<p>Streaming processes data incrementally rather than loading everything into memory. A 1GB file processed via streaming uses O(1) memory instead of O(n), enabling handling of datasets far larger than available RAM.</p>
+</blockquote>
 
-Streaming processes data incrementally rather than loading everything into memory. This enables handling of large datasets and real-time data flows efficiently.
+## Streaming Overview
 
 ```csharp
 // Traditional - loads all data into memory

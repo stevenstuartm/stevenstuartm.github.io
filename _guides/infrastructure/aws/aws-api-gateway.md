@@ -9,6 +9,10 @@ tags: [aws, api-gateway, rest-api, http-api, serverless, authentication, cost-op
 
 ## What Problems API Gateway Solves
 
+<blockquote class="pull-quote">
+<p>API Gateway provides a unified API layer that abstracts the complexity of backend services, enabling teams to focus on business logic rather than infrastructure concerns.</p>
+</blockquote>
+
 AWS API Gateway is a fully managed service that makes it easy to create, publish, maintain, monitor, and secure APIs at any scale. It solves critical challenges for modern application architectures:
 
 **Routing and Integration Problems**:
@@ -75,6 +79,11 @@ AWS offers two types of API Gateway: REST API (full-featured) and HTTP API (opti
 | **CloudWatch metrics** | Detailed (caching, errors, latency) | Basic (requests, latency, errors) |
 | **X-Ray tracing** | Yes | Yes |
 
+<div class="callout callout--tip">
+<p class="callout__title">API Type Selection</p>
+<p>Start with HTTP API for cost and latency benefits, then evaluate if you need REST API features like per-client throttling, caching, or WAF integration.</p>
+</div>
+
 ### When to Use REST API
 
 **Use REST API when you need**:
@@ -121,7 +130,10 @@ AWS offers two types of API Gateway: REST API (full-featured) and HTTP API (opti
 - You need private endpoints (corporate VPC-only access)
 - You need request validation or transformation
 
-**Critical limitation**: HTTP APIs lack per-client throttling. Without the ability to throttle per user/tenant, HTTP APIs are not production-ready for SaaS or partner-facing APIs.
+<div class="callout callout--warning">
+<p class="callout__title">Critical Limitation</p>
+<p>HTTP APIs lack per-client throttling. Without the ability to throttle per user/tenant, HTTP APIs are not production-ready for SaaS or partner-facing APIs.</p>
+</div>
 
 **Cost crossover**: HTTP APIs meter requests in 512 KB increments. For large requests/responses (>1.5 MB), REST APIs may be cheaper. Example: 2 MB request counts as 4 requests for HTTP API ($0.000004) vs. 1 request for REST API ($0.0000035).
 
@@ -716,6 +728,10 @@ Savings: 99% per batch
 - **Savings: $36.50/month (20% reduction)**
 
 ## Common Pitfalls and How to Avoid Them
+
+<blockquote class="pull-quote">
+<p>The most expensive API Gateway mistakes aren't configuration errors; they're architectural decisions made without understanding feature requirements.</p>
+</blockquote>
 
 ### 1. Using HTTP API for Multi-Tenant SaaS Without Per-Client Throttling
 

@@ -589,20 +589,20 @@ var key = $"{prefix}my-file.json";  // developers/alice/my-file.json
 <div class="content-card content-card--accent">
 <h4>Shared Data Layer</h4>
 <ul>
-<li><strong>Cost:</strong> Lowest - one database for all devs</li>
-<li><strong>Setup:</strong> Simple - deploy once</li>
-<li><strong>Isolation:</strong> Low - shared resources</li>
-<li><strong>Schema Changes:</strong> Difficult - affects everyone</li>
+<li><strong>Cost:</strong> Lowest; one database for all devs</li>
+<li><strong>Setup:</strong> Simple; deploy once</li>
+<li><strong>Isolation:</strong> Low; shared resources</li>
+<li><strong>Schema Changes:</strong> Difficult; affects everyone</li>
 <li><strong>Best for:</strong> Stable schemas, tight budgets</li>
 </ul>
 </div>
 <div class="content-card content-card--accent-secondary">
 <h4>Dedicated Environments</h4>
 <ul>
-<li><strong>Cost:</strong> Higher - per-developer resources</li>
-<li><strong>Setup:</strong> Complex - automate everything</li>
-<li><strong>Isolation:</strong> Complete - full separation</li>
-<li><strong>Schema Changes:</strong> Easy - isolated testing</li>
+<li><strong>Cost:</strong> Higher; per-developer resources</li>
+<li><strong>Setup:</strong> Complex; automate everything</li>
+<li><strong>Isolation:</strong> Complete; full separation</li>
+<li><strong>Schema Changes:</strong> Easy; isolated testing</li>
 <li><strong>Best for:</strong> Schema changes, production parity</li>
 </ul>
 </div>

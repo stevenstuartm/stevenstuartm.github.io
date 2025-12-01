@@ -81,9 +81,9 @@ services.AddDbContext<ApplicationDbContext>(options =>
 
 EF Core provides three ways to configure your model, listed here in order of precedence (highest to lowest):
 
-1. **Fluent API** - Configuration in `OnModelCreating` or `IEntityTypeConfiguration<T>` classes
-2. **Data Annotations** - Attributes applied directly to entity classes
-3. **Conventions** - Automatic rules EF Core applies by default
+1. **Fluent API**: Configuration in `OnModelCreating` or `IEntityTypeConfiguration<T>` classes
+2. **Data Annotations**: Attributes applied directly to entity classes
+3. **Conventions**: Automatic rules EF Core applies by default
 
 When configurations conflict, higher precedence wins. For example, a Fluent API configuration overrides any Data Annotation on the same property.
 

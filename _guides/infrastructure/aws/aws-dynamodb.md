@@ -9,6 +9,10 @@ tags: [aws, dynamodb, nosql, partition-key, gsi, capacity-modes, cost-optimizati
 
 ## What Is Amazon DynamoDB?
 
+<blockquote class="pull-quote">
+<p>DynamoDB delivers single-digit millisecond performance at any scale. The key is designing your partition keys to match your access patterns.</p>
+</blockquote>
+
 Amazon DynamoDB is a fully managed, serverless NoSQL database service that delivers single-digit millisecond performance at any scale. DynamoDB automatically scales throughput capacity up or down and handles operational tasks like hardware provisioning, patching, and replication.
 
 **What Problems DynamoDB Solves**:
@@ -79,7 +83,10 @@ Query: Get all orders for Customer C123 → Returns Items 1 and 2, sorted by Ord
 
 ### Partition Key Design Best Practices
 
-**The Most Critical Decision**: Partition key design determines performance, scalability, and cost.
+<div class="callout callout--warning">
+<p class="callout__title">The Most Critical Decision</p>
+<p>Partition key design determines performance, scalability, and cost. Each partition supports up to 3,000 RCUs and 1,000 WCUs. Hot partitions cause throttling regardless of total table capacity.</p>
+</div>
 
 **Design for Uniform Distribution**:
 - Avoid "hot partitions" where a few partition keys receive disproportionate traffic
@@ -249,6 +256,11 @@ Pre-allocate read and write capacity units with optional auto-scaling.
 - Cost-sensitive applications (provisioned is cheaper at high utilization)
 
 **Reserved Capacity**: Purchase 1-year or 3-year commitments for additional savings.
+
+<div class="callout callout--tip">
+<p class="callout__title">Default to On-Demand Mode</p>
+<p>On-demand mode eliminates capacity planning and auto-scales instantly. Switch to provisioned only when utilization is consistently &gt;70% and workload is predictable.</p>
+</div>
 
 ### On-Demand vs Provisioned: Decision Framework
 
@@ -583,6 +595,10 @@ This policy allows users to query only items where the partition key matches the
 
 ## Common Pitfalls
 
+<blockquote class="pull-quote">
+<p>The costliest DynamoDB mistake is using Scan instead of Query. Scanning a 1M item table costs 99.99% more than querying the same items by partition key.</p>
+</blockquote>
+
 | Pitfall | Impact | Solution |
 |---------|--------|----------|
 | **1. Hot partition keys** | Throttling, poor performance | Design partition keys for uniform distribution; use write sharding |
@@ -608,6 +624,11 @@ This policy allows users to query only items where the partition key matches the
 - **Pitfall #14** (not using Standard-IA): 500 GB infrequently accessed table → Savings: 500 GB × ($0.25 - $0.10) = **$75/month**
 
 ## When to Use DynamoDB vs RDS
+
+<div class="callout callout--note">
+<p class="callout__title">DynamoDB vs RDS Decision</p>
+<p>Choose DynamoDB when access patterns are known and key-based. Choose RDS when you need complex SQL queries, joins, and ad-hoc analytics. Many systems use both: DynamoDB for operational data and RDS for reporting.</p>
+</div>
 
 | Dimension | DynamoDB | RDS (Relational) |
 |-----------|----------|------------------|

@@ -21,8 +21,13 @@ tags: [sdlc, methodology, agile, product-development, basecamp]
 
 *Developed by Basecamp (Ryan Singer, 2019) as an alternative to Scrum. Documented in "Shape Up: Stop Running in Circles and Ship Work that Matters"*
 
-**Shape Up** is a product development methodology that emerged from Basecamp's experience building software products over 15+ years. It addresses common frustrations with Scrum and traditional project management:
+**Shape Up** is a product development methodology that emerged from Basecamp's experience building software products over 15+ years. It addresses common frustrations with Scrum and traditional project management.
 
+<blockquote class="pull-quote">
+<p>Fixed time, variable scope. Fit the best solution within time constraints.</p>
+</blockquote>
+
+Common frustrations Shape Up addresses:
 - Endless backlogs that create guilt and false urgency
 - Sprint interruptions that prevent meaningful work
 - Unrealistic estimates that set teams up for failure

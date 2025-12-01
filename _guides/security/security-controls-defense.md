@@ -10,7 +10,7 @@ tags: [security, defense, controls, practical, implementation]
 ## Defense in Depth
 
 <blockquote class="pull-quote">
-<p>Security is not a single wall—it's a series of barriers where the failure of one layer does not compromise the entire system.</p>
+<p>Security is not a single wall; it's a series of barriers where the failure of one layer does not compromise the entire system.</p>
 </blockquote>
 
 ### Layered Security Strategy

@@ -9,6 +9,10 @@ tags: [aws, load-balancing, alb, nlb, gwlb, high-availability, scalability, cost
 
 ## What Problems Elastic Load Balancing Solves
 
+<blockquote class="pull-quote">
+<p>ELB automatically distributes traffic across multiple targets, scales to handle millions of requests per second, and routes around unhealthy instances, all with no manual intervention.</p>
+</blockquote>
+
 AWS Elastic Load Balancing (ELB) automatically distributes incoming application traffic across multiple targets to improve availability, scalability, and fault tolerance. It solves critical challenges for production applications:
 
 **Availability Problems**:
@@ -91,7 +95,10 @@ AWS offers three modern load balancer types, each optimized for specific use cas
 - You need centralized security inspection for multiple VPCs
 - You're using third-party appliances from AWS Marketplace
 
-**Default recommendation**: Use ALB for most HTTP/HTTPS applications. Use NLB only when you need low latency, static IPs, or PrivateLink. Use GWLB only for security appliance integration.
+<div class="callout callout--tip">
+<p class="callout__title">Default Recommendation</p>
+<p>Use ALB for most HTTP/HTTPS applications. Use NLB only when you need low latency, static IPs, or PrivateLink. Use GWLB only for security appliance integration.</p>
+</div>
 
 ## Application Load Balancer (ALB)
 

@@ -8,7 +8,7 @@ tags: [architecture, distributed-systems, microservices, scalability, practical]
 ---
 
 <blockquote class="pull-quote">
-<p>Service-based architecture is the pragmatic middle ground between monoliths and microservices—you get distributed system benefits without microservices' operational complexity.</p>
+<p>Service-based architecture is the pragmatic middle ground between monoliths and microservices. You get distributed system benefits without microservices' operational complexity.</p>
 </blockquote>
 
 Service-based architecture organizes a system into a small number of coarse-grained domain services (typically 4-12) sitting between the user interface and data layer. Each service represents a significant chunk of business capability: think "catalog service," "checkout service," "inventory service," not fine-grained functions.
@@ -44,7 +44,7 @@ That's 5 services covering the entire domain. A microservices version might have
 
 <div class="callout callout--tip">
 <p class="callout__title">Critical Decision Point</p>
-<p>Data architecture is one of the most critical decisions in service-based architecture. The database topology you choose (monolithic, domain-based, or service-specific) fundamentally determines coupling, transaction complexity, and operational overhead.</p>
+<p>Data architecture is one of the most critical decisions in service-based architecture. The database topology you choose (monolithic, domain-based, or service-specific) determines coupling, transaction complexity, and operational overhead.</p>
 </div>
 
 Data architecture is one of the most critical decisions in service-based architecture. Three primary approaches exist:

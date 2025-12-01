@@ -81,7 +81,7 @@ One approach is to categorize work by business impact: **Corrections**, **Optimi
 <p><strong>Why this works</strong>: Stakeholders understand optimization as improving what exists. It's not "paying debt," it's "increasing margin" or "improving user experience."</p>
 <p><strong>Language to use</strong>:</p>
 <ul>
-<li>"Our cloud costs are $50K per month. A 3-week optimization brings that to $20K per month—$360K annual savings."</li>
+<li>"Our cloud costs are $50K per month. A 3-week optimization brings that to $20K per month, saving $360K annually."</li>
 <li>"Checkout page loads in 8 seconds. Optimizing to 2 seconds increases conversion by 15% based on industry benchmarks. The work takes 4 weeks and projects to $500K additional annual revenue."</li>
 <li>"Automating deployments cuts release time from 4 hours to 15 minutes, letting us ship features faster. The automation work takes 2 weeks and doubles deployment frequency."</li>
 </ul>

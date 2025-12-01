@@ -303,7 +303,7 @@ def update_analytics(event, context):
 ### Pattern 2: Queue-Based Load Leveling with SQS
 
 <blockquote class="pull-quote">
-<p>SQS provides load leveling, automatic retries, and guaranteed delivery at $0.40 per million requests—transforming 10,000 req/s spikes into controlled 10 req/s processing.</p>
+<p>SQS provides load leveling, automatic retries, and guaranteed delivery at $0.40 per million requests. This transforms 10,000 req/s spikes into controlled 10 req/s processing.</p>
 </blockquote>
 
 **Use case**: Smooth traffic spikes, control processing rate, guarantee delivery.

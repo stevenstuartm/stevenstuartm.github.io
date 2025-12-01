@@ -21,7 +21,7 @@ Unsafe code bypasses .NET's memory safety guarantees. Use it only when:
 - **Working with hardware** or memory-mapped devices
 - **Implementing low-level data structures** that require pointer arithmetic
 
-Prefer safe alternatives like `Span<T>`, `Memory<T>`, and `ref` when possible—they provide similar performance without sacrificing safety.
+Prefer safe alternatives like `Span<T>`, `Memory<T>`, and `ref` when possible. They provide similar performance without sacrificing safety.
 
 ## Enabling Unsafe Code
 

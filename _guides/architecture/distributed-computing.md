@@ -10,7 +10,7 @@ tags: [architecture, distributed-systems, microservices, scalability, decision-m
 Distributed systems promise scalability, resilience, and flexibility, but they introduce significant complexity. Understanding the fundamental challenges and decision frameworks helps architects choose the right level of distribution for their context.
 
 <blockquote class="pull-quote">
-<p>The network is reliable. Latency is zero. Bandwidth is infinite. These assumptions seem reasonable—until production proves otherwise.</p>
+<p>The network is reliable. Latency is zero. Bandwidth is infinite. These assumptions seem reasonable until production proves otherwise.</p>
 </blockquote>
 
 ## The Fallacies of Distributed Computing
@@ -96,7 +96,7 @@ Invest in observability from the start. Implement distributed tracing, structure
 *Concept from Mark Richards & Neal Ford's Fundamentals of Software Architecture (2020)*
 
 <blockquote class="pull-quote">
-<p>An architecture quantum is the smallest useful piece of the system that can be deployed on its own—determining deployment strategy, scalability approach, and team organization.</p>
+<p>An architecture quantum is the smallest useful piece of the system that can be deployed on its own, determining deployment strategy, scalability approach, and team organization.</p>
 </blockquote>
 
 An architecture quantum is an independently deployable artifact with high functional cohesion and synchronous connascence. Think of it as the smallest useful piece of the system that can be deployed on its own.

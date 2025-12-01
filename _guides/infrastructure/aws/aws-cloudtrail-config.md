@@ -28,6 +28,10 @@ tags: [aws, cloudtrail, config, audit, compliance, governance, security, logging
 
 ## What Problems CloudTrail & Config Solve
 
+<blockquote class="pull-quote">
+<p>Production S3 bucket deleted with no record of who did it. Regulatory fine: $500K for lack of audit logs proving compliance controls. CloudTrail and Config provide tamper-proof audit trails and continuous compliance monitoring.</p>
+</blockquote>
+
 ### Without Audit Logging and Configuration Tracking
 
 **Governance and Compliance Challenges:**
@@ -84,7 +88,10 @@ tags: [aws, cloudtrail, config, audit, compliance, governance, security, logging
 
 **AWS CloudTrail** is a service that records AWS API calls and related events for your AWS account.
 
-**Core Concept:** Every action in AWS is an API call; CloudTrail logs these calls for audit, security analysis, and compliance.
+<div class="callout callout--note">
+<p class="callout__title">Core Concept</p>
+<p>Every action in AWS is an API call; CloudTrail logs these calls for audit, security analysis, and compliance.</p>
+</div>
 
 **CloudTrail Event:**
 

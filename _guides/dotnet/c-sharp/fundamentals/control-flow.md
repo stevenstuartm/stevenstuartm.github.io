@@ -211,7 +211,7 @@ double area = shape switch
 
 <div class="callout callout--tip">
 <p class="callout__title">When to Use Statement vs Expression</p>
-<p>Use <strong>switch expressions</strong> when you need to return or assign a value based on patterns—they're concise and readable for mapping scenarios.</p>
+<p>Use <strong>switch expressions</strong> when you need to return or assign a value based on patterns. They're concise and readable for mapping scenarios.</p>
 <p>Use <strong>switch statements</strong> when each case needs multiple statements, side effects, or complex logic that doesn't fit neatly into a single expression.</p>
 </div>
 

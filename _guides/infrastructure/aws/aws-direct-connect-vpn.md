@@ -9,6 +9,10 @@ tags: [aws, direct-connect, vpn, hybrid-cloud, networking, high-availability, co
 
 ## What Problems Direct Connect & VPN Solve
 
+<blockquote class="pull-quote">
+<p>Direct Connect provides dedicated network connections with consistent latency (&lt;5ms) and guaranteed bandwidth up to 100 Gbps. Site-to-Site VPN offers encrypted IPsec tunnels with fast deployment in minutes.</p>
+</blockquote>
+
 AWS Direct Connect and Site-to-Site VPN enable hybrid cloud architectures by connecting on-premises data centers to AWS. They solve critical connectivity challenges:
 
 **Public Internet Connectivity Problems**:
