@@ -184,12 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Expand TOC by default on desktop
-    if (window.innerWidth >= 1024) {
-        tocToggle.classList.add('expanded');
-        caseStudyToc.classList.add('expanded');
-    }
-
     tocToggle.addEventListener('click', function() {
         toggleTOC();
     });
