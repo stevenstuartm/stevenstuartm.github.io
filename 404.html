@@ -5,20 +5,13 @@ permalink: /404.html
 ---
 
 <script>
-    // Handle redirects from old URLs
+    // Redirect extensionless URLs to .html version (one attempt only)
     (function() {
-        const currentPath = window.location.pathname;
+        const path = window.location.pathname;
 
-        // Redirect /guides to /study-guides/ (exact match)
-        if (currentPath === '/guides' || currentPath === '/guides/') {
-            window.location.replace('/study-guides.html');
-            return;
-        }
-
-        // Redirect /guides/* to /study-guides/* (preserve path, add .html)
-        if (currentPath.startsWith('/guides/')) {
-            const newPath = currentPath.replace(/^\/guides\//, '/study-guides/') + '.html';
-            window.location.replace(newPath + window.location.search + window.location.hash);
+        // Only redirect if URL has no file extension at all
+        if (!path.endsWith('/') && !/\.[a-zA-Z0-9]+$/.test(path)) {
+            window.location.replace(path + '.html' + window.location.search + window.location.hash);
         }
     })();
 </script>
