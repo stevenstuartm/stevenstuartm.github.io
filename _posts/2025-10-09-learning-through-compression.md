@@ -11,21 +11,19 @@ description: "Understanding emerges from acknowledged ignorance expanded through
 <p>Experts explain simply because they researched deeply enough to compress what they learned into patterns. The simplicity comes after the expansion, not before.</p>
 </blockquote>
 
-I used to think experts explained things simply because they had figured out what mattered and stripped away the rest. Turns out that's backwards.
+I used to think experts explained things simply because they started with less; they knew what mattered and ignored the rest. The opposite is true. They started with *more*. They researched deeply, accumulated overwhelming detail, and then compressed it into patterns. The simplicity you see is the result of expansion, not avoidance of it.
 
-This realization changed how I learn. Instead of trying to find the shortest path to understanding, I now embrace the messy expansion phase and focus on compression as the actual learning mechanism. Teaching forces that compression. Writing forces it even more.
+This realization changed how I learn. Instead of trying to find the shortest path to understanding, I now embrace the messy expansion phase and focus on compression as the actual learning mechanism. Teaching forces that compression because you get immediate feedback; confused looks and follow-up questions reveal gaps instantly. Writing forces a different kind of compression: you must anticipate objections and structure ideas without real-time correction. Both are useful, and they complement each other.
 
 ## Understanding as Compression
 
 Raw information is verbose. Understanding is discovering the pattern that compresses it. Think about how different skill levels explain the same concept:
 
-A novice oversimplifies because they don't know what they're missing. An intermediate developer recites every detail they learned because they haven't found the pattern yet. An expert distills it to a few precise sentences because they've organized those same facts around core principles.
+A novice oversimplifies because they don't know what they're missing. An intermediate developer, having accumulated facts without organizing them, recites every detail because they haven't found the pattern yet. The expert knows *more* facts than either, but they've compressed them into fewer, more powerful concepts.
 
 <blockquote class="pull-quote">
 <p>Compression isn't eliminating details. It's internalizing them deeply enough to regenerate them from fundamentals.</p>
 </blockquote>
-
-The expert knows more facts than the intermediate; they've just compressed those facts into fewer, more powerful concepts.
 
 You cannot compress what you don't realize is verbose. This requires **acknowledged ignorance**, recognizing the gap between what you know and what you understand.
 
@@ -35,7 +33,7 @@ Learning operates as a feedback loop: **Ignorance → Expansion → Compression 
 
 ### Acknowledge Ignorance
 
-Before learning, declare what you don't know. Not "I don't know Rust" but specifically what assumptions you're making, where you're uncertain, and what questions you can't answer yet.
+Start by articulating what you don't know. Not "I don't know Rust" but specifically: what assumptions are you making? Where are you uncertain? What questions can't you answer yet?
 
 This creates your learning target. You cannot compress effectively without knowing what needs compression. Generic ignorance ("I don't know X") doesn't guide research. Specific ignorance ("I don't understand how Rust's borrow checker prevents data races without garbage collection") does.
 
@@ -43,13 +41,13 @@ This creates your learning target. You cannot compress effectively without knowi
 
 Study the details, accumulate facts, and read deeply. The information will grow verbose and overwhelming, but you need that complexity before you can compress it. Don't fight the expansion phase by trying to summarize prematurely.
 
-Learning with intent to teach changes how you process this expansion. You're not just collecting information; you're preparing to articulate it. This makes you notice what surprises you and challenges your assumptions, what patterns emerge across seemingly unrelated details, and what questions remain unanswered even after research.
+Learning with intent to teach changes how you process this expansion. You're not just collecting information; you're preparing to articulate it. You start noticing what surprises you, what patterns emerge across seemingly unrelated details, and what questions remain even after extensive research.
 
 ### Compress Through Teaching
 
-Teaching forces externalization, converting internal understanding to external communication. Write, explain, document. Constrain brevity. Avoid jargon.
+Teaching forces externalization, converting internal understanding to external communication. Write it down. Explain it to someone. Document it as if teaching a peer. Force yourself to be brief and avoid jargon. Both constraints expose where your understanding is still fuzzy.
 
-This reveals compression failures immediately. When your explanation becomes verbose, the pattern isn't clear yet. When you reach for jargon, you're avoiding precision. When you skip steps as "obvious," you're experiencing the curse of knowledge. When you can explain briefly while maintaining precision, compression has occurred.
+This reveals compression failures immediately. If your explanation becomes verbose, the pattern isn't clear yet. If you reach for jargon, you're avoiding precision rather than achieving it. Skipping steps as "obvious" signals the curse of knowledge. But when you can explain briefly while maintaining precision, that's when compression has actually occurred.
 
 ### New Ignorance Emerges
 
@@ -59,10 +57,8 @@ This new ignorance becomes the next cycle's starting point. Each iteration impro
 
 ## Why This Accelerates Learning
 
-Learning isn't accumulation. It's expansion followed by compression. You cannot compress without acknowledging what needs compression. You cannot compress without first expanding through deep research. You cannot test compression without externalizing it. You cannot improve without measuring compression failures.
+Learning isn't accumulation; it's expansion followed by compression. Most people get stuck in expansion, accumulating facts without compressing them. Others try to compress prematurely, building understanding on incomplete research. Both approaches skip the critical interplay between depth and distillation.
 
-Most people get stuck in the expansion phase, accumulating facts without compression. Others try to compress prematurely, building understanding on incomplete research. Both approaches slow learning because they skip critical steps.
+The cycle forces deliberate progression through each phase. You acknowledge specific ignorance, expand through deep research, compress through teaching, and discover new ignorance that's more refined than where you started. Each iteration produces tighter compression and reveals more targeted gaps.
 
-The cycle forces deliberate progression: Acknowledge ignorance → Expand through research → Compress through teaching → Discover new ignorance → Repeat.
-
-This is how experts explain simply. Not because they know less, but because they researched more and then compressed more. The simplicity you see is the output of multiple cycles, each round of ignorance more refined than the last.
+This is how experts explain simply. Not because they know less, but because they researched deeply and then compressed ruthlessly. The simplicity you admire is the output of multiple cycles, each round refining both what they know and what they know they don't.
