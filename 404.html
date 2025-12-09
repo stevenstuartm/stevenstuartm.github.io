@@ -7,10 +7,22 @@ permalink: /404.html
 <script>
     // Redirect extensionless URLs to .html version (one attempt only)
     (function() {
-        const path = window.location.pathname;
+        let path = window.location.pathname;
+
+        // Skip if path already contains .html (already tried or valid)
+        if (path.includes('.html')) {
+            return;
+        }
+
+        // Handle trailing slash: remove it and add .html (but not for root "/")
+        if (path.length > 1 && path.endsWith('/')) {
+            path = path.slice(0, -1);
+            window.location.replace(path + '.html' + window.location.search + window.location.hash);
+            return;
+        }
 
         // Only redirect if URL has no file extension at all
-        if (!path.endsWith('/') && !/\.[a-zA-Z0-9]+$/.test(path)) {
+        if (!/\.[a-zA-Z0-9]+$/.test(path)) {
             window.location.replace(path + '.html' + window.location.search + window.location.hash);
         }
     })();
