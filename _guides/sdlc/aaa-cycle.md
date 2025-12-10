@@ -68,6 +68,19 @@ AAA calls us back to something more fundamental: **focusing on what we value**. 
 
 Yes, use frameworks. Use their ceremonies and practices. But stay open to discovery and change within each event, each schedule, each unique situation. The framework serves the values (connection, commitment, and honored agreements), not the other way around. When a framework ceremony stops serving those values, you adapt it. That's the discipline AAA represents: being flexible about *how* while remaining unwavering about *what matters*.
 
+### Mitigate Risk, Don't Strangle Agility
+
+Organizations often respond to past failures by adding controls: approval gates, mandatory reviews, process checkpoints. These look like risk mitigation but often indicate a lack of trust in the underlying values.
+
+Genuine discipline doesn't need extensive external enforcement. If you need strangling controls to prevent bad outcomes, the discipline isn't there, and the controls won't fix that. The controls become theater: visible signs of "doing something" that create friction without addressing root causes.
+
+<div class="callout callout--note">
+<p class="callout__title">When Controls Indicate Missing Discipline</p>
+<p>If every code change requires three approval signatures, the problem isn't insufficient oversight; it's insufficient trust in engineering judgment. If every architectural decision needs committee review, the problem isn't insufficient governance; it's unclear decision rights. Adding more process won't create the discipline that's missing.</p>
+</div>
+
+The AAA discipline provides natural guardrails: genuine alignment surfaces misunderstandings early, real agreement creates shared ownership, and honoring commitments builds the trust that makes heavy controls unnecessary. When teams live these values, they self-correct. When they don't, no amount of process will save them.
+
 ### AAA as a Recursive Cycle
 
 AAA is not just a one-time project framework; it's a **cycle** that repeats at every level of work:

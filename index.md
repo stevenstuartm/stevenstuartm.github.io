@@ -5,6 +5,12 @@ subtitle: Practical insights on building architectures that serve real needs and
 
 # Featured content cards (3-4 items)
 featured_items:
+  - label: "Core Philosophy"
+    title: "Seven Disciplines for Software Development"
+    description: "The values I hold onto when pressure mounts and shortcuts tempt. Informed by years of building systems, leading teams, and watching projects succeed and fail."
+    cta: "Explore"
+    url: "/philosophy.html"
+    
   - label: "Featured Guide"
     title: "The AAA Cycle: A Guiding Discipline for Architects"
     description: "Not a framework, but a way of valuing. AAA transcends SDLC methodologies by instilling what matters: human connection through Align, shared commitment through Agree, and honoring agreements through Apply."
@@ -16,12 +22,6 @@ featured_items:
     description: "Sprints organize around time intervals. Shaped Kanban organizes around completing features with clear boundaries and circuit breakers to bound risk. Work flows at its natural pace within disciplined constraints."
     cta: "Read Now"
     url: "/blog/2025/11/17/shaped-kanban.html"
-
-  - label: "Learning Methodology"
-    title: "Learning Through Compression"
-    description: "How deliberate compression transforms information overload into deep understanding and practical knowledge you can actually apply."
-    cta: "Explore"
-    url: "/blog/2025/10/09/learning-through-compression.html"
 
 # Content type descriptions
 blog_description: "Deep dives into architecture, design patterns, and practical lessons from building scalable systems."

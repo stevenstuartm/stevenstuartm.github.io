@@ -14,6 +14,8 @@ I'm a software and systems architect bringing clarity from complexity. I build c
 
 I believe architecture starts with human connection, thrives on genuine commitment, and succeeds by honoring agreements. Good architecture balances technical tradeoffs. Great solutions start with trust and maintain that trust through principled execution.
 
+For a deeper look at the principles that guide my work, see my [Philosophy](/philosophy.html).
+
 ## Why Hire an Architect?
 
 Architects bring unique value that neither business stakeholders nor individual developers can provide on their own. Here's what that looks like in practice:

@@ -1,0 +1,139 @@
+---
+layout: page
+title: Philosophy
+description: "Seven disciplines that guide how I approach software development, architecture, leadership, and career growth. Discipline over process. Value over velocity. Discovery over completion."
+permalink: /philosophy.html
+---
+
+## What I Believe
+
+These disciplines represent my current understanding of what makes software development work. They're informed by years of building systems, leading teams, and watching projects succeed and fail. They're not rules to follow rigidly; they're values to hold onto when pressure mounts and shortcuts tempt.
+
+The first two disciplines address personal growth: how you develop yourself and accumulate genuine experience. The remaining five address technical practice: how you build software that delivers real value. Each discipline stands alone, but they reinforce each other. You can't realign after discovery without genuine agreement to begin with, and you can't reach genuine agreement without first testing your assumptions. The disciplines weave together into something stronger than any one of them alone.
+
+---
+
+## 1. Seek Hardship, Don't Repeat What's Comfortable
+
+<blockquote class="pull-quote">
+<p>Great engineers solve hard problems. Great leaders create engineers who solve hard problems.</p>
+</blockquote>
+
+There's a difference between ten years of experience and one year repeated ten times. Accumulating experience means building new capabilities, taking on broader responsibilities, and establishing feedback loops that force growth. The discomfort signals learning.
+
+Leadership emerges from behavior, not titles. Seek questions you don't yet know to ask; the most dangerous gaps are the unknown unknowns. Maintain quality independent of approval; just because no one flagged your code doesn't mean it's quality work. Build others to build better products.
+
+We learn by teaching. When you mentor less experienced developers, you create space for your own growth. As they learn to handle the work you do today, you create capacity to tackle the challenges your leaders face. This isn't delegation to save time; it's building organizational capability while advancing your own.
+
+**Going deeper**: [What Engineering Leaders Ask That Others Don't](/blog/2025/06/11/characteristics-of-leaders-mentors-software-development.html){:target="_blank" rel="noopener noreferrer"} examines the questions that reveal leadership characteristics.
+
+---
+
+## 2. Build to Learn, Don't Watch to Learn
+
+<blockquote class="pull-quote">
+<p>Real capability comes from building, failing, and fixing, not collecting badges.</p>
+</blockquote>
+
+Learning platforms sell completion checkmarks and the feeling of progress, not actual capability. That green badge feels good, but it doesn't mean you can build something without the training wheels.
+
+Watching someone else code doesn't teach you to code, just like watching diving competitions doesn't teach you to swim. Understanding concepts intellectually isn't the same as being able to do. Sandboxed environments with no dependency conflicts, no environment setup, and no deployment challenges create the illusion of progress while keeping you dependent on structured guidance.
+
+Real learning happens when you're forced to make decisions without a script, when you get stuck and have to figure out why, when you realize your solution doesn't scale and you need to rethink it. Build real projects, even terrible ones. That broken app taught you more than any polished tutorial. Read official documentation; framework creators document their tools better than third-party instructors. Study real code; thousands of production codebases are available to learn from.
+
+The pattern is simple: do something, fail at it, learn why you failed, improve, repeat. No platform can give it to you because it requires struggle.
+
+**Going deeper**: [Learning Platforms Sell Badges, Not Skills](/blog/2025/08/27/why-i-cancelled-all-learning-subscriptions.html){:target="_blank" rel="noopener noreferrer"} explains why building beats consuming.
+
+---
+
+## 3. Genuine Discipline Comes from Values, Not Checklists
+
+<blockquote class="pull-quote">
+<p>Most project failures stem from broken values, not broken processes.</p>
+</blockquote>
+
+I've watched teams follow every ritual in the Scrum guide and still fail spectacularly. The standups happened, the retrospectives happened, the burndown charts looked great. But the team started with solutions before understanding needs, collected sign-offs instead of building genuine commitment, and chased task completion instead of honoring agreements. The process was perfect; the values were broken.
+
+<div class="card-group">
+<div class="content-card content-card--accent">
+<h4>Align</h4>
+<p>Human connection comes first. Before solutions, timelines, or technology, connect with people. Alignment is building understanding and trust, not extracting requirements.</p>
+</div>
+<div class="content-card content-card--accent-secondary">
+<h4>Agree</h4>
+<p>Shared commitment matters. Agreement isn't documentation or sign-offs; it's mutual understanding and genuine commitment to walk the path together.</p>
+</div>
+<div class="content-card content-card--accent-warning">
+<h4>Apply</h4>
+<p>Honor what was agreed. The goal isn't "delivery"; it's applying the agreement. When reality demands changes, return to align and agree again.</p>
+</div>
+</div>
+
+This discipline transcends methodology. You can practice AAA within Scrum, Kanban, Waterfall, or whatever your organization uses. The ceremonies are secondary; the values are primary.
+
+Organizations often respond to past failures by adding controls: approval gates, mandatory reviews, process checkpoints. These look like risk mitigation but often indicate a lack of trust in the underlying values. If you need strangling controls to prevent bad outcomes, the discipline isn't there, and more process won't fix that.
+
+**Going deeper**: [AAA Cycle](/study-guides/sdlc/aaa-cycle.html){:target="_blank" rel="noopener noreferrer"} explains the full discipline with practical guidance for each phase.
+
+---
+
+## 4. Measure Outcomes, Not Activity
+
+<blockquote class="pull-quote">
+<p>Measure outcomes against goals, not metrics against baselines.</p>
+</blockquote>
+
+Velocity metrics give the illusion of progress. Sprint completions create the appearance of discipline. Leadership can point to charts and burndown graphs while the product slowly dies.
+
+What matters is whether you delivered value. Did the feature solve the actual problem? Is the customer satisfied? Does the team understand what they built and why it matters? Story points and burndown charts can't answer these questions. They measure how fast you moved, not whether you moved in the right direction.
+
+**Going deeper**: [Why Your Agile Team Might Be Building on Hope, Not Discipline](/blog/2025/10/23/the-agile-masquerade.html){:target="_blank" rel="noopener noreferrer"} examines why frameworks that optimize for predictable metrics fail to deliver value.
+
+---
+
+## 5. Realign After Discovery
+
+<blockquote class="pull-quote">
+<p>Test assumptions before committing. Realign when discovery demands prudent change.</p>
+</blockquote>
+
+Estimating based on untested assumptions isn't planning; it's guessing. When teams base commitments on guesses, they're building on sand.
+
+The discipline starts with honesty: separate what you know from what you're assuming, then test the critical assumptions before making commitments. Agree on what "done" looks like with explicit success criteria. When you discover new information during implementation (and you will), pause and reconsolidate the agreement. Continue with updated understanding, or deliver what was originally agreed.
+
+This isn't analysis paralysis. It's being genuinely agile: adapting to changing priorities and changing understanding. Discovery is inevitable. The question is whether you have the discipline to incorporate what you discover, or ship anyway because the timebox ends.
+
+**Going deeper**: [Why Your Agile Team Might Be Building on Hope, Not Discipline](/blog/2025/10/23/the-agile-masquerade.html){:target="_blank" rel="noopener noreferrer"} covers how to test assumptions and maintain continuous alignment.
+
+---
+
+## 6. Complete Features, Not Intervals
+
+<blockquote class="pull-quote">
+<p>Time boundaries fragment work; feature boundaries deliver value.</p>
+</blockquote>
+
+Interval-based development organizes work around fixed time periods, not around completing features. When timeboxes become the primary organizing principle, they corrupt even well-aligned teams. Work fragments across sprint cycles. Features sit incomplete when boundaries arrive. Discovery mid-sprint forces awkward choices between shipping incomplete work or carrying it over.
+
+The alternative is to organize around completing meaningful work. Shape features before committing to them: define clear boundaries, identify risks, clarify what "done" looks like. Give each feature appropriate time bounds based on its complexity, not universal sprint durations. Let work flow through the system when it's ready, not when the calendar says so. When time bounds are exceeded, stop and reassess rather than pushing through.
+
+Rhythm and tempo come from alignment and natural feature boundaries, not predetermined calendars. Features take as long as they take, bounded by constraints that force honest conversations when things run long.
+
+**Going deeper**: [Shaped Kanban: Complete Features, Not Sprints](/blog/2025/11/17/shaped-kanban.html){:target="_blank" rel="noopener noreferrer"} provides the complete framework for flow-based work with disciplined constraints.
+
+---
+
+## 7. Build for Change, Not Perfection
+
+<blockquote class="pull-quote">
+<p>Systems that survive aren't written perfectly; they bend without breaking.</p>
+</blockquote>
+
+You will never get it right the first time. That's not a failure; it's how software development works. Requirements clarify through building. Edge cases emerge through usage. Performance bottlenecks surface under real load. Teams that treat first attempts as gospel spend months polishing solutions to the wrong problem.
+
+The systems that survive are the ones designed to evolve. Single responsibility keeps components focused so changes don't cascade. Dependency injection decouples implementations so they can be swapped. Configuration externalizes changeable behavior. Failing fast and loud surfaces problems immediately instead of hiding them.
+
+These aren't academic principles. They're survival strategies. Perfect code written for yesterday's requirements fails when reality shifts. Adaptable code survives because it expects change.
+
+**Going deeper**: [Adaptability Over Cleverness: What Makes Code Actually Good](/blog/2025/08/05/good-code-is-adaptable-code.html){:target="_blank" rel="noopener noreferrer"} examines principles and practices for building systems that evolve.
