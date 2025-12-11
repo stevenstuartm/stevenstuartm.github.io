@@ -7,16 +7,6 @@ description: "Modern team structures and collaboration patterns for software dev
 tags: [sdlc, leadership, team-organization, collaboration, structure]
 ---
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Team Structure Patterns](#team-structure-patterns)
-3. [Domain-Driven Team Organization](#domain-driven-team-organization)
-4. [Architectural Roles & Responsibilities](#architectural-roles--responsibilities)
-5. [Collaboration Patterns](#collaboration-patterns)
-6. [Scaling Team Structures](#scaling-team-structures)
-
----
-
 ## Overview
 
 **Team architecture** refers to how development teams are structured, how they interact, and how architectural decisions are made and governed across the organization. Effective team architecture aligns team boundaries with system boundaries, promotes autonomy while maintaining consistency, and enables teams to deliver value independently.

@@ -7,19 +7,6 @@ description: "Deep dive into wide-column stores—how they handle massive scale,
 tags: [databases, wide-column, cassandra, distributed-systems, scalability, performance]
 ---
 
-## Table of Contents
-
-- [What They Are](#what-they-are)
-- [Data Structure](#data-structure)
-- [How They Work](#how-they-work)
-- [Why They Excel](#why-they-excel)
-- [Why They Struggle](#why-they-struggle)
-- [When to Use Them](#when-to-use-them)
-- [When to Look Elsewhere](#when-to-look-elsewhere)
-- [Examples](#examples)
-
----
-
 ## What They Are
 
 Wide-column stores organize data into rows and columns, but unlike relational databases, each row can have different columns, and columns group into "column families." Think of them as two-dimensional key-value stores: a row key maps to a collection of column-value pairs.

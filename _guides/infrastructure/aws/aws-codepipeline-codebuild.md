@@ -7,21 +7,6 @@ description: "Comprehensive guide to AWS CodePipeline and CodeBuild covering pip
 tags: [aws, cicd, codepipeline, codebuild, automation, devops, deployment, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems CodePipeline & CodeBuild Solve](#what-problems-codepipeline--codebuild-solve)
-- [Service Fundamentals](#service-fundamentals)
-- [CodePipeline Deep Dive](#codepipeline-deep-dive)
-- [CodeBuild Deep Dive](#codebuild-deep-dive)
-- [Pipeline Patterns](#pipeline-patterns)
-- [Cross-Account Pipelines](#cross-account-pipelines)
-- [Integration Patterns](#integration-patterns)
-- [Performance Optimization](#performance-optimization)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Security Best Practices](#security-best-practices)
-- [When to Use CodePipeline vs Alternatives](#when-to-use-codepipeline-vs-alternatives)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems CodePipeline & CodeBuild Solve
 
 <blockquote class="pull-quote">

@@ -7,16 +7,6 @@ description: "Principles, processes, and practices for governing software archit
 tags: [architecture, governance, leadership, decision-making, collaboration, standards]
 ---
 
-## Table of Contents
-- [What is Architecture Governance?](#what-is-architecture-governance)
-- [Key Principles](#key-principles)
-- [Governance Models](#governance-models)
-- [Compliance and Standards](#compliance-and-standards)
-- [Roles and Responsibilities](#roles-and-responsibilities)
-- [Governance Processes](#governance-processes)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## Prerequisites
 
 This guide assumes familiarity with Architecture Decision Records (ADRs). If you haven't already, please review the [Architecture Decision-Making](/study-guides/architecture/architecture-decision-making.html) guide which covers ADRs in detail.

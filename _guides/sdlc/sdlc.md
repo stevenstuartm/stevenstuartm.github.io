@@ -7,15 +7,6 @@ description: "Core SDLC phases from planning through maintenance, CI/CD best pra
 tags: [sdlc, fundamentals, methodology, planning, execution]
 ---
 
-## Table of Contents
-1. [What is the SDLC](#what-is-the-sdlc)
-2. [SMART Goals Framework](#smart-goals-framework)
-3. [Core SDLC Phases](#core-sdlc-phases)
-4. [CI/CD Best Practices](#cicd-best-practices)
-5. [Modern Development Practices](#modern-development-practices)
-
----
-
 ## What is the SDLC
 
 The **Software Development Lifecycle (SDLC)** is a structured process for planning, creating, testing, and deploying software systems. It provides a systematic approach to software development that helps teams deliver high-quality software efficiently, predictably, and within budget.

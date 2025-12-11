@@ -7,21 +7,6 @@ description: "Comprehensive guide to disaster recovery on AWS covering RTO/RPO t
 tags: [aws, disaster-recovery, resilience, architecture, reliability, backup, rto-rpo, practical]
 ---
 
-## Table of Contents
-- [What Problems Disaster Recovery Solves](#what-problems-disaster-recovery-solves)
-- [RTO and RPO Fundamentals](#rto-and-rpo-fundamentals)
-- [DR Strategy Selection Framework](#dr-strategy-selection-framework)
-- [Backup and Restore](#backup-and-restore)
-- [Pilot Light](#pilot-light)
-- [Warm Standby](#warm-standby)
-- [Multi-Site Active-Active](#multi-site-active-active)
-- [Data Backup Strategies](#data-backup-strategies)
-- [Testing and Validation](#testing-and-validation)
-- [Cost Optimization](#cost-optimization)
-- [When to Use Which DR Strategy](#when-to-use-which-dr-strategy)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems Disaster Recovery Solves
 
 <blockquote class="pull-quote">

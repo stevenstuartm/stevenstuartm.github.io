@@ -7,16 +7,6 @@ description: "Core CloudFormation concepts including stacks, templates, resource
 tags: [infrastructure, iac, aws, cloudformation, fundamentals, practical]
 ---
 
-## Table of Contents
-1. [What is AWS CloudFormation](#what-is-aws-cloudformation)
-2. [Core Concepts](#core-concepts)
-3. [Template Anatomy](#template-anatomy)
-4. [Working with Stacks](#working-with-stacks)
-5. [Resource Management](#resource-management)
-6. [Getting Started](#getting-started)
-
----
-
 ## What is AWS CloudFormation
 
 **AWS CloudFormation** is a service that gives you an easy way to model, provision, and manage AWS resources by treating infrastructure as code.

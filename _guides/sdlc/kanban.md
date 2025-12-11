@@ -7,20 +7,6 @@ description: "Comprehensive guide to Kanban - visualizing workflow, limiting WIP
 tags: [sdlc, methodology, kanban, workflow, continuous-delivery, lean, practical]
 ---
 
-## Table of Contents
-1. [What is Kanban](#what-is-kanban)
-2. [Philosophy and Core Principles](#philosophy-and-core-principles)
-3. [The Six Practices](#the-six-practices)
-4. [Designing Your Kanban Board](#designing-your-kanban-board)
-5. [Metrics and Measurement](#metrics-and-measurement)
-6. [Roles and Responsibilities](#roles-and-responsibilities)
-7. [Implementing Kanban](#implementing-kanban)
-8. [Alignment with AAA Cycle](#alignment-with-aaa-cycle)
-9. [When to Use Kanban](#when-to-use-kanban)
-10. [Common Pitfalls and Red Flags](#common-pitfalls-and-red-flags)
-
----
-
 ## What is Kanban
 
 *Originated at Toyota in the 1940s as part of the Toyota Production System (Taiichi Ohno). Adapted to software development by David J. Anderson in the mid-2000s, formalized in "Kanban: Successful Evolutionary Change for Your Technology Business" (2010).*

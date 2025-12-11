@@ -7,19 +7,6 @@ description: "Deep dive into key-value stores—the simplest database type, how 
 tags: [databases, key-value, redis, caching, distributed-systems, performance]
 ---
 
-## Table of Contents
-
-- [What They Are](#what-they-are)
-- [Data Structure](#data-structure)
-- [How They Work](#how-they-work)
-- [Why They Excel](#why-they-excel)
-- [Why They Struggle](#why-they-struggle)
-- [When to Use Them](#when-to-use-them)
-- [When to Look Elsewhere](#when-to-look-elsewhere)
-- [Examples](#examples)
-
----
-
 ## What They Are
 
 Key-value stores are the simplest database type: they map unique keys to values. You can set a value for a key, get the value for a key, and delete a key. That's the entire API. The database treats values as opaque blobs and doesn't know or care what's inside them.

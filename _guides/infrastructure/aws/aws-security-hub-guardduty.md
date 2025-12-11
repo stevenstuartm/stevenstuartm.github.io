@@ -7,25 +7,6 @@ description: "Comprehensive guide to AWS Security Hub and GuardDuty covering thr
 tags: [aws, security, threat-detection, compliance, monitoring, security-posture, guardduty, security-hub, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems Security Hub & GuardDuty Solve](#what-problems-security-hub--guardduty-solve)
-- [AWS GuardDuty Fundamentals](#aws-guardduty-fundamentals)
-- [AWS Security Hub Fundamentals](#aws-security-hub-fundamentals)
-- [GuardDuty vs Security Hub](#guardduty-vs-security-hub)
-- [Threat Detection Capabilities](#threat-detection-capabilities)
-- [Security Standards and Compliance](#security-standards-and-compliance)
-- [Findings Management](#findings-management)
-- [Multi-Account Strategy](#multi-account-strategy)
-- [Integration and Automation](#integration-and-automation)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Performance and Scalability](#performance-and-scalability)
-- [Security Best Practices](#security-best-practices)
-- [Observability and Monitoring](#observability-and-monitoring)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
----
-
 ## What Problems Security Hub & GuardDuty Solve
 
 <blockquote class="pull-quote">

@@ -7,26 +7,6 @@ description: "Generative AI including popular tools, prompt engineering techniqu
 tags: [ai, generative-ai, llm, modern, practical]
 ---
 
-## Table of Contents
-
-1. [Introduction to Generative AI](#introduction-to-generative-ai)
-2. [Popular Generative AI Tools](#popular-generative-ai-tools)
-   - [Text Generation Tools](#text-generation-tools)
-   - [Image Generation Tools](#image-generation-tools)
-   - [Video Generation Tools](#video-generation-tools)
-   - [Audio Generation Tools](#audio-generation-tools)
-   - [Code Generation Tools](#code-generation-tools)
-   - [Local/Self-Hosted AI Tools](#localself-hosted-ai-tools)
-3. [Essential Concepts and Definitions](#essential-concepts-and-definitions)
-4. [Prompt Engineering](#prompt-engineering)
-   - [Core Principles](#core-principles)
-   - [Essential Techniques](#essential-techniques)
-   - [Advanced Strategies](#advanced-strategies)
-   - [Best Practices for 2025](#best-practices-for-2025)
-5. [Advanced AI Architectures](#advanced-ai-architectures)
-6. [Integration and Implementation](#integration-and-implementation)
-7. [Resources and Further Learning](#resources-and-further-learning)
-
 ### **Local/Self-Hosted Considerations**
 Local LLMs offer cost-effective and secure alternatives to cloud-based options. By running models on your own hardware, you can avoid recurring API costs and keep sensitive data within your infrastructure.
 

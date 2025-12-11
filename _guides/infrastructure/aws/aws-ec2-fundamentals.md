@@ -7,20 +7,6 @@ description: "Comprehensive guide to AWS EC2 instance selection, cost optimizati
 tags: [infrastructure, aws, cloud-computing, cost-analysis, practical, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems EC2 Solves](#what-problems-ec2-solves)
-- [Instance Type Families and Selection](#instance-type-families-and-selection)
-- [AWS Graviton Processors](#aws-graviton-processors)
-- [AWS Nitro System](#aws-nitro-system)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Right-Sizing with Compute Optimizer](#right-sizing-with-compute-optimizer)
-- [Security Best Practices](#security-best-practices)
-- [High Availability and Reliability](#high-availability-and-reliability)
-- [Storage Options](#storage-options)
-- [Service Comparison: EC2 vs Lambda vs Containers](#service-comparison-ec2-vs-lambda-vs-containers)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems EC2 Solves
 
 <blockquote class="pull-quote">

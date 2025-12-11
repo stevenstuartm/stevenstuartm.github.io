@@ -7,17 +7,6 @@ description: "Deployment strategies define how new versions of applications are 
 tags: [infrastructure, deployment, blue-green, canary, practical, reliability]
 ---
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Rolling Deployment](#rolling-deployment)
-3. [Blue-Green Deployment](#blue-green-deployment)
-4. [Canary Release](#canary-release)
-5. [A/B Testing Deployment](#ab-testing-deployment)
-6. [Chaos Engineering Testing](#chaos-engineering-testing)
-7. [Comparison Matrix](#comparison-matrix)
-8. [Best Practices](#best-practices)
-9. [Implementation Considerations](#implementation-considerations)
-
 ## Overview
 
 Deployment strategies define how new versions of applications are released to production environments. Each strategy offers distinct advantages and challenges, making them suitable for different scenarios. The choice depends on factors such as risk tolerance, infrastructure constraints, and business requirements.

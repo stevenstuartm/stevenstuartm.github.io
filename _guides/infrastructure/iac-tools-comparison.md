@@ -7,16 +7,6 @@ description: "Comprehensive comparison of IaC tools including CloudFormation, Te
 tags: [infrastructure, iac, tools, comparison, decision-making, reference]
 ---
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Cloud-Specific Tools](#cloud-specific-tools)
-3. [Multi-Cloud Tools](#multi-cloud-tools)
-4. [Configuration Management Tools](#configuration-management-tools)
-5. [Tool Comparison Matrix](#tool-comparison-matrix)
-6. [Choosing the Right Tool](#choosing-the-right-tool)
-
----
-
 ## Overview
 
 Different IaC tools serve different purposes and excel in different scenarios. This guide helps you understand the landscape and choose the right tool for your needs.

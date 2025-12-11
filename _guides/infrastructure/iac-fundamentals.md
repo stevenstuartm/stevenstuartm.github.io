@@ -7,16 +7,6 @@ description: "Core IaC concepts including declarative vs. imperative approaches,
 tags: [infrastructure, iac, automation, fundamentals, devops, practical]
 ---
 
-## Table of Contents
-1. [What is Infrastructure as Code](#what-is-infrastructure-as-code)
-2. [Why IaC Matters](#why-iac-matters)
-3. [Core IaC Concepts](#core-iac-concepts)
-4. [IaC Approaches](#iac-approaches)
-5. [Security Considerations for IaC](#security-considerations-for-iac)
-6. [Getting Started](#getting-started)
-
----
-
 ## What is Infrastructure as Code
 
 **Infrastructure as Code (IaC)** is the practice of managing and provisioning infrastructure through machine-readable definition files rather than manual processes or interactive configuration tools.

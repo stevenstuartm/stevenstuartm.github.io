@@ -7,20 +7,6 @@ description: "Comprehensive guide to AWS Lambda covering event-driven patterns, 
 tags: [aws, serverless, lambda, event-driven, cost-optimization, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems Lambda Solves](#what-problems-lambda-solves)
-- [Lambda Fundamentals](#lambda-fundamentals)
-- [Current Limitations and Constraints](#current-limitations-and-constraints)
-- [Performance Optimization](#performance-optimization)
-- [Cost Optimization](#cost-optimization)
-- [Security Best Practices](#security-best-practices)
-- [Integration Patterns](#integration-patterns)
-- [Observability](#observability)
-- [Development Best Practices](#development-best-practices)
-- [When to Use Lambda vs Alternatives](#when-to-use-lambda-vs-alternatives)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems Lambda Solves
 
 <blockquote class="pull-quote">

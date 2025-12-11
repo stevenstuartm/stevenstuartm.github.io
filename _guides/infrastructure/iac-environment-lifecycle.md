@@ -7,15 +7,6 @@ description: "Managing environment recreation, resource discovery, and handling 
 tags: [infrastructure, iac, environments, lifecycle, practical]
 ---
 
-## Table of Contents
-1. [The Core Challenge](#the-core-challenge)
-2. [Resource Discovery Patterns](#resource-discovery-patterns)
-3. [Layered Lifecycle Management](#layered-lifecycle-management)
-4. [Circular Dependency Resolution](#circular-dependency-resolution)
-5. [Dev Environment Strategies](#dev-environment-strategies)
-
----
-
 ## The Core Challenge
 
 When recreating environments (especially dev/test), many resources generate dynamic identifiers that other resources depend on.

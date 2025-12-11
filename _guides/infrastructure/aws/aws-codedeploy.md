@@ -7,24 +7,6 @@ description: "Comprehensive guide to AWS CodeDeploy covering deployment strategi
 tags: [aws, deployment, codedeploy, blue-green, canary, cicd, automation, devops, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems CodeDeploy Solves](#what-problems-codedeploy-solves)
-- [Service Fundamentals](#service-fundamentals)
-- [Deployment Strategies](#deployment-strategies)
-- [EC2/On-Premises Deployments](#ec2on-premises-deployments)
-- [Lambda Deployments](#lambda-deployments)
-- [ECS Deployments](#ecs-deployments)
-- [Blue/Green Deployments](#bluegreen-deployments)
-- [Canary and Linear Deployments](#canary-and-linear-deployments)
-- [Rollback Mechanisms](#rollback-mechanisms)
-- [Integration Patterns](#integration-patterns)
-- [Performance Optimization](#performance-optimization)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Security Best Practices](#security-best-practices)
-- [When to Use CodeDeploy vs Alternatives](#when-to-use-codedeploy-vs-alternatives)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems CodeDeploy Solves
 
 <blockquote class="pull-quote">

@@ -7,23 +7,6 @@ description: "Comprehensive guide to AWS CloudWatch covering metrics, alarms, da
 tags: [aws, observability, monitoring, cloudwatch, logging, metrics, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems CloudWatch Solves](#what-problems-cloudwatch-solves)
-- [Service Fundamentals](#service-fundamentals)
-- [CloudWatch Metrics](#cloudwatch-metrics)
-- [CloudWatch Alarms](#cloudwatch-alarms)
-- [CloudWatch Logs](#cloudwatch-logs)
-- [CloudWatch Dashboards](#cloudwatch-dashboards)
-- [CloudWatch Insights](#cloudwatch-insights)
-- [Cross-Account Observability](#cross-account-observability)
-- [Integration Patterns](#integration-patterns)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Performance Optimization](#performance-optimization)
-- [Security Best Practices](#security-best-practices)
-- [When to Use CloudWatch vs Alternatives](#when-to-use-cloudwatch-vs-alternatives)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems CloudWatch Solves
 
 <blockquote class="pull-quote">

@@ -7,17 +7,6 @@ description: "Business continuity strategies from backup-and-restore to multi-si
 tags: [infrastructure, disaster-recovery, reliability, aws, practical]
 ---
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Key Concepts](#key-concepts)
-3. [Backup and Restore](#backup-and-restore)
-4. [Pilot Light](#pilot-light)
-5. [Warm Standby](#warm-standby)
-6. [Multi-Site Hot-Site](#multi-site-hot-site)
-7. [Comparison Matrix](#comparison-matrix)
-8. [Implementation Strategies](#implementation-strategies)
-9. [Best Practices](#best-practices)
-
 ## Overview
 
 Disaster Recovery (DR) strategies define how organizations prepare for and respond to disruptive events that could affect business operations. These patterns provide different levels of protection, recovery speed, and cost considerations to match various business continuity requirements.

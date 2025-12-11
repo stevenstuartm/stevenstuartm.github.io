@@ -72,6 +72,8 @@ I've watched teams follow every ritual in the Scrum guide and still fail spectac
 
 This discipline transcends methodology. You can practice AAA within Scrum, Kanban, Waterfall, or whatever your organization uses. The ceremonies are secondary; the values are primary.
 
+The discipline also extends to technical work. When engineers integrate code, they align on intentions before modifying shared code, agree on interfaces and contracts, and apply those agreements in implementation. Test-driven development embodies this directly: write the agreement first (the test), then honor it in implementation. CI/CD automates the verification, and build failures surface broken agreements. The same values that prevent project failures prevent integration failures.
+
 Organizations often respond to past failures by adding controls: approval gates, mandatory reviews, process checkpoints. These look like risk mitigation but often indicate a lack of trust in the underlying values. If you need strangling controls to prevent bad outcomes, the discipline isn't there, and more process won't fix that.
 
 **Going deeper**: [AAA Cycle](/study-guides/sdlc/aaa-cycle.html){:target="_blank" rel="noopener noreferrer"} explains the full discipline with practical guidance for each phase.
@@ -84,9 +86,11 @@ Organizations often respond to past failures by adding controls: approval gates,
 <p>Measure outcomes against goals, not metrics against baselines.</p>
 </blockquote>
 
-Velocity metrics give the illusion of progress. Sprint completions create the appearance of discipline. Leadership can point to charts and burndown graphs while the product slowly dies.
+Velocity charts go up and to the right. Sprint completions hit 100%. The dashboard is green. And the product slowly dies because no one asks whether any of it mattered.
 
-What matters is whether you delivered value. Did the feature solve the actual problem? Is the customer satisfied? Does the team understand what they built and why it matters? Story points and burndown charts can't answer these questions. They measure how fast you moved, not whether you moved in the right direction.
+Activity metrics measure how fast you moved, not whether you moved in the right direction. Story points completed tells you nothing about problems solved. Burndown charts tell you nothing about customer satisfaction. Code coverage tells you nothing about whether the tests catch real bugs. These metrics are easy to track and satisfying to optimize, which makes them dangerous: teams optimize what they measure, and measuring activity produces more activity.
+
+Outcome measurement requires harder questions. Did the feature solve the actual problem? Would users notice if we removed it? Did the architectural change actually improve reliability, or did we just move complexity somewhere else? These questions don't fit neatly into dashboards, but they're the only ones that matter.
 
 **Going deeper**: [Why Your Agile Team Might Be Building on Hope, Not Discipline](/blog/2025/10/23/the-agile-masquerade.html){:target="_blank" rel="noopener noreferrer"} examines why frameworks that optimize for predictable metrics fail to deliver value.
 

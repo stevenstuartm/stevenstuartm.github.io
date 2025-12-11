@@ -7,20 +7,6 @@ description: "Comprehensive guide to DevOps - culture, practices, automation, an
 tags: [sdlc, devops, automation, culture, ci-cd, continuous-delivery]
 ---
 
-## Table of Contents
-1. [What is DevOps](#what-is-devops)
-2. [Philosophy and Core Values](#philosophy-and-core-values)
-3. [The Three Ways](#the-three-ways)
-4. [DevOps Practices](#devops-practices)
-5. [The DevOps Toolchain](#the-devops-toolchain)
-6. [Metrics and Measurement](#metrics-and-measurement)
-7. [Implementing DevOps](#implementing-devops)
-8. [Alignment with AAA Cycle](#alignment-with-aaa-cycle)
-9. [When to Use DevOps](#when-to-use-devops)
-10. [Common Pitfalls and Red Flags](#common-pitfalls-and-red-flags)
-
----
-
 ## What is DevOps
 
 *Emerged in late 2000s as development and operations communities collaborated to address deployment friction. Term coined around 2009, popularized by "The Phoenix Project" (2013) and "The DevOps Handbook" (2016) by Gene Kim, Jez Humble, Patrick Debois, and John Willis.*

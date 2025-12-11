@@ -7,16 +7,6 @@ description: "Comprehensive guide to Shape Up methodology - Basecamp's approach 
 tags: [sdlc, methodology, agile, product-development, basecamp]
 ---
 
-## Table of Contents
-1. [What is Shape Up](#what-is-shape-up)
-2. [The Shape Up Workflow](#the-shape-up-workflow)
-3. [Key Principles and Practices](#key-principles-and-practices)
-4. [When to Use Shape Up](#when-to-use-shape-up)
-5. [Alignment with AAA Cycle](#alignment-with-aaa-cycle)
-6. [Common Pitfalls and How to Avoid Them](#common-pitfalls-and-how-to-avoid-them)
-
----
-
 ## What is Shape Up
 
 *Developed by Basecamp (Ryan Singer, 2019) as an alternative to Scrum. Documented in "Shape Up: Stop Running in Circles and Ship Work that Matters"*

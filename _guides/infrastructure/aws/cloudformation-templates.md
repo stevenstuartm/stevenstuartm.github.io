@@ -7,16 +7,6 @@ description: "Complete reference for CloudFormation intrinsic functions, paramet
 tags: [infrastructure, iac, aws, cloudformation, practical, templates]
 ---
 
-## Table of Contents
-1. [Intrinsic Functions](#intrinsic-functions)
-2. [Parameters](#parameters)
-3. [Outputs](#outputs)
-4. [Mappings](#mappings)
-5. [Conditions](#conditions)
-6. [Pseudo Parameters](#pseudo-parameters)
-
----
-
 ## Intrinsic Functions
 
 <blockquote class="pull-quote">

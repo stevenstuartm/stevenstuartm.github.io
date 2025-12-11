@@ -7,22 +7,6 @@ description: "Comprehensive guide to AWS X-Ray covering distributed tracing, ser
 tags: [aws, observability, distributed-tracing, xray, monitoring, microservices, performance, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems X-Ray Solves](#what-problems-xray-solves)
-- [Service Fundamentals](#service-fundamentals)
-- [X-Ray Concepts](#xray-concepts)
-- [Instrumentation](#instrumentation)
-- [Service Map](#service-map)
-- [Trace Analysis](#trace-analysis)
-- [Sampling](#sampling)
-- [Integration Patterns](#integration-patterns)
-- [Performance Optimization](#performance-optimization)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Security Best Practices](#security-best-practices)
-- [When to Use X-Ray vs Alternatives](#when-to-use-xray-vs-alternatives)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems X-Ray Solves
 
 <blockquote class="pull-quote">

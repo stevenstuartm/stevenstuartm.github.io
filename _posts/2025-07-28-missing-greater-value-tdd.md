@@ -17,15 +17,15 @@ This feels wasteful. Many experienced developers achieve similar results through
 
 ## Testing Assumptions, Not Just Code
 
-Most discussions about TDD frame it as a code quality tool. Write tests first, implement to make them pass, refactor for quality. The tests ensure correctness and prevent regressions. Coverage metrics become the measure of success.
+Most discussions frame TDD as a code quality tool: write tests first, implement to pass, refactor for quality. Coverage metrics become the measure of success.
 
-But every test is also an executable hypothesis about user needs and business logic. When you write a test asserting business rules, you're testing assumptions about how the system should behave. When that test changes during discovery because requirements were misunderstood, the test delivered value by surfacing wrong assumptions before you built the wrong system.
+But every test is also an executable hypothesis about user needs and business logic. When you write a test asserting business rules, you're testing assumptions about how the system should behave. When that test changes because requirements were misunderstood, the test delivered value by surfacing wrong assumptions before you built the wrong system.
 
 Changed tests aren't waste; they're evidence of learning. The alternative is implementing vague requirements, shipping to production, and discovering the actual rules through production bugs.
 
 ## Executable Business Hypotheses
 
-What if we reframed TDD as testing business assumptions rather than just testing code quality? The test suite becomes a living document of hypotheses about how the business works. When a test changes, you're not admitting failure; you're documenting discovered truth.
+What if we reframed TDD as testing business assumptions rather than just code quality? The test suite becomes a living document of hypotheses about how the business works. When a test changes, you're documenting discovered truth, not admitting failure.
 
 This shift changes how we evaluate TDD's value. Instead of measuring test coverage percentage, we measure how many wrong assumptions were caught before production. Instead of celebrating passing tests, we celebrate tests that revealed misunderstood requirements before implementation. Instead of viewing rewritten tests as waste, we recognize them as questions answered before building the wrong system.
 
@@ -42,3 +42,11 @@ Stop debating "test-first versus test-after" and start asking: What assumptions 
 <blockquote class="pull-quote">
 <p>The greatest value of TDD isn't in the tests that pass. It's in the tests that change because they revealed assumptions worth questioning.</p>
 </blockquote>
+
+## TDD as AAA at the Code Level
+
+This reframing connects to a broader discipline I call [AAA (Align-Agree-Apply)](/study-guides/sdlc/aaa-cycle.html){:target="_blank" rel="noopener noreferrer"}. The test is alignment: what should this code do? The passing assertion is agreement: this is the contract we're committing to. Implementation honors that agreement by making the test pass.
+
+When tests change during development, you're realigning based on discovery. When tests fail after changes, they're surfacing a broken agreement. The same values that prevent project failures (starting with understanding, securing genuine commitment, honoring what was agreed) prevent code failures when applied at the technical level.
+
+TDD isn't just a testing practice; it's the AAA discipline encoded in your development workflow.

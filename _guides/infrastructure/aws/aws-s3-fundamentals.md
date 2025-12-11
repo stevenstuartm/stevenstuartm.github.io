@@ -7,21 +7,6 @@ description: "Comprehensive guide to AWS S3 covering storage classes, cost optim
 tags: [aws, s3, storage, object-storage, cost-optimization, security, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems S3 Solves](#what-problems-s3-solves)
-- [S3 Fundamentals](#s3-fundamentals)
-- [Storage Classes](#storage-classes)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Performance Optimization](#performance-optimization)
-- [Security Best Practices](#security-best-practices)
-- [Data Management](#data-management)
-- [High Availability and Reliability](#high-availability-and-reliability)
-- [Integration Patterns](#integration-patterns)
-- [Observability](#observability)
-- [When to Use S3 vs Alternatives](#when-to-use-s3-vs-alternatives)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems S3 Solves
 
 <blockquote class="pull-quote">

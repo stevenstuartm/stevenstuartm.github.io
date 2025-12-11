@@ -7,21 +7,6 @@ description: "Comprehensive guide to Scrum - roles, ceremonies, artifacts, and p
 tags: [sdlc, methodology, agile, scrum, sprints, ceremonies]
 ---
 
-## Table of Contents
-1. [What is Scrum](#what-is-scrum)
-2. [Philosophy and Core Values](#philosophy-and-core-values)
-3. [The Scrum Framework](#the-scrum-framework)
-4. [Scrum Roles](#scrum-roles)
-5. [Scrum Ceremonies](#scrum-ceremonies)
-6. [Scrum Artifacts](#scrum-artifacts)
-7. [Metrics and Measurement](#metrics-and-measurement)
-8. [Implementing Scrum](#implementing-scrum)
-9. [Alignment with AAA Cycle](#alignment-with-aaa-cycle)
-10. [When to Use Scrum](#when-to-use-scrum)
-11. [Common Pitfalls and Red Flags](#common-pitfalls-and-red-flags)
-
----
-
 ## What is Scrum
 
 *Developed by Jeff Sutherland and Ken Schwaber in early 1990s, formalized in 1995. Based on empirical process control theory and influenced by Takeuchi & Nonaka's "The New New Product Development Game" (1986). Codified in the [Scrum Guide](https://scrumguides.org/){:target="_blank" rel="noopener noreferrer"} by Sutherland and Schwaber.*

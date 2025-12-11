@@ -7,22 +7,6 @@ description: "VPC fundamentals for architects including subnets, routing, securi
 tags: [infrastructure, aws, networking, vpc, security, practical]
 ---
 
-## Table of Contents
-1. [What is a VPC](#what-is-a-vpc)
-2. [Core VPC Components](#core-vpc-components)
-3. [Subnets and Availability Zones](#subnets-and-availability-zones)
-4. [Routing and Gateways](#routing-and-gateways)
-5. [Security Layers](#security-layers)
-6. [Private Connectivity: PrivateLink and VPC Endpoints](#private-connectivity-privatelink-and-vpc-endpoints)
-7. [Architectural Patterns](#architectural-patterns)
-8. [Multi-VPC Strategies](#multi-vpc-strategies)
-9. [VPC Lattice for Service-to-Service Communication](#vpc-lattice-for-service-to-service-communication)
-10. [IPv4 Cost Optimization and IPv6](#ipv4-cost-optimization-and-ipv6)
-11. [Common Pitfalls](#common-pitfalls)
-12. [Key Takeaways](#key-takeaways)
-
----
-
 ## What is a VPC
 
 <blockquote class="pull-quote">

@@ -7,19 +7,6 @@ description: "Comprehensive guide to Waterfall - sequential software development
 tags: [sdlc, methodology, waterfall, sequential, documentation, regulated-industries]
 ---
 
-## Table of Contents
-1. [What is Waterfall](#what-is-waterfall)
-2. [Philosophy and Core Principles](#philosophy-and-core-principles)
-3. [The Waterfall Phases](#the-waterfall-phases)
-4. [Roles and Responsibilities](#roles-and-responsibilities)
-5. [Documentation and Deliverables](#documentation-and-deliverables)
-6. [When to Use Waterfall](#when-to-use-waterfall)
-7. [Alignment with AAA Cycle](#alignment-with-aaa-cycle)
-8. [Hybrid Approaches](#hybrid-approaches)
-9. [Common Pitfalls and Red Flags](#common-pitfalls-and-red-flags)
-
----
-
 ## What is Waterfall
 
 *Formalized by Winston W. Royce in 1970 paper "Managing the Development of Large Software Systems." Ironically, Royce actually argued against the pure waterfall approach in the same paper, but it became the dominant methodology for decades.*

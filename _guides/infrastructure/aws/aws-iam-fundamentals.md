@@ -7,19 +7,6 @@ description: "Modern AWS identity management including IAM Identity Center for w
 tags: [infrastructure, aws, iam, security, access-control, fundamentals]
 ---
 
-## Table of Contents
-1. [What is AWS Identity and Access Management](#what-is-aws-identity-and-access-management)
-2. [Modern Approach: IAM Identity Center](#modern-approach-iam-identity-center)
-3. [AWS Organizations and Multi-Account IAM](#aws-organizations-and-multi-account-iam)
-4. [Traditional IAM: Users, Groups, and Roles](#traditional-iam-users-groups-and-roles)
-5. [IAM Policies](#iam-policies)
-6. [Workload Identity Patterns](#workload-identity-patterns)
-7. [Security Best Practices](#security-best-practices)
-8. [Common Pitfalls](#common-pitfalls)
-9. [Key Takeaways](#key-takeaways)
-
----
-
 ## What is AWS Identity and Access Management
 
 <blockquote class="pull-quote">

@@ -7,18 +7,6 @@ description: "Comprehensive guide to Extreme Programming (XP) - engineering prac
 tags: [sdlc, methodology, xp, engineering-practices, tdd, pair-programming, technical-excellence]
 ---
 
-## Table of Contents
-1. [What is Extreme Programming](#what-is-extreme-programming)
-2. [Philosophy and Core Values](#philosophy-and-core-values)
-3. [The Twelve Practices](#the-twelve-practices)
-4. [XP Roles and Responsibilities](#xp-roles-and-responsibilities)
-5. [Implementing XP](#implementing-xp)
-6. [Alignment with AAA Cycle](#alignment-with-aaa-cycle)
-7. [When to Use XP](#when-to-use-xp)
-8. [Common Pitfalls and Red Flags](#common-pitfalls-and-red-flags)
-
----
-
 ## What is Extreme Programming
 
 *Created by Kent Beck in the mid-1990s while working on the Chrysler Comprehensive Compensation System. Formalized in "Extreme Programming Explained: Embrace Change" (1999, revised 2004).*

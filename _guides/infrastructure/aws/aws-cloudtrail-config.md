@@ -7,25 +7,6 @@ description: "Comprehensive guide to AWS CloudTrail and Config covering audit lo
 tags: [aws, cloudtrail, config, audit, compliance, governance, security, logging, monitoring, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems CloudTrail & Config Solve](#what-problems-cloudtrail--config-solve)
-- [AWS CloudTrail Fundamentals](#aws-cloudtrail-fundamentals)
-- [AWS Config Fundamentals](#aws-config-fundamentals)
-- [CloudTrail vs Config](#cloudtrail-vs-config)
-- [Organizational Trails](#organizational-trails)
-- [Config Rules and Conformance Packs](#config-rules-and-conformance-packs)
-- [CloudTrail Event Types](#cloudtrail-event-types)
-- [Configuration Change Tracking](#configuration-change-tracking)
-- [Integration Patterns](#integration-patterns)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Performance and Scalability](#performance-and-scalability)
-- [Security Best Practices](#security-best-practices)
-- [Observability and Monitoring](#observability-and-monitoring)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
----
-
 ## What Problems CloudTrail & Config Solve
 
 <blockquote class="pull-quote">

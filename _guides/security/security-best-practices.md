@@ -5,17 +5,6 @@ description: "Practical security best practices covering network segmentation, e
 tags: [security, best-practices, practical, implementation, checklist]
 ---
 
-## Table of Contents
-1. [Network Security](#network-security)
-2. [Endpoint Security](#endpoint-security)
-3. [Identity and Access Management](#identity-and-access-management)
-4. [Data Protection](#data-protection)
-5. [Application Security](#application-security)
-6. [Incident Response Procedures](#incident-response-procedures)
-7. [Security Metrics and KPIs](#security-metrics-and-kpis)
-8. [2025 Security Trends](#2025-security-trends)
-9. [Quick Reference](#quick-reference)
-
 ## Network Security
 
 ### Network Segmentation

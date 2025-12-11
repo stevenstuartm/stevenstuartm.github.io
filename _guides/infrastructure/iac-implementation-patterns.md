@@ -7,16 +7,6 @@ description: "Modular design, environment separation, layered architecture, and 
 tags: [infrastructure, iac, design-patterns, best-practices, practical]
 ---
 
-## Table of Contents
-1. [Modular Design](#modular-design)
-2. [Environment Separation](#environment-separation)
-3. [Layered Architecture](#layered-architecture)
-4. [IaC Code Ownership](#iac-code-ownership)
-5. [GitOps Workflow](#gitops-workflow)
-6. [Best Practices](#best-practices)
-
----
-
 ## Modular Design
 
 **What it is:** Breaking infrastructure code into reusable, self-contained components (modules).

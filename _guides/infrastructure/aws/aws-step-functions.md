@@ -7,25 +7,6 @@ description: "Comprehensive guide to AWS Step Functions covering Standard and Ex
 tags: [aws, step-functions, orchestration, workflows, serverless, integration, architecture, cost-optimization, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems Step Functions Solves](#what-problems-step-functions-solves)
-- [Step Functions Fundamentals](#step-functions-fundamentals)
-- [Standard vs Express Workflows](#standard-vs-express-workflows)
-- [State Types](#state-types)
-- [Error Handling and Retry Strategies](#error-handling-and-retry-strategies)
-- [Service Integrations](#service-integrations)
-- [Orchestration vs Choreography](#orchestration-vs-choreography)
-- [Workflow Patterns](#workflow-patterns)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Performance and Scalability](#performance-and-scalability)
-- [Security Best Practices](#security-best-practices)
-- [Observability and Monitoring](#observability-and-monitoring)
-- [Integration with Other AWS Services](#integration-with-other-aws-services)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
----
-
 ## What Problems Step Functions Solves
 
 <blockquote class="pull-quote">

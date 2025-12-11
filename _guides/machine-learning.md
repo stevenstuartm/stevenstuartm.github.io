@@ -7,18 +7,6 @@ description: "Comprehensive ML fundamentals covering supervised/unsupervised lea
 tags: [machine-learning, ai, fundamentals, algorithms, data-science]
 ---
 
-## Table of Contents
-
-1. [Core Definitions and Concepts](#1-core-definitions-and-concepts)
-2. [Current ML Landscape and Trends (2025)](#2-current-ml-landscape-and-trends-2025)
-3. [Model Training Fundamentals](#3-model-training-fundamentals)
-4. [Classification of Machine Learning](#4-classification-of-machine-learning)
-5. [MLOps and Production Systems](#5-mlops-and-production-systems)
-6. [Key Challenges and Solutions](#6-key-challenges-and-solutions)
-7. [Quick Reference Guide](#7-quick-reference-guide)
-
----
-
 ## 1. Core Definitions and Concepts
 
 ### Artificial Intelligence (AI)

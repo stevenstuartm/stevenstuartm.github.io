@@ -7,20 +7,6 @@ description: "CI/CD fundamentals, pipeline design, automation strategies, securi
 tags: [sdlc, cicd, automation, devops, testing, security, practical]
 ---
 
-## Table of Contents
-1. [What is CI/CD](#what-is-cicd)
-2. [Continuous Integration (CI)](#continuous-integration-ci)
-3. [Continuous Delivery and Deployment](#continuous-delivery-and-deployment)
-4. [Pipeline Architecture](#pipeline-architecture)
-5. [Automated Testing in Pipelines](#automated-testing-in-pipelines)
-6. [Security Gates and Scanning](#security-gates-and-scanning)
-7. [Secrets and Credential Management](#secrets-and-credential-management)
-8. [Pipeline Hardening](#pipeline-hardening)
-9. [Continuous Compliance](#continuous-compliance)
-10. [CI/CD Platforms and Tools](#cicd-platforms-and-tools)
-
----
-
 ## What is CI/CD
 
 **CI/CD** is a set of practices that automate the integration, testing, and delivery of software changes, enabling teams to ship code faster, more reliably, and with higher quality.
@@ -64,6 +50,26 @@ An extension of continuous delivery where every change that passes automated tes
 - Reduced risk of large, complex releases
 - Better responsiveness to market changes
 - Lower operational costs through automation
+
+---
+
+## CI/CD and Technical Agreement
+
+The [AAA Cycle](aaa-cycle.html) (Align-Agree-Apply) applies at the code level too. Engineers align on intent before modifying shared code, agree on interfaces and contracts, and apply those agreements in implementation. CI/CD automates the verification.
+
+<blockquote class="pull-quote">
+<p>Tests are agreements encoded as executable specifications. When a test fails, an agreement was broken.</p>
+</blockquote>
+
+**What CI/CD verifies:**
+- **Unit tests**: Component behavior agreements
+- **Integration tests**: Contracts between components
+- **Contract tests**: API agreements between services
+- **Security/quality gates**: Standards established during design
+
+**Reframing failures**: When CI breaks, ask "what agreement broke?" not just "how do I fix this?" A merge conflict might mean engineers weren't aligned on concurrent work. An integration test failure might mean the contract was never genuinely agreed upon. This question leads to root causes rather than symptoms.
+
+For the full treatment of how AAA operates at every level, see [AAA Cycle: Align-Agree-Apply](aaa-cycle.html).
 
 ---
 

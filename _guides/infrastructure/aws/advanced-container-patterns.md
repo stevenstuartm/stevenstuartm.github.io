@@ -7,18 +7,6 @@ description: "Comprehensive guide to advanced ECS and EKS patterns covering serv
 tags: [aws, containers, kubernetes, ecs, eks, microservices, architecture, scalability, practical]
 ---
 
-## Table of Contents
-- [What Problems Advanced Container Patterns Solve](#what-problems-advanced-container-patterns-solve)
-- [ECS Advanced Patterns](#ecs-advanced-patterns)
-- [EKS Advanced Patterns](#eks-advanced-patterns)
-- [Service Mesh Architecture](#service-mesh-architecture)
-- [Autoscaling Strategies](#autoscaling-strategies)
-- [Multi-Cluster & Multi-Region Patterns](#multi-cluster--multi-region-patterns)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [When to Use Which Pattern](#when-to-use-which-pattern)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems Advanced Container Patterns Solve
 
 <blockquote class="pull-quote">

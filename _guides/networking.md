@@ -9,23 +9,6 @@ tags: [networking, fundamentals, protocols, tcp-ip, reference]
 
 Networking fundamentals for software developers and system architects.
 
-## Table of Contents
-
-1. [OSI Model & Network Layers](#osi-model--network-layers)
-2. [IP Addressing & CIDR](#ip-addressing--cidr)
-3. [Subnetting](#subnetting)
-4. [Network Protocols](#network-protocols)
-5. [Ports & Port Ranges](#ports--port-ranges)
-6. [DNS (Domain Name System)](#dns-domain-name-system)
-7. [Load Balancing](#load-balancing)
-8. [Network Security](#network-security)
-9. [Common Network Tools](#common-network-tools)
-10. [Cloud Networking](#cloud-networking)
-11. [Performance & Troubleshooting](#performance--troubleshooting)
-12. [Quick Reference Tables](#quick-reference-tables)
-
----
-
 ## OSI Model & Network Layers
 
 *OSI Model developed by the International Organization for Standardization (ISO) in 1977-1984. Created as a universal standard for network communication protocols.*

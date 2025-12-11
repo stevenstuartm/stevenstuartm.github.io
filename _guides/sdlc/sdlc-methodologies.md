@@ -7,15 +7,6 @@ description: "Comprehensive comparison of software development methodologies inc
 tags: [sdlc, methodology, agile, waterfall, comparison, decision-making]
 ---
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Traditional Methodologies](#traditional-methodologies)
-3. [Agile Family of Methodologies](#agile-family-of-methodologies)
-4. [Hybrid and Specialized Methodologies](#hybrid-and-specialized-methodologies)
-5. [Methodology Selection Guide](#methodology-selection-guide)
-
----
-
 ## Overview
 
 Most legacy SDLC methodologies aren't even taught in University or bootcamp classrooms. Instead, today's classes teach Agile frameworks like Scrum and Kanban. However, understanding different methodologies helps choose the right approach for specific project needs and constraints.

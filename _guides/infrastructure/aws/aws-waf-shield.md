@@ -7,25 +7,6 @@ description: "Comprehensive guide to AWS WAF and Shield covering web application
 tags: [aws, waf, shield, ddos, security, firewall, bot-control, rate-limiting, application-security, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems WAF & Shield Solve](#what-problems-waf--shield-solve)
-- [AWS WAF Fundamentals](#aws-waf-fundamentals)
-- [AWS Shield Fundamentals](#aws-shield-fundamentals)
-- [WAF vs Shield](#waf-vs-shield)
-- [Managed Rules](#managed-rules)
-- [Custom Rules and Rate Limiting](#custom-rules-and-rate-limiting)
-- [Bot Control](#bot-control)
-- [Integration with AWS Services](#integration-with-aws-services)
-- [DDoS Response Team (DRT)](#ddos-response-team-drt)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Performance and Scalability](#performance-and-scalability)
-- [Security Best Practices](#security-best-practices)
-- [Observability and Monitoring](#observability-and-monitoring)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
----
-
 ## What Problems WAF & Shield Solve
 
 <blockquote class="pull-quote">

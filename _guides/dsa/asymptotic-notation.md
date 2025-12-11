@@ -5,30 +5,6 @@ description: "Deep dive into mathematical foundations of algorithm analysis cove
 tags: [algorithms, complexity-analysis, fundamentals, theory]
 ---
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Mathematical Foundations](#mathematical-foundations)
-  - [Logarithms](#logarithms)
-  - [Polynomial vs Exponential Growth](#polynomial-vs-exponential-growth)
-- [Types of Asymptotic Notation](#types-of-asymptotic-notation)
-  - [Big O (O) - Upper Bound](#big-o-o---upper-bound)
-  - [Big Omega (Ω) - Lower Bound](#big-omega-ω---lower-bound)
-  - [Big Theta (Θ) - Tight Bound](#big-theta-θ---tight-bound)
-- [Common Time Complexities](#common-time-complexities)
-- [Detailed Examples](#detailed-examples)
-  - [Constant Time - O(1)](#constant-time---o1)
-  - [Logarithmic Time - O(log n)](#logarithmic-time---olog-n)
-  - [Linear Time - O(n)](#linear-time---on)
-  - [Linearithmic Time - O(n log n)](#linearithmic-time---on-log-n)
-  - [Quadratic Time - O(n²)](#quadratic-time---on²)
-  - [Exponential Time - O(2ⁿ)](#exponential-time---o2ⁿ)
-  - [Factorial Time - O(n!)](#factorial-time---on)
-- [Space Complexity](#space-complexity)
-- [Practical Analysis Tips](#practical-analysis-tips)
-- [Quick Reference](#quick-reference)
-
----
-
 ## Introduction
 
 **Asymptotic notation** provides a mathematical framework for analyzing algorithm efficiency without being tied to specific hardware or implementation details. Instead of measuring exact execution time (which varies between computers), we analyze how an algorithm's resource requirements grow relative to input size (n).

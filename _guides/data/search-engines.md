@@ -7,19 +7,6 @@ description: "Deep dive into search engines—how they index unstructured text, 
 tags: [databases, search, elasticsearch, full-text, relevance, indexing]
 ---
 
-## Table of Contents
-
-- [What They Are](#what-they-are)
-- [Data Structure](#data-structure)
-- [How They Work](#how-they-work)
-- [Why They Excel](#why-they-excel)
-- [Why They Struggle](#why-they-struggle)
-- [When to Use Them](#when-to-use-them)
-- [When to Look Elsewhere](#when-to-look-elsewhere)
-- [Examples](#examples)
-
----
-
 ## What They Are
 
 Search engines index unstructured text for full-text search, returning results ranked by relevance. They solve a different problem than databases: not "retrieve the record with ID 123" but "find the most relevant documents containing 'database performance tuning.'"

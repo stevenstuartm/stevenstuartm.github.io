@@ -7,19 +7,6 @@ description: "Deep dive into document databases—how they store semi-structured
 tags: [databases, document, nosql, mongodb, schema-flexibility, data-modeling]
 ---
 
-## Table of Contents
-
-- [What They Are](#what-they-are)
-- [Data Structure](#data-structure)
-- [How They Work](#how-they-work)
-- [Why They Excel](#why-they-excel)
-- [Why They Struggle](#why-they-struggle)
-- [When to Use Them](#when-to-use-them)
-- [When to Look Elsewhere](#when-to-look-elsewhere)
-- [Examples](#examples)
-
----
-
 ## What They Are
 
 Document databases store data as semi-structured documents, typically JSON or BSON (binary JSON). Unlike key-value stores, they understand document structure and can index and query by fields within documents. Unlike relational databases, they don't require predefined schemas, so documents in the same collection can have different fields.

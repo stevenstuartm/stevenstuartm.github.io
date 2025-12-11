@@ -7,25 +7,6 @@ description: "Comprehensive guide to AWS EventBridge covering event buses, rules
 tags: [aws, eventbridge, event-driven, serverless, integration, messaging, architecture, cost-optimization, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems EventBridge Solves](#what-problems-eventbridge-solves)
-- [EventBridge Fundamentals](#eventbridge-fundamentals)
-- [Event Buses, Rules, and Targets](#event-buses-rules-and-targets)
-- [EventBridge Pipes](#eventbridge-pipes)
-- [EventBridge Scheduler](#eventbridge-scheduler)
-- [EventBridge vs SNS](#eventbridge-vs-sns)
-- [Event-Driven Architecture Patterns](#event-driven-architecture-patterns)
-- [Schema Registry](#schema-registry)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Performance and Scalability](#performance-and-scalability)
-- [Security Best Practices](#security-best-practices)
-- [Observability and Monitoring](#observability-and-monitoring)
-- [Integration Patterns](#integration-patterns)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
----
-
 ## What Problems EventBridge Solves
 
 <blockquote class="pull-quote">

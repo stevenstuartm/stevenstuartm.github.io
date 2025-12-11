@@ -7,16 +7,6 @@ description: "Practical tools and automation for implementing architecture gover
 tags: [architecture, governance, automation, aws, security, practical]
 ---
 
-## Table of Contents
-- [Tool Selection Strategy](#tool-selection-strategy)
-- [AWS Multi-Account Governance](#aws-multi-account-governance)
-- [Code Quality Governance (.NET)](#code-quality-governance-net)
-- [Infrastructure as Code Governance](#infrastructure-as-code-governance)
-- [Security Governance Automation](#security-governance-automation)
-- [Cost Governance](#cost-governance)
-- [Implementation Roadmap](#implementation-roadmap)
-- [Key Takeaways](#key-takeaways)
-
 ## Tool Selection Strategy
 
 <blockquote class="pull-quote">

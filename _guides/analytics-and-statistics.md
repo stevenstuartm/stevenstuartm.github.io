@@ -7,21 +7,6 @@ description: "Essential statistics covering descriptive/inferential analytics, p
 tags: [statistics, analytics, data-analysis, hypothesis-testing, fundamentals, decision-making]
 ---
 
-## Table of Contents
-
-1. [Introduction to Analytics](#introduction-to-analytics)
-2. [Variable Types](#variable-types)
-3. [Descriptive Statistics](#descriptive-statistics)
-4. [Statistical Distributions](#statistical-distributions)
-5. [Data Analysis Methods](#data-analysis-methods)
-6. [Data Visualization](#data-visualization)
-7. [Modern Analytics Trends (2025)](#modern-analytics-trends-2025)
-8. [Best Practices](#best-practices)
-9. [Free Datasets for Practice](#free-datasets-for-practice)
-10. [Quick Reference Formulas](#quick-reference-formulas)
-
----
-
 Analytics is the process of examining data to draw conclusions, make predictions, and support decision-making.
 
 ### Four Types of Analytics

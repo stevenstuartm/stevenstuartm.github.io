@@ -9,20 +9,6 @@ redirect_from:
   - /study-guides/database-types.html
 ---
 
-## Table of Contents
-
-- [Why Databases Exist](#why-databases-exist)
-- [Why So Many Database Types Exist](#why-so-many-database-types-exist)
-- [The CAP Theorem](#the-cap-theorem)
-- [ACID Properties](#acid-properties)
-- [BASE: The Alternative to ACID](#base-the-alternative-to-acid)
-- [Data Modeling Fundamentals](#data-modeling-fundamentals)
-- [Database Selection Framework](#database-selection-framework)
-- [Polyglot Persistence](#polyglot-persistence)
-- [Migration Considerations](#migration-considerations)
-
----
-
 ## Why Databases Exist
 
 Applications need to persist data beyond the lifetime of a single process. They need to share data across multiple processes, servers, and users. They need to query data in flexible ways, ensure data isn't lost during failures, and prevent concurrent modifications from corrupting state.

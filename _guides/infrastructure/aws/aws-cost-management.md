@@ -7,24 +7,6 @@ description: "Comprehensive guide to AWS cost management covering Cost Explorer,
 tags: [aws, cost-optimization, budgets, cost-explorer, savings-plans, reserved-instances, finops, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems Cost Management Solves](#what-problems-cost-management-solves)
-- [Service Fundamentals](#service-fundamentals)
-- [AWS Cost Explorer](#aws-cost-explorer)
-- [AWS Budgets](#aws-budgets)
-- [AWS Compute Optimizer](#aws-compute-optimizer)
-- [AWS Trusted Advisor](#aws-trusted-advisor)
-- [Savings Plans](#savings-plans)
-- [Reserved Instances](#reserved-instances)
-- [Cost Allocation Tags](#cost-allocation-tags)
-- [Cost Anomaly Detection](#cost-anomaly-detection)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Integration Patterns](#integration-patterns)
-- [FinOps Best Practices](#finops-best-practices)
-- [When to Use AWS Tools vs Third-Party](#when-to-use-aws-tools-vs-third-party)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems Cost Management Solves
 
 <blockquote class="pull-quote">

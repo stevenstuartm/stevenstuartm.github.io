@@ -7,24 +7,6 @@ description: "Comprehensive guide to AWS Kinesis covering Data Streams and Fireh
 tags: [aws, kinesis, streaming, real-time, data-processing, analytics, architecture, cost-optimization, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems Kinesis Solves](#what-problems-kinesis-solves)
-- [Kinesis Service Family](#kinesis-service-family)
-- [Kinesis Data Streams Fundamentals](#kinesis-data-streams-fundamentals)
-- [Kinesis Data Firehose Fundamentals](#kinesis-data-firehose-fundamentals)
-- [Sharding Strategies](#sharding-strategies)
-- [Kinesis vs SQS Decision Framework](#kinesis-vs-sqs-decision-framework)
-- [Scaling Patterns](#scaling-patterns)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Performance Optimization](#performance-optimization)
-- [Security Best Practices](#security-best-practices)
-- [Observability and Monitoring](#observability-and-monitoring)
-- [Integration Patterns](#integration-patterns)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
----
-
 ## What Problems Kinesis Solves
 
 <blockquote class="pull-quote">

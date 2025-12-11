@@ -7,17 +7,6 @@ description: "Static analysis, unit testing, integration testing, and compliance
 tags: [infrastructure, iac, testing, validation, practical, automation]
 ---
 
-## Table of Contents
-1. [Why Test Infrastructure](#why-test-infrastructure)
-2. [Testing Levels](#testing-levels)
-3. [Static Analysis](#static-analysis)
-4. [Unit Testing](#unit-testing)
-5. [Integration Testing](#integration-testing)
-6. [Compliance Testing](#compliance-testing)
-7. [Testing Strategy](#testing-strategy)
-
----
-
 ## Why Test Infrastructure
 
 <blockquote class="pull-quote">

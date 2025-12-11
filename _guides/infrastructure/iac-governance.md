@@ -7,17 +7,6 @@ description: "Enforcing tagging standards, automated drift detection, compliance
 tags: [infrastructure, iac, governance, compliance, security, practical]
 ---
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Tag Enforcement](#tag-enforcement)
-3. [Automated Drift Detection](#automated-drift-detection)
-4. [Compliance Monitoring](#compliance-monitoring)
-5. [Preventive Controls](#preventive-controls)
-6. [Automated Remediation](#automated-remediation)
-7. [Governance at Scale](#governance-at-scale)
-
----
-
 ## Overview
 
 **Goal:** Ensure infrastructure remains compliant, properly tagged, and doesn't drift from IaC definitions.

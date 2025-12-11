@@ -7,16 +7,6 @@ description: "Understanding infrastructure state, remote backends, state locking
 tags: [infrastructure, iac, state-management, terraform, practical]
 ---
 
-## Table of Contents
-1. [What is State](#what-is-state)
-2. [Do You Need State Management?](#do-you-need-state-management)
-3. [Local vs. Remote State](#local-vs-remote-state)
-4. [State Locking](#state-locking)
-5. [State Management Best Practices](#state-management-best-practices)
-6. [Common State Operations](#common-state-operations)
-
----
-
 ## What is State
 
 **State** is the record of infrastructure resources currently deployed, tracked by IaC tools to:

@@ -5,14 +5,6 @@ description: "Master fundamental security concepts including the CIA triad, defe
 tags: [security, fundamentals, cia-triad, defense-in-depth, zero-trust, practical]
 ---
 
-## Table of Contents
-1. [CIA Triad](#cia-triad)
-2. [Security Principles](#security-principles)
-3. [Defense in Depth](#defense-in-depth)
-4. [Trust Models](#trust-models)
-5. [Security by Design](#security-by-design)
-6. [Quick Reference](#quick-reference)
-
 ## CIA Triad
 
 <blockquote class="pull-quote">

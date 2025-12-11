@@ -7,19 +7,6 @@ description: "Deep dive into vector databases—how they enable semantic search 
 tags: [databases, vector, ai, machine-learning, embeddings, semantic-search]
 ---
 
-## Table of Contents
-
-- [What They Are](#what-they-are)
-- [Data Structure](#data-structure)
-- [How They Work](#how-they-work)
-- [Why They Excel](#why-they-excel)
-- [Why They Struggle](#why-they-struggle)
-- [When to Use Them](#when-to-use-them)
-- [When to Look Elsewhere](#when-to-look-elsewhere)
-- [Examples](#examples)
-
----
-
 ## What They Are
 
 Vector databases store and search high-dimensional vectors, which are arrays of numbers that represent data in embedding space. They find vectors "similar" to a query vector, enabling semantic search, recommendation, and AI-powered applications.

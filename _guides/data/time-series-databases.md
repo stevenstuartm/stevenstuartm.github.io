@@ -7,19 +7,6 @@ description: "Deep dive into time-series databases—how they optimize for metri
 tags: [databases, time-series, metrics, monitoring, observability, performance]
 ---
 
-## Table of Contents
-
-- [What They Are](#what-they-are)
-- [Data Structure](#data-structure)
-- [How They Work](#how-they-work)
-- [Why They Excel](#why-they-excel)
-- [Why They Struggle](#why-they-struggle)
-- [When to Use Them](#when-to-use-them)
-- [When to Look Elsewhere](#when-to-look-elsewhere)
-- [Examples](#examples)
-
----
-
 ## What They Are
 
 Time-series databases optimize specifically for data indexed by time: metrics, events, sensor readings, financial prices. Every data point has a timestamp, and the primary access patterns are writing new data (which always arrives in roughly time-order) and reading data within time ranges.

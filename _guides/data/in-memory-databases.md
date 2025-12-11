@@ -7,19 +7,6 @@ description: "Deep dive into in-memory databases—how they achieve sub-millisec
 tags: [databases, in-memory, redis, caching, performance, low-latency]
 ---
 
-## Table of Contents
-
-- [What They Are](#what-they-are)
-- [Data Structure](#data-structure)
-- [How They Work](#how-they-work)
-- [Why They Excel](#why-they-excel)
-- [Why They Struggle](#why-they-struggle)
-- [When to Use Them](#when-to-use-them)
-- [When to Look Elsewhere](#when-to-look-elsewhere)
-- [Examples](#examples)
-
----
-
 ## What They Are
 
 In-memory databases store all data in RAM rather than on disk, eliminating disk I/O for dramatically lower latency. Operations complete in microseconds rather than milliseconds.

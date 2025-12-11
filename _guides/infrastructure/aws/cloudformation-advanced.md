@@ -7,17 +7,6 @@ description: "Change sets, nested stacks, StackSets, custom resources, drift det
 tags: [infrastructure, iac, aws, cloudformation, advanced, practical]
 ---
 
-## Table of Contents
-1. [Change Sets](#change-sets)
-2. [Nested Stacks](#nested-stacks)
-3. [StackSets](#stacksets)
-4. [Custom Resources](#custom-resources)
-5. [Drift Detection](#drift-detection)
-6. [Best Practices](#best-practices)
-7. [Troubleshooting](#troubleshooting)
-
----
-
 ## Change Sets
 
 <blockquote class="pull-quote">

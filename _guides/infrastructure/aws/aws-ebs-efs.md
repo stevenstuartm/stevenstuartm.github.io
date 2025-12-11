@@ -7,25 +7,6 @@ description: "Comprehensive guide to AWS EBS and EFS covering volume types, file
 tags: [aws, ebs, efs, storage, block-storage, file-storage, performance, cost-optimization, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems EBS and EFS Solve](#what-problems-ebs-and-efs-solve)
-- [EBS vs EFS: Core Differences](#ebs-vs-efs-core-differences)
-- [Amazon EBS (Elastic Block Store)](#amazon-ebs-elastic-block-store)
-  - [EBS Volume Types](#ebs-volume-types)
-  - [EBS Performance Optimization](#ebs-performance-optimization)
-  - [EBS Snapshots](#ebs-snapshots)
-  - [EBS Cost Optimization](#ebs-cost-optimization)
-  - [EBS Security](#ebs-security)
-- [Amazon EFS (Elastic File System)](#amazon-efs-elastic-file-system)
-  - [EFS Performance Modes](#efs-performance-modes)
-  - [EFS Throughput Modes](#efs-throughput-modes)
-  - [EFS Storage Classes](#efs-storage-classes)
-  - [EFS Cost Optimization](#efs-cost-optimization)
-  - [EFS Security](#efs-security)
-- [When to Use EBS vs EFS vs S3](#when-to-use-ebs-vs-efs-vs-s3)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems EBS and EFS Solve
 
 <blockquote class="pull-quote">

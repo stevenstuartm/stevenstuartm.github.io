@@ -7,25 +7,6 @@ description: "Comprehensive guide to AWS KMS and Secrets Manager covering encryp
 tags: [aws, kms, secrets-manager, encryption, key-management, security, secrets-rotation, parameter-store, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems KMS & Secrets Manager Solve](#what-problems-kms--secrets-manager-solve)
-- [AWS KMS Fundamentals](#aws-kms-fundamentals)
-- [AWS Secrets Manager Fundamentals](#aws-secrets-manager-fundamentals)
-- [Secrets Manager vs Parameter Store](#secrets-manager-vs-parameter-store)
-- [Envelope Encryption](#envelope-encryption)
-- [Key Policies and Grants](#key-policies-and-grants)
-- [Automatic Secret Rotation](#automatic-secret-rotation)
-- [Cross-Account Access](#cross-account-access)
-- [Integration with AWS Services](#integration-with-aws-services)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Performance and Scalability](#performance-and-scalability)
-- [Security Best Practices](#security-best-practices)
-- [Observability and Monitoring](#observability-and-monitoring)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
----
-
 ## What Problems KMS & Secrets Manager Solve
 
 <blockquote class="pull-quote">

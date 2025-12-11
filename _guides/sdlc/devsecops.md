@@ -7,16 +7,6 @@ description: "DevSecOps philosophy and practices for making security everyone's 
 tags: [sdlc, security, devops, automation, integration, practical]
 ---
 
-## Table of Contents
-1. [What is DevSecOps](#what-is-devsecops)
-2. [Shift-Left Security](#shift-left-security)
-3. [Security in the SDLC Phases](#security-in-the-sdlc-phases)
-4. [Security Culture and Collaboration](#security-culture-and-collaboration)
-5. [Making Security Easy and Accessible](#making-security-easy-and-accessible)
-6. [DevSecOps Metrics and Measurement](#devsecops-metrics-and-measurement)
-
----
-
 ## What is DevSecOps
 
 **DevSecOps** is the practice of integrating security into every phase of the software development lifecycle (SDLC), rather than treating it as a separate phase at the end. It extends the DevOps philosophy of collaboration and automation to include security as a shared responsibility across development, operations, and security teams.

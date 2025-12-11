@@ -7,19 +7,6 @@ description: "Build observable systems with the three pillars: distributed loggi
 tags: [observability, monitoring, logging, tracing, fundamentals, practical]
 ---
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Observability vs Monitoring](#observability-vs-monitoring)
-3. [Events: The Foundation](#events-the-foundation)
-4. [The Three Pillars](#the-three-pillars)
-   - [Distributed Logging](#distributed-logging)
-   - [Metrics (Monitoring)](#metrics-monitoring)
-   - [Distributed Tracing](#distributed-tracing)
-5. [The Fourth Pillar: Profiling](#the-fourth-pillar-profiling)
-6. [Implementation Best Practices](#implementation-best-practices)
-7. [Tools and Platforms](#tools-and-platforms)
-8. [Common Challenges](#common-challenges)
-
 Observability is the ability to understand a system's internal state based on its external outputs using three pillars of telemetry data: metrics, logs, and traces.
 
 ## Observability vs Monitoring

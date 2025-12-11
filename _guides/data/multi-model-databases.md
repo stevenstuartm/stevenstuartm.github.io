@@ -7,19 +7,6 @@ description: "Deep dive into multi-model databases—how they support document, 
 tags: [databases, multi-model, polyglot, flexibility, data-modeling, architecture]
 ---
 
-## Table of Contents
-
-- [What They Are](#what-they-are)
-- [Data Structure](#data-structure)
-- [How They Work](#how-they-work)
-- [Why They Excel](#why-they-excel)
-- [Why They Struggle](#why-they-struggle)
-- [When to Use Them](#when-to-use-them)
-- [When to Look Elsewhere](#when-to-look-elsewhere)
-- [Examples](#examples)
-
----
-
 ## What They Are
 
 Multi-model databases support multiple data models in a single system, including document, graph, key-value, and sometimes relational access to the same underlying data. Instead of deploying separate databases for different models, you use one system.

@@ -7,16 +7,6 @@ description: "The six pillars of the AWS Well-Architected Framework and how they
 tags: [infrastructure, aws, best-practices, framework, architecture, reference]
 ---
 
-## Table of Contents
-1. [What is the AWS Well-Architected Framework](#what-is-the-aws-well-architected-framework)
-2. [The Six Pillars](#the-six-pillars)
-3. [How to Use the Framework](#how-to-use-the-framework)
-4. [Trade-Offs Between Pillars](#trade-offs-between-pillars)
-5. [Applying the Framework to Service Selection](#applying-the-framework-to-service-selection)
-6. [Key Takeaways](#key-takeaways)
-
----
-
 ## What is the AWS Well-Architected Framework
 
 The **AWS Well-Architected Framework** provides a consistent approach for evaluating cloud architectures and implementing designs that scale with your application needs. It describes key concepts, design principles, and architectural best practices for designing and operating workloads in the cloud.

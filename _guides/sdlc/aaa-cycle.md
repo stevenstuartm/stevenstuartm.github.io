@@ -57,38 +57,6 @@ This discipline applies whether you're using Scrum sprints, Kanban flows, or wat
 
 ---
 
-## Trust Over Politics
-
-Strict frameworks like Scrum often function as defensive mechanisms: ways to protect yourself from stakeholders and vice versa. They create systems of politics rather than trust. Yes, these frameworks are based on truth and provide valuable starting points for organizing teams. But they can become rigid checklists that substitute for genuine human connection.
-
-<div class="callout callout--note">
-<p class="callout__title">When Structure Becomes a Shield</p>
-<p>The problem isn't having structure; it's when that structure becomes a shield instead of a bridge. When "following the process" matters more than solving the problem. When ceremonies become rituals emptied of meaning.</p>
-</div>
-
-AAA calls us back to something more fundamental: **focusing on what we value**. Not "Agile" the branded methodology with capital-A ceremonies, but "agile" the principle of being responsive to reality. Not defensive processes that protect territories, but disciplines that build trust.
-
-Yes, use frameworks. Use their ceremonies and practices. But stay open to discovery and change within each event, each schedule, each unique situation. The framework serves the values (connection, commitment, and honored agreements), not the other way around. When a framework ceremony stops serving those values, you adapt it. That's the discipline AAA represents: being flexible about *how* while remaining unwavering about *what matters*.
-
----
-
-## AAA as a Recursive Cycle
-
-AAA is not just a one-time project framework; it's a **cycle** that repeats at every level of work:
-
-| Level | Timeframe | Align | Agree | Apply |
-|-------|-----------|-------|-------|-------|
-| **Program** | 6-18 months | Strategic goals, portfolio priorities | Architecture standards, governance | Multiple projects with continuous oversight |
-| **Project** | 3-6 months | Project scope, business objectives | Technical approach, implementation plan | Iterative delivery cycles |
-| **Sprint** | 1-4 weeks | Sprint goals, acceptance criteria | Task breakdown, technical approach | Daily development and testing |
-| **Feature** | 1-5 days | User need, acceptance criteria | Implementation approach | Coding, testing, review |
-
-The same principles apply regardless of scale. Whether you're leading a multi-year transformation or designing a single feature, you always Align on the need, Agree on the approach, and Apply with discipline.
-
-**The nesting principle**: Each level of AAA operates within the agreements of the level above. Sprint-level agreements must honor project-level agreements. When a lower level discovers something that breaks a higher-level agreement, you cycle back up to realign and re-agree at the appropriate level.
-
----
-
 ## Why AAA Matters
 
 ### The Failures AAA Prevents
@@ -116,6 +84,21 @@ Most project failures stem from broken values, not broken processes:
 <li><strong>Human needs throughout</strong>: Technical decisions remain anchored in the people they serve</li>
 </ul>
 </div>
+
+---
+
+## Trust Over Politics
+
+Strict frameworks like Scrum often function as defensive mechanisms: ways to protect yourself from stakeholders and vice versa. They create systems of politics rather than trust. Yes, these frameworks are based on truth and provide valuable starting points for organizing teams. But they can become rigid checklists that substitute for genuine human connection.
+
+<div class="callout callout--note">
+<p class="callout__title">When Structure Becomes a Shield</p>
+<p>The problem isn't having structure; it's when that structure becomes a shield instead of a bridge. When "following the process" matters more than solving the problem. When ceremonies become rituals emptied of meaning.</p>
+</div>
+
+AAA calls us back to something more fundamental: **focusing on what we value**. Not "Agile" the branded methodology with capital-A ceremonies, but "agile" the principle of being responsive to reality. Not defensive processes that protect territories, but disciplines that build trust.
+
+Yes, use frameworks. Use their ceremonies and practices. But stay open to discovery and change within each event, each schedule, each unique situation. The framework serves the values (connection, commitment, and honored agreements), not the other way around. When a framework ceremony stops serving those values, you adapt it. That's the discipline AAA represents: being flexible about *how* while remaining unwavering about *what matters*.
 
 ---
 
@@ -198,6 +181,35 @@ Most project failures stem from broken values, not broken processes:
 **The Flow of Values**: Each phase builds on the previous one. You can't genuinely agree without first aligning. You can't honor agreements that were never truly made.
 
 **When to Revisit**: Return to earlier phases when reality demands it. If new information breaks alignment, go back and re-align. If the plan proves infeasible, go back and re-agree. This isn't failure; it's the discipline of maintaining integrity.
+
+---
+
+## AAA as a Recursive Cycle
+
+AAA is not just a one-time project framework; it's a **cycle** that repeats at every level of work:
+
+| Level | Timeframe | Align | Agree | Apply |
+|-------|-----------|-------|-------|-------|
+| **Program** | 6-18 months | Strategic goals, portfolio priorities | Architecture standards, governance | Multiple projects with continuous oversight |
+| **Project** | 3-6 months | Project scope, business objectives | Technical approach, implementation plan | Iterative delivery cycles |
+| **Sprint** | 1-4 weeks | Sprint goals, acceptance criteria | Task breakdown, technical approach | Daily development and testing |
+| **Feature** | 1-5 days | User need, acceptance criteria | Implementation approach | Coding, testing, review |
+
+The same principles apply regardless of scale. Whether you're leading a multi-year transformation or designing a single feature, you always Align on the need, Agree on the approach, and Apply with discipline.
+
+**The nesting principle**: Each level of AAA operates within the agreements of the level above. Sprint-level agreements must honor project-level agreements. When a lower level discovers something that breaks a higher-level agreement, you cycle back up to realign and re-agree at the appropriate level.
+
+---
+
+## AAA at the Technical Level
+
+The AAA discipline applies when engineers integrate code too. **Align** means understanding each other's work and intentions before modifying shared code. **Agree** means explicit commitments about interfaces, contracts, and integration points. **Apply** means honoring those agreements in implementation.
+
+CI/CD automates the verification. Tests are agreements encoded as executable specifications. When a build breaks or tests fail, it's surfacing a broken agreement: merge conflicts from work that was never aligned, integration failures from misunderstood contracts, breaking changes that honored one agreement while violating another.
+
+When CI fails, ask "what agreement broke?" not just "how do I fix this?" This question leads to root causes rather than symptoms.
+
+For detailed CI/CD guidance, see [CI/CD: Continuous Integration and Continuous Delivery](cicd.html).
 
 ---
 

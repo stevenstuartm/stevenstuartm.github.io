@@ -7,19 +7,6 @@ description: "Deep dive into relational databases (RDBMS)—how they work, when 
 tags: [databases, relational, sql, acid, transactions, data-modeling, fundamentals]
 ---
 
-## Table of Contents
-
-- [What They Are](#what-they-are)
-- [Data Structure](#data-structure)
-- [How They Work](#how-they-work)
-- [Why They Excel](#why-they-excel)
-- [Why They Struggle](#why-they-struggle)
-- [When to Use Them](#when-to-use-them)
-- [When to Look Elsewhere](#when-to-look-elsewhere)
-- [Examples](#examples)
-
----
-
 ## What They Are
 
 Relational databases store data in tables composed of rows and columns, where relationships between tables are expressed through shared values (foreign keys). They use SQL (Structured Query Language) for data manipulation and enforce ACID properties for transactions.

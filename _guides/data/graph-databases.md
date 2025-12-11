@@ -7,19 +7,6 @@ description: "Deep dive into graph databases—how they store and traverse relat
 tags: [databases, graph, neo4j, relationships, data-modeling, social-networks]
 ---
 
-## Table of Contents
-
-- [What They Are](#what-they-are)
-- [Data Structure](#data-structure)
-- [How They Work](#how-they-work)
-- [Why They Excel](#why-they-excel)
-- [Why They Struggle](#why-they-struggle)
-- [When to Use Them](#when-to-use-them)
-- [When to Look Elsewhere](#when-to-look-elsewhere)
-- [Examples](#examples)
-
----
-
 ## What They Are
 
 Graph databases store data as nodes (entities) and edges (relationships between entities). Unlike relational databases where relationships are computed at query time through joins, graph databases store relationships explicitly, making traversal a direct lookup rather than a search.

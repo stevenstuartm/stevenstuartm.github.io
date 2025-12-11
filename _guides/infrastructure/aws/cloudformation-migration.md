@@ -7,19 +7,6 @@ description: "Complete guide for migrating resources to CloudFormation: importin
 tags: [infrastructure, iac, aws, cloudformation, migration, practical]
 ---
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Step 1: Discover Resources](#step-1-discover-resources)
-3. [Step 2: Tag Resources](#step-2-tag-resources)
-4. [Step 3: Choose Migration Strategy](#step-3-choose-migration-strategy)
-5. [Step 4: Generate Templates](#step-4-generate-templates)
-6. [Step 5: Import Resources](#step-5-import-resources)
-7. [Step 6: Verify and Validate](#step-6-verify-and-validate)
-8. [Step 7: Clean Up](#step-7-clean-up)
-9. [Common Challenges](#common-challenges)
-
----
-
 ## Overview
 
 <blockquote class="pull-quote">

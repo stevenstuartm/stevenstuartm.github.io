@@ -7,19 +7,6 @@ description: "Deep dive into NewSQL databases—how they combine ACID transactio
 tags: [databases, newsql, distributed-systems, sql, acid, transactions, scalability]
 ---
 
-## Table of Contents
-
-- [What They Are](#what-they-are)
-- [Data Structure](#data-structure)
-- [How They Work](#how-they-work)
-- [Why They Excel](#why-they-excel)
-- [Why They Struggle](#why-they-struggle)
-- [When to Use Them](#when-to-use-them)
-- [When to Look Elsewhere](#when-to-look-elsewhere)
-- [Examples](#examples)
-
----
-
 ## What They Are
 
 NewSQL databases combine the ACID guarantees and SQL interface of traditional relational databases with the horizontal scalability of NoSQL systems. They emerged to address a gap: organizations that outgrew single-server relational databases but couldn't sacrifice transactions for NoSQL's eventual consistency.

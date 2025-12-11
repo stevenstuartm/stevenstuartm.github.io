@@ -7,22 +7,6 @@ description: "Comprehensive guide to AWS Cloud Development Kit (CDK) covering in
 tags: [aws, cdk, infrastructure-as-code, cloudformation, typescript, python, iac, automation, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems CDK Solves](#what-problems-cdk-solves)
-- [Service Fundamentals](#service-fundamentals)
-- [CDK vs CloudFormation](#cdk-vs-cloudformation)
-- [Constructs](#constructs)
-- [Stacks and Apps](#stacks-and-apps)
-- [CDK Development Workflow](#cdk-development-workflow)
-- [Common Patterns](#common-patterns)
-- [Testing CDK Code](#testing-cdk-code)
-- [Integration Patterns](#integration-patterns)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Security Best Practices](#security-best-practices)
-- [When to Use CDK vs Alternatives](#when-to-use-cdk-vs-alternatives)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems CDK Solves
 
 <blockquote class="pull-quote">

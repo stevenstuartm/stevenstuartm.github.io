@@ -7,24 +7,6 @@ description: "Comprehensive guide to AWS Systems Manager covering Session Manage
 tags: [aws, systems-manager, automation, infrastructure, patch-management, configuration, secrets, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems Systems Manager Solves](#what-problems-systems-manager-solves)
-- [Service Fundamentals](#service-fundamentals)
-- [Session Manager](#session-manager)
-- [Run Command](#run-command)
-- [Patch Manager](#patch-manager)
-- [Parameter Store](#parameter-store)
-- [State Manager](#state-manager)
-- [Automation](#automation)
-- [Inventory and Compliance](#inventory-and-compliance)
-- [Fleet Manager](#fleet-manager)
-- [Integration Patterns](#integration-patterns)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Security Best Practices](#security-best-practices)
-- [When to Use Systems Manager vs Alternatives](#when-to-use-systems-manager-vs-alternatives)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems Systems Manager Solves
 
 <blockquote class="pull-quote">

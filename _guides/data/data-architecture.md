@@ -9,16 +9,6 @@ redirect_from:
   - /study-guides/data-architecture.html
 ---
 
-## Table of Contents
-
-- [Database Fundamentals](#database-fundamentals)
-- [ETL (Extract, Transform, Load)](#etl-extract-transform-load)
-- [Big Data Processing](#big-data-processing)
-- [Modern Data Architectures](#modern-data-architectures)
-- [Quick Reference](#quick-reference)
-
----
-
 ## Database Fundamentals
 
 ### ACID Properties

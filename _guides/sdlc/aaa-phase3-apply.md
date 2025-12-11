@@ -33,6 +33,8 @@ Regardless of project size or methodology, application follows these steps:
 | **Sprint** | days | Daily development, sprint review, sprint retro |
 | **Feature** | hours | Code, test, review, merge with continuous integration |
 
+At the feature level, Apply happens through CI/CD pipelines. Every commit is an act of applying the technical agreements made during design. The pipeline verifies that agreements are honored; tests are agreements encoded as executable specifications. See [CI/CD and Technical Agreement](cicd.html#cicd-and-technical-agreement) for how AAA operates at the code level.
+
 ### Entry & Exit
 
 **You start with**: Approved architecture and implementation plan from Phase 2
@@ -187,6 +189,18 @@ When reality forces changes, something has to give. The classic constraints are 
 - Work in small, releasable increments
 - Continuously integrate and test changes
 - Gather feedback early and often
+
+**CI/CD as Agreement Verification**:
+
+At the implementation level, CI/CD pipelines operationalize the AAA discipline. Every commit triggers verification that technical agreements are being honored:
+
+- **Tests verify agreements**: Unit tests encode component behavior agreements. Integration tests encode contracts between components. When tests fail, an agreement was broken.
+- **Code reviews verify alignment**: PR reviews confirm that the implementation matches shared understanding of intent.
+- **Security and quality gates verify standards**: Pipeline gates enforce the quality and security agreements established during Phase 2.
+
+When CI failures occur, ask "what agreement broke?" rather than just "how do I fix this build?" This question leads to root causes and process improvements, not just symptom fixes.
+
+See [CI/CD and Technical Agreement](/study-guides/sdlc/cicd.html#cicd-and-technical-agreement) for detailed guidance on how AAA operates at the code level.
 
 **Architecture Governance**:
 - **Architecture Decision Records (ADRs)**: Document significant decisions as they're made

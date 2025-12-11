@@ -7,21 +7,6 @@ description: "Comprehensive guide to AWS Organizations and Control Tower coverin
 tags: [aws, organizations, control-tower, multi-account, governance, security, compliance, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems Organizations & Control Tower Solve](#what-problems-organizations--control-tower-solve)
-- [AWS Organizations Fundamentals](#aws-organizations-fundamentals)
-- [Service Control Policies (SCPs)](#service-control-policies-scps)
-- [AWS Control Tower](#aws-control-tower)
-- [Multi-Account Strategy](#multi-account-strategy)
-- [Landing Zone Architecture](#landing-zone-architecture)
-- [Guardrails and Compliance](#guardrails-and-compliance)
-- [Account Factory and Provisioning](#account-factory-and-provisioning)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Integration with Other AWS Services](#integration-with-other-aws-services)
-- [Migration and Adoption](#migration-and-adoption)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems Organizations & Control Tower Solve
 
 <blockquote class="pull-quote">

@@ -7,20 +7,6 @@ description: "Comprehensive guide to AWS Elastic Container Registry and containe
 tags: [aws, containers, security, docker, kubernetes, devops, infrastructure, practical]
 ---
 
-## Table of Contents
-- [What Problems ECR & Container Security Solve](#what-problems-ecr--container-security-solve)
-- [ECR Fundamentals](#ecr-fundamentals)
-- [Image Scanning & Vulnerability Management](#image-scanning--vulnerability-management)
-- [Lifecycle Policies & Image Management](#lifecycle-policies--image-management)
-- [ECR Replication](#ecr-replication)
-- [Runtime Security](#runtime-security)
-- [Secrets Management for Containers](#secrets-management-for-containers)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Integration Patterns](#integration-patterns)
-- [When to Use ECR vs Alternatives](#when-to-use-ecr-vs-alternatives)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems ECR & Container Security Solve
 
 <blockquote class="pull-quote">

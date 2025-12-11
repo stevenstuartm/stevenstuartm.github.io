@@ -11,20 +11,6 @@ tags: [architecture, modeling, documentation, uml, diagrams, practical]
 <p>UML diagrams are standardized visual representations used throughout the software development lifecycle to model system architecture, behavior, and structure.</p>
 </blockquote>
 
-## Table of Contents
-
-- [When to Use UML Diagrams in SDLC](#when-to-use-uml-diagrams-in-sdlc)
-- [Most Useful UML Diagrams](#most-useful-uml-diagrams)
-- [Class Diagrams](#class-diagrams)
-- [Sequence Diagrams](#sequence-diagrams)
-- [Use Case Diagrams](#use-case-diagrams)
-- [Activity Diagrams](#activity-diagrams)
-- [Component Diagrams](#component-diagrams)
-- [Deployment Diagrams](#deployment-diagrams)
-- [Best Practices](#best-practices)
-
----
-
 ## When to Use UML Diagrams in SDLC
 
 ### Requirements Analysis Phase

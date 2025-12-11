@@ -7,19 +7,6 @@ description: "Comprehensive guide to Lean Software Development - principles, pra
 tags: [sdlc, methodology, lean, efficiency, waste-reduction]
 ---
 
-## Table of Contents
-1. [What is Lean Software Development](#what-is-lean-software-development)
-2. [Philosophy and Values](#philosophy-and-values)
-3. [The Seven Principles](#the-seven-principles)
-4. [Lean Practices in Action](#lean-practices-in-action)
-5. [Roles and Responsibilities](#roles-and-responsibilities)
-6. [Implementing Lean](#implementing-lean)
-7. [Alignment with AAA Cycle](#alignment-with-aaa-cycle)
-8. [When to Use Lean](#when-to-use-lean)
-9. [Common Pitfalls and Red Flags](#common-pitfalls-and-red-flags)
-
----
-
 ## What is Lean Software Development
 
 *Adapted from Lean Manufacturing (Toyota Production System) to software development by Mary and Tom Poppendieck in the early 2000s, documented in "Lean Software Development: An Agile Toolkit" (2003).*

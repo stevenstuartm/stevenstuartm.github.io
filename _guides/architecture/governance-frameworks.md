@@ -7,14 +7,6 @@ description: "Enterprise architecture frameworks and governance approaches - whe
 tags: [architecture, governance, frameworks, leadership, compliance, standards]
 ---
 
-## Table of Contents
-- [Choosing a Governance Approach](#choosing-a-governance-approach)
-- [Enterprise Architecture Frameworks](#enterprise-architecture-frameworks)
-- [AWS Well-Architected Framework](#aws-well-architected-framework)
-- [TOGAF](#togaf)
-- [Zachman Framework](#zachman-framework)
-- [Key Takeaways](#key-takeaways)
-
 ## Choosing a Governance Approach
 
 <blockquote class="pull-quote">

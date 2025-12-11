@@ -7,19 +7,6 @@ description: "Comprehensive guide to multi-region AWS architectures covering act
 tags: [aws, architecture, distributed-systems, scalability, reliability, multi-region, resilience, practical]
 ---
 
-## Table of Contents
-- [What Problems Multi-Region Architecture Solves](#what-problems-multi-region-architecture-solves)
-- [Multi-Region Deployment Patterns](#multi-region-deployment-patterns)
-- [Data Replication Strategies](#data-replication-strategies)
-- [Traffic Routing with Route 53](#traffic-routing-with-route-53)
-- [Multi-Region Application Architectures](#multi-region-application-architectures)
-- [Consistency Models & Trade-offs](#consistency-models--trade-offs)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Monitoring & Observability](#monitoring--observability)
-- [When to Use Multi-Region vs Single-Region](#when-to-use-multi-region-vs-single-region)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems Multi-Region Architecture Solves
 
 <blockquote class="pull-quote">

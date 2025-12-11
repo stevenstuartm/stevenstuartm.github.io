@@ -7,25 +7,6 @@ description: "Comprehensive guide to AWS SQS and SNS covering queue types, pub/s
 tags: [aws, sqs, sns, messaging, event-driven, distributed-systems, reliability, cost-optimization, fundamentals]
 ---
 
-## Table of Contents
-- [What Problems SQS & SNS Solve](#what-problems-sqs--sns-solve)
-- [Amazon SQS Fundamentals](#amazon-sqs-fundamentals)
-- [Amazon SNS Fundamentals](#amazon-sns-fundamentals)
-- [Standard vs FIFO Queues](#standard-vs-fifo-queues)
-- [SNS + SQS Fanout Pattern](#sns--sqs-fanout-pattern)
-- [Dead Letter Queues and Error Handling](#dead-letter-queues-and-error-handling)
-- [Message Filtering](#message-filtering)
-- [Cost Optimization Strategies](#cost-optimization-strategies)
-- [Performance Optimization](#performance-optimization)
-- [Security Best Practices](#security-best-practices)
-- [Observability and Monitoring](#observability-and-monitoring)
-- [When to Use SQS vs SNS](#when-to-use-sqs-vs-sns)
-- [Integration Patterns](#integration-patterns)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
----
-
 ## What Problems SQS & SNS Solve
 
 <blockquote class="pull-quote">

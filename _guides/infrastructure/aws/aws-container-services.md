@@ -7,21 +7,6 @@ description: "Comprehensive guide to AWS container orchestration covering ECS, E
 tags: [aws, containers, ecs, eks, fargate, kubernetes, orchestration, cost-optimization]
 ---
 
-## Table of Contents
-- [What Problems Containers Solve](#what-problems-containers-solve)
-- [Amazon ECS (Elastic Container Service)](#amazon-ecs-elastic-container-service)
-- [AWS Fargate](#aws-fargate)
-- [Amazon EKS (Elastic Kubernetes Service)](#amazon-eks-elastic-kubernetes-service)
-- [Container Networking](#container-networking)
-- [Storage for Containers](#storage-for-containers)
-- [Security Best Practices](#security-best-practices)
-- [Observability](#observability)
-- [Deployment Patterns](#deployment-patterns)
-- [Cost Optimization](#cost-optimization)
-- [Service Selection Framework](#service-selection-framework)
-- [Common Pitfalls](#common-pitfalls)
-- [Key Takeaways](#key-takeaways)
-
 ## What Problems Containers Solve
 
 <blockquote class="pull-quote">
