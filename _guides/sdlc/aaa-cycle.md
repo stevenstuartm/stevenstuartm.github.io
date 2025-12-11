@@ -55,7 +55,9 @@ Yes, AAA will present specific details of how an architect ought to communicate 
 
 This discipline applies whether you're using Scrum sprints, Kanban flows, or waterfall phases. It transcends methodology because it addresses something deeper: **how architects think about and engage with the work itself**.
 
-### Trust Over Politics
+---
+
+## Trust Over Politics
 
 Strict frameworks like Scrum often function as defensive mechanisms: ways to protect yourself from stakeholders and vice versa. They create systems of politics rather than trust. Yes, these frameworks are based on truth and provide valuable starting points for organizing teams. But they can become rigid checklists that substitute for genuine human connection.
 
@@ -68,44 +70,22 @@ AAA calls us back to something more fundamental: **focusing on what we value**. 
 
 Yes, use frameworks. Use their ceremonies and practices. But stay open to discovery and change within each event, each schedule, each unique situation. The framework serves the values (connection, commitment, and honored agreements), not the other way around. When a framework ceremony stops serving those values, you adapt it. That's the discipline AAA represents: being flexible about *how* while remaining unwavering about *what matters*.
 
-### Mitigate Risk, Don't Strangle Agility
+---
 
-Organizations often respond to past failures by adding controls: approval gates, mandatory reviews, process checkpoints. These look like risk mitigation but often indicate a lack of trust in the underlying values.
-
-Genuine discipline doesn't need extensive external enforcement. If you need strangling controls to prevent bad outcomes, the discipline isn't there, and the controls won't fix that. The controls become theater: visible signs of "doing something" that create friction without addressing root causes.
-
-<div class="callout callout--note">
-<p class="callout__title">When Controls Indicate Missing Discipline</p>
-<p>If every code change requires three approval signatures, the problem isn't insufficient oversight; it's insufficient trust in engineering judgment. If every architectural decision needs committee review, the problem isn't insufficient governance; it's unclear decision rights. Adding more process won't create the discipline that's missing.</p>
-</div>
-
-The AAA discipline provides natural guardrails: genuine alignment surfaces misunderstandings early, real agreement creates shared ownership, and honoring commitments builds the trust that makes heavy controls unnecessary. When teams live these values, they self-correct. When they don't, no amount of process will save them.
-
-### AAA as a Recursive Cycle
+## AAA as a Recursive Cycle
 
 AAA is not just a one-time project framework; it's a **cycle** that repeats at every level of work:
 
-**Program Level** (6-18 months):
-- Align on strategic goals and portfolio priorities
-- Agree on architecture standards and governance
-- Apply across multiple projects with continuous oversight
-
-**Project Level** (3-6 months):
-- Align on project scope and business objectives
-- Agree on technical approach and implementation plan
-- Apply through iterative delivery cycles
-
-**Sprint/Iteration Level** (1-4 weeks):
-- Align on sprint goals and acceptance criteria
-- Agree on task breakdown and technical approach
-- Apply through daily development and testing
-
-**Feature/Story Level** (1-5 days):
-- Align on user need and acceptance criteria
-- Agree on implementation approach in design discussion
-- Apply through coding, testing, and review
+| Level | Timeframe | Align | Agree | Apply |
+|-------|-----------|-------|-------|-------|
+| **Program** | 6-18 months | Strategic goals, portfolio priorities | Architecture standards, governance | Multiple projects with continuous oversight |
+| **Project** | 3-6 months | Project scope, business objectives | Technical approach, implementation plan | Iterative delivery cycles |
+| **Sprint** | 1-4 weeks | Sprint goals, acceptance criteria | Task breakdown, technical approach | Daily development and testing |
+| **Feature** | 1-5 days | User need, acceptance criteria | Implementation approach | Coding, testing, review |
 
 The same principles apply regardless of scale. Whether you're leading a multi-year transformation or designing a single feature, you always Align on the need, Agree on the approach, and Apply with discipline.
+
+**The nesting principle**: Each level of AAA operates within the agreements of the level above. Sprint-level agreements must honor project-level agreements. When a lower level discovers something that breaks a higher-level agreement, you cycle back up to realign and re-agree at the appropriate level.
 
 ---
 
@@ -127,33 +107,25 @@ Most project failures stem from broken values, not broken processes:
 ### The AAA Perspective
 
 <div class="callout callout--tip">
-<p class="callout__title">The AAA Perspective</p>
+<p class="callout__title">What AAA Provides</p>
 <p>AAA provides guardrails by keeping these values front and center:</p>
 <ul>
 <li><strong>Connection before solutions</strong>: Understand people and their context before designing systems</li>
 <li><strong>Genuine agreement before execution</strong>: Secure real commitment, not just sign-offs</li>
 <li><strong>Honoring commitments before chasing features</strong>: Apply what was agreed, maintain alignment throughout</li>
 <li><strong>Human needs throughout</strong>: Technical decisions remain anchored in the people they serve</li>
-<li><strong>Sustainable delivery</strong>: Value is realized because the right things are built the right way</li>
 </ul>
 </div>
 
 ---
 
-## The Three A's
+## The Three Phases
 
 ### Phase 1: Align with the Need
 
 **Establish human connection and deeply understand the context before proposing solutions.**
 
-**The Core Value**: Connection with people comes first. Alignment is not requirement extraction; it's building shared understanding with the humans behind the need. You're establishing trust and context that will sustain the entire journey.
-
-**Living This Discipline**:
-- Enter stakeholder meetings to listen and understand, not to propose solutions
-- Gather and prioritize requirements by understanding their human context
-- Assess constraints and risks through the lens of stakeholder reality
-- Create estimates that reflect honest capability, not wishful thinking
-- Draft a project charter that captures genuine shared understanding
+**The Core Value**: Connection with people comes first. Alignment is not requirement extraction; it's building shared understanding with the humans behind the need.
 
 **What Alignment Produces**: A foundation of mutual understanding with stakeholder commitment, not just signatures but real buy-in from people who feel heard.
 
@@ -161,7 +133,7 @@ Most project failures stem from broken values, not broken processes:
 <p>When you truly align with people and their needs, you avoid building elegant solutions to misunderstood problems.</p>
 </blockquote>
 
-[→ Detailed Phase 1 Guide](aaa-phase1-align.html){:target="_blank" rel="noopener noreferrer"}
+[→ Phase 1: Align Guide](aaa-phase1-align.html)
 
 ---
 
@@ -169,14 +141,7 @@ Most project failures stem from broken values, not broken processes:
 
 **Secure genuine commitment to how you will accomplish what you're now aligned on.**
 
-**The Core Value**: Shared commitment to the path forward. Agreement isn't about getting approval for your design; it's about creating a plan together and building mutual confidence in the approach. This is where technical expertise meets human collaboration.
-
-**Living This Discipline**:
-- Design system architecture that reflects the needs you aligned on
-- Validate your approach through proof of concept - earn confidence, don't demand it
-- Define quality and testing strategy transparently
-- Establish SLAs and monitoring that match real expectations
-- Create implementation plans that your team genuinely believes in
+**The Core Value**: Shared commitment to the path forward. Agreement isn't about getting approval for your design; it's about creating a plan together and building mutual confidence in the approach.
 
 **What Agreement Produces**: Authentic commitment from stakeholders and teams. Everyone understands and believes in the path forward because they helped shape it.
 
@@ -184,7 +149,7 @@ Most project failures stem from broken values, not broken processes:
 <p>When people genuinely agree (versus grudgingly sign-off), they stay committed when challenges arise.</p>
 </blockquote>
 
-[→ Detailed Phase 2 Guide](aaa-phase2-agree.html){:target="_blank" rel="noopener noreferrer"}
+[→ Phase 2: Agree Guide](aaa-phase2-agree.html)
 
 ---
 
@@ -194,92 +159,51 @@ Most project failures stem from broken values, not broken processes:
 
 **The Core Value**: Delivering on agreements, not just shipping features. Application is about executing what was agreed, in the way it was agreed, while maintaining the alignment you established. When reality requires changes, you return to align and agree again.
 
-**Living This Discipline**:
-- Implement incrementally while honoring the architectural agreements
-- Govern through architecture reviews that maintain alignment
-- Ensure quality as agreed, not as an afterthought
-- Keep stakeholders connected with honest communication
-- Deploy and transition as committed, completing the cycle
-
 **What Application Produces**: Working software that meets the needs you aligned on, built the way you agreed, delivered by maintaining human connection throughout.
 
 <blockquote class="pull-quote">
 <p>When you honor agreements instead of chasing features, scope stays stable. Value is realized because the right things were built.</p>
 </blockquote>
 
-[→ Detailed Phase 3 Guide](aaa-phase3-apply.html){:target="_blank" rel="noopener noreferrer"}
+[→ Phase 3: Apply Guide](aaa-phase3-apply.html)
 
 ---
 
 ## Visual Journey
 
 ```
-ALIGN                    AGREE                    APPLY
-══════════               ══════════               ══════════
-Human Connection         Shared Commitment        Honored Agreement
-
-Build trust          →  Design together      →  Execute as agreed
-Understand needs     →  Validate approach    →  Maintain connection
-Assess reality       →  Plan honestly        →  Deliver on promises
-Establish context    →  Earn confidence      →  Complete the cycle
-
-✓ CONNECTED          →  ✓ COMMITTED          →  ✓ VALUE REALIZED
+                     ┌─────────────────────────────────────┐
+                     │         FEEDBACK LOOPS              │
+                     │  Discovery triggers realignment     │
+                     └─────────────────────────────────────┘
+                                       │
+        ┌──────────────────────────────┼──────────────────────────────┐
+        │                              │                              │
+        ▼                              ▼                              │
+ ╔═══════════════╗            ╔═══════════════╗            ╔═══════════════╗
+ ║     ALIGN     ║            ║     AGREE     ║            ║     APPLY     ║
+ ║───────────────║            ║───────────────║            ║───────────────║
+ ║    Human      ║    ───►    ║    Shared     ║    ───►    ║   Honored     ║
+ ║  Connection   ║            ║  Commitment   ║            ║  Agreement    ║
+ ╚═══════════════╝            ╚═══════════════╝            ╚═══════════════╝
+        │                              │                              │
+        ▼                              ▼                              ▼
+ ✓ CONNECTED                   ✓ COMMITTED                    ✓ VALUE REALIZED
+        │                              │                              │
+        └──────────────────────────────┴──────────────────────────────┘
+                                       │
+                              Cycle repeats at every level
 ```
 
-**The Flow of Values**: Each phase builds on the previous one. You can't genuinely agree without first aligning. You can't honor agreements that were never truly made. This isn't a checklist; it's the natural progression of principled work.
+**The Flow of Values**: Each phase builds on the previous one. You can't genuinely agree without first aligning. You can't honor agreements that were never truly made.
 
 **When to Revisit**: Return to earlier phases when reality demands it. If new information breaks alignment, go back and re-align. If the plan proves infeasible, go back and re-agree. This isn't failure; it's the discipline of maintaining integrity.
 
 ---
 
-## Stakeholder Engagement Throughout the Cycle
+## Related Guides
 
-### The Architect's Role: Guardian of the Values
-
-As the architect, you're not just managing deliverables; you're **stewarding the values** that AAA represents:
-
-**In Align**: You facilitate connection
-- Create space for people to be heard
-- Translate between business and technical contexts
-- Build trust through genuine understanding
-- Establish the foundation for everything that follows
-
-**In Agree**: You orchestrate genuine commitment
-- Design solutions collaboratively, not in isolation
-- Earn confidence through validation, not assertions
-- Ensure everyone truly understands and believes in the plan
-- Create shared ownership of the path forward
-
-**In Apply**: You maintain integrity
-- Keep the team aligned with what was agreed
-- Address changes by returning to align and agree
-- Communicate honestly about progress and challenges
-- Deliver on the promises made to the people who trusted you
-
-### Engagement Patterns
-
-| Stakeholder | Phase 1: Align | Phase 2: Agree | Phase 3: Apply |
-|-------------|---------------|----------------|----------------|
-| **Executive Sponsor** | Share context and constraints | Review and commit resources | Stay informed on progress |
-| **Business Owner** | Articulate needs and priorities | Validate approach and plan | Provide feedback and direction |
-| **Product Manager** | Prioritize and clarify | Collaborate on planning | Engage daily on delivery |
-| **Architect (You)** | **Listen and understand** | **Design and earn confidence** | **Guide and maintain alignment** |
-| **Development Team** | Provide honest estimates | Co-create technical plans | Execute with ownership |
-| **QA/Security** | Surface early considerations | Define quality strategy | Validate and protect quality |
-| **Operations** | Share operational context | Plan transition together | Deploy and support |
-| **End Users** | Help us understand their world | Provide validation feedback | Experience the delivered value |
-
-### What You're Building Beyond Software
-
-- **Trust**: Through consistent alignment with needs
-- **Confidence**: Through validated, collaborative planning
-- **Ownership**: Through honoring commitments
-- **Relationships**: Through maintaining connection throughout
-
-These intangibles are what make projects succeed when challenges arise.
-
----
-
-## AAA in Practice Across Methodologies
-
-AAA is a guiding discipline that transcends any specific methodology. You can practice AAA within any SDLC approach: Scrum, Kanban, Lean, Waterfall, XP, or DevOps. Each methodology offers different support for the three phases, and understanding these trade-offs helps you adapt AAA to your context.
+- [AAA Scenarios](aaa-scenarios.html): Real-world situations and how AAA discipline applies
+- [Shaped Kanban](/blog/2025/11/17/shaped-kanban.html){:target="_blank" rel="noopener noreferrer"}: Flow-based work with disciplined constraints
+- [Architecture Decision-Making](/study-guides/architecture/architecture-decision-making.html): ADRs and decision frameworks
+- [Team Organization](/study-guides/sdlc/team-organization.html): Team structures and collaboration patterns

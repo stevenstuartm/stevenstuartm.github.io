@@ -29,16 +29,14 @@ Regardless of project size or methodology, agreement follows these steps:
 6. **Plan the work**: What's the sequence and effort?
 7. **Get commitment**: Do we all agree to proceed?
 
-The depth and formality scale with scope and risk, but these questions remain constant.
-
 ### Recursive Application
 
-Agree applies at every level of work:
-
-- **Program Level** (weeks): Full architecture design, comprehensive POC, detailed TCO/ROI
-- **Project Level** (days): Component design, targeted spikes, focused cost analysis
-- **Sprint Level** (hours): Technical design discussion, quick validation
-- **Feature Level** (minutes): Code review validates approach
+| Level | Timeframe | What Agree Looks Like |
+|-------|-----------|----------------------|
+| **Program** | weeks | Full architecture design, comprehensive POC, detailed TCO/ROI |
+| **Project** | days | Component design, targeted spikes, focused cost analysis |
+| **Sprint** | hours | Technical design discussion, quick validation |
+| **Feature** | minutes | Code review validates approach |
 
 ### Entry & Exit
 
@@ -57,15 +55,12 @@ Agree applies at every level of work:
 **Key Design Decisions**:
 
 - **Architectural Characteristics**: What quality attributes matter most?
-  - Identify 7 characteristics critical to success (e.g., performance, scalability, availability, security, maintainability)
-  - Prioritize the 3 most important characteristics—these drive architecture style selection
-  - Use structured worksheets to evaluate characteristics and select appropriate style
+  - Identify 7 characteristics critical to success (performance, scalability, availability, security, maintainability, etc.)
+  - Prioritize the top 3; these drive architecture style selection
   - See [Architecture Foundations](/study-guides/architecture/ArchitectureFoundations.html#architecture-characteristics){:target="_blank" rel="noopener noreferrer"}
-  - **Worksheets**: [Architecture Characteristics & Style Selection Worksheets](https://developertoarchitect.com/downloads/worksheets.html){:target="_blank" rel="noopener noreferrer"}
 
 - **Architectural Style**: Monolithic, microservices, serverless, event-driven?
   - Choose style based on top 3 architectural characteristics
-  - Consider: Scalability needs, team skills, operational maturity, cost
   - See [Architecture Styles](/study-guides/architecture/ArchitectureStyles.html){:target="_blank" rel="noopener noreferrer"}
 
 - **Component Boundaries**: How do you break the system into pieces?
@@ -73,249 +68,60 @@ Agree applies at every level of work:
   - Align boundaries with domain partitioning when possible
 
 - **Integration Patterns**: How do components and external systems communicate?
-  - Synchronous (REST, gRPC) vs. asynchronous (messaging, events)
   - See [Communication Patterns](/study-guides/architecture/communication_patterns.html){:target="_blank" rel="noopener noreferrer"}, [Integration Patterns](/study-guides/architecture/integration_patterns.html){:target="_blank" rel="noopener noreferrer"}
 
 - **Data Architecture**: How is data stored and managed?
-  - SQL, NoSQL, caching strategy, consistency requirements
   - See [Data Architecture](/study-guides/data-architecture.html){:target="_blank" rel="noopener noreferrer"}, [Data Management Patterns](/study-guides/architecture/data_management_patterns.html){:target="_blank" rel="noopener noreferrer"}
 
 **Document Your Decisions**:
 - Architecture Decision Records (ADRs): Context → Decision → Consequences
 - Document WHY, not just WHAT
 - Record alternatives considered and why they were rejected
-- See [Architecture Decisions & Leadership](/study-guides/architecture/architecture-decision-making.html){:target="_blank" rel="noopener noreferrer"}, [Governance](/study-guides/architecture/governance.html){:target="_blank" rel="noopener noreferrer"}
+- See [Architecture Decisions & Leadership](/study-guides/architecture/architecture-decision-making.html){:target="_blank" rel="noopener noreferrer"}
 
 **How to Do This Well**:
-- Evaluate multiple options before deciding—don't just pick what you know
+- Evaluate multiple options before deciding
 - Document trade-offs explicitly for future reference
-- Design for 2x growth, not 100x—start simple, add complexity only when needed (YAGNI)
-- Involve senior engineers throughout design—get team buy-in early
-- Consider operations from the start—how will this be deployed, monitored, maintained?
-- Use proven patterns over novel approaches unless there's clear justification
+- Design for 2x growth, not 100x (YAGNI)
+- Involve senior engineers throughout design
+- Consider operations from the start
 
 <div class="callout callout--warning">
-<p class="callout__title">Red Flags in Architecture Design</p>
+<p class="callout__title">Red Flags</p>
 <ul>
 <li><strong>Resume-driven architecture</strong>: Choosing trendy tech, not what fits</li>
 <li><strong>Over-engineering</strong>: Building for scale you'll never need</li>
-<li><strong>Under-engineering</strong>: Ignoring future growth</li>
-<li><strong>Ignoring operations</strong>: Hard to deploy, monitor, maintain</li>
-<li><strong>Not documenting decisions</strong>: Future teams won't know why</li>
 <li><strong>Designing in a vacuum</strong>: No team input or buy-in</li>
+<li><strong>Not documenting decisions</strong>: Future teams won't know why</li>
 </ul>
 </div>
 
 ---
 
-### 2. Architecture Documentation in Agreements
+### 2. Architecture Documentation
 
 **Create the minimum documentation needed to achieve genuine agreement on high-risk decisions.**
 
-During Agree, diagrams codify decisions and create shared commitment. The level of detail should match the risk and complexity. Use documentation strategically to clarify what you're agreeing to, not to create comprehensive reference material.
+During Agree, diagrams codify decisions and create shared commitment. Use documentation strategically to clarify what you're agreeing to, not to create comprehensive reference material.
 
-#### C4 Model: Matching Documentation to AAA Needs
+**Match documentation to risk**:
+- High-risk decisions (deployment model, technology selection, integration points) need more documentation
+- Low-risk decisions can be described in prose or decided during Apply
 
-The [C4 Model](https://c4model.com){:target="_blank" rel="noopener noreferrer"} provides four levels of architectural diagrams. Don't create all levels by default; choose based on what decisions need clarity.
+**Use the [C4 Model](https://c4model.com){:target="_blank" rel="noopener noreferrer"} selectively**:
+- **Level 1 (Context)**: When multiple systems/teams are involved or boundaries need clarification
+- **Level 2 (Container)**: When agreeing on deployment architecture or operational concerns
+- **Level 3 (Component)**: When maintainability is a top concern or parallel team development requires clear boundaries
+- **Level 4 (Code)**: Almost never during Agree; code evolves too rapidly
 
-**Level 1 (System Context)**
-
-Shows the system boundary and external dependencies.
-
-**Include when**:
-- Multiple systems or teams are involved
-- External dependencies need to be explicit
-- Defining system boundaries is part of the agreement
-- Stakeholders need to understand what's in scope vs. out of scope
-
-**Skip when**:
-- Single isolated system with no external dependencies
-- Boundaries are obvious and uncontested
-
-**Level 2 (Container)**
-
-Shows major runtime components (applications, databases, file systems).
-
-**Include when**:
-- You're agreeing on deployment architecture
-- Technology choices for major components are part of the decision
-- Operational concerns (scalability, availability) are in your top 3 architectural characteristics
-- Multiple runtime processes or databases are involved
-- Infrastructure costs need to be understood for TCO analysis
-
-**Skip when**:
-- Simple single-container application
-- Deployment model is standard and non-controversial
-
-**Level 3 (Component)**
-
-Shows internal structure within a container.
-
-**Include when**:
-- Maintainability is a top-3 architectural characteristic
-- Internal structure significantly affects the agreement
-- Multiple teams will work on different components simultaneously
-- You're establishing module boundaries to enable parallel development
-- Domain-driven design with bounded contexts is critical
-
-**Skip when**:
-- Small team working together on the entire codebase
-- Internal structure can evolve during implementation
-- Component boundaries are obvious or can be decided during Apply phase
-
-**Level 4 (Code)**
-
-Shows detailed class/interface design.
-
-**Include when**:
-- Specific design patterns are critical to the agreement
-- A novel approach requires detailed explanation upfront
-- Team needs alignment on complex domain model
-
-**Skip when**:
-- Always, unless explicitly required—code evolves rapidly and diagrams become stale
-- Code-level details are better expressed in actual code or ADRs
-
-#### UML Diagrams: Use Selectively
-
-UML diagrams can clarify specific aspects, but avoid comprehensive UML documentation.
-
-**Sequence Diagrams**
-
-Shows interactions between components over time.
-
-**Include when**:
-- Complex interactions between components need to be explicit
-- Timing, ordering, or protocol details are critical to the agreement
-- Multiple teams need to coordinate on integration contracts
-- Asynchronous workflows or event-driven patterns need clarification
-
-**Skip when**:
-- Simple request-response patterns that can be described in text
-- Interactions are standard REST/RPC calls without special ordering
-
-**State Diagrams**
-
-Shows system states and transitions.
-
-**Include when**:
-- System behavior is state-driven and transitions are complex
-- Different stakeholders have different assumptions about system states
-- State management is a key architectural decision (workflow engines, state machines)
-- Compliance requires explicit state transition documentation
-
-**Skip when**:
-- Stateless or simple CRUD operations
-- State logic is straightforward
-
-**Deployment Diagrams**
-
-Shows physical/cloud infrastructure topology.
-
-**Include when**:
-- Physical/cloud infrastructure is a key decision
-- Cost, availability, or compliance drive deployment choices
-- Operations team needs to agree on topology upfront
-- Multi-region or complex networking is involved
-
-**Skip when**:
-- Standard single-region cloud deployment
-- Infrastructure details can be decided during implementation
-
-**Class Diagrams**
-
-Shows object-oriented class structures.
-
-**Include when**:
-- Agreeing on domain model boundaries in domain-driven design (bounded contexts)
-- Specific inheritance or interface contracts are critical to the agreement
-
-**Skip when**:
-- Always, unless explicitly required—too detailed for most agreements, becomes stale quickly
-
-#### How to Decide What to Include
-
-Ask these questions to determine which diagrams to create:
-
-**1. What are our top 3 architectural characteristics?**
-- Scalability → Include C4 Level 2 (Container) and Deployment diagrams
-- Maintainability → Include C4 Level 3 (Component)
-- Availability → Include C4 Level 2 (Container) and Deployment diagrams
-- Performance → Include Sequence diagrams for critical paths
-
-**2. What assumptions are stakeholders making?**
-- Diagram the areas where people have different mental models
-- If three stakeholders describe the architecture three different ways, you need diagrams
-
-**3. What decisions are hard to reverse?**
-- Document high-risk, high-cost choices explicitly
-- Technology selection, deployment model, major integration points
-
-**4. What will other teams need to integrate with?**
-- Provide just enough detail for clear contracts
-- Context diagrams for boundaries, sequence diagrams for protocols
-
-#### Decision Framework by Scenario
-
-| Scenario | Recommended Diagrams | Why |
-|----------|---------------------|-----|
-| New microservice in existing system | C4 Level 1 (Context), Level 2 (Container) | Shows how it fits into landscape and deployment model |
-| Refactoring monolith module | C4 Level 3 (Component) | Clarifies new internal boundaries without over-documenting |
-| Complex event-driven workflow | Sequence diagram, State diagram | Makes asynchronous interactions and state transitions explicit |
-| Choosing database technology | Deployment diagram, trade-off table | Shows physical deployment and decision rationale |
-| Defining domain model boundaries | C4 Level 3, possibly simple class diagram | Establishes bounded contexts and key entities |
-| Multi-team parallel development | C4 Level 2 (Container), Level 3 (Component) | Defines clear boundaries and integration contracts |
-| Cloud migration project | C4 Level 2 (Container), Deployment diagram | Shows new infrastructure topology and deployment model |
-
-#### Alternatives to Diagrams
-
-Sometimes prose and structured artifacts work better than diagrams:
-
-**Architecture Decision Records (ADRs)**:
-- Capture the "why" behind decisions (diagrams show the "what")
-- Document context, decision, and consequences
-- Record alternatives considered and why rejected
-- See [Architecture Decisions & Leadership](/study-guides/architecture/architecture-decision-making.html){:target="_blank" rel="noopener noreferrer"}
-
-**Textual Contracts**:
-- API specifications (OpenAPI/Swagger)
-- Event schemas (AsyncAPI, JSON Schema)
-- Database schemas (SQL DDL, entity definitions)
-
-**Trade-off Tables**:
-- Compare alternatives across multiple dimensions
-- Make evaluation criteria explicit
-- No diagrams required, just structured comparison
-
-#### How to Do This Well
-
-- **Match detail to risk** - High-risk decisions need more documentation, low-risk decisions need less
-- **Focus on decisions** - Document what you're agreeing to, not comprehensive system details
-- **Make diagrams scannable** - Use clear labels, consistent notation, avoid clutter
-- **Link to C4 model resources** - Stakeholders can reference [c4model.com](https://c4model.com){:target="_blank" rel="noopener noreferrer"} for notation details
-- **Use "diagrams as code" tools** - Mermaid, PlantUML, Structurizr keep diagrams version-controlled and easier to maintain
-- **Test understanding** - Ask stakeholders to explain the diagrams back to you
-- **Keep diagrams up to date during Agree** - Diagrams should evolve as design evolves
-- **Don't mandate all levels** - Create only what's needed for the specific agreement
-
-#### Red Flags
-
-- ❌ Creating all four C4 levels by default—massive overhead
-- ❌ Comprehensive UML documentation "because we might need it later"
-- ❌ Diagrams that nobody references during implementation
-- ❌ Updating diagrams manually after code changes (they'll drift immediately)
-- ❌ Spending more time on diagrams than on the actual design decisions
-- ❌ Using diagrams to avoid difficult conversations
-- ❌ Formal notation that stakeholders don't understand
-- ❌ Diagramming implementation details that should be decided during Apply phase
-
-#### The AAA Principle for Documentation
+**Alternatives to diagrams**:
+- ADRs capture the "why" behind decisions
+- API specifications (OpenAPI/Swagger) for integration contracts
+- Trade-off tables for comparing alternatives
 
 <blockquote class="pull-quote">
-<p>Create the minimum documentation needed to achieve genuine agreement on high-risk decisions.</p>
+<p>If a diagram doesn't help someone commit to a specific decision, don't create it.</p>
 </blockquote>
-
-If a diagram doesn't help someone commit to a specific decision, don't create it. If prose or a simple table achieves the same clarity, use that instead.
 
 ---
 
@@ -328,39 +134,25 @@ If a diagram doesn't help someone commit to a specific decision, don't create it
 - Complex integration with unclear feasibility
 - Performance requirements that need validation
 - High uncertainty in technical approach
-- Team needs to learn new skills/tools
 
 **What to Validate**:
 - **Integration**: Can we actually connect? Does their API work as documented?
-- **Performance**: Can we meet response time targets? Where are bottlenecks?
-- **Technology Feasibility**: Does this framework do what we need? What's the learning curve?
-- **Security**: Can we implement required controls?
+- **Performance**: Can we meet response time targets?
+- **Technology Feasibility**: Does this framework do what we need?
 
 **POC Best Practices**:
 - Define clear goals: What specific questions need answering?
 - Time-box it (3-7 days typical)
-- Take shortcuts: Hard-code, skip error handling—it's throwaway code
-- Document findings: What worked? What didn't? Surprises?
-- Update estimates based on learnings
+- Take shortcuts: It's throwaway code
+- Document findings and update estimates based on learnings
 - Throw away the code (POC ≠ production)
 
-**How to Do This Well**:
-- Test the riskiest assumptions first—focus on what you're most uncertain about
-- Use real data, not toy data—real scenarios reveal real problems
-- Measure actual performance, don't guess—collect hard numbers
-- Involve the team who'll implement—they need the learning experience
-- Time-box strictly and take shortcuts—it's about learning, not building
-- Decide quickly: go/adjust/pivot based on findings
-- Delete POC code when done—resist the temptation to productionize it
-
 <div class="callout callout--warning">
-<p class="callout__title">POC Red Flags</p>
+<p class="callout__title">Red Flags</p>
 <ul>
 <li><strong>POC becomes production code</strong>: Quality shortcuts in production</li>
 <li><strong>Testing easy things</strong>: Not addressing real risks</li>
-<li><strong>No clear success criteria</strong>: How do you know if it worked?</li>
 <li><strong>POC drags on indefinitely</strong>: No decisions being made</li>
-<li><strong>Ignoring negative findings</strong>: Downplaying results that contradict assumptions</li>
 </ul>
 </div>
 
@@ -374,43 +166,16 @@ If a diagram doesn't help someone commit to a specific decision, don't create it
 - **Unit Tests** (70-80%): Test individual functions/methods
 - **Integration Tests** (15-20%): Test component interactions
 - **End-to-End Tests** (5-10%): Test complete workflows
-- **Manual Testing**: Exploratory and UAT
 
 **Security Testing**:
-- **SAST**: Static code analysis on every build
-- **Dependency Scanning**: Check for vulnerable libraries
-- **DAST**: Dynamic testing in staging
-- **Penetration Testing**: Before launch
-- See [Security Testing](/study-guides/security/security-testing.html){:target="_blank" rel="noopener noreferrer"}, [Application Security](/study-guides/security/application-security.html){:target="_blank" rel="noopener noreferrer"}
-
-**Performance Testing**:
-- Load testing for expected traffic
-- Stress testing to find breaking points
-- Validate SLO targets before production
+- SAST on every build, dependency scanning daily
+- DAST in staging, penetration testing before launch
+- See [Security Testing](/study-guides/security/security-testing.html){:target="_blank" rel="noopener noreferrer"}
 
 **Quality Gates**:
 - Code commit: Tests pass, linting passes, review approved
 - Merge to main: All tests pass, coverage target met
 - Release: E2E tests pass, security scan clean, UAT approved
-
-**How to Do This Well**:
-- Test the contract, not the implementation—focus on behavior
-- Automate from day one—make quality non-negotiable
-- Fail fast—quick tests first, slow tests later in the pipeline
-- Make tests reliable—flaky tests erode confidence and waste time
-- Design for testability—architecture should make testing easy
-- Don't compromise on quality gates—they prevent production issues
-
-<div class="callout callout--warning">
-<p class="callout__title">Quality Strategy Red Flags</p>
-<ul>
-<li><strong>Testing ice cream cone</strong>: Too many E2E tests, not enough unit tests</li>
-<li><strong>No automation</strong>: Manual testing only</li>
-<li><strong>Skipping security testing</strong>: Delaying until it's too late</li>
-<li><strong>Quality theater</strong>: Tests exist but don't catch defects</li>
-<li><strong>Under-investing in infrastructure</strong>: Slow, unreliable test runs</li>
-</ul>
-</div>
 
 ---
 
@@ -419,251 +184,181 @@ If a diagram doesn't help someone commit to a specific decision, don't create it
 **Establish measurable performance and availability targets.**
 
 **Key Concepts**:
-- **SLI** (Service Level Indicator): Metric measuring service quality
-  - Examples: Request latency, availability, error rate, throughput
-- **SLO** (Service Level Objective): Target value for an SLI
-  - Example: "95% of requests complete in < 200ms"
-  - Internal goal used by engineering
-- **SLA** (Service Level Agreement): Commitment to customers
-  - Usually less aggressive than SLO (buffer for margin)
-  - May have consequences if not met (refunds, penalties)
-- **Error Budget**: Allowable amount of downtime/failures
-  - 99.9% availability = 43.8 minutes downtime per month
-  - Balances reliability vs. velocity of change
+- **SLI** (Service Level Indicator): Metric measuring service quality (latency, availability, error rate)
+- **SLO** (Service Level Objective): Target value for an SLI ("95% of requests < 200ms")
+- **SLA** (Service Level Agreement): Commitment to customers (usually less aggressive than SLO)
+- **Error Budget**: Allowable downtime (99.9% = 43.8 minutes/month)
 
-**Choose SLIs That Matter to Users**:
-- Availability: % of time service is operational
-- Latency: Response time (use 95th or 99th percentile, not average)
-- Error Rate: % of requests that fail
-- Throughput: Requests per second handled
-
-**Setting Targets**:
-- Based on business requirements from Phase 1
-- Balanced between ambition and feasibility
-- More aggressive than current baseline (if improving existing system)
-
-<div class="callout callout--tip">
-<p class="callout__title">SLO Best Practices</p>
-<ul>
-<li><strong>Don't chase "nines" blindly</strong>: Understand the cost of each additional nine</li>
-<li><strong>Use percentiles (95th, 99th)</strong>: Averages hide outliers that hurt users</li>
-<li><strong>Build in margin</strong>: SLO should be tighter than SLA to avoid breaches</li>
-<li><strong>Make targets visible</strong>: Dashboards drive accountability</li>
-<li><strong>Use error budgets</strong>: Balance reliability with feature velocity</li>
-</ul>
-</div>
+**Best Practices**:
+- Use percentiles (95th, 99th), not averages
+- Build in margin: SLO tighter than SLA
+- Make targets visible in dashboards
 
 <blockquote class="pull-quote">
 <p>99.9% availability sounds impressive until you realize it allows 43.8 minutes of downtime per month.</p>
 </blockquote>
 
-<div class="callout callout--warning">
-<p class="callout__title">SLO Red Flags</p>
-<ul>
-<li><strong>Measuring vanity metrics</strong>: Not what actually matters to users</li>
-<li><strong>No error budget</strong>: Teams become risk-averse or burn out</li>
-<li><strong>SLAs more aggressive than SLOs</strong>: No safety margin</li>
-<li><strong>No monitoring plan</strong>: Can't measure what you can't see</li>
-<li><strong>Ignoring dependency SLOs</strong>: Unrealistic given downstream limitations</li>
-</ul>
-</div>
-
 ---
 
-### 6. Detailed Planning & Budget
+### 6. Planning & Budget
 
-**Create concrete implementation plan with resource commitment.**
+#### Appetite vs. Estimation
 
-**Work Breakdown**:
+Before diving into work breakdown, consider whether you're asking the right question.
+
+**Bottom-up estimation** asks "How long will this take?" This produces guesses that become commitments.
+
+**Top-down appetite** asks "How much time is this problem worth?" This produces a constraint that forces scope decisions during Agree, not during Apply.
+
+Setting appetite means leadership decides: "This problem is worth 2 weeks, not more." If you can't shape a viable solution within the appetite, either the problem needs a bigger appetite or you shouldn't work on it yet.
+
+For more on this approach, see [Shaped Kanban](/blog/2025/11/17/shaped-kanban.html){:target="_blank" rel="noopener noreferrer"}.
+
+#### Work Breakdown & Cost Analysis
+
 - Break components into implementable stories/tasks
-- Identify dependencies between work items
-- Sequence work based on dependencies and risk
-- Group work into sprints/iterations or releases
-
-**Estimation Refinement**:
-- Refine estimates from Phase 1 based on POC learnings
-- Use team velocity if available
+- Identify dependencies and sequence work
 - Include time for testing, reviews, rework
-- Account for meetings, support, non-development work
 - Add contingency buffer (20-30%)
 
-**Resource Allocation**:
-- Assign team members to work streams
-- Identify skill gaps and training needs
-- Coordinate with other projects for shared resources
-
-**Project Schedule**:
-- Map work to timeline with milestones
-- Identify critical path
-- Mark dependencies on external teams/vendors
-
-<div class="callout callout--tip">
-<p class="callout__title">Planning Best Practices</p>
-<ul>
-<li><strong>Plan collaboratively</strong>: Team input improves accuracy and buy-in</li>
-<li><strong>Use historical velocity</strong>: Data beats guessing</li>
-<li><strong>Provide ranges</strong>: Point estimates hide uncertainty</li>
-<li><strong>Make contingency explicit</strong>: 20-30% buffer for unknowns</li>
-<li><strong>Plan in waves</strong>: Detailed near-term, high-level distant future</li>
-</ul>
-</div>
+For detailed TCO and ROI guidance, see [Total Cost of Ownership](/study-guides/architecture/total-cost-of-ownership.html){:target="_blank" rel="noopener noreferrer"} and [Return on Investment](/study-guides/architecture/return-on-investment.html){:target="_blank" rel="noopener noreferrer"}.
 
 <div class="callout callout--warning">
-<p class="callout__title">Planning Red Flags</p>
+<p class="callout__title">Red Flags</p>
 <ul>
 <li><strong>No developer input</strong>: Architect or PM creates plan alone</li>
 <li><strong>No buffer time</strong>: Surprises are inevitable</li>
-<li><strong>Ignoring velocity data</strong>: Historical performance matters</li>
-<li><strong>Forgetting overhead</strong>: Meetings, reviews, support, context switching</li>
 <li><strong>Unrealistic dependencies</strong>: Assuming external teams deliver on time</li>
 </ul>
 </div>
 
 ---
 
-## Cost Analysis
+## When Stakeholders Disagree
 
-### Total Cost of Ownership (TCO)
+### The Reality of Conflicting Priorities
 
-**Comprehensive view of all costs over the system's lifetime.**
+Genuine agreement requires stakeholders to agree with each other, not just with you. In practice, stakeholders often have conflicting priorities:
+- Marketing wants features fast; Security wants comprehensive review
+- Finance wants cost reduction; Operations wants redundancy
+- Product wants scope expansion; Engineering wants technical debt reduction
 
-For detailed guidance, see [Total Cost of Ownership](/study-guides/architecture/total-cost-of-ownership.html){:target="_blank" rel="noopener noreferrer"}.
+These conflicts don't resolve themselves. If you proceed without addressing them, you're building on a foundation of hidden disagreement that will surface during Apply, usually at the worst possible moment.
 
-**Cost Categories**:
+### Surfacing Hidden Disagreements
 
-**1. Development Costs**:
-- Labor (developers, architects, testers, designers)
-- Training and onboarding
-- Contractor/consultant fees
-- Tooling and licenses
+**Before formal agreement, probe for alignment gaps**:
+- Present trade-offs explicitly and watch for reactions
+- Ask each stakeholder to prioritize requirements independently, then compare
+- Ask "What would make this project fail from your perspective?"
+- Ask "What would you cut if we had to reduce scope by 30%?"
 
-**2. Infrastructure Costs**:
-- Cloud compute, storage, networking (ongoing)
-- Databases and managed services
-- CDN and data transfer
-- Non-production environments (dev, test, staging)
+**Warning signs of hidden disagreement**:
+- Stakeholders nod in meetings but raise concerns in private
+- Different stakeholders describe success criteria differently
+- Silence when you ask for objections (silence ≠ agreement)
 
-**3. Third-Party Services**:
-- APIs and SaaS subscriptions
-- Authentication providers
-- Payment processors
-- Monitoring and observability tools
+### Facilitating Consensus
 
-**4. Operational Costs**:
-- Support staff and on-call rotation
-- Maintenance and bug fixes
-- Security patching and updates
-- Monitoring and incident response
+When stakeholders disagree, your role is to facilitate resolution, not to pick a winner:
 
-**5. Hidden Costs**:
-- Vendor lock-in and switching costs
-- Technical debt and refactoring
-- Compliance and audit requirements
-- Disaster recovery and backup
-- End-of-life and decommissioning
+1. **Make trade-offs explicit**: "We can optimize for X or Y, but not both. Here's what each choice costs."
 
-<div class="callout callout--note">
-<p class="callout__title">TCO Best Practices</p>
+2. **Escalate when necessary**: Some conflicts require someone with authority over both parties to decide.
+
+3. **Use structured decision frameworks**: Weighted scoring, time-boxed debate, or pilot-and-measure.
+
+4. **Document dissent**: If genuine consensus isn't possible, document who disagreed and why.
+
+### When Agreement Isn't Possible
+
+**Options when genuine agreement fails**:
+1. **Escalate to decision authority**: Present the conflict for resolution
+2. **Document the disagreement and proceed**: Record that parties disagree, proceed with explicit risk acceptance
+3. **Reduce scope to the agreed portion**: Find the subset where agreement exists
+4. **Recommend no-go**: If the conflict is fundamental enough that success is unlikely
+
+**Whatever you choose, don't pretend agreement exists when it doesn't.** Proceeding with false consensus leads to scope creep, rework, and blame when the hidden conflict surfaces.
+
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags: Pseudo-Agreement</p>
 <ul>
-<li><strong>Include ongoing costs</strong>: Not just upfront development</li>
-<li><strong>Account for scaling</strong>: Costs change with growth</li>
-<li><strong>Factor in technical debt</strong>: Paydown costs over time</li>
-<li><strong>Build in contingency</strong>: 15-25% for unknowns</li>
-<li><strong>Review pricing models</strong>: Cloud calculators help but verify</li>
+<li><strong>Silence as consent</strong>: No objections doesn't mean agreement</li>
+<li><strong>Rubber-stamp approval</strong>: Sign-off without real review</li>
+<li><strong>Agreement with fingers crossed</strong>: Stakeholders who plan to revisit later</li>
 </ul>
 </div>
 
 ---
 
-### Return on Investment (ROI)
+## Securing Team Buy-In
 
-**Justify the investment by demonstrating business value.**
+### Why Team Agreement Matters
 
-For detailed guidance, see [Return on Investment](/study-guides/architecture/return-on-investment.html){:target="_blank" rel="noopener noreferrer"}.
+Stakeholder agreement is necessary but not sufficient. If the development team doesn't believe in the approach, execution will suffer:
+- Passive resistance manifests as slow progress
+- Technical concerns get suppressed until they become crises
+- The team builds what was specified, not what was intended
 
-**ROI Formula**:
-```
-ROI = (Net Benefit / Total Cost) × 100%
+**The team are stakeholders too.** Their genuine commitment is as essential as any business stakeholder's.
 
-Where:
-Net Benefit = Total Benefits - Total Costs
-```
+### Building Team Ownership
 
-**Quantifiable Benefits**:
-- **Revenue increase**: New sales, upsell opportunities, market expansion
-- **Cost savings**: Reduced operational costs, headcount savings, efficiency gains
-- **Risk reduction**: Avoided security breaches, compliance penalties, downtime
-- **Productivity gains**: Time saved per transaction, faster processes, reduced errors
+**Involve the team in design, not just estimation**:
+- Include senior engineers in architecture discussions
+- Present options and trade-offs, don't just present conclusions
+- Let them challenge assumptions
 
-**Qualitative Benefits** (harder to quantify but still valuable):
-- Improved customer satisfaction
-- Better employee experience
-- Competitive advantage
-- Brand reputation
-- Strategic positioning
+**Address dissent explicitly**:
+- When team members disagree, understand why
+- If you override team concerns, explain your reasoning
+- Document unresolved concerns as risks
 
-**Time to Value**:
-- When do benefits start accruing?
-- How long until ROI is positive (payback period)?
-- What's the long-term ROI (3-5 years)?
+**Create shared ownership**:
+- Team should be able to explain the architecture and why it was chosen
+- Assign architecture areas to team members to own
 
-<div class="callout callout--tip">
-<p class="callout__title">ROI Best Practices</p>
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags: Team Disengagement</p>
 <ul>
-<li><strong>Be conservative on benefits</strong>: Realistic on costs</li>
-<li><strong>Show scenarios</strong>: Best-case, likely-case, worst-case</li>
-<li><strong>Include time value of money</strong>: For multi-year projections</li>
-<li><strong>Tie to Phase 1 metrics</strong>: Benefits must be measurable</li>
-<li><strong>Prove business value clearly</strong>: This secures commitment</li>
+<li>Team is silent during design discussions</li>
+<li>Estimates are given without pushback</li>
+<li>Technical concerns only surface during implementation</li>
+<li>Team treats the plan as "your plan" rather than "our plan"</li>
 </ul>
 </div>
+
+For detailed guidance on team dynamics, see [Dev Team Leadership](/study-guides/leadership/dev-team-leadership-foundations.html){:target="_blank" rel="noopener noreferrer"} and [Team Organization](/study-guides/sdlc/team-organization.html){:target="_blank" rel="noopener noreferrer"}.
 
 ---
 
-### Plan Review & Approval
+## Readiness: Transitioning to Apply
 
-**Present complete plan and secure formal approval.**
+### Behavioral Indicators of True Agreement
 
-**What to Present**:
-- Architecture overview (high-level, not too technical)
-- Key design decisions and trade-offs (ADRs)
-- POC findings and validation
-- Quality and testing approach
-- SLAs and performance targets
-- Timeline and milestones
-- Budget breakdown and ROI analysis
-- Risks and mitigation strategies
+Sign-offs and approved documents don't guarantee genuine agreement. Before moving to Phase 3, verify that all parties truly understand and commit.
 
-**Architecture Review**:
-- Present to senior technical staff first
-- Walk through key decisions
-- Address technical concerns
-- Get architecture sign-off
+**Test agreement with these questions**:
+- Can stakeholders explain the architecture approach and why it was chosen?
+- Can the development team walk through the implementation plan and defend the estimates?
+- When asked "What are the biggest risks?", do stakeholders and team give consistent answers?
 
-**Stakeholder Presentation**:
-- Tailor to audience (business-focused, not deep technical)
-- Use visuals (diagrams, charts, tables)
-- Anticipate questions
-- Be transparent about risks and uncertainties
+**You're ready for Apply when**:
+- [ ] Architecture design is documented and approved
+- [ ] Key design decisions are captured in ADRs
+- [ ] Critical technical assumptions are validated (POC complete if needed)
+- [ ] Quality and testing strategy is defined
+- [ ] SLOs are established with stakeholder buy-in
+- [ ] Implementation plan exists with realistic estimates (team-validated)
+- [ ] Budget is formally committed
+- [ ] Team genuinely believes in the approach
+- [ ] Stakeholders agree with each other (conflicts resolved)
+- [ ] Dependencies are identified with contingency plans
 
-<div class="callout callout--tip">
-<p class="callout__title">Signs of Readiness</p>
-<ul>
-<li>Stakeholders can explain the approach to others</li>
-<li>Technical team confident in the design</li>
-<li>Budget and resources formally committed</li>
-<li>Risks acknowledged and mitigation agreed</li>
-<li>Timeline accepted as realistic</li>
-</ul>
-</div>
+**You're NOT ready for Apply when**:
+- Stakeholders approved but can't explain what they approved
+- Technical concerns were raised but not resolved
+- POC results were concerning but got rationalized away
+- Team members privately express doubts about feasibility
 
-**How to Do This Well**:
-- Present in person, don't just email the plan
-- Walk through interactively, don't just present slides
-- Tailor to audience—business-focused for stakeholders, technical for architects
-- Listen to concerns—stakeholder intuition may identify real issues
-- Be transparent about risks and uncertainties
-- Be willing to adjust based on feedback
-- Get written sign-off, not just verbal approval
-- Ensure stakeholders understand and formally commit
-
+**When in doubt, stay in Agree.** The cost of additional validation is far lower than the cost of discovering false agreement during Apply.

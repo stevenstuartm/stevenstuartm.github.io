@@ -24,16 +24,14 @@ Regardless of project size or methodology, application follows these steps:
 5. **Deploy reliably**: Automate and practice
 6. **Reflect and improve**: Learn from experience
 
-The frequency and formality scale with methodology, but the principles remain constant.
-
 ### Recursive Application
 
-Apply applies at every level of work:
-
-- **Program Level** (months): Multiple projects, portfolio governance, quarterly reviews
-- **Project Level** (weeks): Team executing sprints, regular demos, project retrospective
-- **Sprint Level** (days): Daily development, sprint review, sprint retro
-- **Feature Level** (hours): Code, test, review, merge with continuous integration
+| Level | Timeframe | What Apply Looks Like |
+|-------|-----------|----------------------|
+| **Program** | months | Multiple projects, portfolio governance, quarterly reviews |
+| **Project** | weeks | Team executing sprints, regular demos, project retrospective |
+| **Sprint** | days | Daily development, sprint review, sprint retro |
+| **Feature** | hours | Code, test, review, merge with continuous integration |
 
 ### Entry & Exit
 
@@ -54,7 +52,6 @@ Discovery during implementation is inevitable:
 - Building the first version surfaces better approaches
 - Edge cases emerge that invalidate assumptions
 - Dependencies appear that change timelines
-- User feedback shifts priorities
 
 <div class="callout callout--note">
 <p class="callout__title">Discovery Is Not Failure</p>
@@ -68,27 +65,12 @@ The discipline of Apply is knowing when to:
 
 ### When to Pause vs. Adapt
 
-<div class="comparison">
-<div class="content-card content-card--accent-warning">
-<h4>Pause and Realign</h4>
-<ul>
-<li>Technical discovery: Assumed approach won't work</li>
-<li>Scope discovery: Original scope misunderstood</li>
-<li>Dependency discovery: Critical dependencies emerge</li>
-<li>Value discovery: Better problem to solve revealed</li>
-<li>Risk discovery: Unforeseen risks make approach unacceptable</li>
-</ul>
-</div>
-<div class="content-card content-card--accent">
-<h4>Adapt and Continue</h4>
-<ul>
-<li>Minor technical adjustments within the architecture</li>
-<li>Small scope clarifications that don't change the core agreement</li>
-<li>Implementation details that don't affect stakeholders</li>
-<li>Performance optimizations within agreed SLOs</li>
-</ul>
-</div>
-</div>
+| Pause and Realign | Adapt and Continue |
+|-------------------|-------------------|
+| Technical discovery: Assumed approach won't work | Minor technical adjustments within the architecture |
+| Scope discovery: Original scope misunderstood | Small scope clarifications that don't change core agreement |
+| Dependency discovery: Critical dependencies emerge | Implementation details that don't affect stakeholders |
+| Value discovery: Better problem to solve revealed | Performance optimizations within agreed SLOs |
 
 **How to handle discovery**:
 1. Document what you learned (what assumption broke, what's now understood)
@@ -96,11 +78,102 @@ The discipline of Apply is knowing when to:
 3. Present options to stakeholders (continue as-is, adapt, or realign)
 4. If realignment needed, cycle back to Align or Agree phases
 5. Update the agreement and communicate changes
-6. Resume execution with the new understanding
 
-<blockquote class="pull-quote">
-<p>Realignment isn't scope creep or project failure. It's the discipline to incorporate learning and maintain integrity with stakeholders.</p>
-</blockquote>
+---
+
+## Circuit Breakers
+
+The guidance above describes *how* to handle discovery, but *when* to trigger reassessment can remain vague. Circuit breakers make the decision explicit by defining specific boundaries that, when crossed, force a pause and reassessment.
+
+**Temporal circuit breakers** are feature-specific time limits set during Agree. A simple CRUD screen might have a 3-day limit while a complex integration might have a 6-week limit. When the time limit is reached, you stop and reassess rather than pushing through.
+
+**Assumption circuit breakers** trigger when critical assumptions identified during Agree prove invalid. During shaping, you document assumptions like "the third-party API supports bulk operations" or "the existing database schema can handle this query pattern." If implementation proves an assumption wrong, the circuit breaker trips.
+
+**When a circuit breaker trips**:
+- **Extend with explicit agreement**: If work is close to done and stakeholders agree
+- **Reduce scope**: Cut features to fit within the boundary
+- **Reshape**: Return the work to Agree for reshaping
+- **Drop**: If work proved unviable, stop rather than continuing to invest
+
+For more on circuit breakers, see [Shaped Kanban](/blog/2025/11/17/shaped-kanban.html){:target="_blank" rel="noopener noreferrer"}.
+
+---
+
+## Managing External Dependencies
+
+### When Dependencies Fail
+
+External dependencies are a primary source of discovery during Apply. Other teams miss commitments, third-party services don't work as documented, and vendors encounter delays.
+
+**Types of dependency failures**:
+- **Delay**: External team pushes their delivery date
+- **Capability gap**: Delivered dependency doesn't meet your needs
+- **Quality issues**: Dependency works but has bugs or performance problems
+- **Complete failure**: Dependency won't be delivered at all
+
+### Dependency Management
+
+**Track dependencies proactively**:
+- Maintain a dependency register with: owner, expected delivery, confidence level, fallback plan
+- Schedule regular check-ins with dependency owners
+- Don't rely on status reports alone
+
+**When a dependency fails**:
+1. **Assess the impact**: How does this affect your timeline, scope, and quality?
+2. **Identify options**: Wait, work around, de-scope, build it yourself, or escalate
+3. **Present options to stakeholders**: Don't just report the problem; present choices with trade-offs
+4. **Update the agreement**: If response changes scope, timeline, or cost, cycle back to Align or Agree
+
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags</p>
+<ul>
+<li><strong>No fallback plans</strong>: Critical dependencies without contingencies</li>
+<li><strong>Passive monitoring</strong>: Waiting for dependency owners to report problems</li>
+<li><strong>Hope as strategy</strong>: "They'll probably make it" without evidence</li>
+</ul>
+</div>
+
+---
+
+## Scope Negotiation
+
+### The Iron Triangle Reality
+
+When reality forces changes, something has to give. The classic constraints are scope, timeline, and cost.
+
+| Adjustable | Rarely Adjustable |
+|------------|-------------------|
+| **Scope**: Reduce features, defer to future phases | **Quality**: Cutting corners creates technical debt |
+| **Timeline**: Extend delivery date | **Fixed deadlines**: Regulatory, contractual, market-driven |
+| **Cost**: Add resources, buy vs. build | **Budget caps**: When resources truly aren't available |
+
+### Scope Negotiation Framework
+
+1. **Quantify the gap**: How much are we short? (days, story points, effort)
+2. **Present options, not problems**: Reduce scope, extend timeline, add resources, or accept quality risk
+3. **Recommend an option**: Don't just present choices; provide your recommendation with reasoning
+4. **Make trade-offs explicit**: "If we cut feature X, we lose capability Y"
+5. **Get explicit agreement**: Document the decision
+
+### Negotiation Principles
+
+**Lead with impact, not excuses**:
+- ❌ "We underestimated the complexity"
+- ✅ "The integration revealed requirements we didn't anticipate. Here are our options."
+
+**Protect quality last**: Quality is the easiest thing to sacrifice and the hardest thing to recover. Quantify the risk when stakeholders push to "just get it done."
+
+**Negotiate early**: A 10% scope reduction in week 2 is easier than a 30% scope reduction in week 8.
+
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags</p>
+<ul>
+<li><strong>Presenting problems without options</strong></li>
+<li><strong>Silent scope creep</strong>: Accepting additions without negotiating</li>
+<li><strong>Sacrificing quality first</strong>: "We'll skip testing to make the date"</li>
+<li><strong>Late negotiation</strong>: Raising scope issues the week before delivery</li>
+</ul>
+</div>
 
 ---
 
@@ -114,53 +187,21 @@ The discipline of Apply is knowing when to:
 - Work in small, releasable increments
 - Continuously integrate and test changes
 - Gather feedback early and often
-- Adapt based on learnings while maintaining alignment with goals
 
 **Architecture Governance**:
 - **Architecture Decision Records (ADRs)**: Document significant decisions as they're made
 - **Architecture Reviews**: Weekly or bi-weekly review of significant changes
 - **Code Reviews**: Review for architectural conformance, not just correctness
 - **Tech Stack Governance**: Evaluate new libraries/frameworks before adoption
-  - Check for vulnerabilities (CVE databases)
-  - Assess licensing and legal implications
-  - Ensure alignment with organizational standards
-- **Architecture Health Checks**: Monthly/quarterly assessment of system health
-  - Code quality metrics (coverage, complexity, duplication)
-  - Technical debt tracking and paydown planning
-  - Architectural violations
-- See [Governance](/study-guides/architecture/governance.html){:target="_blank" rel="noopener noreferrer"}, [Governance Frameworks](/study-guides/architecture/governance-frameworks.html){:target="_blank" rel="noopener noreferrer"}, [Governance Tools](/study-guides/architecture/governance-tools.html){:target="_blank" rel="noopener noreferrer"}
 
-**Decision Point: Architecture Conformance**:
-- Is implementation staying true to approved architecture?
-- Are component interactions matching designed interfaces?
-- Is technical debt being tracked and managed?
-- When do you need to adjust architecture vs. enforce conformance?
-
-**Process for Architecture Changes**:
-1. Document the need (new ADR)
-2. Assess impact (timeline, cost, risk)
-3. Present to stakeholders for approval
-4. Update architecture documentation
-5. Communicate change to team
-
-**How to Do This Well**:
-- Review early and often—catch issues when they're easy to fix
-- Balance governance and autonomy—don't become a bottleneck
-- Make ADRs lightweight—don't let documentation become a burden
-- Treat technical debt as backlog items—track and prioritize like features
-- Work in small, releasable increments to reduce risk
-- Continuously integrate and test changes
-- Gather feedback early and adapt based on learnings
+See [Governance](/study-guides/architecture/governance.html){:target="_blank" rel="noopener noreferrer"} for detailed guidance.
 
 <div class="callout callout--warning">
-<p class="callout__title">Governance Red Flags</p>
+<p class="callout__title">Red Flags</p>
 <ul>
 <li><strong>Architecture astronauts</strong>: Over-governing, creating bottlenecks</li>
 <li><strong>No governance</strong>: Inconsistent implementation, architectural drift</li>
 <li><strong>Ignoring technical debt</strong>: Until it's unmanageable</li>
-<li><strong>No ADRs</strong>: Decisions not documented for future reference</li>
-<li><strong>Rigid adherence to plan</strong>: When reality clearly differs</li>
-<li><strong>Late architectural reviews</strong>: Finding issues after merge</li>
 </ul>
 </div>
 
@@ -170,44 +211,31 @@ The discipline of Apply is knowing when to:
 
 **Maintain alignment throughout implementation as discovery happens.**
 
-Alignment isn't achieved once in Phase 2 and then frozen. It's maintained continuously as implementation reveals new information. The team and stakeholders must stay aligned on what's being built, why it matters, and what trade-offs are being made.
+The human connection established during Align must be maintained throughout Apply. As implementation reveals new information, the team and stakeholders must stay aligned on what's being built, why it matters, and what trade-offs are being made.
 
 **Regular Touchpoints**:
-- **Sprint/Iteration Reviews**: Demo working software, gather feedback, validate direction
-- **Stakeholder Updates**: Status on progress, blockers, risks, budget, timeline
-- **Daily Standups**: Team synchronization (internal, not for stakeholders)
-- **Scope Management**: Evaluate change requests, re-prioritize based on learnings
-- **Risk Monitoring**: Review risk register, update status, implement mitigations
+- **Sprint/Iteration Reviews**: Demo working software, gather feedback
+- **Stakeholder Updates**: Progress, blockers, risks, budget, timeline
 - **Retrospectives**: Reflect on what went well, identify improvements
 
-**Decision Point: Stay the Course vs. Pivot**:
-- **Continue as planned**: Implementation on track, stakeholders satisfied, no major risks
-- **Adjust course**: Significant new information, requirements changed, technical approach not working
+### Progress Tracking: Hill Charts Over Percent Complete
 
-**Process for Changes**:
-1. Document proposed change
-2. Assess impact (timeline, cost, scope, quality)
-3. Present options to stakeholders
-4. Get approval
-5. Update plan and communicate
-6. May cycle back to Align or Agree phases if needed
+Traditional progress tracking ("we're 80% done") hides more than it reveals. Teams can be "80% done" for weeks because they're stuck on the hard part.
 
-**How to Do This Well**:
-- Communicate proactively—share status, risks, issues early
-- Translate technical to business—help stakeholders understand progress
-- Show working software—demos are more powerful than status reports
-- Be transparent—share good and bad news honestly
-- Respond to feedback quickly—show stakeholder input matters
-- Hold regular sprint/iteration reviews with working software
-- Monitor risks continuously and implement mitigations
+**Hill charts** provide more honest visibility by distinguishing two phases:
+
+**Uphill (figuring it out)**: The team is still discovering unknowns, solving novel problems. Progress feels slow because you're learning, not just executing.
+
+**Downhill (making it happen)**: The unknowns are resolved. The team knows what to build and is executing.
+
+This distinction matters for stakeholder communication:
+- "We're uphill on the integration" signals uncertainty
+- "We're downhill on the UI" signals confidence
 
 <div class="callout callout--warning">
-<p class="callout__title">Stakeholder Alignment Red Flags</p>
+<p class="callout__title">Red Flags</p>
 <ul>
 <li><strong>Communication vacuum</strong>: No updates until the end</li>
-<li><strong>Yes to everything</strong>: Accepting all changes, scope balloons</li>
-<li><strong>Ignoring feedback</strong>: Stakeholders give input but team doesn't respond</li>
-<li><strong>No retrospectives</strong>: Team doesn't reflect or improve</li>
 <li><strong>Hiding problems</strong>: Not escalating risks/issues early</li>
 <li><strong>Stakeholders surprised at delivery</strong>: Lost alignment during execution</li>
 </ul>
@@ -220,26 +248,12 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 **Ensure quality through continuous testing and validation.**
 
 **Testing Activities**:
-- **Test-Driven Development**: Write unit tests before or with code
-- **Automated Testing**:
-  - Unit tests run on every commit
-  - Integration tests in CI pipeline
-  - E2E tests before merges or nightly
-  - Performance tests periodically
-  - Security scans integrated in pipeline
-- **Code Reviews**: Peer review all changes (bugs, security, design, standards)
-- **Security Testing**:
-  - SAST: Static code analysis every build
-  - Dependency scanning: Check vulnerable libraries daily
-  - DAST: Dynamic testing in staging
-  - Penetration testing: Before launch
-  - See [Security Testing](/study-guides/security/security-testing.html){:target="_blank" rel="noopener noreferrer"}, [Application Security](/study-guides/security/application-security.html){:target="_blank" rel="noopener noreferrer"}
-- **Performance Testing**:
-  - Load testing before releases
-  - Stress testing to find breaking points
-  - Performance regression testing
-  - Validate SLO targets
-- **User Acceptance Testing**: Business users test against acceptance criteria before release
+- Test-driven development: Write tests with code
+- Automated testing: Unit, integration, E2E tests in CI pipeline
+- Security testing: SAST, DAST, dependency scanning, penetration testing
+- Performance testing: Load testing, stress testing, SLO validation
+
+See [Security Testing](/study-guides/security/security-testing.html){:target="_blank" rel="noopener noreferrer"} for detailed guidance.
 
 **Quality Gates**:
 - **Pre-merge**: Tests pass, review approved
@@ -247,7 +261,7 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 - **Pre-production**: UAT passed, performance validated, rollback plan tested
 
 <div class="callout callout--tip">
-<p class="callout__title">Ready for Release Checklist</p>
+<p class="callout__title">Ready for Release</p>
 <ul>
 <li>All acceptance criteria met</li>
 <li>Test coverage targets achieved</li>
@@ -255,30 +269,6 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 <li>Security scan passed</li>
 <li>Performance meets SLOs</li>
 <li>UAT completed and approved</li>
-<li>Documentation complete</li>
-<li>Monitoring and alerting configured</li>
-</ul>
-</div>
-
-**How to Do This Well**:
-- Test early, test often—shift left on quality
-- Automate everything practical—free humans for exploratory testing
-- Make tests fast and reliable—invest in test infrastructure
-- Fail fast—run quickest tests first in the pipeline
-- Don't compromise on quality gates—they exist for good reasons
-- Test in production—use feature flags, canaries, synthetic monitoring
-- Integrate security testing throughout development, not at the end
-- Ensure quality relentlessly—maintain standards under pressure
-
-<div class="callout callout--warning">
-<p class="callout__title">Quality Assurance Red Flags</p>
-<ul>
-<li><strong>Testing as afterthought</strong>: Not integrated into development</li>
-<li><strong>Low test coverage</strong>: Or no coverage tracking at all</li>
-<li><strong>Slow or flaky tests</strong>: Developers ignore them</li>
-<li><strong>Security deferred</strong>: Ignoring security until the end</li>
-<li><strong>No UAT</strong>: Deploying without user validation</li>
-<li><strong>Lowering the quality bar</strong>: Compromising quality for speed</li>
 </ul>
 </div>
 
@@ -288,94 +278,21 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 
 **Deploy reliably and transition operations smoothly.**
 
-**CI/CD Pipeline**:
-- Automate build, test, and deployment
-- Implement deployment strategies (blue/green, canary, rolling)
-- Configure release automation
-- Set up automated rollback
-- See [CI/CD](/study-guides/sdlc/cicd.html){:target="_blank" rel="noopener noreferrer"}, [DevSecOps](/study-guides/sdlc/devsecops.html){:target="_blank" rel="noopener noreferrer"}
+For detailed deployment guidance, see:
+- [CI/CD](/study-guides/sdlc/cicd.html){:target="_blank" rel="noopener noreferrer"}
+- [Deployment Strategies](/study-guides/infrastructure/deployment-strategies.html){:target="_blank" rel="noopener noreferrer"}
+- [Observability Fundamentals](/study-guides/observability-fundamentals.html){:target="_blank" rel="noopener noreferrer"}
 
-**Deployment Strategy Selection**:
-- **All-at-once**: Simple but risky, downtime required
-- **Rolling**: Gradual replacement, no downtime, can roll back
-- **Blue/Green**: Two environments, instant switchover, easy rollback
-- **Canary**: Deploy to subset first, monitor, then full rollout
-- See [Deployment Strategies](/study-guides/infrastructure/deployment-strategies.html){:target="_blank" rel="noopener noreferrer"}, [Deployment & Infrastructure Patterns](/study-guides/architecture/deployment_infrastructure_patterns.html){:target="_blank" rel="noopener noreferrer"}
-
-**Monitoring & Observability** (before deployment):
-- Instrument code with logging, metrics, tracing
-- Set up dashboards for key metrics
-- Configure alerting for SLO violations
-- Implement health checks and readiness probes
-- See [Observability Fundamentals](/study-guides/observability-fundamentals.html){:target="_blank" rel="noopener noreferrer"}
-
-**Production Deployment**:
-1. Execute deployment via automation
-2. Monitor deployment progress
-3. Validate health checks
-4. Monitor key metrics (error rates, performance)
-5. Roll back if issues detected
-
-**Post-Deployment Validation**:
-- Smoke testing in production
-- Monitor error rates and performance
-- Validate SLO compliance
-- Gather user feedback
-- Address any issues immediately
-
-**Deployment Decision: Deploy or Rollback**:
-
-<div class="comparison">
-<div class="content-card content-card--accent">
-<h4>Deploy</h4>
-<ul>
-<li>Automation completed without errors</li>
-<li>Health checks passing</li>
-<li>Error rates within normal range</li>
-<li>Performance meets SLOs</li>
-<li>No critical issues</li>
-</ul>
-</div>
-<div class="content-card content-card--accent-warning">
-<h4>Rollback</h4>
-<ul>
-<li>High error rates</li>
-<li>Performance degradation</li>
-<li>Health checks failing</li>
-<li>Critical functionality broken</li>
-<li>Security issue discovered</li>
-</ul>
-</div>
-</div>
+**Key Principles**:
+- Automate everything: deployments, rollbacks, monitoring
+- Deploy frequently: small, frequent deployments reduce risk
+- Use feature flags: decouple deployment from feature release
+- Test rollback regularly: it should be routine, not exceptional
 
 **Operations Handoff**:
 - Train operations team
 - Provide runbooks for common issues
-- Document troubleshooting procedures
-- Establish on-call rotation
-- Define escalation paths
-
-**How to Do This Well**:
-- Automate everything—deployments, rollbacks, monitoring
-- Deploy frequently—small, frequent deployments reduce risk
-- Use feature flags—decouple deployment from feature release
-- Monitor proactively—don't wait for users to report issues
-- Test rollback regularly—it should be routine, not exceptional
-- Practice chaos engineering—test resilience in production
-- Involve operations early—engage them from Phase 2 onwards
-- Deploy reliably with proven automation strategies
-
-<div class="callout callout--warning">
-<p class="callout__title">Deployment Red Flags</p>
-<ul>
-<li><strong>Manual deployments</strong>: Error-prone and slow</li>
-<li><strong>No rollback plan</strong>: Or untested rollback procedure</li>
-<li><strong>Insufficient monitoring</strong>: Flying blind in production</li>
-<li><strong>Deploying on Fridays</strong>: No one around to fix issues</li>
-<li><strong>Big bang releases</strong>: Too much at once, high risk</li>
-<li><strong>No operations handoff plan</strong>: Dev team owns production indefinitely</li>
-</ul>
-</div>
+- Establish on-call rotation and escalation paths
 
 ---
 
@@ -387,43 +304,24 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 - Complete User Acceptance Testing
 - Validate all acceptance criteria met
 - Confirm SLOs being achieved
-- Address any final issues
 - Get stakeholder sign-off on delivery
-
-**Documentation Completion**:
-- Finalize user documentation (guides, FAQs)
-- Complete technical documentation (architecture, APIs)
-- Update architecture diagrams to as-built state
-- Create/update operations runbooks
-- Archive project artifacts
-
-**Operations Handoff**:
-- Train operations team on the system
-- Review runbooks and troubleshooting
-- Clarify support model and escalation
-- Transfer ownership of monitoring/alerting
-- Establish SLA for support response
 
 **Retrospective**:
 - Reflect on entire project (not just last sprint)
 - What went well? What didn't?
-- What would we do differently?
 - Capture lessons learned
 - Celebrate team accomplishments
 
 **Project Closure**:
 - Final project report to stakeholders
-- Close out budget and financials
 - Archive project artifacts
-- Release team members to other work
-- Plan for ongoing enhancements (if applicable)
+- Plan for ongoing enhancements
 
 <div class="callout callout--tip">
-<p class="callout__title">Delivery Acceptance Criteria</p>
+<p class="callout__title">Delivery Acceptance</p>
 <ul>
 <li>All must-have requirements implemented</li>
 <li>Acceptance criteria met and validated</li>
-<li>UAT completed and approved</li>
 <li>SLOs being met in production</li>
 <li>Documentation complete</li>
 <li>Operations team trained and ready</li>
@@ -431,30 +329,11 @@ Alignment isn't achieved once in Phase 2 and then frozen. It's maintained contin
 </ul>
 </div>
 
-**Post-Launch Considerations**:
-- **Warranty/Support Period**: Team available for post-launch issues (2-4 weeks typical)
-- **Enhancements Backlog**: Known improvements deferred to future
-- **Ongoing Maintenance**: Who owns the system long-term?
-- **Success Metrics**: How will we measure ongoing success?
-
-**How to Do This Well**:
-- Define "done" clearly with acceptance criteria from Phase 1
-- Document as you go—don't leave all documentation for the end
-- Involve operations early—engage them throughout the project
-- Run blameless retrospectives—focus on learning, not blame
-- Celebrate wins—recognize team effort and accomplishments
-- Plan for ongoing support—warranty period, enhancement backlog
-- Implement incrementally throughout the project
-- Reflect on the entire project and capture lessons learned
-
 <div class="callout callout--warning">
-<p class="callout__title">Delivery Red Flags</p>
+<p class="callout__title">Red Flags</p>
 <ul>
 <li><strong>No clear acceptance criteria</strong>: Project drags on indefinitely</li>
-<li><strong>Poor documentation</strong>: Operations struggles to support</li>
 <li><strong>No retrospective</strong>: Missing opportunity to learn</li>
 <li><strong>Ghosting operations</strong>: Dev team disappears after launch</li>
-<li><strong>Skipping celebration</strong>: Not acknowledging effort</li>
-<li><strong>Repeating mistakes</strong>: No reflection on what went poorly</li>
 </ul>
 </div>

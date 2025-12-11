@@ -373,3 +373,45 @@ Success =
 - Get formal written sign-off, not just verbal agreement
 - Ensure real commitment before proceeding to the Agree phase
 
+---
+
+## Readiness: Transitioning to Agree
+
+### Behavioral Indicators of True Alignment
+
+Artifacts can be completed without genuine alignment. Before moving to Phase 2 (Agree), verify that alignment is real, not just documented.
+
+**Test alignment with these questions**:
+- Can each stakeholder explain the project's purpose and success criteria without referring to the charter?
+- Do stakeholders describe the project consistently, or do they emphasize different goals?
+- When you present a hypothetical trade-off ("What if we had to cut 20% of scope?"), do stakeholders agree on what to cut?
+- Are stakeholders asking questions and engaging, or just signing off to move things along?
+
+**You're ready for Agree when**:
+- [ ] Project charter is signed by all key stakeholders
+- [ ] Stakeholders can explain the project to others in their own words
+- [ ] Success criteria are measurable and agreed (not vague or conflicting)
+- [ ] Constraints are documented and acknowledged
+- [ ] Key risks are identified with owners and mitigation strategies
+- [ ] Budget and resources have real commitment (not "we'll figure it out")
+- [ ] Decision rights are clear (who decides what)
+- [ ] No stakeholder is withholding concerns or planning to revisit decisions later
+
+**You're NOT ready for Agree when**:
+- Stakeholders agreed in the meeting but raised concerns afterward
+- Key stakeholders weren't present for approval
+- Success criteria are vague ("make it better") or conflicting between stakeholders
+- Budget is "to be determined" or "flexible"
+- The approval was rushed to meet a deadline
+- Stakeholders say "just start and we'll figure out the details"
+
+### What Happens If You Proceed Too Early
+
+Moving to Agree without genuine alignment creates problems that surface later:
+- Architecture decisions made against misunderstood requirements
+- Design work that gets thrown away when real requirements emerge
+- Stakeholder conflicts that delay or derail the project mid-implementation
+- Scope creep as stakeholders add requirements they "thought were obvious"
+
+**When in doubt, stay in Align**. The cost of additional alignment conversations is far lower than the cost of rework from misunderstood requirements.
+

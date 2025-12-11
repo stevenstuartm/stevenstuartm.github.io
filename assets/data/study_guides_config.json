@@ -37,7 +37,8 @@
             "sdlc/aaa-cycle.md",
             "sdlc/aaa-phase1-align.md",
             "sdlc/aaa-phase2-agree.md",
-            "sdlc/aaa-phase3-apply.md"
+            "sdlc/aaa-phase3-apply.md",
+            "sdlc/aaa-scenarios.md"
           ]
         },
         {
@@ -134,13 +135,6 @@
             "architecture/deployment_infrastructure_patterns.md",
             "architecture/legacy-modernization-strategies.md",
             "architecture/service-mesh-architecture.md"
-          ]
-        },
-        {
-          "name": "Data Architecture",
-          "description": "Database fundamentals, data processing, and modern data architectures",
-          "guides": [
-            "data-architecture.md"
           ]
         },
         {
@@ -289,6 +283,35 @@
           "description": "Core networking concepts for developers",
           "guides": [
             "networking.md"
+          ]
+        }
+      ]
+    },
+    "Databases": {
+      "subcategories": [
+        {
+          "name": "Database Fundamentals",
+          "description": "Core database concepts, CAP theorem, ACID properties, and data modeling",
+          "guides": [
+            "data/database-fundamentals.md",
+            "data/data-architecture.md"
+          ]
+        },
+        {
+          "name": "Database Types",
+          "description": "Deep dives into each database type with use cases and trade-offs",
+          "guides": [
+            "data/relational-databases.md",
+            "data/key-value-stores.md",
+            "data/document-databases.md",
+            "data/wide-column-stores.md",
+            "data/graph-databases.md",
+            "data/time-series-databases.md",
+            "data/vector-databases.md",
+            "data/search-engines.md",
+            "data/in-memory-databases.md",
+            "data/multi-model-databases.md",
+            "data/newsql-databases.md"
           ]
         }
       ]
