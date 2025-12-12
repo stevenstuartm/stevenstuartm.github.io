@@ -83,12 +83,12 @@ Organizations often respond to past failures by adding controls: approval gates,
 ## 4. Measure Outcomes, Not Activity
 
 <blockquote class="pull-quote">
-<p>Measure outcomes against goals, not metrics against baselines.</p>
+<p>When a measure becomes a target, it ceases to be a good measure. — Goodhart's Law</p>
 </blockquote>
 
 Velocity charts go up and to the right. Sprint completions hit 100%. The dashboard is green. And the product slowly dies because no one asks whether any of it mattered.
 
-Activity metrics measure how fast you moved, not whether you moved in the right direction. Story points completed tells you nothing about problems solved. Burndown charts tell you nothing about customer satisfaction. Code coverage tells you nothing about whether the tests catch real bugs. These metrics are easy to track and satisfying to optimize, which makes them dangerous: teams optimize what they measure, and measuring activity produces more activity.
+Activity metrics measure how fast you moved, not whether you moved in the right direction. Story points completed tells you nothing about problems solved. Burndown charts tell you nothing about customer satisfaction. Code coverage tells you nothing about whether the tests catch real bugs. These metrics are easy to track and satisfying to optimize, which makes them dangerous. Teams optimize what they measure, and measuring activity produces more activity.
 
 Outcome measurement requires harder questions. Did the feature solve the actual problem? Would users notice if we removed it? Did the architectural change actually improve reliability, or did we just move complexity somewhere else? These questions don't fit neatly into dashboards, but they're the only ones that matter.
 
