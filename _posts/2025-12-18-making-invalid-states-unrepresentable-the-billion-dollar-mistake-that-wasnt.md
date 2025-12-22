@@ -55,6 +55,22 @@ public class UserRegistration
 
 Now invalid states cannot be constructed. There's no default email that masks a missing value. There's no way to create a registration without providing required data. The validation happens once, at the boundary, and everything downstream can trust the object is valid.
 
+C# 11 introduced the `required` keyword, which moves this enforcement to compile time for simpler cases:
+
+```csharp
+public class UserRegistration
+{
+    public required string Email { get; init; }
+    public required string Password { get; init; }
+}
+```
+
+The compiler refuses to let you construct a `UserRegistration` without setting both properties. This is "making invalid states unrepresentable" at its purest: the invalid state literally cannot be expressed in code that compiles.
+
+The distinction between `required` and constructor validation is straightforward: `required` enforces *presence*, constructors enforce *validity*. Use `required` when presence is all you need. Use constructors when you need validation logic, like checking that the email contains an `@` or that the password meets complexity requirements.
+
+However, `required` works best for internal domain objects and state that you control. At system boundaries where data arrives via deserialization, serializers and ORMs use parameterless constructors and set properties via reflection, bypassing the compile-time enforcement entirely. The same applies to some dependency injection containers and mocking frameworks. For API contracts and external data, you still need runtime validation with `[Required]` attributes or explicit checks. The compiler enforcement is powerful, but it only reaches code paths that go through normal construction.
+
 ### Where the Problem Usually Starts: API Contracts
 
 The domain model above is clean, but most developers encounter this tension at the API boundary first. Consider a typical request DTO:
