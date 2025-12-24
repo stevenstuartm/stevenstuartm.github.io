@@ -123,4 +123,4 @@ Then you pass it on. The next generation begins again, not from zero if you did 
 
 What is true often reveals itself through what we're willing to sacrifice for others. The selfless act, the choice made for future generations rather than for ourselves, is how truth becomes visible. It's how we know what we actually believe.
 
-That's the debt. That's the obligation. To create is to choose, and choosing to create for those who come after is how we provide hope to those yet to come.
+That's the debt. That's the obligation. To create is to choose, and choosing to create for those who come after is how we provide hope to those yet to come as much as for ourselves now.
