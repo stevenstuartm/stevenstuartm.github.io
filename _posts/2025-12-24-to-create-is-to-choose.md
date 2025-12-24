@@ -11,7 +11,7 @@ tags: [leadership, mentoring, philosophy, growth]
 <p>"To create is to choose."<br>— Hadrian Marlowe, <em>Sun Eater</em> by Christopher Ruocchio</p>
 </blockquote>
 
-The fictional character, Hadrian, speaks these words before sacrificing everything for a good he cannot prove will matter. He cannot see the outcome. He cannot guarantee his choice is right. But across his centuries-long life, he has perceived a truth greater than himself, a highest good that has proven itself through experience even if it cannot be proven through argument. And that truth demands sacrifice, not for itself, but for all of humanity. He doesn't have a perfect solution. He chooses anyway, because standing still in the current of causality isn't rest. It's dissolution. Creation is the only alternative.
+The fictional character, Hadrian, speaks these words before sacrificing everything for a good he cannot prove. He cannot see the exact outcome. But across his centuries-long life, he has perceived a truth greater than himself, a highest good that has proven itself through experience and reasoning. And that truth demands sacrifice, not for itself, but for all of humanity. He doesn't have a perfect solution. He chooses anyway, because standing still in the current of causality isn't rest. It's dissolution. Creation is the only alternative.
 
 But Hadrian could only make that choice because someone once sacrificed everything to make him into the man he would become. The grand sacrifice requires a foundation, and that foundation is built through the quieter, more common sacrifice of mentoring. We create the people capable of choosing well by first choosing to invest in them.
 
