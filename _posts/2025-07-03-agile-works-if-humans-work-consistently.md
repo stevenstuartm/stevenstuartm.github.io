@@ -7,13 +7,17 @@ tags: [agile, project-management, software-engineering, teams]
 description: "Why Agile works when teams align, agree, and deliver consistently: identifying common failure points and how to avoid them."
 ---
 
-I know conversations about Agile can feel exhausted at this point. Every team seems to have their own story about why it worked or why it failed.
+I know conversations about Agile can feel exhausted at this point. Every team seems to have their own story about why it worked or why it failed. Yet the pattern behind both outcomes is remarkably consistent, and it has less to do with ceremonies than with how people actually work together.
+
+Agile methodologies emerged as a response to the rigid, documentation-heavy processes that preceded them. The original manifesto emphasized individuals over processes, working software over documentation, customer collaboration over contracts, and responding to change over following plans. These values remain sound. The problem is that somewhere between the manifesto and the modern sprint planning meeting, many organizations lost the plot.
+
+What I've observed is that Agile succeeds or fails based on whether teams can maintain three things: genuine alignment on what matters, explicit agreement on what they're building, and disciplined execution of what was agreed. When any of these breaks down, Agile becomes bureaucracy masquerading as a process.
 
 <blockquote class="pull-quote">
 <p>Agile works when teams follow a simple pattern: align with needs, agree to plans, and apply what was agreed. When that pattern breaks down, Agile becomes bureaucracy masquerading as a process.</p>
 </blockquote>
 
-The failure points are predictable.
+The failure points are predictable, and they almost always trace back to one of these three areas.
 
 ## The Personnel Problem
 

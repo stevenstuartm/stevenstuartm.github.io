@@ -4,49 +4,63 @@ title: "TDD Tests Assumptions, Not Just Code"
 date: 2025-07-28
 series: "Development Practice"
 tags: [tdd, testing, software-design, best-practices]
-description: "Reframing TDD as testing assumptions rather than just code: executable business hypotheses that prevent building the wrong thing."
+description: "TDD's real value isn't code coverage, it's catching wrong assumptions before you deliver the wrong thing."
 ---
 
-I've been thinking about TDD's place in modern development, and I keep running into the same tension. The practical reality often contradicts the theoretical promise. Teams write tests for features they don't yet understand, design interfaces around incomplete requirements, and spend hours writing tests before discovering the domain model was wrong. Then they rewrite everything. The tests that guided development get thrown away.
+The real problem in software development isn't buggy code; it's building the wrong thing. We should be focused on preventing the delivery of features that don't match what users need, implementing requirements that were misunderstood, or discovering halfway through that the domain model was wrong. Test-Driven Development (TDD) is one solution to this problem, but it's often a very poorly understood concept and even those who do understand it can still do TDD wrong.
 
-This feels wasteful. Many experienced developers achieve similar results through focused discovery followed by disciplined testing, delivering quality code without strict TDD adherence. The debates get heated: advocates measure test coverage and celebrate red-green-refactor while skeptics count rewritten tests as waste.
+The promise of TDD is that tests guide design and catch bugs early. The reality, sometimes, is that teams write tests for features they don't yet understand, design interfaces around incomplete requirements, and spend hours on tests that get thrown away when understanding finally arrives. The resulting debate often gets heated. Advocates measure test coverage and celebrate red-green-refactor. Skeptics count rewritten tests as waste. Both sides miss what actually happened: when done right, those rewritten tests forced understanding before the wrong system got built and delivered. When done wrong, they were just ceremony.
 
 <blockquote class="pull-quote">
-<p>I think we're framing TDD wrong in a way that creates division rather than surfacing value. Both sides may be missing the greater potential.</p>
+<p>TDD's value isn't in the tests. It's in the understanding that writing them demands.</p>
 </blockquote>
 
 ## Testing Assumptions, Not Just Code
 
-Most discussions frame TDD as a code quality tool: write tests first, implement to pass, refactor for quality. Coverage metrics become the measure of success.
+Most discussions frame TDD as a code quality tool: write tests first, implement to pass, refactor for quality. Coverage metrics become the measure of success. But every test is also a test of assumptions about user needs and business logic. When you write a test asserting business rules, you're testing assumptions about how the system should behave. Not just your assumptions as a developer, but the assumptions baked into the requirements themselves. Writing the test first means you don't build for days before discovering misalignment. You might find that an entire scope of work needs to go back for reconsideration, and finding that on day one is obviously better than finding it on day ten.
 
-But every test is also an executable hypothesis about user needs and business logic. When you write a test asserting business rules, you're testing assumptions about how the system should behave. When that test changes because requirements were misunderstood, the test delivered value by surfacing wrong assumptions before you built the wrong system.
+Consider a test asserting that `CalculateDiscount(customer)` returns 15% for "premium" customers. That test encodes assumptions about what "premium" means, what discount they deserve, and whether discounts even work this way. Discovery can happen immediately: writing the test forces you to define "premium" concretely, and you realize the customer object has no tier field, or that the pricing service doesn't support percentage-based discounts, or that the requirement contradicts existing business rules. The act of writing the test surfaces the gap before any implementation begins. Or discovery happens later when product clarifies that discounts are tiered by purchase history rather than customer tier. Either way, the test change isn't waste. It's learning captured before shipping wrong behavior.
 
-Changed tests aren't waste; they're evidence of learning. The alternative is implementing vague requirements, shipping to production, and discovering the actual rules through production bugs.
+Changed tests aren't waste; they're evidence of learning. The earlier you surface wrong assumptions, the cheaper they are to fix. Tests force specific questions that conversation alone won't surface. Writing assertions exposes complexity that wasn't obvious when discussing requirements abstractly.
 
-## Executable Business Hypotheses
+This doesn't mean tests must stay purely conceptual to avoid waste. Mocked code and implementation details in tests encode their own assumptions that sometimes only get validated through actual implementation. Some test code will get thrown away. That's fine. A little code waste is a small price compared to the larger waste of building the wrong system because critical misalignments went undiscovered. That said, when large test refactors happen repeatedly, it might signal something else: the developer who wrote the initial tests wasn't focused on alignment and was just going through the motions.
 
-What if we reframed TDD as testing business assumptions rather than just code quality? The test suite becomes a living document of hypotheses about how the business works. When a test changes, you're documenting discovered truth, not admitting failure.
+TDD treated as a checklist rather than a discipline for understanding will produce tests that don't surface assumptions early. The waste isn't in TDD itself; it's in treating TDD as compliance rather than inquiry.
 
-This shift changes how we evaluate TDD's value. Instead of measuring test coverage percentage, we measure how many wrong assumptions were caught before production. Instead of celebrating passing tests, we celebrate tests that revealed misunderstood requirements before implementation. Instead of viewing rewritten tests as waste, we recognize them as questions answered before building the wrong system.
+## Stop Measuring Success by Tests
 
-Tests force specific questions that conversation alone won't surface. Writing executable assertions exposes complexity that wasn't obvious when discussing requirements abstractly. The test suite becomes documentation that new developers can read to understand system constraints without archeology through old conversations and tickets.
+This reframing should change what we measure, but not by replacing one test metric with another. Using test coverage as a success metric is a distraction. Measuring "assumptions caught" would be too. The only thing worth measuring success by is value delivered.
+
+Coverage metrics can still provide useful insight into quality gaps, but think in terms of use case coverage rather than line coverage. Are the critical business scenarios tested? Are the edge cases stakeholders care about covered? That's a different question than "what percentage of lines have tests?"
+
+Tests are a tool, not an outcome. When teams treat coverage percentages as goals or count rewritten tests as waste, they've confused the means for the end. The question isn't "how many tests do we have?" or even "how many wrong assumptions did we catch?" The question is "did we deliver what users actually needed?"
+
+The test suite does have secondary value as documentation that new developers can read to understand system constraints without digging through old conversations and tickets. But that's a side effect, not a success metric.
 
 ## What This Means Practically
 
-Focus on testing assumptions that matter most to users and business logic. If requirements are clear and stable, write tests to validate implementation. If requirements are uncertain, write tests to validate assumptions and expect them to change as understanding develops.
+Focus on testing assumptions that matter most. Not all assumptions carry equal risk. Prioritize tests that validate:
 
-Don't measure success by coverage percentage. Measure it by how many wrong assumptions were caught, how quickly tests surfaced ambiguity in requirements, and how often tests forced clarifying conversations that prevented bugs.
+- **Business rules** — How discounts work, what triggers notifications, when transactions are valid
+- **Edge cases stakeholders haven't considered** — What happens when the cart is empty? When the user has no purchase history?
+- **Data validity assumptions** — What "valid" input looks like, what formats are acceptable, what happens with missing fields
 
-Stop debating "test-first versus test-after" and start asking: What assumptions are we making about user needs? What's the fastest way to validate them? Sometimes that's writing a test first, other times it's building a prototype first, and sometimes it's showing mockups to users first. The goal isn't perfect tests; it's perfect understanding.
+If requirements are clear and stable, write tests to validate implementation. If requirements are uncertain, write tests to validate assumptions and expect them to change as understanding develops. This distinction matters more than any debate about test-first versus test-after.
+
+The better question is what assumptions you're making about user needs and how to validate them fastest. Sometimes that's writing a test first, other times it's building a prototype first, and sometimes it's showing mockups to users first. The goal isn't perfect tests; it's validated understanding.
 
 <blockquote class="pull-quote">
 <p>The greatest value of TDD isn't in the tests that pass. It's in the tests that change because they revealed assumptions worth questioning.</p>
 </blockquote>
 
-## TDD as AAA at the Code Level
+## Start with Understanding
 
-This reframing connects to a broader discipline I call [AAA (Align-Agree-Apply)](/study-guides/sdlc/aaa-cycle.html){:target="_blank" rel="noopener noreferrer"}. The test is alignment: what should this code do? The passing assertion is agreement: this is the contract we're committing to. Implementation honors that agreement by making the test pass.
+Writing the test first forces a question: what should this code actually do? That question demands understanding before implementation. The passing assertion represents a commitment: this is the contract we're building to. Implementation honors that commitment by making the test pass.
 
-When tests change during development, you're realigning based on discovery. When tests fail after changes, they're surfacing a broken agreement. The same values that prevent project failures (starting with understanding, securing genuine commitment, honoring what was agreed) prevent code failures when applied at the technical level.
+When tests change during development, you're realigning based on discovery. When tests fail after changes, they're surfacing broken commitments that need attention. The discipline isn't about tests; it's about starting with understanding, securing genuine commitment to what you're building, and then honoring what was agreed.
 
-TDD isn't just a testing practice; it's the AAA discipline encoded in your development workflow.
+The real problem in software development is building the wrong thing. TDD addresses this by forcing clarity before code, but only when practiced as inquiry rather than compliance. Tests that surface wrong assumptions early are valuable even when they get rewritten. Tests written as ceremony produce waste without insight.
+
+Stop treating coverage as a goal. Stop counting rewritten tests as failure. If requirements are uncertain, write tests to validate assumptions and expect them to change. If requirements are clear, write tests to validate implementation. Either way, measure what matters: did you deliver what users actually needed?
+
+TDD isn't just a testing practice. It's a discipline for understanding.
