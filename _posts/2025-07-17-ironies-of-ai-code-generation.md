@@ -2,7 +2,7 @@
 layout: post
 title: "AI Code Generation Requires the Skills It Promises to Replace"
 date: 2025-07-17
-series: "Technology & Tools"
+series: "AI in Practice"
 tags: [ai, coding, productivity, tools]
 description: "AI assistants generate code faster, but only if you already know what good code looks like and can validate their output; the very skills they claim to eliminate."
 ---
