@@ -79,54 +79,159 @@ Order Service → OrderCreated event → Event Bus
 
 *Pattern introduced by Hector Garcia-Molina and Kenneth Salem (1987), popularized for microservices by Chris Richardson and others*
 
-Manages distributed transactions by breaking them into a series of local transactions, each with a compensating transaction to undo changes if the saga fails. Provides eventual consistency without requiring distributed ACID transactions.
+A saga breaks a distributed transaction into a sequence of local transactions. Each service performs its local transaction and publishes an event or calls the next step. If any step fails, the saga executes compensating transactions in reverse order to undo the changes already made.
+
+**The Problem Sagas Solve**:
+
+In a monolith, a single database transaction can span multiple operations atomically. In microservices with separate databases, you can't use a single transaction. Traditional distributed transactions (2PC/XA) are slow, don't scale, and many databases don't support them.
+
+```
+Monolith (single transaction):          Microservices (no shared transaction):
+┌─────────────────────────────────┐     ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
+│ BEGIN TRANSACTION               │     │ Order       │  │ Payment     │  │ Inventory   │
+│   INSERT order                  │     │ Service     │  │ Service     │  │ Service     │
+│   UPDATE inventory              │     │ (own DB)    │  │ (own DB)    │  │ (own DB)    │
+│   INSERT payment                │     └─────────────┘  └─────────────┘  └─────────────┘
+│ COMMIT (all or nothing)         │           │               │               │
+└─────────────────────────────────┘           └───────────────┴───────────────┘
+                                              How do we make these consistent?
+```
+
+**How a Saga Works**:
+
+```
+Happy Path (all steps succeed):
+
+Step 1              Step 2              Step 3              Result
+┌──────────┐       ┌──────────┐       ┌──────────┐       ┌──────────┐
+│ Create   │──────→│ Reserve  │──────→│ Charge   │──────→│ Complete │
+│ Order    │       │ Inventory│       │ Payment  │       │ Order    │
+│ (pending)│       │          │       │          │       │ (confirm)│
+└──────────┘       └──────────┘       └──────────┘       └──────────┘
+    T1                 T2                 T3
+
+Failure Path (step 3 fails, compensate in reverse):
+
+Step 1              Step 2              Step 3 FAILS
+┌──────────┐       ┌──────────┐       ┌──────────┐
+│ Create   │──────→│ Reserve  │──────→│ Charge   │ ✗ Payment declined
+│ Order    │       │ Inventory│       │ Payment  │
+└──────────┘       └──────────┘       └──────────┘
+                        │                   │
+                        │    Compensate     │
+                        │←──────────────────┘
+                        ↓
+                   ┌──────────┐       ┌──────────┐
+                   │ Release  │←──────│ Cancel   │
+                   │ Inventory│       │ Order    │
+                   │ (C2)     │       │ (C1)     │
+                   └──────────┘       └──────────┘
+```
+
+**Compensating Transactions**:
+
+A compensating transaction undoes the effect of a previous step. It's not always a simple rollback—it's a semantic undo that makes business sense.
+
+| Original Transaction | Compensating Transaction | Why Not Simple Rollback? |
+|---------------------|-------------------------|-------------------------|
+| Create order | Cancel order | Order ID already assigned, must mark cancelled not delete |
+| Reserve inventory | Release inventory | Other orders may have reserved same items since |
+| Charge payment | Refund payment | Can't undo a charge; must issue separate refund |
+| Send email | Send correction email | Can't unsend; must send follow-up |
+
+```
+Example: Order saga with compensation
+
+T1: CreateOrder(items, customer)     → C1: CancelOrder(orderId)
+T2: ReserveInventory(items)          → C2: ReleaseInventory(items)
+T3: ChargePayment(customer, amount)  → C3: RefundPayment(customer, amount)
+T4: ShipOrder(orderId)               → C4: ??? (can't unship!)
+
+Note: Some actions can't be compensated (shipping). These are called
+"pivot transactions" - once executed, the saga must complete forward.
+```
 
 **Use When**:
-- Need to maintain consistency across multiple services
-- Services have separate databases (Database-per-Service pattern)
+- Need consistency across multiple services with separate databases
 - Cannot use distributed transactions (2PC/XA)
-- Long-running business processes
-- Microservices architecture
-
-**Key Concepts**:
-
-- **Compensating transactions**: Actions that semantically undo previous steps (not always true rollback)
-- **Semantic lock**: Resources are locked for the saga duration through business logic, not database locks
-- **Trade-off**: Eventual consistency instead of immediate consistency
+- Business processes span multiple services
+- You can define compensating actions for each step
 
 **Implementation Approaches**:
 
-**Orchestration-based Saga**: Central coordinator (saga orchestrator) manages the saga
+**Orchestration-based Saga**: A central orchestrator tells each service what to do and handles failures.
 
 ```
-Saga Orchestrator:
-  1. Reserve flight → Success
-  2. Reserve hotel → Success
-  3. Reserve car → Failed
-  4. Compensate: Cancel hotel reservation
-  5. Compensate: Cancel flight reservation
-  6. Return failure to user
+┌─────────────────────────────────────────────────────────────────┐
+│                      Saga Orchestrator                          │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │ Saga State: { orderId: 123, step: "PAYMENT", status: OK }│   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+         │              │              │              │
+         ▼              ▼              ▼              ▼
+    ┌─────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐
+    │ Order   │   │Inventory│   │ Payment │   │Shipping │
+    │ Service │   │ Service │   │ Service │   │ Service │
+    └─────────┘   └─────────┘   └─────────┘   └─────────┘
+
+Orchestrator:
+  1. Call OrderService.create() → OK, orderId=123
+  2. Call InventoryService.reserve(123) → OK
+  3. Call PaymentService.charge(123) → FAILED
+  4. Call InventoryService.release(123) → OK (compensate)
+  5. Call OrderService.cancel(123) → OK (compensate)
+  6. Return failure to client
 ```
 
-*Pros*: Centralized logic, easy to monitor, clear workflow
-*Cons*: Orchestrator is single point of coupling
-
-**Choreography-based Saga**: Services coordinate through events
+**Choreography-based Saga**: Services react to events and publish their own events. No central coordinator.
 
 ```
-Book Flight → FlightReserved event
-           → Book Hotel → HotelReserved event
-                       → Book Car → CarReservationFailed event
-                                 → HotelCancelled event
-                                 → FlightCancelled event
+┌─────────┐  OrderCreated  ┌─────────┐ InventoryReserved ┌─────────┐
+│ Order   │───────────────→│Inventory│──────────────────→│ Payment │
+│ Service │                │ Service │                   │ Service │
+└─────────┘                └─────────┘                   └─────────┘
+     ↑                          ↑                             │
+     │                          │                             │
+     │    OrderCancelled        │    InventoryReleased        │ PaymentFailed
+     └──────────────────────────┴─────────────────────────────┘
+
+Each service:
+  1. Listens for events it cares about
+  2. Performs its local transaction
+  3. Publishes result event
+  4. If it receives a failure event, publishes compensation event
 ```
 
-*Pros*: Loose coupling, no central coordinator
-*Cons*: Hard to understand workflow, difficult to debug
+| Approach | Pros | Cons |
+|----------|------|------|
+| Orchestration | Easy to understand workflow, centralized error handling, clear saga state | Orchestrator is coupling point, can become bottleneck |
+| Choreography | Loose coupling, no single point of failure, services are independent | Hard to understand full workflow, difficult to debug, no central view |
 
-**Example**: Travel booking saga that reserves flight, hotel, and car rental. If any step fails, compensating transactions cancel previous reservations.
+**Handling Failures in Compensations**:
 
-**Important**: Compensating transactions must be idempotent since they may be retried.
+What if a compensating transaction fails? You can't compensate a compensation.
+
+```
+Saga failure during compensation:
+
+T1 ✓ → T2 ✓ → T3 ✗ → C2 ✗ (compensation failed!)
+
+Options:
+1. Retry C2 with backoff (compensations should be idempotent)
+2. Log for manual intervention
+3. Forward recovery: try to complete saga anyway if possible
+
+Best practice: Make compensations idempotent and retriable
+  ReleaseInventory(orderId) should succeed even if called twice
+```
+
+<div class="callout callout--warning">
+<p class="callout__title">Saga Limitations</p>
+<p><strong>No isolation</strong>: Other transactions can see intermediate states (order exists but payment pending). Use semantic locks or "pending" states to handle this.</p>
+<p><strong>Complexity</strong>: N steps means N compensating transactions to implement and test.</p>
+<p><strong>Eventual consistency</strong>: System is temporarily inconsistent during saga execution.</p>
+</div>
 
 ---
 
@@ -147,9 +252,11 @@ Book Flight → FlightReserved event
 
 ### Decision Framework
 
-**Need strict workflow control?** → Orchestration
-**Want loose coupling?** → Choreography
-**Need distributed transactions?** → Saga (choose orchestration or choreography based on other needs)
+| Question | Pattern |
+|----------|---------|
+| Need strict workflow control? | Orchestration |
+| Want loose coupling? | Choreography |
+| Need distributed transactions? | Saga (choose orchestration or choreography based on other needs) |
 
 ### Trade-offs
 

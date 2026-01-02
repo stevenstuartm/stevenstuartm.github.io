@@ -25,10 +25,13 @@ tags: [architecture, governance, automation, aws, security, practical]
 ### Key Questions
 
 **1. What problem are we solving?**
-- **Inconsistent architecture** → Code governance (ArchUnit, analyzers)
-- **Cloud cost overruns** → AWS cost governance (Budgets, tagging)
-- **Security/compliance** → Security Hub, Config, compliance automation
-- **Non-compliant infrastructure** → IaC validation (Guard, OPA)
+
+| Problem | Solution |
+|---------|----------|
+| Inconsistent architecture | Code governance (ArchUnit, analyzers) |
+| Cloud cost overruns | AWS cost governance (Budgets, tagging) |
+| Security/compliance | Security Hub, Config, compliance automation |
+| Non-compliant infrastructure | IaC validation (Guard, OPA) |
 
 **2. What can we maintain?**
 - Tools require ongoing maintenance, updates, and tuning

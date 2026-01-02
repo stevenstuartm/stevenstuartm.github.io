@@ -154,10 +154,12 @@ Timeout (ensures each attempt has max wait time)
 
 ### Decision Tree
 
-**Preventing cascading failures?** → Circuit Breaker
-**Temporary network glitches?** → Retry with backoff
-**Isolating critical vs non-critical?** → Bulkhead
-**Operations might hang?** → Timeout
+| Question | Pattern |
+|----------|---------|
+| Preventing cascading failures? | Circuit Breaker |
+| Temporary network glitches? | Retry with backoff |
+| Isolating critical vs non-critical? | Bulkhead |
+| Operations might hang? | Timeout |
 
 ### Best Practices
 

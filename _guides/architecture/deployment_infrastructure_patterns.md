@@ -3,17 +3,17 @@ layout: guide
 title: "Deployment and Infrastructure Patterns"
 category: Architecture
 subcategory: Patterns
-description: "Infrastructure patterns including sidecar, ambassador, anti-corruption layer, blue-green deployment, and canary releases for robust deployment strategies."
+description: "Infrastructure patterns including sidecar, ambassador, backend for frontend (BFF), and service mesh for robust deployment strategies."
 tags: [architecture, design-patterns, infrastructure, kubernetes, service-mesh, deployment]
 ---
 
 These patterns address how applications are deployed, managed, and operated in distributed environments, focusing on infrastructure concerns and operational efficiency.
 
+## Sidecar Pattern
+
 <blockquote class="pull-quote">
 <p>The sidecar pattern separates cross-cutting concerns from application code, enabling consistent functionality across polyglot services without code changes.</p>
 </blockquote>
-
-## Sidecar Pattern
 
 Deploys supporting functionality (logging, monitoring, configuration) in a separate process alongside the main application.
 
@@ -177,10 +177,12 @@ Data Plane (Envoy Sidecars):
 
 ### Decision Tree
 
-**Need cross-cutting functionality?** → Sidecar
-**Centralize outbound networking?** → Ambassador
-**Different client requirements?** → BFF
-**Many microservices needing consistent policies?** → Service Mesh
+| Question | Pattern |
+|----------|---------|
+| Need cross-cutting functionality? | Sidecar |
+| Centralize outbound networking? | Ambassador |
+| Different client requirements? | BFF |
+| Many microservices needing consistent policies? | Service Mesh |
 
 ### Implementation Tools
 

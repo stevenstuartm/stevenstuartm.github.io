@@ -189,11 +189,13 @@ Eliminates the database as a bottleneck by keeping all active data in replicated
 
 From your Align phase (see [Architecture Foundations](/study-guides/architecture/ArchitectureFoundations.html#architecture-characteristics)):
 
-- If **simplicity and cost** matter most → Consider monolithic styles
-- If **scalability and independence** matter most → Consider distributed styles
-- If **evolvability** matters most → Consider microservices or modular monolith
-- If **responsiveness** matters most → Consider event-driven or space-based
-- If **deployment independence** matters → Consider service-based or microservices
+| If This Matters Most | Consider |
+|----------------------|----------|
+| Simplicity and cost | Monolithic styles |
+| Scalability and independence | Distributed styles |
+| Evolvability | Microservices or modular monolith |
+| Responsiveness | Event-driven or space-based |
+| Deployment independence | Service-based or microservices |
 
 ### Then Ask Constraining Questions
 

@@ -67,35 +67,78 @@ Recommendation Service → Neo4j
 
 *Pattern popularized by Martin Fowler and Greg Young in early 2000s*
 
-Stores all changes to application state as an immutable sequence of events rather than storing only current state. The current state is derived by replaying events from the beginning.
+Instead of storing just the current state, stores every change as an immutable event. The current state is derived by replaying all events from the beginning. Think of it like a bank statement: you can see every transaction, not just the current balance.
+
+**How It Works**:
+
+```
+Traditional (state-based):              Event Sourcing:
+┌─────────────────────┐                 ┌─────────────────────────────────┐
+│ Account             │                 │ Event Store                     │
+│ ─────────────────── │                 │ ─────────────────────────────── │
+│ id: 123             │                 │ 1. AccountOpened(id:123)        │
+│ balance: $120       │                 │ 2. Deposited($100)              │
+│ status: active      │                 │ 3. Withdrawn($30)               │
+│                     │                 │ 4. Deposited($50)               │
+│ (only current state)│                 │                                 │
+└─────────────────────┘                 │ Current state = replay all      │
+                                        │ Balance = 0 + 100 - 30 + 50     │
+                                        │         = $120                  │
+                                        └─────────────────────────────────┘
+```
 
 <blockquote class="pull-quote">
 <p>Event sourcing maintains a complete audit trail of all changes, allowing you to replay events for testing, analytics, or answering temporal queries like "what was the state at time X?"</p>
 </blockquote>
 
 **Use When**:
-- Need complete audit trail of all changes
-- Want to replay events for testing or analytics
-- Implementing complex business domains (especially with Domain-Driven Design)
-- Building systems that benefit from temporal queries
+- Need complete audit trail of all changes (finance, healthcare, legal)
+- Want to replay events for testing, debugging, or analytics
+- Building systems that answer temporal queries ("what was the state on March 1st?")
+- Implementing complex business domains where understanding "how we got here" matters
+
+**Snapshotting for Performance**:
+
+Replaying millions of events to get current state is slow. Snapshots periodically save the computed state so you only replay events since the last snapshot.
+
+```
+Event Store with Snapshots:
+┌────────────────────────────────────────────────────────────────────┐
+│ Events 1-1000 │ Snapshot @ 1000 │ Events 1001-2000 │ Snapshot @2000│
+│               │ balance: $5000  │                  │ balance: $7500│
+└────────────────────────────────────────────────────────────────────┘
+
+To get current state (at event 2347):
+  1. Load snapshot @ 2000 (balance: $7500)
+  2. Replay only events 2001-2347
+  3. Much faster than replaying all 2347 events
+```
+
+**Schema Evolution**:
+
+Events are immutable, but your event schema will change over time. Strategies:
+
+| Strategy | How It Works | Trade-off |
+|----------|--------------|-----------|
+| Upcasting | Transform old events to new schema on read | No data migration, runtime overhead |
+| Versioned events | Store schema version with event, handle each version | Explicit handling, more code paths |
+| Copy-transform | Migrate all events to new schema | One-time cost, breaks immutability |
+
+```
+Example: Adding a field to DepositedEvent
+
+v1: { type: "Deposited", amount: 100 }
+v2: { type: "Deposited", amount: 100, currency: "USD" }
+
+Upcaster for v1 → v2:
+  if event.version == 1:
+    event.currency = "USD"  // Default for legacy events
+```
 
 <div class="callout callout--warning">
-<p class="callout__title">Event Sourcing Considerations</p>
-<ul>
-<li>Event store grows continuously (implement snapshotting for performance)</li>
-<li>Complex queries may require rebuilding state from events</li>
-<li>Need to handle event schema evolution carefully</li>
-<li>Deleting data is complex (GDPR compliance requires special handling)</li>
-</ul>
+<p class="callout__title">GDPR and Data Deletion</p>
+<p>Event sourcing conflicts with "right to be forgotten" requirements. Solutions include crypto-shredding (encrypt PII per user, delete keys to make data unreadable) or keeping deletion tombstone events that indicate "treat as if this user never existed."</p>
 </div>
-
-**Example**: Banking system that stores all account transactions as events (deposit, withdrawal, transfer) and calculates current balance by replaying events.
-
-```
-Events: [Deposit($100), Withdrawal($30), Deposit($50)]
-Current Balance = Sum of events = $120
-Can also query: "What was balance on March 1st?" by replaying events up to that date
-```
 
 ---
 
@@ -103,33 +146,85 @@ Can also query: "What was balance on March 1st?" by replaying events up to that 
 
 *Pattern introduced by Greg Young (2010), based on Bertrand Meyer's Command-Query Separation principle (1988)*
 
-Separates read (query) and write (command) operations into different models, often with separate databases optimized for each operation type. Goes beyond CQS by using separate data models, not just separate methods.
+Uses separate models for reading and writing data. Writes go to a normalized model optimized for consistency; reads come from a denormalized model optimized for queries. The two models are synchronized asynchronously.
 
-**Use When**:
-- Read and write patterns are significantly different
-- Need to scale reads and writes independently
-- Complex reporting requirements
-- Different consistency requirements for reads and writes
-- Working with Event Sourcing (natural fit)
-
-<div class="callout callout--note">
-<p class="callout__title">CQRS Implementation Options</p>
-<p><strong>Simple</strong>: Separate models, same database</p>
-<p><strong>Advanced</strong>: Separate databases for reads and writes</p>
-<p><strong>Full</strong>: Event sourcing for writes, materialized projections for reads</p>
-</div>
-
-**Example**: Social media platform with write-optimized database for posts and read-optimized database with denormalized data for feeds and searches.
+**How It Works**:
 
 ```
-Write: Post Service → Command DB (normalized)
-Read: Feed Service → Query DB (denormalized, optimized for feeds)
-Sync: Command DB → Events → Update Query DB
+                    Commands (writes)              Queries (reads)
+                          │                              │
+                          ▼                              ▼
+                  ┌───────────────┐              ┌───────────────┐
+                  │ Command Model │              │  Query Model  │
+                  │  (normalized) │              │(denormalized) │
+                  └───────┬───────┘              └───────────────┘
+                          │                              ▲
+                          │    ┌─────────────────┐       │
+                          └───→│ Sync Mechanism  │───────┘
+                               │ (events/CDC/    │
+                               │  polling)       │
+                               └─────────────────┘
+
+Write: CreatePost(userId, content)
+  → Command DB: INSERT into posts, users_posts, etc. (normalized)
+  → Publish: PostCreated event
+
+Sync: PostCreated event received
+  → Query DB: UPDATE user_feed (denormalized: includes user name, avatar, etc.)
+
+Read: GetUserFeed(userId)
+  → Query DB: SELECT * FROM user_feed WHERE user_id = ? (single table, fast)
+```
+
+**Use When**:
+- Read and write patterns are significantly different (10:1 or higher read ratio)
+- Need to scale reads and writes independently
+- Complex reporting requirements that don't fit the write model
+- Different consistency requirements (strong for writes, eventual OK for reads)
+
+**Synchronization Mechanisms**:
+
+| Mechanism | How It Works | Latency | Complexity |
+|-----------|--------------|---------|------------|
+| Same transaction | Write to both in one transaction | 0ms | Low (but defeats purpose) |
+| Events | Publish domain events, projector updates query model | 10-100ms | Medium |
+| CDC (Change Data Capture) | Stream database changes to projector | 1-10s | Medium |
+| Polling | Periodically query command DB for changes | 1-60s | Low |
+
+```
+Eventual Consistency Timeline:
+
+T=0:    User creates post
+T=1ms:  Post saved to Command DB
+T=2ms:  PostCreated event published
+T=50ms: Event received by projector
+T=55ms: Query DB updated
+T=60ms: User's feed shows new post
+
+Reader sees stale data for ~60ms
+(Acceptable for most use cases; not acceptable for banking)
+```
+
+**Example**: E-commerce order history.
+
+```
+Command Model (normalized):
+  orders: id, user_id, status, total, created_at
+  order_items: order_id, product_id, quantity, price
+  products: id, name, description, current_price
+
+Query Model (denormalized for "My Orders" page):
+  user_orders: user_id, order_id, status, total, created_at,
+               items: [{name, quantity, price, image_url}, ...]
+
+Write: PlaceOrder → Insert into orders + order_items (normalized, ACID)
+Sync:  OrderPlaced event → Update user_orders (denormalized, fast reads)
+Read:  GetMyOrders → SELECT from user_orders (single query, no joins)
 ```
 
 <div class="callout callout--warning">
 <p class="callout__title">Warning</p>
-<p>CQRS adds complexity. Don't use unless you have a specific problem it solves.</p>
+<p>CQRS adds complexity: two models, synchronization logic, eventual consistency handling. Don't use unless you have a specific problem it solves (high read/write ratio, complex queries, independent scaling needs).</p>
 </div>
 
 ---
@@ -171,11 +266,13 @@ Dashboard: SELECT * FROM daily_sales_summary WHERE date = today
 
 ### Decision Tree
 
-**Independent services?** → Database per Service
-**Need ACID across services?** → Shared Database (consider monolith instead)
-**Need full audit trail?** → Event Sourcing
-**Different read/write patterns?** → CQRS
-**Expensive queries?** → Materialized View
+| Question | Pattern |
+|----------|---------|
+| Independent services? | Database per Service |
+| Need ACID across services? | Shared Database (consider monolith instead) |
+| Need full audit trail? | Event Sourcing |
+| Different read/write patterns? | CQRS |
+| Expensive queries? | Materialized View |
 
 ### Consistency Trade-offs
 

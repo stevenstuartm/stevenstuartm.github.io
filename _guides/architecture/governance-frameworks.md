@@ -27,10 +27,13 @@ Before selecting a framework, understand your governance needs based on organiza
 ### Key Questions to Ask
 
 **1. What problem are we trying to solve?**
-- **Inconsistent architecture across teams** → Framework with architecture principles and review processes
-- **Slow decision-making** → Lightweight decision-making framework (ADRs, Well-Architected)
-- **Enterprise transformation** → Comprehensive framework like TOGAF
-- **Multi-cloud strategy** → Cloud-agnostic framework or hybrid approach
+
+| Problem | Solution |
+|---------|----------|
+| Inconsistent architecture across teams | Framework with architecture principles and review processes |
+| Slow decision-making | Lightweight decision-making framework (ADRs, Well-Architected) |
+| Enterprise transformation | Comprehensive framework like TOGAF |
+| Multi-cloud strategy | Cloud-agnostic framework or hybrid approach |
 
 **2. What's our current maturity level?**
 - **Ad-hoc (Level 1):** Start with AWS Well-Architected Framework and basic review processes

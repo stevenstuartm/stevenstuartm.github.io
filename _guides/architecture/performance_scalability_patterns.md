@@ -123,31 +123,118 @@ Application → Cache Layer → Database
 
 ## Sharding
 
-Horizontally partitions data across multiple database instances based on a sharding key.
+Splits a single database into multiple smaller databases (shards), each holding a portion of the data. Requests are routed to the appropriate shard based on a sharding key. This allows horizontal scaling when a single database can't handle the load.
+
+**How It Works**:
+
+```
+Before Sharding:                    After Sharding:
+┌─────────────────────┐            ┌─────────┐ ┌─────────┐ ┌─────────┐
+│   Single Database   │            │ Shard 0 │ │ Shard 1 │ │ Shard 2 │
+│   100M users        │     →      │ Users   │ │ Users   │ │ Users   │
+│   (overloaded)      │            │ A-H     │ │ I-P     │ │ Q-Z     │
+└─────────────────────┘            └─────────┘ └─────────┘ └─────────┘
+
+Application:
+  user = getUser("john_doe")
+  shard = routeToShard("john_doe")  // → Shard 1 (I-P)
+  return shard.query("SELECT * FROM users WHERE username = ?", "john_doe")
+```
 
 **Use When**:
-- Single database cannot handle load
-- Data set is too large for one server
-- Need to scale beyond vertical limits
+- Single database cannot handle load (CPU, connections, IOPS)
+- Data set is too large for one server (storage limits)
+- Need to scale beyond vertical limits (can't buy bigger hardware)
 
 **Sharding Strategies**:
 
-- **Range-based**: Partition by value ranges
-- **Hash-based**: Use hash function on sharding key
-- **Directory-based**: Lookup service maps keys to shards
-
-**Challenges**:
-- Complex queries across shards
-- Rebalancing when adding/removing shards
-- Handling hot spots
-
-**Example**: Social media platform sharding user data by user ID hash, distributing users evenly across database shards.
+| Strategy | How It Works | Pros | Cons |
+|----------|--------------|------|------|
+| Range-based | Partition by value ranges (A-H, I-P, Q-Z) | Simple, range queries work | Uneven distribution, hot spots |
+| Hash-based | hash(key) % num_shards | Even distribution | Range queries hit all shards |
+| Directory-based | Lookup table maps keys to shards | Flexible placement | Lookup overhead, single point of failure |
 
 ```
-User ID 1234 → hash(1234) % 4 = 2 → Shard 2
-User ID 5678 → hash(5678) % 4 = 1 → Shard 1
-User ID 9012 → hash(9012) % 4 = 0 → Shard 0
+Range-based example (by date):
+  Shard 1: orders from 2023
+  Shard 2: orders from 2024
+  Problem: Shard 2 gets all new traffic (hot spot)
+
+Hash-based example:
+  Shard = hash(user_id) % 3
+  user_id=100 → hash=7834 → 7834 % 3 = 1 → Shard 1
+  user_id=101 → hash=2941 → 2941 % 3 = 2 → Shard 2
+  Evenly distributed, but "get orders from Jan 2024" hits all shards
 ```
+
+**Hot Spot Problem and Mitigation**:
+
+A hot spot occurs when one shard receives disproportionate traffic. Causes include popular users, trending content, or time-based keys.
+
+```
+Hot Spot Example:
+  Shard by user_id, celebrity user has 10M followers
+  All "get celebrity's posts" queries hit one shard
+  That shard is overloaded, others are idle
+
+Mitigations:
+  1. Add random suffix to hot keys: user_123 → user_123_0, user_123_1
+     (scatter reads across shards, aggregate in application)
+  2. Dedicated shard for known hot entities
+  3. Caching layer in front of hot shards
+```
+
+**Resharding (Adding/Removing Shards)**:
+
+When you add or remove shards, data must be rebalanced. This is complex and risky.
+
+```
+Before: 3 shards, hash(key) % 3
+After:  4 shards, hash(key) % 4
+
+Problem: Most keys now map to different shards
+  key=100: hash % 3 = 1, hash % 4 = 2  (must move)
+  key=101: hash % 3 = 2, hash % 4 = 1  (must move)
+
+Solution: Consistent Hashing
+  Keys are placed on a ring, each shard owns a portion
+  Adding a shard only moves keys from adjacent shards
+
+  Ring before:     Ring after:
+  ┌─────────┐      ┌─────────┐
+  │ Shard 0 │      │ Shard 0 │
+  ├─────────┤      ├─────────┤
+  │ Shard 1 │  →   │ Shard 1 │
+  ├─────────┤      ├─NEW─────┤
+  │ Shard 2 │      │ Shard 3 │ ← Only takes some of Shard 2's keys
+  └─────────┘      ├─────────┤
+                   │ Shard 2 │
+                   └─────────┘
+```
+
+**Cross-Shard Queries**:
+
+Queries that span multiple shards are expensive. They require scatter-gather: query all shards, aggregate results.
+
+```
+Query: "SELECT COUNT(*) FROM orders WHERE date > '2024-01-01'"
+
+Without sharding: Single query, fast
+With sharding:
+  1. Send query to all 4 shards in parallel
+  2. Each shard returns its count
+  3. Application sums counts: 1000 + 2500 + 1800 + 700 = 6000
+
+For ORDER BY + LIMIT queries, worse:
+  1. Each shard returns top N sorted results
+  2. Application merges and re-sorts all results
+  3. Significant memory and CPU overhead
+```
+
+<div class="callout callout--warning">
+<p class="callout__title">Sharding is a Last Resort</p>
+<p>Sharding adds significant complexity. Before sharding: optimize queries, add read replicas, implement caching, scale vertically. Shard only when these options are exhausted.</p>
+</div>
 
 ---
 
@@ -164,11 +251,13 @@ User ID 9012 → hash(9012) % 4 = 0 → Shard 0
 
 ### Decision Tree
 
-**Protecting against overload?** → Throttling and Rate Limiting
-**Read-heavy workload?** → Cache-Aside or Cache-Through
-**Single DB can't handle load?** → Sharding
-**Need fine-grained cache control?** → Cache-Aside
-**Want simple cache management?** → Cache-Through
+| Question | Pattern |
+|----------|---------|
+| Protecting against overload? | Throttling and Rate Limiting |
+| Read-heavy workload? | Cache-Aside or Cache-Through |
+| Single DB can't handle load? | Sharding |
+| Need fine-grained cache control? | Cache-Aside |
+| Want simple cache management? | Cache-Through |
 
 ### Cache Strategies
 

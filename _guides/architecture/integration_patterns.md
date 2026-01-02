@@ -9,10 +9,6 @@ tags: [architecture, design-patterns, integration, etl, routing, practical]
 
 Integration patterns define how different systems and services work together, enabling data flow and coordination between disparate components.
 
-<blockquote class="pull-quote">
-<p>Each filter is independent and single-purpose.</p>
-</blockquote>
-
 ## Pipes and Filters
 
 *Pattern from Enterprise Integration Patterns by Gregor Hohpe and Bobby Woolf (2003), with roots in Unix philosophy*
@@ -132,10 +128,12 @@ SOAP Service → XML Response → Translator → JSON Response → Client
 
 ### Decision Tree
 
-**Sequential transformations?** → Pipes and Filters
-**Query multiple sources in parallel?** → Scatter-Gather
-**Route based on content?** → Content-Based Router
-**Different data formats?** → Message Translator
+| Question | Pattern |
+|----------|---------|
+| Sequential transformations? | Pipes and Filters |
+| Query multiple sources in parallel? | Scatter-Gather |
+| Route based on content? | Content-Based Router |
+| Different data formats? | Message Translator |
 
 ### Implementation Tools
 
