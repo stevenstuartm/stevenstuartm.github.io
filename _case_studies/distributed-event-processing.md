@@ -94,7 +94,7 @@ The value of Solution 2 wasn't that it was "good" but that it started with fewer
 - The architecture supported gradual evolution rather than requiring wholesale replacement
 - A lightweight adapter or API gateway could have been used to "two-step" the migration to a new solution while preserving the single abstraction layer
 
-Solution 2 did have a transactional inbox in the central coordinator, but it was implemented as a simple queue rather than with the full pattern in mind. It didn't support rollbacks or saga orchestration. Placing the inbox at the processor level (as proposed later in this case study) would have fixed that limitation while preserving the coordinator's architectural strengths.
+Solution 2 did have an event store in the central coordinator, but it was implemented as a simple queue rather than as durable storage with proper state management. It didn't support rollbacks or saga orchestration. Moving event persistence to the processor level (as proposed later in this case study) would have fixed that limitation while preserving the coordinator's architectural strengths.
 
 **The critical mistake:** Rather than investing in fixing the implementation while preserving these architectural strengths, the organization chose to start over with a completely different architecture. This pattern would prove costly.
 
@@ -276,24 +276,36 @@ Based on the actual requirements and constraints, here's an architecture that wo
 
 Solution 2 got this right: each domain/feature team owns their own processor. Distribution is an optimization to a proven need, and there was never any proven need for distributing work beyond single domain processors.
 
-- Start with a transactional inbox pattern for each domain processor
 - Use share-nothing architecture: domains handle themselves
 - No central coordinator needed
 - Add Kinesis or other streaming only when measurement proves necessity
 
 When workflows span multiple domains, use eventful choreography rather than orchestration. Each domain publishes events to EventBridge when its work completes, and other domains subscribe to events they care about. This adds documentation complexity (you need to track which domains produce and consume which events), but it's the correct trade-off for a high-agility, multi-team environment where teams need to evolve independently.
 
-### Principle 3: Transactional Inbox for Control
+### Principle 3: Queuing Strategy Depends on Ordering Requirements
+
+The right queuing approach depends on whether strict ordering matters for your domain:
+
+**When ordering doesn't matter: SQS Fair Queues**
+
+For domains where events can be processed in any order, [SQS Fair Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-fair-queues.html){:target="_blank" rel="noopener noreferrer"} provide automatic noisy-neighbor mitigation. By setting `MessageGroupId` on messages (typically to the tenant ID), SQS automatically ensures fair resource allocation across tenants without custom code. This would have solved the noisy-neighbor problem in Solution 3 with zero implementation effort.
+
+Fair Queues work because they're Standard queues with fairness semantics: virtually unlimited throughput, no in-flight message limits per tenant, and automatic dwell-time fairness. The trade-off is no ordering guarantees.
+
+**When ordering matters: Persist-then-consume pattern**
+
+For domains requiring strict ordering (e.g., transaction sequences where order affects balance calculations), SQS FIFO has throughput constraints that create back-pressure during traffic spikes. The alternative is to persist events first and consume based on configurable rate and priority:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                     Domain Processor                             │
 ├─────────────────────────────────────────────────────────────────┤
 │  ┌─────────────────┐    ┌─────────────────────────────────────┐ │
-│  │  Transactional  │───▶│         Processing Logic            │ │
-│  │     Inbox       │    │  • Partitioned by tenant            │ │
-│  │   (DynamoDB)    │    │  • Saga/rollback support            │ │
-│  │                 │    │  • Claim Check for large payloads   │ │
+│  │   Event Store   │───▶│         Processing Logic            │ │
+│  │   (DynamoDB)    │    │  • Partitioned by tenant            │ │
+│  │                 │    │  • Configurable consumption rate    │ │
+│  │  PK: TenantID   │    │  • Priority-based processing        │ │
+│  │  SK: Timestamp  │    │  • Claim Check for large payloads   │ │
 │  └─────────────────┘    └─────────────────────────────────────┘ │
 │           │                              │                       │
 │           ▼                              ▼                       │
@@ -304,14 +316,20 @@ When workflows span multiple domains, use eventful choreography rather than orch
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-| SQS-Based Approach | Transactional Inbox Approach |
+**Ordering in DynamoDB**: DynamoDB maintains sort key order within a partition. By using `TenantID` as the partition key and a timestamp or sequence number as the sort key, you get ordered reads per tenant for free. The processor queries each tenant's partition in order, processes at a configurable rate, and marks items as processed. This gives you FIFO semantics per tenant without SQS FIFO's throughput constraints.
+
+**Fair consumption across tenants**: The processor controls the consumption rate per tenant, ensuring no single tenant monopolizes processing capacity. This is the configurable priority queue the system needed but never had. You can implement round-robin across tenants, weighted priority based on SLA tier, or burst allowances with rate limiting. All of this is controlled by your code rather than queue configuration.
+
+| SQS-Only Approach | Persist-then-Consume Approach |
 |--------------------|------------------------------|
 | Visibility timeouts constantly tuned | Persistent state eliminates timeout games |
 | Consumer memory pressure | Read what you need, when you need it |
-| Custom tenant partitioning hacks | Native partitioning with educated decisions |
-| No rollback behavior | Orchestrated saga pattern available |
-| Can't see traffic patterns | Visible traffic enables predictable scaling |
-| "How many nodes?" = guess | "How many nodes?" = data-driven |
+| FIFO throughput constraints (300-3000 msg/s per group) | DynamoDB scales to your write capacity |
+| Ordering only within message groups | Ordering within partitions with tenant isolation |
+| Can't see traffic patterns until consumed | Visible backlog enables predictive scaling |
+| "How many nodes?" = guess | "How many nodes?" = data-driven from backlog metrics |
+
+**Note on saga patterns**: The original Solution 3 had no rollback capability when workflows failed mid-stream. Saga orchestration addresses this, but it's orthogonal to the queuing strategy. Whether you use SQS or persist-then-consume, compensating transactions need to be designed into the workflow. The persist-then-consume approach makes saga state easier to manage because the event store already has the workflow history.
 
 ### Principle 4: Domain-Centric Configuration
 
@@ -335,11 +353,11 @@ The specifics of governance depend on team size and domain nature, but Architect
 
 The processors weren't mutating a single payload through stages. Often they weren't even looking at the same data. The Claim Check pattern acknowledges this reality: store large or context-specific data separately and pass references.
 
-When processors need shared data, they query stable domain APIs (like the subscription service) rather than passing bloated payloads between stages. Each workflow is isolated, and all processors must be idempotent. This was another problem in Solution 3: SQS locking and visibility timeout issues meant the same work was sometimes processed more than once, causing duplicate notifications and inconsistent state. With a transactional inbox at the processor level, idempotency is enforced by design.
+When processors need shared data, they query stable domain APIs (like the subscription service) rather than passing bloated payloads between stages. Each workflow is isolated, and all processors must be idempotent. This was another problem in Solution 3: SQS locking and visibility timeout issues meant the same work was sometimes processed more than once, causing duplicate notifications and inconsistent state. With a persisted event store at the processor level, idempotency is enforced by design. You can track which events have been processed and skip duplicates.
 
 ### Principle 7: Tenant Isolation at the Processor Level
 
-EventBridge doesn't need to worry about tenants; that's the processor's responsibility. With a persisted transactional inbox, processors can implement custom queue priority patterns to ensure fair resource allocation across tenants. If traffic patterns demand it, the architecture can evolve: EventBridge rules can point to Kinesis, which manages tenant isolation through shards. The key is that tenant isolation is a processor concern with clear options for scaling, not a system-wide problem with no good answers.
+EventBridge doesn't need to worry about tenants; that's the processor's responsibility. With a persisted event store, processors can implement custom priority and rate-limiting patterns to ensure fair resource allocation across tenants (as described in Principle 3). If traffic patterns demand it, the architecture can evolve: EventBridge rules can point to Kinesis, which manages tenant isolation through shards. The key is that tenant isolation is a processor concern with clear options for scaling, not a system-wide problem with no good answers.
 
 ## Key Lessons
 
@@ -347,9 +365,9 @@ EventBridge doesn't need to worry about tenants; that's the processor's responsi
 
 Solution 3 assumed distribution was necessary from day one, but there was never a proven need for distributing work beyond single domain processors. The better approach: start simple, measure actual bottlenecks, then optimize.
 
-### 2. Don't abandon good designs because of bad implementations
+### 2. Architectural flexibility matters more than initial correctness
 
-Solution 2 had the right design: central audit, holistic domain processors, clear ownership, and a simple mental model. The implementation was flawed, but the correct response was to fix the implementation rather than abandon the design for something more complex.
+Solution 2 had significant problems, but it hadn't overextended itself. The simpler architecture left room to evolve: you could fix the implementation, add new layers incrementally, or migrate components without wholesale replacement. Solution 3's distributed complexity closed off those options.
 
 ### 3. Pattern selection requires trade-off analysis
 
@@ -365,8 +383,8 @@ The same misalignment between development teams and stakeholders persisted acros
 
 ## Conclusion
 
-The cycle of build-fail-replace could have been broken at Solution 2. The design was sound, and the implementation just needed work. Instead, the organization invested in a more complex architecture that was mismatched to the problem.
+The cycle of build-fail-replace could have been broken at Solution 2. Not because Solution 2 was good, but because it hadn't painted itself into a corner. The architecture was simple enough to fix, extend, or partially replace. Instead, the organization invested in a more complex architecture that closed off those options.
 
-Technical excellence matters, and Solution 3 had clean code and good tests. But technical excellence in service of the wrong pattern still fails. The right pattern, even with an imperfect implementation, can be iteratively improved. The wrong pattern requires starting over.
+Technical excellence matters, and Solution 3 had clean code and good tests. But technical excellence in service of the wrong pattern still fails. A flawed but flexible architecture can be iteratively improved. An overextended architecture requires starting over.
 
 The path forward was always available: start with simple domain processors, measure actual needs, distribute only when proven necessary, and ensure observability from day one. Most importantly, address the organizational alignment that no architecture can fix.
