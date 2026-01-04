@@ -2,7 +2,7 @@
 layout: case-study
 title: "80% IT Cost Reduction Through Infrastructure Optimization"
 subtitle: "How strategic consolidation and right-sizing reduced IT monthly costs from $10,250 to $2,146"
-company: "True Market Insiders"
+description: "An infrastructure audit revealed unjustified costs from unused services, over-provisioned databases, and misconfigured storage. Strategic consolidation and right-sizing reduced monthly IT costs by 80% while funding critical security improvements."
 role: "System Architect"
 date: 2024-06-01
 technologies:

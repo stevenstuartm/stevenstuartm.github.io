@@ -23,9 +23,6 @@ Deep dives into real projects: the problems faced, architectural decisions made,
       </div>
 
       <div class="case-study-card-meta">
-        {% if case_study.company %}
-        <span class="meta-item"><strong>Company:</strong> {{ case_study.company }}</span>
-        {% endif %}
         {% if case_study.role %}
         <span class="meta-item"><strong>Role:</strong> {{ case_study.role }}</span>
         {% endif %}
@@ -34,7 +31,9 @@ Deep dives into real projects: the problems faced, architectural decisions made,
         {% endif %}
       </div>
 
-      {% if case_study.excerpt %}
+      {% if case_study.description %}
+      <p class="case-study-card-excerpt">{{ case_study.description }}</p>
+      {% elsif case_study.excerpt %}
       <p class="case-study-card-excerpt">{{ case_study.excerpt | strip_html | truncatewords: 40 }}</p>
       {% endif %}
 
