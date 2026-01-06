@@ -5,9 +5,9 @@ description: "Real-world architecture challenges, solutions, and results from pr
 permalink: /case-studies.html
 ---
 
-Deep dives into real projects: the problems faced, architectural decisions made, tradeoffs considered, and measurable outcomes achieved.
-
----
+<div class="case-studies-intro">
+  <p class="intro-text">Deep dives into real projects: the problems faced, architectural decisions made, tradeoffs considered, and measurable outcomes achieved.</p>
+</div>
 
 <div class="guides-page">
     <div class="guides-main">
@@ -50,6 +50,22 @@ Deep dives into real projects: the problems faced, architectural decisions made,
 </div>
 
 <style>
+.case-studies-intro {
+  background: linear-gradient(135deg, var(--color-card-bg) 0%, var(--color-bg) 100%);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.case-studies-intro .intro-text {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin: 0;
+}
+
 .case-study-subtitle {
   color: var(--color-text-light);
   font-size: 0.95rem;

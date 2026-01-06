@@ -1,6 +1,6 @@
 ---
 layout: case-study
-title: "80% IT Cost Reduction Through Infrastructure Optimization"
+title: "When Nobody Owns the Cloud Bill"
 subtitle: "How strategic consolidation and right-sizing reduced IT monthly costs from $10,250 to $2,146"
 description: "An infrastructure audit revealed unjustified costs from unused services, over-provisioned databases, and misconfigured storage. Strategic consolidation and right-sizing reduced monthly IT costs by 80% while funding critical security improvements."
 role: "System Architect"
