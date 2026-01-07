@@ -90,7 +90,7 @@ A shared library is almost never the right answer because it solves a problem th
 
 ## No Architecture Style Wants This
 
-The shared library pitch assumes that code reuse across boundaries is inherently valuable. But examine any coherent architectural paradigm and the opposite becomes clear:
+The shared library pitch assumes that code reuse across boundaries is inherently valuable. But examine any coherent architectural paradigm and the opposite becomes clear.
 
 **Layered architecture** separates concerns into distinct layers. Sharing code across layers violates the separation you created them for. If your presentation layer and your data layer share a library, you've coupled what you explicitly designed to be independent.
 
@@ -98,7 +98,23 @@ The shared library pitch assumes that code reuse across boundaries is inherently
 
 **Functional/technical architecture** defines components accessed through explicit interfaces. If you need a shared package to reuse behavior, your component boundaries are wrong. The behavior should live in a component that others call, not in a library that everyone imports.
 
-Every architectural style has a theory about where boundaries belong and why. Shared libraries violate those boundaries. If your architecture says "these things are separate" and your dependency graph says "actually they share this code," one of them is wrong.
+**Polyglot architectures make it worse.** The shared library pitch assumes a homogeneous technology landscape that rarely exists. If your organization has services written in C#, Java, Python, and Go, do you maintain four versions of every shared library? Do you keep them all in sync? Do you have expertise in all four ecosystems? In polyglot environments, the "shared" library becomes a second-class citizen in every language except the one the authoring team actually uses. The promise of consistency becomes a guarantee of inconsistency across language boundaries.
+
+## The API Client Library Obsession
+
+The most common incarnation of shared library dysfunction is the API client package: a library containing contracts, DTOs, and client code that consumers are expected to import when calling your service. I have never seen this pattern result in anything short of chaos.
+
+The pitch sounds reasonable: "We'll publish a client library so consumers don't have to write their own HTTP calls or define their own contracts." But this solves a problem that doesn't exist while creating several that do.
+
+**Every API should have documentation describing its contracts.** If your API is well-documented with clear schemas, consumers can generate or write their own clients trivially. The documentation is the contract. A client library doesn't replace documentation; it's a poor substitute for it.
+
+**Every consumer has different needs.** Service A might need three fields from one endpoint. Service B might need ten fields from a different endpoint. Service C might need to call the same endpoint but transform the response differently. When you force everyone to use your client library, you're imposing your view of how your API should be consumed. But consumers know their own needs better than you do.
+
+**Client libraries confuse application concerns with infrastructure concerns.** Teams building client libraries inevitably add stateful logic: caching strategies, retry policies, circuit breakers, connection pooling configurations. But these aren't client concerns. They're infrastructure concerns that belong in service meshes, sidecars, load balancers, and API gateways. Infrastructure handles these concerns uniformly, with visibility, configuration, and operational control. A client library buries them in application code where they're invisible to operations, inconsistent across consumers, and impossible to tune without redeploying every service. The client library author predicts traffic patterns and failure modes as if every consumer will behave identically. They won't. When those assumptions are wrong, every consumer pays the price, and nobody can fix it without a coordinated release.
+
+**The absurdity becomes obvious with frontend consumers.** Would you publish an npm package containing your API contracts for your React application to import? Would you create a Swift package for your iOS app? Of course not. The idea seems ridiculous. The web team will fetch JSON and map it to whatever structures make sense for their UI. The mobile team will do the same. They'll read the API documentation, call the endpoints they need, and handle responses in whatever way suits their application. Nobody questions this. So why would a backend service be any different? Why does the same team that would never dream of forcing an npm package on their frontend suddenly believe their C# consumers need a NuGet package? The consumer's needs don't change based on what language they're written in. The dysfunction is the same; it's just easier to see when the consumer is a React app.
+
+**The obsession itself is a conditioned dysfunction.** Teams reach for client libraries reflexively, without questioning why. It feels responsible. It feels like you're helping your consumers. But this impulse has been conditioned by years of cargo-culting patterns from contexts where they made sense (public cloud SDKs with complex auth flows) into contexts where they don't (internal services with straightforward REST endpoints). The teams creating these libraries rarely recognize the dysfunction because the behavior feels normal. It's not. It's a tax on every consumer and a maintenance burden on every producer, justified by an efficiency that never materializes.
 
 ## The Governance Theater Problem
 
