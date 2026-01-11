@@ -7,9 +7,7 @@ series: "AI in Practice"
 tags: [ai, architecture, design-patterns, oop]
 ---
 
-The prompts that produce the best code barely mention code at all.
-
-I've been experimenting with how different framings affect AI-generated output, and a pattern emerged that I didn't expect. When I describe actors and relationships—"the scheduler notifies workers when jobs are available"—the code comes out cleaner, more coherent, and requires fewer iterations. When I specify technical details—function signatures, data structures, specific patterns to use—the results are messier, full of subtle misalignments between what I asked for and what I actually needed.
+I've been experimenting with how different framings affect AI-generated output, and a pattern emerged that I didn't expect. The prompts that produce the best code barely mention code at all. When I describe actors and relationships—"the scheduler notifies workers when jobs are available"—the code comes out cleaner, more coherent, and requires fewer iterations. When I specify technical details—function signatures, data structures, specific patterns to use—the results are messier, full of subtle misalignments between what I asked for and what I actually needed.
 
 The less I talk about code, the better the code becomes.
 
