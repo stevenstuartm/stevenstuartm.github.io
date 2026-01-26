@@ -7,7 +7,7 @@ series: "Development Practice"
 tags: [architecture, communication, technical-debt, leadership]
 ---
 
-Most engineering teams have a backlog of work they call "tech debt." Developers understand how it can slow down feature development, increase support costs, and threaten system stability. Yet when they bring these concerns to stakeholders, the work often stays deprioritized indefinitely. The term positions engineering work as backward-looking cleanup rather than forward-looking value creation. It's defensive, it's ambiguous, and it guarantees the work never gets prioritized.
+Most engineering teams have a backlog of work they call "tech debt." Developers understand how it can slow down feature development, increase support costs, and threaten system stability. Yet when they bring these concerns to stakeholders, the work often stays deprioritized indefinitely. So why is that? Why would something so obviously important be ignored. In most cases, it is because the term 'tech debt' positions engineering work as backward-looking cleanup rather than forward-looking value creation. It's defensive, it's ambiguous, and it guarantees the work never gets prioritized.
 
 <blockquote class="pull-quote">
 <p>"Tech debt" is a self-fulfilling prophecy that perpetuates the communication gap that created it in the first place.</p>
