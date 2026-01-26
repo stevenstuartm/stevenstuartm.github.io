@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SEO Works as Designed, and That's the Problem"
+title: "SEO Still Works, Just Not How We Hoped"
 date: 2025-11-22
 series: "Industry & Culture"
 tags: [industry, infrastructure, innovation, search]
@@ -9,7 +9,7 @@ description: "The 'SEO is dead' narrative draws a false binary between SEO and s
 
 A few months ago, I read a post about how SEO is dead and that we need to let the past die and find greener pastures. I'm finally getting around to writing my thoughts on it. That contention was correct in many ways, but it also drew an undeserved binary between SEO and social media as two means to the same end. I think that framing misses the point.
 
-SEO does have a real problem. The timeline to build authority hasn't changed; it still takes 2-5 years. But the gap keeps widening. A startup in 2015 competed against sites with 5-10 years of accumulated authority. A startup in 2025 competes against sites with 15-25 years. Authority signals that once filtered spam now create insurmountable barriers for newcomers because incumbents have had decades to compound their advantages.
+SEO does have a real problem. The timeline to build authority hasn't changed (it still takes 2-5 years), but the gap keeps widening. A startup in 2015 competed against sites with 5-10 years of accumulated authority. A startup in 2025 competes against sites with 15-25 years. Authority signals that once filtered spam now create insurmountable barriers for newcomers because incumbents have had decades to compound their advantages.
 
 And yet, SEO still works perfectly well for what it has become good at. Search for CNN, Mayo Clinic, or Amazon and established brands rank exactly as designed. When you need something tested and proven and you already know what you're looking for, SEO delivers authority and trust.
 
