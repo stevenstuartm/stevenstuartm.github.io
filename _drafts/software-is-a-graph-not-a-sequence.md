@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AI in Practice: Software Is a Graph"
-date: 2025-01-08
+date: 
 description: "Why relationship-oriented design produces better AI-assisted code, and what this reveals about the nature of software itself."
 series: "AI in Practice"
 tags: [ai, architecture, design-patterns, oop]
