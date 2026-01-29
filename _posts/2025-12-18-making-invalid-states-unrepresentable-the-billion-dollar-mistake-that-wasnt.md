@@ -209,7 +209,7 @@ This doesn't mean a single validation layer. Systems have multiple trust boundar
 
 ## Failing Loudly Is a Feature
 
-The fear of null comes from real pain: decades of null reference exceptions in production, frustrated debugging sessions, and systems that crashed when they should have kept running. But crashes are symptoms, not the disease. The disease is code that doesn't handle absence properly. The cure isn't eliminating null; it's using null correctly as part of a system that makes invalid states unrepresentable.
+The fear of null comes from the pain of decades of null reference exceptions in production, frustrated debugging sessions, and systems that crashed when they should have kept running in theory. But crashes are symptoms, not the disease. The disease is code that doesn't handle absence properly. The cure isn't eliminating null; it's using null correctly as part of a system that makes invalid states unrepresentable.
 
 Default values do the opposite. They hide bugs, propagate invalid state, and create corruption that surfaces far from its source. When you substitute a default for missing data, you're creating records that claim to represent reality but don't. Every downstream system that trusts that data inherits the lie.
 
