@@ -5,13 +5,16 @@ subtitle: "How strategic consolidation and right-sizing reduced IT monthly costs
 description: "An infrastructure audit revealed unjustified costs from unused services, over-provisioned databases, and misconfigured storage. Strategic consolidation and right-sizing reduced monthly IT costs by 80% while funding critical security improvements."
 role: "System Architect"
 date: 2024-06-01
+headline_metric: "80% Cost Reduction"
+headline_detail: "$10,250 → $2,146/month"
+category: "success"
+category_label: "Optimization Win"
 technologies:
-  - AWS EKS
+  - AWS Aurora
+  - Snowflake
+  - DataDog
   - AWS ECS
-  - AWS Aurora MySQL
-  - AWS DynamoDB
-  - AWS CloudFront
-  - AWS EventBridge
+  - AWS QuickSight
 ---
 
 ## The Problem
@@ -20,27 +23,40 @@ This is not a story of genius system analysis or innovative architectural decisi
 
 When I joined, I began the long journey of exploring a system that had no documentation from the previous consulting team. From experience, I knew this was common and understood what I was getting into. After completing my initial macro-level assessment, I was puzzled: while there were numerous technical issues, I couldn't identify where the monthly cost of $10,250 was being spent.
 
-The organization had a single small development team, a few products, 100,000+ users, and minimal third-party integrations. Why were the monthly software and IT operational costs so high? Or was my assumption of "high costs" incorrect and did I need more context?
+The organization had a single small development team, a few products, approximately 120,000 users, and minimal third-party integrations. Why were the monthly software and IT operational costs so high? Or was my assumption of "high costs" incorrect and did I need more context?
 
 As I gained deeper context, I became increasingly certain that the costs were unjustified.
 
+## The Discovery Process
+
+The audit took approximately six weeks from initial investigation to final implementation. I started where most cost investigations should start: the billing dashboard.
+
+AWS Cost Explorer revealed the largest line items, but the real insights came from cross-referencing billing data with actual usage. Services that showed high costs but low utilization became immediate targets. I worked through the infrastructure in priority order based on monthly spend:
+
+1. **External services first** (DataDog, Snowflake) — highest per-unit cost, easiest to evaluate
+2. **Database layer** (Aurora clusters) — largest AWS expense, required architectural understanding
+3. **Compute and caching** (EC2, ECS, ElastiCache) — right-sizing based on CloudWatch metrics
+4. **Everything else** — systematic review of remaining services
+
+For each service, I asked three questions: Is this being used? If yes, is it sized correctly? If yes, is it configured efficiently? Most waste came from the first two questions having unfavorable answers.
+
 ## The Solution
 
-Most of the system components were hosted within AWS and were native AWS services or otherwise leveraged those services. I chose to start with auditing bills for what I viewed as "external" services: DataDog and Snowflake.
+Most of the system components were hosted within AWS and were native AWS services or otherwise leveraged those services. The following sections detail each optimization in the order they were implemented, starting with the highest-impact changes.
 
-### DataDog
+### DataDog (Week 1)
 DataDog was provisioned with nearly every feature available, yet not a single log or metric was being routed to it. No monitoring or observability use cases had been implemented. Since all organizational components were hosted in AWS and transaction volume was moderate, the decision was straightforward: eliminate it entirely. No one could explain why this service was ever provisioned.
 
 While DataDog is valuable for large organizations with diverse data sources, it was inappropriate for a system entirely contained within AWS. Proper use of native AWS services provides comparable observability at a fraction of the cost.
 
-### Snowflake
+### Snowflake (Weeks 1-2)
 Snowflake presented a more complex challenge with multiple optimization opportunities. The platform was used for ETL processes from multiple sources and to normalize data for reporting via AWS QuickSight.
 
 The issues were systemic: poorly written SQL queries, suboptimal table design, and redundant processes and storage. The most egregious problem involved Snowflake's Fail Safe feature, which is enabled by default for new tables. This feature retains deleted or updated data for 7 days. Numerous ETL jobs and reporting views would truncate tables and then repopulate them multiple times per day. Consequently, the majority of Snowflake costs were attributed to Fail Safe storage that served no actual business need.
 
 Next: the AWS services and components.
 
-### AWS Aurora
+### AWS Aurora (Weeks 2-4)
 Four separate clusters existed, each intended to isolate data and scaling requirements for different domains and applications. While the concept was sound, the implementation was flawed in two critical ways:
 
 1. Provisioning did not match actual usage requirements
@@ -50,20 +66,20 @@ Fortunately, all reporting was handled by Snowflake using data primarily derived
 
 The solution was consolidation into a single database. Security concerns were addressed by removing sensitive data from Aurora entirely, storing it instead in a dedicated third-party service that reduced our risk profile. Analysis revealed that data was replicated across multiple databases, further confirming tight coupling between applications and services. Post-consolidation, we gained a clearer view of the system architecture, positioning us to properly distribute data into optimal storage solutions when appropriate opportunities emerged.
 
-### AWS QuickSight
+### AWS QuickSight (Week 3)
 QuickSight was being used for all reporting, as mentioned in the Snowflake section. Team members were surprisingly protective of this service, insisting that everything was properly configured and that changes would be too risky. While QuickSight does have design limitations that can create fragility, the cost issues were straightforward to resolve.
 
 Two premium user packages had been purchased to increase the number of admin users and expand monthly session limits. Analysis revealed we only needed three admins and no user sessions beyond the free tier allocation.
 
 SPICE storage was being used to cache Snowflake query results. While some queries were slow, they were only executed once daily. Eliminating SPICE caching was a simple change with no operational impact. Subsequently, we addressed the root cause by improving Snowflake query performance.
 
-### AWS Support
+### AWS Support (Week 5)
 AWS offers several support tiers to match organizational needs. The original team had limited AWS expertise, and the internal staff who inherited the system from consultants had even less. The high support costs appeared to be a rational response to managing an unstable system on an unfamiliar platform.
 
 After implementing critical network and security improvements, we eliminated AWS Support costs entirely. The support plan could be re-enabled if needed, and given the improved system stability and our increased AWS competency, the risk of requiring it was minimal.
 
-### Additional Optimizations
-Additional savings came from numerous incremental improvements:
+### Additional Optimizations (Weeks 4-6)
+Additional savings came from numerous incremental improvements, tackled opportunistically as I worked through the larger changes:
 - Right-sizing resource provisioning across ECS containers
 - Removing obsolete EBS snapshots and RDS backups
 - Eliminating unused CloudWatch metrics

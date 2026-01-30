@@ -3,8 +3,13 @@ layout: case-study
 title: "When Architecture Patterns Don't Match the Problem"
 subtitle: "Lessons from three attempts to build a distributed event processing platform"
 description: "A fintech company built three successive solutions to process millions of financial events for real-time alerts. Each failed for different technical reasons, but the same organizational pattern persisted. This case study examines what went wrong and what should have been built instead."
-role: "Software Developer"
+role: "Software Developer → Senior Developer"
 date: 2023-01-01
+involvement: "Solutions 2 and 3"
+headline_metric: "6 Years, 3 Failures"
+headline_detail: "Same org problem, different tech"
+category: "failure"
+category_label: "Failure Analysis"
 technologies:
   - AWS SQS
   - AWS EventBridge
@@ -17,6 +22,8 @@ technologies:
 
 Over six years, a fintech company built three successive solutions to process millions of financial transaction events for real-time customer alerts. Each solution lasted approximately two years before stakeholders demanded change. Each failed for different technical reasons, but a common organizational pattern persisted throughout: development teams remained out of alignment with stakeholder needs, and that gap was never closed.
 
+I joined during Solution 2 as a developer and remained through Solution 3, eventually becoming a senior developer. My perspective on Solution 1 comes from inheriting its codebase and conversations with remaining team members; my perspective on Solutions 2 and 3 comes from direct involvement in design decisions, implementation, and operational support.
+
 This case study examines what went wrong technically and organizationally, why the third solution's architecture was mismatched to the problem, and what should have been built instead.
 
 **Key lessons:**
@@ -25,6 +32,16 @@ This case study examines what went wrong technically and organizationally, why t
 - Pattern selection requires trade-off analysis against actual requirements
 - Observability isn't optional for financial systems
 - Organizational alignment problems can't be solved with architecture changes alone
+
+## Solutions at a Glance
+
+| Solution | Duration | Architecture | Why It Failed | Why It Was Abandoned |
+|----------|----------|--------------|---------------|----------------------|
+| **1. Monolith** | ~2 years | Legacy scheduler, non-containerized | Opaque, no extension points, manual scaling | Couldn't support multi-team extensibility |
+| **2. Coordinator** | ~2 years | Central coordinator + domain processors | Implementation bugs (deadlocks, scaling issues) | Deemed too expensive to refactor |
+| **3. Pipes & Filters** | ~2 years | Distributed actors, SQS, Akka | Pattern mismatch, no observability, message bloat | SLA violations, customer payouts |
+
+**The pattern**: Each solution lasted approximately two years. Each failed for different technical reasons. The same organizational misalignment persisted throughout.
 
 ## The Business Context
 

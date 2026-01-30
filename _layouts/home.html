@@ -28,6 +28,22 @@ layout: default
 
     <!-- Content Type Cards Section -->
     <section class="content-type-cards">
+
+        <!-- Case Studies Card -->
+        <a href="{{ '/case-studies.html' | relative_url }}" class="content-type-card" aria-label="View case studies">
+            <div class="content-type-icon" aria-hidden="true">💼</div>
+            <h3 class="content-type-title">Case Studies</h3>
+            <p class="content-type-description">{{ page.case_studies_description }}</p>
+            {% if site.case_studies.size > 0 %}
+            {% assign latest_case = site.case_studies.first %}
+            <div class="content-type-latest">
+                <span class="latest-label">Latest:</span>
+                <span class="latest-link">{{ latest_case.title }}</span>
+            </div>
+            {% endif %}
+            <span class="content-type-cta" aria-hidden="true">View All Cases →</span>
+        </a>
+        
         <!-- Blog Card -->
         <a href="{{ '/blog.html' | relative_url }}" class="content-type-card" aria-label="View all blog posts">
             <div class="content-type-icon" aria-hidden="true">📝</div>
@@ -59,19 +75,5 @@ layout: default
             <span class="content-type-cta" aria-hidden="true">Explore Radar →</span>
         </a>
 
-        <!-- Case Studies Card -->
-        <a href="{{ '/case-studies.html' | relative_url }}" class="content-type-card" aria-label="View case studies">
-            <div class="content-type-icon" aria-hidden="true">💼</div>
-            <h3 class="content-type-title">Case Studies</h3>
-            <p class="content-type-description">{{ page.case_studies_description }}</p>
-            {% if site.case_studies.size > 0 %}
-            {% assign latest_case = site.case_studies.first %}
-            <div class="content-type-latest">
-                <span class="latest-label">Latest:</span>
-                <span class="latest-link">{{ latest_case.title }}</span>
-            </div>
-            {% endif %}
-            <span class="content-type-cta" aria-hidden="true">View All Cases →</span>
-        </a>
     </section>
 </div>

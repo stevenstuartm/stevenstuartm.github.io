@@ -5,20 +5,24 @@ subtitle: "How a SQL Server mandate undermined CQRS and Event Sourcing in a mult
 description: "A loan servicing engine built with CQRS and Event Sourcing achieved every architectural benefit the patterns promise, until a business mandate to use only SQL Server created insurmountable performance problems at scale. This case study examines how infrastructure constraints can poison otherwise sound architectural decisions."
 role: "Software Developer"
 date: 2018-01-01
+headline_metric: "$5M+ Abandoned"
+headline_detail: "Right patterns, wrong infrastructure"
+category: "failure"
+category_label: "Failure Analysis"
 technologies:
   - CQRS
   - Event Sourcing
   - SQL Server
-  - Multi-Tenant Architecture
+  - Multi-Tenant
 ---
 
 ## Executive Summary
 
 A financial services company built a loan servicing engine using CQRS and Event Sourcing. The architecture delivered remarkable benefits: complete audit trails, trivial bug reproduction through event replay, and clean separation of concerns. Testing became straightforward because all code was decoupled from server datetime and bound instead to event timestamps.
 
-The problem began when business leadership refused to use any data storage other than SQL Server. With hundreds of tenants and millions of users, event sourcing against a relational database became untenable. The team tried everything: table partitioning, query optimization, async command processing. None of it was enough.
+The problem began when business leadership refused to use any data storage other than SQL Server. At scale, event sourcing against a relational database became untenable. The team spent months attempting optimizations: table partitioning by tenant, query plan analysis, async command processing with background projection rebuilds. None of it was enough.
 
-The project was eventually abandoned despite costing over $5 million to build. Both CQRS and Event Sourcing became poisoned in the minds of leadership and developers. The company replaced the system with a third-party solution that was measurably inferior by every metric, but by then confidence had been lost and no amount of evidence could restore it.
+The project was eventually abandoned, having cost over $5 million to build. Both CQRS and Event Sourcing became poisoned in the minds of leadership and developers. The company replaced the system with a third-party solution that was measurably inferior by every metric, but by then confidence had been lost and no amount of evidence could restore it.
 
 **Key lessons:**
 - Infrastructure decisions can undermine sound architecture regardless of implementation quality
@@ -28,7 +32,7 @@ The project was eventually abandoned despite costing over $5 million to build. B
 
 ## The Business Context
 
-The company provided loan servicing capabilities to financial institutions. The platform needed to track every state change in a loan's lifecycle with complete audit trails, support hundreds of tenants with millions of users, satisfy federal audit requirements, and enable bug reproduction without production access.
+The company provided loan servicing capabilities to financial institutions. The platform needed to track every state change in a loan's lifecycle with complete audit trails, support hundreds of tenants with millions of end users, satisfy federal audit requirements, and enable bug reproduction without production access.
 
 The existing third-party solution was expensive and inflexible. Leadership saw an opportunity to build a superior in-house platform.
 
@@ -135,15 +139,38 @@ The architecture was sound, the implementation was clean, and the patterns deliv
 
 With SQL Server mandated, the team did their best to make it work.
 
-The initial implementation hit problems at scale: write contention from page-level locking, read amplification when building projections, and transaction overhead on every event append.
+### Initial Performance Issues
 
-Table partitioning by tenant helped initially but created new problems: partition management overhead with hundreds of tenants, wildly uneven partition sizes, and query optimizer confusion requiring manual hints.
+The initial implementation hit problems when higher-volume tenants onboarded:
 
-The team's optimization options were severely limited. This wasn't a cloud environment with elastic scaling; it was on-premises SQL Server with fixed infrastructure. Many optimizations that might have helped weren't available in the deployed SQL Server version or required infrastructure changes the organization wouldn't approve.
+- Write contention from page-level locking caused noticeable append latencies
+- Read amplification when building projections, with some aggregates requiring scans across large event histories
+- Transaction overhead on every event append added baseline latency that compounded at scale
+
+### Partitioning Attempts
+
+Table partitioning by tenant helped initially, reducing write contention for the largest tenants. But it created new problems:
+
+- Partition management overhead meant constant maintenance windows
+- Wildly uneven partition sizes, with a small number of tenants holding most events
+- Query optimizer confusion requiring manual hints, which broke when statistics changed
+- Cross-partition queries for reporting became prohibitively expensive
+
+### Async Processing and Caching
+
+The team moved projection rebuilds to background workers and added aggressive caching:
+
+- Async command processing reduced perceived latency but increased eventual consistency windows
+- Projection caching helped read performance but invalidation logic became complex
+- Snapshot tables at regular intervals reduced event replay depth but added storage and maintenance overhead
+
+### The Final Attempts
+
+The team's optimization options were severely limited. This wasn't a cloud environment with elastic scaling; it was on-premises SQL Server with fixed infrastructure. Many optimizations that might have helped weren't available in the deployed version or required infrastructure changes the organization wouldn't approve.
 
 Read replicas were considered but rejected due to licensing costs. The same cost sensitivity that drove the build-versus-buy decision now prevented the investment needed to make the build succeed.
 
-None of it was enough.
+Eventually, peak load caused projection lag significant enough to make the "real-time" audit trail unusable for its intended purpose.
 
 ### The Human Cost
 

@@ -5,10 +5,14 @@ subtitle: "Embedding Discord concerns within domains instead of extracting them 
 description: "Should third-party integration concerns live inside existing domains or become their own bounded context? This case study examines the tradeoffs through a Discord integration, choosing a domain-embedded approach as intentional short-term debt."
 role: "System Architect"
 date: 2026-01-27
+headline_metric: "Intentional Debt"
+headline_detail: "Documented tradeoffs & evolution triggers"
+category: "decision"
+category_label: "Architecture Decision"
 technologies:
   - Discord API
   - OAuth 2.0
-  - Domain-Driven Design
+  - DDD
   - Microservices
 ---
 
@@ -19,6 +23,8 @@ The company sells access to content published on a Discord server across multipl
 Automating access requires integrating Discord into multiple existing domains: authorization needs role mappings, subscription management needs plan-to-role assignments, user management needs Discord identity storage, and registration needs OAuth orchestration. This raises an architectural question: should Discord become its own API, or should Discord concerns be embedded within these existing domains?
 
 I chose embedding. Each domain owns the Discord concepts relevant to its responsibilities. This is intentional short-term debt driven by two architectural characteristics I prioritize: cost and agility. With a single small team and limited time, extracting a dedicated Discord API would introduce coordination overhead and slow discovery. The domain-embedded approach allows each domain to evolve its Discord integration independently.
+
+**Timeline**: The decision and initial implementation took approximately one week. The architecture will evolve to a thin provider when specific triggers occur: multiple similar third-party integrations, team growth beyond a single team, or significantly increased API call volume.
 
 This case study examines that decision, the alternatives considered, what would trigger evolution toward centralization, and why I consider this a rare example of true technical debt: intentional, with understood interest, and a clear payback plan.
 
@@ -314,6 +320,13 @@ For a mature system with multiple teams, consistency and maintainability might d
 ## What Changes When Conditions Change
 
 This decision isn't permanent. Several triggers would shift the calculus toward centralization.
+
+| Trigger | Current State | Evolution Signal |
+|---------|---------------|------------------|
+| Multiple providers | 1 (Discord only) | 2+ providers with similar patterns |
+| Team structure | Single small team | Multiple teams needing Discord integration |
+| API call volume | Infrequent (OAuth, role changes) | Real-time sync, frequent operations |
+| API complexity | Small, stable subset | Frequent Discord API changes requiring coordinated updates |
 
 ### Trigger 1: Multiple Third-Party Providers With Similar Patterns
 
