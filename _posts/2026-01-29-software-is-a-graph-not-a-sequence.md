@@ -2,14 +2,16 @@
 layout: post
 title: "AI in Practice: Software Is a Graph"
 date: 2026-01-29
-description: "Why relationship-oriented design produces better AI-assisted code, and what this reveals about the nature of software itself."
+description: "AI exposed something about software we should have seen all along. The developers who adjust to the lesson are compounding their leverage; those who resist are multiplying their friction."
 series: "AI in Practice"
 tags: [ai, architecture, design-patterns, oop]
 ---
 
-I've been experimenting with how different framings affect AI-generated output, and the results keep reinforcing something we should have known all along. When I describe non-ambiguous actors and relationships, the code comes out cleaner, more coherent, and requires fewer iterations. When I specify technical details like function signatures, data structures, and specific patterns to use, the results are messier, full of subtle misalignments between what I asked for and what I actually needed.
+I've been experimenting with how different framings affect AI-generated output, and the results keep reinforcing something we should have known all along. When I describe actors and relationships, the code comes out cleaner. When I specify technical details like function signatures and data structures, the results are messier. The less I talk about code, the better the code becomes.
 
-The less I talk about code, the better the code becomes.
+This points to something deeper than prompting technique. Software isn't a sequence of operations; it's a graph of relationships between actors. The code we write is a representation of that graph. When you prompt with relationships, you're speaking the truth about what software actually is. When you prompt with technical specifications, you're asking the model to reverse-engineer the graph from implementation details.
+
+This reframing has implications beyond AI. It explains why typed languages are easier to navigate, why explicit dependencies compound maintainability, and why the patterns we dismissed as ceremony turn out to encode essential information. AI just made the feedback loop immediate.
 
 ## The Native Language of Models
 
@@ -102,9 +104,7 @@ But notice what's happening. Rather than changing how developers think and desig
 
 Which brings us to the uncomfortable part.
 
-This isn't just about personal productivity anymore.
-
-Tens of thousands of developers have been let go. The ones who remain face higher expectations with fewer resources. AI has changed what "productive" means, and the gap between developers who leverage it well and those who don't will only widen.
+Tens of thousands of developers have been let go and more will likey follow. The ones who remain face higher expectations with fewer resources. AI has changed what "productive" means, and the gap between developers who leverage it well and those who don't will only widen.
 
 In that context, clinging to tools and patterns that obscure relationships isn't just preference. It's choosing to work harder for less. It's building systems that neither humans nor AI can maintain efficiently. It's generating waste and calling it flexibility.
 
