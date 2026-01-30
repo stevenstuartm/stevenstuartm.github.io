@@ -15,9 +15,7 @@ The less I talk about code, the better the code becomes.
 
 Language models learned from human communication. Requirements discussions, architecture documents, design explanations, technical conversations. Humans naturally communicate through actors and relationships. We say "the user requests something from the service, which checks with the database" because that's how we think about systems.
 
-Technical specifications are translations of this natural understanding into implementation details. When you give a model the translation instead of the original, you're asking it to work backwards: infer the relationships from the technical choices, then generate code that serves those inferred relationships.
-
-Sometimes it guesses wrong.
+Technical specifications are translations of this natural understanding into implementation details. When you give a model the translation instead of the original, you're asking it to work backwards: infer the relationships from the technical choices, then generate code that serves those inferred relationships. Sometimes it guesses wrong.
 
 Actor-relationship framing skips the translation step entirely. The model receives the same information an architect would give a senior developer: here's what exists, here's how it relates, make it work. The technical decisions emerge from understanding rather than compliance.
 
@@ -100,18 +98,6 @@ Researchers are converging on the same insight from the infrastructure side. Pro
 
 But notice what's happening. Rather than changing how developers think and design, the solution adds tooling to reconstruct structure from artifacts that never encoded it. The industry is building elaborate infrastructure to recover graphs from code that never drew them. The simpler path is to draw the graph in the first place.
 
-## The Underlying Truth
-
-Software is a graph of relationships, not a sequence of operations.
-
-The developers who internalized this (through object-oriented design, through domain modeling, through architecture patterns) built systems that encode what things are and how they relate. The ones who resisted built systems that encode what happens and in what order.
-
-AI understands graphs. It struggles with sequences that imply graphs without drawing them.
-
-The old lessons about modeling domains, defining contracts, and separating concerns weren't just about managing complexity for human minds. They were about capturing the true nature of software in the artifacts themselves. The type system, the interfaces, the dependency declarations: these aren't bureaucratic overhead. They're the map.
-
-And now we have tools that can read that map, if we bother to draw it.
-
 ## The Stakes
 
 Which brings us to the uncomfortable part.
@@ -123,3 +109,15 @@ Tens of thousands of developers have been let go. The ones who remain face highe
 In that context, clinging to tools and patterns that obscure relationships isn't just preference. It's choosing to work harder for less. It's building systems that neither humans nor AI can maintain efficiently. It's generating waste and calling it flexibility.
 
 The industry spent decades treating language and framework choices as matters of taste. That was always somewhat true and somewhat false. Now the false part matters more. Tools that encode relationships compound your effectiveness. Tools that hide them multiply your friction. The math has changed, even if the arguments haven't.
+
+## The Underlying Truth
+
+Software is a graph of relationships, not a sequence of operations.
+
+The developers who internalized this (through object-oriented design, through domain modeling, through architecture patterns) built systems that encode what things are and how they relate. The ones who resisted built systems that encode what happens and in what order.
+
+AI understands graphs. It struggles with sequences that imply graphs without drawing them.
+
+The old lessons about modeling domains, defining contracts, and separating concerns weren't just about managing complexity for human minds. They were about capturing the true nature of software in the artifacts themselves. The type system, the interfaces, the dependency declarations: these aren't bureaucratic overhead. They're the map.
+
+And now we have tools that can read that map, if we bother to draw it.
