@@ -532,8 +532,21 @@
           "name": "Machine Learning",
           "description": "Core ML concepts and techniques",
           "guides": [
-            "machine-learning.md",
-            "generative-ai.md"
+            "machine-learning.md"
+          ]
+        },
+        {
+          "name": "Generative AI",
+          "description": "Generative AI fundamentals, tools, techniques, and practical applications",
+          "guides": [
+            "core-ai-concepts.md",
+            "generative-ai.md",
+            "prompt-engineering.md",
+            "ai-assisted-development.md",
+            "rag-retrieval-augmented-generation.md",
+            "model-context-protocol.md",
+            "ai-agents.md",
+            "llm-fine-tuning.md"
           ]
         }
       ]
