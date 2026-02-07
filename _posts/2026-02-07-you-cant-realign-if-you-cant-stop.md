@@ -10,6 +10,8 @@ Something is broken in my approach to problem-solving, and I suspect it's broken
 
 When I'm mid-implementation and a better idea surfaces, my first instinct isn't to evaluate it. My first instinct is to finish what I'm doing. Not because I think my current approach is superior and not because I've weighed the alternatives and made a conscious choice to stay the course. I just can't seem to stop. The impulse to complete what's in front of me overrides the signal to reconsider, and by the time I've finished, the switching costs are real and the moment for cheap redirection has passed.
 
+In code, it sounds like "let me just get this working first." In life, it sounds like "after I finish this." Both feel reasonable. Both manufacture the sunk costs that make redirection expensive after the fact.
+
 This same pattern shows up outside of code. I've caught myself mid-motion knowing something is wrong, knowing the angle or the approach isn't right, and my body finishes the movement anyway. It's probably why I'm prone to injury. The correction signal arrives and something in me says "after I finish this."
 
 It's not always pride; often it isn't pride at all, just a pre-rational impulse to proceed before changing direction, as though stopping mid-stride carries some invisible cost that continuing doesn't.
