@@ -13,10 +13,10 @@ The first two disciplines address personal growth: how you develop yourself and 
 
 ---
 
-## 1. Seek Hardship, Don't Repeat What's Comfortable
+## 1. Seek Hardship
 
 <blockquote class="pull-quote">
-<p>Great engineers solve hard problems. Great leaders create engineers who solve hard problems.</p>
+<p>If you are not sincerely seeking truth, you will never accept it.</p>
 </blockquote>
 
 There's a difference between ten years of experience and one year repeated ten times. Accumulating experience means building new capabilities, taking on broader responsibilities, and establishing feedback loops that force growth. The discomfort signals learning.
@@ -29,7 +29,7 @@ We learn by teaching. When you mentor less experienced developers, you create sp
 
 ---
 
-## 2. Build to Learn, Don't Watch to Learn
+## 2. Build to Learn
 
 <blockquote class="pull-quote">
 <p>Real capability comes from building, failing, and fixing, not collecting badges.</p>
@@ -47,7 +47,7 @@ The pattern is simple: do something, fail at it, learn why you failed, improve, 
 
 ---
 
-## 3. Genuine Discipline Comes from Values, Not Checklists
+## 3. Genuine Discipline Comes from Core Values
 
 <blockquote class="pull-quote">
 <p>Most project failures stem from broken values, not broken processes.</p>
