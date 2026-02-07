@@ -2,7 +2,6 @@
 layout: post
 title: "Consolidate Architecture to Rediscover Lost Agility"
 date: 2025-10-08
-series: "Architecture Insights"
 tags: [architecture, distributed-systems, refactoring, system-design, technical-debt, microservices]
 description: "When distributed systems lose their rationale through team churn, consolidation reveals true boundaries. Merge tightly-coupled services to discover what boundaries actually make sense, then split correctly when justified."
 ---

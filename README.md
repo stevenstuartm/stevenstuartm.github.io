@@ -72,7 +72,7 @@ The generated site will be in the `_site/` directory.
 ├── assets/
 │   ├── css/             # Stylesheets
 │   ├── js/              # JavaScript (D3.js, radar visualization, reading progress)
-│   ├── data/            # JSON data files (radar-data, blog series config, study guides config)
+│   ├── data/            # JSON data files (radar-data, study guides config)
 │   └── img/             # Image assets
 └── index.md             # Homepage
 ```
@@ -91,14 +91,11 @@ layout: post
 title: "Your Post Title"
 date: 2025-09-29
 description: "Brief summary for SEO and previews"
-series: "Architecture Insights"
 tags: [architecture, design-patterns]
 ---
 
 Your content here...
 ```
-
-**Important**: When creating a new blog post, also update `assets/data/blog_series_config.json` to add the post to its series.
 
 ### Study Guides
 

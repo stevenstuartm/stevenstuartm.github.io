@@ -2,7 +2,6 @@
 layout: post
 title: "Know What You Are, Regardless of Your Title"
 date: 2025-08-10
-series: "Development Practice"
 tags: [career, software-engineering, personal-development]
 description: "Job titles rarely reflect what you actually do or how you think about your work. Understanding whether you operate as a coder, developer, or engineer matters for your growth, even when your title doesn't match."
 ---

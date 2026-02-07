@@ -2,7 +2,6 @@
 layout: post
 title: "Avoid Forcing REST onto Domain-Driven Architectures"
 date: 2025-09-27
-series: "Architecture Insights"
 tags: [architecture, api-design, ddd, microservices]
 description: "Why REST's resource-centric design conflicts with domain-driven architectures and how RPC provides better alignment with business operations."
 ---

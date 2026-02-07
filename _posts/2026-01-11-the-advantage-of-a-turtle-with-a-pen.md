@@ -3,7 +3,6 @@ layout: post
 title: "The Advantage of a Turtle with a Pen"
 date: 2026-01-11
 description: "Those who must write to remember, ask 'why' to understand, and prioritize ruthlessly to focus end up developing the disciplines that let them teach, lead, and build things that outlast them."
-series: "Development Practice"
 tags: [learning, teaching, knowledge-sharing, career-growth]
 ---
 

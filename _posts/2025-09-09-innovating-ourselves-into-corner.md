@@ -2,7 +2,6 @@
 layout: post
 title: "The Switching Cost Trap: When Better Technology Sits Unused"
 date: 2025-09-09
-series: "Industry & Culture"
 tags: [industry, innovation, technical-debt, career]
 description: "Better technologies exist and sit unused because switching costs create rational reasons to maintain the status quo, potentially leading to decades of maintaining increasingly fragile systems."
 ---

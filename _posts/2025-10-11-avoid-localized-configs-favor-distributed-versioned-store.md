@@ -3,7 +3,6 @@ layout: post
 title: "Why Configuration Files Don't Belong With Your Code"
 date: 2025-10-11
 description: "Storing configuration files alongside application code creates security risks and deployment complexity. Distributed config stores solve these problems while introducing new trade-offs worth making."
-series: "Architecture Insights"
 tags: [architecture, configuration-management, security, aws, devops]
 ---
 

@@ -2,7 +2,6 @@
 title: "Rethinking Internal vs External Service Partitioning"
 date: 2025-12-09
 description: "The question of how to separate internal from external service layers assumes the separation should exist. Often it shouldn't, and when it does, the answer is simpler than a whole new service tier."
-series: "Architecture Insights"
 tags: [architecture, microservices, ddd, api-design, distributed-systems]
 ---
 

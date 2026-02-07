@@ -3,7 +3,6 @@ layout: post
 title: "Package Updates Are Investments, Not Hygiene Tasks"
 date: 2025-11-07
 description: "Treating package updates as investments rather than chores means making deliberate, context-driven decisions based on value and risk instead of following dogma or chasing version uniformity."
-series: "Technology & Tools"
 tags: [dependency-management, distributed-systems, risk-management, testing]
 ---
 

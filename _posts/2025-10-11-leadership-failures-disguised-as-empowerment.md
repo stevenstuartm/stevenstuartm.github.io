@@ -3,7 +3,6 @@ layout: post
 title: "How Weak Leaders Weaponize Empowerment"
 date: 2025-10-11
 description: "Personal development goals, family culture, and unlimited PTO sound empowering. In practice, they're often control mechanisms that externalize leadership failures onto employees through ambiguity, emotional manipulation, and blame-shifting."
-series: "Industry & Culture"
 tags: [leadership, management, culture, organizational-health]
 ---
 

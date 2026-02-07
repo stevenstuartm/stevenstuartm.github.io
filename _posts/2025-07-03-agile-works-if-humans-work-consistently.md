@@ -2,7 +2,6 @@
 layout: post
 title: "Agile Works When People Align, Agree, and Deliver"
 date: 2025-07-03
-series: "Development Practice"
 tags: [agile, project-management, software-engineering, teams]
 description: "Why Agile works when teams align, agree, and deliver consistently: identifying common failure points and how to avoid them."
 ---

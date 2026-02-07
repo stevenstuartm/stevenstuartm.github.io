@@ -3,7 +3,6 @@ layout: post
 title: "Case Study Expansion: Kubernetes to ECS Migration"
 date:
 description: ""
-series: "Architecture Insights"
 tags: [architecture, case-study, kubernetes, aws, cloud-computing]
 ---
 

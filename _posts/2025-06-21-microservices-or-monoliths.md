@@ -2,7 +2,6 @@
 layout: post
 title: "Monoliths for Discovery, Microservices for Optimization"
 date: 2025-06-21
-series: "Architecture Insights"
 tags: [architecture, microservices, monoliths, system-design]
 description: "Why monoliths are effective for discovery and microservices are optimizations: principles for choosing the right architecture for your context."
 ---

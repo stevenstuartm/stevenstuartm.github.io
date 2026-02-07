@@ -3,7 +3,6 @@ layout: post
 title: "Rebuild Success Often Comes from Realignment, Not New Technology"
 date: 2025-11-07
 description: "Many celebrated system rebuilds appear successful not because of new technology, but because they force teams to realign with value and best practices. This realignment work could have happened without the rebuild."
-series: "Architecture Insights"
 tags: [architecture, leadership, decision-making, aaa-cycle]
 ---
 

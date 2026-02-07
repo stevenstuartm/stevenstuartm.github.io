@@ -2,7 +2,6 @@
 layout: post
 title: "Why I Migrated from Kubernetes to ECS"
 date: 2025-09-08
-series: "Technology & Tools"
 tags: [kubernetes, aws, architecture, cost-optimization]
 description: "Two years ago I adopted Kubernetes without evaluating whether I needed it. The result: $2K/month in unnecessary costs and constant operational overhead. Here's what I learned about technology selection and hype."
 ---

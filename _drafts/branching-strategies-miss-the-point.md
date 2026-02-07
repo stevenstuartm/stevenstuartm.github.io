@@ -3,7 +3,6 @@ layout: post
 title: "Fix Your Architecture, Fix Your Branching"
 date:
 description: "Teams argue endlessly about CI versus feature branches while ignoring the root cause of their merge pain: architecture. Fix the modularity problem, and the branching strategy becomes a minor detail."
-series: "Architecture Insights"
 tags: [architecture, ci-cd, development-workflow, modularity]
 ---
 

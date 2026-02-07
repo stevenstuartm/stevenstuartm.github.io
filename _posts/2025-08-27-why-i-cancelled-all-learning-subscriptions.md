@@ -2,7 +2,6 @@
 layout: post
 title: "Learning Platforms Sell Badges, Not Skills"
 date: 2025-08-27
-series: "Development Practice"
 tags: [learning, career, productivity, software-engineering]
 description: "Building real projects teaches more than passive learning platforms ever could. Real capability comes from doing, failing, and fixing, not collecting completion checkmarks."
 ---

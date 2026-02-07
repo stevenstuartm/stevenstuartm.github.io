@@ -2,7 +2,6 @@
 layout: post
 title: "Why JWTs Make Terrible Authorization Tokens"
 date: 2025-10-10
-series: "Architecture Insights"
 tags: [security, architecture, jwt, authentication, authorization]
 description: "Embedding authorization in JWTs creates security risks and UX problems because immutable tokens don't match dynamic permissions. Learn why session-based grants are worth the minimal latency cost."
 ---

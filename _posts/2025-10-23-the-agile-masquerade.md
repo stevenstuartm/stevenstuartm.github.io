@@ -3,7 +3,6 @@ layout: post
 title: "Why Your Agile Team Might Be Building on Hope, Not Discipline"
 date: 2025-10-23
 description: "It is impossible to deliver what is expected and valuable if there has been no agreement on the expectation. Without discovery and genuine agreement, you're operating on hope, not discipline."
-series: "Development Practice"
 tags: [agile, requirements, aaa-cycle, estimation]
 ---
 

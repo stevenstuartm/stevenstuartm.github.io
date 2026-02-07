@@ -2,7 +2,6 @@
 layout: post
 title: "Why LeetCode Interviews Measure the Wrong Thing"
 date: 2025-08-19
-series: "Industry & Culture"
 tags: [hiring, interviews, career, industry]
 description: "Algorithm interviews optimize for pattern memorization while ignoring the multidisciplinary skills that define effective software engineering."
 ---

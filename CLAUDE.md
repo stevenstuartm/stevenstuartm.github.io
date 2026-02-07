@@ -63,7 +63,7 @@ bundle exec jekyll build
 ### Blog Post Format
 All blog posts must:
 - Be placed in `_posts/` with filename format `YYYY-MM-DD-title.md`
-- Include YAML front matter with: layout, title, date, description, series, and tags
+- Include YAML front matter with: layout, title, date, description, and tags
 - Use `layout: post` (set by default in config)
 
 Example:
@@ -73,14 +73,13 @@ layout: post
 title: "Your Post Title"
 date: 2025-09-29
 description: "Concise summary that captures the core thesis and key points of the post"
-series: "Technology & Tools"
 tags: [architecture, design-patterns]
 ---
 ```
 
 **CRITICAL: Required front matter fields**:
 - **description**: A 1-2 sentence summary that captures the core thesis. Used for SEO and post previews.
-- **series**: Must match one of the existing series names in `assets/data/blog_series_config.json`
+- **tags**: Array of tags for discoverability and filtering on the blog page
 
 **CRITICAL: Never fabricate personal experiences or examples in blog posts**:
 - ❌ **NEVER** write "I've watched...", "I've seen...", "I've observed..." unless the user explicitly provided those experiences
@@ -93,21 +92,10 @@ tags: [architecture, design-patterns]
 
 **Standard procedure for creating a new blog post**:
 1. Create the markdown file in `_posts/` with correct date format
-2. Include complete YAML front matter (layout, title, date, description, series, tags)
-3. **Immediately update** `assets/data/blog_series_config.json`:
-   - Add the post filename to the appropriate series' `posts` array
-   - Posts are listed in reverse chronological order (newest first)
-4. Update `assets/data/upcoming-items.json` if the post was planned:
+2. Include complete YAML front matter (layout, title, date, description, tags)
+3. Update `assets/data/upcoming-items.json` if the post was planned:
    - Change status from "planned" to "completed"
    - Update deliveryDate to actual publish date
-
-**Existing blog series** (from blog_series_config.json):
-- **Architecture Insights**: Deep dives into architectural patterns, code quality, and system design principles
-- **Technology & Tools**: Practical lessons from infrastructure, frameworks, and development tools
-- **Development Practice**: Insights on agile methodologies, learning strategies, and career growth
-- **Industry & Culture**: Perspectives on hiring practices, leadership, and industry trends
-
-**Common gotcha**: Creating a blog post without updating blog_series_config.json will result in the post not appearing in the series listing on the blog page. Always modify both files together.
 
 **CRITICAL: NEVER rename files**:
 - ❌ **NEVER** rename blog post files (`_posts/*.md`) or any other content files
@@ -297,7 +285,7 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 
 **Filtering UI** (planned):
 - Client-side JavaScript filtering for study guides page (filter by category, subcategory, tags)
-- Client-side JavaScript filtering for blog page (filter by series, tags)
+- Client-side JavaScript filtering for blog page (filter by tags)
 - Optional: Unified "Browse by Tag" page showing all content with specific tags
 - No backend required; filters operate on existing JSON data and front matter
 - Provides "cheap index" functionality without full-text search overhead
@@ -958,7 +946,7 @@ Update this file whenever:
 4. **Important decisions are made** - Architecture choices, technology selections, or design patterns adopted
 5. **Gotchas are discovered** - Edge cases, quirks, or common mistakes to avoid
 6. **Dependencies change** - New gems, plugins, or significant configuration updates
-7. **Content patterns established** - New blog series, content organization methods, or writing conventions
+7. **Content patterns established** - New content organization methods or writing conventions
 
 ### Session Management
 

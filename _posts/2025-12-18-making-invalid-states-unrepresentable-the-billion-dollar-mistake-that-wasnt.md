@@ -3,7 +3,6 @@ layout: post
 title: "Making Invalid States Unrepresentable: The Billion-Dollar Mistake That Wasn't"
 date: 2025-12-18
 description: "Structure your data so invalid states cannot exist. Validate at construction, trust internally, and let null crash loudly rather than masking absence with defaults that propagate corruption silently through your system."
-series: "Architecture Insights"
 tags: [software-design, patterns, security, defensive-programming]
 ---
 

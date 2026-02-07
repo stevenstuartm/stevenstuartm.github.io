@@ -21,18 +21,6 @@ layout: default
             </div>
 
             <div id="filterContent" class="filter-content">
-            <!-- Series Filter -->
-            <div class="filter-group">
-                <label for="seriesFilter">Series</label>
-                <select id="seriesFilter" class="filter-select">
-                    {% assign configured_series = site.data.blog_series_config.series %}
-                    {% for series_pair in configured_series %}
-                        {% assign series_name = series_pair[0] %}
-                        <option value="{{ series_name | slugify }}"{% if forloop.first %} selected{% endif %}>{{ series_name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
             <!-- Result Count -->
             <div class="filter-result-count">
                 <span id="blogResultCount"></span>
@@ -73,20 +61,7 @@ layout: default
 
         <div class="guides-main">
             <div class="guides-grid" id="guidesGrid">
-        {% comment %} Only display series that are defined in the config {% endcomment %}
-        {% for series_pair in site.data.blog_series_config.series %}
-            {% assign series_name = series_pair[0] %}
-            {% assign series_config = series_pair[1] %}
-
-        <section class="category-section" data-category="{{ series_name }}">
-            <h2 class="category-heading">{{ series_name }}</h2>
-            {% if series_config.description %}
-                <p class="series-description">{{ series_config.description }}</p>
-            {% endif %}
-
-            <div class="guide-cards">
-                {% if series_name == "All" %}
-                    {% comment %} For "All" series, show all posts sorted by date descending {% endcomment %}
+                <div class="guide-cards">
                     {% assign all_posts = site.posts | sort: 'date' | reverse %}
                     {% for post in all_posts %}
                         {% assign post_words = post.content | strip_html | number_of_words %}
@@ -95,15 +70,11 @@ layout: default
                         <article class="guide-card filterable-item"
                                  data-title="{{ post.title | downcase }}"
                                  data-description="{{ post.description | downcase }}"
-                                 data-category="all"
                                  data-tags="{% if post.tags %}{{ post.tags | join: ',' | downcase }}{% endif %}"
                                  data-date="{{ post.date | date: '%Y-%m-%d' }}">
                             <a href="{{ post.url | relative_url }}" class="guide-link">
                                 <h3>{{ post.title }}</h3>
                                 <div class="guide-card-meta">
-                                    {% if post.series %}
-                                    <span class="category-badge">{{ post.series }}</span>
-                                    {% endif %}
                                     <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
                                     <span class="reading-time-badge">{{ post_minutes }} min</span>
                                 </div>
@@ -116,39 +87,7 @@ layout: default
                             </a>
                         </article>
                     {% endfor %}
-                {% else %}
-                    {% comment %} For other series, use the configured post list {% endcomment %}
-                    {% for post_filename in series_config.posts %}
-                        {% assign post = site.posts | where_exp: "item", "item.path contains post_filename" | first %}
-                        {% if post %}
-                            {% assign post_words = post.content | strip_html | number_of_words %}
-                            {% assign post_minutes = post_words | divided_by: 200 %}
-                            {% if post_minutes < 1 %}{% assign post_minutes = 1 %}{% endif %}
-                            <article class="guide-card filterable-item"
-                                     data-title="{{ post.title | downcase }}"
-                                     data-description="{{ post.description | downcase }}"
-                                     data-category="{{ post.series | slugify }}"
-                                     data-tags="{% if post.tags %}{{ post.tags | join: ',' | downcase }}{% endif %}">
-                                <a href="{{ post.url | relative_url }}" class="guide-link">
-                                    <h3>{{ post.title }}</h3>
-                                    <div class="guide-card-meta">
-                                        <span class="category-badge">{{ post.series }}</span>
-                                        <span class="reading-time-badge">{{ post_minutes }} min</span>
-                                    </div>
-                                    {% if post.description %}
-                                    <p class="guide-excerpt">{{ post.description }}</p>
-                                    {% elsif post.excerpt %}
-                                    <p class="guide-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-                                    {% endif %}
-                                    <span class="read-more">Read post →</span>
-                                </a>
-                            </article>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </section>
-        {% endfor %}
+                </div>
             </div>
 
             <div id="noResults" class="no-results" style="display: none;">
@@ -213,12 +152,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize content filter for blog
     const blogFilter = new ContentFilter({
-        categoryFilterId: 'seriesFilter',
         searchInputId: 'blogSearchInput',
         tagContainerId: 'blogTagContainer',
         clearFiltersBtnId: 'blogClearFiltersBtn',
         itemSelector: '.filterable-item',
-        sectionSelector: '.category-section',
         noResultsId: 'noResults',
         resultCountId: 'blogResultCount',
         itemName: 'posts'

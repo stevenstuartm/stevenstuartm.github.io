@@ -3,7 +3,6 @@ layout: post
 title: "To Create is to Choose"
 date: 2025-12-24
 description: "Progress requires sustained effort against entropy; regression requires nothing. The choice to create is what we owe each other."
-series: "Industry & Culture"
 tags: [leadership, mentoring, philosophy, growth]
 ---
 

@@ -1,7 +1,7 @@
 /**
  * Content Filter Module
  * Provides client-side filtering for study guides and blog posts
- * Supports filtering by category, subcategory, series, tags, and text search
+ * Supports filtering by category, subcategory, tags, and text search
  */
 
 class ContentFilter {
@@ -135,46 +135,8 @@ class ContentFilter {
         let visibleCount = 0;
         let totalCount = 0;
 
-        // For blog pages: handle "All" series differently
-        const isBlogPage = this.config.itemName === 'posts';
-
-        // First pass: handle section visibility for blog pages
-        if (isBlogPage) {
-            if (this.activeFilters.category === 'all') {
-                // When "All" is selected, hide all category sections except "All"
-                this.categorySections.forEach(section => {
-                    const sectionCategory = this.slugify(section.dataset.category);
-                    if (sectionCategory === 'all') {
-                        section.style.display = '';
-                    } else {
-                        section.style.display = 'none';
-                    }
-                });
-            } else {
-                // When a specific series is selected, show that series and hide "All"
-                this.categorySections.forEach(section => {
-                    const sectionCategory = this.slugify(section.dataset.category);
-                    if (sectionCategory === 'all') {
-                        section.style.display = 'none';
-                    } else if (sectionCategory === this.activeFilters.category) {
-                        section.style.display = '';
-                    } else {
-                        section.style.display = 'none';
-                    }
-                });
-            }
-        }
-
-        // Second pass: filter items and count
+        // Filter items and count
         this.contentItems.forEach(item => {
-            // For blog pages, only process items in currently visible sections
-            if (isBlogPage) {
-                const itemSection = item.closest('.category-section');
-                if (itemSection && itemSection.style.display === 'none') {
-                    return; // Skip items in hidden sections
-                }
-            }
-
             totalCount++;
             const matches = this.itemMatchesFilters(item);
 
@@ -189,7 +151,7 @@ class ContentFilter {
         });
 
         // Handle category sections and subcategory visibility (for study guides)
-        if (this.categorySections.length > 0 && !isBlogPage) {
+        if (this.categorySections.length > 0) {
             this.categorySections.forEach(section => {
                 // Hide empty subcategories within each category
                 const subcategoryGroups = section.querySelectorAll('.subcategory-group');

@@ -2,7 +2,6 @@
 layout: post
 title: "The Housing Lock-In Effect and Remote Work"
 date: 2025-07-22
-series: "Industry & Culture"
 tags: [remote-work, career, industry, economics]
 description: "High mortgage rates create a housing lock-in effect that prevents homeowners from relocating. This could force employers to embrace remote work as talent becomes geographically immobile."
 ---

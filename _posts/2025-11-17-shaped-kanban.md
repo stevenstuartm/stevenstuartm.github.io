@@ -3,7 +3,6 @@ layout: post
 title: "Shaped Kanban: Complete Features, Not Sprints"
 date: 2025-11-17
 description: "Sprints organize around time intervals. Shaped Kanban organizes around completing features with clear boundaries and circuit breakers to bound risk. Work flows at its natural pace within disciplined constraints."
-series: "Development Practice"
 tags: [agile, kanban, shapeup, aaa-cycle, sdlc]
 ---
 

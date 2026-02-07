@@ -2,7 +2,6 @@
 layout: post
 title: "TDD Tests Assumptions, Not Just Code"
 date: 2025-07-28
-series: "Development Practice"
 tags: [tdd, testing, software-design, best-practices]
 description: "TDD's real value isn't code coverage, it's catching wrong assumptions before you deliver the wrong thing."
 ---

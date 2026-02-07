@@ -3,7 +3,6 @@ layout: post
 title: "Observability Is a Feedback Loop"
 date: 
 description: "Many organizations have invested heavily in observability tooling but gained little operational insight. Dashboards exist that nobody watches. Alerts fire that nobody investigates. The appearance of observability substitutes for the reality of understanding your systems."
-series: "Technology & Tools"
 tags: [observability, monitoring, devops, architecture, operations]
 ---
 

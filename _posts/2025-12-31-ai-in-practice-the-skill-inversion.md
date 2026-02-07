@@ -3,7 +3,6 @@ layout: post
 title: "AI in Practice: The Skill Inversion"
 date: 2025-12-31
 description: "As AI commoditizes code generation, the bottleneck shifts from technical execution to business judgment. The middle is hollowing out: you either go deep-and-mechanical or broad-and-human."
-series: "AI in Practice"
 tags: [ai, career, architecture, leadership]
 ---
 

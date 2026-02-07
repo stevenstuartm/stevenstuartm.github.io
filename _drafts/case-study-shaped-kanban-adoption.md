@@ -3,7 +3,6 @@ layout: post
 title: "Case Study Expansion: Shaped Kanban Team Adoption"
 date:
 description: ""
-series: "Development Practice"
 tags: [agile, case-study, kanban, methodology, shaped-kanban]
 ---
 

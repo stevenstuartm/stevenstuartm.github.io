@@ -3,7 +3,6 @@ layout: post
 title: "Case Study Expansion: Reframing Tech Debt Communication"
 date:
 description: ""
-series: "Architecture Insights"
 tags: [architecture, case-study, communication, leadership, tech-debt]
 ---
 

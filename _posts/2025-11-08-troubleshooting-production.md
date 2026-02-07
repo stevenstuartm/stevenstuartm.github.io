@@ -3,7 +3,6 @@ layout: post
 title: "Why the Fastest Incident Responders Slow Down First"
 date: 2025-11-08
 description: "Reproduction is the fulcrum of effective troubleshooting. Without it, you're guessing about the problem and guessing about the fix. The teams that resolve incidents fastest have internalized the fundamentals so completely that gathering facts, testing assumptions, and proving causation become automatic even under pressure."
-series: "Development Practice"
 tags: [incident-response, production, debugging, troubleshooting]
 ---
 

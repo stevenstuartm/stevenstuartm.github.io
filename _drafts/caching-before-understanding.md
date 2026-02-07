@@ -3,7 +3,6 @@ layout: post
 title: "Caching Before Understanding"
 date: 
 description: "Most caching failures aren't technical—they're decisional. Teams cache before answering two fundamental questions: what's the data scope, and what's the data lifecycle? Without those answers, you're not optimizing. You're creating invisible infrastructure that will haunt you."
-series: "Architecture Insights"
 tags: [architecture, performance, caching, distributed-systems]
 ---
 

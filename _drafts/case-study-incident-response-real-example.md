@@ -3,7 +3,6 @@ layout: post
 title: "Case Study: A Real Production Incident Walkthrough"
 date:
 description: ""
-series: "Architecture Insights"
 tags: [architecture, case-study, troubleshooting, observability, reliability]
 ---
 

@@ -3,7 +3,6 @@ layout: post
 title: "Case Study: How I Achieved 3X Feature Delivery with AI"
 date:
 description: ""
-series: "Technology & Tools"
 tags: [ai, productivity, case-study, development-practice]
 ---
 

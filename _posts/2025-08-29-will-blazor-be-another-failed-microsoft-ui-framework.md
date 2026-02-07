@@ -2,7 +2,6 @@
 layout: post
 title: "Blazor and Microsoft's UI Framework Track Record"
 date: 2025-08-29
-series: "Technology & Tools"
 tags: [blazor, dotnet, microsoft, web-development]
 description: "Blazor offers a solid development experience for .NET teams, primarily through Blazor Server for internal enterprise apps. But Microsoft's history of abandoned UI frameworks raises questions about its long-term viability."
 ---

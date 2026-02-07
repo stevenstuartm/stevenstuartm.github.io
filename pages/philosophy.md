@@ -102,13 +102,11 @@ Outcome measurement requires harder questions. Did the feature solve the actual 
 <p>Test assumptions before committing. Realign when discovery demands prudent change.</p>
 </blockquote>
 
-Estimating based on untested assumptions isn't planning; it's guessing. When teams base commitments on guesses, they're building on sand.
+The discipline starts with honesty: separate what you know from what you're assuming, then test the critical assumptions before making commitments. Agree on what "done" looks like with explicit success criteria. When you discover new information during implementation, pause and reconsolidate the agreement. Discovery is inevitable; the question is whether you have the discipline to incorporate what you discover, or ship anyway because the timebox ends.
 
-The discipline starts with honesty: separate what you know from what you're assuming, then test the critical assumptions before making commitments. Agree on what "done" looks like with explicit success criteria. When you discover new information during implementation (and you will), pause and reconsolidate the agreement. Continue with updated understanding, or deliver what was originally agreed.
+But realignment requires something more basic: the capacity to stop. Plan continuation bias, the tendency to continue with the original plan despite changing conditions, operates beneath every process improvement. When discovery arrives mid-implementation, the impulse to finish what you're doing overrides the signal to reconsider. Recognizing this bias, and building environments where stopping is cheap and continuation past checkpoints is deliberate, is the prerequisite for any realignment discipline.
 
-This isn't analysis paralysis. It's being genuinely agile: adapting to changing priorities and changing understanding. Discovery is inevitable. The question is whether you have the discipline to incorporate what you discover, or ship anyway because the timebox ends.
-
-**Going deeper**: [Why Your Agile Team Might Be Building on Hope, Not Discipline](/blog/2025/10/23/the-agile-masquerade.html){:target="_blank" rel="noopener noreferrer"} covers how to test assumptions and maintain continuous alignment.
+**Going deeper**: [Why Your Agile Team Might Be Building on Hope, Not Discipline](/blog/2025/10/23/the-agile-masquerade.html){:target="_blank" rel="noopener noreferrer"} covers how to test assumptions and maintain continuous alignment. [The Most Dangerous Sentence in Software Development](/blog/2026/02/07/you-cant-realign-if-you-cant-stop.html){:target="_blank" rel="noopener noreferrer"} explores the cognitive bias that prevents realignment from happening even when the process supports it.
 
 ---
 

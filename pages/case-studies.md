@@ -23,32 +23,20 @@ permalink: /case-studies.html
         <span class="case-study-date">{{ case_study.date | date: "%Y" }}</span>
       </div>
 
-      {% if case_study.headline_metric %}
-      <div class="headline-metric">
-        <span class="metric-value">{{ case_study.headline_metric }}</span>
-        {% if case_study.headline_detail %}
-        <span class="metric-detail">{{ case_study.headline_detail }}</span>
-        {% endif %}
-      </div>
-      {% endif %}
-
       <h3 class="card-title">{{ case_study.title }}</h3>
 
       {% if case_study.subtitle %}
       <p class="card-subtitle">{{ case_study.subtitle }}</p>
       {% endif %}
 
-      <div class="card-meta">
-        {% if case_study.role %}
-        <div class="role-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-          {{ case_study.role }}
-        </div>
+      {% if case_study.headline_metric %}
+      <div class="headline-metric">
+        <span class="metric-value">{{ case_study.headline_metric }}</span>
+        {% if case_study.headline_detail %}
+        <span class="metric-detail"> · {{ case_study.headline_detail }}</span>
         {% endif %}
       </div>
+      {% endif %}
 
       {% if case_study.technologies %}
       <div class="tech-pills">
@@ -186,25 +174,18 @@ permalink: /case-studies.html
 
 /* Headline Metric */
 .headline-metric {
-  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-card-bg) 100%);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  padding: var(--spacing-xs, 0.25rem) var(--spacing-sm);
-  margin-bottom: var(--spacing-sm);
-  text-align: center;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.4;
 }
 
 .metric-value {
-  display: block;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--color-primary);
-  line-height: 1.2;
 }
 
 .metric-detail {
-  display: block;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: var(--color-text-light);
 }
 
@@ -222,27 +203,6 @@ permalink: /case-studies.html
   color: var(--color-text-light);
   margin: 0 0 var(--spacing-md) 0;
   line-height: 1.5;
-}
-
-/* Card Meta */
-.card-meta {
-  margin-bottom: var(--spacing-md);
-}
-
-.role-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.85rem;
-  color: var(--color-text-light);
-  background: var(--color-bg);
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid var(--color-border);
-}
-
-.role-badge svg {
-  opacity: 0.7;
 }
 
 /* Tech Pills */
@@ -329,16 +289,9 @@ permalink: /case-studies.html
     font-size: 0.85rem;
   }
 
-  .headline-metric {
-    padding: 0.2rem var(--spacing-xs, 0.25rem);
-  }
-
-  .metric-value {
-    font-size: 0.95rem;
-  }
-
+  .metric-value,
   .metric-detail {
-    font-size: 0.7rem;
+    font-size: 0.85rem;
   }
 }
 </style>

@@ -2,7 +2,6 @@
 layout: post
 title: "Are You Using Hexagonal Architecture, or Just Dependency Injection?"
 date: 2025-09-29
-series: "Architecture Insights"
 tags: [architecture, design-patterns, software-design]
 description: "Most developers achieve hexagonal architecture's goals without implementing its structure. Modern frameworks offer testability and decoupling through different means, and understanding this distinction clarifies what you're actually building."
 ---

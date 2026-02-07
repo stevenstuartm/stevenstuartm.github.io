@@ -3,7 +3,6 @@ layout: post
 title: "Why 'Tech Debt' Does Not Get Fixed"
 date: 2025-11-11
 description: "The term 'tech debt' perpetuates the communication failures that created the problem. It's ambiguous, defensive, and guarantees deprioritization. Replace it with Corrections, Optimizations, and Re-Alignments to break the cycle."
-series: "Development Practice"
 tags: [architecture, communication, technical-debt, leadership]
 ---
 

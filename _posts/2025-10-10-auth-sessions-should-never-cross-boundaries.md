@@ -3,7 +3,6 @@ layout: post
 title: "Auth Sessions Should Never Be Transient Across Boundaries"
 date: 2025-10-10
 description: "Authentication sessions belong at security boundaries, not flowing through internal systems. Treating them as ambient context violates architectural boundaries, creates coupling, and breaks down in async and event-driven scenarios."
-series: "Architecture Insights"
 tags: [security, architecture, authentication, distributed-systems, event-driven]
 ---
 

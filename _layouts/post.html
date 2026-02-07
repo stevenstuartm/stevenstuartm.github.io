@@ -28,12 +28,13 @@ layout: default
 }
 </script>
 
+{% comment %} Add prev/next navigation at top {% endcomment %}
+{% include post_navigation.html %}
+
 <header class="page-header-card">
     <div class="post-header">
         <nav class="breadcrumb">
             <a href="{{ '/blog.html' | relative_url }}">Blog</a>
-            <span class="separator">/</span>
-            <a href="{{ '/blog.html' | relative_url }}?series={{ page.series | url_encode }}" class="category">{{ page.series }}</a>
         </nav>
         <h1 class="post-title">{{ page.title }}</h1>
         <div class="post-meta">

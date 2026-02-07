@@ -2,7 +2,6 @@
 layout: post
 title: "Why Experts Explain Things Simply (And How to Get There Faster)"
 date: 2025-10-09
-series: "Development Practice"
 tags: [learning, teaching, knowledge-management, personal-growth]
 description: "Understanding emerges from acknowledged ignorance expanded through research and compressed through teaching. A methodology for accelerated learning."
 ---
