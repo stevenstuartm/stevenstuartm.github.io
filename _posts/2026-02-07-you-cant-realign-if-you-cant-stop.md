@@ -8,13 +8,11 @@ tags: [plan-continuation-bias, decision-making, leadership, cognitive-bias, soft
 
 Something is broken in my approach to problem-solving, and I suspect it's broken in yours too.
 
-When I'm mid-implementation and a better idea surfaces, my first instinct isn't to evaluate it. My first instinct is to finish what I'm doing. Not because I think my current approach is superior and not because I've weighed the alternatives and made a conscious choice to stay the course. I just can't seem to stop. The impulse to complete what's in front of me overrides the signal to reconsider, and by the time I've finished, the switching costs are real and the moment for cheap redirection has passed.
+When I'm mid-implementation and a better idea surfaces, my first instinct isn't to evaluate it; it's to finish what I'm doing. Not because I've weighed the alternatives and made a conscious choice to stay the course. I just can't seem to stop. The impulse to complete what's in front of me overrides the signal to reconsider, and by the time I've finished, the switching costs are real and the moment for cheap redirection has passed.
 
-In code, it sounds like "let me just get this working first." In life, it sounds like "after I finish this." Both feel reasonable. Both manufacture the sunk costs that make redirection expensive after the fact.
+In software, the most dangerous sentence is "let me just get this working first."
 
-This same pattern shows up outside of code. I've caught myself mid-motion knowing something is wrong, knowing the angle or the approach isn't right, and my body finishes the movement anyway. It's probably why I'm prone to injury. The correction signal arrives and something in me says "after I finish this."
-
-It's not always pride; often it isn't pride at all, just a pre-rational impulse to proceed before changing direction, as though stopping mid-stride carries some invisible cost that continuing doesn't.
+It's rarely pride, just a pre-rational impulse to proceed before changing direction, as though stopping mid-stride carries some invisible cost that continuing doesn't.
 
 ## A Bias Faster Than Reflection
 
@@ -26,13 +24,11 @@ The mechanism explains why awareness alone isn't enough. When the original plan 
 
 ## "Let Me Just Get This Working First"
 
-In software, the most dangerous sentence might be "let me just get this working first."
+The idea of finishing first and then reevaluating sounds reasonable. Finish what you've started, then evaluate from a position of knowledge rather than speculation. But watch carefully what actually happens. You spend another hour building out the current approach. You write tests around it. Other code starts depending on it. A colleague reviews it and builds understanding of how it works. All the while diving deeper and deeper into the work for an idea which has not yet proven its worth. At that point, "considering the other approach" means throwing away not just your work but the organizational investment in reviewing, understanding, and integrating what you've built.
 
-It sounds reasonable. Finish what you've started, then evaluate from a position of knowledge rather than speculation. But watch what actually happens. You spend another hour building out the current approach. You write tests around it. Other code starts depending on it. A colleague reviews it and builds understanding of how it works. Now "considering the other approach" means throwing away not just your work but the organizational investment in reviewing, understanding, and integrating what you've built.
+The impulse to finish manufactures the very sunk costs that now appear to justify not switching.
 
-The impulse to finish manufactured the sunk cost that now justifies not switching.
-
-This is the difference between proving and testing. Proving means you've already decided the answer and you're building toward validation. Testing means you're genuinely open to the result. When someone says "let me just get this working first," they're proving, not testing. They want to see their assumption become real before they'll allow a competing idea to be evaluated. The current assumption gets the full weight of implementation effort while the alternative gets a hypothetical conversation, maybe, later, if there's time.
+This is the difference between proving and testing. Proving asks "can I make this work?" and the answer is almost always yes given enough effort. Testing asks "should I be making this work?" and that's the question that actually matters. When someone says "let me just get this working first," they're proving, not testing. They want to see their assumption become real before they'll allow a competing idea to be evaluated. The current assumption gets the full weight of implementation effort while the alternative gets a hypothetical conversation, maybe, later, if there's time.
 
 [Barry Staw's research on escalation of commitment](https://en.wikipedia.org/wiki/Escalation_of_commitment){:target="_blank" rel="noopener noreferrer"} found something uncomfortable: people who feel personally responsible for the initial decision commit more resources to it when it starts failing, not fewer (Staw, 1976). The instinct isn't to cut losses. It's to double down, as though additional effort can retroactively make the original decision correct. In software, this looks like the developer who spends two more days making a questionable approach work rather than spending thirty minutes evaluating whether a different approach would have been simpler from the start.
 
@@ -70,11 +66,11 @@ If the problem were purely intellectual, knowing about plan continuation bias wo
 
 For most people, stopping feels like failure or waste. You were making progress and now you're not. The reframe is that evaluation is itself the cheapest possible action, always cheaper than building more on a flawed foundation. This changes the emotional calculus even when the impulse is still there.
 
-Testing rather than proving is the practical expression of this reframe. Instead of "let me get this working first," the discipline is "let me test whether this is the right approach first." Proving asks "can I make this work?" and the answer is almost always yes given enough effort. Testing asks "should I be making this work?" and that's the question that actually matters.
-
 ### Keeping switching costs low
 
 The impulse to continue draws power from real switching costs that accumulate with every hour of continued execution. The less you've invested, the easier it is to hear the signal telling you to change direction. Practices like cheap experiments before commitment, small commits, well-defined interfaces, and feature flags all serve the same purpose by keeping the cost of being wrong low for as long as possible.
+
+This is why shaping work before committing to it matters. When you've defined clear boundaries and identified risks upfront, the moment of "this isn't right" arrives before you've built the organizational investment that makes switching feel impossible.
 
 ### Building external pause points
 
@@ -84,11 +80,9 @@ Circuit breakers, time boundaries, and explicit checkpoints make "keep going" an
 
 ### Context-shifting more often
 
-The natural objection is that questioning costs real productivity. Context switching is expensive, and developers invoke this constantly. But how much of that argument is genuine, and how much is the bias protecting itself? People in other professions don't make this claim nearly as often, yet their work demands focus too. Four hours of uninterrupted coding on a misunderstood problem doesn't produce the right solution. If you couldn't stop to reconsider in the first place, then your "focused work" wasn't productive flow; it was the bias running unchecked. Context switching away from something you didn't understand and weren't willing to re-examine isn't losing momentum. It's gaining perspective.
+The natural objection is that questioning costs real productivity. Context switching is expensive, and developers invoke this constantly. But how much of that argument is genuine, and how much is the bias protecting itself? Four hours of uninterrupted coding on a misunderstood problem doesn't produce the right solution. If you couldn't stop to reconsider in the first place, then your "focused work" wasn't productive flow; it was the bias running unchecked. Context switching away from something you didn't understand and weren't willing to re-examine isn't losing momentum. It's gaining perspective.
 
 There is a real cost to random interruption, and that's exactly the argument that makes "wait until the sprint review" feel reasonable. But two weeks from now is almost always too late. Structural interrupts earn their value here by creating moments where questioning is expected rather than disruptive. When circuit breakers, checkpoints, or hill chart reviews provide those moments, reassessment becomes part of the rhythm rather than a break from it. There's a difference between [being present in the moment and being focused to the exclusion of all else](/blog/2025/09/19/rethinking-focus-software-development.html){:target="_blank" rel="noopener noreferrer"}. Presence means being receptive to signals while they're still cheap to act on. Tunnel vision means the signal arrives and can't get through.
-
-Team norms matter here too. When "I think we should reconsider" is met with curiosity instead of frustration, the group's collective bias weakens because the signal has a path to reach the people who need to hear it.
 
 ## The Foundation
 
