@@ -66,7 +66,11 @@ Timeboxes create another fundamental problem: **they conflate three separate con
 - Deployment is delayed until the interval ends even when the feature is ready, introducing artificial waiting
 - Feedback is either rushed to fit the interval when stakeholders are unavailable or delayed until the cycle boundary, postponing learning
 
-Timeboxes allow no flexibility. You either take too long and carry work over, or you do too little and ship incomplete work.
+Not every team suffers this conflation equally. Some teams are legitimately bound by organizational rhythms like quarterly planning cycles, compliance windows, or coordinated release trains. For those teams, the cycles genuinely need some degree of alignment, and that's a real constraint worth respecting.
+
+Some Scrum teams also handle this well even within shared sprint cadences. Shift-left practices make the difference. Teams that deploy continuously through CI/CD pipelines have already decoupled their deployment cycle from the sprint boundary. Teams that gather feedback through instrumentation, analytics, or ongoing stakeholder conversations have decoupled their feedback cycle too. These teams use sprints for planning rhythm without letting the sprint boundary dictate when code ships or when learning happens.
+
+The dysfunction happens when teams that could decouple these cycles don't, because the sprint mechanic encourages treating the interval as the organizing principle for everything. The sprint becomes the deployment window, the feedback checkpoint, and the development boundary all at once, not because it needs to be, but because that's the path of least resistance.
 
 ### Timeboxes as Substitute for Discipline
 
