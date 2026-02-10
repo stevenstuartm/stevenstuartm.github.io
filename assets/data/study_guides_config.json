@@ -504,6 +504,67 @@
             "infrastructure/azure/azure-resource-organization.md",
             "infrastructure/azure/azure-billing-enrollment.md"
           ]
+        },
+        {
+          "name": "Networking & Content Delivery",
+          "description": "VNets, load balancing, CDN, DNS, and network connectivity for Azure",
+          "guides": [
+            "infrastructure/azure/azure-vnet-architecture.md",
+            "infrastructure/azure/azure-dns-traffic-manager.md",
+            "infrastructure/azure/azure-front-door-cdn.md",
+            "infrastructure/azure/azure-load-balancer-app-gateway.md",
+            "infrastructure/azure/azure-api-management.md",
+            "infrastructure/azure/azure-expressroute-vpn.md",
+            "infrastructure/azure/azure-private-link-virtual-wan.md"
+          ]
+        },
+        {
+          "name": "Compute Services",
+          "description": "Virtual machines, serverless, containers, and PaaS compute on Azure",
+          "guides": [
+            "infrastructure/azure/azure-virtual-machines.md",
+            "infrastructure/azure/azure-functions.md",
+            "infrastructure/azure/azure-container-services.md",
+            "infrastructure/azure/azure-app-service.md"
+          ]
+        },
+        {
+          "name": "Storage Services",
+          "description": "Blob storage, managed disks, file shares, and storage patterns on Azure",
+          "guides": [
+            "infrastructure/azure/azure-blob-storage.md",
+            "infrastructure/azure/azure-managed-disks-files.md"
+          ]
+        },
+        {
+          "name": "Database Services",
+          "description": "Managed database services including relational databases, NoSQL, caching, and data solutions",
+          "guides": [
+            "infrastructure/azure/azure-database-selection.md",
+            "infrastructure/azure/azure-synapse-analytics.md",
+            "infrastructure/azure/azure-sql-database.md",
+            "infrastructure/azure/azure-cache-redis.md",
+            "infrastructure/azure/azure-cosmos-db.md"
+          ]
+        },
+        {
+          "name": "Application Integration & Messaging",
+          "description": "Enterprise messaging, event-driven patterns, workflow orchestration, and asynchronous communication on Azure",
+          "guides": [
+            "infrastructure/azure/azure-service-bus.md",
+            "infrastructure/azure/azure-event-hubs.md",
+            "infrastructure/azure/azure-event-grid.md",
+            "infrastructure/azure/azure-logic-apps.md"
+          ]
+        },
+        {
+          "name": "Infrastructure as Code",
+          "description": "Azure infrastructure automation using Bicep and ARM templates",
+          "guides": [
+            "infrastructure/azure/azure-bicep-fundamentals.md",
+            "infrastructure/azure/azure-bicep-advanced.md",
+            "infrastructure/azure/azure-arm-templates.md"
+          ]
         }
       ]
     },

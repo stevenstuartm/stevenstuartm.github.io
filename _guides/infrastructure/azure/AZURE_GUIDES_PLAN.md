@@ -64,13 +64,13 @@ Key topics that make this Azure-specific:
 
 | # | File Name | Title | Azure Services Covered | Status |
 |---|-----------|-------|----------------------|--------|
-| 7 | `azure-vnet-architecture.md` | Azure VNet: Network Architecture | VNets, Subnets, NSGs, ASGs, Route Tables, NAT Gateway | [ ] |
-| 8 | `azure-dns-traffic-manager.md` | Azure DNS & Traffic Manager | Azure DNS, Traffic Manager, DNS Zones | [ ] |
-| 9 | `azure-front-door-cdn.md` | Azure Front Door & CDN | Front Door, Azure CDN, WAF integration | [ ] |
-| 10 | `azure-load-balancer-app-gateway.md` | Azure Load Balancer & Application Gateway | Load Balancer (L4), Application Gateway (L7), WAF v2 | [ ] |
-| 11 | `azure-api-management.md` | Azure API Management | APIM tiers, policies, developer portal, versioning | [ ] |
-| 12 | `azure-expressroute-vpn.md` | Azure ExpressRoute & VPN Gateway | ExpressRoute, VPN Gateway, S2S/P2S VPN | [ ] |
-| 13 | `azure-private-link-virtual-wan.md` | Azure Private Link & Virtual WAN | Private Link, Private Endpoints, Virtual WAN, VNet Peering | [ ] |
+| 7 | `azure-vnet-architecture.md` | Azure VNet: Network Architecture | VNets, Subnets, NSGs, ASGs, Route Tables, NAT Gateway | [x] |
+| 8 | `azure-dns-traffic-manager.md` | Azure DNS & Traffic Manager | Azure DNS, Traffic Manager, DNS Zones | [x] |
+| 9 | `azure-front-door-cdn.md` | Azure Front Door & CDN | Front Door, Azure CDN, WAF integration | [x] |
+| 10 | `azure-load-balancer-app-gateway.md` | Azure Load Balancer & Application Gateway | Load Balancer (L4), Application Gateway (L7), WAF v2 | [x] |
+| 11 | `azure-api-management.md` | Azure API Management | APIM tiers, policies, developer portal, versioning | [x] |
+| 12 | `azure-expressroute-vpn.md` | Azure ExpressRoute & VPN Gateway | ExpressRoute, VPN Gateway, S2S/P2S VPN | [x] |
+| 13 | `azure-private-link-virtual-wan.md` | Azure Private Link & Virtual WAN | Private Link, Private Endpoints, Virtual WAN, VNet Peering | [x] |
 
 **Notes**: Direct parallel to AWS networking guides. Azure networking has strong equivalents for every AWS networking service. Traffic Manager is Azure's DNS-based global load balancer (Route 53 routing policies equivalent).
 
@@ -80,10 +80,10 @@ Key topics that make this Azure-specific:
 
 | # | File Name | Title | Azure Services Covered | Status |
 |---|-----------|-------|----------------------|--------|
-| 14 | `azure-virtual-machines.md` | Azure Virtual Machines for System Architects | VMs, VM Scale Sets, Availability Sets/Zones, Spot VMs | [ ] |
-| 15 | `azure-functions.md` | Azure Functions for System Architects | Functions, Triggers/Bindings, Durable Functions, Consumption vs Premium | [ ] |
-| 16 | `azure-container-services.md` | Azure Container Services: ACI, AKS, and Container Apps | ACI, AKS, Container Apps, comparison/selection | [ ] |
-| 17 | `azure-app-service.md` | Azure App Service for System Architects | App Service, App Service Plans, Deployment Slots, WebJobs | [ ] |
+| 14 | `azure-virtual-machines.md` | Azure Virtual Machines for System Architects | VMs, VM Scale Sets, Availability Sets/Zones, Spot VMs | [x] |
+| 15 | `azure-functions.md` | Azure Functions for System Architects | Functions, Triggers/Bindings, Durable Functions, Consumption vs Premium | [x] |
+| 16 | `azure-container-services.md` | Azure Container Services: ACI, AKS, and Container Apps | ACI, AKS, Container Apps, comparison/selection | [x] |
+| 17 | `azure-app-service.md` | Azure App Service for System Architects | App Service, App Service Plans, Deployment Slots, WebJobs | [x] |
 
 **Notes**: Azure has 4 compute guides vs AWS's 3 because App Service (PaaS web hosting) is a major Azure differentiator with no direct AWS equivalent at the same level of integration. Container Apps is also a significant addition beyond what AKS covers.
 
@@ -93,8 +93,8 @@ Key topics that make this Azure-specific:
 
 | # | File Name | Title | Azure Services Covered | Status |
 |---|-----------|-------|----------------------|--------|
-| 18 | `azure-blob-storage.md` | Azure Blob Storage for System Architects | Blob Storage, tiers (Hot/Cool/Cold/Archive), lifecycle, immutability | [ ] |
-| 19 | `azure-managed-disks-files.md` | Azure Managed Disks & Azure Files | Managed Disks (Ultra/Premium/Standard), Azure Files, Azure NetApp Files | [ ] |
+| 18 | `azure-blob-storage.md` | Azure Blob Storage for System Architects | Blob Storage, tiers (Hot/Cool/Cold/Archive), lifecycle, immutability | [x] |
+| 19 | `azure-managed-disks-files.md` | Azure Managed Disks & Azure Files | Managed Disks (Ultra/Premium/Standard), Azure Files, Azure NetApp Files | [x] |
 
 **Notes**: Direct parallel to AWS S3 and EBS/EFS guides.
 
@@ -104,11 +104,11 @@ Key topics that make this Azure-specific:
 
 | # | File Name | Title | Azure Services Covered | Status |
 |---|-----------|-------|----------------------|--------|
-| 20 | `azure-sql-database.md` | Azure SQL Database & Managed Instance | SQL Database, SQL Managed Instance, Elastic Pools, Hyperscale | [ ] |
-| 21 | `azure-cosmos-db.md` | Azure Cosmos DB for System Architects | Cosmos DB, consistency models, partitioning, multi-model APIs | [ ] |
-| 22 | `azure-cache-redis.md` | Azure Cache for Redis | Tiers, clustering, geo-replication, data persistence | [ ] |
-| 23 | `azure-synapse-analytics.md` | Azure Synapse Analytics for System Architects | Dedicated/Serverless SQL pools, Spark pools, Data Explorer pools | [ ] |
-| 24 | `azure-database-selection.md` | Azure Database Service Selection | Decision framework across all Azure database services | [ ] |
+| 20 | `azure-sql-database.md` | Azure SQL Database & Managed Instance | SQL Database, SQL Managed Instance, Elastic Pools, Hyperscale | [x] |
+| 21 | `azure-cosmos-db.md` | Azure Cosmos DB for System Architects | Cosmos DB, consistency models, partitioning, multi-model APIs | [x] |
+| 22 | `azure-cache-redis.md` | Azure Cache for Redis | Tiers, clustering, geo-replication, data persistence | [x] |
+| 23 | `azure-synapse-analytics.md` | Azure Synapse Analytics for System Architects | Dedicated/Serverless SQL pools, Spark pools, Data Explorer pools | [x] |
+| 24 | `azure-database-selection.md` | Azure Database Service Selection | Decision framework across all Azure database services | [x] |
 
 **Notes**: Azure SQL is more tightly integrated than AWS RDS because it's Microsoft's own database. Cosmos DB is a major differentiator with its multi-model, globally distributed design and five consistency levels. Synapse replaces the separate data warehouse concept.
 
@@ -118,9 +118,9 @@ Key topics that make this Azure-specific:
 
 | # | File Name | Title | Azure Services Covered | Status |
 |---|-----------|-------|----------------------|--------|
-| 25 | `azure-bicep-fundamentals.md` | Azure Bicep: Fundamentals | Bicep language, modules, parameters, resource declarations | [ ] |
-| 26 | `azure-bicep-advanced.md` | Azure Bicep: Advanced Patterns | Modules, conditional deployments, loops, template specs | [ ] |
-| 27 | `azure-arm-templates.md` | ARM Templates & Deployment Patterns | ARM JSON templates, deployment modes, nested/linked templates | [ ] |
+| 25 | `azure-bicep-fundamentals.md` | Azure Bicep: Fundamentals | Bicep language, modules, parameters, resource declarations | [x] |
+| 26 | `azure-bicep-advanced.md` | Azure Bicep: Advanced Patterns | Modules, conditional deployments, loops, template specs | [x] |
+| 27 | `azure-arm-templates.md` | ARM Templates & Deployment Patterns | ARM JSON templates, deployment modes, nested/linked templates | [x] |
 
 **Notes**: Bicep is Azure's first-party IaC language (transpiles to ARM). It deserves two guides because it's the recommended approach. ARM templates get one guide for legacy/context. The generic IaC guides (Terraform, etc.) already exist in the parent infrastructure category. AWS has 4 CloudFormation guides; Azure has 3 because Bicep is simpler than CloudFormation.
 
@@ -130,10 +130,10 @@ Key topics that make this Azure-specific:
 
 | # | File Name | Title | Azure Services Covered | Status |
 |---|-----------|-------|----------------------|--------|
-| 28 | `azure-service-bus.md` | Azure Service Bus for System Architects | Queues, Topics/Subscriptions, Sessions, dead-lettering | [ ] |
-| 29 | `azure-event-grid.md` | Azure Event Grid for System Architects | Event Grid, topics, event schemas, filtering, CloudEvents | [ ] |
-| 30 | `azure-logic-apps.md` | Azure Logic Apps & Durable Functions | Logic Apps, workflow orchestration, Durable Functions patterns | [ ] |
-| 31 | `azure-event-hubs.md` | Azure Event Hubs for System Architects | Event Hubs, partitions, consumer groups, Kafka compatibility | [ ] |
+| 28 | `azure-service-bus.md` | Azure Service Bus for System Architects | Queues, Topics/Subscriptions, Sessions, dead-lettering | [x] |
+| 29 | `azure-event-grid.md` | Azure Event Grid for System Architects | Event Grid, topics, event schemas, filtering, CloudEvents | [x] |
+| 30 | `azure-logic-apps.md` | Azure Logic Apps & Durable Functions | Logic Apps, workflow orchestration, Durable Functions patterns | [x] |
+| 31 | `azure-event-hubs.md` | Azure Event Hubs for System Architects | Event Hubs, partitions, consumer groups, Kafka compatibility | [x] |
 
 **Notes**: Service Bus ≈ SQS+SNS, Event Grid ≈ EventBridge, Logic Apps ≈ Step Functions (but broader), Event Hubs ≈ Kinesis.
 
@@ -394,10 +394,53 @@ Each guide should follow the format established by the AWS guides:
 - **How it works**: Core concepts and components
 - **Architecture patterns**: Common deployment patterns and best practices
 - **Decision frameworks**: When to use what (comparison tables where applicable)
-- **Cost considerations**: Pricing models and optimization strategies
+- **Cost considerations**: Pricing model and relative cost positioning (see Content Scope below)
 - **Integration points**: How the service connects to other Azure services
+- **AWS comparison table**: Side-by-side with the equivalent AWS service(s)
+- **Common pitfalls**: Practical mistakes and how to avoid them
+- **Key takeaways**: Actionable insights (not a summary of what was already said)
 
 Tags should use the established vocabulary with `azure` replacing `aws` and adding Azure-specific service tags.
+
+## Content Scope Guidelines
+
+### Pricing: Relative Positioning, Not Dollar Amounts
+
+Azure pricing changes frequently. Specific dollar amounts go stale and create a maintenance burden. Guides should convey pricing insights that remain useful over time:
+
+**Do include:**
+- Pricing model type (pay-per-request, fixed monthly, hourly + data processed, per-unit)
+- Relative cost comparisons between tiers ("Standard v2 is roughly one-quarter the cost of classic Premium")
+- Relative cost comparisons between services ("Application Gateway is 5-7x more expensive than Load Balancer")
+- Cost structure differences that affect architecture decisions ("significant minimum monthly cost even with zero traffic")
+- Cost model differences vs AWS equivalents ("fixed monthly vs pure pay-per-request")
+
+**Do not include:**
+- Specific dollar amounts for individual tiers or SKUs
+- Per-GB, per-request, or per-hour rates
+- Pricing tables with dollar columns
+- Regional pricing variations
+
+**The test:** If a price change would make the statement wrong, it's too specific. "Standard v2 costs roughly one-quarter of classic Premium" survives a price change. "$700/month vs $2,794/month" does not.
+
+### Depth: Concepts and Decisions Over Reference Material
+
+Guides teach understanding and decision-making, not CLI syntax or configuration steps:
+
+**Do include:**
+- How the service works conceptually (architecture, components, data flow)
+- When and why to use each tier, SKU, or configuration option
+- Tradeoffs between options (with comparison tables)
+- Common mistakes and how to avoid them
+- How the service relates to other Azure services and to AWS equivalents
+
+**Do not include:**
+- CLI commands, API syntax, or step-by-step configuration instructions
+- Exhaustive feature matrices that replicate Microsoft documentation
+- Version history or changelog details
+- Exact limits and quotas that change frequently (reference the docs for current limits)
+
+**Exception:** Include specific technical values when they directly inform architecture decisions (e.g., "each CU represents approximately 2,500 concurrent connections" helps with capacity planning; "/27 minimum for GatewaySubnet" prevents a common misconfiguration).
 
 ## Key Differences from AWS Guides to Keep in Mind
 
@@ -433,6 +476,6 @@ These concepts are important but are covered within existing guides rather than 
 
 ## Progress Tracking
 
-**Last Updated**: 2026-02-09
-**Guides Completed**: 6 / 61
-**Current Phase**: Phase 2 - Core Infrastructure (Guide #7 next: Azure VNet Architecture)
+**Last Updated**: 2026-02-10
+**Guides Completed**: 31 / 61
+**Current Phase**: Phase 6 Complete - Phase 7 next (Guide #32: Microsoft Defender for Cloud & Sentinel)
