@@ -479,6 +479,34 @@
         }
       ]
     },
+    "Azure": {
+      "subcategories": [
+        {
+          "name": "Architecture Principles",
+          "description": "Well-Architected Framework and architectural decision-making for Azure",
+          "guides": [
+            "infrastructure/azure/azure-well-architected-framework.md"
+          ]
+        },
+        {
+          "name": "Identity & Access Management",
+          "description": "Entra ID, RBAC, Managed Identities, and workload identity for Azure",
+          "guides": [
+            "infrastructure/azure/azure-entra-id.md",
+            "infrastructure/azure/azure-rbac-managed-identities.md"
+          ]
+        },
+        {
+          "name": "Subscription & Resource Organization",
+          "description": "Tenant architecture, management groups, subscriptions, resource groups, and billing",
+          "guides": [
+            "infrastructure/azure/azure-subscription-architecture.md",
+            "infrastructure/azure/azure-resource-organization.md",
+            "infrastructure/azure/azure-billing-enrollment.md"
+          ]
+        }
+      ]
+    },
     "Infrastructure & Cloud": {
       "subcategories": [
         {
