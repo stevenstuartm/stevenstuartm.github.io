@@ -44,6 +44,18 @@ This compounds with individual plan continuation bias. Each person on the team i
 
 The result is collective plan continuation bias. Individuals who can't self-interrupt, operating inside a group that punishes interruption. Each person's contribution feels small and the aggregate momentum feels like validation. Sometimes the herd is just running.
 
+## When Good Advice Reinforces the Bias
+
+The bias runs deep enough that even our corrective wisdom reinforces it. Consider the life lessons most people absorb without questioning.
+
+"Think before you act." Sound advice, except it assumes the thinking was sound. The bias doesn't care whether you thought first; it cares that you committed to a direction. Once you've thought and decided, the decision has inertia. You thought, you chose, you proceeded, even if the thought was wrong. The problem was never acting without thinking. It's acting without *reconsidering*.
+
+"Finish what you started." This is plan continuation bias repackaged as a character virtue. Discipline means following through, and quitting means weakness. The advice assumes that what you started is worth finishing, which is exactly the question the bias prevents you from asking. Persistence is genuinely valuable when the direction is right. When the direction is wrong, persistence is just the bias wearing a respectable disguise.
+
+"The first step to recovery is admitting you have a problem." In principle, yes. But notice what the phrasing assumes. "Admitting" implies you already know and just need to say it out loud. The actual first step is *recognizing* you have a problem, and recognition is exactly what the bias blocks. Those NASA pilots didn't refuse to admit they were flying into dangerous conditions. They didn't register it as dangerous in the first place. Recognition is the prerequisite that admitting takes for granted.
+
+Each of these lessons skips past the moment that actually matters, the moment where you stop, reassess, and recognize that the current direction might be wrong. They treat that moment as though it happens automatically, as though thinking, persisting, and acknowledging are the hard parts. They aren't. Stopping is the hard part, and our collective wisdom doesn't just fail to address it; it actively discourages it.
+
 ## The Prerequisite Beneath Process
 
 This is the hardest part to accept. I've written extensively about values-driven development, about aligning before committing, about realigning after discovery. I believe that better disciplines produce better outcomes, and they do. But none of it matters if the people inside the process can't stop long enough to let the process work.
@@ -78,11 +90,13 @@ Because the impulse operates faster than individual reflection, environmental de
 
 Circuit breakers, time boundaries, and explicit checkpoints make "keep going" an active choice rather than the default. When continuation requires justification instead of being automatic, the bias loses some of its power because you're reasoning about whether to continue rather than just doing it.
 
-### Context-shifting more often
+### Stopping more often
 
 The natural objection is that questioning costs real productivity. Context switching is expensive, and developers invoke this constantly. But how much of that argument is genuine, and how much is the bias protecting itself? Four hours of uninterrupted coding on a misunderstood problem doesn't produce the right solution. If you couldn't stop to reconsider in the first place, then your "focused work" wasn't productive flow; it was the bias running unchecked. Context switching away from something you didn't understand and weren't willing to re-examine isn't losing momentum. It's gaining perspective.
 
-There is a real cost to random interruption, and that's exactly the argument that makes "wait until the sprint review" feel reasonable. But two weeks from now is almost always too late. Structural interrupts earn their value here by creating moments where questioning is expected rather than disruptive. When circuit breakers, checkpoints, or hill chart reviews provide those moments, reassessment becomes part of the rhythm rather than a break from it. There's a difference between [being present in the moment and being focused to the exclusion of all else](/blog/2025/09/19/rethinking-focus-software-development.html){:target="_blank" rel="noopener noreferrer"}. Presence means being receptive to signals while they're still cheap to act on. Tunnel vision means the signal arrives and can't get through.
+The [Pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique){:target="_blank" rel="noopener noreferrer"} was designed for productivity, but it accidentally created exactly the kind of permission structure this bias requires. Every 25 minutes, you stop. Not because something went wrong, but because the rhythm demands it. That forced pause is a moment where "am I still working on the right thing?" can surface without carrying the social or psychological cost that usually prevents reassessment. The number doesn't matter. What matters is that stopping becomes part of the rhythm rather than an interruption of it.
+
+There is a real cost to random interruption, and that's exactly the argument that makes "wait until the sprint review" feel reasonable. But two weeks from now is almost always too late. If an individual can create a reassessment moment every half hour, the gap between that and a two-week sprint review reveals how rarely most teams actually pause to reconsider. Structural interrupts at the team level like circuit breakers, checkpoints, and hill chart reviews serve the same purpose at a larger scale by creating moments where questioning is expected rather than disruptive. There's a difference between [being present in the moment and being focused to the exclusion of all else](/blog/2025/09/19/rethinking-focus-software-development.html){:target="_blank" rel="noopener noreferrer"}. Presence means being receptive to signals while they're still cheap to act on. Tunnel vision means the signal arrives and can't get through.
 
 ## The Foundation
 
