@@ -10,9 +10,7 @@ permalink: /about.html
 
 ![Steven Stuart - Software Architect specializing in cloud-native platforms and distributed systems](/assets/img/profile-steven-stuart-1.jpg){: .profile-image}
 
-I'm a software architect with 15 years of experience delivering real-world solutions, with a focus on cloud-native systems in .NET and AWS. I specialize in viewing things holistically and providing the clarity that simplifies processes and architectures so teams can move with confidence and deliver real value. I've spent much of my career building microservices and event-driven systems across multiple financial companies, serving millions of users across hundreds of financial institutions.
-
-What sets me apart is how I approach the work. I focus on building genuine understanding with stakeholders and real commitment to what we're building before anyone writes code, then I identify the assumptions we're making and test the critical ones before we commit. When discovery happens mid-build, and it always does, I make sure we realign rather than just push through because the deadline says so.
+Software architect with 15 years of experience building web and desktop applications, microservices, and event-driven systems serving millions of users across hundreds of financial institutions. I build alignment with stakeholders before anyone writes code, test critical assumptions before we commit, and realign when discovery happens mid-build. My focus is on bringing clarity to complex systems so teams can sustainably build what people actually need.
 
 For a deeper look at the principles that guide my work, see my [Philosophy](/philosophy.html).
 
