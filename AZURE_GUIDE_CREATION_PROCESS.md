@@ -51,14 +51,16 @@ Launch one agent per guide with a short prompt (~30 lines):
 - List topics to cover as bullet points (from the plan's "Azure Services Covered" column and Notes)
 - Include this instruction block:
 
-> Read `_guides/infrastructure/azure/azure-vnet-architecture.md` for format and style reference. Follow the same structure: blockquote pull-quote opening, What Problems X Solves, How X Differs from AWS table, core concept sections, architecture patterns, common pitfalls (Problem/Result/Solution format), and key takeaways. No CLI commands, no dollar amounts, inline links to Microsoft Learn with `{:target="_blank" rel="noopener noreferrer"}`, blank lines before tables, no AI-tell phrases, no Resources/Further Reading sections.
+> Read `_guides/infrastructure/azure/azure-vnet-architecture.md` for format and style reference. Follow the same structure: blockquote pull-quote opening, What Problems X Solves, How X Differs from AWS table, core concept sections, architecture patterns, common pitfalls (Problem/Result/Solution format), and key takeaways. No CLI commands, no dollar amounts, inline links to Microsoft Learn with `{:target="_blank" rel="noopener noreferrer"}`, blank lines before tables, no AI-tell phrases, no Resources/Further Reading sections. Do NOT modify `assets/data/study_guides_config.json` — the config update is handled separately in Step 7.
 
 - Set `model` to the value determined in Step 2
-- Set `run_in_background: true`
+- Do NOT set `run_in_background: true` — launch all agents synchronously in a single message so they run in parallel but block until complete, allowing immediate progression to the next step
+
+**IMPORTANT**: Agents must ONLY create the guide markdown file. They must NOT update `assets/data/study_guides_config.json`. Multiple agents modifying the config in parallel causes conflicting edits and misplaced guides (especially when subcategory names overlap, such as "Security & Compliance" and "Management & Governance"). The config update happens once in Step 7 from the main context, which has full awareness of the plan's subcategory assignments.
 
 ## Step 4: Resume Agents for Self-Validation
 
-After each agent completes, resume it (using the agent ID) with this prompt:
+Immediately after the creation agents return (they all complete in the same response), resume each agent (using its agent ID) with the validation prompt below. Launch all resume calls in a single message (synchronous, parallel) so they block and return together.
 
 > Re-read the file you just wrote. Verify: (a) front matter has all required fields (title, layout, category, subcategory, description, tags), (b) blank lines before every markdown table, (c) no dollar amounts or CLI commands, (d) no AI-tell phrases like 'key insight', 'fundamentally', 'it's important to note', 'ultimately', 'essentially', (e) blockquote pull-quote exists in opening section, (f) AWS comparison table exists, (g) Common Pitfalls section uses Problem/Result/Solution format, (h) Key Takeaways section exists. Fix any issues found.
 

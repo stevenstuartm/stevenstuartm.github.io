@@ -66,7 +66,32 @@ The optimized approach solves this by running each guide in an isolated agent co
 
 Each guide is written by a separate agent that runs in its own context window. The main conversation never sees the full 600 lines of each guide. It only sees the linter output (~5-10 lines) and a front matter spot-check (~10 lines). This cuts the token cost in the main context by roughly 95% per guide.
 
-Background agents also run concurrently, so six guides generate simultaneously instead of sequentially.
+Agents launch concurrently in a single message, so six guides generate simultaneously instead of sequentially.
+
+### Background vs synchronous agents
+
+Claude Code's Task tool can launch agents in two modes. The choice between them has significant implications for workflow automation.
+
+**Synchronous agents** (no `run_in_background` flag):
+
+Multiple synchronous agents launched in a single message run in parallel and block until all complete. The orchestrator receives all results in one response and can immediately proceed to the next step (validation, linting, etc.) without any user intervention. This is the correct mode for multi-step pipelines where steps depend on each other.
+
+**Background agents** (`run_in_background: true`):
+
+Background agents return immediately with a task ID and output file path. The orchestrator can continue doing other work while they run. However, the orchestrator cannot automatically detect when a background agent completes and take action. It can only act when the user sends a message, which means every step transition requires a "continue" prompt from the user. This defeats the purpose of an automated pipeline.
+
+**When to use each mode:**
+
+| Scenario | Mode | Why |
+|----------|------|-----|
+| Multi-step pipeline (write → validate → lint → update) | Synchronous | Steps chain automatically without user input |
+| Long-running task while the user works on something else | Background | User can do other work and check results later |
+| Independent tasks with no follow-up steps | Either | No downstream dependencies, so blocking vs non-blocking doesn't matter |
+| Tasks where the orchestrator needs results to decide what to do next | Synchronous | The orchestrator needs the result before it can proceed |
+
+**The key tradeoff**: Background agents save the user from waiting during long operations, but they break automated pipelines because the orchestrator has no event-driven way to react to completion. Synchronous agents force the user to wait for the response, but the orchestrator can chain an arbitrary number of steps without any user intervention.
+
+For this guide creation process, synchronous is the correct choice. The pipeline has 5 dependent steps, and the user's intent is "run the whole phase" not "start writing and I'll check back later."
 
 ### Short prompts with a format reference
 
@@ -205,13 +230,14 @@ The risk with parallelism isn't safety; it's **quality control**. You lose the a
 
 ### Why wait for all agents to complete before starting the next phase?
 
-The orchestrator waits for all write agents to finish before starting validation. This is a design choice, not a technical requirement.
+The orchestrator waits for all write agents to finish before starting validation. With synchronous agents launched in a single message, this happens naturally: all agents run in parallel and the orchestrator receives all results at once, then immediately launches the next batch (validation agents) in the next message.
 
-**Why it works this way:**
+**Why this phased approach works well:**
 
 1. **The process doc prescribes sequential phases**: Step 3 (write) then Step 4 (self-validate) then Step 5 (lint) then Step 6 (spot-check). Each step depends on the prior step completing for that file.
 2. **Error detection**: If an agent fails to write a file, resuming it for validation would be wasted work. Waiting confirms all files exist before proceeding.
-3. **Context window management**: If the orchestrator launched 5 write agents + 5 validation agents + 5 lint commands simultaneously, that's 15 concurrent operations whose results all land in the main context at once. Phasing keeps the orchestrator's context clean and manageable.
+3. **Context window management**: Phasing keeps the orchestrator's context clean and manageable by processing one batch of results at a time.
+4. **No user intervention needed**: Because synchronous agents block until complete, the entire pipeline (write → validate → lint → spot-check → update config) runs as one continuous flow. The user says "proceed with the next phase" once, and the orchestrator handles all 5 steps automatically.
 
 **How it could be optimized:**
 

@@ -565,6 +565,57 @@
             "infrastructure/azure/azure-bicep-advanced.md",
             "infrastructure/azure/azure-arm-templates.md"
           ]
+        },
+        {
+          "name": "Security & Compliance",
+          "description": "Cloud security posture management, threat detection, SIEM, firewalls, secrets management, and governance",
+          "guides": [
+            "infrastructure/azure/azure-defender-sentinel.md",
+            "infrastructure/azure/azure-monitor-diagnostic-settings.md",
+            "infrastructure/azure/azure-firewall-ddos.md",
+            "infrastructure/azure/azure-key-vault.md",
+            "infrastructure/azure/azure-policy-governance.md"
+          ]
+        },
+        {
+          "name": "Management & Governance",
+          "description": "Monitoring, observability, automation, hybrid management, and cost optimization",
+          "guides": [
+            "infrastructure/azure/azure-monitor.md",
+            "infrastructure/azure/azure-application-insights.md",
+            "infrastructure/azure/azure-automation-arc.md",
+            "infrastructure/azure/azure-cost-management.md"
+          ]
+        },
+        {
+          "name": "Analytics & Data Processing",
+          "description": "Data integration, ETL/ELT orchestration, analytics services, and data warehouse solutions",
+          "guides": [
+            "infrastructure/azure/azure-data-factory.md",
+            "infrastructure/azure/azure-synapse-analytics-query.md",
+            "infrastructure/azure/azure-power-bi.md",
+            "infrastructure/azure/azure-data-architecture.md"
+          ]
+        },
+        {
+          "name": "Developer Tools & CI/CD",
+          "description": "CI/CD pipelines, source control, package management, and deployment orchestration",
+          "guides": [
+            "infrastructure/azure/azure-devops-pipelines.md",
+            "infrastructure/azure/azure-devops-repos-artifacts.md",
+            "infrastructure/azure/github-actions-azure.md"
+          ]
+        },
+        {
+          "name": "Machine Learning & AI",
+          "description": "Azure AI and ML services including machine learning platform, vision, language, speech, and service selection",
+          "guides": [
+            "infrastructure/azure/azure-machine-learning.md",
+            "infrastructure/azure/azure-ai-vision.md",
+            "infrastructure/azure/azure-ai-language.md",
+            "infrastructure/azure/azure-ai-speech.md",
+            "infrastructure/azure/azure-ai-service-selection.md"
+          ]
         }
       ]
     },

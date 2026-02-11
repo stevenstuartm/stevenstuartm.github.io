@@ -143,11 +143,11 @@ Key topics that make this Azure-specific:
 
 | # | File Name | Title | Azure Services Covered | Status |
 |---|-----------|-------|----------------------|--------|
-| 32 | `azure-defender-sentinel.md` | Microsoft Defender for Cloud & Sentinel | Defender for Cloud, Microsoft Sentinel, security posture | [ ] |
-| 33 | `azure-monitor-diagnostic-settings.md` | Azure Activity Log & Diagnostic Settings | Activity Log, Diagnostic Settings, Azure Policy auditing | [ ] |
-| 34 | `azure-firewall-ddos.md` | Azure Firewall & DDoS Protection | Azure Firewall, DDoS Protection, Firewall Manager | [ ] |
-| 35 | `azure-key-vault.md` | Azure Key Vault for System Architects | Keys, Secrets, Certificates, HSM, access policies vs RBAC | [ ] |
-| 36 | `azure-policy-governance.md` | Azure Policy & Governance | Azure Policy, Blueprints, Landing Zones, compliance dashboards | [ ] |
+| 32 | `azure-defender-sentinel.md` | Microsoft Defender for Cloud & Sentinel | Defender for Cloud, Microsoft Sentinel, security posture | [x] |
+| 33 | `azure-monitor-diagnostic-settings.md` | Azure Activity Log & Diagnostic Settings | Activity Log, Diagnostic Settings, Azure Policy auditing | [x] |
+| 34 | `azure-firewall-ddos.md` | Azure Firewall & DDoS Protection | Azure Firewall, DDoS Protection, Firewall Manager | [x] |
+| 35 | `azure-key-vault.md` | Azure Key Vault for System Architects | Keys, Secrets, Certificates, HSM, access policies vs RBAC | [x] |
+| 36 | `azure-policy-governance.md` | Azure Policy & Governance | Azure Policy, Blueprints, Landing Zones, compliance dashboards | [x] |
 
 **Notes**: Direct parallel to AWS security guides. Azure Policy is significantly more powerful than AWS Config rules for governance. Landing Zones concept is Azure's equivalent of Control Tower.
 
@@ -157,10 +157,10 @@ Key topics that make this Azure-specific:
 
 | # | File Name | Title | Azure Services Covered | Status |
 |---|-----------|-------|----------------------|--------|
-| 37 | `azure-monitor.md` | Azure Monitor for System Architects | Metrics, Logs, Alerts, Workbooks, Log Analytics workspace | [ ] |
-| 38 | `azure-application-insights.md` | Azure Application Insights | APM, distributed tracing, availability tests, smart detection | [ ] |
-| 39 | `azure-automation-arc.md` | Azure Automation & Azure Arc | Automation runbooks, Update Management, Arc for hybrid | [ ] |
-| 40 | `azure-cost-management.md` | Azure Cost Management & Optimization | Cost Management, Budgets, Reservations, Azure Advisor cost | [ ] |
+| 37 | `azure-monitor.md` | Azure Monitor for System Architects | Metrics, Logs, Alerts, Workbooks, Log Analytics workspace | [x] |
+| 38 | `azure-application-insights.md` | Azure Application Insights | APM, distributed tracing, availability tests, smart detection | [x] |
+| 39 | `azure-automation-arc.md` | Azure Automation & Azure Arc | Automation runbooks, Update Management, Arc for hybrid | [x] |
+| 40 | `azure-cost-management.md` | Azure Cost Management & Optimization | Cost Management, Budgets, Reservations, Azure Advisor cost | [x] |
 
 **Notes**: Application Insights is Azure's APM and distributed tracing (combines aspects of X-Ray and CloudWatch Application Insights). Azure Arc extends Azure management to on-prem/multi-cloud resources.
 
@@ -170,9 +170,9 @@ Key topics that make this Azure-specific:
 
 | # | File Name | Title | Azure Services Covered | Status |
 |---|-----------|-------|----------------------|--------|
-| 41 | `azure-devops-pipelines.md` | Azure DevOps Pipelines for System Architects | YAML pipelines, stages, environments, approvals, agents | [ ] |
-| 42 | `azure-devops-repos-artifacts.md` | Azure DevOps Repos & Artifacts | Azure Repos (Git), Artifacts (NuGet/npm/Maven feeds), Boards integration | [ ] |
-| 43 | `github-actions-azure.md` | GitHub Actions for Azure Deployments | GitHub Actions, OIDC auth, Azure deployment workflows | [ ] |
+| 41 | `azure-devops-pipelines.md` | Azure DevOps Pipelines for System Architects | YAML pipelines, stages, environments, approvals, agents | [x] |
+| 42 | `azure-devops-repos-artifacts.md` | Azure DevOps Repos & Artifacts | Azure Repos (Git), Artifacts (NuGet/npm/Maven feeds), Boards integration | [x] |
+| 43 | `github-actions-azure.md` | GitHub Actions for Azure Deployments | GitHub Actions, OIDC auth, Azure deployment workflows | [x] |
 
 **Notes**: Azure DevOps is a comprehensive ALM platform. GitHub Actions is increasingly the preferred CI/CD for Azure deployments (Microsoft owns GitHub). Both deserve coverage. Maps to AWS CodePipeline/CodeBuild/CodeDeploy/CDK guides.
 
@@ -182,10 +182,10 @@ Key topics that make this Azure-specific:
 
 | # | File Name | Title | Azure Services Covered | Status |
 |---|-----------|-------|----------------------|--------|
-| 44 | `azure-data-factory.md` | Azure Data Factory: ETL & Data Integration | Pipelines, data flows, linked services, integration runtimes | [ ] |
-| 45 | `azure-synapse-analytics-query.md` | Azure Synapse: Serverless & Dedicated Query | Serverless SQL pools, on-demand querying, external tables | [ ] |
-| 46 | `azure-power-bi.md` | Power BI for System Architects | Power BI Service, datasets, dataflows, embedded analytics | [ ] |
-| 47 | `azure-data-architecture.md` | Modern Data Architecture on Azure | Lakehouse, medallion architecture, data mesh on Azure | [ ] |
+| 44 | `azure-data-factory.md` | Azure Data Factory: ETL & Data Integration | Pipelines, data flows, linked services, integration runtimes | [x] |
+| 45 | `azure-synapse-analytics-query.md` | Azure Synapse: Serverless & Dedicated Query | Serverless SQL pools, on-demand querying, external tables | [x] |
+| 46 | `azure-power-bi.md` | Power BI for System Architects | Power BI Service, datasets, dataflows, embedded analytics | [x] |
+| 47 | `azure-data-architecture.md` | Modern Data Architecture on Azure | Lakehouse, medallion architecture, data mesh on Azure | [x] |
 
 **Notes**: Data Factory ≈ Glue, Synapse serverless ≈ Athena, Power BI ≈ QuickSight (but far more dominant in the market). Azure data architecture guide covers the same territory as the AWS data architecture guide.
 
@@ -197,11 +197,11 @@ Key topics that make this Azure-specific:
 
 | # | File Name | Title | Azure Services Covered | Status |
 |---|-----------|-------|----------------------|--------|
-| 48 | `azure-machine-learning.md` | Azure Machine Learning: ML Platform Essentials | Workspaces, compute, pipelines, MLflow integration, endpoints | [ ] |
-| 49 | `azure-ai-vision.md` | Azure AI Vision Services | Computer Vision, Custom Vision, Face API, Document Intelligence | [ ] |
-| 50 | `azure-ai-language.md` | Azure AI Language Services | Language Understanding, Text Analytics, Translator, QnA Maker | [ ] |
-| 51 | `azure-ai-speech.md` | Azure AI Speech Services | Speech-to-Text, Text-to-Speech, Speech Translation | [ ] |
-| 52 | `azure-ai-service-selection.md` | Azure AI & ML Service Selection | Decision framework across all Azure AI/ML services | [ ] |
+| 48 | `azure-machine-learning.md` | Azure Machine Learning: ML Platform Essentials | Workspaces, compute, pipelines, MLflow integration, endpoints | [x] |
+| 49 | `azure-ai-vision.md` | Azure AI Vision Services | Computer Vision, Custom Vision, Face API, Document Intelligence | [x] |
+| 50 | `azure-ai-language.md` | Azure AI Language Services | Language Understanding, Text Analytics, Translator, QnA Maker | [x] |
+| 51 | `azure-ai-speech.md` | Azure AI Speech Services | Speech-to-Text, Text-to-Speech, Speech Translation | [x] |
+| 52 | `azure-ai-service-selection.md` | Azure AI & ML Service Selection | Decision framework across all Azure AI/ML services | [x] |
 
 **Notes**: Direct parallel to AWS ML/AI guides. Azure AI Services (formerly Cognitive Services) map to AWS Rekognition/Textract/Comprehend/Translate/Transcribe/Polly. Azure OpenAI Service should also be covered in the selection guide as it's a major differentiator.
 
@@ -476,6 +476,6 @@ These concepts are important but are covered within existing guides rather than 
 
 ## Progress Tracking
 
-**Last Updated**: 2026-02-10
-**Guides Completed**: 31 / 61
-**Current Phase**: Phase 6 Complete - Phase 7 next (Guide #32: Microsoft Defender for Cloud & Sentinel)
+**Last Updated**: 2026-02-11
+**Guides Completed**: 52 / 61
+**Current Phase**: Phase 11 Complete - Phase 12 next (Guide #53: Azure Migration Strategy)
