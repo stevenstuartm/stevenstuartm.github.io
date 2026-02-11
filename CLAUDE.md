@@ -663,6 +663,7 @@ When writing about software architecture, always use proper terminology:
 - OOP guides live in `_guides/oop/` subdirectory
 - Security guides live in `_guides/security/` subdirectory
 - SDLC guides live in `_guides/sdlc/` subdirectory
+- AI & Machine Learning guides live in `_guides/ai/` subdirectory
 - Top-level guides (observability, networking, etc.) live directly in `_guides/`
 
 **When to create new subcategories**:

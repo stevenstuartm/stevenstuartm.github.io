@@ -7,10 +7,6 @@ description: "Understanding agentic AI: autonomous task completion, tool use, pl
 tags: [ai, generative-ai, llm, agents, tools, automation, practical]
 ---
 
-<div class="callout callout--note">
-<p class="callout__title">Prerequisites</p>
-<p>This guide builds on concepts from <a href="/study-guides/core-ai-concepts.html">Core AI Concepts</a> and <a href="/study-guides/prompt-engineering.html">Prompt Engineering</a>. Agents use prompting techniques like chain-of-thought internally.</p>
-</div>
 
 ## What Are AI Agents?
 
@@ -242,7 +238,7 @@ Subgoal 3: Deploy and monitor
 
 ### Reasoning Strategies
 
-Agents leverage prompting techniques to reason effectively. See the [Prompt Engineering](/study-guides/prompt-engineering.html) guide for detailed coverage of these techniques.
+Agents leverage prompting techniques to reason effectively. See the [Prompt Engineering](/study-guides/ai/prompt-engineering.html) guide for detailed coverage of these techniques.
 
 | Technique | Agent Application |
 |-----------|-------------------|

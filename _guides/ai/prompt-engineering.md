@@ -7,11 +7,6 @@ description: "Effective techniques for communicating with AI: prompting principl
 tags: [ai, generative-ai, llm, prompt-engineering, practical]
 ---
 
-<div class="callout callout--note">
-<p class="callout__title">Prerequisite</p>
-<p>For foundational concepts like tokens, context windows, and model parameters, see the <a href="/study-guides/core-ai-concepts.html">Core AI Concepts</a> guide.</p>
-</div>
-
 ## Prompt Engineering Fundamentals
 
 Prompt engineering is the practice of crafting inputs that guide AI models to generate desired outputs. Effective prompting has evolved beyond simple tricks to encompass formatting techniques, reasoning scaffolds, role assignments, and security considerations.
@@ -154,11 +149,11 @@ These techniques work alongside other AI capabilities covered in dedicated guide
 
 | Topic | Guide | When to Use |
 |-------|-------|-------------|
-| **Model parameters** | [Core AI Concepts](/study-guides/core-ai-concepts.html) | Understanding temperature, tokens, context windows |
-| **External knowledge** | [RAG](/study-guides/rag-retrieval-augmented-generation.html) | Grounding responses in documents |
-| **Tool integration** | [MCP](/study-guides/model-context-protocol.html) | Connecting AI to external systems |
-| **Autonomous tasks** | [AI Agents](/study-guides/ai-agents.html) | Multi-step task completion |
-| **Model customization** | [Fine-tuning](/study-guides/llm-fine-tuning.html) | Changing model behavior |
+| **Model parameters** | [Core AI Concepts](/study-guides/ai/core-ai-concepts.html) | Understanding temperature, tokens, context windows |
+| **External knowledge** | [RAG](/study-guides/ai/rag-retrieval-augmented-generation.html) | Grounding responses in documents |
+| **Tool integration** | [MCP](/study-guides/ai/model-context-protocol.html) | Connecting AI to external systems |
+| **Autonomous tasks** | [AI Agents](/study-guides/ai/ai-agents.html) | Multi-step task completion |
+| **Model customization** | [Fine-tuning](/study-guides/ai/llm-fine-tuning.html) | Changing model behavior |
 
 ---
 

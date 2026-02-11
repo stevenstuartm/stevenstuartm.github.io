@@ -20,11 +20,6 @@ tags: [ai, generative-ai, llm, modern, practical]
 
 ---
 
-<div class="callout callout--note">
-<p class="callout__title">Prerequisite</p>
-<p>For foundational concepts like tokens, context windows, embeddings, and model parameters, see the <a href="/study-guides/core-ai-concepts.html">Core AI Concepts</a> guide.</p>
-</div>
-
 ## Popular Cloud-Based Tools
 
 ### Text Generation
