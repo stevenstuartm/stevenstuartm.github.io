@@ -1,0 +1,57 @@
+---
+layout: post
+title: "Observability Is Authored, Not Installed"
+date: 2026-02-11
+description: "Most observability failures trace back to code that doesn't classify its own behavior. When your system can't distinguish 'handled correctly' from 'actually broken,' no platform can compensate."
+tags: [observability, devops, architecture, operations]
+---
+
+I've watched poor observability bring a team to a standstill. Not because the tooling was missing, but because the tooling we had actively made things worse. Alerts fired constantly, so we ignored them. Dashboards existed for every service, but none of them answered the questions that mattered during incidents. Investigations that should have taken minutes took hours. It got bad enough that observability failures alone caused significant SLA violations.
+
+We kept looking for better platforms, better dashboards, better alerting rules. None of it helped, because the problem was never the tooling. The problem was upstream: our code didn't know the difference between "I handled this correctly" and "something is actually broken."
+
+## The Classification Problem
+
+Consider a payment processing system. A customer's card gets declined for insufficient funds. The payment gateway returns a rejection, and the system logs it as an ERROR.
+
+But this is the system working correctly. The card was declined because it should have been declined. Insufficient funds is a handled business case, not an exception. Because it's logged as an error, though, it shows up in error dashboards, triggers error-rate alerts, and adds to the ambient noise that operators learn to tune out.
+
+Over time, "payment errors" become background radiation. The team knows most of them are just declined cards, so they stop investigating. Then the gateway starts timing out, or a partner pushes a breaking change, and the real problem gets buried. Nobody notices because "payment errors are always high."
+
+The conventional diagnosis is operator desensitization. Engineers need better discipline. This gets causality backwards. Alert fatigue isn't a discipline problem; it's the predictable consequence of code that doesn't classify its own behavior.
+
+The fix is upstream of your alerting platform:
+
+- **Expected success**: The happy path. Logged at DEBUG if at all.
+- **Expected failure**: Business logic correctly rejecting something, like declined payments, validation failures, or rate limiting. This is INFO, not ERROR.
+- **Unexpected failure**: Something genuinely went wrong that demands investigation. This is the only category that should be ERROR.
+
+This is one of the places where [result types earn their keep](/blog/2025/10/29/result-pattern-vs-exceptions-revisited.html). When expected failures are returned as typed results rather than thrown as exceptions, the classification is baked into the code's structure. A declined payment returns a result; a gateway timeout throws an exception. The distinction is explicit at the point where it matters most, and logging infrastructure can respect it without guessing.
+
+When classification is right, every downstream tool benefits. Dashboards that track error rates become genuine health indicators because errors represent actual unexpected failures, not business logic working as designed. Log queries become surgical because structured errors with proper context let you filter to a specific tenant or operation in minutes. Alerts become actionable because they fire only for conditions that demand investigation.
+
+When classification is wrong, the opposite happens. Alerts fire for expected outcomes, so operators learn to ignore them. Dashboards become decoration because nobody trusts what the numbers represent. Every investigation becomes archaeology because the data that should answer your questions is buried under noise. No monitoring platform compensates for what the code got wrong at the source.
+
+## Context Is Authored, Not Accumulated
+
+Getting the classification right is only half of it. The other half is what you include when something does fail.
+
+The instinct is to compensate with volume: write verbose logs everywhere so you'll have context when you need it. But trace-level logs that dump every intermediate state aren't context; they're noise with a storage bill. When everything is logged at maximum verbosity, nothing stands out, and you're paying to store terabytes of data that nobody reads.
+
+Failures should carry their own context. When an operation fails, the error log should include what was being attempted, what went wrong, and enough identifying information to correlate it, without logging sensitive data unless you have a mature encryption strategy in place. If a success metric matters, derive it from the outcome itself, like database records or completion events, rather than littering the code path with verbose statements. Trace-level logging has its place for diagnosing specific flows when you can toggle it on temporarily, but it shouldn't be your primary mechanism for understanding what your system did.
+
+The difference between a useful error and a useless one is whether someone authored the context intentionally or hoped that raw volume would cover it.
+
+## The Black Box Test
+
+Classification and context are design decisions, but most developers never test whether their logging actually answers the questions it needs to. One reason is the debugger habit. When something behaves unexpectedly, the instinct is to attach a debugger, set breakpoints, and step through execution rather than read the outputs. It works, but it's a crutch that doesn't exist in production.
+
+Production is always a black box. If your default instinct when something breaks is to attach a debugger rather than read the outputs, you'll never feel the pressure to make those outputs useful. The classification stays sloppy. The context stays thin. The errors stay vague. Not because you don't know better, but because you've never needed better.
+
+Developers who diagnose from observable behavior, whether testing locally against containerized dependencies or against remote systems, build the discipline naturally. They feel the pain of vague errors and missing context firsthand, and they fix it at the source because they have no other option.
+
+The practical test is that when something breaks can you diagnose it from the system's outputs alone? Or do you need to add logging, redeploy, and wait for it to happen again? If the answer is the latter, your code doesn't explain itself yet.
+
+That core discipline compounds when builders own what they operate. You don't log payment declines as errors when you're the one who gets paged for "high error rate on payment service." You don't dump verbose logs instead of authoring context when you're the one parsing them at 3 AM. The feedback loop between writing code and living with it in production is what makes classification honest, context intentional, and alerts worth waking up for.
+
+Better tooling won't create that loop. Only ownership will.
