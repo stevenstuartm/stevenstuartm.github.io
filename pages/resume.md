@@ -19,7 +19,7 @@ permalink: /resume.html
 
 ## Professional Summary
 
-Software architect with 15 years of experience building web and desktop applications, microservices, and event-driven systems serving millions of users across hundreds of financial institutions. My focus is on simplifying complex systems and processes so teams ship with confidence and infrastructure costs stay under control.
+Software architect with 15 years of experience building web and desktop applications, microservices, and event-driven systems serving millions of users across hundreds of financial institutions. I build alignment with stakeholders before anyone writes code, test critical assumptions before we commit, and realign when discovery happens mid-build. My focus is on bringing clarity to complex systems so teams can sustainably build what people actually need.
 
 ## Professional Experience
 
