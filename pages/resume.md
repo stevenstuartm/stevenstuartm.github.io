@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Resume
-description: "Software and systems architect bringing clarity from complexity. Building cloud-native solutions that scale, perform beautifully, and save costs—without the over-engineering."
+description: "Software and systems architect bringing clarity from complexity. Building cloud-native solutions that scale, perform beautifully, and save costs without the over-engineering."
 permalink: /resume.html
 ---
 
@@ -19,20 +19,22 @@ permalink: /resume.html
 
 ## Professional Summary
 
-Software and systems architect bringing clarity from complexity. I build cloud-native solutions that serve real needs and deliver genuine value, without the over-engineering. My focus is creating clear architectures with solid security and straightforward paths forward that align with business goals. I help teams move fast with confidence.
+Software architect with 15 years of experience building cloud-native systems in .NET and AWS. I've spent much of my career designing microservices and event-driven architectures, serving millions of users across hundreds of financial institutions. My focus is on simplifying complex systems and processes so teams ship with confidence and infrastructure costs stay under control.
 
 ## Professional Experience
 
 ### System Architect | True Market Insiders — St. Petersburg, FL | Feb 2023 – Present
 
-Led complete modernization of cloud infrastructure and development operations for a financial research platform serving investors. Directed architecture strategy, mentored engineering team, and delivered secure, scalable solutions aligned with business objectives.
+Led modernization of cloud infrastructure and development operations for a financial research platform. Directed architecture strategy, mentored the engineering team, and delivered secure, scalable solutions aligned with business objectives.
 
 **Key Achievements:**
 - **Reduced cloud costs 80%** through infrastructure optimization and service consolidation, cutting complexity without sacrificing capability
-- **Enhanced security posture** with AWS WAF, zero-trust IAM policies, and compliant API architecture that the team could confidently maintain
-- **Brought clarity to unstable transaction architecture** by rearchitecting service-based architecture with clear boundaries, dramatically improving reliability for sales operations and client applications
-- **Improved platform performance** by rearchitecting data layer with Aurora, DynamoDB, and Snowflake, matching the right tool to each use case
-- **Accelerated deployment velocity** by implementing straightforward CI/CD pipelines and automated testing environments
+- **Enhanced security posture** with AWS WAF, zero-trust IAM policies, and compliant API architecture
+- **Stabilized unreliable transaction architecture** by redesigning service boundaries, improving reliability for sales operations and client-facing applications
+- **Improved platform performance** by rearchitecting the data layer with Aurora, DynamoDB, and Snowflake, reducing average API response time from over 1 second to 40ms and database CPU utilization from 85% to 10%
+- **Introduced a Shape Up hybrid SDLC**, organizing work around completed features rather than sprint intervals, cutting bug fix turnaround from months to days and feature delivery from weeks to days
+- **Integrated AI-assisted code generation** into development workflow, accelerating code deliverables by roughly 70% and nearly eliminating production defects in new feature releases
+- **Accelerated deployment speed** with CI/CD pipelines and automated testing environments, reducing production deployment time from 30 minutes to 5 minutes
 
 *Technologies: .NET 8, ASP.NET Core, AWS EKS, GraphQL (HotChocolate), Aurora PostgreSQL, DynamoDB, Snowflake, EventBridge, CloudFront, WAF, CodeBuild, Vue.js, .NET MAUI*
 
@@ -41,9 +43,9 @@ Led complete modernization of cloud infrastructure and development operations fo
 Built scalable microservices and event-driven systems for digital banking platform serving millions of users across 200+ financial institutions. Collaborated in Agile environment to deliver high-quality features while mentoring team members on architectural best practices.
 
 **Key Achievements:**
-- **Pioneered serverless architecture** by developing Alkami's first AWS Lambda-based APIs, establishing clear patterns that other teams could follow
+- **Pioneered serverless architecture** by developing Alkami's first AWS Lambda-based APIs, establishing patterns adopted across engineering teams
 - **Launched real-time notification platform** enabling banks to deliver instant alerts to customers across web and mobile channels
-- **Elevated code quality** through systematic code reviews and mentorship on SOLID principles and clean architecture, helping teams understand the why rather than just the what
+- **Drove automated test quality and coverage** across microservices, strengthening production reliability for a platform serving millions of banking customers
 
 *Technologies: .NET, ASP.NET Core, AWS Lambda, SQS, DynamoDB, SQL Server, Vue.js*
 
@@ -60,7 +62,7 @@ Developed enterprise applications for consumer finance operations. Led moderniza
 
 ### Tech Lead | DealerSpeedLeads — Dallas, TX | Mar 2011 – Feb 2015
 
-Led full-stack development for marketing technology SaaS platform. Architected scalable solutions, built automation systems, and delivered customer-facing applications while establishing development processes.
+Led full-stack development for a marketing technology SaaS platform. Architected scalable solutions, built automation systems, and established development processes.
 
 **Key Achievements:**
 - **Architected multi-tenant inventory platform** supporting automotive, real estate, and e-commerce verticals with configurable data models
