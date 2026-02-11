@@ -719,6 +719,7 @@
             "ai/rag-retrieval-augmented-generation.md",
             "ai/model-context-protocol.md",
             "ai/ai-agents.md",
+            "ai/scaling-ai-workflows.md",
             "ai/llm-fine-tuning.md"
           ]
         }
