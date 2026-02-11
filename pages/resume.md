@@ -19,7 +19,7 @@ permalink: /resume.html
 
 ## Professional Summary
 
-Software architect with 15 years of experience building cloud-native systems in .NET and AWS. I've spent much of my career designing microservices and event-driven architectures, serving millions of users across hundreds of financial institutions. My focus is on simplifying complex systems and processes so teams ship with confidence and infrastructure costs stay under control.
+Software architect with 15 years of experience building web and desktop applications, microservices, and event-driven systems serving millions of users across hundreds of financial institutions. My focus is on simplifying complex systems and processes so teams ship with confidence and infrastructure costs stay under control.
 
 ## Professional Experience
 
@@ -36,7 +36,7 @@ Led modernization of cloud infrastructure and development operations for a finan
 - **Integrated AI-assisted code generation** into development workflow, accelerating code deliverables by roughly 70% and nearly eliminating production defects in new feature releases
 - **Accelerated deployment speed** with CI/CD pipelines and automated testing environments, reducing production deployment time from 30 minutes to 5 minutes
 
-*Technologies: .NET 8, ASP.NET Core, AWS EKS, GraphQL (HotChocolate), Aurora PostgreSQL, DynamoDB, Snowflake, EventBridge, CloudFront, WAF, CodeBuild, Vue.js, .NET MAUI*
+*Technologies: .NET 8, ASP.NET Core, AWS EKS, GraphQL (HotChocolate), Aurora PostgreSQL, DynamoDB, Snowflake, EventBridge, CloudFront, WAF, CodeBuild, Vue.js, Claude AI
 
 ### Senior Software Engineer II | Alkami Technology — Plano, TX | Jul 2018 – Jan 2023
 
