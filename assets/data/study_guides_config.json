@@ -616,6 +616,39 @@
             "infrastructure/azure/azure-ai-speech.md",
             "infrastructure/azure/azure-ai-service-selection.md"
           ]
+        },
+        {
+          "name": "Migration & Hybrid Cloud",
+          "description": "Cloud migration strategies, Azure Migrate tools, and hybrid cloud architecture patterns",
+          "guides": [
+            "infrastructure/azure/azure-migration-strategy.md",
+            "infrastructure/azure/azure-migrate-services.md",
+            "infrastructure/azure/azure-hybrid-cloud-architecture.md"
+          ]
+        },
+        {
+          "name": "Serverless Architecture",
+          "description": "Serverless composition patterns, event-driven design, and advanced Azure Functions",
+          "guides": [
+            "infrastructure/azure/serverless-architecture-patterns-azure.md",
+            "infrastructure/azure/azure-functions-advanced.md"
+          ]
+        },
+        {
+          "name": "Container Orchestration (Advanced)",
+          "description": "Advanced AKS patterns, container registry, service mesh, and container security",
+          "guides": [
+            "infrastructure/azure/azure-acr-container-security.md",
+            "infrastructure/azure/advanced-container-patterns-azure.md"
+          ]
+        },
+        {
+          "name": "Architecture Patterns (Advanced)",
+          "description": "Multi-region architectures and disaster recovery strategies on Azure",
+          "guides": [
+            "infrastructure/azure/multi-region-architecture-azure.md",
+            "infrastructure/azure/disaster-recovery-azure.md"
+          ]
         }
       ]
     },
