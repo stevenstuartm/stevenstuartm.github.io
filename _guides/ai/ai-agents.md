@@ -99,6 +99,121 @@ Thought: Task complete
 
 ---
 
+## Agent Execution Architecture
+
+The agent loop describes the logical flow of observe-think-act. The execution architecture describes where each of those steps runs physically. In most current AI agent systems, there is a split between local execution and remote inference that has significant implications for data flow and security.
+
+### The Local-Execution / Remote-Inference Split
+
+Most developer-facing AI agents (Claude Code, Cursor, GitHub Copilot, Cline) follow the same architectural pattern: tools execute on the developer's machine while model inference runs on the provider's servers.
+
+```
+Developer Workstation                          Provider Cloud
+┌──────────────────────────────────────────┐
+│                                          │
+│  Agent Runtime                           │
+│  ┌────────────────────────────────────┐  │
+│  │                                    │  │
+│  │  ┌──────────┐  ┌──────────────┐   │  │
+│  │  │   Tool   │  │     File     │   │  │
+│  │  │Execution │  │   System     │   │  │
+│  │  │(bash,    │  │  (read,      │   │  │
+│  │  │ scripts) │  │   write,     │   │  │
+│  │  │          │  │   search)    │   │  │
+│  │  └────┬─────┘  └──────┬───────┘   │  │
+│  │       │               │           │  │
+│  │  ┌────┴───┐   ┌───────┴────────┐  │  │
+│  │  │  MCP   │   │ Git, Search,  │  │  │
+│  │  │Servers │   │ Grep, etc.    │  │  │
+│  │  └────┬───┘   └───────┬────────┘  │  │
+│  │       │               │           │  │
+│  │       └───────┬───────┘           │  │
+│  │               │                   │  │
+│  │        Tool results               │  │
+│  │               │                   │  │
+│  │               ▼                   │  │
+│  │      ┌────────────────┐           │  │
+│  │      │Context Builder │           │  │      ┌──────────────┐
+│  │      │(assembles msg  │───────────┼──┼─────►│  LLM API     │
+│  │      │ for LLM API)  │◄──────────┼──┼──────│ (Claude,     │
+│  │      └────────────────┘           │  │      │  GPT, etc.)  │
+│  │                                    │  │      │              │
+│  └────────────────────────────────────┘  │      │ Returns:     │
+│                                          │      │ - Text       │
+└──────────────────────────────────────────┘      │ - Tool calls │
+                                                  └──────────────┘
+```
+
+The model never runs locally (unless using a self-hosted model). It receives the full conversation context, including all tool results, and returns either a text response or instructions to call more tools. Those instructions execute locally, and the cycle repeats.
+
+### Agent Session Lifecycle
+
+Each cycle in the agent loop crosses the network boundary. Here is one complete iteration with the boundary marked:
+
+```
+  LOCAL EXECUTION                           REMOTE INFERENCE
+  ───────────────                           ────────────────
+
+  1. User provides goal
+        │
+        ▼
+  2. Assemble initial context
+     (system prompt + user goal)
+        │
+        ├──────── HTTPS ──────────────► 3. Model reasons about goal
+        │                                     │
+        │                                     ▼
+        │                               4. Model returns tool call
+        │                                  (e.g., "read file X")
+        │◄─────── HTTPS ───────────────
+        │
+        ▼
+  5. Execute tool locally
+     (read file X from disk)
+        │
+        ▼
+  6. Append tool result to context
+        │
+        ├──────── HTTPS ──────────────► 7. Model sees file contents,
+        │                                  reasons about next step
+        │                                     │
+        │                                     ▼
+        │                               8. Returns next tool call
+        │◄─────── HTTPS ───────────────    or final response
+        │
+        ▼
+  9. Execute next tool locally
+     ...cycle repeats...
+```
+
+Every rightward arrow is data leaving the developer's machine. Each inference request sends the entire conversation context to the remote API, which means all previous tool results are included. If the agent read a file in step 5, the contents of that file are sent to the remote API in step 6. If the agent executed a bash command, the output of that command goes with it.
+
+This accumulation matters. By step 20 of an agent session, the inference request may contain the contents of dozens of files, command outputs, and search results, all sent over HTTPS to the model provider.
+
+### What Runs Where
+
+| Operation | Executes Locally | Sent to Remote API as Context |
+|-----------|-----------------|-------------------------------|
+| **File reads** | File content read from disk | Full file content included in next inference request |
+| **Bash commands** | Command executed in local shell | Command output included in next inference request |
+| **Git operations** | Executed via local git | Diffs, logs, and status output included |
+| **MCP server tools** | Tool runs as local process | Tool results included in next inference request |
+| **Web searches** | Varies by implementation | Search results included in next inference request |
+| **Model reasoning** | Does not run locally | Happens entirely on provider servers |
+| **Tool selection** | Does not run locally | Model decides remotely, sends instructions back |
+
+For a deeper look at how MCP servers handle data flow across these boundaries, see the [Model Context Protocol](/study-guides/ai/model-context-protocol.html#transport-architecture) guide.
+
+### Privacy Implications
+
+The local-execution / remote-inference split means source code, configuration files, and command outputs are sent to the model provider's infrastructure for inference. Enterprise API agreements typically govern how this data is handled, including retention windows (usually 30 days for abuse monitoring) and explicit exclusion from model training. Free-tier usage may permit data retention for model improvement unless the user opts out.
+
+The agent cannot reason about data it has not been sent, so there is no way to get model assistance on a file without that file's contents crossing the network. Context window limits provide a natural ceiling on how much data is in flight at any given time, but over a long session the cumulative data transmitted can be substantial.
+
+For organizational controls around managing this data flow, see the [AI Security for Organizations](/study-guides/ai/ai-security-for-organizations.html) guide.
+
+---
+
 ## Tool Use
 
 Tools are the primary way agents interact with the world beyond generating text.
@@ -528,16 +643,24 @@ Multi-step agents have inherent latency from sequential operations.
 | **Caching** | Skip redundant operations |
 | **Simpler models** | Faster inference |
 
-### Security
+### Security and Data Flow
 
-Agents with tool access pose security risks.
+Agents with tool access introduce two categories of security risk: agent-level risks around what the agent does, and data-level risks around what information enters the inference pipeline.
 
-| Risk | Mitigation |
-|------|------------|
-| **Prompt injection** | Sanitize inputs, use guardrails |
-| **Unauthorized access** | Principle of least privilege |
-| **Data exfiltration** | Monitor outbound actions |
-| **Malicious code execution** | Sandbox code execution |
+**Agent-level risks** are about the agent's behavior. Prompt injection, unauthorized tool calls, and malicious code execution fall into this category. The mitigations are guardrails, sandboxing, and human approval gates.
+
+**Data-level risks** are about what content gets sent to the model provider as context. As described in [Agent Execution Architecture](#agent-execution-architecture), every tool result crosses the network boundary during inference. This creates exposure pathways that are independent of the agent's intent.
+
+| Risk | Category | Mitigation |
+|------|----------|------------|
+| **Prompt injection** | Agent-level | Sanitize inputs, use guardrails |
+| **Unauthorized access** | Agent-level | Principle of least privilege |
+| **Malicious code execution** | Agent-level | Sandbox code execution |
+| **Data exfiltration** | Agent-level | Monitor outbound actions |
+| **Context accumulation** | Data-level | Session limits, context pruning, data classification policies |
+| **Credential leakage via context** | Data-level | Exclude sensitive files from AI tool access, use secret scanning |
+
+Context accumulation is worth particular attention. A developer asking an agent to "fix the auth bug" may trigger the agent to read configuration files, environment variables, and log outputs that contain connection strings, API keys, or tokens. None of those reads are malicious; they are the agent doing its job. But those values now exist in the inference context and are sent to the provider's servers, where they are subject to the provider's data retention and access policies.
 
 ---
 
