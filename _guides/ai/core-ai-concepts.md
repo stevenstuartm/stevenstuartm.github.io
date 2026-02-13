@@ -3,8 +3,8 @@ title: "Core AI Concepts"
 layout: guide
 category: AI & Machine Learning
 subcategory: Generative AI
-description: "Foundational concepts for understanding generative AI: how LLMs work, tokens, context windows, embeddings, parameters, and model limitations."
-tags: [ai, generative-ai, llm, fundamentals, embeddings, transformers]
+description: "Foundational concepts for understanding generative AI: how LLMs work, tokens, context windows, embeddings, parameters, skills vs tools, and model limitations."
+tags: [ai, generative-ai, llm, fundamentals, embeddings, transformers, tools]
 ---
 
 ## How Large Language Models Work
@@ -301,6 +301,89 @@ Models only know information from their training data. They have no awareness of
 - Can't answer about recent events
 - May have outdated information about evolving topics
 - Use RAG or web search for current information
+
+---
+
+## Skills vs Tools
+
+When building on top of LLMs, every capability you expose falls into one of two categories: a **skill** that the model performs natively through prompting, or a **tool** that the model invokes to interact with an external system. The distinction matters because it drives architecture decisions, cost profiles, latency characteristics, and failure modes.
+
+### What Are Skills?
+
+Skills are capabilities the model already has. They come from training data, and you access them entirely through prompt design. No external integration, no API calls, no infrastructure beyond the model itself.
+
+| Skill | What the Model Does Natively |
+|-------|------------------------------|
+| **Summarization** | Compress long text into key points |
+| **Translation** | Convert between languages |
+| **Classification** | Sort inputs into categories |
+| **Extraction** | Pull structured data from unstructured text |
+| **Reasoning** | Draw conclusions, compare options, analyze tradeoffs |
+| **Code generation** | Write, explain, or refactor code |
+| **Creative writing** | Draft prose, marketing copy, or technical documentation |
+| **Reformatting** | Convert between formats like JSON, CSV, XML, or markdown |
+
+Skills require no external infrastructure, but they are not free. Every skill invocation runs through inference, which means every input token and output token costs money and takes time. Summarizing a 50-page document means sending the entire document through the model. Translating a large codebase means processing every file as tokens. For large inputs, skills can be the most expensive part of a pipeline because there is no shortcut around token consumption.
+
+The other tradeoff is that skills are bounded by training data. A model can summarize a document you provide, but it cannot look up a document it hasn't seen. It can reason about data in context, but it cannot compute a precise financial projection across thousands of rows. It can generate code in languages it was trained on, but it cannot execute that code to verify it works.
+
+### What Are Tools?
+
+Tools are external functions the model can call to extend beyond what it learned during training. When the model encounters a task that requires current data, precise computation, or interaction with the outside world, it generates a structured request to invoke a tool, receives the result, and incorporates that result into its response.
+
+Common tool categories include:
+
+- **Information retrieval**: web search, database queries, file system access, API calls to external services
+- **Computation**: code execution, calculators, data analysis engines
+- **State modification**: creating files, sending messages, updating records, deploying code
+- **Verification**: running tests, checking URLs, validating schemas
+
+Tools require infrastructure. Someone has to define the tool's interface, host the execution environment, handle authentication, and manage failures. The model doesn't "use" the tool directly; it generates a request (typically a function name and arguments), the orchestration layer executes it, and the result flows back into the model's context for the next inference step.
+
+For a deeper look at how tools work in agent architectures, see the [AI Agents guide](/study-guides/ai/ai-agents.html#tool-use). For the standard protocol that connects models to tools, see the [MCP guide](/study-guides/ai/model-context-protocol.html).
+
+### When to Use Each
+
+The choice between a skill and a tool depends on what the task actually requires. Some tasks are clearly one or the other, but many sit in a gray area where either approach could work.
+
+| Dimension | Skill (Native) | Tool (External) |
+|-----------|----------------|-----------------|
+| **Latency** | Scales with input/output token count | Tool execution is often instant; round-trip adds overhead |
+| **Cost** | All processing burns tokens (can be expensive for large inputs) | Tool execution itself is often free; results re-enter token stream |
+| **Accuracy** | Probabilistic, may hallucinate | Deterministic for computation and data retrieval |
+| **Current data** | Limited to training cutoff | Can access real-time information |
+| **Computation** | Approximate reasoning | Precise execution |
+| **Side effects** | None (read-only by nature) | Can modify state in external systems |
+| **Failure modes** | Hallucination, reasoning errors | Network failures, auth errors, timeouts, malformed requests |
+| **Infrastructure** | None beyond the model | Requires tool definitions, hosting, error handling |
+
+**Use a skill when** the task is pattern recognition, language transformation, or reasoning over context that's already in the prompt. Summarizing a meeting transcript, classifying support tickets, extracting entities from an email, or drafting a response based on provided guidelines are all skill-native tasks.
+
+**Use a tool when** the task requires something the model cannot do from memory: fetching live data, performing exact arithmetic, executing code, modifying external state, or verifying facts against an authoritative source.
+
+### Tradeoffs in Practice
+
+The tension between skills and tools plays out in real system design decisions.
+
+**Over-relying on skills** leads to hallucination risk. A model asked to "look up the current price of AAPL stock" will generate a plausible-looking number from training data rather than admitting it doesn't know. Without a tool to fetch the actual price, the output looks confident but is wrong. Any task where accuracy depends on data the model hasn't seen requires a tool.
+
+**Over-relying on tools** leads to unnecessary complexity. If a model has a web search tool available and a user asks "what is a binary search tree?", the model might invoke the search tool to answer a question it already knows well from training. The tool result then enters the context window, consuming additional tokens on the next inference call and introducing a failure point that didn't need to exist. When the model can handle a task accurately from training data, a tool call adds infrastructure burden without improving quality.
+
+**The gray area** is where it gets interesting. Consider math: a model can reason through simple arithmetic and get it right most of the time, but it will occasionally make errors on multi-step calculations. A code execution tool will always get the math right and runs instantly, but requires infrastructure to define and host. The right choice depends on how much accuracy matters for the use case. A rough estimate in a brainstorming session favors the skill; a financial calculation in a production system demands the tool.
+
+### Decision Framework
+
+When deciding whether a capability should be a skill or a tool, work through these questions:
+
+**Does the task require information the model hasn't seen?** If the answer depends on data after the training cutoff, data in a private database, or real-time state, you need a tool. No amount of prompt engineering gives a model access to information that isn't in its context window.
+
+**Does the task require deterministic precision?** Mathematical calculations, date arithmetic, regex matching, and data aggregation across large datasets all benefit from tools. Models approximate these operations through pattern matching and will occasionally produce wrong results, especially as complexity increases.
+
+**Does the task require action in the outside world?** Sending emails, creating files, updating databases, and deploying code are all side effects that require tools. Skills are inherently read-only: they transform input into output but cannot change state beyond the conversation.
+
+**Is the model already good at this from training?** Summarization, classification, translation, code generation, and text analysis are tasks where models are strong out of the box. Adding a tool for these capabilities typically adds cost and latency without improving quality. Invest in better prompts before reaching for a tool.
+
+**How much does an error cost?** For low-stakes tasks like drafting an email or generating test ideas, skill-level accuracy is usually sufficient. For high-stakes tasks like calculating dosages, generating legal documents, or making financial decisions, tool-backed verification is worth the added complexity.
 
 ---
 
