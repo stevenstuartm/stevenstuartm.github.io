@@ -188,7 +188,9 @@ Embeddings are dense vector representations that capture semantic meaning. They'
 
 ### What Are Embeddings?
 
-Text is converted into a fixed-size vector (array of numbers), typically 384-1536 dimensions. Similar concepts end up with similar vectors, enabling semantic comparison.
+The name comes from the mathematical concept of embedding one space into another. An embedding model takes text, which lives in the messy, ambiguous space of human language, and maps it into a structured geometric space where meaning becomes measurable. The text is literally embedded into a vector space, and its position in that space encodes what it means.
+
+The result is a fixed-size vector (array of numbers), typically 384-1536 dimensions. Similar concepts end up with similar vectors, enabling semantic comparison.
 
 ```
 "How do I reset my password?"  →  [0.12, -0.45, 0.78, ...]
@@ -226,6 +228,29 @@ Vector similarity (usually cosine similarity) measures how close two embeddings 
 | **Cohere embed-v3** | 1024 | Strong multilingual |
 
 **Key principle**: Always use the same embedding model for indexing and querying. Vectors from different models are incompatible.
+
+### Storing and Searching Embeddings
+
+An embedding is just a computed representation. Once generated, it's an array of numbers that can live anywhere: held in memory for a real-time comparison, written to a flat file for batch processing, or stored in a database column. A small application comparing a handful of documents might keep vectors in a simple list and compute cosine similarity directly. There's no requirement to use specialized infrastructure at small scale.
+
+The storage question becomes interesting when the number of vectors grows. A real application might generate millions of embeddings across a document corpus, product catalog, or conversation history. At that scale, brute-force comparison (checking every stored vector against the query) becomes impractical, and standard databases aren't optimized for high-dimensional similarity search.
+
+**Vector databases** solve this scaling problem. They store embeddings alongside metadata and provide fast similarity search using approximate nearest neighbor (ANN) algorithms. Instead of comparing against every stored vector, ANN algorithms build index structures that narrow the search space dramatically, trading a small amount of accuracy for orders-of-magnitude speed improvement.
+
+| Database | Type | Good Fit |
+|----------|------|----------|
+| **Pinecone** | Managed cloud service | Teams that want zero infrastructure overhead |
+| **Weaviate** | Open source, self-hosted or cloud | Flexible deployment with built-in hybrid search |
+| **Qdrant** | Open source, self-hosted or cloud | High-performance filtering alongside vector search |
+| **Milvus** | Open source | Massive scale (billion+ vectors) |
+| **pgvector** | PostgreSQL extension | Teams already running Postgres who want to avoid a new database |
+| **ChromaDB** | Open source, lightweight | Prototyping and small-scale applications |
+
+**How the search works conceptually**: when a user submits a query, it gets converted to a vector using the same embedding model that indexed the documents. The vector database then finds the stored vectors closest to this query vector using cosine similarity or dot product distance, returning the most semantically relevant results.
+
+**Metadata filtering** adds precision beyond pure vector similarity. Most vector databases let you store metadata (source, date, category, access level) alongside each vector and filter on it during search. A query like "find documents similar to this question, but only from the engineering team's knowledge base created in the last 6 months" combines semantic search with structured filtering.
+
+For production patterns around chunking, retrieval strategies, and building full pipelines with vector databases, see the [RAG guide](/study-guides/ai/rag-retrieval-augmented-generation.html).
 
 ---
 

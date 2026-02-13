@@ -83,6 +83,52 @@ what's the final discount on a $100 item?
 
 **When to use**: Math problems, logical reasoning, multi-step analysis, debugging scenarios.
 
+### Tree-of-Thought Prompting (ToT)
+
+An extension of Chain-of-Thought where the model explores multiple reasoning paths in parallel rather than following a single linear chain. Each path branches into different approaches, and the model evaluates which branches are most promising before committing to an answer.
+
+Where Chain-of-Thought walks a single path from problem to solution, Tree-of-Thought generates several candidate paths, assesses their progress, and can backtrack or abandon dead ends. This mirrors how humans solve hard problems: considering a few different angles, recognizing when one approach isn't working, and pivoting to a more promising direction.
+
+**Example**:
+```
+I need to plan a 3-course dinner that is gluten-free, under $50 total,
+and ready in 90 minutes. Consider three different cuisine approaches,
+evaluate each for feasibility, then select the best option.
+
+Approach 1: [Thai-inspired]
+- Appetizer: Fresh spring rolls (~$8, 20 min)
+- Main: Green curry with rice (~$15, 40 min)
+- Dessert: Mango sticky rice (~$10, 30 min)
+- Evaluation: Total $33, but sticky rice takes 30 min soaking.
+  Timing is tight. Feasible if rice soaks while cooking curry.
+
+Approach 2: [Mexican-inspired]
+- Appetizer: Guacamole with corn chips (~$10, 15 min)
+- Main: Chicken enchiladas with corn tortillas (~$18, 45 min)
+- Dessert: Tres leches cake (~$12, 60 min)
+- Evaluation: Total $40, but dessert alone takes 60 min plus
+  chilling time. Exceeds 90-minute constraint. Eliminate.
+
+Approach 3: [Mediterranean-inspired]
+- Appetizer: Hummus with vegetables (~$8, 15 min)
+- Main: Grilled salmon with roasted potatoes (~$20, 35 min)
+- Dessert: Fruit and dark chocolate (~$7, 10 min)
+- Evaluation: Total $35, well within time at ~60 min.
+  All naturally gluten-free. Best option.
+
+Selected: Approach 3 (Mediterranean)
+```
+
+**How it differs from Chain-of-Thought**:
+
+| Aspect | Chain-of-Thought | Tree-of-Thought |
+|--------|-----------------|-----------------|
+| Structure | Single linear reasoning path | Multiple branching paths explored in parallel |
+| Error recovery | Errors compound through the chain | Dead-end branches can be pruned and abandoned |
+| Best for | Problems with a clear step-by-step solution | Problems with multiple valid approaches or uncertain starting points |
+
+**When to use**: Planning and scheduling problems, creative tasks with competing constraints, optimization problems where you need to compare alternatives, and any scenario where the first approach might not be the best one.
+
 ---
 
 ## Advanced Strategies
@@ -203,6 +249,7 @@ Effective prompt engineering reduces costs while improving performance.
 | **Simple, well-defined** | Zero-shot with clear instructions |
 | **Specific format/style** | Few-shot with examples |
 | **Complex reasoning** | Chain-of-thought |
+| **Multiple valid approaches** | Tree-of-thought |
 | **Domain expertise** | Persona-based + RAG |
 | **Multi-step workflow** | Task decomposition |
 | **High-stakes decisions** | Self-consistency |
