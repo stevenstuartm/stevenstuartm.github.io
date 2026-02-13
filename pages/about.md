@@ -10,9 +10,7 @@ permalink: /about.html
 
 ![Steven Stuart - Software Architect specializing in cloud-native platforms and distributed systems](/assets/img/profile-steven-stuart-1.jpg){: .profile-image}
 
-Software architect with 15 years of experience building web and desktop applications, microservices, and event-driven systems serving millions of users across hundreds of financial institutions. I build alignment with stakeholders before anyone writes code, test critical assumptions before we commit, and realign when discovery happens mid-build. My focus is on bringing clarity to complex systems so teams can sustainably build what people actually need.
-
-The skills that matter most in my work aren't language-specific. Mentor-driven governance, knowing when to stop building, trade-off transparency, building for change, test-driven development, and SOLID principles are what make delivery sustainable. These fundamentals have always separated both architects and developers who deliver lasting value from those who just ship code.
+Software architect with 15 years of experience building web and desktop applications, microservices, and event-driven systems serving millions of users across hundreds of financial institutions. My focus is on bringing clarity to complex systems so teams can sustainably build what people actually need. I build alignment with stakeholders before anyone writes code, test critical assumptions before and after we commit, and realign when discovery happens mid-build.
 
 For a deeper look at how these principles shape my approach, see my [Philosophy](/philosophy.html).
 
