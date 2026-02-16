@@ -6,9 +6,9 @@ description: "Most observability failures trace back to code that doesn't classi
 tags: [observability, devops, architecture, operations]
 ---
 
-I have been apart of a dev team where poor observability constantly brought us to a standstill. Not because the tooling was missing, but because the data it collected never carried meaningful context. Alerts fired constantly, so operation teams ignored them, and dashboards existed for every service, but none of them answered the questions that mattered during incidents. Investigations that should have taken minutes took hours. It got bad enough that observability failures alone caused significant SLA violations.
+I have been a part of a dev team where poor observability constantly brought us to a standstill. Not because the tooling was missing, but because the data it collected never carried meaningful context. Alerts fired constantly, so operation teams ignored them, and dashboards existed for every service, but none of them answered the questions that mattered during incidents. Investigations that should have taken minutes took hours. It got bad enough that observability failures alone caused significant SLA violations.
 
-We questioned the choice of platforms, dashboards, and alerting rules. Yet none those could help because the problem was never the tooling. The problem was upstream since our code didn't know the difference between "I handled this correctly" and "something is actually broken."
+We questioned the choice of platforms, dashboards, and alerting rules. Yet none of those could help because the problem was never the tooling. The problem was upstream since our code didn't know the difference between "I handled this correctly" and "something is actually broken."
 
 ## The Classification Problem
 

@@ -816,6 +816,62 @@
             "dotnet/c-sharp/advanced/expression-trees.md",
             "dotnet/c-sharp/advanced/native-interop.md"
           ]
+        },
+      ]
+    },
+    "ASP.NET Core": {
+      "subcategories": [
+        {
+          "name": "ASP.NET Fundamentals",
+          "description": "ASP.NET Core hosting, HTTP pipeline, middleware, and routing",
+          "guides": [
+            "dotnet/asp/aspnet-core-fundamentals.md",
+            "dotnet/asp/aspnet-middleware.md",
+            "dotnet/asp/aspnet-routing.md"
+          ]
+        },
+        {
+          "name": "API Programming Models",
+          "description": "Controller-based APIs, minimal APIs, and real-time communication",
+          "guides": [
+            "dotnet/asp/aspnet-controller-apis.md",
+            "dotnet/asp/aspnet-minimal-apis.md",
+            "dotnet/asp/aspnet-signalr-realtime.md"
+          ]
+        },
+        {
+          "name": "API Security & Resilience",
+          "description": "Authentication, authorization, rate limiting, and API hardening",
+          "guides": [
+            "dotnet/asp/aspnet-auth.md",
+            "dotnet/asp/aspnet-api-security.md",
+            "dotnet/asp/aspnet-rate-limiting-resilience.md"
+          ]
+        },
+        {
+          "name": "API Design & Data",
+          "description": "Validation, serialization, versioning, and OpenAPI documentation",
+          "guides": [
+            "dotnet/asp/aspnet-validation-data-handling.md",
+            "dotnet/asp/aspnet-versioning-openapi.md"
+          ]
+        },
+        {
+          "name": "Testing & Quality",
+          "description": "Integration testing, architecture testing, and performance testing",
+          "guides": [
+            "dotnet/asp/aspnet-api-testing.md"
+          ]
+        },
+        {
+          "name": "Performance & Operations",
+          "description": "Caching, health checks, deployment, and background services",
+          "guides": [
+            "dotnet/asp/aspnet-caching-performance.md",
+            "dotnet/asp/aspnet-health-checks-diagnostics.md",
+            "dotnet/asp/aspnet-hosting-deployment.md",
+            "dotnet/asp/aspnet-background-services.md"
+          ]
         }
       ]
     }
