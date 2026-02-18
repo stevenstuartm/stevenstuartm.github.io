@@ -110,17 +110,19 @@ When you assign an `int` to an `object` variable, boxing occurs. The integer val
 
 Boxing has performance costs (heap allocation, copying) and should be avoided in performance-critical code. It commonly occurs when using non-generic collections or APIs that accept `object`.
 
-## Function and Method Behavior
+As an example, in API contracts with key-value collections, prefer `Dictionary<string, string>` with explicit parsing over `Dictionary<string, object>`. The `object` approach introduces boxing and fragile casting, and JSON serializers behave unpredictably with `object` values (deserializing numbers as `JsonElement` or `long` instead of `int`). String values round-trip cleanly across serialization boundaries, and `int.TryParse` is safer than runtime casts. If you need rich typing for known fields, promote them into a strongly-typed model and let the serializer handle conversion.
 
-How functions behave (whether they have side effects, whether calling them multiple times is safe) affects testability, reliability, and reasoning about code.
+## Function Properties
 
-### Pure Functions
+Functions have behavioral properties that affect testability, cacheability, and safety in concurrent code. These properties are independent of each other — a function can be deterministic but impure, or idempotent but non-deterministic.
 
-A **pure function** has two properties: it always produces the same output for the same input, and it has no side effects.
+### Pure and Impure Functions
 
-`Math.Sqrt(4)` is pure. It always returns 2 and changes nothing else. A function that reads from a database or modifies global state is not pure.
+A **pure function** has two properties: it always produces the same output for the same input, and it has no side effects. `Math.Sqrt(4)` is pure. It always returns 2 and changes nothing else.
 
-Pure functions are easier to test (no setup required), easier to reason about (output depends only on input), and safe to cache or parallelize.
+An **impure function** violates either property. A function that reads from a database is impure because its output depends on external state. A function that logs a message is impure because it produces a side effect, even if its return value is deterministic.
+
+Pure functions are easier to test (no setup required), easier to reason about (output depends only on input), and safe to cache or parallelize. Most real applications mix both: pure functions for core logic and impure functions at the boundaries where I/O happens.
 
 ### Side Effects
 
@@ -130,43 +132,25 @@ Side effects are necessary for useful programs because you eventually need to sa
 
 ### Idempotent
 
-An **idempotent** operation produces the same result whether executed once or multiple times.
+An **idempotent** operation produces the same end state whether executed once or multiple times. Idempotency is about **what happens to the system**, not what the operation returns.
 
-Setting a value is idempotent: setting `x = 5` ten times leaves `x` at 5. Incrementing is not idempotent: incrementing ten times produces a different result than incrementing once.
+Setting a value is idempotent: setting `x = 5` ten times leaves `x` at 5. Incrementing is not idempotent: incrementing ten times produces a different state than incrementing once.
 
-Idempotency is critical in distributed systems and APIs. An idempotent HTTP PUT means retrying a failed request is safe; you will not accidentally create duplicates or corrupt data.
+Idempotency is critical in distributed systems and APIs. An idempotent HTTP PUT means retrying a failed request is safe; you will not accidentally create duplicates or corrupt data. An HTTP DELETE is also idempotent — deleting the same resource twice leaves the system in the same state, even though the second call may return a 404.
 
 ### Deterministic vs Non-Deterministic
 
-A **deterministic** function always produces the same output for the same input. A **non-deterministic** function may produce different outputs for the same input.
+A **deterministic** function always produces the same output for the same input. A **non-deterministic** function may produce different outputs for the same input. Determinism is about **what the function returns**, not what it does to the system.
 
 `Math.Max(3, 5)` is deterministic. `Random.Next()` and `DateTime.Now` are non-deterministic because they return different values on different calls.
 
+These two properties are independent. `DateTime.Now` is non-deterministic (returns a different value each call) but idempotent (calling it does not change system state). An `INSERT` that generates a new ID on each call is non-deterministic and not idempotent. `Math.Abs(-5)` is both deterministic and idempotent.
+
 Deterministic code is easier to test and debug because behavior is reproducible.
-
-### Arity
-
-**Arity** refers to the number of arguments a function accepts.
-
-- **Nullary**: zero arguments
-- **Unary**: one argument
-- **Binary**: two arguments
-- **Ternary**: three arguments
-- **Variadic**: variable number of arguments
-
-The term appears in discussions of functional programming and operator design.
 
 ## Execution Models
 
 Understanding how code executes (sequentially, concurrently, or in parallel) is essential for writing responsive and efficient applications.
-
-### Synchronous vs Asynchronous
-
-**Synchronous** execution completes operations in sequence. Each operation must finish before the next begins. The caller waits (blocks) until the operation completes.
-
-**Asynchronous** execution allows operations to proceed without waiting for completion. The caller can continue other work while the operation runs, receiving notification when it finishes.
-
-Asynchronous programming is essential for I/O operations (network, disk) where waiting would waste resources. C#'s `async/await` makes asynchronous code read like synchronous code while preserving non-blocking behavior.
 
 ### Blocking vs Non-Blocking
 
@@ -175,6 +159,14 @@ Asynchronous programming is essential for I/O operations (network, disk) where w
 **Non-blocking** operations return immediately, allowing the thread to continue. Completion is signaled through callbacks, events, or polling.
 
 A blocking file read pauses the thread until data arrives. A non-blocking read initiates the operation and returns immediately; you check later or receive a callback when data is available.
+
+### Synchronous vs Asynchronous
+
+**Synchronous** execution completes operations in sequence. Each operation must finish before the next begins. The caller waits (blocks) until the operation completes.
+
+**Asynchronous** execution allows an operation to start without blocking the current thread. In C#, `await` pauses the calling code's flow at that point, so the code *logically* waits for the result. The advantage is not that the calling code moves on — it's that the **thread** is released back to the pool while the I/O operation completes.
+
+This distinction matters for scalability. A synchronous web server with 100 threads can handle at most 100 concurrent requests because each blocked thread sits idle waiting for database queries or HTTP calls. An asynchronous server with the same 100 threads can handle thousands of concurrent requests because threads are freed during I/O waits and can pick up other work. In desktop applications, `await` releases the UI thread so the application stays responsive instead of freezing.
 
 ### Concurrent vs Parallel
 
@@ -230,19 +222,19 @@ Similar mismatches occur between different API styles (REST vs GraphQL), data fo
 
 ### Marshalling
 
-**Marshalling** transforms data for transmission between different environments, whether across process boundaries, between managed and unmanaged code, or over networks.
+**Marshalling** is the process of translating data from one representation to another so that two systems with different memory layouts, type systems, or calling conventions can exchange information. A C# `string` and a C `char*` both represent text, but they are stored differently in memory. Marshalling handles that translation so each side receives data in a format it understands.
 
-When calling native code from C#, parameters are marshalled: converted to formats the native code expects, passed across the boundary, and results converted back.
+The most common place you encounter marshalling in C# is when calling native code through P/Invoke. The runtime automatically converts managed types to their unmanaged equivalents before the call, passes them across the boundary, and converts return values back. For simple types like `int` or `bool`, this is straightforward. For complex types like structs with nested arrays or strings that need specific encodings, you may need to annotate parameters with `MarshalAs` attributes to tell the runtime exactly how to perform the conversion.
 
-Marshalling has performance costs and can fail if types are not compatible. Understanding marshalling is essential when working with interop scenarios.
+Marshalling has real performance costs because it involves copying and converting data at every boundary crossing. It can also fail at runtime if types are not compatible or if memory layouts do not match what the native code expects.
 
 ### Serialization and Deserialization
 
-**Serialization** converts in-memory objects to a format suitable for storage or transmission (JSON, XML, binary). **Deserialization** reverses this, reconstructing objects from the serialized format.
+**Serialization** literally means "to make serial." An object graph in memory is a rich, interconnected structure with references, hierarchies, and potentially circular relationships. Serialization flattens that graph into a linear sequence of bytes or characters that can flow through a stream, whether to a file, a database, or across a network. **Deserialization** reverses this, reconstructing the graph from the linear form.
 
-Serialization enables persistence (saving to files or databases), communication (sending objects over networks), and caching (storing computed results).
+The two terms describe a structural transformation, not just a format change. Data must become linear to cross any boundary (you cannot send a pointer over HTTP), so serialization is how complex in-memory structures leave a process and deserialization is how they are rebuilt on the other side.
 
-Different formats trade off human readability (JSON, XML) against compactness and speed (binary formats like Protocol Buffers).
+Different serialized formats trade off human readability (JSON, XML) against compactness and speed (binary formats like Protocol Buffers).
 
 ## Memory and Resource Management
 
@@ -258,17 +250,17 @@ Understanding GC helps you avoid patterns that create excessive allocations or p
 
 ### Managed vs Unmanaged Code
 
-**Managed code** runs under runtime supervision (the CLR in .NET). The runtime handles memory management, type safety, and security.
+**Managed code** is code whose execution is managed by a runtime, not by the developer. In .NET, that runtime is the CLR. You write C#, the compiler produces IL, and the CLR takes responsibility for how that IL runs: allocating and freeing memory, verifying type safety, handling exceptions, and JIT-compiling to native instructions. "Managed" means the runtime is the manager. The developer gives up direct control over things like memory layout and pointer arithmetic in exchange for the runtime's services.
 
-**Unmanaged code** runs directly on the hardware without runtime services. C and C++ produce unmanaged code with manual memory management and direct hardware access.
+**Unmanaged code** is opaque to the runtime. C and C++ compile directly to native instructions with no intermediary managing execution. The developer is responsible for allocating and freeing memory, and nothing verifies type safety at runtime. The CLR can call into unmanaged code through interop, but it cannot manage that code's memory, catch its errors, or reason about its types.
 
-C# primarily produces managed code but can interoperate with unmanaged code when necessary for performance or accessing system APIs.
+C# primarily produces managed code but can interoperate with unmanaged code when necessary for performance or accessing system APIs that only expose native interfaces.
 
 ### Disposable Resources
 
-**Disposable resources** require explicit cleanup beyond garbage collection. File handles, database connections, and network sockets must be released promptly rather than waiting for eventual garbage collection.
+**Disposable resources** hold onto things the garbage collector cannot see or reason about. A `SqlConnection` object might occupy a trivial amount of managed memory, but it holds an open connection from a limited pool. A `FileStream` holds an OS-level file lock. The GC only tracks managed memory, so it has no way to know these external resources are scarce or contended. Collection timing is non-deterministic, and finalizers exist as a safety net but are unreliable for prompt cleanup.
 
-The `IDisposable` interface and `using` statement in C# provide deterministic cleanup. When a `using` block exits, the resource is immediately released regardless of how the block exits (normal completion or exception).
+The `IDisposable` interface and `using` statement solve this by giving the developer deterministic control over when external resources are released. When a `using` block exits, `Dispose()` is called immediately regardless of how the block exits (normal completion or exception), freeing the external resource without waiting for the GC to eventually notice the object.
 
 ### Memory Leak
 
@@ -349,40 +341,6 @@ Failing fast makes problems obvious and prevents cascading failures or data corr
 **Defensive programming** anticipates potential problems and handles them explicitly through validation, checks, and fallbacks.
 
 Validating inputs, checking preconditions, and handling edge cases explicitly makes code more robust. The balance is avoiding excessive checks that obscure the main logic.
-
-## API and Contract Concepts
-
-These concepts describe how components communicate and what guarantees they provide.
-
-### Contract
-
-A **contract** defines the obligations and guarantees between caller and callee.
-
-A method contract might specify: "If you pass a non-negative integer, I will return its square root. If you pass a negative number, I will throw an exception."
-
-Contracts can be implicit (documented behavior) or explicit (enforced through types, assertions, or contract libraries).
-
-### Precondition and Postcondition
-
-A **precondition** is what must be true before an operation executes. A **postcondition** is what the operation guarantees to be true after it completes.
-
-For a `Divide(a, b)` method, a precondition is `b != 0`. A postcondition might be `result * b == a`.
-
-Clear preconditions and postconditions make code behavior explicit and enable reasoning about correctness.
-
-### Invariant
-
-An **invariant** is a condition that remains true throughout a particular scope, whether a loop, an object's lifetime, or a system's operation.
-
-A class invariant might be "balance is always non-negative." Every method must preserve this invariant: it can assume the invariant holds on entry and must ensure it holds on exit.
-
-### Idempotent (API Context)
-
-In API design, **idempotency** means making the same request multiple times has the same effect as making it once.
-
-HTTP GET and DELETE are idempotent by specification. A well-designed API makes PUT idempotent. POST typically is not idempotent; repeated calls may create multiple resources.
-
-Idempotency enables safe retries and simpler error handling in distributed systems.
 
 ## Composition and Reuse
 

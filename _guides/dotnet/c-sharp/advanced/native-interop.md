@@ -356,6 +356,8 @@ finally
 
 ## COM Interop
 
+COM (Component Object Model) is a Microsoft binary-interface standard introduced in the 1990s that allows software components to communicate across process and language boundaries. It provides a language-neutral way to create and consume reusable components, and it underpins technologies like Office automation, ActiveX controls, and parts of the Windows Shell. When you automate Excel from C# or interact with certain Windows APIs, you're typically working through COM.
+
 ### Importing COM Types
 
 ```csharp
