@@ -11,10 +11,6 @@ tags: [infrastructure, iac, automation, fundamentals, devops, practical]
 
 **Infrastructure as Code (IaC)** is the practice of managing and provisioning infrastructure through machine-readable definition files rather than manual processes or interactive configuration tools.
 
-<blockquote class="pull-quote">
-<p>Infrastructure as Code treats infrastructure configuration as software code that can be version controlled, reviewed, tested, and automatically deployed with consistent results.</p>
-</blockquote>
-
 ### Core Definition
 
 IaC treats infrastructure configuration as software code that can be:

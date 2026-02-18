@@ -9,10 +9,6 @@ tags: [aws, cdk, infrastructure-as-code, cloudformation, typescript, python, iac
 
 ## What Problems CDK Solves
 
-<blockquote class="pull-quote">
-<p>CDK transforms infrastructure from configuration files into real code. It's testable, refactorable, and built with the same practices we apply to application development.</p>
-</blockquote>
-
 AWS CDK allows you to define cloud infrastructure using familiar programming languages instead of JSON/YAML:
 
 **Eliminate YAML/JSON verbosity**: CloudFormation template for VPC with subnets, route tables, and NAT gateways: 500+ lines of YAML. CDK TypeScript equivalent: 20 lines with `new ec2.Vpc(this, 'MyVpc', { maxAzs: 3 })`. CDK abstracts low-level details.
@@ -1058,10 +1054,6 @@ code: lambda.Code.fromDockerBuild('lambda')
 **Solution**: Delete `cdk.context.json` or run `cdk context --clear` to refresh.
 
 ## Key Takeaways
-
-<blockquote class="pull-quote">
-<p>CDK's real power isn't just code generation; it's enabling the same development practices (testing, code review, refactoring) that make application code reliable.</p>
-</blockquote>
 
 **CDK enables infrastructure as code with familiar programming languages**: TypeScript, Python, Java, C#, Go instead of YAML/JSON. Leverage IDE autocomplete, type checking, and refactoring tools.
 

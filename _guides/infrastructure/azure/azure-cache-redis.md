@@ -9,10 +9,6 @@ tags: [azure, caching, performance, scalability, databases, cloud-computing, fun
 
 ## What Is Azure Cache for Redis
 
-<blockquote class="pull-quote">
-<p>Azure Cache for Redis is a fully managed, distributed cache service that enables you to reduce latency and improve throughput by keeping frequently accessed data in memory instead of querying slower data stores.</p>
-</blockquote>
-
 [Azure Cache for Redis](https://learn.microsoft.com/en-us/azure/azure-cache-for-redis/cache-overview){:target="_blank" rel="noopener noreferrer"} is a managed implementation of the open-source Redis in-memory data store, hosted on Azure's infrastructure. Redis holds data structures like strings, hashes, lists, sets, and sorted sets in memory, providing sub-millisecond read/write latency. The service handles replication, failover, patching, and scaling so you focus on application logic rather than operational complexity.
 
 Common use cases include session storage, real-time analytics, rate limiting, distributed locks, leaderboards, and pub/sub messaging. Any scenario where you need fast access to data that changes frequently or where serving from disk is too slow benefits from Redis caching.

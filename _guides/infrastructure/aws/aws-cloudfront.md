@@ -9,10 +9,6 @@ tags: [aws, cloudfront, cdn, edge-computing, caching, performance, cost-optimiza
 
 ## What Problems CloudFront Solves
 
-<blockquote class="pull-quote">
-<p>CloudFront transforms content delivery from a bandwidth problem into a proximity problem. The fastest request is one that never travels far.</p>
-</blockquote>
-
 AWS CloudFront is a global Content Delivery Network (CDN) service that distributes content to users with low latency and high transfer speeds. It solves critical challenges for web applications and content delivery:
 
 **Performance Problems**:
@@ -641,10 +637,6 @@ Origin Shield is an **additional caching layer** between Regional Edge Caches an
 **Use Case**: Microservices architecture, mixed static/dynamic content, separate origins for different content types
 
 ## Common Pitfalls and How to Avoid Them
-
-<blockquote class="pull-quote">
-<p>The most common CloudFront mistakes aren't about caching too little; they're about accidentally creating millions of cache entries for identical content.</p>
-</blockquote>
 
 ### 1. Low Cache Hit Ratio Due to Unnecessary Cache Key Variations
 

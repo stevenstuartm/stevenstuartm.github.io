@@ -9,10 +9,6 @@ tags: [infrastructure, azure, networking, security, architecture, scalability, p
 
 ## What Is Azure API Management
 
-<blockquote class="pull-quote">
-<p>Azure API Management is a fully managed platform for publishing, securing, transforming, and monitoring APIs. It acts as a facade over backend services, decoupling API consumers from implementations.</p>
-</blockquote>
-
 [Azure API Management](https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts){:target="_blank" rel="noopener noreferrer"} (APIM) consists of four core components:
 
 - **API Gateway:** The runtime that proxies API requests, applies policies (throttling, caching, transformation), enforces quotas, and routes calls to backend services

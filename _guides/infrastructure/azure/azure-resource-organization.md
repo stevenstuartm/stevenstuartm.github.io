@@ -11,10 +11,6 @@ tags: [infrastructure, azure, governance, best-practices, cost-analysis, practic
 
 Azure's hierarchy (Tenant, Management Group, Subscription, Resource Group, Resource) provides the structural foundation for governance, but structure alone does not keep environments manageable. As resource counts grow into the hundreds or thousands, two questions surface repeatedly: "What is this resource for?" and "Who owns it?"
 
-<blockquote class="pull-quote">
-<p>Naming conventions tell you what a resource is. Tags tell you why it exists, who owns it, and how much it should cost. Resource locks prevent the answer from becoming "it used to exist."</p>
-</blockquote>
-
 Naming conventions, tagging policies, resource locks, and resource move strategies are the operational tools that make Azure environments navigable, auditable, and cost-trackable. Without them, teams spend increasing amounts of time answering basic questions about their own infrastructure.
 
 ---

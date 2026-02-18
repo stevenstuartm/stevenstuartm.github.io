@@ -9,10 +9,6 @@ tags: [infrastructure, iac, aws, cloudformation, practical, templates]
 
 ## Intrinsic Functions
 
-<blockquote class="pull-quote">
-<p>Intrinsic functions are CloudFormation's power tools. They resolve values at stack creation time, enabling dynamic resource configuration without hardcoding.</p>
-</blockquote>
-
 **Intrinsic functions** are built-in functions that help manage stacks, evaluated at stack creation/update time.
 
 ### Ref

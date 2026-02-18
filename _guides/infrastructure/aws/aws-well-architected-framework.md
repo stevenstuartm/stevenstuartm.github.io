@@ -19,10 +19,6 @@ The framework helps architects:
 - **Identify areas for improvement** in existing architectures
 - **Understand the business impact** of architectural decisions
 
-<blockquote class="pull-quote">
-<p>The Well-Architected Framework is a lens for decision-making, not a compliance checklist. Every architectural decision involves trade-offs.</p>
-</blockquote>
-
 ### Not a Checklist
 
 The framework provides guiding principles, not mandatory requirements. Every architectural decision involves trade-offs. The framework helps you understand what you're optimizing for and what you're sacrificing.

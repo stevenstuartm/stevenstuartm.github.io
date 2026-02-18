@@ -9,10 +9,6 @@ tags: [azure, databases, cloud-computing, scalability, reliability, performance,
 
 ## What Is Azure SQL Database
 
-<blockquote class="pull-quote">
-<p>Azure SQL Database is a fully managed relational database service that runs SQL Server engine in the cloud. You provision capacity and Azure handles maintenance, patches, backups, and scaling.</p>
-</blockquote>
-
 [Azure SQL Database](https://learn.microsoft.com/en-us/azure/azure-sql/database/sql-database-paas-overview){:target="_blank" rel="noopener noreferrer"} is Microsoft's managed SQL Server offering for cloud applications. Unlike on-premises SQL Server where you manage the OS, storage, and patches, Azure SQL Database is a fully managed platform-as-a-service where Microsoft handles infrastructure, updates, backups, and high availability.
 
 [Azure SQL Managed Instance](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview){:target="_blank" rel="noopener noreferrer"} is a hybrid option that provides near 100% SQL Server compatibility by running an entire SQL Server instance on managed infrastructure. It sits between Azure SQL Database (highest abstraction, lowest maintenance) and SQL Server on Azure VMs (lowest abstraction, highest control).

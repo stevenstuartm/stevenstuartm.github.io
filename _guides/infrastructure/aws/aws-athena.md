@@ -9,10 +9,6 @@ tags: [aws, data-architecture, analytics, cost-analysis, performance, sql]
 
 ## What Problems AWS Athena Solves
 
-<blockquote class="pull-quote">
-<p>Athena runs SQL directly against S3 data without loading or transforming it first. You pay only for data scanned ($5 per TB), not for servers or idle capacity.</p>
-</blockquote>
-
 AWS Athena eliminates the infrastructure complexity and upfront cost of running SQL analytics on large datasets stored in S3.
 
 **Traditional analytics challenges**:

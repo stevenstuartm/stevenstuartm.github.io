@@ -13,10 +13,6 @@ tags: [oop, best-practices, practical, maintainability, modern]
 
 **Definition**: Favor object composition over class inheritance to achieve code reuse and flexibility.
 
-<blockquote class="pull-quote">
-<p>Favor object composition over class inheritance to achieve code reuse and flexibility.</p>
-</blockquote>
-
 <div class="callout callout--note">
 <p class="callout__title">Why This Matters</p>
 <ul>
@@ -325,10 +321,6 @@ public class UserService
     // Add other methods when actually needed
 }
 ```
-
-<blockquote class="pull-quote">
-<p>Don't implement features before they're needed. Focus on current requirements and add capabilities when they become actual needs, not anticipated ones.</p>
-</blockquote>
 
 <div class="callout callout--tip">
 <p class="callout__title">Benefits of YAGNI</p>

@@ -11,10 +11,6 @@ tags: [security, frameworks, standards, compliance, reference]
 
 Released February 2024, NIST CSF 2.0 expanded beyond critical infrastructure to serve all organization types and sizes. Widely adopted globally as a voluntary framework for managing cybersecurity risk.
 
-<blockquote class="pull-quote">
-<p>NIST CSF 2.0 provides a common language for communicating cybersecurity risk across organizational levels, from technical teams to executive leadership.</p>
-</blockquote>
-
 ### Core Functions
 
 **1. Govern (NEW)**

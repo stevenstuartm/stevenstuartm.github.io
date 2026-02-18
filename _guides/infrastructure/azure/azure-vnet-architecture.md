@@ -9,10 +9,6 @@ tags: [infrastructure, azure, networking, security, scalability, practical]
 
 ## What Is a Virtual Network
 
-<blockquote class="pull-quote">
-<p>An Azure Virtual Network (VNet) is your private, isolated network in Azure. It provides the foundation for all network communication between Azure resources, the internet, and on-premises networks.</p>
-</blockquote>
-
 An [Azure Virtual Network](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview){:target="_blank" rel="noopener noreferrer"} (VNet) is a logically isolated network within Azure where you deploy and connect resources. Services like VMs, App Service Environments, AKS clusters, and most PaaS services that need network integration run inside a VNet.
 
 A VNet is scoped to a single Azure region. Resources in different regions require separate VNets connected through VNet peering or Azure Virtual WAN.

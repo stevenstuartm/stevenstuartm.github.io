@@ -158,10 +158,6 @@ public struct Point
 
 ## The fixed Statement
 
-<blockquote class="pull-quote">
-<p>The garbage collector can move objects at any time. The fixed statement pins an object in place so native code can safely access it through a pointer.</p>
-</blockquote>
-
 Managed objects can be moved by the GC. The `fixed` statement pins objects in memory.
 
 ```csharp

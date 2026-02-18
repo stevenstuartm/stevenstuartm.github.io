@@ -11,10 +11,6 @@ tags: [aws, route53, dns, routing-policies, health-checks, traffic-management, c
 
 Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web service that translates domain names into IP addresses and routes end users to applications.
 
-<blockquote class="pull-quote">
-<p>Route 53 is the only AWS service with a 100% uptime SLA, providing globally distributed DNS with automated failover and intelligent traffic routing.</p>
-</blockquote>
-
 **What Problems Route 53 Solves**:
 - **DNS reliability**: Traditional DNS vulnerable to outages; Route 53 provides 100% uptime SLA
 - **Global traffic distribution**: Manual traffic routing complex; Route 53 automates based on latency, geography, health
@@ -94,10 +90,6 @@ Route users to lowest-latency AWS Region.
 ### Failover Routing
 
 Active-passive failover for high availability.
-
-<blockquote class="pull-quote">
-<p>Failover routing with health checks provides automated disaster recovery in 30-60 seconds with zero manual intervention.</p>
-</blockquote>
 
 **How It Works**:
 - Define primary and secondary resources

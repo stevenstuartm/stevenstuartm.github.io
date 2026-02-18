@@ -24,10 +24,6 @@ AWS Serverless Application Model (SAM) is an open-source framework that simplifi
 
 ## SAM vs CloudFormation vs CDK
 
-<blockquote class="pull-quote">
-<p>SAM reduces serverless infrastructure code from 200+ lines of CloudFormation to 50 lines while adding local testing capabilities.</p>
-</blockquote>
-
 ### Comparison
 
 <div class="comparison">

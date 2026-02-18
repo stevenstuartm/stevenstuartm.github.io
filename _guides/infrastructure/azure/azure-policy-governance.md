@@ -9,10 +9,6 @@ tags: [azure, governance, security, cloud-computing, infrastructure, automation,
 
 ## What Is Azure Policy and Governance
 
-<blockquote class="pull-quote">
-<p>Azure Policy is your guardrails against misconfiguration. It enforces compliance at scale by auditing and blocking non-compliant resources before they cause security breaches, compliance violations, or operational problems.</p>
-</blockquote>
-
 [Azure Policy](https://learn.microsoft.com/en-us/azure/governance/policy/overview){:target="_blank" rel="noopener noreferrer"} is a service that allows you to create and enforce rules across your Azure estate. These rules (called policies) evaluate Azure resources against your organization's standards and can automatically remediate violations.
 
 Azure governance goes beyond policy to include [Management Groups](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview){:target="_blank" rel="noopener noreferrer"} for hierarchy, [Azure Blueprints](https://learn.microsoft.com/en-us/azure/governance/blueprints/overview){:target="_blank" rel="noopener noreferrer"} for packaging policy + RBAC + templates, and [Azure Landing Zones](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/){:target="_blank" rel="noopener noreferrer"} as a complete governance and architecture reference implementation.

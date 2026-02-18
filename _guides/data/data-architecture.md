@@ -13,10 +13,6 @@ redirect_from:
 
 ### ACID Properties
 
-<blockquote class="pull-quote">
-<p>ACID properties ensure your database doesn't lose or corrupt data when multiple operations happen at once.</p>
-</blockquote>
-
 **Atomicity**: All or nothing. If you're transferring $100 between bank accounts, either both the deduction AND addition happen, or neither does. No money disappears into thin air.
 
 **Consistency**: Rules are enforced. If you have a rule that inventory can't go negative, the database won't let you sell more items than you have in stock.
@@ -24,7 +20,6 @@ redirect_from:
 **Isolation**: Transactions don't interfere with each other. Two people trying to book the last airplane seat won't both succeed; one will get it, the other gets an error.
 
 **Durability**: Once confirmed, it's permanent. When the system says your order went through, it survives even if the server crashes five minutes later.
-
 
 ---
 
@@ -66,7 +61,6 @@ Transformation often takes 70% of your ETL effort. Don't underestimate it.
 **Things break**: Source systems change their APIs, network connections fail, data formats shift. Plan for failures.
 
 **Performance**: What works for 1,000 records might be painfully slow for 1 million records.
-
 
 ---
 

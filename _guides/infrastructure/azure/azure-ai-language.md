@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, infrastructure, machine-learning, automation, sca
 
 ## What Is Azure AI Language
 
-<blockquote class="pull-quote">
-<p>Azure AI Language is a unified service providing natural language processing capabilities for text analytics, conversational understanding, question answering, and multilingual translation without requiring machine learning expertise.</p>
-</blockquote>
-
 [Azure AI Language](https://learn.microsoft.com/en-us/azure/ai-services/language-service/overview){:target="_blank" rel="noopener noreferrer"} consolidates multiple Azure language services into a single service endpoint. Previously, Azure offered separate services (Text Analytics, LUIS, QnA Maker, Translator). The unified service simplifies provisioning, billing, and integration while providing the same capabilities under a consistent API.
 
 The service operates without requiring you to build, train, or deploy machine learning models. Prebuilt models handle common NLP tasks. For domain-specific needs, custom models train on your labeled data within the service itself.

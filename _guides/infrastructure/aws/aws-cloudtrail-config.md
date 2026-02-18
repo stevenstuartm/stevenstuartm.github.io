@@ -9,10 +9,6 @@ tags: [aws, cloudtrail, config, audit, compliance, governance, security, logging
 
 ## What Problems CloudTrail & Config Solve
 
-<blockquote class="pull-quote">
-<p>Production S3 bucket deleted with no record of who did it. Regulatory fine: $500K for lack of audit logs proving compliance controls. CloudTrail and Config provide tamper-proof audit trails and continuous compliance monitoring.</p>
-</blockquote>
-
 ### Without Audit Logging and Configuration Tracking
 
 **Governance and Compliance Challenges:**

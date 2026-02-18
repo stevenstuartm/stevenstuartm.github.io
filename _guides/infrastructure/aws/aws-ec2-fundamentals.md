@@ -9,10 +9,6 @@ tags: [infrastructure, aws, cloud-computing, cost-analysis, practical, fundament
 
 ## What Problems EC2 Solves
 
-<blockquote class="pull-quote">
-<p>EC2 provides the control of traditional servers with the flexibility and economics of cloud computing. Launch instances in minutes and scale capacity as requirements change.</p>
-</blockquote>
-
 Amazon EC2 (Elastic Compute Cloud) provides resizable compute capacity in the cloud, addressing fundamental infrastructure challenges that organizations face:
 
 **Infrastructure challenges solved:**
@@ -1357,10 +1353,6 @@ Lambda is cost-effective for intermittent use, expensive for continuous operatio
 </div> The right choice depends on your specific requirements for control, operational overhead, execution time, cost model, and team expertise. Many architectures use multiple compute services, selecting the best fit for each component.
 
 ## Common Pitfalls
-
-<blockquote class="pull-quote">
-<p>53% of organizations use no commitment discounts, leaving significant savings (up to 72%) on the table. Right-size first, then commit.</p>
-</blockquote>
 
 ### Security Misconfigurations
 

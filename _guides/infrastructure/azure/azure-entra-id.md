@@ -11,10 +11,6 @@ tags: [infrastructure, azure, security, access-control, architecture, fundamenta
 
 [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/fundamentals/whatis){:target="_blank" rel="noopener noreferrer"} (formerly Azure Active Directory) is Microsoft's cloud-based identity and access management platform. It is the identity backbone for Azure, Microsoft 365, and thousands of third-party SaaS applications. Every authentication to an Azure resource, every RBAC role assignment, and every Conditional Access decision flows through Entra ID.
 
-<blockquote class="pull-quote">
-<p>Entra ID is not a cloud version of Windows Server Active Directory. It is a different platform built for cloud-native identity, using different protocols and serving a broader scope than traditional AD ever did.</p>
-</blockquote>
-
 ### Entra ID vs. On-Premises Active Directory
 
 The name causes confusion. Entra ID (Azure AD) and Windows Server Active Directory (AD DS) share a lineage but are different platforms solving different problems.

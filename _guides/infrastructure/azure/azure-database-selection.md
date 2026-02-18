@@ -9,10 +9,6 @@ tags: [azure, databases, decision-making, architecture, cloud-computing, scalabi
 
 ## What Is Azure Database Service Selection
 
-<blockquote class="pull-quote">
-<p>Azure offers over a dozen managed database services. The right choice depends on workload type, consistency requirements, query patterns, scale needs, and cost model. No single database fits all scenarios.</p>
-</blockquote>
-
 Azure provides a broad portfolio of managed database services, each optimized for specific workload patterns. [Azure database services](https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview){:target="_blank" rel="noopener noreferrer"} range from traditional relational databases like Azure SQL Database to globally distributed multi-model stores like Cosmos DB, in-memory caches like Azure Cache for Redis, and analytical data warehouses like Azure Synapse Analytics.
 
 The decision of which database service to use is one of the most impactful architectural choices. The wrong service leads to performance bottlenecks, high costs, complex workarounds, or costly migrations. The right service aligns workload characteristics with service strengths, delivering predictable performance and cost.

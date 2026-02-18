@@ -11,10 +11,6 @@ tags: [infrastructure, iac, governance, compliance, security, practical]
 
 **Goal:** Ensure infrastructure remains compliant, properly tagged, and doesn't drift from IaC definitions.
 
-<blockquote class="pull-quote">
-<p>Governance that only detects violations is too late. Preventive controls that block non-compliant changes before they happen are the goal.</p>
-</blockquote>
-
 **Key challenges:**
 - Developers creating resources without required tags
 - Manual changes causing drift from IaC templates
@@ -440,10 +436,6 @@ ComplianceDashboard:
 ## Preventive Controls
 
 Block non-compliant infrastructure changes before they happen.
-
-<blockquote class="pull-quote">
-<p>Detection finds problems. Prevention stops them. The best governance controls prevent non-compliant changes from ever reaching production.</p>
-</blockquote>
 
 ### Service Control Policies (SCPs)
 

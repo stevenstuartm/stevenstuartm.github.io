@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, async, concurrency, task, performance, practical]
 
 ## Why Async
 
-<blockquote class="pull-quote">
-<p>Async isn't about parallelism or making things faster. It's about freeing threads to handle other requests while waiting for I/O. A web server using async can handle thousands of concurrent requests with a small thread pool.</p>
-</blockquote>
-
 Asynchronous programming enables non-blocking I/O operations. While waiting for a database query, HTTP request, or file read, the thread can do other work instead of sitting idle.
 
 ```csharp

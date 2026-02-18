@@ -9,10 +9,6 @@ tags: [asp-net-core, rate-limiting, resilience, polly, circuit-breaker, cors, se
 
 ## Protecting APIs Under Load
 
-<blockquote class="pull-quote">
-<p>Rate limiting prevents abuse, CORS controls access, and resilience patterns keep services running when dependencies fail.</p>
-</blockquote>
-
 APIs face two distinct challenges. First, they must protect themselves from excessive requests that could overwhelm resources or signal abuse. Second, they must remain functional when downstream dependencies experience transient failures. ASP.NET Core addresses the first challenge with built-in rate limiting middleware and CORS policies, and the second with resilience patterns provided through Polly and Microsoft.Extensions.Http.Resilience.
 
 This guide covers rate limiting algorithms, per-endpoint policy configuration, CORS middleware, and resilience strategies including retry, circuit breaker, timeout, and bulkhead patterns.

@@ -7,10 +7,6 @@ tags: [security, fundamentals, cia-triad, defense-in-depth, zero-trust, practica
 
 ## CIA Triad
 
-<blockquote class="pull-quote">
-<p>The CIA triad (Confidentiality, Integrity, Availability) is the foundation upon which all security decisions are built.</p>
-</blockquote>
-
 The foundational framework for information security:
 
 ### Confidentiality
@@ -282,10 +278,6 @@ if authenticate(user) AND authorize(user, resource) AND validate_device():
 ---
 
 ## Security by Design
-
-<blockquote class="pull-quote">
-<p>Security bolted on after development is expensive, fragile, and incomplete. Security designed in from the start is robust, cost-effective, and comprehensive.</p>
-</blockquote>
 
 Build security into the development lifecycle, not bolt it on later.
 

@@ -9,10 +9,6 @@ tags: [infrastructure, azure, cloud-computing, reliability, performance, cost-an
 
 ## What Are Azure Managed Disks and Azure Files
 
-<blockquote class="pull-quote">
-<p>Azure Managed Disks provide durable block storage for virtual machines with automatic replication and availability zone support. Azure Files provides fully managed file shares accessible via SMB and NFS protocols from cloud and on-premises environments.</p>
-</blockquote>
-
 [Azure Managed Disks](https://learn.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview){:target="_blank" rel="noopener noreferrer"} are block-level storage volumes managed by Azure and used with Azure Virtual Machines. They replace the older "unmanaged disks" model where administrators had to manage storage accounts, calculate capacity limits, and handle storage account distribution manually. Every new VM deployment should use managed disks.
 
 [Azure Files](https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction){:target="_blank" rel="noopener noreferrer"} provides fully managed file shares in the cloud, accessible via the Server Message Block (SMB 3.x) protocol, the Network File System (NFS 4.1) protocol, and the Azure Files REST API. Azure file shares can be mounted concurrently by cloud and on-premises deployments of Windows, Linux, and macOS.

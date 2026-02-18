@@ -22,10 +22,6 @@ Four fundamental approaches to algorithm design, each suited for different probl
 
 *Term coined by Richard Bellman in the 1950s. "Programming" refers to optimization, not coding. Bellman chose "dynamic" to sound impressive to government funders who might not fund "mathematical" research.*
 
-<blockquote class="pull-quote">
-<p>Solve each subproblem once, store result for reuse. Transform exponential brute-force into polynomial time by caching.</p>
-</blockquote>
-
 **Core idea:** Solve each subproblem once, store result for reuse. Transform exponential brute-force into polynomial time by caching.
 
 ### When to Use
@@ -283,10 +279,6 @@ public static void Subsets(int[] nums, int start, List<int> curr, List<List<int>
 | Greedy | O(n log n) typically | O(1) often | Local → Global optimal |
 | Divide & Conquer | O(n log n) often | O(log n) | Independent subproblems |
 | Backtracking | Exponential | O(depth) | All solutions, constraints |
-
-<blockquote class="pull-quote">
-<p>Repeated subproblems → DP. Local choices work → Greedy. Independent parts → Divide & Conquer. Need all solutions → Backtracking.</p>
-</blockquote>
 
 **Key Pattern Recognition:**
 - Repeated subproblems → DP

@@ -9,10 +9,6 @@ tags: [infrastructure, iac, testing, validation, practical, automation]
 
 ## Why Test Infrastructure
 
-<blockquote class="pull-quote">
-<p>Infrastructure code is code. It deserves the same testing rigor as application code. Untested infrastructure is production gambling.</p>
-</blockquote>
-
 **Catch errors early:**
 - Syntax errors before deployment
 - Logic errors before production
@@ -239,10 +235,6 @@ Run static analysis automatically on every commit or pull request:
 ## Compliance Testing
 
 **What it is:** Validate infrastructure against organizational policies and regulatory requirements using policy-as-code.
-
-<blockquote class="pull-quote">
-<p>Compliance as code means policies are enforced automatically, not discovered during audits. Shift compliance left into the development process.</p>
-</blockquote>
 
 ### Policy-as-Code Tools
 

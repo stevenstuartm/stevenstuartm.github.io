@@ -9,10 +9,6 @@ tags: [asp-net-core, testing, integration-testing, testcontainers, performance, 
 
 ## Testing ASP.NET Core APIs
 
-<blockquote class="pull-quote">
-<p>Integration tests exercise the entire request pipeline without deploying to a real server, catching failures that unit tests miss while remaining fast enough to run frequently.</p>
-</blockquote>
-
 Testing ASP.NET Core APIs requires multiple strategies working together. Unit tests validate individual components in isolation, but integration tests prove that routing, model binding, business logic, data access, and serialization work together correctly. Architecture tests enforce structural rules. Performance tests validate behavior under load. Each layer catches different failure modes.
 
 This guide covers the full spectrum of testing approaches for ASP.NET Core APIs, from basic integration testing through advanced techniques like snapshot testing and containerized database testing. The focus remains on practical patterns that catch real bugs without creating maintenance burden.

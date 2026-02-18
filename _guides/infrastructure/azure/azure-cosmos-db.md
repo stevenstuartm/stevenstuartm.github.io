@@ -9,10 +9,6 @@ tags: [azure, databases, distributed-systems, scalability, performance, cloud-co
 
 ## What Is Azure Cosmos DB
 
-<blockquote class="pull-quote">
-<p>Azure Cosmos DB is a globally distributed, multi-model NoSQL database that scales across Azure regions with multiple consistency levels and APIs to match different application patterns and migration paths.</p>
-</blockquote>
-
 [Azure Cosmos DB](https://learn.microsoft.com/en-us/azure/cosmos-db/introduction){:target="_blank" rel="noopener noreferrer"} is a fully managed, distributed database service that stores data in JSON-like documents (and other formats depending on the API chosen). Unlike traditional relational databases, data in Cosmos DB is schemaless, distributed across regions, and accessed through API models (NoSQL, MongoDB, Cassandra, Gremlin, Table) rather than SQL.
 
 Cosmos DB addresses the problem of building systems that are both globally distributed and highly available. Rather than forcing you to build custom sharding layers, replicate data to multiple regions manually, or choose between consistency and availability, Cosmos DB manages these concerns at the platform level.

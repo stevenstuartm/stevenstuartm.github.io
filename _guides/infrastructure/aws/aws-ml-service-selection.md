@@ -24,10 +24,6 @@ A systematic decision framework for selecting the right ML approach based on:
 
 ## The AWS ML Service Spectrum
 
-<blockquote class="pull-quote">
-<p>AWS ML services exist on a spectrum: AI Services for speed and simplicity, SageMaker for custom models with managed infrastructure, and DIY for extreme specialization. Choose the simplest tier that meets your requirements.</p>
-</blockquote>
-
 AWS offers three tiers of ML services, each suited for different scenarios:
 
 ### Tier 1: AI Services (Pre-Built, Fully Managed)
@@ -247,10 +243,6 @@ Ask these questions to determine if SageMaker is needed:
 ## Detailed Service Selection Patterns
 
 ### Pattern 1: Start Simple, Upgrade When Needed
-
-<blockquote class="pull-quote">
-<p>Begin with AI Services to validate your use case. Only invest in custom SageMaker models after confirming that pre-built solutions don't meet your accuracy, latency, or customization requirements.</p>
-</blockquote>
 
 **Recommended approach**: Begin with AI Services, migrate to SageMaker only when required.
 

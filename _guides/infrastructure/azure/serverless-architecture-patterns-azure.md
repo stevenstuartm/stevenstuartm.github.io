@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, architecture, design-patterns, scalability, distr
 
 ## What Is Serverless on Azure
 
-<blockquote class="pull-quote">
-<p>Serverless computing shifts infrastructure management to the cloud provider. You write code and define workflows, and the platform handles scaling, availability, and operations. You pay only for actual execution time and resource consumption, not for idle capacity.</p>
-</blockquote>
-
 Serverless on Azure is not a single product but an ecosystem of services that eliminate infrastructure management while scaling automatically based on demand. The core services include [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview){:target="_blank" rel="noopener noreferrer"} for event-driven code execution, [Logic Apps](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-overview){:target="_blank" rel="noopener noreferrer"} for workflow orchestration, [Event Grid](https://learn.microsoft.com/en-us/azure/event-grid/overview){:target="_blank" rel="noopener noreferrer"} for event routing, [API Management](https://learn.microsoft.com/en-us/azure/api-management/api-management-key-concepts){:target="_blank" rel="noopener noreferrer"} for API governance, and [Cosmos DB serverless](https://learn.microsoft.com/en-us/azure/cosmos-db/serverless){:target="_blank" rel="noopener noreferrer"} for pay-per-operation database workloads.
 
 These services compose into patterns that handle event-driven architectures, data processing pipelines, web application backends, and integration workflows without managing servers, containers, or cluster orchestrators.

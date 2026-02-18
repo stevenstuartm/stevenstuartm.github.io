@@ -11,10 +11,6 @@ tags: [oop, design-patterns, creational-patterns, factory, singleton, practical]
 
 *Design patterns from "Design Patterns: Elements of Reusable Object-Oriented Software" by the Gang of Four (Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides), published 1994*
 
-<blockquote class="pull-quote">
-<p>Creational patterns focus on object creation mechanisms, providing flexibility in how objects are instantiated.</p>
-</blockquote>
-
 **Historical note**: While the Gang of Four catalog formalized these patterns, many existed in practice before 1994. The patterns book itself was inspired by Christopher Alexander's "A Pattern Language" (1977) for architecture.
 
 ## Builder Pattern
@@ -513,10 +509,6 @@ var clone2 = original.DeepClone(); // Using JSON serialization
 - Object creation is expensive (database loads, complex initialization)
 - You need independent copies with similar state
 - Example: Cloning configuration templates
-
-<blockquote class="pull-quote">
-<p>Builder pattern shines when objects have many optional parameters or require complex construction logic that would make constructors unwieldy.</p>
-</blockquote>
 
 **Avoid Singleton when:**
 - Testing is important (hard to mock)

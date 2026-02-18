@@ -13,10 +13,6 @@ tags: [infrastructure, iac, design-patterns, best-practices, practical]
 
 **Purpose:** Modules encapsulate resources that work together as a logical unit (e.g., a VPC with subnets, a database with backups). They're about **code reuse and abstraction**, not about deployment organization (that's layering).
 
-<blockquote class="pull-quote">
-<p>Think of modules as functions or libraries in programming: reusable building blocks you can use anywhere.</p>
-</blockquote>
-
 **Think of modules as:** Functions or libraries in programming; reusable building blocks you can use anywhere.
 
 ### Benefits

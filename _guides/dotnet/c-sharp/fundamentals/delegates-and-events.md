@@ -275,10 +275,6 @@ var results = getValue.GetInvocationList()
 </div>
 </div>
 
-<blockquote class="pull-quote">
-<p>An event can only be invoked by the class that declares it. This encapsulation is the key difference from public delegate fields.</p>
-</blockquote>
-
 ```csharp
 // Delegate as parameter - caller controls when it runs
 public void ProcessData(Func<string, bool> filter) { /* ... */ }

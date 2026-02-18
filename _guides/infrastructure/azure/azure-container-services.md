@@ -9,10 +9,6 @@ tags: [infrastructure, azure, cloud-computing, kubernetes, scalability, practica
 
 ## What Are Azure Container Services
 
-<blockquote class="pull-quote">
-<p>Azure provides three distinct container platforms, each targeting a different point on the spectrum between simplicity and control. Azure Container Instances runs individual containers with no infrastructure. Azure Kubernetes Service provides full Kubernetes orchestration. Azure Container Apps offers a serverless middle ground built on Kubernetes but fully abstracted.</p>
-</blockquote>
-
 [Azure container services](https://learn.microsoft.com/en-us/azure/containers/){:target="_blank" rel="noopener noreferrer"} give architects multiple options for running containerized workloads depending on how much orchestration control they need and how much operational overhead they want to absorb. Rather than a single container platform, Azure offers three services that serve different use cases, and choosing the wrong one leads to either unnecessary complexity or missing capabilities.
 
 Azure Container Instances (ACI) is the simplest option: run a container or a small group of containers without managing any infrastructure. Azure Kubernetes Service (AKS) is a fully managed Kubernetes platform for teams that need the full power and ecosystem of Kubernetes. Azure Container Apps sits between the two, providing serverless container hosting with built-in scaling, traffic splitting, and microservices features while hiding all Kubernetes complexity.

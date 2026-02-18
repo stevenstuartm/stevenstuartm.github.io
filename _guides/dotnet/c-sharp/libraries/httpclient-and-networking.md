@@ -36,10 +36,6 @@ await client.DeleteAsync("users/1");
 
 ## The HttpClient Lifetime Problem
 
-<blockquote class="pull-quote">
-<p>Creating new HttpClient instances causes socket exhaustion; reusing static instances breaks DNS updates. IHttpClientFactory solves both problems.</p>
-</blockquote>
-
 Creating HttpClient instances directly causes socket exhaustion.
 
 ```csharp

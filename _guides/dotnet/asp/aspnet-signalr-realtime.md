@@ -9,10 +9,6 @@ tags: [asp-net-core, signalr, real-time, websockets, server-sent-events, distrib
 
 ## Real-Time Communication in ASP.NET Core
 
-<blockquote class="pull-quote">
-<p>Real-time communication isn't about technology choice; it's about matching the communication pattern to the problem you're solving.</p>
-</blockquote>
-
 ASP.NET Core provides three distinct approaches for real-time communication between servers and clients. SignalR offers high-level abstractions for bidirectional messaging with automatic transport fallback and built-in scaling patterns. Server-Sent Events provide native unidirectional streaming from server to client with automatic browser reconnection. Raw WebSockets give complete control over the connection for custom protocols or performance-critical scenarios. Understanding when each approach fits determines whether you build maintainable real-time features or fight against your chosen abstraction.
 
 ## SignalR Hubs

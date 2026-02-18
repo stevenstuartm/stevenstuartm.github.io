@@ -9,10 +9,6 @@ tags: [infrastructure, azure, analytics, integration, automation, scalability, p
 
 ## What Is Azure Data Factory
 
-<blockquote class="pull-quote">
-<p>Azure Data Factory is a serverless, cloud-native service for building data integration pipelines that orchestrate data movement and transformation across 90+ data sources and targets at scale.</p>
-</blockquote>
-
 [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/introduction){:target="_blank" rel="noopener noreferrer"} is the orchestration engine for data integration in Azure. It provides visual pipeline authoring, 90+ connectors to diverse data sources, serverless scaling, and integration with Azure's analytics platform (Synapse, Databricks, SQL Database, Cosmos DB). Unlike self-managed ETL infrastructure, Data Factory handles scheduling, retries, error handling, and scaling automatically.
 
 Think of Data Factory as an orchestration platform, not a transformation engine. It connects data sources, triggers transformations in specialized services, and ensures data flows through your architecture reliably. The actual transformations can happen in Data Factory's built-in mapping data flows or offloaded to Synapse, Databricks, SQL Server Integration Services (SSIS), and custom applications.

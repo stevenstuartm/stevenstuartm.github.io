@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, expression-trees, metaprogramming, linq, advanced]
 
 ## What Are Expression Trees
 
-<blockquote class="pull-quote">
-<p>Expression trees turn code into data. Instead of executing a lambda, you can inspect its structure, transform it, or translate it to another language like SQL.</p>
-</blockquote>
-
 Expression trees represent code as data structures. Instead of executing immediately, the code is captured as a tree that can be analyzed, modified, or compiled.
 
 ```csharp

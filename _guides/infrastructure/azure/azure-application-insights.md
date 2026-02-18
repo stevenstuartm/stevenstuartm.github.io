@@ -9,10 +9,6 @@ tags: [azure, observability, monitoring, performance, cloud-computing, reliabili
 
 ## What Is Application Insights
 
-<blockquote class="pull-quote">
-<p>Azure Application Insights is an application performance monitoring (APM) service that detects issues in your applications, collects telemetry across distributed systems, and helps you understand how your code behaves in production.</p>
-</blockquote>
-
 [Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview){:target="_blank" rel="noopener noreferrer"} provides end-to-end visibility into application behavior, performance, and failures. It automatically collects telemetry from your applications, performs distributed tracing across microservices, detects performance anomalies, and integrates with Azure DevOps for work item creation when issues are found.
 
 Application Insights is a specialized component within the broader [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/overview){:target="_blank" rel="noopener noreferrer"} platform. Azure Monitor handles infrastructure metrics and logs at the OS and service level, while Application Insights focuses on application-level telemetry and behavior analysis.

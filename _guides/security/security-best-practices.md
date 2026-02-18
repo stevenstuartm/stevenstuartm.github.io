@@ -9,10 +9,6 @@ tags: [security, best-practices, practical, implementation, checklist]
 
 ### Network Segmentation
 
-<blockquote class="pull-quote">
-<p>Network segmentation limits lateral movement during breaches. An attacker who compromises one zone cannot automatically access other network segments.</p>
-</blockquote>
-
 **Purpose:** Limit lateral movement and contain breaches within isolated network zones.
 
 **Implementation:**

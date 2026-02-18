@@ -9,10 +9,6 @@ tags: [infrastructure, azure, analytics, databases, performance, cost-analysis, 
 
 ## What Is Synapse Serverless Query
 
-<blockquote class="pull-quote">
-<p>Serverless SQL pools provide on-demand SQL querying over data in a data lake, with pay-per-query-TB pricing and no infrastructure to manage. They enable a logical data warehouse pattern where views over external data provide a SQL interface to data lake files.</p>
-</blockquote>
-
 [Azure Synapse serverless SQL pools](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/on-demand-workspace-overview){:target="_blank" rel="noopener noreferrer"} allow you to query data directly in cloud storage (Azure Data Lake Storage Gen2, S3-compatible storage) using standard SQL without provisioning compute capacity. Serverless SQL pools differ from [dedicated SQL pools](/study-guides/infrastructure/azure/azure-synapse-analytics.html) (covered in the companion guide), which are provisioned data warehouse engines with reserved capacity. Serverless pools scale elastically on a per-query basis, charging only for data scanned, not for idle capacity.
 
 Serverless SQL pools are the Azure equivalent of AWS Athena, offering similar cost-per-query models and data lake querying capabilities. They complement dedicated pools in hybrid analytics architectures where some queries are exploratory (serverless) and others are repetitive and performance-critical (dedicated pools).

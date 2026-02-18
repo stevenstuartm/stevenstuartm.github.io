@@ -11,10 +11,6 @@ tags: [oop, fundamentals, encapsulation, inheritance, polymorphism, practical]
 
 ## Core OOP Pillars
 
-<blockquote class="pull-quote">
-<p>Object-Oriented Programming is built on four fundamental pillars that work together to create maintainable, scalable software systems.</p>
-</blockquote>
-
 ### Abstraction
 
 **Definition**: Hide complex implementation details while exposing a simple, clear interface.
@@ -90,10 +86,6 @@ public class OrderService
 ### Encapsulation
 
 **Definition**: Bundle data and methods that operate on that data within a single unit, controlling access through visibility modifiers.
-
-<blockquote class="pull-quote">
-<p>Encapsulation bundles data and methods that operate on that data within a single unit, controlling access through visibility modifiers.</p>
-</blockquote>
 
 <div class="callout callout--note">
 <p class="callout__title">Key Principles of Encapsulation</p>
@@ -290,10 +282,6 @@ public class ModernEmployee
 ### Polymorphism
 
 **Definition**: Objects of different types can be treated as instances of the same type, with behavior determined at runtime.
-
-<blockquote class="pull-quote">
-<p>Polymorphism allows objects of different types to be treated as instances of the same type, with behavior determined at runtime.</p>
-</blockquote>
 
 <div class="callout callout--note">
 <p class="callout__title">Key Principles of Polymorphism</p>

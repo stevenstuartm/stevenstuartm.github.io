@@ -23,10 +23,6 @@ A systematic approach to planning and executing AWS migrations using:
 
 ## The 6 Rs Migration Framework
 
-<blockquote class="pull-quote">
-<p>The 6 Rs framework provides a decision model for application migrations: from quick rehosting for speed to strategic refactoring for maximum cloud-native benefits.</p>
-</blockquote>
-
 AWS defines six migration strategies (the "6 Rs") for moving applications to the cloud. Each strategy represents a different level of effort and business value.
 
 ### 1. Rehost (Lift-and-Shift)
@@ -402,10 +398,6 @@ aws ec2 terminate-instances --instance-ids i-0123456789abcdef0
 
 ## Decision Framework: Choosing the Right R
 
-<blockquote class="pull-quote">
-<p>Not all applications should migrate the same way. Assess each application's business criticality, technical complexity, and usage patterns to choose the right R.</p>
-</blockquote>
-
 ### Step 1: Application Assessment
 
 Create an inventory of all applications with these attributes:
@@ -590,10 +582,6 @@ print("Migration sequence:", migration_order)
 ---
 
 ## AWS Cloud Adoption Framework (CAF)
-
-<blockquote class="pull-quote">
-<p>Successful cloud migrations require more than technical execution. The AWS CAF addresses organizational readiness across Business, People, Governance, Platform, Security, and Operations perspectives.</p>
-</blockquote>
 
 The AWS CAF provides organizational guidance for cloud transformation across six perspectives.
 

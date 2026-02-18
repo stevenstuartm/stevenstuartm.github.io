@@ -9,10 +9,6 @@ tags: [infrastructure, azure, networking, cdn, performance, scalability, securit
 
 ## What Is Azure Front Door
 
-<blockquote class="pull-quote">
-<p>Azure Front Door is a global, Layer 7 entry point for web applications that combines content delivery, load balancing, and application security into a single service running on Microsoft's edge network.</p>
-</blockquote>
-
 [Azure Front Door](https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview){:target="_blank" rel="noopener noreferrer"} is a cloud-native CDN and global load balancer that accelerates delivery of web applications by routing traffic through Microsoft's global edge network. It operates at Layer 7 (HTTP/HTTPS) and provides content caching, SSL/TLS offload, URL-based routing, Web Application Firewall (WAF), and health-based failover across globally distributed origins.
 
 Front Door is not region-scoped. It is a global resource, and its configuration is distributed to all edge locations worldwide. With 192+ edge locations across 109 metro cities, Front Door places your application's entry point close to users regardless of where the origin servers are hosted.

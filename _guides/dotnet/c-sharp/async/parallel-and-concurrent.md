@@ -7,10 +7,6 @@ description: "Parallel processing, concurrent collections, thread synchronizatio
 tags: [c-sharp, dotnet, parallel, concurrency, threading, performance, practical]
 ---
 
-<blockquote class="pull-quote">
-<p>Async and parallel solve different problems. Async frees threads during I/O waits, so use it for HTTP calls and database queries. Parallel uses multiple threads for CPU-bound work, so use it for image processing and complex calculations. Confusing them leads to either wasted resources or blocked threads.</p>
-</blockquote>
-
 ## Async vs Parallel
 
 Understanding when to use each approach is crucial.

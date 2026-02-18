@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, scalability, distributed-systems, design-patterns
 
 ## What Are Azure Functions
 
-<blockquote class="pull-quote">
-<p>Azure Functions is a serverless compute service where you deploy individual functions triggered by events and Azure handles the infrastructure, scaling, and operational overhead.</p>
-</blockquote>
-
 [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/){:target="_blank" rel="noopener noreferrer"} is Azure's event-driven serverless compute service. You write functions in languages like JavaScript, Python, C#, Java, PowerShell, or custom handlers that respond to events such as HTTP requests, timers, messages in Storage Queues, or Service Bus events. Azure manages the servers, scaling, and operational infrastructure while you focus on business logic.
 
 This guide covers advanced patterns and hosting decisions for production workloads. For foundational Azure Functions concepts, see [Azure Functions Fundamentals](/study-guides/infrastructure/azure/).

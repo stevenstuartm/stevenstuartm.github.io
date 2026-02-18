@@ -9,10 +9,6 @@ tags: [azure, infrastructure, cloud-computing, devops, automation, advanced, des
 
 ## Building Complex Infrastructure with Bicep
 
-<blockquote class="pull-quote">
-<p>Advanced Bicep patterns enable you to build large-scale, maintainable infrastructure as code through modules, parameterization, conditional logic, and looping constructs that reduce duplication and improve readability.</p>
-</blockquote>
-
 After mastering Bicep fundamentals, the next layer involves organizing large deployments, reducing duplication, and handling complex conditional logic. This guide covers patterns that transform Bicep from a simple templating language into a powerful infrastructure-as-code framework suitable for enterprise deployments.
 
 ---

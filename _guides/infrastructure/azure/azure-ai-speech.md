@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, infrastructure, machine-learning, automation, sca
 
 ## What Is Azure AI Speech
 
-<blockquote class="pull-quote">
-<p>Azure AI Speech Services provide a unified platform for converting speech to text, text to speech, translating speech across languages, and identifying or verifying speakers. It's the foundation for building voice-enabled applications from chatbots to accessibility tools to contact center automation.</p>
-</blockquote>
-
 [Azure AI Speech Services](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/overview){:target="_blank" rel="noopener noreferrer"} is a managed cognitive service that handles all aspects of speech processing. Instead of building audio pipelines and training speech models, you make API calls to process audio streams in real-time or batch, customize models for your domain, and manage speaker identity.
 
 The service runs on Azure's infrastructure and scales automatically, handling everything from simple transcription to complex multilingual translation with speaker identification. You don't need to deploy containers, manage GPUs, or maintain models yourself.

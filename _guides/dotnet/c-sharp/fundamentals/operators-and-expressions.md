@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, fundamentals, operators, pattern-matching, practical]
 
 ## Arithmetic Operators
 
-<blockquote class="pull-quote">
-<p>Integer division truncates by default. If you need decimal results, ensure at least one operand is a floating-point type.</p>
-</blockquote>
-
 Standard mathematical operations with predictable precedence matching mathematical convention.
 
 ```csharp

@@ -628,10 +628,6 @@ var customer = await GetCustomerById(context, customerId);
 
 ### Avoid N+1 Problems
 
-<blockquote class="pull-quote">
-<p>The N+1 problem is one of the most common performance issues in EF Core applications.</p>
-</blockquote>
-
 <div class="comparison">
 <div class="content-card content-card--accent">
 <h4>N+1 Problem (Bad)</h4>

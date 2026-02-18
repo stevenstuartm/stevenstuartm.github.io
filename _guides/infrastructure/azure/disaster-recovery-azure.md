@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, architecture, reliability, infrastructure, distri
 
 ## What Is Disaster Recovery
 
-<blockquote class="pull-quote">
-<p>Disaster recovery is the set of policies, tools, and procedures that restore business-critical systems after a catastrophic event like a regional outage, data corruption, or service failure.</p>
-</blockquote>
-
 Disaster recovery (DR) on Azure encompasses strategies for recovering compute workloads, data, and networking infrastructure across Azure regions when the primary region becomes unavailable. Unlike high availability (which protects against zone-level failures within a region), disaster recovery protects against regional failures.
 
 Azure provides built-in DR capabilities across compute, storage, and data services. Most Azure regions are paired with another region hundreds of miles away. These [region pairs](https://learn.microsoft.com/en-us/azure/reliability/cross-region-replication-azure){:target="_blank" rel="noopener noreferrer"} receive platform updates sequentially to minimize simultaneous outages and provide preferential recovery during widespread failures.

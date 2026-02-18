@@ -9,10 +9,6 @@ tags: [asp-net-core, routing, endpoint-routing, url-generation, minimal-api, mvc
 
 ## Understanding Endpoint Routing
 
-<blockquote class="pull-quote">
-<p>Routing is the process of matching incoming HTTP requests and dispatching them to the app's executable endpoints.</p>
-</blockquote>
-
 Routing sits at the heart of every ASP.NET Core application. The routing system determines which code handles each incoming request by analyzing the URL path, HTTP method, headers, and other request characteristics. Unlike older ASP.NET routing that coupled matching and execution, endpoint routing separates these concerns into distinct middleware components that provide precise control over how requests flow through the pipeline.
 
 Endpoints represent units of executable request-handling code. Each endpoint contains a delegate that processes the request and produces a response, along with metadata that describes requirements like authorization policies, rate limiting rules, and CORS settings. The routing system matches requests to endpoints, then the endpoint middleware executes the selected endpoint's delegate.

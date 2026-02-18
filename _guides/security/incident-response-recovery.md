@@ -22,10 +22,6 @@ NIST released updated incident response guidance in April 2025, emphasizing six 
 ### Incident Response Team Structure
 NIST recommends expanding beyond traditional "incident handler" teams to include company leadership, legal teams, technology professionals, public relations teams, and human resources.
 
-<blockquote class="pull-quote">
-<p>Incident response is a team sport that requires coordination across technical, legal, communications, and business functions.</p>
-</blockquote>
-
 **Core Team Roles**:
 - **Incident Commander**: Overall response coordination
 - **Security Analyst**: Technical investigation and analysis

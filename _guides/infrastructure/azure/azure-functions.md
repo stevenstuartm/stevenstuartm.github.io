@@ -9,10 +9,6 @@ tags: [infrastructure, azure, cloud-computing, scalability, cost-analysis, pract
 
 ## What Are Azure Functions
 
-<blockquote class="pull-quote">
-<p>Azure Functions is an event-driven serverless compute platform that runs small pieces of code (functions) in response to events without requiring you to provision or manage infrastructure. Functions scale automatically based on demand and you pay only for the compute resources consumed during execution.</p>
-</blockquote>
-
 [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview){:target="_blank" rel="noopener noreferrer"} lets you write focused pieces of logic that respond to events from dozens of Azure and third-party sources. The deployment unit is a **function app**, which groups one or more individual functions that share the same configuration, hosting plan, and deployment lifecycle. A function app maps to a single runtime instance, meaning all functions within it share memory, connections, and scaling behavior.
 
 Functions support multiple programming languages including C#, JavaScript/TypeScript, Python, Java, PowerShell, and Go (via custom handlers). The programming model is intentionally simple: you define a trigger (what starts the function), optional bindings (data sources the function reads from or writes to), and the function logic itself.

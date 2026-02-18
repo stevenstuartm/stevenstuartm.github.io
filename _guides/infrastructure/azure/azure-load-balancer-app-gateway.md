@@ -9,10 +9,6 @@ tags: [infrastructure, azure, networking, scalability, reliability, performance,
 
 ## What Are Azure's Regional Load Balancers
 
-<blockquote class="pull-quote">
-<p>Azure Load Balancer operates at Layer 4 for high-throughput TCP/UDP distribution. Application Gateway operates at Layer 7 for HTTP-aware routing, SSL termination, and WAF. Most production architectures use both.</p>
-</blockquote>
-
 Azure provides two regional load balancing services that serve different purposes:
 
 [Azure Load Balancer](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview){:target="_blank" rel="noopener noreferrer"} is a Layer 4 (Transport) load balancer that distributes inbound TCP and UDP flows across backend instances using a hash-based algorithm. It does not inspect packet payloads, does not understand HTTP, and does not terminate connections. It is fully managed with no user-accessible instances.

@@ -220,10 +220,6 @@ builder.Logging.AddEventLog(settings =>
 
 ### Source-Generated Logging (C# 9+)
 
-<blockquote class="pull-quote">
-<p>Source-generated logging eliminates all reflection, boxing, and string parsing at runtime. For high-throughput applications, this dramatically reduces allocation pressure.</p>
-</blockquote>
-
 Eliminates boxing and parsing overhead at runtime.
 
 ```csharp

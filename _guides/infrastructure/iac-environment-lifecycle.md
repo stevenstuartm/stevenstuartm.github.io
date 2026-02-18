@@ -11,10 +11,6 @@ tags: [infrastructure, iac, environments, lifecycle, practical]
 
 When recreating environments (especially dev/test), many resources generate dynamic identifiers that other resources depend on.
 
-<blockquote class="pull-quote">
-<p>The solution to managing dynamic infrastructure identifiers is indirection. Use stable abstractions that point to changing resources.</p>
-</blockquote>
-
 ### The Problem
 
 **Resources generate unique identifiers each time:**

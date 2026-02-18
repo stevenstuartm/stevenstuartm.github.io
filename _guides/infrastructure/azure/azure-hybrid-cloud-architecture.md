@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, infrastructure, distributed-systems, networking, 
 
 ## What Is Hybrid Cloud Architecture
 
-<blockquote class="pull-quote">
-<p>Hybrid cloud architecture extends Azure management and services across on-premises infrastructure, creating a unified operational model where workloads run where they make sense (on public cloud, on-premises, or at the edge) while maintaining consistent management, identity, and governance.</p>
-</blockquote>
-
 Hybrid cloud architecture solves a real problem: organizations cannot simply abandon on-premises infrastructure overnight. Legacy applications, regulatory constraints, data sovereignty, and existing investments require a bridge. Rather than maintaining separate silos with different tools and processes, hybrid cloud architecture provides a single control plane and consistent experience across all infrastructure.
 
 Azure's hybrid approach uses two primary tools: [Azure Arc](https://learn.microsoft.com/en-us/azure/azure-arc/){:target="_blank" rel="noopener noreferrer"} extends Azure management to any infrastructure, and [Azure Stack HCI](https://learn.microsoft.com/en-us/azure-stack/hci/){:target="_blank" rel="noopener noreferrer"} runs Azure services directly on-premises.

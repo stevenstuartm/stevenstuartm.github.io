@@ -7,10 +7,6 @@ tags: [data-structures, algorithms, trees, fundamentals, interview-prep]
 
 ## Why Trees Exist
 
-<blockquote class="pull-quote">
-<p>Trees organize data hierarchically, enabling logarithmic time operations while maintaining order. They're the backbone of databases and compilers.</p>
-</blockquote>
-
 Trees organize data hierarchically, making search, insertion, and deletion efficient while maintaining order. They model natural hierarchies (file systems, organizational charts, decision trees) and enable logarithmic time operations through balanced structures. Trees are the backbone of databases, compilers, and many system designs.
 
 **Real impact:** Understanding trees enables you to work with hierarchical data efficiently, build decision systems, and optimize search operations from linear to logarithmic time.

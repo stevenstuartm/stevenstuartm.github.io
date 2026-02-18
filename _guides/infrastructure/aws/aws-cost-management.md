@@ -9,10 +9,6 @@ tags: [aws, cost-optimization, budgets, cost-explorer, savings-plans, reserved-i
 
 ## What Problems Cost Management Solves
 
-<blockquote class="pull-quote">
-<p>Finance asks "Why did AWS cost $150,000 last month instead of $100,000?" Without cost visibility, you're guessing. Cost Explorer shows the increase came from DynamoDB on-demand capacity traced to a specific application team.</p>
-</blockquote>
-
 AWS cost management tools address critical financial challenges in cloud infrastructure:
 
 **Visibility into cloud spend**: Finance asks "Why did AWS cost $150,000 last month instead of $100,000?" Without cost visibility, you're guessing. Cost Explorer shows the $50,000 increase came from DynamoDB on-demand capacity in us-east-1, traced to a specific application team.

@@ -9,10 +9,6 @@ tags: [azure, infrastructure, distributed-systems, automation, integration, scal
 
 ## What Are Logic Apps and Durable Functions
 
-<blockquote class="pull-quote">
-<p>Logic Apps and Durable Functions are two complementary approaches to workflow orchestration on Azure. Logic Apps are visual, low-code workflows with 400+ pre-built connectors. Durable Functions are code-first orchestration for developers who prefer to write orchestration logic alongside application code.</p>
-</blockquote>
-
 Azure provides two paths to building workflows that coordinate work across multiple systems, handle long-running processes, and manage approval flows and human interaction.
 
 [Azure Logic Apps](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-overview){:target="_blank" rel="noopener noreferrer"} is a serverless workflow platform with a visual designer. You build workflows by connecting steps, configuring triggers and actions, and using the extensive built-in connector ecosystem to integrate with SaaS applications, Azure services, and on-premises systems.

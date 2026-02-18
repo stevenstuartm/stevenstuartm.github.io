@@ -9,10 +9,6 @@ tags: [azure, infrastructure, messaging, distributed-systems, scalability, archi
 
 ## What Is Azure Event Grid
 
-<blockquote class="pull-quote">
-<p>Azure Event Grid is a fully managed event routing service that enables reactive, event-driven architectures by connecting event producers to multiple event handlers through durable subscriptions with filtering, retry, and dead-letter capabilities.</p>
-</blockquote>
-
 [Azure Event Grid](https://learn.microsoft.com/en-us/azure/event-grid/overview){:target="_blank" rel="noopener noreferrer"} is a fully managed, serverless event broker that routes events from sources (like Blob Storage, resource groups, or custom applications) to destinations (like Functions, Logic Apps, webhooks, Service Bus, and Event Hubs). Unlike message queues that require polling, Event Grid pushes events to subscribers as they occur, enabling reactive, event-driven system design.
 
 Event Grid handles event delivery with automatic retries, configurable filtering, dead-letter storage for failed events, and support for both custom event schemas and the [CloudEvents](https://cloudevents.io/){:target="_blank" rel="noopener noreferrer"} standard.

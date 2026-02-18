@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, security, infrastructure, devops, containers, pra
 
 ## What Is Azure Container Registry
 
-<blockquote class="pull-quote">
-<p>Azure Container Registry (ACR) is a managed Docker and OCI-compliant image registry where you store and manage container images. ACR provides image scanning, geo-replication, and supply chain security features to protect containerized workloads from development through production deployment.</p>
-</blockquote>
-
 An [Azure Container Registry](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-intro){:target="_blank" rel="noopener noreferrer"} (ACR) stores container images that you deploy to Azure Container Instances, Azure Kubernetes Service (AKS), or any Docker-compatible runtime. Unlike Docker Hub or other public registries, ACR is private, integrated with Azure identity services, and provides vulnerability scanning built into the service.
 
 ACR is scoped to a single Azure region by default, but you can enable geo-replication to replicate images to multiple regions for reduced latency, local redundancy, and disaster recovery.

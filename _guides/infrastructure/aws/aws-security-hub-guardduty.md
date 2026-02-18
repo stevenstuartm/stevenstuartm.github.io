@@ -9,10 +9,6 @@ tags: [aws, security, threat-detection, compliance, monitoring, security-posture
 
 ## What Problems Security Hub & GuardDuty Solve
 
-<blockquote class="pull-quote">
-<p>Compromised EC2 instance mining cryptocurrency goes undetected for weeks, costing $50,000. GuardDuty detects threats automatically with zero configuration using ML-powered analysis of CloudTrail, VPC Flow Logs, and DNS logs.</p>
-</blockquote>
-
 ### Without Centralized Security Monitoring
 
 **Security Visibility Challenges:**

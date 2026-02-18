@@ -9,10 +9,6 @@ tags: [aws, s3, storage, object-storage, cost-optimization, security, fundamenta
 
 ## What Problems S3 Solves
 
-<blockquote class="pull-quote">
-<p>S3 provides 11 nines of durability (99.999999999%). For 10 million objects stored, you can expect to lose one object every 10,000 years on average.</p>
-</blockquote>
-
 Amazon S3 (Simple Storage Service) provides scalable, durable, and cost-effective object storage in the cloud, addressing fundamental data storage challenges:
 
 **Storage challenges solved:**
@@ -456,10 +452,6 @@ After 30 days without access, objects automatically move to Infrequent Access ti
 | Glacier Instant | $4.00 | $30.00 | $34.00 |
 | Glacier Flexible | $3.60 | $20.00 | $23.60 |
 | Glacier Deep Archive | $0.99 | $20.00 | $20.99 |
-
-<blockquote class="pull-quote">
-<p>For data accessed more than once per month, Intelligent-Tiering or Standard-IA is cheaper than Glacier classes due to retrieval fees. Glacier is only cost-effective for rarely accessed data.</p>
-</blockquote>
 
 ### Cost Monitoring Tools
 

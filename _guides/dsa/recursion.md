@@ -8,10 +8,6 @@ tags: [algorithms, recursion, fundamentals, problem-solving, interview-prep]
 ## Why Recursion Exists
 Some problems are naturally self-similar, such as tree traversal, mathematical sequences, and divide-and-conquer algorithms. Recursion provides an elegant way to express solutions that work on progressively smaller versions of the same problem.
 
-<blockquote class="pull-quote">
-<p>Recursion provides an elegant way to express solutions that work on progressively smaller versions of the same problem.</p>
-</blockquote>
-
 ## When to Use Recursion
 
 **Use when:**

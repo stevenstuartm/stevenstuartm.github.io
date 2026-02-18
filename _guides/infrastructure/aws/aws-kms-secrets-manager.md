@@ -9,10 +9,6 @@ tags: [aws, kms, secrets-manager, encryption, key-management, security, secrets-
 
 ## What Problems KMS & Secrets Manager Solve
 
-<blockquote class="pull-quote">
-<p>Hardcoded RDS password in GitHub repo; repo made public; database compromised within 3 hours. Manual secret rotation takes 6 hours and is only done once per year due to complexity.</p>
-</blockquote>
-
 ### Without Centralized Key and Secret Management
 
 **Security Challenges:**
@@ -152,10 +148,6 @@ aws kms create-alias \
 aws kms enable-key-rotation \
   --key-id 12345678-1234-1234-1234-123456789012
 ```
-
-<blockquote class="pull-quote">
-<p>KMS automatic rotation generates new key material every 365 days. Old key material is retained for decryption, so applications don't need to change and encrypted data remains accessible.</p>
-</blockquote>
 
 **How Rotation Works:**
 

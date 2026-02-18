@@ -9,10 +9,6 @@ tags: [asp-net-core, web-hosting, middleware, kestrel, dependency-injection, con
 
 ## The Foundation of ASP.NET Core Applications
 
-<blockquote class="pull-quote">
-<p>ASP.NET Core unifies host configuration, HTTP pipeline management, and service lifecycle into a cohesive application model.</p>
-</blockquote>
-
 ASP.NET Core applications begin with a host that manages configuration, dependency injection, logging, and the HTTP server. Modern applications consolidate this setup into Program.cs using WebApplication and WebApplicationBuilder, eliminating the separate Startup.cs file that existed in earlier versions. Understanding how these components work together provides the foundation for building robust web APIs and applications.
 
 ## WebApplication and WebApplicationBuilder

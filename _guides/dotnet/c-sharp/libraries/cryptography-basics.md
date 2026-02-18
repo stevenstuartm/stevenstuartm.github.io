@@ -324,10 +324,6 @@ public static string DecryptString(string ciphertext, byte[] key)
 
 ### Constant-Time Comparison
 
-<blockquote class="pull-quote">
-<p>Always use constant-time comparison for secrets to prevent timing attacks.</p>
-</blockquote>
-
 <div class="comparison">
 <div class="content-card content-card--accent">
 <h4>Vulnerable Code</h4>

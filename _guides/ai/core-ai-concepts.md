@@ -15,10 +15,6 @@ Large Language Models (LLMs) are neural networks trained on massive text dataset
 
 Modern LLMs are built on the transformer architecture, introduced in the 2017 paper "Attention Is All You Need" by Vaswani et al. at Google. This architecture revolutionized natural language processing.
 
-<blockquote class="pull-quote">
-<p>The attention mechanism allows the model to focus on relevant parts of input when generating each output, similar to how humans focus on important words when understanding a sentence.</p>
-</blockquote>
-
 **Why transformers changed everything**:
 - **Parallelization**: Unlike earlier architectures (RNNs), transformers process entire sequences simultaneously, enabling massive GPU acceleration
 - **Long-range dependencies**: Captures relationships between distant words effectively

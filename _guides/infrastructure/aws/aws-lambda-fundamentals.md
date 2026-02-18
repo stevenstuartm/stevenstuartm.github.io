@@ -9,10 +9,6 @@ tags: [aws, serverless, lambda, event-driven, cost-optimization, fundamentals]
 
 ## What Problems Lambda Solves
 
-<blockquote class="pull-quote">
-<p>A function invoked 100 times per day for 1 second each costs $0.06/month. The same workload on EC2 running 24/7 costs $15+ per month. Lambda eliminates the cost of idle capacity.</p>
-</blockquote>
-
 AWS Lambda provides event-driven compute capacity without managing servers, addressing fundamental infrastructure challenges that organizations face with traditional compute models.
 
 **Infrastructure challenges solved:**
@@ -240,10 +236,6 @@ Lambda allocates CPU power linearly in proportion to configured memory:
 **Example**:
 - 512 MB, 2,000 ms execution → Cost: $0.0000166667
 - 1,024 MB, 800 ms execution → Cost: $0.0000133334 (20% cheaper despite 2x memory)
-
-<blockquote class="pull-quote">
-<p>Compute-intensive workloads benefit significantly from higher memory allocation because they receive more CPU. Higher memory often results in lower total cost despite higher per-GB-second rate.</p>
-</blockquote>
 
 ### Function Initialization Best Practices
 

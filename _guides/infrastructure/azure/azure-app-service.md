@@ -9,10 +9,6 @@ tags: [infrastructure, azure, cloud-computing, scalability, reliability, practic
 
 ## What Is Azure App Service
 
-<blockquote class="pull-quote">
-<p>Azure App Service is a fully managed platform-as-a-service (PaaS) for hosting web applications, REST APIs, and mobile backends. It handles infrastructure provisioning, OS patching, load balancing, and scaling so that teams focus on application code rather than server management.</p>
-</blockquote>
-
 [Azure App Service](https://learn.microsoft.com/en-us/azure/app-service/overview){:target="_blank" rel="noopener noreferrer"} supports multiple language runtimes including .NET, Java, Node.js, Python, PHP, and Ruby, and also supports custom container deployments for workloads that need full control over the runtime environment. It runs on Windows or Linux, provides built-in CI/CD integration, authentication, SSL/TLS termination, custom domains, and automatic patching of the underlying OS and runtime.
 
 App Service is one of Azure's oldest and most mature services. It represents the PaaS sweet spot between infrastructure-level control (Virtual Machines) and event-driven serverless (Azure Functions), offering a persistent hosting environment with minimal operational overhead.

@@ -8,10 +8,6 @@ tags: [data-structures, algorithms, fundamentals, practical, interview-prep]
 ## Overview
 Two fundamental abstract data types that restrict how elements are added and removed, creating specific behavioral patterns useful for many algorithms and system designs.
 
-<blockquote class="pull-quote">
-<p>Stacks enforce LIFO (Last In, First Out) while queues enforce FIFO (First In, First Out). This simple constraint makes them perfect for specific problem patterns.</p>
-</blockquote>
-
 ---
 
 ## Stacks (LIFO - Last In, First Out)
@@ -41,7 +37,6 @@ LIFO behavior mirrors natural problem patterns like function calls, undo operati
 - **Pop:** O(1)  
 - **Peek/Top:** O(1)
 - **Search:** O(n)
-
 
 ### C# Implementation
 ```csharp
@@ -590,7 +585,6 @@ FIFO behavior matches real-world scenarios like waiting lines, task scheduling, 
 - **Dequeue (remove):** O(1)
 - **Front/Peek:** O(1)
 - **Search:** O(n)
-
 
 ### C# Implementation  
 ```csharp

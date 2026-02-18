@@ -9,10 +9,6 @@ tags: [aws, dynamodb, nosql, partition-key, gsi, capacity-modes, cost-optimizati
 
 ## What Is Amazon DynamoDB?
 
-<blockquote class="pull-quote">
-<p>DynamoDB delivers single-digit millisecond performance at any scale. The key is designing your partition keys to match your access patterns.</p>
-</blockquote>
-
 Amazon DynamoDB is a fully managed, serverless NoSQL database service that delivers single-digit millisecond performance at any scale. DynamoDB automatically scales throughput capacity up or down and handles operational tasks like hardware provisioning, patching, and replication.
 
 **What Problems DynamoDB Solves**:
@@ -594,10 +590,6 @@ This policy allows users to query only items where the partition key matches the
 - Implement pagination for large result sets
 
 ## Common Pitfalls
-
-<blockquote class="pull-quote">
-<p>The costliest DynamoDB mistake is using Scan instead of Query. Scanning a 1M item table costs 99.99% more than querying the same items by partition key.</p>
-</blockquote>
 
 | Pitfall | Impact | Solution |
 |---------|--------|----------|

@@ -11,10 +11,6 @@ tags: [oop, design-patterns, solid, fundamentals, maintainability, practical]
 
 *SOLID principles introduced and popularized by Robert C. Martin ("Uncle Bob") in the early 2000s, with the acronym coined by Michael Feathers*
 
-<blockquote class="pull-quote">
-<p>SOLID principles create maintainable, scalable, and flexible software systems that are easier to understand, modify, and extend over time.</p>
-</blockquote>
-
 **Historical context**: While Martin popularized these under the SOLID acronym, the individual principles have earlier origins:
 - Single Responsibility: Tom DeMarco & Meilir Page-Jones (cohesion concepts, 1970s-80s)
 - Open-Closed: Bertrand Meyer (1988, "Object-Oriented Software Construction")
@@ -150,10 +146,6 @@ public class PayStubNotifier
 
 **Intent**: Design classes so new functionality can be added without changing existing code, reducing risk of bugs.
 
-<blockquote class="pull-quote">
-<p>Software entities should be open for extension but closed for modification.</p>
-</blockquote>
-
 <div class="callout callout--tip">
 <p class="callout__title">Benefits of Open-Closed Principle</p>
 <ul>
@@ -246,10 +238,6 @@ public class Hexagon : IShape
 **Formal definition** (Liskov & Wing): If S is a subtype of T, then objects of type T may be replaced with objects of type S without breaking the program.
 
 **Intent**: Subtypes must be substitutable for their base types without breaking functionality.
-
-<blockquote class="pull-quote">
-<p>Objects of a superclass should be replaceable with objects of a subclass without altering the correctness of the program.</p>
-</blockquote>
 
 <div class="callout callout--tip">
 <p class="callout__title">Benefits of Liskov Substitution</p>
@@ -468,10 +456,6 @@ public class PayrollManager
 **Definition**: High-level modules should not depend on low-level modules. Both should depend on abstractions. Abstractions should not depend on details. Details should depend on abstractions.
 
 **Intent**: Decouple high-level business logic from low-level implementation details.
-
-<blockquote class="pull-quote">
-<p>High-level modules should not depend on low-level modules. Both should depend on abstractions.</p>
-</blockquote>
 
 <div class="callout callout--tip">
 <p class="callout__title">Benefits of Dependency Inversion</p>

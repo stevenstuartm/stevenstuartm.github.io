@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, dependency-injection, ioc, design-patterns, architecture
 
 ## What is Dependency Injection
 
-<blockquote class="pull-quote">
-<p>Dependency Injection promotes loose coupling by having objects receive dependencies from external sources rather than creating them internally.</p>
-</blockquote>
-
 ```csharp
 // Without DI - tightly coupled
 public class OrderService

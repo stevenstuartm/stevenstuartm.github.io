@@ -11,10 +11,6 @@ tags: [infrastructure, azure, security, access-control, architecture, practical]
 
 [Azure Role-Based Access Control](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview){:target="_blank" rel="noopener noreferrer"} (RBAC) is the authorization system for Azure resources. While Entra ID handles authentication (proving who you are), RBAC handles authorization (determining what you can do). Every action on an Azure resource, whether through the portal, CLI, API, or IaC, is evaluated against RBAC role assignments.
 
-<blockquote class="pull-quote">
-<p>RBAC answers one question: does this identity have permission to perform this action on this resource? The answer depends on three things: who (the security principal), what (the role definition), and where (the scope).</p>
-</blockquote>
-
 ### How RBAC Works
 
 Every RBAC role assignment is a combination of three elements:

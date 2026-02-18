@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, fundamentals, exceptions, error-handling, reliability, p
 
 ## Exception Basics
 
-<blockquote class="pull-quote">
-<p>Exceptions represent errors or unexpected conditions that disrupt normal flow. They propagate up the call stack until caught or they terminate the application.</p>
-</blockquote>
-
 Exceptions represent errors or unexpected conditions that disrupt normal program flow. They propagate up the call stack until caught or they terminate the application.
 
 ```csharp

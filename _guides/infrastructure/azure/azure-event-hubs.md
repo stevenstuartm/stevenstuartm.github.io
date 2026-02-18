@@ -9,10 +9,6 @@ tags: [azure, infrastructure, messaging, distributed-systems, scalability, analy
 
 ## What Is Azure Event Hubs
 
-<blockquote class="pull-quote">
-<p>Azure Event Hubs is a high-throughput, low-latency event streaming platform designed for massive-scale telemetry ingestion and real-time data processing. It serves as the central hub where applications, devices, and services send events that multiple consumers process independently.</p>
-</blockquote>
-
 [Azure Event Hubs](https://learn.microsoft.com/en-us/azure/event-hubs/event-hubs-about){:target="_blank" rel="noopener noreferrer"} is a fully managed event streaming service built to handle millions of events per second from distributed sources. Unlike traditional message queues that process individual messages, Event Hubs treats events as a continuous stream and allows multiple independent consumers to read the same events at their own pace.
 
 Event Hubs operates on the principle of partitioning. Events are written to a specific partition based on a partition key, and each partition maintains its own ordered sequence of events. This partitioning design enables both scale (multiple partitions distributed across servers) and ordering guarantees (events within a partition are delivered in order).

@@ -416,10 +416,6 @@ await sub.PublishAsync("notifications", "Hello!");
 
 ### Cache-Aside (Lazy Loading)
 
-<blockquote class="pull-quote">
-<p>Cache-aside is the most common pattern: load from cache, miss from source, populate cache.</p>
-</blockquote>
-
 Application manages cache reads and writes.
 
 ```csharp

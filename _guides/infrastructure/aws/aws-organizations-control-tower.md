@@ -9,10 +9,6 @@ tags: [aws, organizations, control-tower, multi-account, governance, security, c
 
 ## What Problems Organizations & Control Tower Solve
 
-<blockquote class="pull-quote">
-<p>Organizations provides centralized governance across all accounts with service control policies (SCPs) that enforce guardrails. Control Tower adds automated landing zones and continuous compliance monitoring.</p>
-</blockquote>
-
 **AWS Organizations** and **AWS Control Tower** address critical challenges in managing multiple AWS accounts at enterprise scale.
 
 ### Without Organizations & Control Tower

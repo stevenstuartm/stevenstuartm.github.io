@@ -9,10 +9,6 @@ tags: [infrastructure, azure, analytics, governance, scalability, performance, p
 
 ## What Is Power BI
 
-<blockquote class="pull-quote">
-<p>Power BI is a cloud-based business intelligence platform for creating interactive reports and dashboards that combine data from multiple sources into unified analytics experiences.</p>
-</blockquote>
-
 [Power BI](https://learn.microsoft.com/en-us/power-bi/fundamentals/power-bi-overview){:target="_blank" rel="noopener noreferrer"} is Microsoft's enterprise analytics platform built for rapid insight generation and visual storytelling. It consists of three authoring and consumption tools: Power BI Desktop (for local authoring), Power BI Service (cloud-hosted analytics platform), and Power BI Mobile (consumption on tablets and phones).
 
 Unlike traditional BI platforms that require data warehouse teams to construct reports, Power BI enables self-service analytics where business analysts and domain experts can build dashboards directly from data sources. The platform combines data connectivity (connecting to 300+ data sources), data transformation (Power Query with graphical and M-language scripting), data modeling (star schema design with DAX calculations), and interactive visualizations.

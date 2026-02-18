@@ -9,10 +9,6 @@ tags: [azure, security, observability, cloud-computing, infrastructure, governan
 
 ## What Is Azure Activity Log and Diagnostic Settings
 
-<blockquote class="pull-quote">
-<p>Azure Activity Log is your subscription-level audit trail that records administrative actions and service health events. Diagnostic Settings route resource-level logs and metrics to centralized storage, enabling observability, compliance, and troubleshooting at scale.</p>
-</blockquote>
-
 Azure provides two complementary logging systems for different purposes. [Azure Activity Log](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log){:target="_blank" rel="noopener noreferrer"} records administrative changes across your subscription (who deployed a resource, when it was modified, and who deleted it). [Diagnostic Settings](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings){:target="_blank" rel="noopener noreferrer"} enable individual resources to emit their own logs and metrics, which are then routed to destinations like Log Analytics, Storage accounts, or Event Hubs.
 
 These systems are foundational to observability, compliance auditing, and incident investigation on Azure. Together they answer two distinct questions: "What administrative changes happened in my subscription?" and "What is happening inside this specific resource?"

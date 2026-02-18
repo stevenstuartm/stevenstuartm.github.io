@@ -9,10 +9,6 @@ tags: [asp-net-core, authentication, authorization, jwt, oauth, security, identi
 
 ## Securing API Endpoints
 
-<blockquote class="pull-quote">
-<p>Authentication answers who the user is; authorization answers what they can do.</p>
-</blockquote>
-
 ASP.NET Core provides a flexible authentication and authorization pipeline that works seamlessly with APIs. Understanding how authentication schemes, handlers, claims, and authorization policies interact enables you to build secure APIs that support multiple authentication methods, from JWT bearer tokens to API keys to passkeys. This guide covers the full spectrum from fundamental concepts to advanced patterns like resource-based authorization and token refresh strategies.
 
 ## Authentication Fundamentals

@@ -9,10 +9,6 @@ tags: [infrastructure, azure, cloud-computing, scalability, reliability, cost-an
 
 ## What Is an Azure Virtual Machine
 
-<blockquote class="pull-quote">
-<p>An Azure Virtual Machine is an on-demand, scalable compute resource that gives you the flexibility of virtualization without buying and maintaining physical hardware. You control the operating system, installed software, and network configuration.</p>
-</blockquote>
-
 An [Azure Virtual Machine](https://learn.microsoft.com/en-us/azure/virtual-machines/overview){:target="_blank" rel="noopener noreferrer"} (VM) is Infrastructure-as-a-Service (IaaS) compute on Azure. You choose the operating system, VM size, disk configuration, and networking, and Azure handles the underlying physical infrastructure. VMs run inside a [Virtual Network](/study-guides/infrastructure/azure/azure-vnet-architecture.html) and can be placed in Availability Sets or Availability Zones for resilience.
 
 VMs are the most flexible compute option on Azure. They support any workload that runs on a standard operating system, whether that is Windows Server, a variety of Linux distributions, or specialized marketplace images for databases, firewalls, and development tools.

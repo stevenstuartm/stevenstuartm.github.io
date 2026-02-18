@@ -9,10 +9,6 @@ tags: [aws, serverless, architecture, event-driven, patterns, cost-optimization]
 
 ## What Problem This Solves
 
-<blockquote class="pull-quote">
-<p>Serverless architecture enables rapid development and automatic scaling, but requires event-driven thinking, careful observability, and cost optimization to succeed in production.</p>
-</blockquote>
-
 **The Serverless Architecture Challenge**:
 Serverless computing (Lambda, API Gateway, DynamoDB, etc.) enables rapid development and automatic scaling, but poorly designed serverless architectures suffer from:
 - **Tight coupling** between services leading to cascading failures
@@ -301,10 +297,6 @@ def update_analytics(event, context):
 **Cost**: SNS requests $0.50 per million requests. For 1M user registrations × 3 subscribers = $1.50.
 
 ### Pattern 2: Queue-Based Load Leveling with SQS
-
-<blockquote class="pull-quote">
-<p>SQS provides load leveling, automatic retries, and guaranteed delivery at $0.40 per million requests. This transforms 10,000 req/s spikes into controlled 10 req/s processing.</p>
-</blockquote>
 
 **Use case**: Smooth traffic spikes, control processing rate, guarantee delivery.
 

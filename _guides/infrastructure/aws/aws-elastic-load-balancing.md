@@ -9,10 +9,6 @@ tags: [aws, load-balancing, alb, nlb, gwlb, high-availability, scalability, cost
 
 ## What Problems Elastic Load Balancing Solves
 
-<blockquote class="pull-quote">
-<p>ELB automatically distributes traffic across multiple targets, scales to handle millions of requests per second, and routes around unhealthy instances, all with no manual intervention.</p>
-</blockquote>
-
 AWS Elastic Load Balancing (ELB) automatically distributes incoming application traffic across multiple targets to improve availability, scalability, and fault tolerance. It solves critical challenges for production applications:
 
 **Availability Problems**:

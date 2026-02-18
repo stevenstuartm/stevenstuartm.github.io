@@ -9,10 +9,6 @@ tags: [aws, analytics, data-architecture, cost-analysis, performance, visualizat
 
 ## What Problems AWS QuickSight Solves
 
-<blockquote class="pull-quote">
-<p>QuickSight provides serverless BI with pay-per-session pricing ($0.30/session, max $5/month/user). SPICE, the in-memory engine, delivers sub-second queries without hitting production databases.</p>
-</blockquote>
-
 AWS QuickSight eliminates the infrastructure complexity and licensing costs of traditional business intelligence tools while providing fast, interactive dashboards for data exploration.
 
 **Traditional BI challenges**:

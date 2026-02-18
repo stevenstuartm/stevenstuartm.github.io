@@ -9,10 +9,6 @@ tags: [security, testing, sast, dast, practical, automation]
 
 ## Testing Methodologies
 
-<blockquote class="pull-quote">
-<p>No single testing approach finds all vulnerabilities. Comprehensive security requires layering SAST, DAST, and IAST throughout the development lifecycle.</p>
-</blockquote>
-
 <div class="comparison">
 <div class="content-card content-card--accent">
 <h4>SAST (Static Analysis)</h4>

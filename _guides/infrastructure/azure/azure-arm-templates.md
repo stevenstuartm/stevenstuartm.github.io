@@ -9,10 +9,6 @@ tags: [azure, infrastructure, cloud-computing, devops, automation, legacy-system
 
 ## What Are ARM Templates
 
-<blockquote class="pull-quote">
-<p>ARM templates are Azure's JSON-based infrastructure-as-code language. They describe what Azure resources you want to deploy, how they should be configured, and how they relate to each other.</p>
-</blockquote>
-
 [Azure Resource Manager (ARM) templates](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/overview){:target="_blank" rel="noopener noreferrer"} are JSON files that define your entire Azure infrastructure. You submit a template to Azure, and Resource Manager parses it, validates it, and deploys all resources in the correct order.
 
 ARM templates are **the foundational deployment format for Azure**. Every deployment to Azure goes through the ARM deployment plane. When you use [Bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview){:target="_blank" rel="noopener noreferrer"} (Azure's modern IaC language), it compiles down to ARM JSON at deployment time. When you use the Azure Portal's graphical interface, it generates ARM templates behind the scenes.

@@ -9,10 +9,6 @@ tags: [azure, databases, analytics, scalability, performance, cloud-computing, f
 
 ## What Is Azure Synapse Analytics
 
-<blockquote class="pull-quote">
-<p>Azure Synapse Analytics is a unified analytics platform that combines enterprise data warehousing, big data analytics, and data integration. It provides dedicated SQL pools for structured analytics, Spark pools for unstructured big data processing, and built-in data integration capabilities.</p>
-</blockquote>
-
 [Azure Synapse Analytics](https://learn.microsoft.com/en-us/azure/synapse-analytics/overview-what-is){:target="_blank" rel="noopener noreferrer"} is Microsoft's answer to distributed analytics platforms. Unlike single-purpose database systems, Synapse integrates multiple computation engines and storage layers into one workspace, allowing data engineers to conduct exploratory analysis, load data at scale, and run complex queries on massive datasets.
 
 The platform combines three core components: dedicated SQL pools (formerly Azure SQL Data Warehouse) for traditional MPP data warehousing, Apache Spark pools for distributed data processing and machine learning, and built-in data integration through pipelines and linked services. This convergence of technologies eliminates the need to stitch together separate services.

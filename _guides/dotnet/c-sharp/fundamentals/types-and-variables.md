@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, fundamentals, types, memory-management, practical]
 
 ## The Type System
 
-<blockquote class="pull-quote">
-<p>The divide between value types and reference types affects performance, equality semantics, and how data flows through your application.</p>
-</blockquote>
-
 C# is a statically-typed language where every variable and expression has a type known at compile time. The type system divides into two fundamental categories: value types (stored on the stack or inline) and reference types (stored on the heap with stack-based references).
 
 Understanding this distinction matters because it affects performance, equality semantics, and how data flows through your application.

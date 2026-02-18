@@ -11,10 +11,6 @@ tags: [oop, reference, quick-reference, cheatsheet]
 
 ## Design Pattern Categories
 
-<blockquote class="pull-quote">
-<p>Design patterns are reusable solutions to common problems in software design, categorized into Creational, Structural, and Behavioral patterns.</p>
-</blockquote>
-
 ### Creational Patterns (5 patterns)
 
 Focus on object creation mechanisms, increasing flexibility and reuse.

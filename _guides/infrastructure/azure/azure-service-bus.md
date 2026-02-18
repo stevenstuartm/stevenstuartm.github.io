@@ -9,10 +9,6 @@ tags: [azure, infrastructure, messaging, distributed-systems, reliability, scala
 
 ## What Is Azure Service Bus
 
-<blockquote class="pull-quote">
-<p>Azure Service Bus is an enterprise message broker that decouples applications and services through queues and publish-subscribe topics, providing reliable, ordered message delivery with built-in dead-lettering, sessions, and transactional support.</p>
-</blockquote>
-
 [Azure Service Bus](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview){:target="_blank" rel="noopener noreferrer"} is a managed messaging platform that enables asynchronous communication between distributed applications. It provides two core patterns: queues for point-to-point messaging and topics with subscriptions for publish-subscribe messaging. Service Bus handles the operational burden of message broker infrastructure. You define namespaces, queues, and subscriptions; Microsoft maintains the underlying servers, replication, and availability.
 
 Service Bus is scoped to a namespace, which is a container for queues and topics. Namespaces exist in a single region, though you can replicate across regions for disaster recovery.

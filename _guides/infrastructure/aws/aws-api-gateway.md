@@ -9,10 +9,6 @@ tags: [aws, api-gateway, rest-api, http-api, serverless, authentication, cost-op
 
 ## What Problems API Gateway Solves
 
-<blockquote class="pull-quote">
-<p>API Gateway provides a unified API layer that abstracts the complexity of backend services, enabling teams to focus on business logic rather than infrastructure concerns.</p>
-</blockquote>
-
 AWS API Gateway is a fully managed service that makes it easy to create, publish, maintain, monitor, and secure APIs at any scale. It solves critical challenges for modern application architectures:
 
 **Routing and Integration Problems**:
@@ -728,10 +724,6 @@ Savings: 99% per batch
 - **Savings: $36.50/month (20% reduction)**
 
 ## Common Pitfalls and How to Avoid Them
-
-<blockquote class="pull-quote">
-<p>The most expensive API Gateway mistakes aren't configuration errors; they're architectural decisions made without understanding feature requirements.</p>
-</blockquote>
 
 ### 1. Using HTTP API for Multi-Tenant SaaS Without Per-Client Throttling
 

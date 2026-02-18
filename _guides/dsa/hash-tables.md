@@ -9,10 +9,6 @@ tags: [data-structures, algorithms, hash-tables, performance, practical, fundame
 
 *Concept pioneered by Hans Peter Luhn at IBM (1953), formalized as "hash tables" in the 1960s*
 
-<blockquote class="pull-quote">
-<p>Provides average O(1) lookups by trading space for time using mathematical hashing. This fundamental trade-off powers most modern software.</p>
-</blockquote>
-
 Provides average O(1) lookups by trading space for time using mathematical hashing. This is the fundamental trade-off that powers most modern software, from database indexes to compiler symbol tables.
 
 ## When to Use Hash Tables
@@ -75,7 +71,6 @@ Provides average O(1) lookups by trading space for time using mathematical hashi
 Many modern implementations use hybrid strategies or sophisticated open addressing:
 - **Robin Hood Hashing:** Minimizes variance in probe lengths
 - **Cuckoo Hashing:** Uses multiple hash functions and tables for guaranteed O(1) worst-case lookup
-
 
 ## C# Implementation
 

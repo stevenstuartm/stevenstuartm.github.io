@@ -9,10 +9,6 @@ tags: [infrastructure, azure, networking, dns, scalability, reliability, practic
 
 ## What Is Azure DNS
 
-<blockquote class="pull-quote">
-<p>Azure DNS hosts your DNS domains on Azure's global name server network. Traffic Manager adds intelligent DNS-based routing that directs users to the healthiest, nearest, or most appropriate endpoint.</p>
-</blockquote>
-
 [Azure DNS](https://learn.microsoft.com/en-us/azure/dns/dns-overview){:target="_blank" rel="noopener noreferrer"} is a hosting service for DNS domains that provides name resolution using Microsoft's global infrastructure. It supports both public DNS zones (internet-facing) and private DNS zones (VNet-internal), and backs the 100% SLA that Azure offers for DNS query resolution.
 
 Unlike AWS Route 53, which combines DNS hosting and traffic routing in a single service, Azure separates these into two services: **Azure DNS** for domain hosting and record management, and **Traffic Manager** for intelligent traffic routing. Understanding how they work together is important for Azure networking design.

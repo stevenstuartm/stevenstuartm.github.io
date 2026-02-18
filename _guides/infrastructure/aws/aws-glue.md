@@ -9,10 +9,6 @@ tags: [aws, data-architecture, analytics, etl, automation, cost-analysis, govern
 
 ## What Problems AWS Glue Solves
 
-<blockquote class="pull-quote">
-<p>Glue provides serverless ETL that automatically discovers data schemas, maintains a central metadata catalog, and runs PySpark/Python jobs at scale without managing infrastructure.</p>
-</blockquote>
-
 AWS Glue addresses the operational complexity and infrastructure burden of building and maintaining data pipelines at scale.
 
 **Traditional ETL challenges**:

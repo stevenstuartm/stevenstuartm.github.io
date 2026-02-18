@@ -11,10 +11,6 @@ tags: [infrastructure, azure, governance, architecture, scalability, fundamental
 
 Every Azure resource lives within a layered hierarchy that controls billing, access, policy enforcement, and resource organization. Understanding this hierarchy is a prerequisite for any Azure architecture because every design decision about networking, security, cost allocation, and governance maps back to it.
 
-<blockquote class="pull-quote">
-<p>Azure's resource hierarchy is not optional scaffolding layered on later. Tenants, management groups, subscriptions, and resource groups are baked into the platform from the start, and every resource you create lives within this structure.</p>
-</blockquote>
-
 ### The Hierarchy at a Glance
 
 ```

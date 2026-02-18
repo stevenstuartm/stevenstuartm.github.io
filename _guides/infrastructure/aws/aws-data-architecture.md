@@ -9,10 +9,6 @@ tags: [aws, data-architecture, architecture, decision-making, integration, cost-
 
 ## What Problems Modern Data Architecture Solves
 
-<blockquote class="pull-quote">
-<p>After implementing a data lake, storage costs dropped from $15,000/month (PostgreSQL) to $500/month (S3 for 20 TB). New data sources go live in hours instead of weeks, with schema evolution handled automatically.</p>
-</blockquote>
-
 Modern data architecture eliminates the silos, rigidity, and cost inefficiencies of traditional data warehousing while enabling analytics at scale across structured and unstructured data.
 
 **Traditional data architecture challenges**:

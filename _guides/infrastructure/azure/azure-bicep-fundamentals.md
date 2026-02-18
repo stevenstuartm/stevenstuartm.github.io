@@ -9,10 +9,6 @@ tags: [azure, infrastructure, cloud-computing, devops, automation, fundamentals]
 
 ## What Is Azure Bicep
 
-<blockquote class="pull-quote">
-<p>Azure Bicep is a declarative infrastructure as code language that simplifies Azure resource definitions by transpiling to ARM JSON templates. It provides cleaner syntax, better tooling, and native Azure integration without sacrificing the full power of the Azure Resource Manager.</p>
-</blockquote>
-
 [Azure Bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview){:target="_blank" rel="noopener noreferrer"} is Microsoft's first-party infrastructure as code language designed to improve the experience of deploying Azure resources. Bicep files are human-readable text files that define Azure infrastructure, and they compile down to Azure Resource Manager (ARM) templates in JSON format.
 
 The language exists because raw ARM JSON templates are verbose, difficult to read, and error-prone. Bicep removes the noise while maintaining complete access to every Azure Resource Manager feature.

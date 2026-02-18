@@ -11,10 +11,6 @@ Observability is the ability to understand a system's internal state based on it
 
 ## Observability vs Monitoring
 
-<blockquote class="pull-quote">
-<p>Observability is a broader version of monitoring that allows operations teams to be proactive and resolve sophisticated issues faster.</p>
-</blockquote>
-
 Understanding the distinction between monitoring and observability is crucial for implementing effective system visibility strategies.
 
 | Aspect | Monitoring | Observability |

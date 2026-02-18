@@ -9,10 +9,6 @@ tags: [infrastructure, aws, networking, vpc, security, practical]
 
 ## What is a VPC
 
-<blockquote class="pull-quote">
-<p>A VPC is your own private data center network in the cloud, providing network isolation, full control over IP addressing, and multiple layers of security.</p>
-</blockquote>
-
 **Amazon Virtual Private Cloud (VPC)** is a logically isolated network within AWS where you launch and connect AWS resources. Think of it as your own private data center network in the cloud.
 
 ### What Problems VPC Solves
@@ -205,10 +201,6 @@ Deploy one NAT gateway per availability zone. If an AZ fails, resources in other
 Public Subnet 1a → NAT Gateway 1a → Private Subnet 1a
 Public Subnet 1b → NAT Gateway 1b → Private Subnet 1b
 ```
-
-<blockquote class="pull-quote">
-<p>Deploy one NAT gateway per availability zone. If an AZ fails, resources in other AZs still have internet access. Multiple NAT gateways increase cost but improve availability and reduce cross-AZ data transfer charges.</p>
-</blockquote>
 
 ### NAT Instance (Legacy)
 

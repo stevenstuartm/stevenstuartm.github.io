@@ -9,10 +9,6 @@ tags: [aws, containers, security, docker, kubernetes, devops, infrastructure, pr
 
 ## What Problems ECR & Container Security Solve
 
-<blockquote class="pull-quote">
-<p>Docker Hub free tier limits to 100 pulls per 6 hours, and production deployments can exhaust this quickly. ECR provides unlimited pulls from within AWS with native integration, automated scanning, and lifecycle policies.</p>
-</blockquote>
-
 **Container registries and security address critical production challenges**:
 
 **Image Distribution Challenges**:

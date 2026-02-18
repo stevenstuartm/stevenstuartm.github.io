@@ -9,10 +9,6 @@ tags: [infrastructure, azure, cicd, devops, automation, deployment, practical]
 
 ## What Is Azure DevOps Pipelines
 
-<blockquote class="pull-quote">
-<p>Azure DevOps Pipelines is a cloud-native CI/CD service that automates building, testing, and deploying applications through YAML-defined workflows with built-in support for multiple deployment strategies, approval gates, and integration with Azure infrastructure.</p>
-</blockquote>
-
 [Azure DevOps Pipelines](https://learn.microsoft.com/en-us/azure/devops/pipelines/get-started/what-is-azure-pipelines){:target="_blank" rel="noopener noreferrer"} is Microsoft's native CI/CD platform integrated with Azure DevOps. It automates the process of building artifacts from source code, running tests, and deploying to target environments. Modern pipelines are defined in YAML, stored in version control alongside your code, and support both continuous integration (commit to build) and continuous deployment (automated releases to environments).
 
 Unlike older web-based pipeline builders, YAML pipelines give you infrastructure-as-code for CI/CD workflows. This means pipeline configuration is reviewable in pull requests, versioned with code, and portable across teams.

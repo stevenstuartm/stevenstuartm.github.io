@@ -9,10 +9,6 @@ tags: [aws, machine-learning, automation, integration, practical, cost-analysis]
 
 ## What Problems AWS Comprehend & Translate Solve
 
-<blockquote class="pull-quote">
-<p>Supporting 75 languages would require separate models for each language pair (75 × 74 = 5,550 translation models). Comprehend and Translate provide pre-trained APIs with one API call, requiring no ML expertise.</p>
-</blockquote>
-
 AWS Comprehend and Translate eliminate the complexity of building custom NLP and translation models by providing pre-trained APIs for common language tasks: sentiment analysis, entity extraction, language detection, and translation across 75+ languages.
 
 **Traditional NLP challenges**:

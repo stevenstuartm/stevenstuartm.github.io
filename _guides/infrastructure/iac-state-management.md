@@ -34,10 +34,6 @@ tags: [infrastructure, iac, state-management, terraform, practical]
 
 ## Do You Need State Management?
 
-<blockquote class="pull-quote">
-<p>Cloud-native IaC tools like CloudFormation, ARM Templates, and Deployment Manager handle state automatically. You don't need to manage state yourself.</p>
-</blockquote>
-
 **Cloud-native IaC tools handle state automatically**; you don't need to manage state yourself.
 
 ### Tools That Manage State for You

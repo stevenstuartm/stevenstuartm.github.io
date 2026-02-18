@@ -7,10 +7,6 @@ tags: [data-structures, algorithms, fundamentals, practical, interview-prep]
 
 ## Why Linked Lists Exist
 
-<blockquote class="pull-quote">
-<p>Dynamic sizing without pre-allocating memory, efficient insertion/deletion anywhere without shifting elements.</p>
-</blockquote>
-
 Dynamic sizing without pre-allocating memory, efficient insertion/deletion anywhere. They solve the fixed-size problem of static arrays while allowing insertion/deletion at arbitrary positions.
 
 ## When to Use Linked Lists

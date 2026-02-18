@@ -70,10 +70,6 @@ public class BaseService
 
 ## Parameter Passing
 
-<blockquote class="pull-quote">
-<p>Understanding the difference between value, ref, out, and in parameters is essential for controlling how data flows through your methods.</p>
-</blockquote>
-
 ### Value Parameters (Default)
 
 A copy of the value is passed. Changes inside the method don't affect the original.

@@ -109,10 +109,6 @@ Console.WriteLine($"All occurrences of 'tuna': [{string.Join(", ", allIndices)}]
 - **All cases:** O(log n)
 - **Space complexity:** O(1) iterative, O(log n) recursive (call stack)
 
-<blockquote class="pull-quote">
-<p>Binary search works by repeatedly dividing the search space in half. Each comparison eliminates half of the remaining elements.</p>
-</blockquote>
-
 ### Key Insight
 Binary search works by repeatedly dividing the search space in half. Each comparison eliminates half of the remaining elements.
 

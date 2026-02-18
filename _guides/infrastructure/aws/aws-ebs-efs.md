@@ -9,10 +9,6 @@ tags: [aws, ebs, efs, storage, block-storage, file-storage, performance, cost-op
 
 ## What Problems EBS and EFS Solve
 
-<blockquote class="pull-quote">
-<p>EBS delivers up to 256,000 IOPS for single-instance workloads like databases. EFS provides shared NFS storage accessible by thousands of instances, Lambda, and Fargate simultaneously.</p>
-</blockquote>
-
 AWS provides two primary block and file storage services that address different storage challenges:
 
 ### Amazon EBS (Elastic Block Store)

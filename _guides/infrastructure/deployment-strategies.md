@@ -11,10 +11,6 @@ tags: [infrastructure, deployment, blue-green, canary, practical, reliability]
 
 Deployment strategies define how new versions of applications are released to production environments. Each strategy offers distinct advantages and challenges, making them suitable for different scenarios. The choice depends on factors such as risk tolerance, infrastructure constraints, and business requirements.
 
-<blockquote class="pull-quote">
-<p>The right deployment strategy minimizes risk while maximizing your ability to deliver value quickly. There is no one-size-fits-all solution.</p>
-</blockquote>
-
 **Key Objectives:**
 - Minimize downtime and service interruptions
 - Reduce deployment risks and enable quick rollbacks
@@ -107,10 +103,6 @@ Blue-green uses two environments to ensure smooth transitions, while canary grad
 - Applications with straightforward database requirements
 
 ## Canary Release
-
-<blockquote class="pull-quote">
-<p>Canary release is the lowest risk deployment strategy. Issues are discovered incrementally with limited blast radius.</p>
-</blockquote>
 
 A canary deployment releases an application or service incrementally to a subset of users. The canary technique targets certain users to receive access to the new application version, rather than certain servers.
 

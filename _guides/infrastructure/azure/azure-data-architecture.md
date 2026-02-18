@@ -9,10 +9,6 @@ tags: [infrastructure, azure, analytics, architecture, scalability, governance, 
 
 ## What Is Modern Data Architecture
 
-<blockquote class="pull-quote">
-<p>Modern data architecture on Azure combines the structure of data warehouses with the flexibility of data lakes, using cloud-native services to process, govern, and serve data at scale.</p>
-</blockquote>
-
 [Modern data architecture on Azure](https://learn.microsoft.com/en-us/azure/architecture/data-guide/){:target="_blank" rel="noopener noreferrer"} represents a fundamental shift from traditional monolithic data warehouses to distributed, cloud-native patterns. The evolution reflects how organizations now capture vast volumes of data across many sources, require real-time insights alongside historical analysis, and need flexible, self-service access to data across teams.
 
 Azure's data platform provides a complete ecosystem: storage layers like Data Lake Storage Gen2, compute engines ranging from SQL-based Synapse to Spark-based Databricks, unified platforms like Microsoft Fabric, and governance tools like Purview. These components work together to solve problems that traditional data warehouses could not address: scale, flexibility, governance, and cost efficiency.

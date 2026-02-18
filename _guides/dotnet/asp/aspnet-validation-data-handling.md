@@ -9,10 +9,6 @@ tags: [asp-net-core, validation, data-annotations, fluent-validation, content-ne
 
 ## Validation and Data Handling in ASP.NET Core APIs
 
-<blockquote class="pull-quote">
-<p>Validation enforces correctness at the boundary; data handling determines how that correctness translates into application logic.</p>
-</blockquote>
-
 APIs exist to accept input, process it, and return output. Validation ensures the input meets expectations before processing begins. Data handling encompasses how that input arrives, how it transforms into application types, and how responses serialize back to clients. ASP.NET Core provides built-in validation through data annotations, integrates with third-party libraries like FluentValidation, and offers flexible content negotiation and serialization options. Understanding these mechanisms helps you build APIs that reject bad data early, handle multiple content types gracefully, and process file uploads without overwhelming server resources.
 
 This guide covers validation patterns across controller-based and minimal APIs, explores System.Text.Json configuration, explains content negotiation and formatters, and examines file upload strategies including streaming for large files.

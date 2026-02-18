@@ -7,10 +7,6 @@ tags: [algorithms, complexity-analysis, reference, interview-prep]
 
 ## Why Complexity Analysis Matters
 
-<blockquote class="pull-quote">
-<p>A O(n²) algorithm might work fine with 100 items but become unusably slow with 10,000. Complexity analysis helps you predict scalability before it becomes a problem.</p>
-</blockquote>
-
 Understanding algorithm efficiency isn't just academic; it's the difference between a system that scales gracefully and one that crashes under load. Complexity analysis helps you predict how your code will behave with real-world data sizes, choose the right approach for your constraints, and avoid the trap of premature optimization.
 
 **Real impact:** A O(n²) algorithm might work fine with 100 items but become unusably slow with 10,000. This cheat sheet gives you the tools to make informed decisions about algorithm choice and performance trade-offs.

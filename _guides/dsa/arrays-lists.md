@@ -7,10 +7,6 @@ tags: [data-structures, algorithms, fundamentals, practical, interview-prep]
 
 ## Why Arrays Exist
 
-<blockquote class="pull-quote">
-<p>Direct memory access enables O(1) lookups by index. Arrays store elements in contiguous memory, providing the fastest possible access when you know the position.</p>
-</blockquote>
-
 Direct memory access enables O(1) lookups by index. Arrays store elements in contiguous memory locations, providing the fastest possible access to data when you know the position. Dynamic arrays solve the fixed-size limitation while maintaining the performance benefits.
 
 ## When to Use Arrays
@@ -72,7 +68,6 @@ Direct memory access enables O(1) lookups by index. Arrays store elements in con
 ---
 
 ## Static Arrays
-
 
 ### C# Implementation
 ```csharp
@@ -152,7 +147,6 @@ public class StaticArray<T>
 ---
 
 ## Dynamic Arrays
-
 
 ### C# Implementation
 ```csharp
@@ -472,7 +466,6 @@ Operations to get to 32 elements:
 ---
 
 ## Multi-dimensional Arrays
-
 
 ```csharp
 {% raw %}// 2D arrays in C#

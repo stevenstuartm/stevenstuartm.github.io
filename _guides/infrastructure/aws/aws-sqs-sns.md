@@ -9,10 +9,6 @@ tags: [aws, sqs, sns, messaging, event-driven, distributed-systems, reliability,
 
 ## What Problems SQS & SNS Solve
 
-<blockquote class="pull-quote">
-<p>A payment service failure takes down the entire e-commerce checkout flow. Traffic spikes overwhelm order processing services, causing lost orders. With SQS &amp; SNS, messages are durably stored until successfully processed, and failures are isolated.</p>
-</blockquote>
-
 ### Without Decoupled Messaging
 
 **Synchronous Communication Problems:**

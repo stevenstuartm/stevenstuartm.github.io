@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, modern-csharp, records, immutability, functional-program
 
 ## Why Immutability
 
-<blockquote class="pull-quote">
-<p>Immutability eliminates entire categories of bugs related to shared state and enables safe concurrent access without locks.</p>
-</blockquote>
-
 Immutable objects cannot be changed after creation. This makes code easier to reason about and thread-safe by default.
 
 ```csharp

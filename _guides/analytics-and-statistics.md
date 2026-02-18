@@ -110,10 +110,6 @@ Use robust measures when you have outliers or skewed data.
 
 ## Statistical Distributions
 
-<blockquote class="pull-quote">
-<p>Think of a distribution as the "shape" your data makes when you plot it. Understanding this shape helps you choose the right statistics and spot unusual patterns.</p>
-</blockquote>
-
 *A distribution shows you how your data is spread out: where most values cluster and how they trail off.*
 
 ### Normal Distribution (The "Bell Curve")

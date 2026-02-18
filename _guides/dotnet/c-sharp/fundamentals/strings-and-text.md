@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, fundamentals, strings, text-processing, performance, pra
 
 ## String Fundamentals
 
-<blockquote class="pull-quote">
-<p>Strings are immutable, so every modification creates a new string object. Use StringBuilder for building strings in loops.</p>
-</blockquote>
-
 Strings in C# are immutable reference types. Every modification creates a new string object.
 
 ```csharp

@@ -9,10 +9,6 @@ tags: [asp-net-core, background-services, job-scheduling, dependency-injection, 
 
 ## Background Processing in ASP.NET Core
 
-<blockquote class="pull-quote">
-<p>Background services handle work that doesn't belong in the request-response cycle, from periodic cleanup tasks to processing queued work items.</p>
-</blockquote>
-
 ASP.NET Core provides built-in abstractions for running background tasks within the same process as your web application. These services start when the host starts and stop gracefully when the host shuts down. Understanding when to use simple hosted services versus dedicated job scheduling frameworks determines whether you build a maintainable solution or create operational complexity.
 
 This guide covers the spectrum of background processing approaches, from lightweight in-process tasks to persistent job scheduling with external storage. Each approach trades simplicity for capabilities, and choosing the right tool for your scenario prevents over-engineering simple problems while avoiding fragile solutions for complex ones.

@@ -9,10 +9,6 @@ tags: [aws, eventbridge, event-driven, serverless, integration, messaging, archi
 
 ## What Problems EventBridge Solves
 
-<blockquote class="pull-quote">
-<p>EventBridge decouples event producers from consumers. Producers publish once, consumers subscribe independently, and adding new consumers requires no changes to producer code.</p>
-</blockquote>
-
 ### Without EventBridge
 
 **Tight Coupling Issues:**

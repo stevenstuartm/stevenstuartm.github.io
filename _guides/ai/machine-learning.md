@@ -17,10 +17,6 @@ The theory and development of computer systems able to perform tasks that normal
 ### Machine Learning (ML)
 The use and development of computer systems that are able to learn and adapt without following explicit instructions, by using algorithms and statistical models to analyze and draw inferences from patterns in data.
 
-<blockquote class="pull-quote">
-<p>Instead of programming every possible scenario, ML lets computers learn patterns from examples and make predictions about new, unseen data.</p>
-</blockquote>
-
 **Key insight**: Like teaching a child to recognize cats by showing them many cat pictures, rather than describing every possible cat feature.
 
 ### Deep Learning
@@ -190,10 +186,6 @@ Machine learning programs that make decisions in a manner similar to the human b
 ## 4. Classification of Machine Learning
 
 ## Supervised Learning
-
-<blockquote class="pull-quote">
-<p>Supervised learning is like a teacher showing students math problems with solutions, then testing them on new problems.</p>
-</blockquote>
 
 ### Overview
 - **Method**: System learns from example inputs and their corresponding correct outputs, provided by human experts

@@ -9,10 +9,6 @@ tags: [security, emerging, modern, cloud-security, future]
 
 ## Artificial Intelligence Security
 
-<blockquote class="pull-quote">
-<p>AI systems introduce new attack surfaces that traditional security controls were not designed to protect against.</p>
-</blockquote>
-
 ### AI/ML Security Challenges
 CISA and international partners released joint guidance on AI Data Security best practices in May 2025, highlighting critical risks across the AI lifecycle.
 

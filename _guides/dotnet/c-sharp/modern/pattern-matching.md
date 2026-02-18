@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, modern-csharp, pattern-matching, functional-programming,
 
 ## What is Pattern Matching
 
-<blockquote class="pull-quote">
-<p>Pattern matching produces cleaner, more declarative code than traditional if-else chains.</p>
-</blockquote>
-
 Pattern matching allows you to test whether a value has a particular shape and extract information from it.
 
 ```csharp

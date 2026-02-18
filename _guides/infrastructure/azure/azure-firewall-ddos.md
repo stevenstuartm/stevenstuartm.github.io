@@ -9,10 +9,6 @@ tags: [azure, security, networking, infrastructure, cloud-computing, reliability
 
 ## What Is Azure Firewall
 
-<blockquote class="pull-quote">
-<p>Azure Firewall is a managed, cloud-native firewall service that protects your Azure resources and on-premises networks. It enforces inbound and outbound network policies, inspects application-layer traffic, and provides threat intelligence and distributed denial-of-service protection, all without the operational overhead of managing firewall appliances.</p>
-</blockquote>
-
 [Azure Firewall](https://learn.microsoft.com/en-us/azure/firewall/overview){:target="_blank" rel="noopener noreferrer"} is Microsoft's first-party firewall service built into Azure networking. Unlike Network Security Groups (NSGs) which provide basic stateful filtering at layers 3-4, Azure Firewall offers application-level inspection, threat intelligence integration, and centralized policy management across your entire Azure estate.
 
 ### What Problems Azure Firewall Solves

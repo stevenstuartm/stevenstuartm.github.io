@@ -11,10 +11,6 @@ tags: [oop, design-patterns, behavioral-patterns, strategy, observer, practical]
 
 *Behavioral patterns from the Gang of Four's "Design Patterns" (1994). Observer pattern predates GoF, originating in Smalltalk's Model-View-Controller (MVC) architecture (1979).*
 
-<blockquote class="pull-quote">
-<p>Behavioral patterns focus on communication between objects and define how objects interact and distribute responsibilities.</p>
-</blockquote>
-
 ## Observer Pattern
 
 **Intent**: Define one-to-many dependency so state changes are automatically communicated to dependents.
@@ -222,10 +218,6 @@ public class CommandManager
 }
 ```
 
-<blockquote class="pull-quote">
-<p>Command pattern transforms requests into standalone objects containing all information about the request, enabling undo/redo, queuing, and operation history.</p>
-</blockquote>
-
 <div class="callout callout--tip">
 <p class="callout__title">When to Use</p>
 <p>Undo/redo functionality, operation queuing, macro recording.</p>
@@ -351,10 +343,6 @@ chain.SetNext(new AuthenticationHandler())
 
 var result = chain.Handle(request);
 ```
-
-<blockquote class="pull-quote">
-<p>Chain of Responsibility passes requests along a chain of handlers until one processes it, enabling dynamic handler composition and decoupled sender-receiver relationships.</p>
-</blockquote>
 
 <div class="callout callout--tip">
 <p class="callout__title">When to Use</p>

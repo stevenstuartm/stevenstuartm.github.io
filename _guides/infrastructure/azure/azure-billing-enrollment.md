@@ -11,10 +11,6 @@ tags: [infrastructure, azure, cost-analysis, governance, fundamentals]
 
 Azure billing is not just a finance concern. The billing model you choose determines your subscription structure, discount eligibility, spending controls, and cost allocation capabilities. Architects need to understand billing because subscription design decisions (covered in the [Subscription & Tenant Architecture](/study-guides/infrastructure/azure/azure-subscription-architecture.html) guide) are constrained by the billing agreement in place.
 
-<blockquote class="pull-quote">
-<p>Your billing agreement type determines how subscriptions are organized, who can create them, what discounts are available, and how costs are allocated across teams and projects.</p>
-</blockquote>
-
 ---
 
 ## Azure Agreement Types

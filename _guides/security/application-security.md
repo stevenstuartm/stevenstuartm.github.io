@@ -23,10 +23,6 @@ tags: [security, application-security, threat-modeling, secure-coding, sdlc, pra
 - **Collaboration**: Development, security, and operations teams
 - **Continuous Monitoring**: Runtime security analysis
 
-<blockquote class="pull-quote">
-<p>Security integrated early in development costs less to fix and prevents more vulnerabilities than security bolted on at the end.</p>
-</blockquote>
-
 ## Threat Modeling
 
 ### Methodologies

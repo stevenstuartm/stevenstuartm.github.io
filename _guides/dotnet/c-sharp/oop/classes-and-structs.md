@@ -309,10 +309,6 @@ var coord3 = coord1 with { Longitude = -122.5 };
 
 ### Choosing Between Structs and Classes
 
-<blockquote class="pull-quote">
-<p>The decision hinges on semantics, size, and identity.</p>
-</blockquote>
-
 **Use a struct when**:
 - The type represents a single value (like a number or coordinate)
 - Instances are small (16 bytes or less)

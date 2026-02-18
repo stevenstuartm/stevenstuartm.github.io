@@ -9,10 +9,6 @@ tags: [aws, kinesis, streaming, real-time, data-processing, analytics, architect
 
 ## What Problems Kinesis Solves
 
-<blockquote class="pull-quote">
-<p>Kinesis delivers millisecond-latency real-time data ingestion with ordered delivery, replay capability up to 365 days, and automatic fan-out to multiple consumers.</p>
-</blockquote>
-
 ### Without Streaming Infrastructure
 
 **Real-Time Data Processing Challenges:**

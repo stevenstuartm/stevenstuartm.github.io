@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, modern-csharp, nullable, null-safety, practical]
 
 ## The Null Problem
 
-<blockquote class="pull-quote">
-<p>Null reference exceptions are one of the most common runtime errors.</p>
-</blockquote>
-
 Before C# 8.0, any reference type could be null, and the compiler couldn't help identify potential null dereferences.
 
 ```csharp

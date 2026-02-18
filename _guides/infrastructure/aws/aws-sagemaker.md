@@ -9,10 +9,6 @@ tags: [aws, machine-learning, data-architecture, cost-analysis, infrastructure, 
 
 ## What Problems AWS SageMaker Solves
 
-<blockquote class="pull-quote">
-<p>Data scientists spend 80% of time on infrastructure instead of modeling. SageMaker provides managed infrastructure for the entire ML lifecycle, including notebooks, distributed training, one-click deployment, and auto-scaling endpoints.</p>
-</blockquote>
-
 AWS SageMaker eliminates the infrastructure complexity and operational burden of building, training, and deploying machine learning models at scale.
 
 **Traditional ML infrastructure challenges**:

@@ -7,10 +7,6 @@ description: "Interfaces, inheritance hierarchies, polymorphism, and default int
 tags: [c-sharp, dotnet, oop, interfaces, inheritance, polymorphism, practical]
 ---
 
-<blockquote class="pull-quote">
-<p>Program to interfaces, not implementations. When you depend on IRepository instead of SqlRepository, you can swap implementations, mock for testing, and evolve your system without cascading changes.</p>
-</blockquote>
-
 ## Interfaces
 
 Interfaces define contracts that types can implement. They specify what a type can do, not how it does it.

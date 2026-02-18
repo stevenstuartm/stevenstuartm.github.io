@@ -21,10 +21,6 @@ tags: [c-sharp, dotnet, timers, scheduling, async, background-tasks, practical]
 
 ## PeriodicTimer (.NET 6+)
 
-<blockquote class="pull-quote">
-<p>PeriodicTimer is the modern, async-native approach to periodic background work. Unlike callback-based timers, it prevents overlapping executions and integrates cleanly with cancellation.</p>
-</blockquote>
-
 The modern choice for async periodic work.
 
 ```csharp

@@ -9,10 +9,6 @@ tags: [asp-net-core, performance, caching, compression, optimization, async-prog
 
 ## Overview
 
-<blockquote class="pull-quote">
-<p>Performance optimization in ASP.NET Core spans multiple dimensions: reducing computation through caching, minimizing payload size through compression, leveraging async I/O to maximize throughput, and using source generators to eliminate reflection overhead.</p>
-</blockquote>
-
 Building high-performance APIs requires understanding the entire response pipeline. Caching prevents redundant work by storing results, compression reduces network transfer time, async patterns prevent thread starvation under load, and optimized serialization removes unnecessary runtime overhead. Each technique targets a different bottleneck, and choosing the right combination depends on your specific constraints.
 
 This guide covers ASP.NET Core's caching middleware options, when to use response caching versus output caching, how HybridCache simplifies distributed caching, ETag-based conditional requests, compression strategies for responses and requests, async streaming patterns for large datasets, performance differences between minimal APIs and controllers, and JSON serialization optimization through source generators.

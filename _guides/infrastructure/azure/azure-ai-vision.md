@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, infrastructure, machine-learning, automation, sca
 
 ## What Are Azure AI Vision Services
 
-<blockquote class="pull-quote">
-<p>Azure AI Vision services are managed APIs that apply machine learning models to images and documents. They enable applications to extract meaning from visual data without building custom ML infrastructure.</p>
-</blockquote>
-
 [Azure AI Vision services](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/){:target="_blank" rel="noopener noreferrer"} provide pre-trained models for image analysis, optical character recognition (OCR), facial analysis, and document processing. These services abstract the complexity of computer vision, allowing architects to add intelligent image processing to applications with managed APIs.
 
 Azure offers several vision services, each solving different problems. Some are general-purpose (like analyzing any image for objects, text, and activities), others are domain-specific (like extracting fields from invoices or business cards), and others focus on biometric analysis (like face detection and identification).

@@ -9,10 +9,6 @@ tags: [asp-net-core, web-api, mvc, controllers, routing, model-binding, filters]
 
 ## Controller-Based APIs
 
-<blockquote class="pull-quote">
-<p>Controllers provide a structured, attribute-driven approach to building HTTP APIs with comprehensive support for routing, model binding, validation, and response formatting.</p>
-</blockquote>
-
 The controller-based programming model in ASP.NET Core provides a rich framework for building Web APIs through classes that derive from `ControllerBase` or `Controller`. Controllers organize related HTTP endpoints into logical groups while providing access to request context, automatic model binding, validation, content negotiation, and a filter pipeline for cross-cutting concerns. This programming model offers more structure and convention than minimal APIs while supporting both attribute-based and conventional routing patterns.
 
 ## ControllerBase vs Controller

@@ -9,10 +9,6 @@ tags: [infrastructure, iac, aws, cloudformation, advanced, practical]
 
 ## Change Sets
 
-<blockquote class="pull-quote">
-<p>Change sets preview proposed changes before executing a stack update, showing what will be Added, Modified, or Removed before any changes are applied.</p>
-</blockquote>
-
 **Change Sets** preview proposed changes before executing a stack update.
 
 ### Creating Change Sets

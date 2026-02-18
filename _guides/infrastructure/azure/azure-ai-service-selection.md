@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, infrastructure, machine-learning, decision-making
 
 ## Azure AI & ML Service Landscape
 
-<blockquote class="pull-quote">
-<p>Azure's AI and ML services span from prebuilt APIs that require no model training to full-fidelity platforms for custom model development. Choosing the right service depends on whether you need out-of-the-box capabilities, customization, or a hybrid approach.</p>
-</blockquote>
-
 [Azure's AI and ML ecosystem](https://learn.microsoft.com/en-us/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning){:target="_blank" rel="noopener noreferrer"} provides a spectrum of services that address different levels of abstraction and control. At one end, prebuilt AI services like Azure AI Vision and Azure AI Language offer capabilities that work immediately without training data. At the other end, Azure Machine Learning provides the full infrastructure to build, train, and deploy custom models with complete control over the training process.
 
 Between these extremes lie services like Azure OpenAI Service, which provides access to pretrained foundation models that can be customized through prompt engineering and fine-tuning, and Azure AI Search, which combines search capabilities with AI enrichment for knowledge mining and Retrieval-Augmented Generation patterns.

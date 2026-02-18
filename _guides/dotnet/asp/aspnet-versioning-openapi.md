@@ -9,10 +9,6 @@ tags: [asp-net-core, api-design, versioning, openapi, documentation, code-genera
 
 ## API Evolution at Scale
 
-<blockquote class="pull-quote">
-<p>APIs live longer than the applications that consume them, and versioning determines whether your API evolves gracefully or breaks spectacularly.</p>
-</blockquote>
-
 APIs must evolve while maintaining compatibility with existing clients. Versioning provides a structured path for introducing breaking changes without forcing all consumers to update simultaneously. OpenAPI document generation turns your API code into machine-readable specifications that enable tooling, testing, and client generation. Together, these capabilities transform API development from manual coordination into automated workflows where contracts drive implementation.
 
 This guide covers API versioning strategies, the Asp.Versioning package for both controllers and minimal APIs, OpenAPI document generation with Microsoft.AspNetCore.OpenApi, schema customization through transformers, and generating client SDKs from OpenAPI specifications.

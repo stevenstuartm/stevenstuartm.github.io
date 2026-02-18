@@ -11,10 +11,6 @@ Understanding programming terminology is essential before diving into language-s
 
 ## Type System Concepts
 
-<blockquote class="pull-quote">
-<p>Understanding type system concepts like static vs dynamic typing and strong vs weak typing helps you predict how code behaves and why the compiler accepts or rejects certain operations.</p>
-</blockquote>
-
 The type system is how a programming language classifies and manages data. Understanding these distinctions helps you reason about code behavior and catch errors earlier.
 
 ### Statically Typed vs Dynamically Typed

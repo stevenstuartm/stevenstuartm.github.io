@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, fundamentals, attributes, reflection, metadata, advanced
 
 ## Attributes Overview
 
-<blockquote class="pull-quote">
-<p>Attributes add declarative metadata to code, enabling frameworks and tools to modify behavior without changing the code itself.</p>
-</blockquote>
-
 Attributes add declarative metadata to code elements. They're used by compilers, frameworks, and runtime code to modify behavior.
 
 ```csharp

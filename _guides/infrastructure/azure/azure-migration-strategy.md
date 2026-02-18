@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, infrastructure, modernization, governance, decisi
 
 ## What Is Cloud Migration on Azure
 
-<blockquote class="pull-quote">
-<p>Azure migration is not simply "lift and shift" to the cloud. It's a structured discipline combining strategic business alignment, rigorous assessment of existing workloads, disciplined execution across teams, and continuous governance to realize cloud value while managing risk and cost.</p>
-</blockquote>
-
 Cloud migration to Azure involves moving applications, data, and infrastructure from on-premises, other clouds, or legacy systems to Azure. The [Microsoft Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/){:target="_blank" rel="noopener noreferrer"} (CAF) provides a methodology that goes beyond technical rehosting. CAF emphasizes aligning migration with business strategy, building organizational capability, managing cost discipline, and establishing governance before and after migration.
 
 ### What Problems Migration Strategy Solves

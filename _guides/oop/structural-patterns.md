@@ -11,15 +11,7 @@ tags: [oop, design-patterns, structural-patterns, adapter, decorator, practical]
 
 *Structural patterns from the Gang of Four's "Design Patterns" (1994): Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides*
 
-<blockquote class="pull-quote">
-<p>Structural patterns deal with object composition and relationships, helping form larger structures while maintaining flexibility.</p>
-</blockquote>
-
 ## Adapter Pattern
-
-<blockquote class="pull-quote">
-<p>Adapter pattern allows incompatible interfaces to work together by wrapping existing functionality without modifying the original code.</p>
-</blockquote>
 
 **Purpose**: Allow incompatible interfaces to work together by wrapping existing functionality.
 
@@ -495,10 +487,6 @@ document.Display();
 ```
 
 ## Proxy Pattern
-
-<blockquote class="pull-quote">
-<p>Proxy pattern controls access to objects through a surrogate, enabling lazy loading, access control, caching, and logging without changing the original object.</p>
-</blockquote>
 
 **Purpose**: Control access to objects through a surrogate or placeholder.
 

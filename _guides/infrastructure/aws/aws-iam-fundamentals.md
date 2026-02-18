@@ -9,10 +9,6 @@ tags: [infrastructure, aws, iam, security, access-control, fundamentals]
 
 ## What is AWS Identity and Access Management
 
-<blockquote class="pull-quote">
-<p>Over 40% of cloud breaches originate from unnecessarily broad privileges. Over 80% of cloud breaches link to misconfigurations, often from overly permissive access.</p>
-</blockquote>
-
 **AWS Identity and Access Management (IAM)** controls who can access your AWS resources and what actions they can perform. Every API call to AWS goes through IAM for authentication (who are you?) and authorization (what can you do?).
 
 ### What Problems IAM Solves
@@ -227,10 +223,6 @@ aws s3 ls --profile my-profile
 ### What is AWS Organizations?
 
 **AWS Organizations** enables centralized management of multiple AWS accounts. It provides consolidated billing, organizational hierarchy, and permission guardrails.
-
-<blockquote class="pull-quote">
-<p>AWS recommends multi-account architecture even for small organizations. Each account has separate IAM, resource limits, and API limits. This isolation contains security incidents and simplifies compliance.</p>
-</blockquote>
 
 **Why Multi-Account Architecture Matters:**
 

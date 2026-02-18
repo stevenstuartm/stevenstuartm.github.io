@@ -9,10 +9,6 @@ tags: [aws, cicd, codepipeline, codebuild, automation, devops, deployment, funda
 
 ## What Problems CodePipeline & CodeBuild Solve
 
-<blockquote class="pull-quote">
-<p>CodePipeline reduces deployment from 4 hours of manual work to 15 minutes of automated consistency, enabling multiple daily deployments with smaller, safer changes.</p>
-</blockquote>
-
 AWS CodePipeline and CodeBuild automate software delivery from code commit to production deployment:
 
 **Eliminate manual deployments**: Before CI/CD, deploying code requires 15 manual steps: pull code, run tests, build artifacts, SSH into servers, copy files, restart services. One missed step causes production outage. CodePipeline automates all steps, ensuring consistency and reducing human error.
@@ -873,10 +869,6 @@ post_build:
 **Why**: Leverage GitHub's workflow features while using CodePipeline's cross-account deployment capabilities.
 
 ## Common Pitfalls
-
-<blockquote class="pull-quote">
-<p>The most impactful optimization is build caching. Reducing build time from 5 minutes to 2 minutes saves 60% on build costs and accelerates feedback loops.</p>
-</blockquote>
 
 ### Artifact Bucket Not Cross-Region Replicated
 

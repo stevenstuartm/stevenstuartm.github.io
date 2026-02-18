@@ -9,10 +9,6 @@ tags: [aws, step-functions, orchestration, workflows, serverless, integration, a
 
 ## What Problems Step Functions Solves
 
-<blockquote class="pull-quote">
-<p>Step Functions provides visual workflow orchestration where you define workflows declaratively. It includes built-in error handling, automatic retries, and execution history for every workflow run.</p>
-</blockquote>
-
 ### Without Step Functions
 
 **Coordination Challenges:**

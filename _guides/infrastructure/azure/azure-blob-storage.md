@@ -9,10 +9,6 @@ tags: [infrastructure, azure, cloud-computing, scalability, cost-analysis, secur
 
 ## What Is Azure Blob Storage
 
-<blockquote class="pull-quote">
-<p>Azure Blob Storage is Microsoft's object storage service for the cloud, designed to store massive amounts of unstructured data like documents, images, videos, logs, and backups with built-in redundancy, tiered pricing, and integration across the Azure ecosystem.</p>
-</blockquote>
-
 [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction){:target="_blank" rel="noopener noreferrer"} is a scalable, durable object storage service that stores data as blobs (binary large objects) within containers inside storage accounts. It handles everything from serving images to a web application, storing terabytes of log data for analytics, hosting static websites, and archiving compliance records for years at minimal cost.
 
 Blob Storage is part of the broader [Azure Storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction){:target="_blank" rel="noopener noreferrer"} platform, which also includes Azure Files (managed file shares), Azure Queue Storage (message queuing), and Azure Table Storage (NoSQL key-value). A single storage account can host all four services, though Blob Storage is by far the most widely used.

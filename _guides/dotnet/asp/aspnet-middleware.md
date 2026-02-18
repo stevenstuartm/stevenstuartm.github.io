@@ -9,10 +9,6 @@ tags: [asp-net-core, middleware, request-pipeline, exception-handling, dependenc
 
 ## The Heart of Request Processing
 
-<blockquote class="pull-quote">
-<p>Middleware is the chain of components that intercepts every HTTP request and response, creating the infrastructure where security, routing, logging, and application logic happen.</p>
-</blockquote>
-
 ASP.NET Core applications are built around a middleware pipeline. Each HTTP request flows through a sequence of middleware components, and each can examine or modify the request, perform side effects like logging, or short-circuit the pipeline entirely. Understanding how middleware works, when to use it versus filters, and how to implement custom middleware safely is critical for building robust APIs.
 
 ## Request Delegates and Pipeline Construction

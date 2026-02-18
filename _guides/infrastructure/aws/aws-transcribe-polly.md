@@ -12,10 +12,6 @@ tags: [aws, machine-learning, speech-processing, accessibility, voice-ai, practi
 **The Speech AI Challenge**:
 Organizations need to convert speech to text for accessibility, searchability, and analytics. They also need to generate natural-sounding speech from text for voice assistants, content narration, and accessibility features. Building custom speech recognition and synthesis systems requires deep expertise in signal processing, linguistics, and machine learning.
 
-<blockquote class="pull-quote">
-<p>AWS Transcribe and Polly eliminate the complexity of building custom speech AI while providing enterprise-grade accuracy, scalability, and compliance features.</p>
-</blockquote>
-
 **What AWS Provides**:
 AWS offers two complementary services for speech AI:
 - **AWS Transcribe**: Automatic speech recognition (ASR) that converts audio to text

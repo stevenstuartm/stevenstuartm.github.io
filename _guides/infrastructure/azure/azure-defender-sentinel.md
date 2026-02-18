@@ -9,10 +9,6 @@ tags: [azure, security, cloud-computing, observability, infrastructure, governan
 
 ## What Is Cloud Security Operations
 
-<blockquote class="pull-quote">
-<p>Cloud security operations requires two parallel capabilities: understanding your security posture (what you have configured and what risks exist) and detecting threats (what is actually trying to attack you). Microsoft Defender for Cloud handles posture management and vulnerability assessment, while Microsoft Sentinel provides threat detection and incident response at scale.</p>
-</blockquote>
-
 Modern cloud environments require a different security approach than on-premises infrastructure. The attack surface expands continuously as resources scale, configurations drift, and cloud services introduce new capabilities. Two tools form the core of Azure's security operations platform: [Microsoft Defender for Cloud](https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction){:target="_blank" rel="noopener noreferrer"} and [Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/overview){:target="_blank" rel="noopener noreferrer"}.
 
 Defender for Cloud is a cloud security posture management (CSPM) and cloud workload protection (CWP) platform. It discovers what you have, assesses it against security best practices, identifies misconfigurations and vulnerabilities, and recommends remediation. Think of it as continuous security auditing built into your infrastructure.

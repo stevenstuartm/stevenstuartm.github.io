@@ -28,10 +28,6 @@ Amazon Relational Database Service (RDS) is a managed database service that hand
 
 Amazon Aurora is a MySQL- and PostgreSQL-compatible relational database built for the cloud. Aurora delivers up to 5x the throughput of MySQL and 3x the throughput of PostgreSQL while providing commercial-grade availability and durability.
 
-<blockquote class="pull-quote">
-<p>Aurora delivers up to 5x the throughput of MySQL and 3x the throughput of PostgreSQL while providing commercial-grade availability and durability.</p>
-</blockquote>
-
 **What Makes Aurora Different**:
 - **Cloud-native storage**: Distributed, fault-tolerant storage layer that replicates data across 3 Availability Zones (6 copies)
 - **Performance**: Superior throughput compared to standard RDS engines
@@ -199,10 +195,6 @@ Aurora Serverless v2 automatically scales database capacity based on application
 - Scales from 0.5 ACUs to 256 ACUs in fine-grained increments
 - Scaling happens in seconds without interrupting connections
 - Pay only for capacity used per second ($0.12/ACU hour in us-east-1)
-
-<blockquote class="pull-quote">
-<p>Aurora Serverless v2 can reduce costs by 66% for workloads idle 50% or more of the time, scaling from 0.5 ACUs to 256 ACUs in seconds.</p>
-</blockquote>
 
 **When to use Aurora Serverless v2**:
 - **Variable workloads**: Traffic patterns with unpredictable spikes (e.g., SaaS applications with usage variations)

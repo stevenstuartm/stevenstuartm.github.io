@@ -9,10 +9,6 @@ tags: [aws, redshift, data-warehousing, analytics, sql, cost-optimization, funda
 
 ## What Is Amazon Redshift?
 
-<blockquote class="pull-quote">
-<p>Redshift uses massively parallel processing (MPP) and columnar storage to deliver fast query performance on petabyte-scale datasets with pay-as-you-go pricing starting at $0.25/hour.</p>
-</blockquote>
-
 Amazon Redshift is a fully managed, petabyte-scale data warehouse service that uses SQL to analyze structured and semi-structured data. Redshift uses massively parallel processing (MPP) and columnar storage to deliver fast query performance on large datasets.
 
 **What Problems Redshift Solves**:

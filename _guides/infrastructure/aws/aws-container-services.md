@@ -9,10 +9,6 @@ tags: [aws, containers, ecs, eks, fargate, kubernetes, orchestration, cost-optim
 
 ## What Problems Containers Solve
 
-<blockquote class="pull-quote">
-<p>Containers package applications with all dependencies, eliminating "works on my machine" problems. The same container runs identically in development, staging, and production.</p>
-</blockquote>
-
 Containers address several key challenges compared to traditional EC2 instances and serverless Lambda functions.
 
 ### vs. EC2 Instances

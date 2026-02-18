@@ -9,10 +9,6 @@ tags: [infrastructure, azure, cicd, devops, automation, deployment, practical]
 
 ## What Is GitHub Actions for Azure
 
-<blockquote class="pull-quote">
-<p>GitHub Actions is a native CI/CD platform built into GitHub that enables automated deployment of Azure infrastructure and applications using workflows that respond to repository events.</p>
-</blockquote>
-
 [GitHub Actions](https://docs.github.com/en/actions){:target="_blank" rel="noopener noreferrer"} is GitHub's integrated automation platform. When code is pushed, pull requests are opened, or scheduled events occur, GitHub Actions workflows execute jobs. They automate building, testing, and deploying your application. The [GitHub Actions for Azure](https://github.com/Azure/actions){:target="_blank" rel="noopener noreferrer"} ecosystem provides hundreds of pre-built actions for interacting with Azure resources, making it straightforward to deploy infrastructure and applications directly from your GitHub repository.
 
 Since Microsoft owns GitHub, GitHub Actions is a first-party integration for Azure, meaning the actions are maintained alongside the Azure platform itself and align with Microsoft's recommended practices.

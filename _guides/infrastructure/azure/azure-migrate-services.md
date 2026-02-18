@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, infrastructure, databases, modernization, automat
 
 ## What Is Azure Migrate
 
-<blockquote class="pull-quote">
-<p>Azure Migrate is a centralized hub for discovering, assessing, and migrating on-premises workloads (servers, databases, and web applications) to Azure with minimal downtime and risk.</p>
-</blockquote>
-
 [Azure Migrate](https://learn.microsoft.com/en-us/azure/migrate/migrate-services-overview){:target="_blank" rel="noopener noreferrer"} provides a unified platform for assessing your on-premises environment and planning migration strategies. It combines discovery tools, assessment engines, and migration pathways to orchestrate the entire migration journey. The service handles servers, databases, web applications, and data boxes as part of a cohesive approach to cloud migration.
 
 Unlike point solutions, Azure Migrate centralizes all migration activities in a single project. This eliminates duplicate effort, simplifies tracking, and provides consistent assessment data across migration waves.

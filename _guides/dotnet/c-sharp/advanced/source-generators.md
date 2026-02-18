@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, source-generators, metaprogramming, compilation, advance
 
 ## The Problem Source Generators Solve
 
-<blockquote class="pull-quote">
-<p>Source generators eliminate the choice between tedious hand-written boilerplate and slow runtime reflection. They generate code at compile time, achieving both convenience and performance.</p>
-</blockquote>
-
 Programming involves a lot of repetitive code. Consider these common scenarios:
 
 - Writing `ToString()` methods that list every property

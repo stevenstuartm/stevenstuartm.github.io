@@ -9,10 +9,6 @@ tags: [asp-net-core, security, authentication, api-security, owasp, data-protect
 
 ## Secure by Design
 
-<blockquote class="pull-quote">
-<p>Security failures in APIs rarely result from missing one obscure feature. They emerge from treating security as an afterthought rather than a foundational design constraint.</p>
-</blockquote>
-
 Building secure APIs requires thinking about security at every layer of the application. Transport security ensures data remains confidential in transit. Input validation prevents malicious data from entering the system. Authentication and authorization control who can access resources and what they can do. Secrets management protects sensitive configuration. Defense-in-depth layers multiple controls so that if one fails, others remain.
 
 ASP.NET Core provides robust security primitives, but understanding when and how to apply them determines whether your API resists real attacks or merely appears secure.

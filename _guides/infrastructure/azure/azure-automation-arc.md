@@ -9,10 +9,6 @@ tags: [azure, automation, infrastructure, cloud-computing, devops, reliability, 
 
 ## What Are Azure Automation and Azure Arc
 
-<blockquote class="pull-quote">
-<p>Azure Automation and Azure Arc extend Azure's management and automation capabilities beyond Azure-hosted resources. Azure Automation provides process automation, patch management, and configuration management for distributed infrastructure. Azure Arc extends Azure management and governance to any server, Kubernetes cluster, or data service running anywhere, whether on-premises, in other clouds, or at the edge.</p>
-</blockquote>
-
 [Azure Automation](https://learn.microsoft.com/en-us/azure/automation/overview){:target="_blank" rel="noopener noreferrer"} is Azure's native automation platform for infrastructure automation, configuration management, and process automation. It runs runbooks (scripts), enforces desired state configuration, patches Windows and Linux machines, and triggers automation workflows based on schedules, events, or webhooks.
 
 [Azure Arc](https://learn.microsoft.com/en-us/azure/azure-arc/overview){:target="_blank" rel="noopener noreferrer"} extends Azure's management, governance, and compliance capabilities to any infrastructure. Arc provides capabilities like Arc-enabled servers (which appear in Azure as native resources), Arc-enabled Kubernetes clusters (which receive Azure-based policy enforcement and security controls), Arc-enabled data services (which run SQL and PostgreSQL anywhere with Azure billing), and unified monitoring, security, and governance across hybrid and multi-cloud environments.

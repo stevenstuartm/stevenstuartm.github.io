@@ -9,10 +9,6 @@ tags: [aws, systems-manager, automation, infrastructure, patch-management, confi
 
 ## What Problems Systems Manager Solves
 
-<blockquote class="pull-quote">
-<p>Systems Manager eliminates SSH key management, automates patching across hundreds of instances, centralizes secrets, and enforces configuration state, all without manual intervention.</p>
-</blockquote>
-
 AWS Systems Manager is a unified operations hub for managing AWS and on-premises infrastructure at scale:
 
 **Eliminate SSH key management**: Your security team mandates no SSH keys stored on laptops and no bastion hosts with public IPs. Session Manager provides browser-based terminal access without SSH keys, reducing attack surface and simplifying access management.

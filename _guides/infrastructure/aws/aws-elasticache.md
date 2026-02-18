@@ -9,10 +9,6 @@ tags: [aws, elasticache, redis, memcached, caching, performance, cost-optimizati
 
 ## What Is Amazon ElastiCache?
 
-<blockquote class="pull-quote">
-<p>ElastiCache offloads read traffic from databases to cache, achieving 50-90% database query reduction with sub-millisecond response times.</p>
-</blockquote>
-
 Amazon ElastiCache is a fully managed in-memory caching service that supports Redis, Valkey, and Memcached. ElastiCache delivers sub-millisecond latency for read-heavy and compute-intensive workloads by storing frequently accessed data in memory.
 
 **What Problems ElastiCache Solves**:

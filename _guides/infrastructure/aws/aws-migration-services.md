@@ -22,10 +22,6 @@ Both services use continuous replication to minimize downtime and enable testing
 
 ## AWS Application Migration Service (MGN)
 
-<blockquote class="pull-quote">
-<p>AWS MGN transforms lift-and-shift from a high-risk manual process into an automated, testable workflow with sub-minute RPO and minutes of downtime.</p>
-</blockquote>
-
 ### What It Is
 
 AWS MGN is an automated lift-and-shift solution that replicates on-premises or cloud servers to AWS EC2 instances with minimal downtime.
@@ -349,10 +345,6 @@ def rollback_migration(source_server_id, original_ip):
 ---
 
 ## AWS Database Migration Service (DMS)
-
-<blockquote class="pull-quote">
-<p>DMS enables database migrations with minimal downtime through continuous CDC replication, supporting both homogeneous and heterogeneous migrations across 20+ database engines.</p>
-</blockquote>
 
 ### What It Is
 

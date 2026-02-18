@@ -9,10 +9,6 @@ tags: [aws, observability, monitoring, cloudwatch, logging, metrics, fundamental
 
 ## What Problems CloudWatch Solves
 
-<blockquote class="pull-quote">
-<p>CloudWatch detects problems before users notice them. The goal is to receive alerts 10 minutes before complaints, not 10 minutes after.</p>
-</blockquote>
-
 CloudWatch is AWS's native monitoring and observability service that addresses critical operational challenges:
 
 **Unified monitoring across AWS services**: Over 70 AWS services automatically publish metrics to CloudWatch without configuration. You get immediate visibility into EC2 CPU utilization, Lambda invocations, DynamoDB consumed capacity, and hundreds of other metrics the moment you provision resources.
@@ -902,10 +898,6 @@ Example: Metric `RequestLatency` with dimensions `{UserId, Endpoint}` and 10,000
 - Deploy alarms in all regions with SNS topics that forward to central notification system
 
 ## Key Takeaways
-
-<blockquote class="pull-quote">
-<p>Observability is not just monitoring; it's operational intelligence that drives decisions and automation.</p>
-</blockquote>
 
 **CloudWatch is the foundation of AWS observability**: Over 70 AWS services publish metrics automatically, making CloudWatch essential for monitoring AWS workloads. You get immediate visibility without instrumentation.
 

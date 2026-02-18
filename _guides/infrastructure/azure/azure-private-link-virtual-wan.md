@@ -9,10 +9,6 @@ tags: [infrastructure, azure, networking, security, architecture, scalability, p
 
 ## What Problems These Services Solve
 
-<blockquote class="pull-quote">
-<p>Azure Private Link eliminates public internet exposure for PaaS services. Azure Virtual WAN provides Microsoft-managed hub-and-spoke topology at scale. Together they address two of the most common enterprise networking challenges: securing service access and simplifying complex network topologies.</p>
-</blockquote>
-
 By default, Azure PaaS services like Storage, SQL Database, and Key Vault are accessed over public endpoints. Even with firewalls and access controls, traffic traverses the public internet. [Azure Private Link](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview){:target="_blank" rel="noopener noreferrer"} solves this by placing a network interface with a private IP address in your VNet, making the PaaS service accessible as if it were deployed inside your network.
 
 As organizations grow their Azure footprint, managing VNet peering, route tables, and network virtual appliances across dozens or hundreds of VNets becomes operationally expensive. [Azure Virtual WAN](https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-about){:target="_blank" rel="noopener noreferrer"} solves this by providing a Microsoft-managed hub-and-spoke topology with built-in routing, VPN, ExpressRoute, and firewall integration.

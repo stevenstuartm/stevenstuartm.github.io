@@ -9,10 +9,6 @@ tags: [asp-net-core, minimal-apis, web-api, performance, aot, endpoint-filters, 
 
 ## Philosophy and Choosing an Approach
 
-<blockquote class="pull-quote">
-<p>Minimal APIs represent a shift from controller-based organization to endpoint-first design, prioritizing simplicity and performance over framework convention.</p>
-</blockquote>
-
 Minimal APIs provide a streamlined approach to building HTTP APIs in ASP.NET Core. Rather than organizing endpoints into controller classes with action methods, minimal APIs define individual route handlers directly on the application builder. This reduces ceremony, improves startup time, and aligns naturally with microservices and serverless architectures where each endpoint often serves a narrow, focused purpose.
 
 The choice between minimal APIs and controllers comes down to application needs and team preferences. Minimal APIs work well for focused APIs with straightforward routing and relatively few endpoints. Controllers excel when you need extensive shared behavior across related endpoints, complex action filters, or MVC features like view rendering. Minimal APIs offer faster startup and lower memory overhead, especially when published with Native AOT. Controllers provide more structure and familiarity for teams transitioning from traditional ASP.NET or MVC backgrounds.

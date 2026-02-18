@@ -52,10 +52,6 @@ Both integrate with VPN, Direct Connect, VPC, and each other for comprehensive n
 
 ## AWS PrivateLink
 
-<blockquote class="pull-quote">
-<p>PrivateLink enables private service connectivity to thousands of consumer VPCs without VPC peering or internet exposure. Traffic stays on the AWS network with fine-grained access control per service.</p>
-</blockquote>
-
 ### What PrivateLink Provides
 
 **Private Service Access**:
@@ -187,10 +183,6 @@ Consumer VPC:
 - **Trade-off**: Pay $7.30/month per endpoint for fine-grained service access vs. full VPC access with peering
 
 ## AWS Transit Gateway
-
-<blockquote class="pull-quote">
-<p>Transit Gateway transforms N² VPC peering complexity into simple hub-and-spoke architecture, reducing 45 peering connections for 10 VPCs down to just 10 attachments while enabling transitive routing.</p>
-</blockquote>
 
 ### What Transit Gateway Provides
 

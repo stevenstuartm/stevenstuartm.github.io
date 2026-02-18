@@ -9,10 +9,6 @@ tags: [asp-net-core, health-checks, observability, opentelemetry, distributed-tr
 
 ## Health Checks and Diagnostics
 
-<blockquote class="pull-quote">
-<p>Production services need to answer two questions continuously: are you alive, and are you ready to handle requests?</p>
-</blockquote>
-
 Health checks provide a structured way for services to report their operational status. Orchestrators like Kubernetes use these signals to decide whether to route traffic to an instance or restart it entirely. Beyond simple liveness signals, modern ASP.NET Core applications can expose rich telemetry through OpenTelemetry integration, distributed tracing with Activity, and diagnostic endpoints that help operators understand what's happening inside running services.
 
 This guide covers the health check infrastructure in ASP.NET Core, how to integrate with container orchestrators, and how to instrument services with observability signals that make production troubleshooting tractable.

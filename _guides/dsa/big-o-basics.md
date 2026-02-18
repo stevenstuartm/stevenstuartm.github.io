@@ -7,10 +7,6 @@ tags: [algorithms, complexity-analysis, fundamentals, performance, interview-pre
 
 ## Why Big O Matters
 
-<blockquote class="pull-quote">
-<p>The difference between O(n) and O(n²) might seem small on paper, but it's the difference between a search taking 1 second vs 17 minutes with a million items.</p>
-</blockquote>
-
 Understanding Big O isn't about memorizing formulas; it's about developing intuition for how algorithms scale. When your app works fine with 100 users but crashes with 1,000, that's a Big O problem. This guide gives you the practical tools to predict and prevent performance issues before they happen.
 
 **Real impact:** The difference between O(n) and O(n²) might seem small on paper, but it's the difference between a search taking 1 second vs 17 minutes with a million items.

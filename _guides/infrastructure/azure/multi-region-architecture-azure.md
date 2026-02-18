@@ -9,10 +9,6 @@ tags: [azure, cloud-computing, architecture, distributed-systems, reliability, s
 
 ## What Is Multi-Region Architecture
 
-<blockquote class="pull-quote">
-<p>Multi-region architecture distributes application infrastructure across multiple Azure regions to survive regional failures, serve global users with low latency, and meet data residency requirements.</p>
-</blockquote>
-
 A [multi-region architecture](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/multi-region-sql-server){:target="_blank" rel="noopener noreferrer"} on Azure spans two or more regions to provide higher availability than single-region deployments. This approach protects against regional outages, whether caused by natural disasters, infrastructure failures, or operational issues.
 
 Multi-region does not mean multi-cloud. This guide focuses on architectures spanning multiple Azure regions, not hybrid Azure-AWS-GCP deployments.

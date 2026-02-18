@@ -9,10 +9,6 @@ tags: [c-sharp, dotnet, memory-management, garbage-collection, performance, adva
 
 ## Memory Fundamentals
 
-<blockquote class="pull-quote">
-<p>The garbage collector frees you from manual memory management, but understanding its behavior helps you avoid performance pitfalls and memory leaks.</p>
-</blockquote>
-
 The .NET runtime manages memory automatically through the garbage collector (GC). Understanding how it works helps you write efficient code and avoid memory-related issues.
 
 ### Stack vs Heap

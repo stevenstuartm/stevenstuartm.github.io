@@ -9,10 +9,6 @@ tags: [infrastructure, azure, devops, cicd, collaboration, governance, practical
 
 ## What Are Azure Repos and Azure Artifacts
 
-<blockquote class="pull-quote">
-<p>Azure Repos is a Git repository service with branch policies and pull request workflows, while Azure Artifacts is a package management service supporting NuGet, npm, Maven, and Python packages with upstream caching and package promotion workflows.</p>
-</blockquote>
-
 [Azure Repos](https://learn.microsoft.com/en-us/azure/devops/repos/get-started/what-is-repos){:target="_blank" rel="noopener noreferrer"} provides Git-based source control integrated into Azure DevOps projects. Multiple repositories can exist within a single project, each with independent branch policies, pull request workflows, and permission models.
 
 [Azure Artifacts](https://learn.microsoft.com/en-us/azure/devops/artifacts/start-using-azure-artifacts){:target="_blank" rel="noopener noreferrer"} is a package feed management service that stores and distributes packages across multiple formats. Teams publish compiled packages to feeds, which can be consumed by applications and other packages through dependency management tools like NuGet, npm, Maven, and pip.

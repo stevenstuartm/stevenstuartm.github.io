@@ -9,10 +9,6 @@ tags: [azure, observability, monitoring, infrastructure, cloud-computing, reliab
 
 ## What Is Azure Monitor
 
-<blockquote class="pull-quote">
-<p>Azure Monitor is a comprehensive observability platform that collects, analyzes, and acts on telemetry from Azure resources and hybrid environments. It provides metrics, logs, alerts, and visualizations to understand system behavior and respond to issues.</p>
-</blockquote>
-
 [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/overview){:target="_blank" rel="noopener noreferrer"} is the central platform for collecting, analyzing, and alerting on observability data across your Azure estate. It captures three fundamental types of data: metrics (numerical measurements at specific points in time), logs (detailed events and traces), and application performance data.
 
 Unlike point solutions that monitor individual services, Azure Monitor is deeply integrated into the Azure platform. Resource metrics flow automatically to Azure Monitor. Logs are centralized in Log Analytics workspaces. Alerts, dashboards, and analysis tools operate on this unified data.

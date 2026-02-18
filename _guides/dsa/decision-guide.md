@@ -131,10 +131,6 @@ tags: [algorithms, data-structures, decision-making, practical, reference]
 
 ## Bottom Line Philosophy
 
-<blockquote class="pull-quote">
-<p>Modern software development is about choosing the right abstraction and using well-tested libraries. Understanding algorithms deeply makes you better at recognizing patterns and solving new problems.</p>
-</blockquote>
-
 **Modern software development** is about choosing the right abstraction and using well-tested libraries. **Understanding algorithms deeply** makes you better at recognizing patterns and solving new problems, even when you use existing implementations.
 
 **Focus your learning** on understanding when and why to use different approaches, rather than memorizing implementation details you can look up.

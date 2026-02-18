@@ -9,10 +9,6 @@ tags: [infrastructure, azure, networking, security, reliability, practical]
 
 ## What Problems Hybrid Connectivity Solves
 
-<blockquote class="pull-quote">
-<p>Azure VPN Gateway and ExpressRoute connect on-premises networks to Azure, enabling hybrid architectures where workloads span data centers and the cloud.</p>
-</blockquote>
-
 Most enterprises don't move everything to the cloud at once. They need secure, reliable connectivity between on-premises data centers and Azure VNets for migration, hybrid workloads, disaster recovery, and compliance requirements that mandate certain data stays on-premises. Azure provides two primary connectivity options:
 
 - **[VPN Gateway](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways){:target="_blank" rel="noopener noreferrer"}:** Encrypted IPsec/IKE tunnels over the public internet. Lower cost, faster setup, suitable for moderate bandwidth needs.

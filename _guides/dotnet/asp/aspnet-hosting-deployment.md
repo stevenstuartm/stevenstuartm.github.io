@@ -9,10 +9,6 @@ tags: [asp-net-core, hosting, deployment, docker, native-aot, kestrel, reverse-p
 
 ## Hosting and Deployment Fundamentals
 
-<blockquote class="pull-quote">
-<p>Understanding how ASP.NET Core applications run in production means understanding the web server, hosting model, deployment format, and operational patterns that determine performance, resource usage, and maintainability.</p>
-</blockquote>
-
 ASP.NET Core applications can run in multiple hosting configurations depending on the platform, performance requirements, and operational constraints. The runtime environment determines which web server handles requests, how the application is deployed, and what operational patterns are available for managing traffic, configuration, and lifecycle events.
 
 The choices you make about hosting models, server configuration, and deployment formats directly affect startup time, memory footprint, request throughput, and the ability to gracefully handle traffic shifts and configuration changes. These decisions are not one-size-fits-all. They depend on whether you're optimizing for Windows integration, Linux containerization, edge performance, or operational simplicity.

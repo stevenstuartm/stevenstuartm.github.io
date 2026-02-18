@@ -9,10 +9,6 @@ tags: [security, encryption, data-protection, privacy, compliance]
 
 ## Data Classification
 
-<blockquote class="pull-quote">
-<p>You cannot protect what you do not know you have. Data classification is the foundation of every data protection strategy.</p>
-</blockquote>
-
 <div class="comparison">
 <div class="content-card content-card--accent">
 <h4>Government Classifications</h4>
