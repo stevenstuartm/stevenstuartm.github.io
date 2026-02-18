@@ -817,6 +817,13 @@
             "dotnet/c-sharp/advanced/native-interop.md"
           ]
         },
+        {
+          "name": "Tooling",
+          "description": "Developer tooling for code quality, formatting, and project configuration",
+          "guides": [
+            "dotnet/c-sharp/tooling/code-formatting-standards.md"
+          ]
+        }
       ]
     },
     "ASP.NET Core": {

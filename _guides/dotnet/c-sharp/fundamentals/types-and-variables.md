@@ -35,6 +35,8 @@ Value types hold their data directly. When you assign a value type to another va
 | `decimal` | Decimal | 16 bytes | 28-29 digits precision |
 | `char` | Char | 2 bytes | Unicode character |
 
+Both `float` and `double` are *binary floating-point* types, meaning they store numbers in base-2 scientific notation (a significand multiplied by a power of 2). A `float` uses 32 bits for this (23-bit significand, 8-bit exponent, 1 sign bit), giving roughly 6-7 digits of precision. A `double` is literally "double precision," using 64 bits (52-bit significand, 11-bit exponent, 1 sign bit) for roughly 15-16 digits. They follow the same IEEE 754 standard and share the same fundamental limitation: base-10 fractions like 0.1 become infinitely repeating patterns in binary, just as 1/3 does in decimal. The `decimal` type avoids this by storing numbers in base 10 internally, which is why it exists for financial calculations.
+
 **When to use each numeric type**:
 
 ```csharp
@@ -97,7 +99,11 @@ var p2 = p1; // Creates a copy
 // Modifying p2 would not affect p1 (if Point were mutable)
 ```
 
-**Struct guidelines**:
+**Classes are the default for data structures.** A common misconception is that structs should be preferred for performance whenever possible. In practice, the tradeoffs work against you for anything beyond small, single-value types. Structs are copied on every assignment and method call, so larger structs actually cost more than a single heap allocation. Serialization frameworks like `System.Text.Json` and Newtonsoft.Json have historically struggled with struct deserialization, making structs a poor fit for DTOs and API models. Data structures frequently need to represent absent values, and structs cannot be null without `Nullable<T>` wrapping. Any time a struct is cast to an interface (common in dependency injection and LINQ), it gets boxed onto the heap, erasing the allocation benefit entirely.
+
+Use structs only when the type genuinely models a small, immutable value like a coordinate, a color, or a measurement, and use classes (or records) for everything else.
+
+**Struct guidelines** (when a struct is the right choice):
 - Keep structs small (16 bytes or less for best performance)
 - Make structs immutable when possible (use `init` or `readonly`)
 - Implement `Equals` and `GetHashCode` if used in collections
@@ -256,8 +262,8 @@ Compile-time constants. The value must be known at compile time and is embedded 
 public class MathConstants
 {
     public const double Pi = 3.14159265358979;
-    public const int MaxRetries = 3;
-    public const string DefaultCurrency = "USD";
+    public const int BitsPerByte = 8;
+    public const string DefaultScheme = "https";
 }
 
 // Usage - value is substituted at compile time
@@ -295,6 +301,23 @@ public static class AppSettings
     public static readonly string MachineName = Environment.MachineName;
     public static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(30);
 }
+```
+
+**Choosing between const and static readonly.** The "embedded in IL" behavior of `const` is a common source of subtle bugs in multi-assembly projects. When Assembly A defines `public const int MaxRetries = 3`, the literal value `3` is copied into every consuming assembly's compiled IL. If Assembly A later changes it to `5` and only Assembly A is recompiled, every consumer silently keeps using `3` with no compile error or runtime warning.
+
+This makes the choice straightforward: use `const` for values that are *logically permanent* and will never change across versions (mathematical constants, protocol-defined values, fixed enum-like labels). Use `static readonly` for any `public` value that another assembly might reference and that could conceivably change between releases. For `private` or `internal` constants, `const` is always safe because the value can't leak beyond the assembly boundary, so recompilation is guaranteed.
+
+```csharp
+// const is safe: these values are mathematically permanent
+public const double Pi = 3.14159265358979;
+public const int BitsPerByte = 8;
+
+// const is safe: private scope, can't leak across assemblies
+private const int BufferSize = 4096;
+
+// static readonly is safer: this could change in a future version
+public static readonly int MaxRetries = 3;
+public static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(30);
 ```
 
 **readonly vs const**:
@@ -538,87 +561,101 @@ You can also declare global usings in the project file:
 
 For console and class library projects, implicit usings include `System`, `System.Collections.Generic`, `System.IO`, `System.Linq`, `System.Threading.Tasks`, and others.
 
+**Best practice**: Keep `<ImplicitUsings>enable</ImplicitUsings>` on (the default for .NET 6+ projects) and consolidate any additional global usings in a single `GlobalUsings.cs` file at the project root. Only globalize namespaces that genuinely appear across most files in the project, like shared domain models or common extensions. Avoid globalizing third-party library namespaces, as they are more likely to cause naming conflicts and make dependencies harder to trace when reading a file in isolation.
+
 ### Type Aliases (C# 12)
 
-The `using` directive can create aliases for any type, including tuples, arrays, and nullable types:
+The most common and well-established use of `using` aliases is resolving namespace conflicts:
 
 ```csharp
-// Alias for tuple types
-using Point = (int X, int Y);
-using Person = (string Name, int Age);
+// Resolving ambiguity between namespaces
+using WinForms = System.Windows.Forms;
+using WebUI = System.Web.UI;
 
-Point origin = (0, 0);
-Point target = (100, 200);
-Person alice = ("Alice", 30);
-
-// Alias for generic types
-using IntList = System.Collections.Generic.List<int>;
-using StringDict = System.Collections.Generic.Dictionary<string, string>;
-
-IntList numbers = [1, 2, 3, 4, 5];
-StringDict headers = new() { ["Content-Type"] = "application/json" };
-
-// Alias for arrays and nullable types
-using Matrix = int[][];
-using OptionalInt = int?;
-
-Matrix grid = [[1, 2], [3, 4]];
-OptionalInt maybeValue = null;
+WinForms.Button desktopButton = new();
+WebUI.Button webButton = new();
 ```
 
-Type aliases reduce repetition when working with complex generic types and provide semantic names for tuple structures that would otherwise be anonymous.
+C# 12 expanded `using` aliases to support any type, including tuples, arrays, and generics:
+
+```csharp
+using Point = (int X, int Y);
+using IntList = System.Collections.Generic.List<int>;
+using Matrix = int[][];
+```
+
+**Best practice**: Use type aliases primarily for resolving namespace conflicts. If a concept is meaningful enough to deserve a name, it is usually meaningful enough to be a proper type like a `record struct` or a class. Aliasing a tuple gives it a name without giving it behavior, validation, or discoverability across the project. Similarly, aliasing standard generics like `List<int>` hides a familiar type behind a non-standard name without adding real value. Prefer promoting meaningful concepts to proper types rather than giving them nicknames through aliases.
 
 ## Tuples
 
 Tuples group multiple values without defining a formal type. C# 7.0 introduced value tuples with named elements.
 
 ```csharp
-// Value tuples (C# 7.0+) - recommended
 (string Name, int Age) person = ("Alice", 30);
-Console.WriteLine(person.Name); // "Alice"
+var (name, age) = person;  // deconstruction
 
-// Returning multiple values
-public (bool Success, string Message, int Code) ValidateUser(string input)
-{
-    if (string.IsNullOrEmpty(input))
-        return (false, "Input required", 400);
-    return (true, "Valid", 200);
-}
-
-var result = ValidateUser("test");
-if (result.Success)
-{
-    Console.WriteLine(result.Message);
-}
-
-// Deconstruction
-var (success, message, _) = ValidateUser("test"); // _ discards Code
-
-// Tuple comparison
 var t1 = (1, "hello");
 var t2 = (1, "hello");
-bool equal = t1 == t2; // true - value comparison
+bool equal = t1 == t2; // true - structural comparison
 ```
 
-## Version History
+### When Tuples Are the Wrong Choice
 
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Nullable value types | C# 2.0 | Represented absence of value types |
-| var keyword | C# 3.0 | Enabled LINQ and reduced verbosity |
-| Value tuples | C# 7.0 | Lightweight multiple return values |
-| Tuples with names | C# 7.0 | Readable tuple members |
-| Default literal | C# 7.1 | Simplified default value syntax |
-| Readonly structs | C# 7.2 | Guaranteed immutable value types |
-| in parameter | C# 7.2 | Pass value types by reference without copying |
-| Nullable reference types | C# 8.0 | Compiler warnings for null reference issues |
-| Init-only setters | C# 9.0 | Immutable property initialization |
-| Record types | C# 9.0 | Value semantics for reference types |
-| File-scoped namespaces | C# 10 | Reduced nesting in source files |
-| Global usings | C# 10 | Project-wide using directives |
-| Required members | C# 11 | Enforced initialization |
-| Type aliases for any type | C# 12 | Aliases for tuples, arrays, generics |
-| Primary constructors | C# 12 | Simplified constructor syntax |
+Most tuple usage in OOP is someone avoiding the small cost of a type definition. A `(bool Success, string Message, int Code)` is not a tuple; it is a `ValidationResult`. If you are naming the elements, you have already identified a concept that deserves a real type.
+
+```csharp
+// Tuple misuse: what does this return?
+public (bool, string, int) ValidateUser(string input) { ... }
+var result = ValidateUser("test");
+if (result.Item1) // Item1 means... what?
+
+// Give the concept a type instead
+public record ValidationResult(bool Success, string Message, int Code);
+```
+
+Named element names are erased during compilation. Anything that consumes the tuple through reflection, serialization, or across assemblies sees `Item1`, `Item2`, `Item3`. The name is a courtesy, not a contract.
+
+Two other warning signs: if the tuple has three or more elements, positional ordering becomes a silent bug risk. If it crosses a public API boundary, consumers lose all semantic context and you cannot evolve the return shape without breaking callers.
+
+### When Tuples Belong
+
+Tuples work when the grouping is *temporary, local, and obvious from context*.
+
+```csharp
+// Private helper returns within a class
+private (int quotient, int remainder) DivideWithRemainder(int a, int b)
+    => (a / b, a % b);
+
+// Compound dictionary keys (structural Equals/GetHashCode)
+var sales = new Dictionary<(string Region, int Year), decimal>();
+
+// Intermediate LINQ groupings
+var top = employees
+    .Select(e => (Employee: e, Score: CalculateScore(e)))
+    .Where(x => x.Score > 90)
+    .OrderByDescending(x => x.Score)
+    .Select(x => x.Employee);
+
+// Pattern matching
+string Classify(int temp, bool rain) => (temp, rain) switch
+{
+    ( > 30, false) => "Hot and dry",
+    ( < 0, _)      => "Freezing",
+    (_, true)       => "Rainy",
+    _               => "Mild"
+};
+```
+
+### When a Tuple Outgrows Its Scope
+
+A `record struct` is the natural promotion path. You get named fields, value equality, deconstruction, and `ToString` for nearly the same amount of code.
+
+```csharp
+public readonly record struct Coordinate(double Latitude, double Longitude);
+
+var a = new Coordinate(47.6, -122.3);
+var (lat, lon) = a;  // deconstruction still works
+```
 
 ## Key Takeaways
 
@@ -631,5 +668,7 @@ bool equal = t1 == t2; // true - value comparison
 **Use nullable types intentionally**: Nullable value types (`int?`) explicitly model optional values. Combined with nullable reference types (C# 8+), you can eliminate most null reference exceptions.
 
 **Avoid boxing**: Use generic collections and methods to prevent unnecessary heap allocations from value type boxing.
+
+**Use tuples sparingly**: Tuples belong in private, local, obvious contexts like LINQ projections, dictionary keys, and pattern matching. If you are naming the elements, you have identified a concept that deserves a `record struct` or class.
 
 **Embrace modern namespace features**: File-scoped namespaces reduce indentation noise, global usings eliminate repetitive imports, and type aliases provide semantic names for complex types like tuples.
