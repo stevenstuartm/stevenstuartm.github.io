@@ -1,7 +1,7 @@
 ---
 title: "Hosting, Deployment, and Operational Patterns"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "Performance & Operations"
 description: "Covers hosting models, server configuration, containerization strategies, Native AOT deployment, and operational patterns for production ASP.NET Core applications."
 tags: [asp-net-core, hosting, deployment, docker, native-aot, kestrel, reverse-proxy, performance]

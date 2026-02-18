@@ -1,7 +1,7 @@
 ---
 title: "Testing ASP.NET Core APIs"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "Testing & Quality"
 description: "Comprehensive guide to testing ASP.NET Core APIs including integration testing with WebApplicationFactory, database testing strategies, authentication testing, snapshot testing, architecture testing, and performance testing approaches."
 tags: [asp-net-core, testing, integration-testing, testcontainers, performance, architecture]
@@ -584,51 +584,6 @@ bombardier -c 50 -d 30s http://localhost:5000/api/products
 ```
 
 The command runs 50 concurrent connections for 30 seconds and reports requests per second, latency percentiles, and error rates. Bombardier runs faster than K6 but offers fewer features. It works well for simple throughput tests.
-
-## Testing with .NET Aspire
-
-.NET Aspire provides orchestration for distributed applications. Aspire apps include multiple services that communicate with each other. Testing these applications requires starting all services and verifying their interactions.
-
-Aspire's testing support uses DistributedApplicationTestingBuilder to launch your entire application in test mode. The builder starts the AppHost and all configured resources, giving you endpoints to test against.
-
-```csharp
-public class AspireIntegrationTests : IAsyncLifetime
-{
-    private DistributedApplication _app = null!;
-    private HttpClient _client = null!;
-
-    public async Task InitializeAsync()
-    {
-        var appHost = await DistributedApplicationTestingBuilder
-            .CreateAsync<Projects.AppHost>();
-
-        _app = await appHost.BuildAsync();
-        await _app.StartAsync();
-
-        _client = _app.CreateHttpClient("api");
-    }
-
-    [Fact]
-    public async Task ApiService_ReturnsWeatherForecast()
-    {
-        var response = await _client.GetAsync("/weatherforecast");
-        response.EnsureSuccessStatusCode();
-
-        var forecasts = await response.Content
-            .ReadFromJsonAsync<List<WeatherForecast>>();
-        Assert.NotNull(forecasts);
-    }
-
-    public async Task DisposeAsync()
-    {
-        await _app.DisposeAsync();
-    }
-}
-```
-
-Aspire tests run services as separate processes. This closely matches production behavior but means tests can't access internal service state directly. You test through public interfaces like HTTP endpoints or message queues.
-
-The testing builder supports the same resource types as the AppHost including containers, databases, and message brokers. Configure resources using environment variables or connection strings just like in production.
 
 ## Testing SignalR Hubs
 

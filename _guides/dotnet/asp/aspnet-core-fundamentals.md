@@ -348,16 +348,16 @@ ASP.NET Core includes a built-in dependency injection container that manages ser
 
 ### Service Lifetimes
 
-Transient services create new instances for each request. Use transient lifetime for lightweight, stateless services where instance reuse provides no benefit. Each time the container resolves a transient service, it creates a fresh instance.
+Singleton services create one instance for the application lifetime. The container creates the instance on first request and reuses it for all subsequent requests. **Singleton is the right default for stateless, thread-safe services.** If a service has no mutable state and its methods are safe to call concurrently, there is no reason to create additional instances. Services like caching layers, configuration managers, formatters, and utility services should be singletons.
 
-Scoped services create one instance per HTTP request. The same instance serves all dependencies within a request, but different requests get different instances. This lifetime suits services that track per-request state like database contexts or services that maintain request-specific context.
+Scoped services create one instance per HTTP request. The same instance serves all dependencies within a request, but different requests get different instances. This lifetime suits services that maintain per-request state like database contexts, unit-of-work implementations, or services that track request-specific context. Most services that hold mutable state in a web application belong at scoped lifetime.
 
-Singleton services create one instance for the application lifetime. The container creates the instance on first request and reuses it for all subsequent requests. Use singletons for expensive-to-create, thread-safe services like caching layers, configuration managers, or logging providers.
+Transient services create a new instance every time the container resolves them. This means that if ServiceA and ServiceB both depend on `IValidator<Order>` and are resolved within the same request, they each get their own instance. With scoped lifetime, they would share the same instance. Transient lifetime matters when a service accumulates internal state during use (like a validator collecting errors) and multiple consumers within the same request need isolation from each other. Outside that narrow case, transient adds allocation overhead without benefit. If the service is stateless, singleton is better; if it needs per-request state, scoped is better.
 
 ```csharp
-builder.Services.AddTransient<IOrderService, OrderService>();
-builder.Services.AddScoped<IDbContext, MyDbContext>();
 builder.Services.AddSingleton<IMemoryCache, MemoryCache>();
+builder.Services.AddScoped<IDbContext, MyDbContext>();
+builder.Services.AddTransient<IValidator<Order>, OrderValidator>();
 ```
 
 ### Lifetime Mismatches
@@ -458,28 +458,32 @@ public class QueueProcessorService : BackgroundService
 
 ExecuteAsync runs asynchronously and continues until the cancellation token signals shutdown. Use this pattern for tasks that process queues, poll external systems, or perform periodic maintenance.
 
-### Hosted Services and Scoped Dependencies
+### Hosted Services and Dependency Lifetimes
 
-Hosted services typically register as singletons, but they often need scoped services like database contexts. You cannot inject scoped services directly into singleton constructors due to lifetime mismatches.
+Hosted services register as singletons, and as established earlier, singleton should be your default for stateless, thread-safe services. If you find a hosted service needing scoped dependencies, that is almost always a sign that something has gone wrong in your service design. The dependencies themselves should probably be singletons too.
 
-Instead, inject IServiceScopeFactory and create scopes manually within the hosted service. Each scope provides access to scoped services and ensures proper disposal.
+The canonical example is database access. `DbContext` is registered as scoped by default, but the correct solution is not to pull scoped services into your singleton through `IServiceScopeFactory`. Instead, use `IDbContextFactory<T>`, which registers as a singleton and creates short-lived `DbContext` instances on demand.
+
+```csharp
+builder.Services.AddDbContextFactory<MyDbContext>(options =>
+    options.UseSqlServer(connectionString));
+```
 
 ```csharp
 public class DataSyncService : BackgroundService
 {
-    private readonly IServiceScopeFactory _scopeFactory;
+    private readonly IDbContextFactory<MyDbContext> _contextFactory;
 
-    public DataSyncService(IServiceScopeFactory scopeFactory)
+    public DataSyncService(IDbContextFactory<MyDbContext> contextFactory)
     {
-        _scopeFactory = scopeFactory;
+        _contextFactory = contextFactory;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            using var scope = _scopeFactory.CreateScope();
-            var dbContext = scope.ServiceProvider.GetRequiredService<MyDbContext>();
+            using var dbContext = _contextFactory.CreateDbContext();
 
             await SyncDataAsync(dbContext);
             await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
@@ -488,49 +492,13 @@ public class DataSyncService : BackgroundService
 }
 ```
 
+This pattern keeps the entire dependency chain singleton-compatible. The factory is a singleton, the hosted service is a singleton, and each `DbContext` instance is created, used, and disposed within a single operation. If you find yourself reaching for `IServiceScopeFactory` in a hosted service, step back and ask why your dependencies are not singletons. The answer is almost always that they should be.
+
 ### Shutdown Considerations
 
 When deploying to environments that can recycle or terminate processes, hosted services might not complete gracefully. IIS and Azure App Service can recycle app pools, interrupting background work. If deploying to these environments, ensure background tasks can resume from interruption or consider external services like Azure Functions, AWS Lambda, or Kubernetes Jobs for critical background processing.
 
 Containerized deployments in orchestrators like Kubernetes provide more control over instance lifecycles, making hosted services more reliable for background work.
-
-## .NET Aspire Service Defaults
-
-.NET Aspire introduces service defaults that configure observability, health checks, and resilience patterns consistently across distributed applications. Service defaults provide opinionated configurations for OpenTelemetry tracing and metrics, default health check endpoints, and service discovery integration.
-
-### ServiceDefaults Project
-
-The Aspire project template creates a ServiceDefaults project containing extension methods that configure these features. The AddServiceDefaults() method sets up OpenTelemetry exporters, configures health check endpoints at /health and /alive, and enables service discovery for communication with other Aspire-managed services.
-
-```csharp
-var builder = WebApplication.CreateBuilder(args);
-
-builder.AddServiceDefaults();
-
-var app = builder.Build();
-
-app.MapDefaultEndpoints();
-```
-
-This consolidates observability and health check configuration into a single call rather than manually configuring each feature. Applications using Aspire service defaults gain consistent telemetry and health reporting without custom configuration.
-
-### OpenTelemetry Integration
-
-Service defaults configure OpenTelemetry to export traces and metrics to configured backends. This includes automatic instrumentation for ASP.NET Core, HttpClient, and database providers like SQL Server and PostgreSQL. Distributed tracing spans across service boundaries, providing visibility into request flows through distributed systems.
-
-Aspire 9.2 improved health check integration by excluding health endpoint traces from telemetry to reduce noise during development. The /health and /alive endpoints still function but don't generate trace spans that clutter diagnostic output.
-
-### When to Use Service Defaults
-
-Use Aspire service defaults when building distributed applications composed of multiple services that need consistent observability and service discovery. Microservices architectures, cloud-native applications deployed to Kubernetes or container platforms, and applications requiring distributed tracing all benefit from the standardized configuration.
-
-Single-service applications or monolithic APIs might not need Aspire's full feature set. Evaluate whether the added complexity of Aspire integration provides sufficient value for your application's architecture and operational requirements.
-
-### Customizing Service Defaults
-
-If the default configuration doesn't suit your needs, create a custom service defaults project with modified configurations. You can adjust OpenTelemetry exporters to target different backends, customize health check endpoints or response formats, or add application-specific health checks beyond HTTP endpoint availability.
-
-The ServiceDefaults project serves as a template. Modify the Extensions.cs file to adjust configurations while maintaining the pattern of centralized service configuration.
 
 ## Key Takeaways
 
@@ -538,4 +506,4 @@ ASP.NET Core unifies host configuration, HTTP processing, and service management
 
 Modern Program.cs patterns consolidate configuration into a single file while extension methods organize large applications. Environments separate development, staging, and production concerns through configuration overlays and conditional middleware. The configuration system layers multiple sources with clear precedence, supporting both file-based and external configuration providers.
 
-Dependency injection manages service lifecycles through transient, scoped, and singleton lifetimes, while keyed services enable multiple implementations of the same interface. Background services run alongside HTTP processing through IHostedService and BackgroundService patterns, requiring careful scope management for scoped dependencies. .NET Aspire service defaults standardize observability and health checks across distributed applications.
+Dependency injection manages service lifecycles through singleton, scoped, and transient lifetimes (with singleton as the right default for stateless services), while keyed services enable multiple implementations of the same interface. Background services run alongside HTTP processing through IHostedService and BackgroundService patterns, and needing scoped dependencies in a singleton hosted service is almost always a design smell rather than a routine pattern.

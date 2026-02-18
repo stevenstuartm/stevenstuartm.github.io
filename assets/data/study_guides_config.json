@@ -860,7 +860,8 @@
           "description": "Validation, serialization, versioning, and OpenAPI documentation",
           "guides": [
             "dotnet/asp/aspnet-validation-data-handling.md",
-            "dotnet/asp/aspnet-versioning-openapi.md"
+            "dotnet/asp/aspnet-versioning-openapi.md",
+            "dotnet/asp/aspnet-api-documentation-strategy.md"
           ]
         },
         {
@@ -878,6 +879,14 @@
             "dotnet/asp/aspnet-health-checks-diagnostics.md",
             "dotnet/asp/aspnet-hosting-deployment.md",
             "dotnet/asp/aspnet-background-services.md"
+          ]
+        },
+        {
+          "name": ".NET Aspire",
+          "description": "Cloud-native orchestration, service defaults, dashboard, and integrations for distributed .NET applications",
+          "guides": [
+            "dotnet/aspire/aspire-fundamentals.md",
+            "dotnet/aspire/aspire-distributed-applications.md"
           ]
         }
       ]

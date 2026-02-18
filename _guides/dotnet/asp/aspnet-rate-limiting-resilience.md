@@ -1,7 +1,7 @@
 ---
 title: "Rate Limiting and Resilience"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "API Security & Resilience"
 description: "Rate limiting middleware, algorithms, and resilience patterns for protecting and stabilizing ASP.NET Core APIs under load and failure scenarios."
 tags: [asp-net-core, rate-limiting, resilience, polly, circuit-breaker, cors, security, performance]

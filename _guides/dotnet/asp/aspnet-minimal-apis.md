@@ -1,7 +1,7 @@
 ---
 title: "Minimal APIs"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "API Programming Models"
 description: "Explores ASP.NET Core Minimal APIs as a lightweight alternative to controllers, covering parameter binding, strongly-typed responses, route organization, filters, validation, and Native AOT compatibility."
 tags: [asp-net-core, minimal-apis, web-api, performance, aot, endpoint-filters, parameter-binding]

@@ -1,7 +1,7 @@
 ---
 title: "Health Checks and Diagnostics"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "Performance & Operations"
 description: "Health checks, observability, and distributed tracing in ASP.NET Core APIs using IHealthCheck, OpenTelemetry, and Activity-based diagnostics."
 tags: [asp-net-core, health-checks, observability, opentelemetry, distributed-tracing, monitoring, diagnostics, kubernetes]
@@ -384,38 +384,6 @@ builder.Services.AddOpenTelemetry()
         .AddMeter("MyApplication.Orders")
         .AddOtlpExporter());
 ```
-
-## .NET Aspire Service Defaults
-
-.NET Aspire provides a set of service defaults that configure OpenTelemetry, health checks, and diagnostic endpoints with sensible settings for cloud-native applications. Service defaults reduce boilerplate by applying common patterns across all services in an application.
-
-### AddServiceDefaults
-
-The `AddServiceDefaults` method wires up OpenTelemetry-based logging, metrics, and tracing. It also configures a default liveness health check, service discovery, and resilient HTTP clients.
-
-```csharp
-builder.AddServiceDefaults();
-```
-
-This single method call configures the OpenTelemetry pipeline, including ASP.NET Core and HTTP client instrumentation. It reads the `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable to determine where telemetry should be sent.
-
-Service defaults also add health check endpoints at `/health` and `/alive`. Traces for these endpoints are excluded by default to reduce noise during development. Additional health checks registered by application code or Aspire integrations contribute to the status returned by these endpoints.
-
-### Default Health Checks
-
-Aspire's service defaults include a basic self-check tagged as live. This check simply returns Healthy, confirming that the application process is running and responsive.
-
-```csharp
-app.MapDefaultEndpoints();
-```
-
-This method exposes both health endpoints configured by service defaults. Additional health checks can be registered through the standard `AddHealthChecks` API and will automatically appear in health check results.
-
-### OpenTelemetry Configuration
-
-The OpenTelemetry pipeline configured by service defaults respects standard OpenTelemetry environment variables like `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_SERVICE_NAME`, and `OTEL_RESOURCE_ATTRIBUTES`. This allows different environments to customize telemetry behavior without changing code.
-
-During local development, Aspire's dashboard receives telemetry and displays it in a unified view. In production, the same configuration sends telemetry to whatever backend is specified in environment variables.
 
 ## Health Check Response Formats
 

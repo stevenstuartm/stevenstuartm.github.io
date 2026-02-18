@@ -1,7 +1,7 @@
 ---
 title: "Validation and Data Handling"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "API Design & Data"
 description: "Comprehensive coverage of validation approaches, content negotiation, formatters, and file handling patterns in ASP.NET Core APIs."
 tags: [asp-net-core, validation, data-annotations, fluent-validation, content-negotiation, file-uploads, json-serialization, model-binding]

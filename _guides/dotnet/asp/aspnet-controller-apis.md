@@ -1,7 +1,7 @@
 ---
 title: "Controller-Based APIs"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "API Programming Models"
 description: "Comprehensive guide to building controller-based Web APIs in ASP.NET Core, covering routing, model binding, filters, return types, and content negotiation."
 tags: [asp-net-core, web-api, mvc, controllers, routing, model-binding, filters]

@@ -1,7 +1,7 @@
 ---
 title: "SignalR and Real-Time APIs"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "API Programming Models"
 description: "Real-time communication patterns in ASP.NET Core using SignalR, Server-Sent Events, and raw WebSockets, including authentication, scaling, and Native AOT support."
 tags: [asp-net-core, signalr, real-time, websockets, server-sent-events, distributed-systems, performance]

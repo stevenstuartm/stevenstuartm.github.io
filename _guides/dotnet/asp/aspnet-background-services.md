@@ -1,7 +1,7 @@
 ---
 title: "Background Services and Job Processing"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "Performance & Operations"
 description: "Learn how to implement background tasks and job processing in ASP.NET Core, from simple hosted services to persistent job scheduling with Hangfire and Quartz.NET."
 tags: [asp-net-core, background-services, job-scheduling, dependency-injection, performance, distributed-systems, observability]
@@ -582,37 +582,6 @@ private async Task ProcessLargeBatchAsync(CancellationToken cancellationToken)
 
 This pattern allows the service to stop immediately when shutdown begins while ensuring no work is lost. The service saves its current position, stops gracefully, and resumes from that position after restart. The checkpoint persists in durable storage, surviving process restarts.
 
-## Background Services in .NET Aspire
-
-.NET Aspire provides orchestration for cloud-native applications including web services, worker services, and infrastructure dependencies. Worker services in Aspire projects register as resources in the application model, allowing the orchestrator to manage their lifecycle, service discovery, and configuration alongside web applications and databases.
-
-Worker services referenced from the Aspire app host project appear in the orchestrator dashboard, providing visibility into their status, logs, and resource consumption. The orchestrator starts worker services when the application starts and stops them during shutdown, coordinating lifecycle across all application components.
-
-```csharp
-// Aspire AppHost project
-var builder = DistributedApplication.CreateBuilder(args);
-
-var queue = builder.AddAzureServiceBus("messaging");
-
-var worker = builder.AddProject<Projects.BackgroundWorker>("worker")
-    .WithReference(queue);
-
-var api = builder.AddProject<Projects.WebApi>("api")
-    .WithReference(queue);
-
-builder.Build().Run();
-```
-
-The worker service project references the same queue resource as the API, enabling the API to enqueue work items and the worker to process them. Aspire handles service discovery, ensuring both the API and worker receive correct connection strings for the queue without hardcoded configuration.
-
-Aspire's dashboard aggregates logs from all services including worker services. During local development, you see logs from web applications and background workers side by side, simplifying debugging of distributed workflows. Traces flow across service boundaries, showing how a web request enqueueing work relates to the background worker processing that work.
-
-### Debugging Worker Services in Aspire
-
-Aspire's orchestration simplifies debugging multi-service scenarios. Set breakpoints in both web projects and worker projects, start the app host, and the debugger attaches to all services simultaneously. When a web request queues work, you can step through the queueing code, then step into the worker processing the queued item, observing the entire flow.
-
-The orchestrator's dashboard shows service status in real time. If a worker service crashes during development, the dashboard highlights the failure and displays the exception. Click through to view detailed logs without navigating between multiple terminal windows or log files.
-
 ## Comparing Background Processing Approaches
 
 Different background processing approaches trade off simplicity, durability, visibility, and operational complexity. Choosing the right approach depends on requirements around job persistence, scheduling complexity, visibility, and infrastructure dependencies.
@@ -624,13 +593,12 @@ Different background processing approaches trade off simplicity, durability, vis
 | Hangfire | Database | Cron, delays | Dashboard | SQL/Redis | Reliable job execution, audit trail |
 | Quartz.NET | Optional | Cron, calendars | Limited | Database for clustering | Complex scheduling, business day awareness |
 | Worker Service | Depends on implementation | Depends on implementation | Depends on implementation | Separate deployment | Resource-intensive work, independent scaling |
-| .NET Aspire Workers | Depends on implementation | Depends on implementation | Dashboard | Orchestrator | Cloud-native distributed systems |
 
-Simple periodic tasks with low resource requirements fit `BackgroundService` implementations hosted alongside web applications. High-throughput in-memory queuing benefits from `Channel<T>`. Reliable job execution with visibility requires Hangfire. Complex scheduling with cron expressions and calendar awareness favors Quartz.NET. Resource-intensive or independently scalable work warrants dedicated worker services. Cloud-native distributed applications benefit from .NET Aspire orchestration.
+Simple periodic tasks with low resource requirements fit `BackgroundService` implementations hosted alongside web applications. High-throughput in-memory queuing benefits from `Channel<T>`. Reliable job execution with visibility requires Hangfire. Complex scheduling with cron expressions and calendar awareness favors Quartz.NET. Resource-intensive or independently scalable work warrants dedicated worker services.
 
 ## Red Flags
 
-**Injecting scoped services directly into background service constructors** throws exceptions at runtime. Background services live as singletons and cannot consume scoped dependencies directly. Use `IServiceScopeFactory` to create scopes on demand.
+**Injecting scoped services directly into background service constructors** throws exceptions at runtime. Background services live as singletons and cannot consume scoped dependencies directly. Rather than reaching for `IServiceScopeFactory`, reconsider whether those dependencies should be singletons. For database access, use `IDbContextFactory<T>` which is singleton-compatible and creates short-lived `DbContext` instances on demand.
 
 **Ignoring cancellation tokens** prevents graceful shutdown. Long-running operations that don't respond to cancellation force the host to terminate abruptly, risking incomplete work and resource leaks. Propagate cancellation tokens through all async operations.
 

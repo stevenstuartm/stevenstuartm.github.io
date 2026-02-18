@@ -1,7 +1,7 @@
 ---
 title: "API Security"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "API Security & Resilience"
 description: "Comprehensive security practices for ASP.NET Core APIs, covering transport security, input validation, authentication, secrets management, and defense against common vulnerabilities."
 tags: [asp-net-core, security, authentication, api-security, owasp, data-protection, encryption]

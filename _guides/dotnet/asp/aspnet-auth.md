@@ -1,7 +1,7 @@
 ---
 title: "Authentication and Authorization"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "API Security & Resilience"
 description: "Comprehensive guide to authentication schemes, authorization policies, and securing ASP.NET Core API endpoints using JWT, OAuth, Identity, and custom handlers."
 tags: [asp-net-core, authentication, authorization, jwt, oauth, security, identity]

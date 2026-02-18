@@ -1,7 +1,7 @@
 ---
 title: "Caching and Performance"
 layout: guide
-category: ".NET & C#"
+category: "ASP.NET Core"
 subcategory: "Performance & Operations"
 description: "Comprehensive coverage of ASP.NET Core caching strategies including response caching, output caching, HybridCache, ETag-based validation, compression, async patterns, and JSON serialization optimization for high-performance APIs."
 tags: [asp-net-core, performance, caching, compression, optimization, async-programming, json-serialization]
