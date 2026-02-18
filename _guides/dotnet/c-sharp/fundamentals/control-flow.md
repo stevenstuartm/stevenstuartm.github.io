@@ -647,21 +647,6 @@ var tasks = items.Select(item => ProcessItemAsync(item));
 await Task.WhenAll(tasks);
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Exception filters | C# 6.0 | Conditional catch clauses |
-| throw expressions | C# 7.0 | throw in expressions |
-| Pattern matching in switch | C# 7.0 | Type patterns in switch |
-| Local functions | C# 7.0 | Functions within functions |
-| Switch expressions | C# 8.0 | Expression-based switching |
-| Using declarations | C# 8.0 | Simplified resource management |
-| Property patterns | C# 8.0 | Match on property values |
-| Relational patterns | C# 9.0 | <, >, <=, >= in patterns |
-| Logical patterns | C# 9.0 | and, or, not combinators |
-| List patterns | C# 11 | Match array/list structure |
-
 ## Key Takeaways
 
 **Prefer switch expressions for mapping**: When transforming a value based on patterns, switch expressions are clearer than if-else chains.

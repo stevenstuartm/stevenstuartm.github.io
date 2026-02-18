@@ -61,6 +61,73 @@ These terms describe how type relationships work with generic types.
 
 These concepts matter when designing generic interfaces and understanding why certain type substitutions are allowed or forbidden.
 
+## Statements and Expressions
+
+### What Distinguishes Them
+
+An **expression** evaluates to a value. `2 + 3` is an expression that evaluates to `5`. `customer.Name` is an expression that evaluates to a string. A method call like `GetTotal()` is an expression when it returns a value.
+
+A **statement** performs an action without producing a value. A `for` loop iterates. An `if` block branches. A variable declaration reserves space and a name. Statements control program flow and produce side effects, but you cannot assign a statement to a variable or pass it as an argument.
+
+The distinction matters because expressions compose and statements do not. You can nest expressions inside other expressions (`Math.Max(a + b, c * d)` combines four expressions into one), but statements must appear sequentially. You cannot embed a `for` loop inside an addition.
+
+### Where They Overlap in C\#
+
+Some constructs blur the line. Assignment in C# is both a statement and an expression: `x = 5` assigns a value and also evaluates to `5`, which is why `a = b = c = 0` works as a chain. Method calls that return `void` are expression statements; they are syntactically expressions but used for their side effects rather than their value.
+
+The ternary operator `condition ? a : b` is an expression that returns a value, while `if/else` is a statement that does not. This is why you can write `var x = condition ? a : b` but cannot write `var x = if (condition) a else b`. The two constructs handle the same branching logic, but only one produces a value.
+
+### Statement-Oriented and Expression-Oriented Languages
+
+Languages fall on a spectrum based on how much of their syntax produces values.
+
+**Statement-oriented languages** like C and traditional C# draw a sharp line between statements and expressions. Control flow constructs like `if`, `for`, and `switch` are statements that do not produce values. To capture a result from branching logic, you declare a variable before the branch and assign it inside each path.
+
+**Expression-oriented languages** like F#, Rust, and Kotlin make most or all constructs produce values. In F#, `if/else` is an expression that returns a value directly. In Rust, even blocks evaluate to their last expression. This lets you write `let x = if condition { a } else { b }` without intermediate variables.
+
+The difference shows up in everyday code. In a statement-oriented style, branching requires mutable variables and multi-step assignment:
+
+```csharp
+// Statement-oriented: declare, then assign in branches
+string label;
+if (score >= 90)
+    label = "A";
+else if (score >= 80)
+    label = "B";
+else
+    label = "C";
+```
+
+An expression-oriented approach produces the value directly:
+
+```csharp
+// Expression-oriented: the construct itself produces the value
+var label = score switch
+{
+    >= 90 => "A",
+    >= 80 => "B",
+    _ => "C"
+};
+```
+
+### How C\# Has Been Moving Toward Expressions
+
+C# started as a statement-oriented language and has been steadily adding expression-oriented features. This shift reflects a broader recognition that expression-oriented code tends to be more concise and composable.
+
+The **ternary operator** (C# 1.0) was the original expression-based conditional, offering an alternative to `if/else` for simple value selection. **LINQ query expressions** (C# 3.0) introduced a declarative way to work with collections, replacing `for` loops and mutable accumulators with composable expressions like `items.Where(x => x.IsActive).Select(x => x.Name)`.
+
+**Expression-bodied members** (C# 6.0) allowed methods, properties, and other members to be written as single expressions using `=>`, eliminating boilerplate `return` statements. **Switch expressions** (C# 8.0) transformed `switch` from a statement into an expression that returns a value directly. **Pattern matching** (C# 7.0 through 11) added relational, logical, property, and list patterns, all usable within expressions.
+
+Each version gives developers more ways to write code that produces values directly rather than executing steps that modify state.
+
+### Why It Matters for Code Design
+
+Expressions naturally produce immutable bindings. The value is computed once and assigned, leaving no window where a variable exists in an uninitialized or intermediate state. In the statement-oriented `if/else` example above, `label` exists for several lines with no value, and nothing prevents you from accidentally using it before assignment. The switch expression eliminates that risk.
+
+Expressions also compose. You can pass a switch expression into a method call, embed a ternary inside string interpolation, or chain LINQ operations without declaring intermediate variables at each step. Statement-oriented code requires you to break these into separate steps with named temporaries.
+
+Statements still have their place. Complex operations with multiple side effects, resource management with `using` blocks, and iterative algorithms with early exits read more naturally as sequences of steps. The goal is not to eliminate statements but to recognize when an expression-oriented approach produces clearer code.
+
 ## Data Characteristics
 
 How data behaves (whether it can change, how it is stored, and how it is passed around) affects program correctness and reasoning.
@@ -375,6 +442,7 @@ Closures enable powerful patterns but can cause subtle bugs if you capture loop 
 ## Key Takeaways
 
 - **Type system concepts** (static/dynamic, strong/weak, variance) determine how the compiler helps prevent errors
+- **Statements and expressions** define how code is structured; understanding the distinction and C#'s shift toward expression-oriented features leads to more concise, composable code
 - **Data characteristics** (mutability, value/reference) affect how data flows through your program and whether changes are isolated or shared
 - **Function behavior** (purity, idempotency, determinism) determines testability and reliability
 - **Execution models** (sync/async, concurrent/parallel) enable responsive and efficient programs

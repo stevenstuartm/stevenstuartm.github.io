@@ -560,23 +560,6 @@ From highest to lowest precedence:
 
 When in doubt, use parentheses to make intent explicit.
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Null-conditional (?.) | C# 6.0 | Safe member access |
-| nameof | C# 6.0 | Refactor-safe string names |
-| Expression-bodied members | C# 6.0 | Concise single-expression syntax |
-| is with patterns | C# 7.0 | Type checking with variable binding |
-| Switch on patterns | C# 7.0 | Pattern-based switch statements |
-| Null-coalescing assignment | C# 8.0 | Simplified null initialization |
-| Range and index | C# 8.0 | Python-like slicing |
-| Switch expressions | C# 8.0 | Expression-based pattern matching |
-| Relational patterns | C# 9.0 | Comparison in patterns |
-| Logical patterns | C# 9.0 | and, or, not in patterns |
-| Static lambdas | C# 9.0 | Allocation-free delegates |
-| List patterns | C# 11 | Array/list deconstruction |
-
 ## Key Takeaways
 
 **Use null operators liberally**: The `?.`, `??`, and `??=` operators eliminate defensive null checking boilerplate and make intent clear.
