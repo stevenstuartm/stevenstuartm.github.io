@@ -108,6 +108,7 @@
             "architecture/DesignImplementation.md",
             "architecture/domain-driven-design.md",
             "architecture/api-design-architecture.md",
+            "architecture/grpc-architecture-design.md",
             "architecture/testing-strategy-architecture.md",
             "architecture/performance-engineering.md"
           ]
@@ -839,10 +840,11 @@
         },
         {
           "name": "API Programming Models",
-          "description": "Controller-based APIs, minimal APIs, and real-time communication",
+          "description": "Controller-based APIs, minimal APIs, gRPC, and real-time communication",
           "guides": [
             "dotnet/asp/aspnet-controller-apis.md",
             "dotnet/asp/aspnet-minimal-apis.md",
+            "dotnet/asp/aspnet-grpc.md",
             "dotnet/asp/aspnet-signalr-realtime.md"
           ]
         },
