@@ -366,76 +366,86 @@ service.OrderPlaced += (sender, e) =>
 
 ### Event Accessors
 
-Control how handlers are added/removed.
+The default `event` keyword already generates thread-safe `add`/`remove` accessors using `Interlocked.CompareExchange` (since C# 4.0). Combined with the `?.Invoke()` pattern for raising, standard events handle concurrency correctly out of the box. Custom accessors are for when you need additional behavior beyond subscribe and unsubscribe.
 
 ```csharp
-public class SecurePublisher
+public class AuditedPublisher
 {
-    private EventHandler<EventArgs>? eventHandlers;
-    private readonly object lockObject = new();
+    private readonly List<EventHandler<EventArgs>> handlers = new();
+    private readonly int maxSubscribers;
 
-    public event EventHandler<EventArgs> SecureEvent
+    public AuditedPublisher(int maxSubscribers = 10)
+    {
+        this.maxSubscribers = maxSubscribers;
+    }
+
+    public event EventHandler<EventArgs> DataReceived
     {
         add
         {
-            lock (lockObject)
-            {
-                eventHandlers += value;
-                Console.WriteLine("Handler added");
-            }
+            if (handlers.Count >= maxSubscribers)
+                throw new InvalidOperationException(
+                    $"Cannot exceed {maxSubscribers} subscribers");
+
+            handlers.Add(value);
+            Console.WriteLine($"Handler added (total: {handlers.Count})");
         }
         remove
         {
-            lock (lockObject)
-            {
-                eventHandlers -= value;
-                Console.WriteLine("Handler removed");
-            }
+            handlers.Remove(value);
+            Console.WriteLine($"Handler removed (total: {handlers.Count})");
         }
     }
 
-    protected void OnSecureEvent()
+    protected void OnDataReceived()
     {
-        EventHandler<EventArgs>? handlers;
-        lock (lockObject)
-        {
-            handlers = eventHandlers;
-        }
-        handlers?.Invoke(this, EventArgs.Empty);
+        foreach (var handler in handlers)
+            handler.Invoke(this, EventArgs.Empty);
     }
 }
 ```
+
+Custom accessors replace the compiler-generated implementation entirely, so the built-in `Interlocked.CompareExchange` thread safety no longer applies. If the event will be subscribed to or raised from multiple threads, you become responsible for synchronization yourself. In practice this rarely matters because events are typically subscribed during initialization and raised from a single context.
+
+**When you need custom accessors**:
+
+- Logging or auditing subscriptions and unsubscriptions
+- Limiting the number of subscribers
+- Validating handlers before accepting them
+- Forwarding subscriptions to a different underlying event
+
+**When you don't**:
+
+- Thread safety alone is not a reason. The default accessors and `?.Invoke()` already handle that.
 
 ## Delegate Patterns
 
-### Callback Pattern
+### Delegates as Behavior Parameters
+
+Delegates are well-suited when a method needs the caller to supply a small piece of behavior rather than a result. LINQ is the most common example: `Where`, `Select`, and `OrderBy` all accept delegates that tell the algorithm how to evaluate each element without dictating what happens next.
 
 ```csharp
-public class DataLoader
+public class Inventory
 {
-    public void LoadDataAsync(
-        string url,
-        Action<string> onSuccess,
-        Action<Exception>? onError = null)
+    private readonly List<Product> products = new();
+
+    public IEnumerable<Product> Search(Func<Product, bool> criteria)
     {
-        try
-        {
-            var data = FetchData(url);
-            onSuccess(data);
-        }
-        catch (Exception ex)
-        {
-            onError?.Invoke(ex);
-        }
+        return products.Where(criteria);
+    }
+
+    public decimal Aggregate(Func<Product, decimal> selector)
+    {
+        return products.Sum(selector);
     }
 }
 
-// Usage
-loader.LoadDataAsync(
-    "https://api.example.com/data",
-    data => Console.WriteLine($"Loaded: {data}"),
-    error => Console.WriteLine($"Error: {error.Message}"));
+// The caller provides the evaluation logic, not the orchestration
+var expensiveItems = inventory.Search(p => p.Price > 100m);
+var totalWeight = inventory.Aggregate(p => p.Weight);
 ```
+
+This is distinct from callback-style patterns like `LoadDataAsync(url, onSuccess, onError)`, which were common before `async/await`. In modern C#, `Task<T>` replaces that pattern: the caller awaits a result, exceptions propagate naturally, and orchestration lives in the calling layer where it belongs. If you find yourself passing `Action` or `Action<Exception>` callbacks for flow control, that's usually a sign that the method should return a `Task<T>` instead.
 
 ### Strategy Pattern with Delegates
 
@@ -530,6 +540,10 @@ var obj2 = lazy.Value; // Same instance
 
 ### Thread-Safe Event Raising
 
+An event with no subscribers is `null`. Delegates are immutable reference types, so `+=` creates a new delegate and `-=` removing the last subscriber sets the field back to `null` rather than leaving an empty invocation list. This means any event can be null at the point of raising, either because nothing ever subscribed or because the last subscriber was removed.
+
+The `?.Invoke()` pattern handles both cases. Assigning to a local variable first captures a snapshot of the delegate reference so that even if another thread unsubscribes between the read and the invoke, the local copy remains stable.
+
 ```csharp
 public class Publisher
 {
@@ -537,19 +551,21 @@ public class Publisher
 
     protected virtual void OnSomethingHappened()
     {
-        // Capture to local variable for thread safety
         var handler = SomethingHappened;
         handler?.Invoke(this, EventArgs.Empty);
     }
 }
 ```
 
+In practice, the local variable assignment and `?.Invoke()` are doing the same null-safe work. `SomethingHappened?.Invoke(this, EventArgs.Empty)` compiles to an equivalent local capture, so either form is safe. The explicit local variable makes the intent visible, which is why it remains the conventional pattern.
+
 ### Weak Event Pattern
 
-Prevent memory leaks from event subscriptions.
+A standard event subscription keeps the subscriber alive as long as the publisher exists, because the delegate holds a strong reference to the subscriber. If the publisher is long-lived (an application-level service, a static event, or a shared cache) and subscribers are short-lived (UI views, request-scoped handlers), those subscribers can never be garbage collected. This is the classic event-driven memory leak.
+
+The weak event pattern wraps subscriptions in `WeakReference<T>` so the event does not prevent garbage collection of the subscriber. Dead references are cleaned up when the event is raised.
 
 ```csharp
-// Using WeakEventManager (WPF) or custom implementation
 public class WeakEventSource<TEventArgs> where TEventArgs : EventArgs
 {
     private readonly List<WeakReference<EventHandler<TEventArgs>>> handlers = new();
@@ -573,6 +589,10 @@ public class WeakEventSource<TEventArgs> where TEventArgs : EventArgs
     }
 }
 ```
+
+**Why not use this every time?** Weak references introduce real costs. The GC can collect the subscriber at any point, so handlers silently disappear without the publisher or subscriber knowing. This makes debugging harder because a handler that "should" fire simply doesn't, with no error or indication why. There is also overhead from `WeakReference<T>` allocation, the cleanup pass on every raise, and the `TryGetTarget` check per handler.
+
+The better default is explicit unsubscription through `IDisposable` (shown below), which makes the subscription lifetime visible and deterministic. Weak events are appropriate when the publisher genuinely cannot know or control subscriber lifetimes, like static events, long-lived infrastructure services, or framework-level event aggregators where subscribers come and go unpredictably. In WPF, `WeakEventManager` exists for exactly this reason: views bind to long-lived data sources and the framework cannot guarantee that every view will cleanly unsubscribe.
 
 ### Unsubscribe Pattern
 
@@ -630,10 +650,12 @@ dogAction(new Dog());
 
 **Events for pub-sub**: Use events when multiple subscribers need to respond to something happening.
 
-**Lambdas for inline logic**: Use lambda expressions for short, focused delegate implementations.
+**Delegates for behavior, not orchestration**: Delegates are well-suited as behavior parameters (LINQ predicates, strategy injection, factories). If you're passing `Action` or `Action<Exception>` callbacks for flow control, that's a sign the method should return a `Task<T>` instead.
 
-**Unsubscribe to prevent leaks**: Always unsubscribe from events when the subscriber is disposed.
+**Default events are already thread-safe**: Since C# 4.0, compiler-generated `add`/`remove` accessors use `Interlocked.CompareExchange`. Custom event accessors are for logging, validation, or subscriber limits, not for thread safety alone.
 
-**Thread-safe event raising**: Copy the event to a local variable before null-checking and invoking.
+**Events with no subscribers are null**: Delegates are immutable; `-=` on the last subscriber sets the backing field to `null`, not an empty invocation list. The `?.Invoke()` pattern handles this, and the compiler generates an equivalent local capture whether you use an explicit local variable or not.
 
-**Static lambdas for performance**: Use `static` keyword when you don't need to capture variables to avoid allocations.
+**Unsubscribe explicitly through `IDisposable`**: Deterministic unsubscription is the default approach for managing event lifetimes. Weak events are appropriate only when the publisher genuinely cannot control subscriber lifetimes, like static events or framework-level aggregators.
+
+**Lambdas for inline logic**: Use lambda expressions for short, focused delegate implementations. Use the `static` keyword when you don't need to capture variables to avoid allocations.

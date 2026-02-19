@@ -74,10 +74,17 @@ string interpolated = $"""
 
 ### UTF-8 String Literals (C# 11)
 
-The `u8` suffix creates UTF-8 encoded byte sequences directly, avoiding runtime encoding overhead.
+C# strings are internally encoded as UTF-16, where each character uses two or more bytes. Most I/O operations like HTTP, file streams, and network protocols use UTF-8 instead. Without the `u8` suffix, converting a string to UTF-8 requires a runtime call like `Encoding.UTF8.GetBytes()`, which encodes the characters on every invocation and allocates a new byte array each time.
 
 ```csharp
-// UTF-8 literal produces ReadOnlySpan<byte>
+// Without u8: runtime encoding + heap allocation on every call
+byte[] headerBytes = Encoding.UTF8.GetBytes("Content-Type: application/json\r\n");
+```
+
+The `u8` suffix tells the compiler to encode the string as UTF-8 bytes at compile time and embed them directly in the assembly. The result is a `ReadOnlySpan<byte>` (a lightweight view over contiguous memory, covered in detail in [High-Performance String Operations](#high-performance-string-operations)) with zero runtime encoding cost and zero heap allocation.
+
+```csharp
+// With u8: bytes are baked into the compiled assembly, nothing happens at runtime
 ReadOnlySpan<byte> utf8 = "Hello"u8;
 
 // Useful for HTTP headers, protocols, and APIs expecting UTF-8
@@ -95,7 +102,7 @@ ReadOnlySpan<byte> httpResponse = """
     """u8;
 ```
 
-UTF-8 literals are particularly valuable in network programming, serialization, and any code that communicates with systems expecting UTF-8 encoding.
+This is most valuable in performance-sensitive paths like web servers, serialization, and protocol handling where the same constant strings are written as UTF-8 bytes repeatedly.
 
 ### String Interpolation
 
@@ -442,6 +449,24 @@ int parsed = int.Parse(numberSpan);
 
 ## High-Performance String Operations
 
+### What Is a Span?
+
+`Span<T>` and `ReadOnlySpan<T>` are stack-allocated types that represent a contiguous region of memory without owning it. Think of a span as a window into existing data: it holds a pointer and a length, but it does not copy or allocate anything on the heap.
+
+For string work, `ReadOnlySpan<char>` lets you slice, search, and compare portions of a string without calling `Substring()`, which would allocate an entirely new string object each time. The `.AsSpan()` method creates this window over the string's existing character buffer.
+
+```csharp
+string text = "Hello, World!";
+
+// Substring allocates a new string on the heap
+string sub = text.Substring(0, 5);  // "Hello" — new object, new memory
+
+// AsSpan creates a view into the original string's memory — no allocation
+ReadOnlySpan<char> span = text.AsSpan(0, 5);  // "Hello" — same memory, just a pointer + length
+```
+
+Spans come in two forms. `Span<T>` allows reading and writing, while `ReadOnlySpan<T>` is read-only. Since strings are immutable, string spans are always `ReadOnlySpan<char>`. Both types are `ref struct`s, which means they can only live on the stack and cannot be stored in fields, captured in lambdas, or used across `await` boundaries. This constraint is what makes them safe: the runtime guarantees the memory they point to stays valid for as long as the span exists.
+
 ### Span-Based String Manipulation
 
 ```csharp
@@ -487,12 +512,14 @@ string formatted = string.Create(20, (name: "Alice", age: 30), (chars, state) =>
 });
 ```
 
-### SearchValues (C# 8.0 / .NET 8)
+### SearchValues (.NET 8)
 
-Optimized searching for multiple values.
+Methods like `IndexOfAny(char[])` accept a set of characters to search for, but they receive a fresh array on each call and have no opportunity to precompute an efficient lookup structure. For small sets this is fine, but when searching for many values across large or frequently scanned text, the per-call overhead adds up.
+
+`SearchValues<T>` solves this by letting you create the set once at startup. Internally, the runtime picks the best algorithm for the set size and contents, which might be a vectorized bitfield, a hash set, or a simple lookup table. Subsequent calls to `IndexOfAny` pass this precomputed structure instead of a raw array, so the hot path does no setup work at all.
 
 ```csharp
-// Create once, reuse for multiple searches
+// Create once at startup — runtime chooses the optimal search strategy
 private static readonly SearchValues<char> Vowels =
     SearchValues.Create("aeiouAEIOU");
 
@@ -509,16 +536,20 @@ public int CountVowels(ReadOnlySpan<char> text)
 }
 ```
 
-### CompositeFormat (C# 10 / .NET 6)
+### CompositeFormat (.NET 8)
 
-Pre-parsed format strings for repeated use.
+When you call `string.Format("[{0:HH:mm:ss}] {1}: {2}", ...)`, the runtime parses the format string every time to find the `{0}`, `{1}`, `{2}` placeholders and their format specifiers. For a format string used once this is negligible, but in hot paths like logging or serialization where the same pattern runs thousands of times per second, that repeated parsing becomes measurable overhead.
+
+`CompositeFormat` lets you parse the format string once at startup and reuse the result. The `Parse` call analyzes the placeholders and format specifiers up front, so subsequent `string.Format` calls skip the parsing step entirely and go straight to substitution.
 
 ```csharp
+// Parse once at startup — placeholders and format specifiers are pre-analyzed
 private static readonly CompositeFormat LogFormat =
     CompositeFormat.Parse("[{0:HH:mm:ss}] {1}: {2}");
 
 public void Log(string level, string message)
 {
+    // Formatting still happens at runtime, but the format string is not re-parsed
     string formatted = string.Format(null, LogFormat, DateTime.Now, level, message);
     Console.WriteLine(formatted);
 }
@@ -556,19 +587,31 @@ string replaced = Regex.Replace(text, @"\w+@\w+\.\w+", "[EMAIL]");
 
 ### Compiled and Source-Generated Regex
 
+The regex engine has three performance tiers, each shifting more work out of the runtime hot path.
+
+**Interpreted (default).** When you call `Regex.IsMatch(text, pattern)` or `new Regex(pattern)`, the runtime parses the pattern into an internal representation and walks it step-by-step against the input each time. This is fine for one-off or infrequent use, but the interpretation overhead is noticeable if the same pattern runs in a tight loop.
+
+**Compiled.** Adding `RegexOptions.Compiled` tells the runtime to emit IL (intermediate language) bytecode for the pattern the first time it runs. Subsequent matches execute that generated IL directly instead of interpreting the pattern tree, which is significantly faster for repeated use. The tradeoff is a one-time startup cost to JIT-compile the generated IL and a small increase in memory for the compiled code.
+
 ```csharp
-// Compiled regex - faster for repeated use
+// Compiled: IL is generated at runtime on first use, then JIT-compiled
 private static readonly Regex EmailRegex = new(
     @"\w+@\w+\.\w+",
     RegexOptions.Compiled);
+```
 
-// Source-generated regex (C# 11 / .NET 7) - best performance
+**Source-generated (.NET 7+).** The `[GeneratedRegex]` attribute moves compilation from runtime to build time. The C# source generator analyzes the pattern during compilation and emits an optimized C# implementation directly into your assembly. This eliminates the runtime startup cost of `Compiled`, produces code that the JIT compiler can optimize further since it is now regular C# rather than dynamically emitted IL, and makes the generated matching logic visible and debuggable in your project. The method must be `static partial` so the source generator can provide the implementation.
+
+```csharp
+// Source-generated: the compiler writes an optimized C# implementation at build time
 [GeneratedRegex(@"\w+@\w+\.\w+", RegexOptions.IgnoreCase)]
 private static partial Regex EmailRegexGenerated();
 
-// Usage
+// Usage is identical to any other Regex instance
 bool hasEmail = EmailRegexGenerated().IsMatch(text);
 ```
+
+For patterns known at compile time that run frequently, source-generated regex gives the best performance with no runtime compilation cost. Use `Compiled` when patterns are only known at runtime but will be reused. Use interpreted for patterns that run rarely or are constructed dynamically and discarded.
 
 ### Groups and Captures
 
@@ -586,20 +629,28 @@ if (match.Success)
 
 ## String Interning
 
+The CLR maintains an internal hash table called the intern pool that stores a single copy of each unique string value. When two variables hold the same interned string, they both reference the exact same object in memory rather than two separate objects with identical contents. This matters because strings are immutable, so sharing one instance is safe and eliminates duplicate memory usage.
+
+The compiler automatically interns all string literals. That is why `ReferenceEquals("hello", "hello")` returns `true` in the [String Fundamentals](#string-fundamentals) example at the top of this guide: both literals resolve to the same pooled object at compile time. Strings created at runtime through concatenation, user input, file reads, or deserialization are not interned by default, so two runtime strings with identical contents are separate heap objects.
+
+`string.Intern()` manually adds a runtime string to the pool and returns the pooled reference. If an equal string is already in the pool, it returns the existing reference and the runtime copy becomes eligible for garbage collection. `string.IsInterned()` checks whether a matching string exists in the pool without adding one.
+
 ```csharp
+// Runtime strings are separate objects by default
+string a = "status_active";                         // literal, auto-interned
+string b = "status_" + "active";                    // compiler folds this, also interned
+string c = "status_" + Console.ReadLine();          // runtime concatenation, NOT interned
+
 // Manual interning for frequently used runtime strings
 string interned = string.Intern(computedString);
 
-// Check if interned
-string? existing = string.IsInterned(someString);
-
-// Use cases:
-// - Large number of duplicate strings
-// - Strings used as dictionary keys repeatedly
-// - Configuration values accessed frequently
-
-// Caution: interned strings live for app lifetime
+// Check if a matching string is already in the pool
+string? existing = string.IsInterned(someString);   // null if not pooled
 ```
+
+Manual interning is useful when your application processes a large number of duplicate strings at runtime, such as repeated status codes, category names, or dictionary keys read from an external source. By interning them, you keep one copy instead of thousands of identical objects.
+
+The tradeoff is that interned strings live for the entire lifetime of the application and cannot be garbage collected. Interning a large or unbounded set of unique values (like user IDs or timestamps) will cause steady memory growth with no way to reclaim it. Only intern strings from a small, known set of values that repeat frequently.
 
 ## Key Takeaways
 
