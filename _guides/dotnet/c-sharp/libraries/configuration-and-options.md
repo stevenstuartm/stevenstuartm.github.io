@@ -618,17 +618,6 @@ builder.Services.Configure<ComplexOptions>(
     });
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| IConfiguration | .NET Core 1.0 | Unified configuration API |
-| Options pattern | .NET Core 1.0 | Strongly-typed configuration |
-| IOptionsSnapshot | .NET Core 1.1 | Scoped options with reload |
-| IOptionsMonitor | .NET Core 2.0 | Live options with change tokens |
-| ValidateOnStart | .NET 6 | Fail-fast validation |
-| Options validation | .NET Core 2.1 | Data annotations support |
-
 ## Key Takeaways
 
 **Use the options pattern**: Strongly-typed options integrate with DI and enable validation.

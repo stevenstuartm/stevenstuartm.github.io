@@ -565,18 +565,6 @@ public record DatabaseConfig(
         $"Server={Server};Database={Database};Port={Port};Pooling=true;MaxPoolSize={MaxPoolSize}";
 }
 ```
-
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Readonly structs | C# 7.2 | Enforced value immutability |
-| Init-only setters | C# 9.0 | Immutable after construction |
-| Records | C# 9.0 | Value equality, with expressions |
-| Record structs | C# 10 | Value type records |
-| Required members | C# 11 | Enforced initialization |
-| Primary constructors | C# 12 | Simplified class definitions |
-
 ## Key Takeaways
 
 **Use records for data transfer**: DTOs, API models, events, and value objects are ideal record use cases.

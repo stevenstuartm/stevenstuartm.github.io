@@ -599,19 +599,6 @@ public void ProcessLine(ReadOnlySpan<char> line, out ReadOnlySpan<char> name, ou
 - When code clarity is more important than performance
 - When the allocation cost is negligible
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Span<T> | C# 7.2 | Stack-only memory view |
-| ReadOnlySpan<T> | C# 7.2 | Immutable span |
-| Memory<T> | C# 7.2 | Heap-storable memory |
-| stackalloc in expressions | C# 7.2 | Safe stack allocation |
-| ref structs | C# 7.2 | Span-containing types |
-| Index/Range | C# 8.0 | Slicing syntax |
-| MemoryMarshal | .NET Core 2.1 | Low-level memory ops |
-| Inline arrays | C# 12 | Fixed-size buffers without unsafe |
-
 ## Key Takeaways
 
 **Span for local processing**: Use `Span<T>` when processing data within a method without storing references.

@@ -765,15 +765,6 @@ public class InstrumentedCache : IDistributedCache
 }
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| IMemoryCache | .NET Core 1.0 | In-memory caching |
-| IDistributedCache | .NET Core 1.0 | Distributed cache abstraction |
-| Output Caching | .NET 7 | Server-side response cache |
-| HybridCache | .NET 9 | Combined L1/L2 caching |
-
 ## Key Takeaways
 
 **IMemoryCache for single-instance**: Fast, no serialization, but doesn't scale horizontally.

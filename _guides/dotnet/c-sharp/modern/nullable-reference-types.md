@@ -487,15 +487,6 @@ public string Name { get; }
 public Customer(string name) => Name = name;
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Nullable reference types | C# 8.0 | Compile-time null safety |
-| Null parameter checking (!) | C# 8.0 | Suppress null warnings |
-| MemberNotNull attribute | C# 9.0 | Flow analysis for members |
-| Required members | C# 11 | Ensure initialization |
-
 ## Key Takeaways
 
 **Enable NRT for new projects**: Start with `<Nullable>enable</Nullable>` for null safety from the beginning.

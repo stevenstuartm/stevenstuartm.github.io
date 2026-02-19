@@ -305,17 +305,6 @@ catch (JsonException ex)
 }
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| System.Text.Json | .NET Core 3.0 | Built-in JSON support |
-| JsonDocument | .NET Core 3.0 | Read-only DOM |
-| JsonNode | .NET 6 | Mutable DOM |
-| Source generation | .NET 6 | Compile-time serialization |
-| JsonDerivedType | .NET 7 | Polymorphic serialization |
-| Required properties | .NET 7 | `required` keyword support |
-
 ## Key Takeaways
 
 **Use source generation for production**: Eliminates reflection overhead and enables AOT compilation.

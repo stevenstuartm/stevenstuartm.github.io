@@ -707,16 +707,6 @@ public async IAsyncEnumerable<TOutput> TransformAsync<TInput, TOutput>(
 }
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| IAsyncEnumerable | C# 8.0 | Async iteration |
-| System.IO.Pipelines | .NET Core 2.1 | High-perf I/O |
-| System.Threading.Channels | .NET Core 2.1 | Async queues |
-| System.Linq.Async | NuGet package | LINQ for async streams |
-| await foreach | C# 8.0 | Async enumeration |
-
 ## Key Takeaways
 
 **Use IAsyncEnumerable for async iteration**: Stream data without loading everything into memory.

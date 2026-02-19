@@ -528,18 +528,6 @@ foreach (var item in millionsOfItems)
     _logger.LogDebug("Processing {Item}", item);  // Too much logging
 }
 ```
-
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| ILogger abstraction | .NET Core 1.0 | Unified logging API |
-| Log scopes | .NET Core 1.0 | Contextual grouping |
-| Configuration integration | .NET Core 1.0 | appsettings.json support |
-| Source generators | .NET 6 | High-performance logging |
-| JSON console formatter | .NET 5 | Structured console output |
-| W3C trace context | .NET Core 3.0 | Distributed tracing |
-
 ## Key Takeaways
 
 **Use structured logging**: Pass parameters separately, don't interpolate into message strings.

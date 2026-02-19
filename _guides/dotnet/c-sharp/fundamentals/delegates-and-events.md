@@ -624,21 +624,6 @@ Action<Dog> dogAction = (Animal a) => Console.WriteLine(a.GetType());
 dogAction(new Dog());
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Delegates | C# 1.0 | Type-safe function pointers |
-| Anonymous methods | C# 2.0 | Inline delegate creation |
-| Lambda expressions | C# 3.0 | Concise syntax |
-| Func/Action generics | C# 3.0 | Built-in delegate types |
-| Variance in delegates | C# 4.0 | Covariance/contravariance |
-| Static lambdas | C# 9.0 | Prevent variable capture |
-| Natural lambda types | C# 10 | Type inference for lambdas |
-| Lambda attributes | C# 10 | Attributes on lambda expressions |
-| Default lambda parameters | C# 12 | Optional parameters in lambdas |
-| params in lambdas | C# 12 | Variable arguments in lambdas |
-
 ## Key Takeaways
 
 **Use built-in delegates**: Prefer `Func<>`, `Action<>`, and `Predicate<>` over custom delegate types.

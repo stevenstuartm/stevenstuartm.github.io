@@ -585,17 +585,6 @@ await foreach (var item in GenerateSequenceAsync(cts.Token))
 }
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Task, async/await | C# 5.0 | Asynchronous programming model |
-| ConfigureAwait | C# 5.0 | Context control |
-| ValueTask | C# 7.0 | Allocation optimization |
-| Async streams | C# 8.0 | IAsyncEnumerable |
-| Async disposable | C# 8.0 | IAsyncDisposable |
-| EnumeratorCancellation | C# 8.0 | Cancel async enumeration |
-
 ## Key Takeaways
 
 **Async is about I/O, not parallelism**: Use async for I/O-bound operations (network, disk). Use parallel processing for CPU-bound work.

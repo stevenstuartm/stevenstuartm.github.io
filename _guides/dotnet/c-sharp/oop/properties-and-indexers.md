@@ -558,18 +558,6 @@ public class User : IEntity, IConfigurable
     }
 }
 ```
-
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Auto-properties | C# 3.0 | Eliminated property boilerplate |
-| Auto-property initializers | C# 6.0 | Default values for auto-props |
-| Expression-bodied properties | C# 6.0 | Concise computed properties |
-| Expression-bodied accessors | C# 7.0 | Concise get/set bodies |
-| Init-only setters | C# 9.0 | Immutable after construction |
-| Required members | C# 11 | Enforced initialization |
-
 ## Key Takeaways
 
 **Use auto-properties by default**: Only add backing fields when you need validation, lazy loading, or change notification.

@@ -686,17 +686,6 @@ public class RestClient : IRestClient
 }
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| HttpClient | .NET Framework 4.5 | HTTP client class |
-| IHttpClientFactory | .NET Core 2.1 | Managed client lifetime |
-| System.Net.Http.Json | .NET 5 | JSON extensions |
-| SocketsHttpHandler | .NET Core 2.1 | Default handler |
-| HTTP/2 default | .NET Core 3.0 | HTTP/2 support |
-| HTTP/3 | .NET 7 | QUIC-based HTTP |
-
 ## Key Takeaways
 
 **Use IHttpClientFactory**: Never create HttpClient directly in production code. Use the factory for proper connection management.

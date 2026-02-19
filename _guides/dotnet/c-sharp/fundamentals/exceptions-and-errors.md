@@ -888,16 +888,6 @@ finally
 }
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Exception filters | C# 6.0 | when clause in catch |
-| Throw expressions | C# 7.0 | Throw in expressions |
-| Using declarations | C# 8.0 | Simplified using |
-| ThrowIfNull | .NET 6 | Simplified argument checks |
-| CallerArgumentExpression | C# 10 | Better argument validation |
-
 ## Key Takeaways
 
 **Use specific exceptions**: Throw and catch specific exception types rather than generic Exception.

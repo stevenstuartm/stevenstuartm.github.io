@@ -712,17 +712,6 @@ public interface IComparer<in T>
 IComparer<Animal> animalComparer = new AnimalComparer();
 IComparer<Dog> dogComparer = animalComparer; // Contravariant
 ```
-
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Interfaces | C# 1.0 | Contract definitions |
-| Generics in interfaces | C# 2.0 | Type-safe contracts |
-| Covariance/contravariance | C# 4.0 | Flexible generic interfaces |
-| Default interface methods | C# 8.0 | Add members without breaking |
-| Static abstract members | C# 11 | Generic math, factory patterns |
-
 ## Key Takeaways
 
 **Program to interfaces, not implementations**: Define behavior through interfaces and inject dependencies.

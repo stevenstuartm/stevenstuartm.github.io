@@ -581,20 +581,6 @@ public IEnumerable<string> Validate(Customer customer) => customer switch
 };
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Type patterns with is | C# 7.0 | Basic pattern matching |
-| Switch with patterns | C# 7.0 | Pattern-based switch |
-| Property patterns | C# 8.0 | Match object properties |
-| Tuple patterns | C# 8.0 | Match multiple values |
-| Switch expressions | C# 8.0 | Expression-based switching |
-| Relational patterns | C# 9.0 | Comparison operators |
-| Logical patterns | C# 9.0 | and, or, not combinators |
-| Extended property patterns | C# 10 | Dot notation for nested |
-| List patterns | C# 11 | Array/list matching |
-
 ## Key Takeaways
 
 **Use switch expressions for transformations**: When mapping input to output, switch expressions are clearer than if-else chains.

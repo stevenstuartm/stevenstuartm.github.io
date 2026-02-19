@@ -585,17 +585,6 @@ Collection expressions work with any type that:
 - Has a `CollectionBuilder` attribute
 - Has an `Add` method and is constructible
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Generic collections | C# 2.0 | Type-safe collections |
-| Collection initializers | C# 3.0 | Inline initialization |
-| Span<T> | C# 7.2 | Stack-allocated slices |
-| Index/Range | C# 8.0 | Array slicing |
-| IAsyncEnumerable | C# 8.0 | Async iteration |
-| Collection expressions | C# 12 | Unified creation syntax |
-
 ## Key Takeaways
 
 **Match collection to access pattern**: Dictionary for key lookup, HashSet for membership, List for indexed access.

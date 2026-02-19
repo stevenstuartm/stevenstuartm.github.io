@@ -565,22 +565,6 @@ var total = price + tax;         // 108 USD
 var discounted = total * 0.9m;   // 97.2 USD
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Optional parameters | C# 4.0 | Default parameter values |
-| Named parameters | C# 4.0 | Parameter specification by name |
-| Expression-bodied methods | C# 6.0 | Concise single-expression syntax |
-| out var | C# 7.0 | Inline out variable declaration |
-| Local functions | C# 7.0 | Functions within methods |
-| Tuple returns | C# 7.0 | Multiple return values |
-| ref returns | C# 7.0 | Return references |
-| in parameters | C# 7.2 | Read-only reference parameters |
-| ref readonly returns | C# 7.2 | Read-only reference returns |
-| Static local functions | C# 8.0 | No-capture local functions |
-| Default interface methods | C# 8.0 | Implementation in interfaces |
-
 ## Key Takeaways
 
 **Use ref/out sparingly**: Prefer returning values or tuples. Use ref when modifying large structs or when the pattern is well-established (like TryParse).

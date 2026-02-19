@@ -600,20 +600,6 @@ unsafe void ProcessImageFast(byte* pixels, int width, int height)
 | Reinterpret cast | `MemoryMarshal.Cast<TFrom, TTo>()` |
 | Function pointers | Delegates (if allocation acceptable) |
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| unsafe keyword | C# 1.0 | Pointer support |
-| fixed statement | C# 1.0 | Pin managed objects |
-| stackalloc | C# 1.0 | Stack allocation |
-| stackalloc in expressions | C# 7.2 | Safe stackalloc with Span |
-| ref struct | C# 7.2 | Stack-only types with refs |
-| Function pointers | C# 9.0 | Type-safe function pointers |
-| nint/nuint | C# 9.0 | Native-sized integers |
-| InlineArray | C# 12 | Safe fixed buffers |
-| NativeMemory | .NET 6 | Managed native allocation API |
-
 ## Key Takeaways
 
 **Prefer safe alternatives**: `Span<T>`, `Memory<T>`, and `ref` provide most benefits without the risks.

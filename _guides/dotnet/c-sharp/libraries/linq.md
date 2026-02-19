@@ -658,16 +658,6 @@ if (items.TryGetNonEnumeratedCount(out var count) ? count > 5 : items.Skip(5).An
 
 Query syntax shines for simple queries with joins. Method syntax is more flexible for complex transformations.
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| LINQ | C# 3.0 | Core LINQ operators |
-| PLINQ | .NET 4.0 | Parallel LINQ |
-| Index/Range | C# 8.0 | Slicing support |
-| Chunk, *By methods | .NET 6 | Modern convenience methods |
-| DistinctBy, MinBy, MaxBy | .NET 6 | Property-based operations |
-
 ## Key Takeaways
 
 **Understand deferred execution**: Queries don't run until enumerated. Materialize with ToList() when you need to reuse results.

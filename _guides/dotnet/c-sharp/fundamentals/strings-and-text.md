@@ -601,20 +601,6 @@ string? existing = string.IsInterned(someString);
 // Caution: interned strings live for app lifetime
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| String interpolation | C# 6.0 | $ prefix |
-| Span<char> | C# 7.2 | Zero-allocation slicing |
-| Index/Range | C# 8.0 | String slicing syntax |
-| Interpolated verbatim | C# 8.0 | $@"..." |
-| string.Create | .NET Core 2.1 | Buffer-based creation |
-| Raw string literals | C# 11 | """ syntax |
-| UTF-8 string literals | C# 11 | "text"u8 for direct UTF-8 bytes |
-| Source-generated regex | C# 11 | Compile-time regex |
-| SearchValues | .NET 8 | Optimized multi-value search |
-
 ## Key Takeaways
 
 **Strings are immutable**: Every modification creates a new string. Use StringBuilder for building strings in loops.

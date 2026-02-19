@@ -352,16 +352,6 @@ catch (IOException ex)
 }
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| System.IO | .NET 1.0 | Core file operations |
-| Async methods | .NET 4.5 | ReadAllTextAsync, etc. |
-| File.Move overwrite | .NET 5 | Overwrite parameter |
-| Path.Exists | .NET 6 | Check file or directory |
-| RandomAccess | .NET 6 | High-perf file I/O |
-
 ## Key Takeaways
 
 **Use Path.Combine**: Never concatenate paths with string operations. Path.Combine handles cross-platform separators.

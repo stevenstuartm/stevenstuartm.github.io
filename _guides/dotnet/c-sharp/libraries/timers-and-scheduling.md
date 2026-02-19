@@ -435,16 +435,6 @@ public class Throttle
 | One-time delay | `Task.Delay` |
 | Simple retry logic | `Task.Delay` with loop |
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| System.Threading.Timer | .NET 1.0 | Core timer |
-| System.Timers.Timer | .NET 1.0 | Event-based timer |
-| Task.Delay | .NET 4.0 | Async delay |
-| BackgroundService | .NET Core 2.1 | Hosted service base |
-| PeriodicTimer | .NET 6 | Modern async timer |
-
 ## Key Takeaways
 
 **Use PeriodicTimer for async loops**: It's the modern, clean approach for periodic background work in .NET 6+.

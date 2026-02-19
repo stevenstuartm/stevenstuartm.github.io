@@ -591,20 +591,6 @@ void ProcessWithHandle(object resource)
 - Allocate large objects frequently
 - Ignore memory warnings from profilers
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Garbage Collector | .NET 1.0 | Automatic memory management |
-| Generational GC | .NET 1.0 | Gen0/1/2 optimization |
-| Concurrent GC | .NET 2.0 | Reduced pause times |
-| Background GC | .NET 4.0 | Non-blocking Gen2 collection |
-| Large Object Heap compaction | .NET 4.5.1 | On-demand LOH compaction |
-| No GC Region | .NET 4.6 | Suppress GC temporarily |
-| Span<T> | .NET Core 2.1 | Stack allocation, slicing |
-| Pinned Object Heap | .NET 5 | Dedicated heap for pinned objects |
-| GCMemoryInfo | .NET 5 | Detailed GC statistics |
-
 ## Key Takeaways
 
 **Trust the GC**: It's highly optimized. Manual intervention rarely helps and often hurts.

@@ -886,22 +886,6 @@ public void TransferOrdered(Account from, Account to, decimal amount)
 }
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| lock keyword | C# 1.0 | Basic mutual exclusion |
-| Monitor class | .NET 1.0 | Underlying lock mechanism |
-| ReaderWriterLock | .NET 1.0 | Read/write separation |
-| Interlocked | .NET 1.0 | Lock-free atomic operations |
-| SemaphoreSlim | .NET 4.0 | Lightweight semaphore with async |
-| ManualResetEventSlim | .NET 4.0 | Lightweight event |
-| SpinLock, SpinWait | .NET 4.0 | Spin-based synchronization |
-| CountdownEvent | .NET 4.0 | Fork-join synchronization |
-| Barrier | .NET 4.0 | Multi-phase synchronization |
-| ReaderWriterLockSlim | .NET 3.5 | Improved reader-writer lock |
-| Lock type | C# 13 / .NET 9 | Dedicated lock type |
-
 ## Key Takeaways
 
 **Start with lock**: The `lock` statement handles most scenarios. Only reach for other primitives when profiling shows a need.

@@ -687,18 +687,6 @@ foreach (var item in items)
 }
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Parallel class | .NET 4.0 | Parallel loops |
-| PLINQ | .NET 4.0 | Parallel LINQ |
-| Concurrent collections | .NET 4.0 | Thread-safe collections |
-| Task Parallel Library | .NET 4.0 | Task-based parallelism |
-| SemaphoreSlim | .NET 4.0 | Lightweight semaphore |
-| Channels | .NET Core 2.1 | Modern producer-consumer |
-| IAsyncEnumerable | .NET Core 3.0 | Async streams |
-
 ## Key Takeaways
 
 **Use async for I/O, parallel for CPU**: Async frees threads during I/O waits. Parallel uses multiple threads for CPU work.

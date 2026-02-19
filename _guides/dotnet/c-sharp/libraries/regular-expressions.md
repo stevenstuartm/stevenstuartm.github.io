@@ -297,18 +297,6 @@ var numbers = Regex.Matches("Price: $19.99, Qty: 5", @"\d+\.?\d*")
     .Select(m => decimal.Parse(m.Value))
     .ToList();  // [19.99, 5]
 ```
-
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Regex class | .NET 1.0 | Core regex support |
-| RegexOptions.Compiled | .NET 1.0 | Performance optimization |
-| Named groups | .NET 1.0 | Readable captures |
-| Regex timeout | .NET 4.5 | Backtracking protection |
-| Source generation | .NET 7 | Compile-time regex |
-| Non-backtracking mode | .NET 7 | RegexOptions.NonBacktracking |
-
 ## Key Takeaways
 
 **Use source-generated regex**: In .NET 7+, prefer `[GeneratedRegex]` for compile-time validation and performance.

@@ -530,19 +530,6 @@ var app = new Excel.Application();
 extern void GetPath(string output);  // Wrong - use StringBuilder
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| P/Invoke | .NET 1.0 | Basic native interop |
-| COM Interop | .NET 1.0 | COM component access |
-| SafeHandle | .NET 2.0 | Reliable resource cleanup |
-| Span<T> marshaling | .NET Core 2.1 | Efficient buffer passing |
-| LibraryImport | .NET 7 | Source-generated P/Invoke |
-| NativeLibrary | .NET Core 3.0 | Runtime library loading |
-| ComWrappers | .NET 5 | AOT-compatible COM |
-| Function pointers | C# 9 | Type-safe native callbacks |
-
 ## Key Takeaways
 
 **Prefer LibraryImport**: For .NET 7+, use source-generated interop for better performance and AOT compatibility.

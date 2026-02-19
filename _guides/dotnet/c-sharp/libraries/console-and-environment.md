@@ -418,16 +418,6 @@ byte[] jsonBytes = JsonSerializer.SerializeToUtf8Bytes(data);
 var data = JsonSerializer.Deserialize<MyData>(jsonBytes);
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Console class | .NET 1.0 | Core console I/O |
-| Environment class | .NET 1.0 | Environment access |
-| BinaryWriter/Reader | .NET 1.0 | Binary serialization |
-| Console.GetCursorPosition | .NET 5 | Tuple-returning method |
-| TickCount64 | .NET Core 3.0 | 64-bit uptime counter |
-
 ## Key Takeaways
 
 **Console.Error for diagnostics**: Separate error stream allows redirecting stdout while keeping errors visible.

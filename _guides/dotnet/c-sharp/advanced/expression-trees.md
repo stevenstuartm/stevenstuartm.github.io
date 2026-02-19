@@ -524,16 +524,6 @@ public bool CheckCached(Expression<Func<Person, bool>> expr, Person p)
 }
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Expression Trees | C# 3.0 | LINQ foundation |
-| Expression Visitor | .NET 4.0 | Tree traversal/modification |
-| Improved debugging | .NET 4.0 | DebugView property |
-| Block expressions | .NET 4.0 | Statement-like expressions |
-| Index expressions | .NET 4.0 | Indexer access |
-
 ## Key Takeaways
 
 **Code as data**: Expression trees let you inspect and manipulate code structure at runtime.

@@ -580,17 +580,6 @@ var spec = new AndSpecification<Customer>(
 var premiumActive = customers.Where(c => spec.IsSatisfiedBy(c));
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Generics | C# 2.0 | Type-safe reusable code |
-| Variance | C# 4.0 | Covariance/contravariance |
-| notnull constraint | C# 8.0 | Null safety |
-| unmanaged constraint | C# 7.3 | Pointer operations |
-| Default constraint | C# 7.3 | Allow default(T) pattern |
-| Static abstract members | C# 11 | Generic math |
-
 ## Key Takeaways
 
 **Use generics for type-safe reusability**: Avoid object-based collections and casts.

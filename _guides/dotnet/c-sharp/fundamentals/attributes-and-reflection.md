@@ -681,17 +681,6 @@ public static class SimpleMapper
 var dto = SimpleMapper.Map<Person, PersonDto>(person);
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Attributes | C# 1.0 | Declarative metadata |
-| CallerInfo attributes | C# 5.0 | Caller member, file, line |
-| nameof operator | C# 6.0 | Type-safe member names |
-| Source generators | C# 9.0 | Compile-time code generation |
-| CallerArgumentExpression | C# 10 | Capture argument expressions |
-| Generic attributes | C# 11 | Type parameters on attributes |
-
 ## Key Takeaways
 
 **Attributes for metadata**: Use attributes to add declarative information that tools and frameworks can read.

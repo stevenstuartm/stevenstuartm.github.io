@@ -750,16 +750,6 @@ public class BadFactory
 var service = provider.GetRequiredService<IDisposable>();
 service.Dispose();  // Let the container manage disposal
 ```
-
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Microsoft.Extensions.DI | .NET Core 1.0 | Built-in DI container |
-| CreateAsyncScope | .NET 6 | Async scope creation |
-| IAsyncDisposable support | .NET Core 3.0 | Async disposal |
-| Keyed services | .NET 8 | Named/keyed registrations |
-
 ## Key Takeaways
 
 **Constructor injection is primary**: Inject dependencies through constructors for explicit, testable dependencies.

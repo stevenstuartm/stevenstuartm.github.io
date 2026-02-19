@@ -554,20 +554,6 @@ public class Order
 
 var item = new Order.LineItem { ProductName = "Widget" };
 ```
-
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| Auto-properties | C# 3.0 | Simplified property syntax |
-| Object initializers | C# 3.0 | Declarative object creation |
-| Readonly structs | C# 7.2 | Enforced immutability |
-| Init-only setters | C# 9.0 | Immutable after construction |
-| Records | C# 9.0 | Value equality for reference types |
-| Record structs | C# 10 | Value equality for value types |
-| Required members | C# 11 | Enforced initialization |
-| Primary constructors | C# 12 | Simplified class definitions |
-
 ## Key Takeaways
 
 **Default to classes**: Use classes for most types. Use structs only for small, immutable value objects.

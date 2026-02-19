@@ -359,17 +359,6 @@ bool good = CryptographicOperations.FixedTimeEquals(hash1, hash2);
 | Use RandomNumberGenerator | Use Random for crypto |
 | Use constant-time comparison | Use == or SequenceEqual for secrets |
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| System.Security.Cryptography | .NET 1.0 | Core crypto |
-| AES-GCM | .NET Core 3.0 | Authenticated encryption |
-| Static hash methods | .NET 5 | SHA256.HashData, etc. |
-| PEM import/export | .NET 5 | Easy key handling |
-| RandomNumberGenerator.GetInt32 | .NET 6 | Secure random integers |
-| Pbkdf2 one-shot | .NET 6 | Simplified password hashing |
-
 ## Key Takeaways
 
 **Never roll your own crypto**: Use the built-in primitives. Custom implementations are almost always insecure.

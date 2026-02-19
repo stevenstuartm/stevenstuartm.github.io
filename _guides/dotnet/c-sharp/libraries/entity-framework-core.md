@@ -737,21 +737,6 @@ public class JsonValueConverter<T> : ValueConverter<T, string>
 }
 ```
 
-## Version History
-
-| Feature | Version | Significance |
-|---------|---------|--------------|
-| EF Core | 1.0 | Cross-platform ORM |
-| Global query filters | 2.0 | Automatic filtering |
-| Owned entities | 2.0 | Value objects |
-| Lazy loading | 2.1 | Automatic relation loading |
-| Many-to-many | 5.0 | Skip navigation properties |
-| Filtered includes | 5.0 | Include with Where |
-| Split queries | 5.0 | Avoid Cartesian explosion |
-| Compiled models | 6.0 | Faster startup |
-| ExecuteUpdate/Delete | 7.0 | Bulk operations |
-| JSON columns | 7.0 | Native JSON support |
-
 ## Key Takeaways
 
 **Use AsNoTracking for read-only queries**: Significant performance improvement when you don't need to modify entities.
