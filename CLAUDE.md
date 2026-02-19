@@ -52,7 +52,6 @@ bundle exec jekyll build
 - **pages/tech-radar.md**: Interactive tech radar visualization (uses radar layout)
 - **pages/study-guides.md**: Study guides listing page
 - **pages/study-routine.md**: Study routine and learning methodology page
-- **pages/upcoming.md**: Upcoming blog posts and content
 
 ### Permalinks
 - Posts use the permalink structure: `/blog/:year/:month/:day/:title.html`
@@ -93,9 +92,6 @@ tags: [architecture, design-patterns]
 **Standard procedure for creating a new blog post**:
 1. Create the markdown file in `_posts/` with correct date format
 2. Include complete YAML front matter (layout, title, date, description, tags)
-3. Update `assets/data/upcoming-items.json` if the post was planned:
-   - Change status from "planned" to "completed"
-   - Update deliveryDate to actual publish date
 
 **CRITICAL: NEVER rename files**:
 - ❌ **NEVER** rename blog post files (`_posts/*.md`) or any other content files

@@ -316,11 +316,17 @@ public int Process(int[] data)
 }
 ```
 
-**Benefits of local functions**:
-- Keep helper logic close to where it's used
-- Access outer method's variables (unless static)
-- Better performance than lambdas (no allocation)
-- Support recursion naturally
+### Why Local Functions over Lambdas?
+
+When a lambda captures variables from its enclosing scope, the compiler generates a class-based closure ("display class") on the heap, plus a delegate object, totaling roughly 88 bytes of GC pressure per invocation. Local functions avoid this. When a local function captures variables but is not converted to a delegate, the compiler creates a **struct-based closure** allocated on the stack instead, resulting in zero heap allocations. When it captures nothing, the compiler emits it as a plain static method with no closure at all.
+
+### Modularity without Breaking Encapsulation
+
+Extracting a helper into a `private` method exposes it to every other method in the class, adds noise to IntelliSense and the class outline, and requires passing all needed data as parameters. Local functions are **lexically scoped** to the containing method: they do not appear in IntelliSense, reflection, or the class method table, and non-static local functions can access the caller's locals directly. This makes them ideal for decomposing long methods without polluting the class surface with single-use helpers.
+
+### Adoption and Microsoft's Guidance
+
+Microsoft actively recommends local functions over lambdas. Their built-in analyzer rule [IDE0039](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0039){:target="_blank" rel="noopener noreferrer"} defaults to preferring local functions, and the .NET runtime repository configures `csharp_prefer_static_local_function = true` in its `.editorconfig`. Local functions are used extensively throughout the runtime source code, ASP.NET Core, and Entity Framework Core, and have become idiomatic C# since their introduction in 2017.
 
 ## Return Types
 
