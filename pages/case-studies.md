@@ -119,6 +119,10 @@ permalink: /case-studies.html
   background: linear-gradient(90deg, #f59e0b, #fbbf24);
 }
 
+.case-study-card.category-technical::before {
+  background: linear-gradient(90deg, #38bdf8, #7dd3fc);
+}
+
 .case-study-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
@@ -165,6 +169,11 @@ permalink: /case-studies.html
 .category-badge.category-decision {
   background: rgba(245, 158, 11, 0.1);
   color: #d97706;
+}
+
+.category-badge.category-technical {
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
 }
 
 .case-study-date {
