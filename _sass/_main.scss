@@ -657,23 +657,6 @@ main {
     background: none;
 }
 
-.content-type-latest {
-    background: none;
-    padding: 0.6rem 0;
-    margin-bottom: var(--spacing-sm);
-    font-size: 0.85rem;
-}
-
-.latest-label {
-    font-weight: 600;
-    color: var(--color-text);
-    margin-right: var(--spacing-xs);
-}
-
-.latest-link {
-    color: var(--color-primary);
-    font-weight: normal;
-}
 
 .content-type-cta {
     display: inline-block;

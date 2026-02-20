@@ -34,13 +34,6 @@ layout: default
             <div class="content-type-icon" aria-hidden="true">💼</div>
             <h3 class="content-type-title">Case Studies</h3>
             <p class="content-type-description">{{ page.case_studies_description }}</p>
-            {% if site.case_studies.size > 0 %}
-            {% assign latest_case = site.case_studies.first %}
-            <div class="content-type-latest">
-                <span class="latest-label">Latest:</span>
-                <span class="latest-link">{{ latest_case.title }}</span>
-            </div>
-            {% endif %}
             <span class="content-type-cta" aria-hidden="true">View All Cases →</span>
         </a>
         
@@ -49,13 +42,6 @@ layout: default
             <div class="content-type-icon" aria-hidden="true">📝</div>
             <h3 class="content-type-title">Blog</h3>
             <p class="content-type-description">{{ page.blog_description }}</p>
-            {% if site.posts.size > 0 %}
-            {% assign latest_post = site.posts.first %}
-            <div class="content-type-latest">
-                <span class="latest-label">Latest:</span>
-                <span class="latest-link">{{ latest_post.title }}</span>
-            </div>
-            {% endif %}
             <span class="content-type-cta" aria-hidden="true">View All Posts →</span>
         </a>
 
