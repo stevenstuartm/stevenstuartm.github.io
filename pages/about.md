@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: "Software and systems architect bringing clarity from complexity. Building cloud-native solutions that scale, perform beautifully, and save costs without the over-engineering."
+description: "Software and systems architect bringing clarity from complexity through disciplined principles, team mentorship, and measurable results."
 image: /assets/img/profile-steven-stuart-1.jpg
 permalink: /about.html
 ---
@@ -10,7 +10,7 @@ permalink: /about.html
 
 ![Steven Stuart - Software Architect specializing in cloud-native platforms and distributed systems](/assets/img/profile-steven-stuart-1.jpg){: .profile-image}
 
-Software architect with 15 years of experience building web and desktop applications, microservices, and event-driven systems serving millions of users across hundreds of financial institutions. My focus is on bringing clarity to complex systems so teams can sustainably build what people actually need. I build alignment with stakeholders before anyone writes code, test critical assumptions before and after we commit, and realign when discovery happens mid-build.
+Software architect with 15 years of experience bringing clarity to complex systems, from web and desktop applications to microservices and event-driven systems serving millions of users across hundreds of financial institutions. I hold principles shaped by years of building systems and learning what actually works. I share those principles through mentoring and governance that helps teams grow. And I deliver measurable results in systems that cost less, perform better, and evolve with the business.
 
 For a deeper look at how these principles shape my approach, see my [Philosophy](/philosophy.html).
 
