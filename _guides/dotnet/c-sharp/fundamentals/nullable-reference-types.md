@@ -2,7 +2,7 @@
 title: "C# Nullable Reference Types"
 layout: guide
 category: ".NET & C#"
-subcategory: "Modern Features"
+subcategory: "Language Fundamentals"
 description: "Nullable reference types, null safety annotations, and patterns for eliminating null reference exceptions in C#."
 tags: [c-sharp, dotnet, modern-csharp, nullable, null-safety, practical]
 ---
@@ -202,7 +202,11 @@ private IService service = null!; // Will be set in Setup
 
 ## Attributes for Advanced Scenarios
 
+The `?` annotation is binary: a type is either nullable or not. But real code has conditional nullability that `?` alone can't express, like "this parameter enters nullable but leaves non-null" or "the return is null only if the input is null." These attributes from `System.Diagnostics.CodeAnalysis` bridge that gap, giving the compiler enough information to continue tracking null state across method boundaries.
+
 ### MemberNotNull
+
+The `?` annotation can mark the `logger` field as nullable, but it can't tell the compiler that calling a specific method guarantees the field gets set. `MemberNotNull` fills that gap: it promises that one or more fields will be non-null after the method returns, so the compiler stops warning when you access them afterward.
 
 ```csharp
 public class LazyService
@@ -225,6 +229,8 @@ public class LazyService
 
 ### NotNull
 
+A `?` annotation is fixed at declaration time: `customer` is either `Customer?` or `Customer`. It can't express "this variable starts as nullable but becomes non-null after a method call." `NotNull` marks a parameter that will be non-null when the method returns normally (throwing otherwise), which tells the compiler to narrow the caller's variable from `Customer?` to `Customer` after the call. This is what makes reusable guard methods work with the null-state analyzer.
+
 ```csharp
 public static class Guard
 {
@@ -245,15 +251,17 @@ public void Process(Customer? customer)
 
 ### MaybeNull and NotNullWhen
 
+`MaybeNull` handles a case where `?` used to fall short in generics. With `where T : class`, callers pass a non-nullable type like `string`, but the method needs to return null when the key isn't found. In C# 9+, you can write `T?` with a `class` constraint and the compiler understands it, which covers this exact scenario. `MaybeNull` is still needed for unconstrained generics, where `T?` means `Nullable<T>` for value types rather than "T or null" for reference types.
+
+`NotNullWhen` expresses conditional nullability that `?` has no way to represent: a parameter's null state depends on the method's return value. The `TryGetValue` pattern declares `value` as `string?` because it could be null, but the attribute tells the compiler that when the method returns `true`, `value` is guaranteed non-null. Without it, you'd need a null check after every successful `TryGetValue` call even though the value can't be null at that point. This is the same pattern the BCL uses for `Dictionary.TryGetValue` and similar methods.
+
 ```csharp
-// Return value might be null even when T is non-nullable
 [return: MaybeNull]
 public T Find<T>(string key) where T : class
 {
     return cache.ContainsKey(key) ? (T)cache[key] : null;
 }
 
-// Parameter is not null when method returns true
 public bool TryGetValue(string key, [NotNullWhen(true)] out string? value)
 {
     return dictionary.TryGetValue(key, out value);
@@ -268,12 +276,18 @@ if (TryGetValue("key", out var value))
 
 ### AllowNull and DisallowNull
 
+The `?` annotation applies to a property as a whole: `string` means non-nullable everywhere, `string?` means nullable everywhere. But sometimes the getter and setter need different null contracts, and `?` can't express that asymmetry.
+
+`AllowNull` lets a non-nullable property accept null in its setter. In the example below, `Name` is typed as `string` so the getter never returns null, but the setter accepts null and coalesces it to a default value. Without the attribute, assigning `null` to `Name` would produce a warning even though the code handles it safely.
+
+`DisallowNull` is the inverse: it prevents null in a setter even though the property type is nullable. `Notes` is typed as `string?` because the getter might return null before anything is assigned, but once you set it, you must provide an actual value. This expresses the contract "might not have a value yet, but you can't set it to nothing."
+
 ```csharp
 public class Person
 {
     private string name = "Unknown";
 
-    [AllowNull] // Allow null in setter even though property is non-nullable
+    [AllowNull]
     public string Name
     {
         get => name;
@@ -282,7 +296,7 @@ public class Person
 
     private string? notes;
 
-    [DisallowNull] // Don't allow null in setter even though property is nullable
+    [DisallowNull]
     public string? Notes
     {
         get => notes;
@@ -293,8 +307,9 @@ public class Person
 
 ### NotNullIfNotNull
 
+With `?`, a return type is either nullable or not. `NotNullIfNotNull` expresses something `?` can't: the return value is non-null whenever a specific parameter is non-null. This is common in transformation methods that pass through null as-is but always return a value when given one. Without this attribute, the return type must be `string?` to cover the null-input case, which forces callers who pass a non-null value to do unnecessary null checks on a result that can't actually be null.
+
 ```csharp
-// Return is not null if input is not null
 [return: NotNullIfNotNull(nameof(path))]
 public string? NormalizePath(string? path)
 {

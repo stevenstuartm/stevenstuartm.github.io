@@ -749,7 +749,8 @@
             "dotnet/c-sharp/fundamentals/strings-and-text.md",
             "dotnet/c-sharp/fundamentals/exceptions-and-errors.md",
             "dotnet/c-sharp/fundamentals/attributes-and-reflection.md",
-            "dotnet/c-sharp/fundamentals/memory-management.md"
+            "dotnet/c-sharp/fundamentals/memory-management.md",
+            "dotnet/c-sharp/modern/nullable-reference-types.md"
           ]
         },
         {
@@ -759,15 +760,6 @@
             "dotnet/c-sharp/oop/classes-and-structs.md",
             "dotnet/c-sharp/oop/interfaces-and-inheritance.md",
             "dotnet/c-sharp/oop/properties-and-indexers.md"
-          ]
-        },
-        {
-          "name": "Modern Features",
-          "description": "Modern C# features: nullable types, pattern matching, and records",
-          "guides": [
-            "dotnet/c-sharp/modern/nullable-reference-types.md",
-            "dotnet/c-sharp/modern/pattern-matching.md",
-            "dotnet/c-sharp/modern/records-and-immutability.md"
           ]
         },
         {
