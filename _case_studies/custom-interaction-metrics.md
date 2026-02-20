@@ -21,15 +21,13 @@ technologies:
 
 The platform served approximately 120,000 users across multiple applications, offering paid content products that users subscribed to and consumed over time. The business had three concrete needs that no existing component could serve.
 
-First, the organization needed to understand which content, products, and pages were most effective. Without interaction data, content strategy was guesswork. The team needed to know what users actually engaged with so they could invest in the content that drove value and deprecate what didn't.
+First, the organization needed to understand which content, products, and pages were most effective. Without interaction data, content strategy was guesswork.
 
-Second, marketing needed per-user topic interest profiles. Understanding which subjects each user gravitated toward allowed targeted campaigns and personalized outreach. Generic aggregate metrics couldn't distinguish between a user interested in Topic A and a user interested in Topic B; both looked the same in a page-view count.
+Second, marketing needed per-user topic interest profiles. Generic aggregate metrics couldn't distinguish between a user interested in Topic A and a user interested in Topic B; both looked the same in a page-view count. Marketing needed that distinction to drive targeted campaigns and personalized outreach.
 
-Third, and most ambitiously, the product team wanted to present more relevant content to users in real-time based on detected engagement patterns. The concept was similar to how Amazon surfaces recommendations: once sufficient engagement bias exists for a user, the product should reflect that bias by presenting the most relevant content first. This required not just tracking what users did, but computing weighted engagement scores that the client application could consume on each request, at a rate that was acceptable to both system availability and user experience.
+Third, the product team wanted to present more relevant content to users in real-time based on detected engagement patterns, similar to how Amazon surfaces recommendations. This required not just tracking what users did, but computing weighted engagement scores that the client application could consume on each request.
 
-This was not a web analytics problem. Standard analytics tools answer questions about aggregate traffic patterns and conversion funnels for public content. The questions here required per-user, per-product tracking of authenticated sessions against specific content items within a paid ecosystem.
-
-No existing API in the system was suitable for managing application-specific activity, metadata, or user interaction history. The concerns were cohesive enough that splitting them across existing services would have created coupling that made no architectural sense. A new component was needed to represent these concerns together.
+This was not a web analytics problem. The questions here required per-user, per-product tracking of authenticated sessions against specific content items within a paid ecosystem. No existing API in the system was suitable for these concerns, and splitting them across existing services would have created coupling that made no architectural sense.
 
 ## Why Not Off-the-Shelf?
 
@@ -37,25 +35,19 @@ Before building anything custom, the team evaluated several existing solutions. 
 
 ### Google Analytics
 
-Google Analytics is designed to answer "how are people finding us and what content performs." It is not designed to answer "how is user X progressing through our product over time." GA does not support the degree of per-user context required for tracking customer-specific content consumption and interest within a paid product.
-
-Metrics like "time on page" are built for measuring public engagement with free content. For paid content where the business context matters more than the traffic source, those metrics don't translate to business value. A user spending 30 minutes on a page might indicate deep engagement or they might have left the tab open. In a paid content context, the distinction matters, and GA can't make it.
+Google Analytics is designed to answer "how are people finding us and what content performs," not "how is user X progressing through our product over time." It doesn't support the degree of per-user context required for tracking customer-specific content consumption within a paid product. Metrics like "time on page" are built for measuring public engagement with free content; for paid content where the business context matters more than the traffic source, those metrics don't translate to business value.
 
 ### Third-Party Analytics SDKs
 
-The client-side resource consumption on the primary site was already staggering. The browser was overloaded with API calls, scripts, and third-party integrations. Adding another tracking SDK would have made that problem worse.
-
-The platform also relied heavily on client-side caching to reduce network and server costs. A third-party solution that depended on server-side tracking would not have worked with the lazy caching strategy already in place. Every additional client-side dependency carried real performance cost, and the team had previously made a deliberate decision not to add generic "always on" tracking for exactly this reason.
+The client-side resource consumption on the primary site was already staggering with API calls, scripts, and third-party integrations. Adding another tracking SDK would have made that worse. The platform also relied heavily on client-side caching to reduce network and server costs, and the team had previously made a deliberate decision not to add generic "always on" tracking for exactly this reason.
 
 ### Full Analytics Platforms
 
-Platforms like Mixpanel and Amplitude provide rich user-level analytics, but they come with significant cost and commitment. The full scope of what the organization needed was not yet clear. Committing to a vendor contract before understanding the actual requirements would have meant paying for capabilities that might never be used, or worse, discovering that the chosen platform didn't support a critical use case after the contract was signed.
-
-Cost was a persistent constraint across all technology decisions at this organization. The more complete third-party solutions were far too expensive for what was actually needed at that stage.
+Platforms like Mixpanel and Amplitude provide rich user-level analytics, but the full scope of what the organization needed was not yet clear. Committing to a vendor contract before understanding the actual requirements would have meant paying for capabilities that might never be used, or discovering that the chosen platform didn't support a critical use case after the contract was signed. Cost was a persistent constraint across all technology decisions at this organization, and these solutions were far too expensive for what was actually needed at that stage.
 
 ### The Custom Investment Tradeoff
 
-A small custom solution offered the right balance: low cost, development agility, and the ability to discover requirements organically before committing to a vendor. If the requirements eventually grew beyond what it could support, the team was willing to evaluate a more mature platform, but the path to that migration would not have been trivial. Everything was consolidated in a single API, and all marketing and product consumers accessed insights through that API rather than querying the database directly. The data warehouse summaries flowing to QuickSight via Snowflake were more of a short-term convenience for reporting than a core architectural commitment. Building custom first meant the organization could learn what it actually needed with a minimal investment, rather than guessing at requirements and hoping a vendor's feature set happened to align.
+A small custom solution offered the right balance: low cost, development agility, and the ability to discover requirements organically before committing to a vendor. Everything was consolidated in a single API that all marketing and product consumers accessed, rather than querying databases directly. Building custom first meant the organization could learn what it actually needed with a minimal investment, rather than guessing at requirements and hoping a vendor's feature set happened to align.
 
 ## Solution Architecture
 
@@ -121,9 +113,7 @@ Hash Key:  Actor     — composite "{TypeId}|{Value}" (e.g., "1|user-uuid")
 Range Key: OccurredAt — UTC timestamp for ordering within an actor
 ```
 
-The composite hash key pattern (`{TypeId}|{Value}`) allowed efficient queries for all events belonging to a specific actor. The range key on `OccurredAt` provided chronological ordering within each actor's partition, which the processor used to determine the latest occurrence timestamps for summaries.
-
-PAY_PER_REQUEST billing meant the queue cost nearly nothing during low-activity periods and scaled automatically during spikes without capacity planning.
+The composite hash key pattern (`{TypeId}|{Value}`) allowed efficient queries for all events belonging to a specific actor, and the range key on `OccurredAt` provided chronological ordering within each partition. PAY_PER_REQUEST billing meant the queue cost nearly nothing during low-activity periods and scaled automatically during spikes.
 
 ### MySQL: Durable Summary Storage
 
@@ -142,7 +132,7 @@ CREATE TABLE ux_actors (
 );
 ```
 
-The actor table abstracted identity. A `TypeId` of 1 represented an authenticated user (identified by user ID), while a `TypeId` of 2 represented an anonymous visitor (identified by IP address). This abstraction allowed the entire pipeline to handle both actor types uniformly without branching logic throughout the codebase.
+The actor table abstracted identity. A `TypeId` of 1 represented an authenticated user (by user ID), while a `TypeId` of 2 represented an anonymous visitor (by IP address). This allowed the entire pipeline to handle both actor types uniformly without branching logic.
 
 **Actor Claims**
 
@@ -161,7 +151,7 @@ CREATE TABLE ux_actorclaims (
 );
 ```
 
-Claims enriched actor records with additional identity signals like IP addresses and email addresses. The `FirstUsedOn` and `LastUsedOn` timestamps tracked when each claim was first and most recently associated with an actor, providing a lightweight identity timeline without storing every individual event.
+Claims enriched actor records with additional identity signals like IP addresses and email addresses. The `FirstUsedOn` and `LastUsedOn` timestamps provided a lightweight identity timeline without storing every individual event.
 
 **Action History Periods**
 
@@ -179,7 +169,7 @@ CREATE TABLE ux_actionhistoryperiods (
 );
 ```
 
-Periods defined configurable rolling time windows per actor per topic. The default period was 30 days, but each topic could have its own period length via configuration stored in AWS Parameter Store. When a period expired, the processor closed it and created a new one. The scoring algorithm used the two most recent periods (current and previous) to compute time-decay weighted frequencies.
+Periods defined configurable rolling time windows per actor per topic. The default was 30 days, but each topic could have its own period length via AWS Parameter Store. When a period expired, the processor closed it and created a new one. The scoring algorithm used the two most recent periods to compute time-decay weighted frequencies.
 
 **Action History Summaries**
 
@@ -201,7 +191,7 @@ CREATE TABLE ux_actionhistorysummaries (
 );
 ```
 
-Summaries aggregated event counts per period, per application, per scope. The unique constraint on `(ActionHistoryPeriodId, ApplicationId, ScopeTopic, ScopeValue)` ensured upsert behavior: new events incremented existing totals rather than creating duplicate rows. `FirstOccurrenceAt` and `LatestOccurrenceAt` tracked when engagement started and when it was most recent within each period.
+Summaries aggregated event counts per period, per application, per scope. The unique constraint ensured upsert behavior: new events incremented existing totals rather than creating duplicate rows.
 
 ### Entity Relationships
 
@@ -248,9 +238,9 @@ foreach (var scope in request.Scopes)
 }
 ```
 
-Rate limiting for anonymous actions used a sliding window of 5 requests per minute per IP address, enforced through a shared rate limiting service backed by a distributed cache. This prevented abuse without blocking legitimate anonymous tracking like UTM click attribution.
+Rate limiting for anonymous actions used a sliding window of 5 requests per minute per IP address, enforced through a shared rate limiting service backed by a distributed cache.
 
-The `Topic` and `Scope` model was deliberately generic. A topic might represent a category of content, while scope values within that topic might represent individual content items. This schema-free approach meant the system could track new types of interactions by sending new topic/scope combinations from the client, without any backend changes.
+The `Topic` and `Scope` model was deliberately generic. A topic might represent a category of content, while scope values within that topic might represent individual content items. This meant the system could track new interaction types by sending new topic/scope combinations from the client, without any backend changes.
 
 ## The Processing Pipeline
 
@@ -289,7 +279,7 @@ Processing Flow:
 
 ### Actor Locking
 
-The processor used the same distributed rate limiting service as the API to implement actor-level locks. Before processing an actor's events, it checked whether that actor was already locked by another instance. This allowed the service to scale horizontally without duplicate processing and without needing a dedicated distributed lock service.
+The processor reused the distributed rate limiting service to implement actor-level locks. Before processing an actor's events, it checked whether that actor was already locked by another instance, allowing horizontal scaling without duplicate processing and without a dedicated distributed lock service.
 
 ```csharp
 // A simple way to allow for scaling the consumer and
@@ -304,13 +294,11 @@ if (hasExceededRateLimit)
     continue;
 ```
 
-The lock window was configurable independently from the processing interval, allowing the team to tune processing frequency and lock duration for different environments.
+The lock window was configurable independently from the processing interval, allowing the team to tune each for different environments.
 
 ### Period Management
 
-Each actor's actions within a topic were organized into time-bounded periods. When the processor encountered actions for an actor/topic combination, it checked for an active (non-closed) period. If no active period existed or the current period had expired, the processor closed the old period and created a new one.
-
-Period length was configurable per topic through AWS Parameter Store, with a default of 30 days. A topic with short-lived engagement patterns could use a 7-day period, while a topic tracking long-term content progression could use 90 days.
+Each actor's actions within a topic were organized into time-bounded periods. When the processor encountered actions for an actor/topic combination, it checked for an active (non-closed) period. If none existed or the current one had expired, it closed the old period and created a new one. Period length was configurable per topic through AWS Parameter Store, with a default of 30 days.
 
 ```csharp
 var topicMetricSettings = _appMetricsConfiguration
@@ -329,17 +317,17 @@ var activeActionPeriod = new ActionHistoryPeriod()
 
 ### Summary Aggregation
 
-Within each period, the processor maintained one summary record per unique combination of `(ApplicationId, ScopeTopic, ScopeValue)`. New events incremented the existing `ActionTotal` and updated the `LatestOccurrenceAt` timestamp. The unique constraint in MySQL ensured that concurrent processors couldn't create duplicate summaries.
+Within each period, the processor maintained one summary record per unique combination of `(ApplicationId, ScopeTopic, ScopeValue)`. New events incremented the existing `ActionTotal` and updated the `LatestOccurrenceAt` timestamp.
 
-Batch processing also provided a natural deduplication boundary. Because the processor grouped all of an actor's queued events before summarizing, it could count meaningful interactions rather than raw event volume. If a user clicked the same content item 100 times in a minute, those events arrived in DynamoDB as 100 records, but the processor aggregated them into a single count increment per scope value per batch. The grouping by `(ScopeTopic, ScopeValue, ApplicationId)` collapsed noisy bursts into actual engagement signal without requiring any explicit deduplication logic.
+Batch processing also provided natural deduplication. If a user clicked the same content item 100 times in a minute, those events arrived in DynamoDB as 100 records, but the processor aggregated them into a single count increment per scope value per batch, collapsing noisy bursts into actual engagement signal without explicit deduplication logic.
 
-After successfully upserting a summary, the processor deleted the corresponding source records from DynamoDB. This kept the queue lean and ensured that events were processed exactly once under normal operation.
+After successfully upserting a summary, the processor deleted the corresponding source records from DynamoDB, keeping the queue lean and ensuring events were processed exactly once under normal operation.
 
 ## The Scoring Algorithm
 
-The scoring algorithm was the component that connected raw interaction data to the business decisions described earlier. The rankings it produced determined which content to surface more prominently for each user, which product categories a user showed the strongest affinity toward, and where package-level upsell opportunities existed based on demonstrated engagement patterns. Without a scoring layer, the pipeline would have been a data warehouse. With it, the pipeline became a decision engine that the client applications could query on every request.
+The scoring algorithm connected raw interaction data to business decisions. Without it, the pipeline would have been a data warehouse. With it, the pipeline became a decision engine that client applications could query on every request.
 
-The query endpoint `POST /ux/user/actions/gettopicvaluefrequency` returned a ranked list of scope values for a given user, topic, and scope topic. The ranking was based on a time-decay weighted frequency that combined the current period's totals with a decaying weight from the previous period.
+The query endpoint `POST /ux/user/actions/gettopicvaluefrequency` returned a ranked list of scope values for a given user, topic, and scope topic, based on a time-decay weighted frequency that combined the current period's totals with a decaying weight from the previous period.
 
 ### How the Weighting Works
 
@@ -366,27 +354,19 @@ Consider a user on a 30-day period. In the previous period, they engaged heavily
 | 25  | 0.17            | 9                         | 16.65          | 30                        | 31.70          | **B**  |
 | 30  | 0.10            | 10                        | 14.50          | 33                        | 34.00          | **B**  |
 
-On day 1, the previous period dominates. Category A leads by a wide margin because the user's 45 historical actions carry nearly full weight. By day 15, the gap has narrowed: the previous period's influence has halved, and Category B's growing current activity is closing the distance. By day 20, Category B overtakes Category A. The user's real-time behavior has shifted, and the rankings now reflect that shift.
+On day 1, Category A leads by a wide margin because the user's 45 historical actions carry nearly full weight. By day 15, the previous period's influence has halved and Category B's growing activity is closing the distance. By day 20, Category B overtakes. The rankings now reflect the user's shifting behavior.
 
-At the end of the period (day 30), the previous weight hits its floor of 10%. Category A's 45 historical actions contribute only 4.50 to the weighted total, while its 10 current actions carry full weight. The historical signal is still present (it hasn't dropped to zero), but it no longer dominates the ranking. If the user's interest continues to shift in the next period, the transition will be even more pronounced as this period's Category B totals become the new "previous" data.
+At the end of the period (day 30), the previous weight hits its floor of 10%. Category A's 45 historical actions contribute only 4.50 to the weighted total. The historical signal is still present (it hasn't dropped to zero), but it no longer dominates. If the user's interest continues to shift in the next period, the transition will be even more pronounced as this period's Category B totals become the new "previous" data.
 
 ## Design Decisions Worth Noting
 
 ### DynamoDB as the Queue, Not SQS or Kinesis
 
-SQS would have been the conventional choice for a message queue, but the processing pattern needed actor-partitioned access. The processor needed to fetch all events for a specific actor in a single query, group them, and process them as a batch. DynamoDB's hash key partitioning made this access pattern natural: scan for distinct actors, then query each actor's partition for all events.
+SQS would have been the conventional choice for a message queue, but the processing pattern needed actor-partitioned access. The processor needed to fetch all events for a specific actor in a single query, group them, and process them as a batch. DynamoDB's hash key partitioning made this natural: scan for distinct actors, then query each actor's partition for all events. With SQS, the processor would have needed to consume messages in batches of up to 10, accumulate them in memory grouped by actor, and handle visibility timeouts across a potentially large number of in-flight messages.
 
-With SQS, the processor would have needed to consume messages one at a time (or in batches of up to 10), accumulate them in memory grouped by actor, and handle the complexity of visibility timeouts across a potentially large number of in-flight messages. DynamoDB's scan-then-query pattern was simpler and more aligned with the batch processing model. It also meant that noisy bursts from a single user (clicking the same item repeatedly in quick succession) were naturally collapsed during batch aggregation rather than consuming per-message processing overhead.
+Kinesis was also considered for its built-in partitioning and ordering, but several factors made it a poor fit. The processor ran on a 10-minute interval and needed random access by actor, not sequential consumption of a stream. Even with the actor ID as the partition key, the consumer would still need to read shards sequentially and filter by actor. DynamoDB lets the processor query a single actor's events directly by hash key without consuming unrelated records.
 
-Kinesis was also considered, primarily because its shard-based architecture provides built-in partitioning and ordering. However, several factors made it a poor fit for this workload.
-
-Kinesis is designed for continuous stream processing where consumers read records sequentially from shards. The processor here ran on a 10-minute interval and needed random access by actor, not sequential consumption of an entire stream. Using Kinesis would have meant either running a continuous consumer (more infrastructure than the workload justified) or reading from checkpoint positions on interval, which requires managing shard iterators and checkpoint state that DynamoDB's simple scan-then-query pattern avoids entirely.
-
-The access pattern mismatch was the larger problem. Even with the actor ID as the Kinesis partition key to co-locate each actor's events on the same shard, the consumer would still need to read the shard sequentially and filter by actor. DynamoDB lets the processor query a single actor's events directly by hash key without consuming unrelated records from the same partition.
-
-Kinesis also charges per shard-hour regardless of throughput, so shards incur cost even during idle periods. At the ingestion rates this system handled, that cost model was wasteful compared to DynamoDB's PAY_PER_REQUEST billing, which scaled to near-zero during low-activity periods and only charged for actual reads and writes. Kinesis sharding would have been justified if the system needed to handle sustained high-throughput ingestion or if multiple independent consumers needed to read the same event stream, but neither applied here.
-
-Finally, Kinesis has a default retention window of 24 hours. If the processor fell behind or experienced an extended outage, events older than the retention window would be lost permanently. DynamoDB items have no retention limit and persist until explicitly deleted, which provided a more forgiving safety net for a batch processor running on interval.
+Kinesis also charges per shard-hour regardless of throughput, making it wasteful at this system's ingestion rates compared to DynamoDB's PAY_PER_REQUEST billing that scaled to near-zero during idle periods. And Kinesis's default 24-hour retention window meant events could be lost permanently if the processor fell behind, while DynamoDB items persist until explicitly deleted.
 
 ### MySQL for Summaries, Not DynamoDB
 
@@ -396,41 +376,35 @@ Storing summaries in DynamoDB would have required denormalization that made the 
 
 ### Background Processing, Not Real-Time
 
-The summaries powered content recommendations and engagement reports, neither of which required sub-second freshness. A 10-minute processing interval meant the data was fresh enough for its consumers while batching writes to MySQL and reducing overall write amplification.
+The summaries powered content recommendations and engagement reports, neither of which required sub-second freshness. A 10-minute processing interval meant the data was fresh enough for its consumers while batching writes to MySQL and reducing overall write amplification. Batching also simplified error handling: if the processor failed mid-batch, the undeleted DynamoDB records would be picked up on the next interval. The processing was naturally idempotent since totals were additive and timestamps tracked maximums.
 
-Batching also simplified error handling. If the processor failed mid-batch, the undeleted DynamoDB records would be picked up on the next interval. There was no complex acknowledgment protocol, and the processing was naturally idempotent at the summary level since totals were additive and timestamps tracked maximums.
-
-The processor ran co-located with the API as a `BackgroundService` rather than in a dedicated worker cluster. The organization routinely extracted background processing into separate worker nodes when internal overhead competed with public endpoint performance, but the API in this case was efficient enough that the processing posed no measurable contention. Co-location kept the deployment simple and the infrastructure cost minimal.
+The processor ran co-located with the API as a `BackgroundService` rather than in a dedicated worker cluster. The organization routinely extracted background processing into separate worker nodes when overhead competed with endpoint performance, but the API here was efficient enough that co-location posed no measurable contention.
 
 ### The Actor Abstraction
 
-Using a generic Actor model instead of tying directly to user IDs solved two problems. First, it allowed tracking anonymous visitors (by IP) and authenticated users through the same pipeline without conditional logic. Second, it provided a stable identity layer that the metrics system owned, decoupled from the authentication system's user model.
-
-The claims system attached identity signals like email addresses and IP addresses to actors with timestamps. This created a lightweight identity graph that could connect anonymous pre-login behavior to authenticated post-login behavior when the same IP or email appeared in both contexts.
+Using a generic Actor model instead of tying directly to user IDs solved two problems: it allowed tracking anonymous visitors and authenticated users through the same pipeline without conditional logic, and it provided a stable identity layer decoupled from the authentication system's user model. The claims system attached identity signals like email addresses and IP addresses to actors with timestamps, creating a lightweight identity graph that could connect anonymous pre-login behavior to authenticated post-login behavior.
 
 ### The Generic Topic/Scope Model
 
-The most deliberate design choice was keeping the content categorization schema-free. Rather than defining tables for specific content types, the system used a generic `Topic` and `Scope` (with its own `Topic` and `Value`) to represent any categorization hierarchy.
-
-This choice came directly from the reasoning behind building custom in the first place: the team did not yet fully understand the scope of what they needed. A generic model meant the client applications could start tracking new types of interactions by sending new topic/scope combinations, without any backend schema changes, migrations, or deployments. The same pipeline that tracked content views could track feature usage, campaign attribution, or any other interaction category the business discovered it needed.
+The most deliberate design choice was keeping the content categorization schema-free. This came directly from the reasoning behind building custom in the first place: the team did not yet fully understand the scope of what they needed. A generic model meant client applications could start tracking new interaction types by sending new topic/scope combinations, without any backend schema changes, migrations, or deployments. The same pipeline that tracked content views could track feature usage, campaign attribution, or any other interaction category the business discovered it needed.
 
 ## What This Enabled
 
-The pipeline addressed each of the three business needs that motivated it, and it did so through two consumption paths: batch reporting via QuickSight and real-time API queries from the client applications.
+The pipeline addressed each of the three business needs through two consumption paths: batch reporting via QuickSight and real-time API queries from the client applications.
 
 ### Content Effectiveness
 
-Summary data flowed into AWS QuickSight through the existing Snowflake ETL process, giving the content team visibility into which content, products, and pages were actually driving engagement. Aggregated action totals per scope value across all users showed what content performed and what didn't, broken down by application and time period. Content strategy shifted from intuition to data: the team could see which topics users returned to, which content items were consumed once and abandoned, and where engagement dropped off across the product catalog.
+Summary data flowed into AWS QuickSight through the existing Snowflake ETL process, giving the content team visibility into which content was actually driving engagement. Content strategy shifted from intuition to data: the team could see which topics users returned to, which content items were consumed once and abandoned, and where engagement dropped off across the product catalog.
 
 ### Marketing Intelligence
 
-Per-user engagement profiles gave marketing the topic interest data they needed. By querying a user's weighted frequency scores, marketing could segment users by their demonstrated interests rather than by demographics or purchase history alone. A user with high engagement bias toward a specific content category could receive targeted campaigns for related products. The anonymous action tracking with UTM parameters also connected campaign spend to content engagement without adding client-side tracking scripts, closing the attribution loop between marketing spend and product usage.
+By querying a user's weighted frequency scores, marketing could segment users by demonstrated interests rather than demographics or purchase history alone. The anonymous action tracking with UTM parameters also connected campaign spend to content engagement without adding client-side tracking scripts, closing the attribution loop between marketing spend and product usage.
 
 ### Real-Time Product Personalization
 
-The weighted frequency API endpoint was the most technically impactful consumer of the data. Client applications called `gettopicvaluefrequency` on each authenticated request to retrieve a user's ranked content preferences. The response was a simple ordered list of scope values ranked by engagement bias, which the client used to reorder content presentation. Users who engaged heavily with a particular content category saw that category featured more prominently, similar to how Amazon surfaces product recommendations based on accumulated browsing and purchase behavior.
+Client applications called `gettopicvaluefrequency` on each authenticated request to retrieve a user's ranked content preferences. The response was a simple ordered list of scope values ranked by engagement bias, which the client used to reorder content presentation.
 
-The time-decay weighting was critical to making this work. Without decay, a user who binge-consumed one category months ago would see stale recommendations forever. With decay, the rankings naturally reflected current interests while retaining enough historical signal to avoid jarring shifts at period boundaries. The 10-minute processing interval meant personalization data was fresh enough to feel responsive without requiring real-time stream processing infrastructure.
+The time-decay weighting was critical to making this work. Without decay, a user who binge-consumed one category months ago would see stale recommendations forever. With decay, the rankings naturally reflected current interests while retaining enough historical signal to avoid jarring shifts at period boundaries.
 
 All of this was achieved without adding any third-party scripts to the client, without increasing the client-side resource footprint, and at a DynamoDB + Aurora cost that was negligible compared to what a third-party analytics platform would have charged.
 
@@ -438,12 +412,10 @@ All of this was achieved without adding any third-party scripts to the client, w
 
 The solution was explicitly designed as a discovery-phase investment, and it carried tradeoffs that would need to be addressed if the requirements grew substantially.
 
-**Batch latency, not real-time.** The 10-minute processing interval meant engagement data was always slightly stale. For content recommendations and reporting dashboards, this was acceptable. For use cases requiring real-time triggers (like sending a notification immediately when a user completes a content milestone), the architecture would need a streaming layer.
+**Batch latency, not real-time.** The 10-minute processing interval meant engagement data was always slightly stale. For content recommendations and dashboards, this was acceptable. For use cases requiring real-time triggers like milestone notifications, the architecture would need a streaming layer.
 
-**Summary aggregation loses event-level granularity.** Once events were processed into summaries, the individual event records were deleted from DynamoDB. This meant the system could answer "user X viewed Category A content 45 times in this period" but not "user X viewed item Y at 2:47 PM on March 15th." If event-level analysis became necessary, the processing pipeline would need to archive raw events to S3 before deletion.
+**Summary aggregation loses event-level granularity.** Once events were processed into summaries, the individual records were deleted from DynamoDB. The system could answer "user X viewed Category A content 45 times in this period" but not "user X viewed item Y at 2:47 PM on March 15th." Event-level analysis would require archiving raw events to S3 before deletion.
 
-**Simple scoring, not behavioral analytics.** The time-decay weighted frequency algorithm was effective for ranking relative engagement but didn't support more sophisticated analysis like session reconstruction, funnel analysis, cohort comparison, or predictive modeling. These were capabilities that a mature analytics platform would provide out of the box.
+**Simple scoring, not behavioral analytics.** The time-decay weighted frequency algorithm was effective for ranking relative engagement but didn't support session reconstruction, funnel analysis, cohort comparison, or predictive modeling.
 
-**Co-located processor, not a dedicated worker.** The processor ran as a background service within the same ECS container as the API. The organization had a well-established pattern of extracting background processing into separate worker nodes in a different cluster when internal overhead competed with the scaling and responsiveness of public-facing endpoints. Several other services in the system used this pattern. In this case, the API was efficient enough that the processing overhead posed no measurable threat to endpoint performance, so there was no reason to pay the operational cost of a separate deployment. If projections ever showed the processing contending with API throughput, the extraction path was already proven and straightforward.
-
-These were known limitations at the time of design. If the business requirements grew significantly, the team was prepared to evaluate a more mature analytics platform, but that migration would not have been a simple swap. The API was the single integration point for all consumers, which contained the blast radius of any future change, but the data warehouse coupling through Snowflake and QuickSight would have required its own migration path. The custom solution was a deliberate investment in discovery, not a permanent architecture, but also not something that could be lifted and replaced without effort.
+These were known limitations at the time of design. The API was the single integration point for all consumers, which contained the blast radius of any future change. The custom solution was a deliberate investment in discovery, not a permanent architecture, but also not something that could be lifted and replaced without effort.

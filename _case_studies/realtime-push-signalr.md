@@ -7,8 +7,8 @@ role: "System Architect"
 date: 2025-01-01
 headline_metric: "POC, Never Shipped"
 headline_detail: "Sound architecture, unvalidated requirement"
-category: "decision"
-category_label: "Architecture Decision"
+category: "technical"
+category_label: "Technical Deep-Dive"
 technologies:
   - .NET
   - ASP.NET Core SignalR
@@ -27,8 +27,6 @@ The straightforward solution would have been WebSocket-based push notifications.
 
 A user subscribed to product "CHLT" who asked for "News" should only receive news relevant to that product. A user with "FullAccess" should receive everything. A message published to the "News" topic with scope limited to "CHLT" and "FullAccess" should reach both of those users but not a user who only subscribed to "Sfc." The routing logic lived entirely on the server side; the client should never need to know about product-scoped channels or entitlement resolution. From the client's perspective, subscribing to "News" should just work.
 
-This was a repeating pattern across the platform: context drove product and user decisions, and those decisions were involved in nearly every feature more than having the convenience of generic configuration and generic behavior.
-
 The team scoped this as a proof-of-concept: build a working solution, validate the architecture at moderate scale, and determine whether the investment was justified before committing to production infrastructure. That framing matters for understanding the decisions that followed.
 
 ## Why Not Something Off-the-Shelf?
@@ -37,7 +35,7 @@ The team evaluated alternatives before building custom, but in retrospect, the e
 
 ### AWS Primitives: Fair Rejections
 
-**API Gateway WebSockets** provide a managed connection layer, but the routing model is flat. A client connects, a route key selects a Lambda handler, and that handler must implement all business logic for determining who receives what. The subscribe path would have required a Lambda authorizer to look up entitlements, resolve them into channel identifiers, and manage group membership in an external store like DynamoDB. The publish path would have required another Lambda to resolve message scopes into target connections by querying that same store. At that point, API Gateway is just a WebSocket transport layer and all the context-driven routing lives in custom code anyway.
+**API Gateway WebSockets** provide a managed connection layer, but the routing model is flat. Each route key selects a Lambda handler that must implement all business logic for determining who receives what, including entitlement lookups, channel resolution, and group membership in an external store like DynamoDB. At that point, API Gateway is just a WebSocket transport layer and all the context-driven routing lives in custom code anyway.
 
 **SNS filtering** requires the subscriber to declare upfront which attributes to filter on. The design goal was the opposite: clients subscribe to a human-readable topic like "News" and the server resolves the actual filtering based on server-side context the client has no knowledge of. SNS doesn't support dynamic fan-out where the channel name itself is derived from user context.
 
@@ -58,8 +56,6 @@ AWS IoT Core also supports per-client topic policies based on identity claims, w
 The honest reason these weren't evaluated seriously was that the team defaulted to building within the technology stack it already operated. The organization ran .NET services on ECS, had SignalR expertise, and had authorization infrastructure ready to use. The reflex was to compose from familiar components rather than evaluate whether a managed service could address the same requirements.
 
 That said, managed services come with their own tradeoffs that the evaluation would have surfaced. Pusher and Ably charge per connection and per message. At moderate scale those costs can exceed what AWS infrastructure costs for the same workload, especially when the AWS components use PAY_PER_REQUEST billing that scales to near-zero during quiet periods. The authorization callback model also introduces latency because Pusher must call the team's endpoint, the endpoint must look up entitlements, and the response must travel back before the subscription completes. In the custom solution, that authorization lookup happened in-process with no network round trip. For a platform that highly valued client-API responsiveness, that latency difference mattered.
-
-There's also an agility consideration. With a custom solution, the team controlled the full stack. Changes to routing logic, new channel behaviors, debugging connection issues, and operational tuning were all within the team's domain. With a managed service, those capabilities are constrained by the vendor's API surface, release cycle, and outage profile.
 
 The point isn't that managed services were clearly better. It's that they should have been part of the evaluation so the tradeoffs could be weighed deliberately rather than defaulted past.
 
@@ -132,8 +128,6 @@ The system had two primary flows: subscribing to topics and publishing messages 
                                        └──────────────────────────┘
 ```
 
-When the publish path resolves a message with scopes `["CHLT", "FullAccess"]` against a channel config for "News," it produces the channel names `["News-CHLT", "News-FullAccess"]` and sends the message to those SignalR groups. Users in `"News-Sfc"` never see it because the message's scopes don't include "Sfc."
-
 ## The Smart Channel Concept
 
 The core innovation was an indirection layer between client-facing topics and internal SignalR groups. Clients subscribed to topics. The server resolved those topics into scoped channels based on configuration, user entitlements, and message content. Neither subscribers nor publishers needed to know about this resolution; it happened transparently in the adapter layer.
@@ -186,7 +180,7 @@ A simplified example of the configuration structure:
 
 Two patterns are visible here. The "News" channel uses a `[ScopeValue]` placeholder in its name and a wildcard product filter. At runtime, this single configuration entry produces N concrete SignalR groups, one per product code in the subscriber's entitlements or the message's scopes. The "Site Visit Count" channel has no filters, which means it resolves to a single static group that all subscribers and all messages use.
 
-Filter collections provided DRY reuse. A set of filters defined once under `FilterCollections` could be referenced by name from any channel configuration, preventing duplication when multiple channels shared the same product-scoping rules.
+Filter collections provided DRY reuse: a common set of product filters defined once could be referenced by name from any number of channel configurations.
 
 ### How Channel Resolution Works
 
@@ -213,8 +207,6 @@ BuildEligibleChannelNames(scopes):
       → Same matching logic against feature name filters
       → Return matching feature-based channel names
 ```
-
-The `[ScopeValue]` placeholder in the channel name template gets replaced with each concrete value during resolution. When a wildcard filter is present, every value in the scope produces its own channel. When specific values are listed, only matching values produce channels. This gave the configuration author precise control over how fine-grained the routing was per topic.
 
 ### A Concrete Example
 
@@ -252,8 +244,6 @@ Publish Resolution:
 
 Both paths used the same channel resolution logic, which was a deliberate design choice. On subscribe, the user's entitlements became the scopes. On publish, the message's declared audience became the scopes. The same resolution applied in both directions, which meant the system was self-consistent: any channel a user was placed into could also be targeted by a message, and any channel a message was sent to would only contain users who were entitled to receive it.
 
-The authorization service bridged user identity and message scopes by looking up the user's product and feature entitlements from the existing authorization infrastructure and converting them into the same `MessageScope` format that published messages used. This translation happened once per subscribe call. Because the authorization service was an existing platform component, the SignalR service didn't need to duplicate any entitlement logic.
-
 ## The Lookback Pattern
 
 WebSocket connections are ephemeral. A user might connect to the application after a message was published, or their connection might drop and reconnect. Without a catch-up mechanism, those users would miss messages that arrived while they were disconnected.
@@ -262,7 +252,7 @@ The lookback pattern solved this by persisting recent messages to DynamoDB with 
 
 ### How Lookback Works
 
-Each channel configuration had an optional lookback setting with three properties: whether lookback was enabled, the TTL period type (either calendar day or minutes), and the TTL value. A calendar day TTL of 1 meant the message expired at midnight the following day. A minutes TTL of 60 meant the message expired one hour after creation. DynamoDB's native TTL feature handled the cleanup automatically.
+Each channel configuration had an optional lookback setting controlling whether lookback was enabled and how long messages persisted. TTLs could be calendar-day-based (expire at midnight) or minute-based, with DynamoDB's native TTL feature handling cleanup automatically.
 
 ```
 Lookback Save (on publish):
@@ -282,8 +272,6 @@ Lookback Save (on publish):
   │  NO  → Skip (message is ephemeral)         │
   └────────────────────────────────────────────┘
 ```
-
-Each persisted message included an eligible channels array that recorded which specific channel names the message was published to. This was important for the replay step: when a new connection subscribed, the lookback query needed to know which of the user's channels each message belonged to, since a single topic might have multiple channel names and the user might only be in some of them.
 
 ### Replay on Subscribe
 
@@ -316,22 +304,7 @@ The deduplication set prevented duplicate delivery. If a message was eligible fo
 
 ### DynamoDB as the Lookback Store
 
-The lookback table used `Topic` as the hash key and `CreatedAt` as the range key, with PAY_PER_REQUEST billing. This was a deliberately simple model. Lookback queries always filtered by topic, and the range key provided chronological ordering within each topic's partition.
-
-```
-Table: messagehub-pubsub-messages
-Billing: PAY_PER_REQUEST
-
-┌────────────────┬──────────────┬─────────────────────────────┐
-│ Topic (HASH)   │ CreatedAt    │ Attributes                  │
-│                │ (RANGE)      │                             │
-├────────────────┼──────────────┼─────────────────────────────┤
-│ "News"         │ 2025-03-15.. │ UUID, Message, Scopes,      │
-│ "Alerts"       │ 2025-03-15.. │ EligibleChannels, DynamoTTL │
-└────────────────┴──────────────┴─────────────────────────────┘
-```
-
-PAY_PER_REQUEST billing meant the lookback store cost nearly nothing during quiet periods and scaled automatically during spikes. The TTL-based expiration meant no cleanup jobs were needed; DynamoDB handled garbage collection natively.
+The lookback table used `Topic` as the hash key and `CreatedAt` as the range key, with PAY_PER_REQUEST billing. Lookback queries always filtered by topic, and the range key provided chronological ordering within each partition. PAY_PER_REQUEST meant the store cost nearly nothing during quiet periods and scaled automatically during spikes, and TTL-based expiration meant no cleanup jobs were needed.
 
 ## Message Ingestion Pipeline
 
@@ -365,11 +338,11 @@ The worker ran as a .NET `BackgroundService` co-located with the API in the same
 └──────────────────────────────────────────────────────────┘
 ```
 
-The consumer pipeline handled retries and dead-lettering automatically. If a message failed processing, SQS retained it for retry up to a configurable maximum of 3 attempts with a 30-second visibility timeout. After exhausting retries, the message moved to the DLQ where the slower consumer would attempt reprocessing on a 30-minute cycle, serving as a safety net for transient infrastructure failures.
+SQS handled retries automatically: up to 3 attempts with a 30-second visibility timeout, then dead-lettering to the DLQ where the slower consumer served as a safety net for transient failures.
 
 ### Co-located Processing
 
-The worker ran inside the same ECS container as the API, not as a separate service. The organization had a well-established pattern of extracting background processing into dedicated worker nodes when internal overhead competed with public endpoint performance. Several other services in the platform followed that extraction pattern. In this case, the API was lightweight enough that the processing overhead posed no measurable contention, so the team avoided the operational cost of a separate deployment. The extraction path was proven and straightforward if processing ever needed its own scaling profile.
+The worker ran inside the same ECS container as the API, not as a separate service. The API was lightweight enough that processing overhead posed no measurable contention, so the team avoided the operational cost of a separate deployment. The organization had a proven pattern for extracting workers into dedicated nodes if processing ever needed its own scaling profile.
 
 ## Infrastructure Decisions
 
@@ -377,9 +350,7 @@ WebSocket connections impose infrastructure requirements that standard HTTP APIs
 
 ### Dedicated Load Balancer and Cluster
 
-WebSocket connections require sticky sessions at the load balancer level. A client's connection must consistently route to the same backend instance for the lifetime of that connection. This meant the SignalR service couldn't share an Application Load Balancer with other HTTP services that used round-robin routing. Each environment got its own ALB and ECS cluster dedicated to the SignalR service.
-
-This is a fundamental requirement of WebSocket infrastructure, not a cost of the custom approach specifically. The connection lifecycle of a persistent WebSocket is incompatible with the request-response lifecycle of a standard HTTP API. Any WebSocket-based solution (custom or managed) would have required the team to operate dedicated infrastructure for the connection layer, or pay a vendor to operate it. The team chose to operate it themselves on infrastructure they already understood.
+WebSocket connections require sticky sessions at the load balancer level, so the SignalR service couldn't share an ALB with other HTTP services that used round-robin routing. Each environment got its own ALB and ECS cluster dedicated to the SignalR service. This is a fundamental requirement of any WebSocket infrastructure, not a cost specific to the custom approach.
 
 ### Transport and Protocol
 
@@ -421,17 +392,11 @@ The SignalR hub itself contained exactly one method: `Subscribe`. It extracted t
 
 ### HubFacade Abstraction
 
-The adapter didn't interact with SignalR's `IHubContext` directly. Instead, a facade wrapped hub contexts in a dictionary keyed by hub name, providing methods like `PublishToChannel`, `PublishToConnection`, and `Subscribe`. This indirection made the adapter hub-agnostic. If the platform later needed a second hub type (for example, a separate admin notification hub with different authorization rules), the facade could support it without changing the adapter's publish or subscribe logic.
+The adapter didn't interact with SignalR's `IHubContext` directly. Instead, a facade wrapped hub contexts in a dictionary keyed by hub name, providing methods like `PublishToChannel`, `PublishToConnection`, and `Subscribe`. This indirection made the adapter hub-agnostic and testable without SignalR's connection infrastructure.
 
 ### IsPublishableByUser Gate
 
 Each channel configuration included an `IsPublishableByUser` flag. When a message came from a user through the authenticated publish path, the authorization service filtered out channels where this flag was false. When a message came from the SQS worker as an internal system message, the flag was ignored. This created a clean separation between channels that accepted user-generated content and channels that were strictly server-to-client.
-
-### Configuration Over Code
-
-The hub, channel, and filter topology was entirely externalized to AWS Parameter Store. Adding a new alert type, creating a new product-scoped channel, or changing the lookback TTL for a topic required updating a JSON configuration document, not deploying code. Filter collections provided reuse: a common set of product filters defined once could be referenced by name from any number of channel configurations.
-
-This was valuable in practice because the product team frequently wanted to add new notification types as they launched new features. Being able to add those through configuration rather than code deployments shortened the turnaround from days to minutes.
 
 ## What Actually Happened
 
@@ -451,19 +416,17 @@ Yes. The smart channel concept, where client-facing topics resolve to product-sc
 
 ### Was building it the right call?
 
-The infrastructure itself was not the problem. A dedicated ALB, ECS cluster, DynamoDB table, SQS queue, and EventBridge rule are standard components for a WebSocket service on AWS, and the operational cost of running them was modest. The team already operated similar infrastructure for other services. The real question is whether the feature justified any investment at all, custom or managed, given that the underlying problem turned out to be solvable without real-time push.
+The infrastructure itself was not the problem. The real question is whether the feature justified any investment at all, custom or managed, given that the underlying problem turned out to be solvable without real-time push.
 
-The team's justification for building custom was that "context drives product behavior and no managed service handles that." That argument has merit but also has limits. The context-driven routing logic (looking up entitlements and resolving them into scoped channels) is about 50 lines of logic that would exist regardless of whether it lives in a SignalR adapter, a Pusher authorization callback, or an Ably token request handler. Where the approaches diverge is in the surrounding infrastructure: connection lifecycle management, message persistence, retry handling, and monitoring. The custom approach gave the team full control over latency, cost scaling, and operational behavior. A managed service would have shifted that operational burden to a vendor, at the cost of per-connection pricing, authorization callback latency, and less control over the stack.
-
-Either approach could have been defensible. The less defensible part was investing in either one before validating that the users actually needed real-time push.
+The context-driven routing logic is about 50 lines of code that would exist regardless of whether it lives in a SignalR adapter, a Pusher authorization callback, or an Ably token request handler. Where the approaches diverge is in the surrounding infrastructure: connection lifecycle management, message persistence, retry handling, and monitoring. Either approach could have been defensible. The less defensible part was investing in either one before validating that users actually needed real-time push.
 
 ### What should have happened instead?
 
 Two things were missing from the process.
 
-First, the requirement should have been validated before the infrastructure was built. The question wasn't "can we build real-time push with product-scoped routing?" It was "do our users actually need real-time push, or is the problem solvable with better data loading?" The answer turned out to be the latter, and the team discovered that through parallel work on caching, not through deliberate validation of the push requirement. If the team had invested a sprint in lazy loading improvements first, the real-time push work might never have started.
+First, the requirement should have been validated before the infrastructure was built. The question wasn't "can we build real-time push with product-scoped routing?" It was "do our users actually need real-time push, or is the problem solvable with better data loading?" If the team had invested a sprint in lazy loading improvements first, the real-time push work might never have started.
 
-Second, the buy-vs-build evaluation should have included managed real-time services, not just AWS primitives. Evaluating API Gateway WebSockets and SNS was evaluating the wrong competition. Pusher, Ably, and AWS IoT Core are purpose-built for the "subscribe to a topic, let the server route based on context" pattern. The team might have still chosen to build custom after evaluating those options. The in-process authorization path, the PAY_PER_REQUEST cost model, and the full operational control are legitimate advantages. But that should have been a deliberate tradeoff decision with numbers attached, not a default that happened because the team never looked beyond AWS primitives.
+Second, the buy-vs-build evaluation should have included managed real-time services, not just AWS primitives. Pusher, Ably, and AWS IoT Core are purpose-built for this pattern. The team might have still chosen to build custom for legitimate reasons like in-process authorization, PAY_PER_REQUEST cost scaling, and full operational control. But that should have been a deliberate tradeoff decision with numbers attached, not a default.
 
 ### What made it a worthwhile exercise anyway?
 
