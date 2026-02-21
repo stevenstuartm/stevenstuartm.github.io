@@ -7,8 +7,8 @@ role: "System Architect"
 date: 2026-01-27
 headline_metric: "Intentional Debt"
 headline_detail: "Documented tradeoffs & evolution triggers"
-category: "decision"
-category_label: "Architecture Decision"
+category: "design"
+category_label: "Architecture & Design"
 technologies:
   - Discord API
   - OAuth 2.0

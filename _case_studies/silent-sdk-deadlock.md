@@ -9,6 +9,7 @@ headline_metric: "Silent SDK Deadlock"
 headline_detail: "bypassed all existing tests, 3-day investigation"
 category: "failure"
 category_label: "Investigation Lessons"
+featured: true
 technologies:
   - AWS SDK .NET
   - AWS ECS Fargate

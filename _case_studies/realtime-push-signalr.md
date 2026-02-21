@@ -7,8 +7,8 @@ role: "System Architect"
 date: 2025-01-01
 headline_metric: "POC, Never Shipped"
 headline_detail: "Sound architecture, unvalidated requirement"
-category: "technical"
-category_label: "Technical Deep-Dive"
+category: "design"
+category_label: "Architecture & Design"
 technologies:
   - .NET
   - ASP.NET Core SignalR

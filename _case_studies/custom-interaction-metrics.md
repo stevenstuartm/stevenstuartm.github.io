@@ -7,8 +7,9 @@ role: "System Architect"
 date: 2025-01-01
 headline_metric: "Custom Metrics Pipeline"
 headline_detail: "DynamoDB queue → background processor → MySQL summaries"
-category: "technical"
-category_label: "Technical Deep-Dive"
+category: "design"
+featured: true
+category_label: "Architecture & Design"
 technologies:
   - .NET
   - AWS DynamoDB
