@@ -24,17 +24,6 @@ Regardless of project size or methodology, application follows these steps:
 5. **Deploy reliably**: Automate and practice
 6. **Reflect and improve**: Learn from experience
 
-### Recursive Application
-
-| Level | Timeframe | What Apply Looks Like |
-|-------|-----------|----------------------|
-| **Program** | months | Multiple projects, portfolio governance, quarterly reviews |
-| **Project** | weeks | Team executing sprints, regular demos, project retrospective |
-| **Sprint** | days | Daily development, sprint review, sprint retro |
-| **Feature** | hours | Code, test, review, merge with continuous integration |
-
-At the feature level, Apply happens through CI/CD pipelines. Every commit is an act of applying the technical agreements made during design. The pipeline verifies that agreements are honored; tests are agreements encoded as executable specifications. See [CI/CD and Technical Agreement](cicd.html#cicd-and-technical-agreement) for how AAA operates at the code level.
-
 ### Entry & Exit
 
 **You start with**: Approved architecture and implementation plan from Phase 2

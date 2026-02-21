@@ -26,15 +26,6 @@ Regardless of project size or methodology, alignment follows these steps:
 
 The depth and formality scale with scope and risk, but these questions remain constant.
 
-### Recursive Application
-
-Align applies at every level of work:
-
-- **Program Level** (months): Full depth with comprehensive charter
-- **Project Level** (weeks): Medium depth with focused discovery
-- **Sprint Level** (days): Lightweight with story grooming
-- **Feature Level** (hours): Quick alignment on acceptance criteria
-
 ### Entry & Exit
 
 **You start with**: A project concept or business need
@@ -164,16 +155,13 @@ Align applies at every level of work:
 **Provide realistic ballpark estimates for go/no-go decisions.**
 
 **Estimation Approach**:
-- Break solution into major components/epics
+- Break the solution into major components or epics
 - Estimate effort using analogous estimation, planning poker, or t-shirt sizing
-- Include infrastructure and operational costs
-- Account for testing, deployment, documentation
-- Add contingency buffer (typically 20-30%)
+- Include infrastructure, operational costs, testing, deployment, and documentation
+- Add a contingency buffer (typically 20-30%)
+- Involve the team; engineers doing the work should validate estimates
 
-**Provide Ranges, Not Point Estimates**:
-- "4-6 months" is more honest than "5 months"
-- Explain methodology and assumptions
-- Flag high-uncertainty areas
+**Provide Ranges, Not Point Estimates**: "4-6 months" is more honest than "5 months." Explain your methodology and assumptions clearly so stakeholders understand the reasoning, and flag high-uncertainty areas explicitly.
 
 <blockquote class="pull-quote">
 <p>Be realistic, not optimistic. Frame alignment as risk mitigation.</p>
@@ -184,20 +172,12 @@ Align applies at every level of work:
 - No-Go: Not feasible, recommend cancellation
 - Pivot: Adjust scope/timeline/approach to make feasible
 
-**How to Do This Well**:
-- Involve the team—engineers doing the work should validate estimates
-- Show your work and include contingency explicitly
-- Provide ranges ("4-6 months") not false precision ("4.3 months")
-- Explain methodology and assumptions clearly
-- Flag high-uncertainty areas for stakeholder awareness
-
 <div class="callout callout--warning">
 <p class="callout__title">Red Flags</p>
 <ul>
-<li>False precision ("4.3 months")</li>
-<li>Anchoring bias (stakeholder suggests timeline, skews your estimate)</li>
+<li>False precision ("4.3 months") or anchoring bias from stakeholder-suggested timelines</li>
 <li>Ignoring non-development work (testing, deployment, documentation)</li>
-<li>No contingency buffer (typically 20-30%)</li>
+<li>No contingency buffer</li>
 <li>Estimating without team input</li>
 </ul>
 </div>
@@ -350,34 +330,11 @@ Success =
 
 ### Getting Real Approval
 
-**Signs of Real Agreement**:
-- ✅ Stakeholders can explain the project to others
-- ✅ No one is surprised by scope or timeline
-- ✅ Budget and resources are committed
-- ✅ Risks are acknowledged and accepted
-- ✅ Decision rights are clear
-
-**Red Flags**:
-- ❌ "Let's just get started and figure it out"
-- ❌ Stakeholders disagree on priorities
-- ❌ Budget "to be determined"
-- ❌ Key stakeholders not present for approval
-- ❌ Rushed approval without real review
-- ❌ Rubber-stamp approval without understanding
-
-**How to Do This Well**:
-- Present the charter in person—don't just email it
-- Walk through key sections together
-- Ask stakeholders to explain it back to you—test their understanding
-- Make the charter scannable with headings, bullets, and tables
-- Get formal written sign-off, not just verbal agreement
-- Ensure real commitment before proceeding to the Agree phase
+Present the charter in person; don't just email it. Walk through key sections together and ask stakeholders to explain the project back to you. Make the charter scannable with headings, bullets, and tables. Get formal written sign-off, not just verbal agreement.
 
 ---
 
 ## Readiness: Transitioning to Agree
-
-### Behavioral Indicators of True Alignment
 
 Artifacts can be completed without genuine alignment. Before moving to Phase 2 (Agree), verify that alignment is real, not just documented.
 
@@ -389,7 +346,7 @@ Artifacts can be completed without genuine alignment. Before moving to Phase 2 (
 
 **You're ready for Agree when**:
 - [ ] Project charter is signed by all key stakeholders
-- [ ] Stakeholders can explain the project to others in their own words
+- [ ] Stakeholders can explain the project in their own words
 - [ ] Success criteria are measurable and agreed (not vague or conflicting)
 - [ ] Constraints are documented and acknowledged
 - [ ] Key risks are identified with owners and mitigation strategies
@@ -397,21 +354,17 @@ Artifacts can be completed without genuine alignment. Before moving to Phase 2 (
 - [ ] Decision rights are clear (who decides what)
 - [ ] No stakeholder is withholding concerns or planning to revisit decisions later
 
-**You're NOT ready for Agree when**:
-- Stakeholders agreed in the meeting but raised concerns afterward
-- Key stakeholders weren't present for approval
-- Success criteria are vague ("make it better") or conflicting between stakeholders
-- Budget is "to be determined" or "flexible"
-- The approval was rushed to meet a deadline
-- Stakeholders say "just start and we'll figure out the details"
+<div class="callout callout--warning">
+<p class="callout__title">Red Flags</p>
+<ul>
+<li>Stakeholders agreed in the meeting but raised concerns afterward</li>
+<li>Key stakeholders weren't present for approval</li>
+<li>Budget is "to be determined" or "flexible"</li>
+<li>The approval was rushed or rubber-stamped without real review</li>
+<li>Stakeholders say "just start and we'll figure out the details"</li>
+</ul>
+</div>
 
 ### What Happens If You Proceed Too Early
 
-Moving to Agree without genuine alignment creates problems that surface later:
-- Architecture decisions made against misunderstood requirements
-- Design work that gets thrown away when real requirements emerge
-- Stakeholder conflicts that delay or derail the project mid-implementation
-- Scope creep as stakeholders add requirements they "thought were obvious"
-
-**When in doubt, stay in Align**. The cost of additional alignment conversations is far lower than the cost of rework from misunderstood requirements.
-
+Moving to Agree without genuine alignment creates problems that surface later: architecture decisions made against misunderstood requirements, design work thrown away when real requirements emerge, stakeholder conflicts mid-implementation, and scope creep as stakeholders add requirements they "thought were obvious."

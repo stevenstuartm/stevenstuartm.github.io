@@ -9,9 +9,7 @@ tags: [sdlc, methodology, collaboration, stakeholder-management, leadership, fun
 
 ## Overview
 
-AAA is a **guiding discipline and principle** for software development: a way of thinking that provides guardrails against the most common mistakes organizations and development teams make. It is a philosophy that transcends any specific methodology, operating from the software architect's perspective on what truly matters.
-
-### AAA as a Way of Valuing
+AAA is a **guiding discipline and principle** for software development: a way of thinking that provides guardrails against the most common mistakes organizations and development teams make. It transcends any specific methodology, operating from the software architect's perspective on what truly matters.
 
 <blockquote class="pull-quote">
 <p>AAA is about how we value before how we work.</p>
@@ -32,13 +30,7 @@ AAA is a **guiding discipline and principle** for software development: a way of
 </div>
 </div>
 
-### Why This Order Matters
-
-Nearly every failed project makes the same mistake: it starts with solutions, jumps to plans, and treats delivery as the goal. AAA deliberately reverses this:
-
-1. **The need comes first**: We align with people and their actual problems before proposing solutions
-2. **Human agreement comes first**: We secure genuine commitment before implementation begins
-3. **Applying the agreement comes first**: We honor what was agreed before declaring success
+Nearly every failed project makes the same mistake: it starts with solutions, jumps to plans, and treats delivery as the goal. AAA deliberately reverses this. The need comes first, then genuine human agreement, then disciplined application of what was agreed.
 
 <blockquote class="pull-quote">
 <p>When you walk into that first stakeholder meeting, you don't need a project plan. You need to connect with people, understand their world, and establish the foundation for meaningful agreement.</p>
@@ -46,44 +38,7 @@ Nearly every failed project makes the same mistake: it starts with solutions, ju
 
 ### Not a Checklist, But a Discipline
 
-Yes, AAA will present specific details of how an architect ought to communicate and work. You'll find concrete activities, deliverables, and decision points. But these are **examples of the discipline in practice**, not rigid steps to follow. AAA is about developing the instinct to:
-
-- Value human understanding before technical design
-- Seek genuine agreement before claiming alignment
-- Honor commitments before chasing new requirements
-- Maintain connection throughout delivery
-
-This discipline applies whether you're using Scrum sprints, Kanban flows, or waterfall phases. It transcends methodology because it addresses something deeper: **how architects think about and engage with the work itself**.
-
----
-
-## Why AAA Matters
-
-### The Failures AAA Prevents
-
-Most project failures stem from broken values, not broken processes:
-
-<div class="callout callout--warning">
-<p class="callout__title">Common Failure Patterns</p>
-<ul>
-<li><strong>Starting with solutions instead of connection</strong>: Architects propose technical designs before understanding the human context. Teams build the "right" solution to the wrong problem.</li>
-<li><strong>Confusing documentation with agreement</strong>: Sign-offs are collected but genuine commitment is missing. Plans look good on paper but collapse when reality hits.</li>
-<li><strong>Treating delivery as the goal</strong>: Teams chase feature completion over honoring commitments. Success is measured by shipped code, not realized value.</li>
-</ul>
-</div>
-
-### The AAA Perspective
-
-<div class="callout callout--tip">
-<p class="callout__title">What AAA Provides</p>
-<p>AAA provides guardrails by keeping these values front and center:</p>
-<ul>
-<li><strong>Connection before solutions</strong>: Understand people and their context before designing systems</li>
-<li><strong>Genuine agreement before execution</strong>: Secure real commitment, not just sign-offs</li>
-<li><strong>Honoring commitments before chasing features</strong>: Apply what was agreed, maintain alignment throughout</li>
-<li><strong>Human needs throughout</strong>: Technical decisions remain anchored in the people they serve</li>
-</ul>
-</div>
+AAA presents specific activities, deliverables, and decision points, but these are **examples of the discipline in practice**, not rigid steps to follow. This discipline applies whether you're using Scrum sprints, Kanban flows, or waterfall phases. It transcends methodology because it addresses something deeper: **how architects think about and engage with the work itself**.
 
 ---
 
@@ -106,15 +61,7 @@ Yes, use frameworks. Use their ceremonies and practices. But stay open to discov
 
 ### Phase 1: Align with the Need
 
-**Establish human connection and deeply understand the context before proposing solutions.**
-
-**The Core Value**: Connection with people comes first. Alignment is not requirement extraction; it's building shared understanding with the humans behind the need.
-
-**What Alignment Produces**: A foundation of mutual understanding with stakeholder commitment, not just signatures but real buy-in from people who feel heard.
-
-<blockquote class="pull-quote">
-<p>When you truly align with people and their needs, you avoid building elegant solutions to misunderstood problems.</p>
-</blockquote>
+Understand the problem space before making commitments. Build trust with stakeholders, surface constraints, and establish shared understanding of success. Alignment produces a foundation of mutual understanding with real stakeholder buy-in, not just signatures from people who feel heard.
 
 [→ Phase 1: Align Guide](aaa-phase1-align.html)
 
@@ -122,15 +69,7 @@ Yes, use frameworks. Use their ceremonies and practices. But stay open to discov
 
 ### Phase 2: Agree to the Plan
 
-**Secure genuine commitment to how you will accomplish what you're now aligned on.**
-
-**The Core Value**: Shared commitment to the path forward. Agreement isn't about getting approval for your design; it's about creating a plan together and building mutual confidence in the approach.
-
-**What Agreement Produces**: Authentic commitment from stakeholders and teams. Everyone understands and believes in the path forward because they helped shape it.
-
-<blockquote class="pull-quote">
-<p>When people genuinely agree (versus grudgingly sign-off), they stay committed when challenges arise.</p>
-</blockquote>
+Transform aligned understanding into concrete, approved technical plans. Design the solution, validate critical assumptions, and secure commitment on approach and resources. Agreement produces authentic commitment because everyone helped shape the path forward.
 
 [→ Phase 2: Agree Guide](aaa-phase2-agree.html)
 
@@ -138,15 +77,7 @@ Yes, use frameworks. Use their ceremonies and practices. But stay open to discov
 
 ### Phase 3: Apply the Agreement
 
-**Honor the commitments made and maintain connection throughout delivery.**
-
-**The Core Value**: Delivering on agreements, not just shipping features. Application is about executing what was agreed, in the way it was agreed, while maintaining the alignment you established. When reality requires changes, you return to align and agree again.
-
-**What Application Produces**: Working software that meets the needs you aligned on, built the way you agreed, delivered by maintaining human connection throughout.
-
-<blockquote class="pull-quote">
-<p>When you honor agreements instead of chasing features, scope stays stable. Value is realized because the right things were built.</p>
-</blockquote>
+Execute the agreed plan with discipline while maintaining continuous alignment. When reality requires changes, return to Align or Agree rather than silently drifting from what was committed. Application produces working software that meets the needs you aligned on, built the way you agreed.
 
 [→ Phase 3: Apply Guide](aaa-phase3-apply.html)
 
@@ -178,44 +109,4 @@ Yes, use frameworks. Use their ceremonies and practices. But stay open to discov
                               Cycle repeats at every level
 ```
 
-**The Flow of Values**: Each phase builds on the previous one. You can't genuinely agree without first aligning. You can't honor agreements that were never truly made.
-
-**When to Revisit**: Return to earlier phases when reality demands it. If new information breaks alignment, go back and re-align. If the plan proves infeasible, go back and re-agree. This isn't failure; it's the discipline of maintaining integrity.
-
----
-
-## AAA as a Recursive Cycle
-
-AAA is not just a one-time project framework; it's a **cycle** that repeats at every level of work:
-
-| Level | Timeframe | Align | Agree | Apply |
-|-------|-----------|-------|-------|-------|
-| **Program** | 6-18 months | Strategic goals, portfolio priorities | Architecture standards, governance | Multiple projects with continuous oversight |
-| **Project** | 3-6 months | Project scope, business objectives | Technical approach, implementation plan | Iterative delivery cycles |
-| **Sprint** | 1-4 weeks | Sprint goals, acceptance criteria | Task breakdown, technical approach | Daily development and testing |
-| **Feature** | 1-5 days | User need, acceptance criteria | Implementation approach | Coding, testing, review |
-
-The same principles apply regardless of scale. Whether you're leading a multi-year transformation or designing a single feature, you always Align on the need, Agree on the approach, and Apply with discipline.
-
-**The nesting principle**: Each level of AAA operates within the agreements of the level above. Sprint-level agreements must honor project-level agreements. When a lower level discovers something that breaks a higher-level agreement, you cycle back up to realign and re-agree at the appropriate level.
-
----
-
-## AAA at the Technical Level
-
-The AAA discipline applies when engineers integrate code too. **Align** means understanding each other's work and intentions before modifying shared code. **Agree** means explicit commitments about interfaces, contracts, and integration points. **Apply** means honoring those agreements in implementation.
-
-CI/CD automates the verification. Tests are agreements encoded as executable specifications. When a build breaks or tests fail, it's surfacing a broken agreement: merge conflicts from work that was never aligned, integration failures from misunderstood contracts, breaking changes that honored one agreement while violating another.
-
-When CI fails, ask "what agreement broke?" not just "how do I fix this?" This question leads to root causes rather than symptoms.
-
-For detailed CI/CD guidance, see [CI/CD: Continuous Integration and Continuous Delivery](cicd.html).
-
----
-
-## Related Guides
-
-- [AAA Scenarios](aaa-scenarios.html): Real-world situations and how AAA discipline applies
-- [Shaped Kanban](/blog/2025/11/17/shaped-kanban.html){:target="_blank" rel="noopener noreferrer"}: Flow-based work with disciplined constraints
-- [Architecture Decision-Making](/study-guides/architecture/architecture-decision-making.html): ADRs and decision frameworks
-- [Team Organization](/study-guides/sdlc/team-organization.html): Team structures and collaboration patterns
+Each phase builds on the previous one. You can't genuinely agree without first aligning, and you can't honor agreements that were never truly made. When new information breaks alignment, go back and re-align. When the plan proves infeasible, go back and re-agree. This isn't failure; it's the discipline of maintaining integrity.

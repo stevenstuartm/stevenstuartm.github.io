@@ -29,15 +29,6 @@ Regardless of project size or methodology, agreement follows these steps:
 6. **Plan the work**: What's the sequence and effort?
 7. **Get commitment**: Do we all agree to proceed?
 
-### Recursive Application
-
-| Level | Timeframe | What Agree Looks Like |
-|-------|-----------|----------------------|
-| **Program** | weeks | Full architecture design, comprehensive POC, detailed TCO/ROI |
-| **Project** | days | Component design, targeted spikes, focused cost analysis |
-| **Sprint** | hours | Technical design discussion, quick validation |
-| **Feature** | minutes | Code review validates approach |
-
 ### Entry & Exit
 
 **You start with**: Approved project charter from Phase 1
