@@ -819,6 +819,30 @@
         }
       ]
     },
+    "Developer Tools": {
+      "subcategories": [
+        {
+          "name": "Git Fundamentals",
+          "description": "Core Git concepts, workflows, and version control mastery",
+          "guides": [
+            "developer-tools/git-quick-reference.md",
+            "developer-tools/git-core-concepts.md",
+            "developer-tools/git-branching-strategies.md",
+            "developer-tools/git-advanced-operations.md"
+          ]
+        },
+        {
+          "name": "GitHub",
+          "description": "Platform features for collaboration, automation, and governance",
+          "guides": [
+            "developer-tools/github-quick-reference.md",
+            "developer-tools/github-collaboration.md",
+            "developer-tools/github-actions.md",
+            "developer-tools/github-administration-security.md"
+          ]
+        }
+      ]
+    },
     "ASP.NET Core": {
       "subcategories": [
         {
