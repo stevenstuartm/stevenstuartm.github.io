@@ -14,14 +14,16 @@ permalink: /case-studies.html
 {% assign all_studies = site.case_studies | sort: 'date' | reverse %}
 
 {% if featured_studies.size > 0 %}
-<section class="featured-section">
+<section class="category-section">
   <h2 class="section-heading">Featured</h2>
-  <div class="featured-grid">
+  <div class="case-studies-grid">
   {% for case_study in featured_studies %}
     <article class="case-study-card {% if case_study.category %}category-{{ case_study.category }}{% endif %}">
       <a href="{{ case_study.url | relative_url }}" class="case-study-link">
         <div class="card-header">
-          <span class="featured-badge">Featured</span>
+          {% if case_study.category_label %}
+          <span class="category-badge category-{{ case_study.category }}">{{ case_study.category_label }}</span>
+          {% endif %}
           <span class="case-study-date">{{ case_study.date | date: "%Y" }}</span>
         </div>
         <h3 class="card-title">{{ case_study.title }}</h3>
@@ -135,28 +137,6 @@ permalink: /case-studies.html
   margin: 0 0 var(--spacing-xs) 0;
   padding-bottom: 4px;
   border-bottom: 2px solid var(--color-border);
-}
-
-/* Featured Section */
-.featured-section {
-  margin-bottom: var(--spacing-md);
-}
-
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-sm);
-}
-
-.featured-badge {
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: rgba(139, 92, 246, 0.1);
-  color: var(--color-primary);
 }
 
 /* Category Sections */
@@ -355,11 +335,6 @@ permalink: /case-studies.html
 
   .hero-description {
     font-size: 0.8rem;
-  }
-
-  .featured-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-xs);
   }
 
   .case-studies-grid {
