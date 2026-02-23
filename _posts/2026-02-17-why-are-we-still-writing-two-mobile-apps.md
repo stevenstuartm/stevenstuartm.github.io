@@ -8,13 +8,13 @@ description: "The web platform already does what most apps do, but Apple's contr
 
 Frameworks like React Native, Flutter, and MAUI keep promising to end the "write it twice" problem across mobile platforms. One codebase, every platform, native-quality results. Yet every time, the abstraction leaks, and then it floods so fast that bailing water is all you have time to do. I've been working with MAUI recently, and the experience crystallized a question I should have asked sooner: why am I not just building a website?
 
-This isn't an argument that native apps are obsolete or that local executables should disappear. There are good reasons to run code on your own hardware, and the pure thin-client terminal hasn't arrived yet; maybe it shouldn't. But when teams default to native without questioning it, they accept costs and constraints on the client side that the backend abandoned years ago.
-
 Once you pull that thread, it unravels fast. The web platform's capability surface is far larger than the industry acknowledges, and nearly everything preventing universal web adoption is inertia, business incentives, or mental models rather than real technical constraints.
 
 <blockquote class="pull-quote">
 <p>The web can do the job. One company made sure you'd never trust it to.</p>
 </blockquote>
+
+This isn't an argument that native apps are obsolete or that local executables should disappear. There are good reasons to run code on your own hardware, and the pure thin-client terminal hasn't arrived yet; maybe it shouldn't. But when teams default to native without questioning it, they accept costs and constraints on the client side that the backend abandoned years ago.
 
 ## What the Web Platform Can Actually Do
 
