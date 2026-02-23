@@ -8,6 +8,8 @@ description: "The web platform already does what most apps do, but Apple's contr
 
 Frameworks like React Native, Flutter, and MAUI keep promising to end the "write it twice" problem across mobile platforms. One codebase, every platform, native-quality results. Yet every time, the abstraction leaks, and then it floods so fast that bailing water is all you have time to do. I've been working with MAUI recently, and the experience crystallized a question I should have asked sooner: why am I not just building a website?
 
+This isn't an argument that native apps are obsolete or that local executables should disappear. There are good reasons to run code on your own hardware, and the pure thin-client terminal hasn't arrived yet; maybe it shouldn't. But when teams default to native without questioning it, they accept costs and constraints on the client side that the backend abandoned years ago.
+
 Once you pull that thread, it unravels fast. The web platform's capability surface is far larger than the industry acknowledges, and nearly everything preventing universal web adoption is inertia, business incentives, or mental models rather than real technical constraints.
 
 <blockquote class="pull-quote">
@@ -61,11 +63,13 @@ In the early 2000s, Microsoft was the villain. They owned the desktop, the brows
 
 Then each company lost something important, and their responses tell you everything.
 
-Microsoft lost mobile. Windows Phone failed, Windows 8 alienated desktop users, and by 2014 the company had lost the most important screen in people's lives. Their response was to stop trying to own the screen and instead to compete on the stack. .NET went open source, Visual Studio Code became the most popular editor in the world, they acquired GitHub and kept it open, and Azure now runs more Linux workloads than Windows. The company that once tried to kill Linux now employs more Linux kernel contributors than most Linux companies.
+Microsoft lost mobile and Windows 8 alienated more and more desktop users. Their response was to stop trying to own the screen and instead to compete on the stack. .NET went open source, Visual Studio Code became the most popular editor in the world, they acquired GitHub and kept it open, and Azure now runs more Linux workloads than Windows. The company that once tried to kill Linux now employs more Linux kernel contributors than most Linux companies.
+
+I am still baffled why Microsoft did not backpedal their bloated OS and clunky UX for Desktop as soon as their market assumptions proved to be so very wrong. Windows seems to have gotten worse with each version and with no sign of redemption. Two steps forward and one step back.
 
 Apple very quickly went the other direction. When the iPhone became the dominant computing device, Apple discovered what Microsoft had known in the 1990s: if you control the platform people depend on, you don't have to compete on openness. You compete on control.
 
-I write .NET code for a living and I choose to do it on a Mac because the experience is genuinely better. Notice what that sentence reveals about both companies. Microsoft made that possible by building .NET and VS Code to run everywhere, making the deliberate decision that their tools should work regardless of platform. Try the reverse. Try building an iOS app without a Mac. Try submitting to the App Store without Xcode. Try running Swift development tooling on Windows with the same first-class support that .NET has on macOS. You can't. Microsoft earns wise developers by being useful regardless of platform. Apple captures developers by making their platform mandatory.
+I write .NET code for a living and I choose to do it on a Mac because the experience is genuinely better. Notice what that sentence reveals about both companies though. Microsoft made that possible by building .NET and VS Code to run everywhere, making the deliberate decision that their tools should work regardless of platform. Try the reverse. Try building an iOS app without a Mac. Try submitting to the App Store without Xcode. Try running Swift development tooling on Windows with the same first-class support that .NET has on macOS. You can't. Microsoft earns wise developers and enterprise companies by being useful regardless of platform. Apple captures developers by making their platform mandatory.
 
 Apple's products deserve their loyalty. The Mac is excellent, the ecosystem integration is seamless, and users trust the brand for good reasons. That trust is exactly what makes the constraint so effective. When a company makes products this good, people don't scrutinize the walls. They assume the walls exist for good reasons.
 
@@ -95,7 +99,7 @@ Android doesn't have these restrictions. Chrome supports the full suite of web A
 
 ## The Circular Logic of "Users Prefer Native"
 
-Here's where the industry's reasoning collapses. The most common justification for building native apps is market data showing that users spend 88-92% of their mobile time in apps and only 8-12% in browsers. Native apps retain users at 32% after 90 days compared to 20% for web apps. Mobile banking sees 50% more transactions through native apps. The data seems decisive.
+The most common justification for building native apps is market data showing that users spend 88-92% of their mobile time in apps and only 8-12% in browsers. Native apps retain users at 32% after 90 days compared to 20% for web apps. Mobile banking sees 50% more transactions through native apps. The data seems decisive.
 
 But this is a post-hoc fallacy dressed up as market research. Users spend time in apps because apps are what gets built, promoted, funded, and placed on their home screens. Native gets the discovery mechanisms, the design talent, and the push notification support. Web experiences get a fraction of the budget and are treated as a fallback for users who haven't installed the app yet.
 
@@ -107,7 +111,7 @@ A developer considers building a web app, checks iOS capabilities, and finds tha
 
 The counterfactual has never been tested at scale because Apple has prevented it. Equivalent web and native experiences have never existed on iOS. The assumption that native is inherently superior has become so embedded that most teams skip straight to "which framework?" without ever stopping at "does this need to be an app?"
 
-The few times the counterfactual has been tested, the results are telling. The Financial Times left the App Store in 2011 and went web-only; they're still web-first over a decade later. Starbucks built a PWA that was 99.84% smaller than their iOS app and doubled daily active users. But even Starbucks kept the native app alongside it, which raises the real question: did they keep it because native was genuinely better, or because no one in the room was willing to ask "why do we still have this?"
+The few times the counterfactual has been tested, the results are telling. The Financial Times left the App Store in 2011 and went web-only; they're still web-first over a decade later. Starbucks built a PWA that was 99.84% smaller than their iOS app and doubled daily active users. But even Starbucks kept the native app alongside it, which raises an important question I can't answer: did they keep it because native was genuinely better, or because no one in the room was willing to ask "why do we still have this?"
 
 ## The Anxiety That Predates Mobile
 
@@ -119,12 +123,14 @@ Mobile is also the reason the web became capable enough to challenge native at a
 
 Cloud broke through because no single company controlled the server. The web can't break through until it works on Apple's phone, and Apple decides what works on Apple's phone.
 
-## The Right Question
+## Progress Often Comes by Getting Out of Its Way
 
-The default question in client development is "which framework should we use?" It has always been the wrong question. The right question is "do we have a specific, documented constraint that the web platform cannot satisfy?"
+Before writing that new shiny app, ask yourselves: "Do we have a specific, documented constraint that the web platform cannot satisfy?"
 
-For most software, the answer is no. The web runs everywhere, deploys instantly, requires no framework intermediary, and its capability surface grows with every browser release. Cross-platform frameworks tried to solve platform fragmentation by adding another platform on top. The web solved it by being the platform that was already there. In Android-dominant markets like India and Southeast Asia, this is already the reality: one codebase, instant deployment, no App Store tax.
+For most mobile software needs, the answer is no. The web runs everywhere, deploys instantly, requires no framework intermediary, and its capability surface grows with every browser release. Cross-platform frameworks tried to solve platform fragmentation by adding another platform on top. The web solved it by being the platform that was already there. In Android-dominant markets like India and Southeast Asia, companies like Flipkart and JioSaavn have already proven this works: one codebase, instant deployment, no App Store tax.
 
 The immediate objection is discoverability. People find apps by searching the App Store, so if you're not in the store, you're invisible. But most app discovery doesn't actually happen through store browsing; it happens through web search, social media, ads, and word of mouth. The store is more of a checkout counter than a shopping mall. Google Play already supports Trusted Web Activities, which let PWAs appear as store listings. The Microsoft Store accepts PWAs directly. For enterprise and B2B products, store discovery was never relevant to begin with. The discoverability argument is narrower than it sounds, and it gets narrower every year as deep links, QR codes, and social sharing put users directly into web experiences without a store in between.
 
 The pragmatic strategy might be web-first. Build for the browser as the default platform, and only build native when a specific capability genuinely can't be delivered through the web. The web app is your product. The native app, if you need one at all, exists only for the features that Apple won't let the browser handle.
+
+Cost, velocity, and agility shouldn't be values we only demand from our backend infrastructure. The same expectations that drove the industry from on-premises servers to cloud should apply to how we build and deliver client software. Native apps aren't going away, and they shouldn't. But we should be progressing toward both efficiency and sustainability rather than accepting a status quo where one company's business model determines how the entire industry ships code.
