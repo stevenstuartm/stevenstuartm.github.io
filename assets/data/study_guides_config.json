@@ -908,6 +908,71 @@
           ]
         }
       ]
+    },
+    "IoT": {
+      "subcategories": [
+        {
+          "name": "IoT Foundations",
+          "description": "Core IoT concepts, protocols, communication technologies, and hardware fundamentals",
+          "guides": [
+            "iot/iot-fundamentals.md",
+            "iot/iot-protocols-communication.md",
+            "iot/iot-hardware-electronics.md"
+          ]
+        },
+        {
+          "name": "Architecture & Security",
+          "description": "IoT architecture patterns, security fundamentals, firmware updates, and data pipeline design",
+          "guides": [
+            "iot/iot-architecture-patterns.md",
+            "iot/iot-security-fundamentals.md",
+            "iot/iot-firmware-ota-updates.md",
+            "iot/iot-data-pipelines.md"
+          ]
+        },
+        {
+          "name": ".NET IoT Development",
+          "description": "Using C# for IoT development with .NET IoT Libraries, MQTTnet, and .NET nanoFramework",
+          "guides": [
+            "iot/dotnet-iot-libraries.md",
+            "iot/mqttnet-iot-communication.md",
+            "iot/dotnet-nanoframework.md"
+          ]
+        },
+        {
+          "name": "Azure IoT Services",
+          "description": "Azure IoT Hub, Device Provisioning Service, and IoT Edge for cloud-connected device management",
+          "guides": [
+            "iot/azure-iot-hub.md",
+            "iot/azure-iot-dps.md",
+            "iot/azure-iot-edge-architecture.md",
+            "iot/azure-iot-edge-operations.md"
+          ]
+        },
+        {
+          "name": "Dashboards & Apps",
+          "description": "Real-time IoT dashboards with SignalR and cross-platform companion apps with MAUI",
+          "guides": [
+            "iot/signalr-iot-dashboards.md",
+            "iot/maui-iot-companion-apps.md"
+          ]
+        },
+        {
+          "name": "Advanced IoT",
+          "description": "Digital twins, IoT Central, industrial IoT, edge ML, fleet management, and data serialization",
+          "guides": [
+            "iot/azure-digital-twins.md",
+            "iot/azure-iot-central.md",
+            "iot/iiot-foundations-control-systems.md",
+            "iot/iiot-security-maintenance-safety.md",
+            "iot/iiot-architecture-implementation.md",
+            "iot/ml-at-the-edge.md",
+            "iot/iot-fleet-management-lifecycle.md",
+            "iot/iot-fleet-management-operations.md",
+            "iot/iot-data-serialization.md"
+          ]
+        }
+      ]
     }
   }
 }
