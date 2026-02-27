@@ -174,9 +174,9 @@ Both implementations follow the same API. A recipient registers for a message ty
 ```csharp
 public sealed class ShellViewModel : ObservableRecipient, IRecipient<ThemeChangedMessage>
 {
-    public ShellViewModel()
+    public ShellViewModel(IMessenger messenger) : base(messenger)
     {
-        IsActive = true; // Activates registration via ObservableRecipient
+        IsActive = true;
     }
 
     public void Receive(ThemeChangedMessage message)
@@ -186,12 +186,12 @@ public sealed class ShellViewModel : ObservableRecipient, IRecipient<ThemeChange
 }
 ```
 
-`ObservableRecipient` is a subclass of `ObservableObject` that integrates with the messenger. Setting `IsActive = true` automatically registers the ViewModel for all message types it implements, and setting it to `false` unregisters it.
+`ObservableRecipient` is a subclass of `ObservableObject` that integrates with the messenger. Its constructor accepts an `IMessenger` parameter so you can inject the messenger through DI rather than relying on `WeakReferenceMessenger.Default`. Setting `IsActive = true` automatically registers the ViewModel for all message types it implements, and setting it to `false` unregisters it.
 
-Sending a message from any other ViewModel or service requires no knowledge of who is listening:
+Sending a message from any other ViewModel or service requires no knowledge of who is listening. Any class that holds an injected `IMessenger` reference can publish:
 
 ```csharp
-WeakReferenceMessenger.Default.Send(new ThemeChangedMessage(Theme.Dark));
+_messenger.Send(new ThemeChangedMessage(Theme.Dark));
 ```
 
 The toolkit includes `ValueChangedMessage<T>` as a convenient generic message type for notifying about a single changed value. You can also define custom message classes for domain-specific notifications:
@@ -295,20 +295,22 @@ public partial class ProductSearchViewModel : ObservableRecipient
 }
 ```
 
-Connecting the ViewModel to its View involves setting it as the `DataContext`. In a code-behind file this is straightforward:
+Connecting the ViewModel to its View involves injecting it through the page's constructor. Rather than resolving dependencies from a static service locator like `App.Services`, constructor injection keeps the page testable and makes its dependencies explicit:
 
 ```csharp
 public sealed partial class ProductSearchPage : Page
 {
     public ProductSearchViewModel ViewModel { get; }
 
-    public ProductSearchPage()
+    public ProductSearchPage(ProductSearchViewModel viewModel)
     {
         InitializeComponent();
-        ViewModel = App.Services.GetRequiredService<ProductSearchViewModel>();
+        ViewModel = viewModel;
     }
 }
 ```
+
+This requires that both the page and the ViewModel are registered in the DI container. WinUI 3's `Frame.Navigate` creates pages by type using a parameterless constructor by default, so constructor injection requires a custom navigation service or a page resolver that uses the container to instantiate pages. Most production WinUI 3 apps adopt this pattern because it keeps pages and ViewModels consistently testable.
 
 With the ViewModel exposed as a typed property on the page, `x:Bind` can reference it directly without casting:
 
@@ -323,4 +325,4 @@ With the ViewModel exposed as a typed property on the page, `x:Bind` can referen
 
 The `Mode=TwoWay` on the `TextBox` pushes user input back to the ViewModel, `UpdateSourceTrigger=PropertyChanged` ensures updates happen on each keystroke rather than on focus loss, and the `ProgressRing` and error message react automatically to state changes in the ViewModel without any event handlers.
 
-Organizing ViewModel fields by their role, observable properties first, then computed properties, then commands, keeps the class scannable. Injecting services through the constructor rather than resolving them from a static container keeps the class testable. Together, these conventions produce ViewModels that are easy to read, straightforward to test, and simple to bind in XAML.
+Organizing ViewModel fields by their role, observable properties first, then computed properties, then commands, keeps the class scannable. Injecting all dependencies through constructors, from services in ViewModels to ViewModels in pages to messengers in recipients, keeps every layer testable and makes the dependency graph explicit. Together, these conventions produce ViewModels that are easy to read, straightforward to test, and simple to bind in XAML.
