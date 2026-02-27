@@ -53,12 +53,77 @@ private static readonly HttpClient _client = new HttpClient();  // DNS cached fo
 
 <div class="callout callout--warning">
 <p class="callout__title">The HttpClient Dilemma</p>
-<p>Creating HttpClient instances in a <code>using</code> block causes socket exhaustion. Creating a static instance caches DNS forever. Both patterns are problematic in production code.</p>
+<p>Creating HttpClient instances in a <code>using</code> block causes socket exhaustion. Creating a static instance caches DNS forever. .NET provides two ways to solve this: a static <code>HttpClient</code> with <code>SocketsHttpHandler</code> connection rotation for simple scenarios, and <code>IHttpClientFactory</code> for DI-based applications.</p>
 </div>
 
-## IHttpClientFactory (Recommended)
+## Choosing a Creation Strategy
 
-Manages HttpClient instances properly, handling connection pooling and DNS changes.
+Both approaches solve socket exhaustion and DNS caching, but they serve different application types.
+
+| Approach | Best for | DNS handling | DI required |
+|---|---|---|---|
+| Static + SocketsHttpHandler | Console apps, libraries, Azure Functions | `PooledConnectionLifetime` rotates connections | No |
+| IHttpClientFactory (basic) | DI-based apps with simple HTTP needs | Automatic handler rotation (default 2 min) | Yes |
+| Named clients (via factory) | DI-based apps calling multiple external APIs | Via factory | Yes |
+| Typed clients (via factory) | Complex API integrations needing encapsulation | Via factory | Yes |
+
+## Static HttpClient with SocketsHttpHandler
+
+For applications without dependency injection, or libraries that shouldn't impose DI requirements on consumers, a static `HttpClient` with `SocketsHttpHandler` solves both problems at once.
+
+```csharp
+private static readonly HttpClient _client = new HttpClient(new SocketsHttpHandler
+{
+    PooledConnectionLifetime = TimeSpan.FromMinutes(2),
+    PooledConnectionIdleTimeout = TimeSpan.FromMinutes(1),
+    MaxConnectionsPerServer = 10
+});
+```
+
+`SocketsHttpHandler` (the default handler since .NET Core 2.1) manages its own connection pool internally. Setting `PooledConnectionLifetime` ensures connections are recycled after the specified duration, which triggers fresh DNS resolution on subsequent requests. This gives you the reuse benefits of a static client without the stale DNS problem.
+
+When multiple static clients need to call different APIs, share a single handler to avoid duplicating connection pools.
+
+```csharp
+public static class HttpClients
+{
+    private static readonly SocketsHttpHandler SharedHandler = new()
+    {
+        PooledConnectionLifetime = TimeSpan.FromMinutes(2),
+        PooledConnectionIdleTimeout = TimeSpan.FromMinutes(1),
+        MaxConnectionsPerServer = 10
+    };
+
+    public static HttpClient GitHub { get; } = new(SharedHandler, disposeHandler: false)
+    {
+        BaseAddress = new Uri("https://api.github.com/"),
+        DefaultRequestHeaders =
+        {
+            { "Accept", "application/vnd.github.v3+json" },
+            { "User-Agent", "MyApp" }
+        }
+    };
+
+    public static HttpClient Weather { get; } = new(SharedHandler, disposeHandler: false)
+    {
+        BaseAddress = new Uri("https://api.weather.com/"),
+        Timeout = TimeSpan.FromSeconds(30)
+    };
+}
+```
+
+Setting `disposeHandler: false` is critical when sharing a handler across multiple clients. Without it, disposing one client closes connections used by others.
+
+**When to use this approach**:
+- Console applications and CLI tools
+- Azure Functions (especially the isolated worker model)
+- Libraries and NuGet packages that shouldn't force consumers into DI
+- Simple services with one or two HTTP dependencies
+- Unit tests and prototypes
+
+## IHttpClientFactory
+
+For ASP.NET Core applications and other DI-based services, `IHttpClientFactory` manages handler lifetime and connection pooling automatically. It creates `HttpMessageHandler` instances with a configurable lifetime (2 minutes by default), pooling and reusing them across `HttpClient` instances.
 
 ### Basic Factory Usage
 
@@ -688,9 +753,9 @@ public class RestClient : IRestClient
 
 ## Key Takeaways
 
-**Use IHttpClientFactory**: Never create HttpClient directly in production code. Use the factory for proper connection management.
+**Manage HttpClient lifetime deliberately**: Use `IHttpClientFactory` in DI-based applications or a static `HttpClient` with `SocketsHttpHandler.PooledConnectionLifetime` in simpler scenarios. Never create and dispose `HttpClient` in a tight loop.
 
-**Typed clients for clean APIs**: Encapsulate HTTP logic in typed client classes for better organization and testability.
+**Typed clients for clean APIs**: In DI-based apps, encapsulate HTTP logic in typed client classes for better organization and testability.
 
 **Handle failures gracefully**: Use Polly for retries and circuit breakers. Handle timeouts and network errors explicitly.
 

@@ -77,6 +77,192 @@ services.AddDbContext<ApplicationDbContext>(options =>
 });
 ```
 
+### DbContext Lifetime
+
+A `DbContext` is designed to be short-lived. Each instance tracks every entity it retrieves, accumulating memory and making `SaveChanges` slower over time. The default DI registration with `AddDbContext` creates a scoped instance, meaning one context per HTTP request in ASP.NET Core. This is the right default for most applications because a single request typically represents a single unit of work.
+
+```csharp
+// Scoped lifetime (default) - one context per request
+services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
+```
+
+Never register a `DbContext` as singleton. A singleton context would accumulate tracked entities for the lifetime of the application, leak memory, and cause concurrency issues since `DbContext` is not thread-safe. Transient registration works but creates more instances than necessary and prevents EF from reusing internal service providers.
+
+### DbContext Pooling
+
+Creating a `DbContext` involves setting up internal services, compiling the model, and allocating tracking structures. For high-throughput applications, this initialization cost adds up. Context pooling addresses this by maintaining a pool of pre-initialized context instances that are reset and reused rather than created from scratch.
+
+```csharp
+// Enable context pooling
+services.AddDbContextPool<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString),
+    poolSize: 1024); // Default is 1024
+```
+
+When a pooled context is returned to the pool, EF Core resets its change tracker and state so the next consumer receives a clean instance. The internal service provider and compiled model are preserved, which is where the performance gain comes from.
+
+**When pooling helps**: Applications that create and dispose many context instances per second, such as high-traffic APIs handling thousands of requests concurrently. Benchmarks from the EF Core team show pooling can improve throughput in these scenarios.
+
+**When pooling doesn't help**: Applications with low request volume or long-lived operations where context creation cost is negligible compared to actual query time. Pooling also adds constraints because the context constructor cannot accept per-request state through dependency injection, since pooled instances are shared across requests.
+
+```csharp
+// This works with AddDbContext but NOT with AddDbContextPool
+public class ApplicationDbContext : DbContext
+{
+    private readonly ITenantProvider _tenantProvider; // Per-request service
+
+    public ApplicationDbContext(
+        DbContextOptions<ApplicationDbContext> options,
+        ITenantProvider tenantProvider) // Injected per request
+        : base(options)
+    {
+        _tenantProvider = tenantProvider; // Won't work with pooling
+    }
+}
+```
+
+To use per-request services with pooling, configure them in `OnConfiguring` by resolving from the service provider, or use `AddPooledDbContextFactory` and inject the factory instead.
+
+### DbContext Factory
+
+`IDbContextFactory<T>` creates context instances on demand rather than relying on DI scope lifetime. This is necessary in scenarios where no DI scope exists or where you need explicit control over context lifetime.
+
+```csharp
+// Register the factory
+services.AddDbContextFactory<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
+
+// Or pooled factory (combines pooling with factory pattern)
+services.AddPooledDbContextFactory<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
+```
+
+```csharp
+// Usage - caller controls the lifetime
+public class OrderProcessor
+{
+    private readonly IDbContextFactory<ApplicationDbContext> _factory;
+
+    public OrderProcessor(IDbContextFactory<ApplicationDbContext> factory)
+    {
+        _factory = factory;
+    }
+
+    public async Task ProcessBatchAsync(IEnumerable<OrderRequest> requests)
+    {
+        foreach (var batch in requests.Chunk(100))
+        {
+            // Fresh context per batch keeps change tracker lean
+            await using var context = await _factory.CreateDbContextAsync();
+
+            foreach (var request in batch)
+            {
+                context.Orders.Add(MapToOrder(request));
+            }
+
+            await context.SaveChangesAsync();
+        }
+    }
+}
+```
+
+Common scenarios that require a factory:
+
+- **Blazor Server**: Components outlive any single DI scope, so injecting a scoped `DbContext` causes lifetime mismatch. Inject `IDbContextFactory` and create short-lived contexts per operation.
+- **Background services**: `IHostedService` and `BackgroundService` run as singletons. Without a factory, you would need to manually create and manage `IServiceScope` instances.
+- **Parallel operations**: Since `DbContext` is not thread-safe, concurrent work requires separate context instances. A factory lets each task create its own.
+
+### Multiple Context Types
+
+When an application needs multiple databases or distinct bounded contexts, register each with its own options.
+
+```csharp
+public class OrderDbContext : DbContext
+{
+    public DbSet<Order> Orders => Set<Order>();
+    public OrderDbContext(DbContextOptions<OrderDbContext> options) : base(options) { }
+}
+
+public class ReportingDbContext : DbContext
+{
+    public DbSet<SalesReport> Reports => Set<SalesReport>();
+    public ReportingDbContext(DbContextOptions<ReportingDbContext> options) : base(options) { }
+}
+
+// Registration
+services.AddDbContext<OrderDbContext>(options =>
+    options.UseSqlServer(orderConnectionString));
+
+services.AddDbContextPool<ReportingDbContext>(options =>
+    options.UseSqlServer(reportingConnectionString,
+        sqlOptions => sqlOptions.UseQuerySplittingBehavior(
+            QuerySplittingBehavior.SplitQuery)));
+```
+
+Each context type has its own pool (if pooling is enabled), its own connection string, and its own model. This separation keeps bounded contexts independent and allows different configuration per context, such as pooling for high-throughput reads on the reporting context while using standard scoped lifetime for the transactional order context.
+
+### Read-Only vs. Read-Write Contexts
+
+A more disciplined variation of multiple context types is splitting read and write responsibilities at the context level. The read-only context disables both change tracking and lazy loading since it never persists changes. The read-write context keeps change tracking enabled (it needs it for `SaveChanges`) but still disables lazy loading so that related data is always loaded explicitly through `.Include()`.
+
+```csharp
+public class ReadOnlyDbContext : DbContext
+{
+    public ReadOnlyDbContext(DbContextOptions<ReadOnlyDbContext> options)
+        : base(options)
+    {
+        ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        ChangeTracker.LazyLoadingEnabled = false;
+    }
+
+    public IQueryable<Customer> Customers => Set<Customer>().AsNoTracking();
+    public IQueryable<Order> Orders => Set<Order>().AsNoTracking();
+
+    // Prevent accidental writes
+    public override int SaveChanges()
+        => throw new InvalidOperationException("This context is read-only.");
+
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        => throw new InvalidOperationException("This context is read-only.");
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ReadOnlyDbContext).Assembly);
+    }
+}
+
+public class ReadWriteDbContext : DbContext
+{
+    public ReadWriteDbContext(DbContextOptions<ReadWriteDbContext> options)
+        : base(options)
+    {
+        ChangeTracker.LazyLoadingEnabled = false;
+    }
+
+    public DbSet<Customer> Customers => Set<Customer>();
+    public DbSet<Order> Orders => Set<Order>();
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ReadWriteDbContext).Assembly);
+    }
+}
+```
+
+```csharp
+// Registration - can point to the same database or use read replicas
+services.AddDbContextPool<ReadOnlyDbContext>(options =>
+    options.UseSqlServer(readConnectionString));
+
+services.AddDbContext<ReadWriteDbContext>(options =>
+    options.UseSqlServer(writeConnectionString));
+```
+
+Both contexts disable lazy loading. The difference is that the read-only context also disables change tracking and exposes `IQueryable<T>` instead of `DbSet<T>` to reinforce the read-only intent. Overriding `SaveChanges` to throw prevents accidental writes from slipping through during development.
+
+This pattern pairs well with CQRS-style architectures where queries and commands follow different paths. The read-only context can point to a read replica for horizontal scaling while the read-write context targets the primary database. Even when both point to the same database, the separation makes intent explicit at the injection site: a service that receives `ReadOnlyDbContext` cannot accidentally modify data.
+
 ## Entity Configuration
 
 EF Core provides three ways to configure your model, listed here in order of precedence (highest to lowest):
@@ -343,9 +529,58 @@ await context.Entry(customer)
     .Collection(c => c.Orders)
     .LoadAsync();
 
-// Lazy loading (requires proxy package)
-// Navigation properties auto-load when accessed
+// Lazy loading - AVOID
+// Requires Microsoft.EntityFrameworkCore.Proxies and UseLazyLoadingProxies()
+// Navigation properties silently issue queries when accessed, causing N+1 problems
+// that are difficult to detect in code review and only surface under load
 ```
+
+### Why Lazy Loading Should Be Avoided
+
+Lazy loading makes every navigation property access a potential database round-trip. The danger is that the code reads like simple property access while silently generating queries behind the scenes.
+
+```csharp
+// This looks harmless but generates N+1 queries with lazy loading enabled
+var customers = await context.Customers.ToListAsync();
+foreach (var customer in customers)
+{
+    // With lazy loading: each access to Orders triggers a SELECT
+    Console.WriteLine($"{customer.Name}: {customer.Orders.Count} orders");
+}
+```
+
+The performance impact is invisible at small scale. A loop over 10 customers produces 11 queries, which runs fine in development. The same code with 10,000 customers produces 10,001 queries and brings the application to its knees in production.
+
+Lazy loading also creates coupling between your data access layer and the code that consumes entities. Any code path that touches a navigation property needs to know whether the data was loaded, making it harder to reason about performance and harder to test.
+
+**Prefer explicit loading strategies instead**:
+
+- **Eager loading with `.Include()`**: Declare upfront which relationships you need. The query is predictable and the SQL is visible in logs.
+- **Projection with `.Select()`**: Load only the data you need into DTOs. This avoids loading full entity graphs entirely.
+- **Explicit loading with `.LoadAsync()`**: For cases where you conditionally need related data after the initial query, explicit loading makes the database call visible in code.
+
+```csharp
+// Eager loading - predictable, single query
+var customers = await context.Customers
+    .Include(c => c.Orders)
+    .ToListAsync();
+
+// Projection - only loads what's needed, no tracking overhead
+var summaries = await context.Customers
+    .Select(c => new { c.Name, OrderCount = c.Orders.Count })
+    .ToListAsync();
+
+// Explicit loading - visible database call when conditionally needed
+var customer = await context.Customers.FindAsync(id);
+if (needOrders)
+{
+    await context.Entry(customer)
+        .Collection(c => c.Orders)
+        .LoadAsync();
+}
+```
+
+If you inherit a codebase that uses lazy loading, avoid enabling `UseLazyLoadingProxies()` when registering new contexts. Instead, audit query patterns and migrate to explicit `.Include()` calls or projections as you encounter N+1 issues.
 
 ### Pagination
 
@@ -738,6 +973,12 @@ public class JsonValueConverter<T> : ValueConverter<T, string>
 ```
 
 ## Key Takeaways
+
+**Keep DbContext instances short-lived**: A context accumulates tracked entities over time. One context per request (scoped lifetime) is the right default for web applications.
+
+**Use pooling for high-throughput scenarios**: `AddDbContextPool` reuses context instances to avoid repeated initialization cost, but be aware that pooled contexts cannot accept per-request constructor dependencies.
+
+**Use IDbContextFactory when DI scope doesn't fit**: Blazor Server components, background services, and parallel operations all need factory-created contexts with explicit lifetime control.
 
 **Use AsNoTracking for read-only queries**: Significant performance improvement when you don't need to modify entities.
 
