@@ -170,6 +170,7 @@ On-device AI and cloud AI complement each other. The right pattern is to use on-
 
 [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/){:target="_blank" rel="noopener noreferrer"} is Microsoft's orchestration library for AI applications, and it supports both local and cloud-based model backends through a common abstraction. This makes it straightforward to write AI-enabled features without hard-coding a dependency on a specific provider.
 
+{% raw %}
 ```csharp
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
@@ -191,6 +192,7 @@ var result = await kernel.InvokeAsync(summarizeFunction,
 
 string summary = result.GetValue<string>();
 ```
+{% endraw %}
 
 Semantic Kernel also supports plugging in local model connectors, so the same kernel configuration can route requests to Phi Silica for light tasks and Azure OpenAI for heavy ones, based on the requirements of each prompt.
 
