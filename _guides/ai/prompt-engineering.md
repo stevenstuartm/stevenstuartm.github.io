@@ -189,20 +189,6 @@ You are a helpful assistant. Only answer questions about cooking.
 
 ---
 
-## Related Guides
-
-These techniques work alongside other AI capabilities covered in dedicated guides:
-
-| Topic | Guide | When to Use |
-|-------|-------|-------------|
-| **Model parameters** | [Core AI Concepts](/study-guides/ai/core-ai-concepts.html) | Understanding temperature, tokens, context windows |
-| **External knowledge** | [RAG](/study-guides/ai/rag-retrieval-augmented-generation.html) | Grounding responses in documents |
-| **Tool integration** | [MCP](/study-guides/ai/model-context-protocol.html) | Connecting AI to external systems |
-| **Autonomous tasks** | [AI Agents](/study-guides/ai/ai-agents.html) | Multi-step task completion |
-| **Model customization** | [Fine-tuning](/study-guides/ai/llm-fine-tuning.html) | Changing model behavior |
-
----
-
 ## Integration Best Practices
 
 ### Enterprise Considerations

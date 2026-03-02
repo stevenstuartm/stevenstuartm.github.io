@@ -145,12 +145,3 @@ When you recognize failure patterns mid-project, recovery is possible, but it re
 5. Establish regular check-ins focused on outcomes, not just progress
 
 **The Common Thread**: Recovery requires acknowledging that the process failed, even if artifacts were produced. Documents, sign-offs, and shipped code are not proof of success; they're just evidence of activity. Genuine alignment, agreement, and honored commitments are the actual measures.
-
----
-
-## Related Guides
-
-- [AAA Cycle](aaa-cycle.html): The philosophy and core values
-- [Phase 1: Align](aaa-phase1-align.html): Practical guidance for alignment
-- [Phase 2: Agree](aaa-phase2-agree.html): Practical guidance for agreement
-- [Phase 3: Apply](aaa-phase3-apply.html): Practical guidance for application
