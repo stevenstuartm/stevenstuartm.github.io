@@ -136,6 +136,10 @@ Allows different subnet sizes within the same network:
 - **Methods**: GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS
 - **Status Codes**: 2xx (Success), 3xx (Redirect), 4xx (Client Error), 5xx (Server Error)
 
+### HTTP Protocol Versions
+
+HTTP has evolved through three major versions: HTTP/1.1 (text-based, one request per connection), HTTP/2 (binary framing, multiplexed streams over TCP), and HTTP/3 (QUIC over UDP, independent streams with no TCP head-of-line blocking). Version negotiation is automatic and non-breaking, so enabling newer versions never disrupts older clients. For detailed coverage of each version, negotiation mechanics, deployment trust boundaries, and when to use each, see the [HTTP Protocol Versions](/study-guides/networking/http-protocol-versions.html) guide.
+
 ### Other Important Protocols
 - **SSH** (Port 22): Secure Shell
 - **FTP** (Port 21): File Transfer Protocol

@@ -283,7 +283,8 @@
           "name": "Network Fundamentals",
           "description": "Core networking concepts for developers",
           "guides": [
-            "networking.md"
+            "networking.md",
+            "networking/http-protocol-versions.md"
           ]
         }
       ]
