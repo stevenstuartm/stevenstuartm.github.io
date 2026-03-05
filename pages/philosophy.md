@@ -7,9 +7,7 @@ permalink: /philosophy.html
 
 ## What I Believe
 
-These disciplines represent my current understanding of what makes software development work. They're informed by years of building systems, leading teams, and watching projects succeed and fail. They're not rules to follow rigidly; they're values to hold onto when pressure mounts and shortcuts tempt.
-
-The first two disciplines address personal growth: how you develop yourself and accumulate genuine experience. The remaining five address technical practice: how you build software that delivers real value. Each discipline stands alone, but they reinforce each other. You can't realign after discovery without genuine agreement to begin with, and you can't reach genuine agreement without first testing your assumptions. The disciplines weave together into something stronger than any one of them alone.
+These disciplines represent my current understanding of what makes software development work. They're informed by years of building systems, leading teams, and watching projects succeed and fail.
 
 ---
 
@@ -96,17 +94,19 @@ Outcome measurement requires harder questions. Did the feature solve the actual 
 
 ---
 
-## 5. Realign After Discovery
+## 5. Make Truth Accessible
 
 <blockquote class="pull-quote">
-<p>Test assumptions before committing. Realign when discovery demands prudent change.</p>
+<p>Clarity does not simplify truth. It makes truth accessible so that it can be held, tested, and defended by everyone it reaches.</p>
 </blockquote>
 
-The discipline starts with honesty: separate what you know from what you're assuming, then test the critical assumptions before making commitments. Agree on what "done" looks like with explicit success criteria. When you discover new information during implementation, pause and reconsolidate the agreement. Discovery is inevitable; the question is whether you have the discipline to incorporate what you discover, or ship anyway because the timebox ends.
+A decision no one else can understand is a decision no one else can challenge. When architectural choices live in one person's head, when trade-offs are never written down, when technical rationale hides behind jargon that stakeholders can't engage with, the result isn't expertise. It's fragility. The team becomes dependent on whoever holds the context, and everyone else is left rubber-stamping decisions they can't evaluate.
 
-But realignment requires something more basic: the capacity to stop. Plan continuation bias, the tendency to continue with the original plan despite changing conditions, operates beneath every process improvement. When discovery arrives mid-implementation, the impulse to finish what you're doing overrides the signal to reconsider. Recognizing this bias, and building environments where stopping is cheap and continuation past checkpoints is deliberate, is the prerequisite for any realignment discipline.
+Clarity is not simplification. Simplification strips nuance to make things easier; clarity preserves the full truth and makes it reachable. Documenting why you chose eventual consistency over strong consistency isn't dumbing it down. It's making the trade-off visible so that future teams can evaluate whether the conditions still hold. When the original constraints change and no one recorded what they were, the next team assumes incompetence rather than recognizing intentional trade-offs made under different circumstances.
 
-**Going deeper**: [Why Your Agile Team Might Be Building on Hope, Not Discipline](/blog/2025/10/23/the-agile-masquerade.html){:target="_blank" rel="noopener noreferrer"} covers how to test assumptions and maintain continuous alignment. [The Most Dangerous Sentence in Software Development](/blog/2026/02/07/you-cant-realign-if-you-cant-stop.html){:target="_blank" rel="noopener noreferrer"} explores the cognitive bias that prevents realignment from happening even when the process supports it.
+This applies at every level. Architecture decision records capture the reasoning behind structural choices. Clear interface contracts make integration points understandable without tribal knowledge. Explicit success criteria make it possible to measure whether a feature delivered value. If you can't explain a decision clearly enough for someone else to challenge it, you might not understand it well enough yourself.
+
+**Going deeper**: [The Measure of a Decision](/blog/2026/03/05/the-measure-of-a-decision.html){:target="_blank" rel="noopener noreferrer"} explores the criteria that determine whether decisions affecting others have integrity.
 
 ---
 

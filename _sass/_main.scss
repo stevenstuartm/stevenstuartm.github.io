@@ -543,6 +543,21 @@ main {
     color: var(--color-text-light);
 }
 
+.hero-motto {
+    margin: var(--spacing-md) auto 0;
+    max-width: 600px;
+    padding: 0;
+    border: none;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.hero-motto p {
+    margin: 0;
+}
+
 /* Featured Cards Section */
 .featured-cards {
     display: grid;
@@ -3095,33 +3110,51 @@ main {
     background: var(--color-border);
 }
 
-/* Continue Reading Card (Homepage) - Compact Design */
+/* Continue Reading Card - Fixed Floating Design */
 .continue-reading-card {
-    position: relative;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    max-width: 320px;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
     background: linear-gradient(135deg, var(--color-accent) 0%, #0056a3 100%);
     color: white;
-    padding: var(--spacing-md);
-    padding-right: calc(var(--spacing-md) + 36px); /* Extra space for close button */
+    text-decoration: none;
+    padding: 0.5rem 0.625rem;
+    padding-right: 2rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    margin-bottom: var(--spacing-lg);
-    display: none; /* Hidden by default, shown via JS */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(1rem);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.continue-reading-card:hover {
+    color: white;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
 }
 
 .continue-reading-card.visible {
-    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .continue-reading-close {
     position: absolute;
-    top: var(--spacing-sm);
-    right: var(--spacing-sm);
+    top: 0.375rem;
+    right: 0.375rem;
     background: rgba(255, 255, 255, 0.2);
     border: none;
     color: white;
-    font-size: 1.5rem;
-    width: 28px;
-    height: 28px;
+    font-size: 1.1rem;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -3130,43 +3163,27 @@ main {
     transition: background 0.2s ease;
     line-height: 1;
     padding: 0;
-    z-index: 10; /* Ensure button is above content */
+    z-index: 10;
 }
 
 .continue-reading-close:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
-.continue-reading-compact {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing-md);
-    padding-right: 8px; /* Extra padding to prevent overlap */
-}
-
-.compact-left {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    flex: 1;
-    min-width: 0; /* Allow text truncation */
-}
-
 .compact-icon {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     flex-shrink: 0;
 }
 
 .compact-info {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    min-width: 0; /* Allow text truncation */
+    gap: 0.125rem;
+    min-width: 0;
 }
 
 .compact-label {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     opacity: 0.9;
@@ -3174,101 +3191,32 @@ main {
 }
 
 .compact-title {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     margin: 0;
+    color: white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .compact-meta {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     opacity: 0.85;
 }
 
-.compact-right {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    flex-shrink: 0;
-}
-
-.compact-progress {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.25rem;
-}
-
-.compact-progress-bar {
-    width: 80px;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.compact-progress-fill {
-    height: 100%;
-    background: white;
-    border-radius: 3px;
-    transition: width 0.3s ease;
-}
-
-.compact-percent {
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-.compact-btn {
-    padding: 0.5rem 1rem;
-    background: white;
-    color: var(--color-accent);
-    border: none;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    font-size: 0.9rem;
-    white-space: nowrap;
-}
-
-.compact-btn:hover {
-    background: rgba(255, 255, 255, 0.9);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Responsive Adjustments */
 @media (max-width: 768px) {
-    .resume-reading-prompt {
-        top: 10%;
-    }
-
-    .continue-reading-compact {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-sm);
-    }
-
-    .compact-left {
-        width: 100%;
-    }
-
-    .compact-right {
-        width: 100%;
-        justify-content: space-between;
+    .continue-reading-card {
+        right: 0;
+        bottom: 0;
+        left: 0;
+        max-width: none;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
     }
 
     .compact-title {
         white-space: normal;
         overflow: visible;
         text-overflow: clip;
-    }
-
-    .compact-progress-bar {
-        width: 100px;
     }
 }

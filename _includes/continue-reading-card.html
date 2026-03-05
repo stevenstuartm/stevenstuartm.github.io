@@ -1,20 +1,13 @@
 <!-- Continue Reading Card (reusable component) -->
-<div id="continueReadingCard" class="continue-reading-card">
+<a href="#" id="continueReadingCard" class="continue-reading-card">
     <button class="continue-reading-close" id="closeReadingCard" aria-label="Dismiss for now">×</button>
-    <div class="continue-reading-compact">
-        <div class="compact-left">
-            <span class="compact-icon">📖</span>
-            <div class="compact-info">
-                <span class="compact-label">Continue Reading</span>
-                <h3 class="compact-title" id="homeGuideTitle"></h3>
-                <span class="compact-meta" id="homeGuideLastRead"></span>
-            </div>
-        </div>
-        <div class="compact-right">
-            <a href="#" id="homeContinueLink" class="compact-btn">Resume →</a>
-        </div>
+    <span class="compact-icon">📖</span>
+    <div class="compact-info">
+        <span class="compact-label">Continue Reading</span>
+        <h3 class="compact-title" id="homeGuideTitle"></h3>
+        <span class="compact-meta" id="homeGuideLastRead"></span>
     </div>
-</div>
+</a>
 
 <script>
 // Populate continue reading card
@@ -55,13 +48,15 @@
         // Populate card with progress data (using textContent to avoid HTML encoding)
         document.getElementById('homeGuideTitle').textContent = progress.title;
         document.getElementById('homeGuideLastRead').textContent = ReadingProgressTracker.formatTimeAgo(progress.lastRead);
-        document.getElementById('homeContinueLink').href = progress.url;
+        card.href = progress.url;
 
         // Show the card
         card.classList.add('visible');
 
-        // Handle close button
-        document.getElementById('closeReadingCard').addEventListener('click', function() {
+        // Handle close button (prevent navigation when dismissing)
+        document.getElementById('closeReadingCard').addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             card.classList.remove('visible');
             // Dismiss for 5 minutes
             sessionStorage.setItem(DISMISS_KEY, (Date.now() + DISMISS_DURATION_MS).toString());
