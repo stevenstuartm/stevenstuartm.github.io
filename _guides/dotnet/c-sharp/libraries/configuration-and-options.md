@@ -3,56 +3,37 @@ title: "C# Configuration and Options Pattern"
 layout: guide
 category: ".NET & C#"
 subcategory: "Core Libraries"
-description: "Application configuration with IConfiguration, strongly-typed options, secrets management, and configuration providers."
+description: "Application configuration strategies organized by local vs remote and secure vs non-secure sources, with strongly-typed options and validation."
 tags: [c-sharp, dotnet, configuration, options-pattern, dependency-injection, practical]
 ---
 
-## Configuration Overview
+## How .NET Configuration Works
 
-.NET's configuration system provides a unified API for reading settings from multiple sources with support for hierarchical data, environment-specific overrides, and strongly-typed access.
-
-```csharp
-// Configuration flows from multiple sources, later sources override earlier
-// 1. appsettings.json
-// 2. appsettings.{Environment}.json
-// 3. User secrets (Development only)
-// 4. Environment variables
-// 5. Command-line arguments
-```
-
-## IConfiguration Basics
-
-### Reading Configuration Values
+.NET's configuration system loads settings from multiple providers into a unified `IConfiguration` interface. Providers are added in order, and later sources override earlier ones. This layering is what makes the system powerful: you define safe defaults locally, then override with environment-specific or secret values from secure remote sources.
 
 ```csharp
-// Direct value access
-string? connectionString = configuration["ConnectionStrings:DefaultDb"];
-string? apiKey = configuration["ExternalServices:ApiKey"];
+var builder = WebApplication.CreateBuilder(args);
 
-// GetValue with type conversion and default
-int maxRetries = configuration.GetValue<int>("Settings:MaxRetries", 3);
-bool enableFeature = configuration.GetValue<bool>("Features:NewDashboard");
-
-// GetSection for hierarchical access
-IConfigurationSection section = configuration.GetSection("Logging");
-string? logLevel = section["LogLevel:Default"];
-
-// Check if section exists
-if (configuration.GetSection("OptionalFeature").Exists())
-{
-    // Configure optional feature
-}
+// Providers are added in order - later sources win
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json",
+        optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables()
+    .AddAzureKeyVault(vaultUri, new DefaultAzureCredential());
 ```
 
-### Configuration Hierarchy
+The rest of this guide is organized around two questions: where does the configuration live (local files vs remote services), and does it contain sensitive data?
+
+## Configuration Strategies
+
+### Local, Non-Secure: JSON Files and Environment Overrides
+
+Use local JSON files for application defaults, feature flags, logging levels, page sizes, and anything safe to commit to source control.
 
 ```json
-// appsettings.json
+// appsettings.json - safe defaults, committed to source control
 {
-  "ConnectionStrings": {
-    "DefaultDb": "Server=localhost;Database=MyApp",
-    "Redis": "localhost:6379"
-  },
   "Logging": {
     "LogLevel": {
       "Default": "Information",
@@ -60,7 +41,6 @@ if (configuration.GetSection("OptionalFeature").Exists())
     }
   },
   "AppSettings": {
-    "ApiBaseUrl": "https://api.example.com",
     "PageSize": 25,
     "Features": {
       "EnableCaching": true,
@@ -70,21 +50,238 @@ if (configuration.GetSection("OptionalFeature").Exists())
 }
 ```
 
+Environment-specific overrides use the `appsettings.{Environment}.json` convention. These files only need to contain the values that differ from the base file.
+
+```json
+// appsettings.Development.json - overrides for local dev
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug"
+    }
+  },
+  "Features": {
+    "EnableDebugEndpoints": true
+  }
+}
+```
+
+```json
+// appsettings.Production.json - overrides for production
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  }
+}
+```
+
+**Environment variables** work well for container deployments where you want to override configuration without rebuilding images. Use double underscores to represent hierarchy.
+
 ```csharp
-// Access nested values with colon separator
-var defaultDb = configuration["ConnectionStrings:DefaultDb"];
-var defaultLogLevel = configuration["Logging:LogLevel:Default"];
-var enableCaching = configuration.GetValue<bool>("AppSettings:Features:EnableCaching");
+builder.Configuration.AddEnvironmentVariables("MYAPP_");
+
+// MYAPP_ConnectionStrings__DefaultDb="Server=prod"
+// Maps to configuration["ConnectionStrings:DefaultDb"]
+```
+
+**Command-line arguments** are useful for one-off overrides during local development or CI.
+
+```csharp
+builder.Configuration.AddCommandLine(args);
+// dotnet run --Settings:MaxRetries=5
+```
+
+**When to use local non-secure configuration**: application behavior settings, feature toggles, logging configuration, UI defaults, timeouts, and retry policies. Anything that is not sensitive and benefits from being version-controlled alongside the application.
+
+### Local, Secure: User Secrets (Development Only)
+
+User Secrets store sensitive values on the developer's machine outside the project directory, so they never end up in source control. This is strictly a development-time solution.
+
+```bash
+# Initialize secrets for the project
+dotnet user-secrets init
+
+# Set secrets
+dotnet user-secrets set "Database:Password" "dev-password"
+dotnet user-secrets set "Api:SecretKey" "my-dev-key"
+
+# List what's stored
+dotnet user-secrets list
+```
+
+```csharp
+// Added automatically in Development environment
+if (builder.Environment.IsDevelopment())
+{
+    builder.Configuration.AddUserSecrets<Program>();
+}
+```
+
+Secrets are stored in `%APPDATA%\Microsoft\UserSecrets\{guid}\secrets.json` on Windows and `~/.microsoft/usersecrets/{guid}/secrets.json` on Linux/macOS.
+
+**When to use User Secrets**: local development only, for connection strings, API keys, and passwords that you need on your machine but must never commit. This is not a production solution.
+
+### Remote, Secure: Cloud Secret Stores
+
+For production, secrets should live in a dedicated secret management service. A configuration provider loads them into `IConfiguration` at startup, so the rest of the application accesses secrets the same way it accesses any other configuration value. The level of integration varies significantly by cloud provider.
+
+**Azure Key Vault** has the smoothest experience because Microsoft provides a first-party NuGet package (`Azure.Extensions.AspNetCore.Configuration.Secrets`) that plugs directly into the configuration pipeline.
+
+```csharp
+// NuGet: Azure.Extensions.AspNetCore.Configuration.Secrets
+// NuGet: Azure.Identity
+builder.Configuration.AddAzureKeyVault(
+    new Uri("https://myapp-vault.vault.azure.net/"),
+    new DefaultAzureCredential());
+```
+
+Key Vault secret names use `--` as a hierarchy separator. A secret named `Database--ConnectionString` maps to `configuration["Database:ConnectionString"]`. Authentication is handled by `DefaultAzureCredential`, which automatically picks the right identity (managed identity in Azure, your developer credentials locally).
+
+**AWS Systems Manager Parameter Store** has an official AWS-maintained package (`Amazon.Extensions.Configuration.SystemsManager`) that works as an `IConfiguration` provider. This is the closest AWS equivalent to the Azure Key Vault experience.
+
+```csharp
+// NuGet: Amazon.Extensions.Configuration.SystemsManager
+builder.Configuration.AddSystemsManager("/myapp/production/");
+```
+
+Parameter Store organizes secrets by path, so `/myapp/production/Database/ConnectionString` maps to `configuration["Database:ConnectionString"]`. Parameter Store supports both plain strings and SecureString parameters (encrypted with KMS), but the provider treats them the same way since decryption happens server-side.
+
+**AWS Secrets Manager** does not have a first-party `IConfiguration` provider from AWS or Microsoft. The options are:
+
+- Use the community NuGet package `Kralizek.Extensions.Configuration.AWSSecretsManager`, which provides an `AddSecretsManager()` extension
+- Write a custom `ConfigurationProvider` (see the custom provider pattern in the next section)
+- Load secrets directly via the `AWSSDK.SecretsManager` SDK and register them manually
+
+```csharp
+// NuGet: Kralizek.Extensions.Configuration.AWSSecretsManager (community package)
+builder.Configuration.AddSecretsManager(configurator: options =>
+{
+    options.SecretFilter = entry => entry.Name.StartsWith("myapp/");
+    options.KeyGenerator = (entry, key) => key.Replace("/", ":");
+});
+```
+
+The trade-off between Parameter Store and Secrets Manager on AWS is worth understanding. Parameter Store is simpler, cheaper (free tier for standard parameters), and has native `IConfiguration` support. Secrets Manager adds automatic rotation, cross-account access, and replication, but costs per-secret and lacks an official configuration provider.
+
+**HashiCorp Vault** also requires a custom provider or community package since there is no first-party integration.
+
+**When to use remote secret stores**: all non-development environments. Connection strings, API keys, certificates, database credentials, and any value that would cause damage if exposed. This should be the default for production workloads.
+
+### Remote, Non-Secure: Centralized Configuration Services
+
+For distributed systems where many services share configuration, a centralized configuration store removes the need to redeploy applications when settings change.
+
+**Azure App Configuration** provides centralized management with feature flags, labeling, and change notifications.
+
+```csharp
+builder.Configuration.AddAzureAppConfiguration(options =>
+{
+    options.Connect(connectionString)
+        .Select(KeyFilter.Any, LabelFilter.Null)
+        .Select(KeyFilter.Any, builder.Environment.EnvironmentName);
+});
+```
+
+**Custom providers** load configuration from a database, API, or any other source. Implement `ConfigurationProvider` and `IConfigurationSource` to plug into the standard pipeline.
+
+```csharp
+public class DatabaseConfigurationProvider : ConfigurationProvider
+{
+    private readonly string _connectionString;
+
+    public DatabaseConfigurationProvider(string connectionString)
+    {
+        _connectionString = connectionString;
+    }
+
+    public override void Load()
+    {
+        using var connection = new SqlConnection(_connectionString);
+        connection.Open();
+
+        using var command = new SqlCommand(
+            "SELECT [Key], [Value] FROM Configuration", connection);
+        using var reader = command.ExecuteReader();
+
+        var data = new Dictionary<string, string?>(
+            StringComparer.OrdinalIgnoreCase);
+        while (reader.Read())
+        {
+            data[reader.GetString(0)] = reader.GetString(1);
+        }
+
+        Data = data;
+    }
+}
+
+public class DatabaseConfigurationSource : IConfigurationSource
+{
+    public string ConnectionString { get; set; } = "";
+
+    public IConfigurationProvider Build(IConfigurationBuilder builder)
+        => new DatabaseConfigurationProvider(ConnectionString);
+}
+
+// Extension method for clean registration
+public static class ConfigurationExtensions
+{
+    public static IConfigurationBuilder AddDatabase(
+        this IConfigurationBuilder builder, string connectionString)
+        => builder.Add(new DatabaseConfigurationSource
+        {
+            ConnectionString = connectionString
+        });
+}
+```
+
+**When to use centralized configuration**: when multiple services need shared settings, when you need to change configuration without redeploying, or when configuration needs audit trails and approval workflows.
+
+### In-Memory Configuration (Testing)
+
+For unit and integration tests, in-memory configuration avoids any dependency on files or external services.
+
+```csharp
+var config = new Dictionary<string, string?>
+{
+    ["Database:ConnectionString"] = "Server=test",
+    ["Features:EnableNewUI"] = "true"
+};
+
+var configuration = new ConfigurationBuilder()
+    .AddInMemoryCollection(config)
+    .Build();
+```
+
+## Reading Configuration Values
+
+Regardless of where configuration comes from, access is the same through `IConfiguration`.
+
+```csharp
+// Direct key access with colon-separated hierarchy
+string? connectionString = configuration["ConnectionStrings:DefaultDb"];
+string? logLevel = configuration["Logging:LogLevel:Default"];
+
+// Typed access with defaults
+int maxRetries = configuration.GetValue<int>("Settings:MaxRetries", 3);
+bool enableFeature = configuration.GetValue<bool>("Features:NewDashboard");
+
+// Section access
+IConfigurationSection section = configuration.GetSection("Logging");
+if (section.Exists())
+{
+    string? level = section["LogLevel:Default"];
+}
 ```
 
 ## The Options Pattern
 
-Strongly-typed configuration that integrates with dependency injection.
+The Options Pattern binds configuration sections to strongly-typed classes and integrates with dependency injection. This is the preferred way to consume configuration in application code because it provides compile-time safety, validation, and clean separation of concerns.
 
-### Basic Options Setup
+### Defining and Registering Options
 
 ```csharp
-// Define options class
 public class EmailOptions
 {
     public const string SectionName = "Email";
@@ -94,103 +291,35 @@ public class EmailOptions
     public string FromAddress { get; set; } = "";
     public bool UseSsl { get; set; } = true;
 }
-```
 
-```json
-// appsettings.json
-{
-  "Email": {
-    "SmtpServer": "smtp.example.com",
-    "Port": 587,
-    "FromAddress": "noreply@example.com",
-    "UseSsl": true
-  }
-}
-```
-
-```csharp
 // Register in Program.cs
 builder.Services.Configure<EmailOptions>(
     builder.Configuration.GetSection(EmailOptions.SectionName));
-
-// Or bind manually
-builder.Services.Configure<EmailOptions>(options =>
-{
-    options.SmtpServer = "smtp.custom.com";
-    options.Port = 25;
-});
 ```
 
-### Consuming Options
+### Choosing the Right Options Interface
+
+The three interfaces serve different lifetime and update needs.
+
+| Interface | Lifetime | Picks Up Changes | Best For |
+|-----------|----------|------------------|----------|
+| `IOptions<T>` | Singleton | No | Static configuration that never changes at runtime |
+| `IOptionsSnapshot<T>` | Scoped | Per request | Web apps where config might change between requests |
+| `IOptionsMonitor<T>` | Singleton | Yes, with callback | Background services and long-running processes |
 
 ```csharp
+// IOptions<T> - simplest, read once at startup
 public class EmailService
 {
     private readonly EmailOptions _options;
 
-    // IOptions<T> - singleton, read at startup
     public EmailService(IOptions<EmailOptions> options)
     {
         _options = options.Value;
     }
-
-    public void SendEmail(string to, string subject, string body)
-    {
-        using var client = new SmtpClient(_options.SmtpServer, _options.Port);
-        client.EnableSsl = _options.UseSsl;
-        // ...
-    }
-}
-```
-
-### Options Interfaces
-
-<div class="comparison">
-<div class="content-card content-card--accent">
-<h4>IOptions&lt;T&gt;</h4>
-<ul>
-<li>Lifetime: Singleton</li>
-<li>Updates: No</li>
-<li>Use for: Static configuration</li>
-</ul>
-</div>
-<div class="content-card content-card--accent-secondary">
-<h4>IOptionsSnapshot&lt;T&gt;</h4>
-<ul>
-<li>Lifetime: Scoped</li>
-<li>Updates: Per request</li>
-<li>Use for: Config that changes between requests</li>
-</ul>
-</div>
-<div class="content-card content-card--accent">
-<h4>IOptionsMonitor&lt;T&gt;</h4>
-<ul>
-<li>Lifetime: Singleton</li>
-<li>Updates: Yes, with callback</li>
-<li>Use for: Live updates, long-running services</li>
-</ul>
-</div>
-</div>
-
-| Interface | Lifetime | Updates | Use Case |
-|-----------|----------|---------|----------|
-| `IOptions<T>` | Singleton | No | Static configuration |
-| `IOptionsSnapshot<T>` | Scoped | Per request | Config that changes between requests |
-| `IOptionsMonitor<T>` | Singleton | Yes, with callback | Live updates, long-running services |
-
-```csharp
-// IOptionsSnapshot - picks up changes per request
-public class FeatureService
-{
-    private readonly FeatureOptions _options;
-
-    public FeatureService(IOptionsSnapshot<FeatureOptions> options)
-    {
-        _options = options.Value;  // Fresh value each request
-    }
 }
 
-// IOptionsMonitor - live updates with change notification
+// IOptionsMonitor<T> - live updates for background services
 public class BackgroundWorker : BackgroundService
 {
     private readonly IOptionsMonitor<WorkerOptions> _optionsMonitor;
@@ -199,7 +328,6 @@ public class BackgroundWorker : BackgroundService
     {
         _optionsMonitor = optionsMonitor;
 
-        // Subscribe to changes
         _optionsMonitor.OnChange(options =>
         {
             Console.WriteLine($"Options changed: Interval = {options.Interval}");
@@ -210,7 +338,7 @@ public class BackgroundWorker : BackgroundService
     {
         while (!ct.IsCancellationRequested)
         {
-            var options = _optionsMonitor.CurrentValue;  // Always current
+            var options = _optionsMonitor.CurrentValue;
             await DoWorkAsync(options);
             await Task.Delay(options.Interval, ct);
         }
@@ -220,30 +348,16 @@ public class BackgroundWorker : BackgroundService
 
 ### Named Options
 
-For multiple configurations of the same type.
+When you need multiple configurations of the same type, named options let you register and retrieve them by name.
 
 ```csharp
-// appsettings.json
-{
-  "HttpClients": {
-    "GitHub": {
-      "BaseUrl": "https://api.github.com",
-      "Timeout": 30
-    },
-    "Stripe": {
-      "BaseUrl": "https://api.stripe.com",
-      "Timeout": 60
-    }
-  }
-}
-
 // Register named options
 builder.Services.Configure<HttpClientOptions>("GitHub",
     builder.Configuration.GetSection("HttpClients:GitHub"));
 builder.Services.Configure<HttpClientOptions>("Stripe",
     builder.Configuration.GetSection("HttpClients:Stripe"));
 
-// Consume with IOptionsSnapshot or IOptionsMonitor
+// Resolve by name
 public class ApiClientFactory
 {
     private readonly IOptionsSnapshot<HttpClientOptions> _options;
@@ -255,7 +369,7 @@ public class ApiClientFactory
 
     public HttpClient CreateClient(string name)
     {
-        var options = _options.Get(name);  // Get by name
+        var options = _options.Get(name);
         return new HttpClient
         {
             BaseAddress = new Uri(options.BaseUrl),
@@ -265,13 +379,13 @@ public class ApiClientFactory
 }
 ```
 
-## Options Validation
+## Validation
+
+Validation catches configuration errors before they cause runtime failures. Always use `ValidateOnStart()` so the application fails fast on misconfiguration rather than failing later in production.
 
 ### Data Annotations
 
 ```csharp
-using System.ComponentModel.DataAnnotations;
-
 public class DatabaseOptions
 {
     [Required]
@@ -279,34 +393,29 @@ public class DatabaseOptions
 
     [Range(1, 100)]
     public int MaxConnections { get; set; } = 10;
-
-    [RegularExpression(@"^\d+$")]
-    public string PoolSize { get; set; } = "5";
 }
 
-// Enable validation
 builder.Services.AddOptions<DatabaseOptions>()
     .Bind(builder.Configuration.GetSection("Database"))
     .ValidateDataAnnotations()
-    .ValidateOnStart();  // Fail fast at startup
+    .ValidateOnStart();
 ```
 
 ### Custom Validation
 
 ```csharp
+// Inline validation
 builder.Services.AddOptions<ApiOptions>()
     .Bind(builder.Configuration.GetSection("Api"))
     .Validate(options =>
     {
-        if (string.IsNullOrEmpty(options.ApiKey))
-            return false;
-        if (options.Timeout <= TimeSpan.Zero)
-            return false;
+        if (string.IsNullOrEmpty(options.ApiKey)) return false;
+        if (options.Timeout <= TimeSpan.Zero) return false;
         return true;
     }, "API configuration is invalid")
     .ValidateOnStart();
 
-// Complex validation with IValidateOptions
+// Complex validation with IValidateOptions<T>
 public class ApiOptionsValidator : IValidateOptions<ApiOptions>
 {
     public ValidateOptionsResult Validate(string? name, ApiOptions options)
@@ -328,263 +437,24 @@ public class ApiOptionsValidator : IValidateOptions<ApiOptions>
     }
 }
 
-// Register validator
-builder.Services.AddSingleton<IValidateOptions<ApiOptions>, ApiOptionsValidator>();
-```
-
-## Configuration Providers
-
-### JSON Files
-
-```csharp
-builder.Configuration
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json",
-        optional: true, reloadOnChange: true);
-```
-
-### Environment Variables
-
-<div class="callout callout--tip">
-<p class="callout__title">Environment Variable Naming Convention</p>
-<p>Use double underscores (<code>__</code>) to represent nesting in hierarchical configuration. Example: <code>MYAPP_ConnectionStrings__DefaultDb</code> maps to <code>configuration["ConnectionStrings:DefaultDb"]</code></p>
-</div>
-
-```csharp
-// Automatic in Host builder
-builder.Configuration.AddEnvironmentVariables();
-
-// With prefix filter
-builder.Configuration.AddEnvironmentVariables("MYAPP_");
-
-// Environment variable naming (double underscore for nesting)
-// MYAPP_ConnectionStrings__DefaultDb = "Server=..."
-// Maps to configuration["ConnectionStrings:DefaultDb"]
-```
-
-### User Secrets (Development)
-
-```bash
-# Initialize secrets for project
-dotnet user-secrets init
-
-# Set a secret
-dotnet user-secrets set "Api:SecretKey" "my-secret-key"
-
-# List secrets
-dotnet user-secrets list
-```
-
-```csharp
-// Added automatically in Development
-if (builder.Environment.IsDevelopment())
-{
-    builder.Configuration.AddUserSecrets<Program>();
-}
-```
-
-### Command Line
-
-```csharp
-builder.Configuration.AddCommandLine(args);
-
-// Usage
-// dotnet run --ConnectionStrings:DefaultDb="Server=prod"
-// dotnet run /Settings:MaxRetries=5
-```
-
-### In-Memory (Testing)
-
-```csharp
-var config = new Dictionary<string, string?>
-{
-    ["Database:ConnectionString"] = "Server=test",
-    ["Features:EnableNewUI"] = "true"
-};
-
-var configuration = new ConfigurationBuilder()
-    .AddInMemoryCollection(config)
-    .Build();
-```
-
-### Custom Provider
-
-```csharp
-public class DatabaseConfigurationProvider : ConfigurationProvider
-{
-    private readonly string _connectionString;
-
-    public DatabaseConfigurationProvider(string connectionString)
-    {
-        _connectionString = connectionString;
-    }
-
-    public override void Load()
-    {
-        using var connection = new SqlConnection(_connectionString);
-        connection.Open();
-
-        using var command = new SqlCommand(
-            "SELECT [Key], [Value] FROM Configuration", connection);
-        using var reader = command.ExecuteReader();
-
-        var data = new Dictionary<string, string?>(StringComparer.OrdinalIgnoreCase);
-        while (reader.Read())
-        {
-            data[reader.GetString(0)] = reader.GetString(1);
-        }
-
-        Data = data;
-    }
-}
-
-public class DatabaseConfigurationSource : IConfigurationSource
-{
-    public string ConnectionString { get; set; } = "";
-
-    public IConfigurationProvider Build(IConfigurationBuilder builder)
-    {
-        return new DatabaseConfigurationProvider(ConnectionString);
-    }
-}
-
-// Extension method
-public static class ConfigurationExtensions
-{
-    public static IConfigurationBuilder AddDatabase(
-        this IConfigurationBuilder builder,
-        string connectionString)
-    {
-        return builder.Add(new DatabaseConfigurationSource
-        {
-            ConnectionString = connectionString
-        });
-    }
-}
-
-// Usage
-builder.Configuration.AddDatabase(connectionString);
-```
-
-## Environment-Specific Configuration
-
-### Detecting Environment
-
-```csharp
-// In Program.cs
-if (builder.Environment.IsDevelopment())
-{
-    builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-}
-
-if (builder.Environment.IsProduction())
-{
-    builder.Services.AddApplicationInsightsTelemetry();
-}
-
-// Custom environments
-if (builder.Environment.IsEnvironment("Staging"))
-{
-    // Staging-specific configuration
-}
-```
-
-### Environment Override Pattern
-
-```json
-// appsettings.json (defaults)
-{
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information"
-    }
-  },
-  "Features": {
-    "EnableDebugEndpoints": false
-  }
-}
-
-// appsettings.Development.json (overrides)
-{
-  "Logging": {
-    "LogLevel": {
-      "Default": "Debug"
-    }
-  },
-  "Features": {
-    "EnableDebugEndpoints": true
-  }
-}
-
-// appsettings.Production.json (overrides)
-{
-  "Logging": {
-    "LogLevel": {
-      "Default": "Warning"
-    }
-  }
-}
-```
-
-## Secrets Management
-
-### Development Secrets
-
-```csharp
-// User secrets - never committed to source control
-// Stored in: %APPDATA%\Microsoft\UserSecrets\{guid}\secrets.json (Windows)
-// Stored in: ~/.microsoft/usersecrets/{guid}/secrets.json (Linux/macOS)
-
-dotnet user-secrets set "Database:Password" "dev-password"
-```
-
-### Production Secrets
-
-```csharp
-// Azure Key Vault
-builder.Configuration.AddAzureKeyVault(
-    new Uri("https://myapp-vault.vault.azure.net/"),
-    new DefaultAzureCredential());
-
-// AWS Secrets Manager (via custom provider or SDK)
-// HashiCorp Vault (via custom provider)
-```
-
-### Secret Reference Pattern
-
-```json
-// appsettings.json - reference, not value
-{
-  "Database": {
-    "ConnectionString": "from-keyvault"
-  }
-}
-
-// Key Vault secret named "Database--ConnectionString"
-// Automatically mapped to configuration["Database:ConnectionString"]
+builder.Services.AddSingleton<
+    IValidateOptions<ApiOptions>, ApiOptionsValidator>();
 ```
 
 ## Post-Configuration
 
-Modify options after binding.
+Post-configuration runs after all other configuration sources have been applied. Use it to enforce defaults or normalize values.
 
 ```csharp
 builder.Services.PostConfigure<EmailOptions>(options =>
 {
-    // Always apply these after any other configuration
     if (string.IsNullOrEmpty(options.FromAddress))
     {
         options.FromAddress = "default@example.com";
     }
 });
 
-// Named post-configuration
-builder.Services.PostConfigure<HttpClientOptions>("GitHub", options =>
-{
-    options.BaseUrl = options.BaseUrl.TrimEnd('/');
-});
-
-// PostConfigureAll - applies to all named options
+// PostConfigureAll applies to all named instances
 builder.Services.PostConfigureAll<HttpClientOptions>(options =>
 {
     if (options.Timeout == default)
@@ -594,40 +464,17 @@ builder.Services.PostConfigureAll<HttpClientOptions>(options =>
 });
 ```
 
-## Configuration Binding
+## Choosing the Right Strategy
 
-### Bind to Existing Object
+| Scenario | Strategy | Provider | Integration Quality |
+|----------|----------|----------|---------------------|
+| App defaults, feature flags, logging levels | Local, non-secure | JSON files | Built-in |
+| Container/Kubernetes overrides | Local, non-secure | Environment variables | Built-in |
+| Dev-only secrets like API keys and passwords | Local, secure | User Secrets | Built-in |
+| Production secrets (Azure) | Remote, secure | Azure Key Vault | First-party NuGet |
+| Production secrets (AWS) | Remote, secure | AWS Parameter Store | AWS-maintained NuGet |
+| Production secrets (AWS, with rotation) | Remote, secure | AWS Secrets Manager | Community NuGet or custom |
+| Shared config across many services | Remote, non-secure | Azure App Configuration, custom DB provider | First-party / custom |
+| Unit and integration tests | In-memory | `AddInMemoryCollection` | Built-in |
 
-```csharp
-var settings = new AppSettings();
-configuration.GetSection("AppSettings").Bind(settings);
-
-// Or create and bind
-var settings = configuration.GetSection("AppSettings").Get<AppSettings>();
-```
-
-### Binding Options
-
-```csharp
-builder.Services.Configure<ComplexOptions>(
-    builder.Configuration.GetSection("Complex"),
-    options =>
-    {
-        options.BindNonPublicProperties = true;
-        options.ErrorOnUnknownConfiguration = true;  // Catch typos
-    });
-```
-
-## Key Takeaways
-
-**Use the options pattern**: Strongly-typed options integrate with DI and enable validation.
-
-**Layer configuration sources**: Base settings in appsettings.json, environment-specific overrides, secrets from secure sources.
-
-**Never store secrets in code or appsettings.json**: Use User Secrets for development, Key Vault or similar for production.
-
-**Validate early**: Use `ValidateOnStart()` to catch configuration errors at startup, not at runtime.
-
-**Choose the right interface**: `IOptions<T>` for static config, `IOptionsSnapshot<T>` for per-request, `IOptionsMonitor<T>` for live updates.
-
-**Environment variables for containers**: Override configuration in Docker/Kubernetes via environment variables without rebuilding images.
+For most production applications, the right combination is JSON files for non-sensitive defaults, environment variables for deployment-specific overrides, and a remote secret store like Azure Key Vault for anything sensitive. The provider ordering ensures that secrets from the remote store override any placeholder values in local files.
