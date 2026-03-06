@@ -90,35 +90,164 @@ _logger.LogInformation("Order created: {@Order}", order);  // @ for destructurin
 _logger.LogInformation("Order created: {$Order}", order);  // $ for ToString()
 ```
 
-## Logging Configuration
+## Provider Strategies
 
-### appsettings.json
+A logging provider is the component that actually writes log entries somewhere. The `ILogger` abstraction your code depends on never decides where logs go; providers do. Multiple providers can run simultaneously, each receiving the same log entries and routing them to different destinations.
+
+There are three categories of provider to understand.
+
+### Built-in Providers
+
+These ship with `Microsoft.Extensions.Logging` and cover basic scenarios.
+
+| Provider | Destination | Typical Use |
+|----------|-------------|-------------|
+| Console | stdout/stderr | Container workloads where an orchestrator like Kubernetes captures stdout |
+| Debug | `System.Diagnostics.Debug` | Local development only (visible in IDE output windows) |
+| EventSource | ETW/EventPipe | .NET diagnostics tooling and performance profiling |
+| EventLog | Windows Event Log | Windows services that need OS-level log integration |
+
+Console is by far the most common in production. In containerized environments, writing structured JSON to stdout is the standard pattern because the cluster's log collector (Fluentd, Fluent Bit, the Datadog agent, or similar) picks it up and forwards it to whatever centralized system the platform team has configured. The application itself does not need to know the final destination.
+
+### Third-Party Providers (Serilog, NLog)
+
+When you need to write to multiple destinations simultaneously, apply enrichment, or route logs conditionally, third-party providers like Serilog and NLog replace the built-in pipeline entirely. They integrate through the same `ILogger` interface, so application code does not change.
+
+Serilog is the most widely adopted. It uses a "sink" model where each destination (console, file, Seq, Application Insights, Elasticsearch) is a separate sink, and you can configure as many as you need. NLog uses a similar concept called "targets."
+
+### Custom Providers
+
+For niche requirements (proprietary internal systems, specialized queuing, compliance-specific formatting), you can implement `ILoggerProvider` directly. This is uncommon but the abstraction supports it cleanly.
+
+## Configuration: Config-Driven vs. Code-Driven
+
+In mature systems, logging configuration is almost entirely config-driven. The CI/CD pipeline controls which providers are active, what log levels apply, and where logs go, not the application code. This is the same principle covered in the [Configuration and Options guide](/study-guides/dotnet/c-sharp/libraries/configuration-and-options.html): local files define structural defaults, and environment-specific overrides come from the deployment pipeline.
+
+### Why Config-Driven Matters
+
+Code-driven configuration (calling `AddConsole()`, `SetMinimumLevel()` in C#) bakes decisions into the binary. Changing a log level or adding a provider requires a rebuild and redeploy. Config-driven configuration lets the platform team adjust logging behavior per environment without touching application code.
+
+### Config-Driven with Built-in Providers
+
+The built-in providers are configured entirely through `appsettings.json` and environment-specific overrides.
 
 ```json
+// appsettings.json — structural defaults
 {
   "Logging": {
     "LogLevel": {
       "Default": "Information",
       "Microsoft": "Warning",
-      "Microsoft.Hosting.Lifetime": "Information",
-      "MyApp.Services": "Debug"
-    },
-    "Console": {
-      "LogLevel": {
-        "Default": "Information"
-      },
-      "FormatterName": "json"
-    },
-    "Debug": {
-      "LogLevel": {
-        "Default": "Debug"
-      }
+      "Microsoft.Hosting.Lifetime": "Information"
     }
   }
 }
 ```
 
-### Programmatic Configuration
+```json
+// appsettings.Development.json — local dev gets more detail
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "MyApp.Services": "Trace"
+    },
+    "Console": {
+      "FormatterName": "simple"
+    }
+  }
+}
+```
+
+```json
+// appsettings.Production.json — structured JSON for container log collectors
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information"
+    },
+    "Console": {
+      "FormatterName": "json"
+    }
+  }
+}
+```
+
+The pipeline sets `ASPNETCORE_ENVIRONMENT` (or `DOTNET_ENVIRONMENT`) and the correct file loads automatically. Environment variables can override individual values on top of that:
+
+```bash
+# CI/CD pipeline or Kubernetes manifest can override any value
+LOGGING__LOGLEVEL__DEFAULT=Warning
+LOGGING__CONSOLE__FORMATTERNAME=json
+```
+
+### Config-Driven with Serilog
+
+Serilog's real power shows in config-driven setups. The entire provider pipeline, including sinks, enrichers, and filtering, can live in configuration.
+
+```json
+// appsettings.json — Serilog config-driven setup
+{
+  "Serilog": {
+    "Using": ["Serilog.Sinks.Console", "Serilog.Sinks.File"],
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": { "formatter": "Serilog.Formatting.Compact.CompactJsonFormatter, Serilog.Formatting.Compact" }
+      }
+    ],
+    "Enrich": ["FromLogContext", "WithMachineName", "WithThreadId"]
+  }
+}
+```
+
+```json
+// appsettings.Production.json — production adds file and remote sinks
+{
+  "Serilog": {
+    "WriteTo": [
+      {
+        "Name": "Console",
+        "Args": { "formatter": "Serilog.Formatting.Compact.CompactJsonFormatter, Serilog.Formatting.Compact" }
+      },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "/var/log/myapp/log-.json",
+          "rollingInterval": "Day",
+          "formatter": "Serilog.Formatting.Compact.CompactJsonFormatter, Serilog.Formatting.Compact"
+        }
+      },
+      {
+        "Name": "Seq",
+        "Args": { "serverUrl": "http://seq.internal:5341" }
+      }
+    ]
+  }
+}
+```
+
+The application code that wires this up is minimal and environment-agnostic:
+
+```csharp
+// Program.cs — the only code-driven part
+builder.Host.UseSerilog((context, config) =>
+{
+    // Everything comes from configuration; no hardcoded sinks or levels
+    config.ReadFrom.Configuration(context.Configuration);
+});
+```
+
+### When Code-Driven Configuration Makes Sense
+
+Code-driven setup is appropriate in two cases: early startup logging before the configuration system is available, and adding providers that have no config-based integration. Even then, keep it minimal.
 
 ```csharp
 builder.Logging
@@ -129,6 +258,52 @@ builder.Logging
     .AddFilter("Microsoft", LogLevel.Warning)
     .AddFilter<ConsoleLoggerProvider>("MyApp", LogLevel.Debug);
 ```
+
+## Multi-Destination Logging in Practice
+
+Real applications typically need logs flowing to multiple destinations simultaneously. The pattern depends on which provider strategy you choose.
+
+### Built-in Providers: Multiple Destinations
+
+The built-in system supports running multiple providers at once, but each provider is limited to a single destination. You can combine Console (for stdout) with EventSource (for diagnostics tooling) through configuration alone.
+
+```csharp
+// Program.cs — register providers; configuration controls their behavior
+builder.Logging
+    .AddConsole()      // stdout for container log collectors
+    .AddEventSourceLogger();  // ETW/EventPipe for diagnostics
+    // Level filtering per-provider comes from appsettings.json
+```
+
+For anything beyond these built-in destinations (files, remote APIs, queues), you need a third-party provider.
+
+### Serilog: The Multi-Sink Approach
+
+Serilog handles multi-destination logging natively. Each sink operates independently with its own formatting, filtering, and batching.
+
+```csharp
+// Program.cs — all sink configuration comes from appsettings.json
+builder.Host.UseSerilog((context, config) =>
+{
+    config.ReadFrom.Configuration(context.Configuration);
+});
+
+// That single line gives you access to any combination of sinks:
+// - Console with JSON formatting (stdout for Kubernetes)
+// - Rolling file sink (local persistence or compliance)
+// - Seq, Elasticsearch, or Splunk (centralized log aggregation)
+// - Application Insights (Azure-native monitoring)
+// - Amazon CloudWatch, Datadog, etc.
+//
+// Adding or removing a destination is a config change, not a code change.
+// The CI/CD pipeline controls which sinks are active per environment.
+```
+
+### Choosing the Right Approach
+
+For container workloads where the platform handles log collection, Console with JSON formatting is often sufficient. The application writes to stdout and the infrastructure (Fluentd, Datadog agent, CloudWatch agent) routes logs to the final destination. This keeps the application simple and the platform team in control.
+
+When the application itself needs to write directly to multiple destinations (local files for compliance, a remote API for alerting, stdout for the platform), Serilog's sink model is the standard choice. The entire sink pipeline is config-driven, so the same application binary can write to different destinations across environments without rebuilding.
 
 ## Log Scopes
 
@@ -176,45 +351,6 @@ using (_logger.BeginScope("Processing order {OrderId}", orderId))
 }
 ```
 
-## Built-in Providers
-
-### Console
-
-```csharp
-builder.Logging.AddConsole(options =>
-{
-    options.FormatterName = "json";  // or "simple", "systemd"
-});
-
-// Custom formatter
-builder.Logging.AddConsole(options =>
-{
-    options.FormatterName = "custom";
-}).AddConsoleFormatter<CustomFormatter, CustomFormatterOptions>();
-```
-
-### Debug
-
-```csharp
-// Outputs to System.Diagnostics.Debug
-builder.Logging.AddDebug();
-```
-
-### EventSource
-
-```csharp
-// For ETW/EventPipe integration
-builder.Logging.AddEventSourceLogger();
-```
-
-### EventLog (Windows)
-
-```csharp
-builder.Logging.AddEventLog(settings =>
-{
-    settings.SourceName = "MyApplication";
-});
-```
 
 ## High-Performance Logging
 
@@ -281,56 +417,6 @@ if (_logger.IsEnabled(LogLevel.Debug))
 }
 ```
 
-## Third-Party Providers
-
-### Serilog
-
-```csharp
-// Install: Serilog.AspNetCore
-builder.Host.UseSerilog((context, config) =>
-{
-    config
-        .ReadFrom.Configuration(context.Configuration)
-        .WriteTo.Console()
-        .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
-        .WriteTo.Seq("http://localhost:5341")
-        .Enrich.FromLogContext()
-        .Enrich.WithMachineName()
-        .Enrich.WithThreadId();
-});
-```
-
-```json
-// appsettings.json for Serilog
-{
-  "Serilog": {
-    "MinimumLevel": {
-      "Default": "Information",
-      "Override": {
-        "Microsoft": "Warning"
-      }
-    },
-    "WriteTo": [
-      { "Name": "Console" },
-      {
-        "Name": "File",
-        "Args": {
-          "path": "logs/log-.txt",
-          "rollingInterval": "Day"
-        }
-      }
-    ]
-  }
-}
-```
-
-### NLog
-
-```csharp
-// Install: NLog.Web.AspNetCore
-builder.Logging.ClearProviders();
-builder.Host.UseNLog();
-```
 
 ## Correlation and Distributed Tracing
 
