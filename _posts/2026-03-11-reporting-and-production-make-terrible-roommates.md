@@ -16,7 +16,7 @@ Not every system needs a separation on day one. A small team with a single datab
 
 ### A Dedicated Reporting Replica
 
-The simplest starting point: point reporting tools at a read replica. Many teams already have replicas for distributing query load, and dedicating one to reporting keeps analytical queries from competing with production traffic. No new infrastructure, no async pipeline, no application code changes.
+The simplest place to start is to point reporting tools at a read replica of the production DB. Many teams already have replicas for distributing query load, and so dedicating one to reporting keeps analytical queries from competing with production traffic. No new infrastructure, no async pipeline, no application code changes.
 
 ```
   ┌─────────────┐         ┌─────────────────┐
@@ -77,15 +77,17 @@ CDC tools like Debezium tap the database's transaction log and emit changes as e
 
 CDC's greatest strength is that it requires no application code changes, no additional transaction overhead, and no new abstractions in the write path. For legacy systems where the risk of changing the write path is too high, or for teams that need separation now and can't afford to modify every service that writes data, CDC is often the only viable option. It also solves payload completeness for free: the transaction log captures the full row state after each write regardless of whether the application only updated a single field, so downstream consumers never have to wonder whether a missing field means "unchanged" or "removed."
 
-CDC does have limitations, and the first is semantic. CDC events originate from the database layer, so they capture *what* changed but not *why* it changed. A row update that represents a customer canceling an order looks identical to a row update that represents a system correcting a data entry error. The database can't distinguish between them because it only sees the state change, not the business intent. For domains where that distinction matters, like financial ledgers or audit-critical workflows, event sourcing is the appropriate tool because it captures the intent as the primary record.
+CDC does have limitations.
 
-The second is the absence of a contract boundary. The table structure *is* the contract, implicitly. When that schema changes, nothing fails at build time. The CDC pipeline either silently emits differently shaped events or breaks at runtime, and reporting consumers discover the problem in production rather than in development. A schema registry can partially close this gap by enforcing compatibility rules at deserialization, but that's added infrastructure catching incompatibility at runtime rather than at build time.
+The first limitation is semantic. CDC events originate from the database layer, so they capture *what* changed but not *why* it changed. A row update that represents a customer canceling an order looks identical to a row update that represents a system correcting a data entry error. The database can't distinguish between them because it only sees the state change, not the business intent. For domains where that distinction matters, like financial ledgers or audit-critical workflows, event sourcing is the appropriate tool because it captures the intent as the primary record.
 
-The third is database dependency. Not every database has a strong CDC story. PostgreSQL and DynamoDB have mature options, but weaker change stream capabilities can push teams toward application-layer alternatives earlier than expected.
+The second limitation is the absence of a contract boundary. The table structure *is* the contract, implicitly. When that schema changes, nothing fails at build time. The CDC pipeline either silently emits differently shaped events or breaks at runtime, and reporting consumers discover the problem in production rather than in development. A schema registry can partially close this gap by enforcing compatibility rules at deserialization, but that's added infrastructure catching incompatibility at runtime rather than at build time.
+
+The third limitation is database dependency. Not every database has a strong CDC story. PostgreSQL and DynamoDB have mature options, but weaker change stream capabilities can push teams toward application-layer alternatives earlier than expected.
 
 ## Intentional Separation
 
-Reactive approaches separate the workload but not the context. They can tell you *what* changed, but not *who* changed it or *why*. That context exists at the application layer when the write happens, and it's lost the moment the data hits the database unless someone deliberately captures it.
+Reactive approaches separate the workload but not the context. They can tell you *what* changed, but not *who* changed it or *why*. That context exists at the application layer when the write happens, and it's lost the moment the data hits the database unless someone deliberately captures it. An intentional separation of concerns takes full advantage of the production context while serving the needs of both reporting and prod as equally vital priorities.
 
 ### The Outbox Pattern
 
@@ -167,7 +169,7 @@ This also gives the outbox an explicit, versionable contract boundary. The appli
 
 The outbox does not require a record for every database write. It only fires when a specific entity type has a meaningful state change, and only for the types that reporting cares about. Background jobs updating internal timestamps produce nothing. Even deletions produce a record, because knowing that an entity was removed and who removed it is itself meaningful. This keeps the coupling concentrated in write paths that produce meaningful state transitions, not spread across every query and update in the codebase.
 
-For most teams that have outgrown a read replica but don't need full event sourcing, the outbox is the default recommendation. It provides intentional separation, explicit contracts, and rich context without the architectural commitment of an append-only event store.
+For most teams that have outgrown a read replica but don't need full event sourcing, the outbox is my recommendation. It provides intentional separation, explicit contracts, and rich context without the architectural commitment of an append-only event store.
 
 ### CQRS and Event Sourcing
 
@@ -259,6 +261,6 @@ Most teams should not reach for this combination. Martin Fowler has [warned cons
 
 ## Separate Early or Pay Later
 
-A read replica is enough to start, but every shortcut that ties these workloads together makes the eventual separation harder. Both production and reporting deserve to be first-class concerns, and treating them that way means decoupling from the schema entirely. Production databases optimize for their inserts and their queries. Dev teams can now deploy and evolve a component's database as needs are discovered, without asking permission. Reporting teams can get get richer, more contextual insights that are readily available instead of painfully reconstructed from schemas that were never designed for them. And the two groups can stop being at each other's throats, because they're no longer competing for the same resource.
+A read replica is enough to start, but every shortcut that ties these workloads together makes the eventual separation harder. Both production and reporting deserve to be first-class concerns, and treating them that way means decoupling from the schema entirely.
 
-Production owes reporting the data, not the schema.
+Production databases can now optimize for their inserts and their queries. Dev teams can now deploy and evolve a component's database as needs are discovered, without asking permission. Reporting teams can now get richer, more contextual insights that are readily available. And the two groups can now stop being at each other's throats, because they're no longer competing for the same resource.
