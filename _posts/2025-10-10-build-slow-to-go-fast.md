@@ -6,7 +6,7 @@ description: "Rushing to market creates delayed costs that compound over time. S
 tags: [architecture, technical-debt, software-engineering, leadership]
 ---
 
-Every architect has sat in a meeting where leadership demands faster delivery. "Our competitors ship features weekly!" "We need to be first to market!" "We'll fix the technical issues later!" The pressure is real, and the decision made in that moment determines whether your company thrives or struggles.
+Every architect has sat in a meeting where leadership demands faster delivery. "Our competitors ship features weekly!" "We need to be first to market!" "We'll fix the technical issues later!" That pressure shapes the decision made in that moment, and that decision determines whether your company thrives or struggles.
 
 Some companies IPO with little apparent reason other than to raise capital for fixing their technical foundation rather than funding growth. Product leaders race to market first, only to watch thoughtful competitors learn from their mistakes and convert their frustrated customers. Building deliberately, with architectural intention, is the only path to sustainable speed.
 

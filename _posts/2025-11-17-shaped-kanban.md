@@ -86,7 +86,7 @@ This is where Scrum's ceremony structure fails most visibly. Sprint Planning com
 <p>When alignment exists, delivery cycles follow naturally. When alignment doesn't exist, timeboxes just create the illusion of progress.</p>
 </blockquote>
 
-**Start from alignment and discipline, not from artificial constraints.** Teams with genuine discipline naturally operate with tempo: shaping work to understood scope, committing when ready, building with focus, and shipping when done. The tempo is real but contextual. Sometimes a feature takes 3 days while another takes 6 weeks. The rhythm comes from alignment discipline, not from artificial sprint boundaries.
+**Start from alignment and discipline, not from artificial constraints.** Teams with genuine discipline naturally operate with tempo: shaping work to understood scope, committing when ready, building with focus, and shipping when done. That tempo is natural but contextual. Sometimes a feature takes 3 days while another takes 6 weeks. The rhythm comes from alignment discipline, not from artificial sprint boundaries.
 
 ## Understanding the Alternatives
 

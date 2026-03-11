@@ -34,7 +34,7 @@ Conversely, web-first organizations with JavaScript expertise gain little from s
 
 ## The Survival Question
 
-Microsoft's track record speaks for itself. Decades of abandoned UI frameworks create reasonable doubt about any new framework's longevity. The graveyard is real, and the pattern is consistent.
+Microsoft's track record speaks for itself. Decades of abandoned UI frameworks create reasonable doubt about any new framework's longevity. The list of abandoned frameworks is long, and the pattern is consistent.
 
 Blazor's architecture provides some protection against abandonment. Blazor Server relies on SignalR, which has broader .NET ecosystem support beyond Blazor itself. Blazor WebAssembly compiles to an open standard. Even if Microsoft abandons the framework, the compiled output remains usable. That portability offers more durability than previous Microsoft UI frameworks provided, though it's still not a guarantee of long-term ecosystem health.
 

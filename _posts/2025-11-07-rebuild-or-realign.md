@@ -20,7 +20,7 @@ The pattern repeats across different technical domains:
 
 **Infrastructure migrations**: An organization blames rising cloud costs on the provider's pricing model and proposes migrating to on-premises infrastructure. Eighteen months later, leadership celebrates reduced hosting bills without mentioning the tripled operations team, degraded availability, and manual processes replacing what cloud automation previously managed.
 
-The root cause was never the cloud provider. It was absence of operational accountability—no one tracked which resources provided value, right-sized instances, or decommissioned abandoned experiments. The migration forced this discipline, but the same discipline applied to existing infrastructure would have achieved the savings without the rebuild.
+The root cause was never the cloud provider. It was absence of operational accountability. No one tracked which resources provided value, right-sized instances, or decommissioned abandoned experiments. The migration forced this discipline, but the same discipline applied to existing infrastructure would have achieved the savings without the rebuild.
 
 **Runtime rewrites**: Teams celebrate performance gains after rewriting in a faster language. But was it the new runtime, or was it the rewrite that forced them to finally address inefficient database access patterns, redundant service calls, and missing caches?
 

@@ -253,6 +253,6 @@ If structural arguments favor Results, why does the exception camp remain strong
 
 Despite my preferences, the evidence (at least conceptually) has led me to conclude that Result types should be the default for domain operations. Not because Results are perfect (C# doesn't enforce them, they create framework friction, and misuse can scatter error handling), but because the structural advantages outweigh the execution risks. Performance at scale, safe boundaries by default, visible failure modes, and natural iteration patterns matter more than implicit propagation convenience.
 
-The resistance is understandable. Paradigm friction is real, and "do exceptions correctly this time" reflects discipline. But when an increasing number of use cases can and will return expected failures, you need mechanisms designed for common outcomes, not rare anomalies.
+Paradigm friction makes this a hard sell, and "do exceptions correctly this time" reflects genuine discipline. But when an increasing number of use cases can and will return expected failures, you need mechanisms designed for common outcomes, not rare anomalies.
 
 Moving forward I will endeavor to use Results for expected failures, reserve exceptions for bugs, and build the discipline and tooling to use them both well.

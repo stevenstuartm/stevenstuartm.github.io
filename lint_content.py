@@ -46,7 +46,8 @@ class ContentLinter:
             r"\bfundamentally\b",
             r"\bat the end of the day\b",
             r"\bthe bottom line is\b",
-            r"\bthe \w+ (?:argument|concern|objection|criticism|risk|challenge|threat|worry|fear|tension|problem|issue) is real\b",
+            r"\bthe \w[\w -]* is real\b",
+            r"\bthe \w[\w -]* is understandable\b",
         ]
 
         # AI-tell colon constructions
