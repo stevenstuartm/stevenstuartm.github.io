@@ -120,5 +120,5 @@ Use the AAA Cycle to test whether a rebuild addresses real problems:
 Fix the organization, and the technology often fixes itself. Rebuild without fixing the organization, and you'll be proposing another rebuild in three years.
 
 <blockquote class="pull-quote">
-<p>The question isn't "Should we rebuild?" The question is "Do we understand why we're considering it, and are we willing to be accountable for the outcome?"</p>
+<p>Before rebuilding, understand why you're considering it and be willing to be accountable for the outcome.</p>
 </blockquote>

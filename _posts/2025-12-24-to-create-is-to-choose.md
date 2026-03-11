@@ -63,7 +63,7 @@ This is backwards. What is true can be self-evident or can require rigorous proo
 To say that what is "real" defines what is true is to fall into nihilism. It states that there can be no objective truth, and subsequently no objective purpose, given the fickleness of humans and the ever-changing substance through which we experience life. But truth doesn't need our permission to exist. It doesn't need to be perceived. It operates whether we acknowledge it or not.
 
 <blockquote class="pull-quote">
-<p>The question isn't whether truth exists. The question is whether we're searching for it or assuming we've already found it.</p>
+<p>Truth exists. What separates growth from stagnation is whether we're still searching for it or assuming we've already found it.</p>
 </blockquote>
 
 ## The Danger of Assumption
@@ -84,7 +84,7 @@ But here's the harder question: when the evidence doesn't settle the matter, whe
 
 This isn't relativism. Asking "which story do you prefer?" doesn't mean truth doesn't matter. It means that when evidence alone can't settle the question, we must still choose. And that choice reveals something about us.
 
-The version of the story we prefer, the one that accounts for both what has been proven and what we aspire toward, becomes our orientation. It shapes how we act, what we pursue, and what we pass on. The question isn't which story is easiest or most comfortable. It's which story we're willing to live by.
+The version of the story we prefer, the one that accounts for both what has been proven and what we aspire toward, becomes our orientation. It shapes how we act, what we pursue, and what we pass on. What matters isn't which story is easiest or most comfortable, but which story we're willing to live by.
 
 Your experience is real, but it's also limited. The collective search across centuries has been stress-tested across contexts, cultures, and circumstances that no individual could encounter in a single lifetime. That search doesn't guarantee truth, but it narrows the field. And when you must still choose between remaining possibilities, the honest path forward isn't paralysis. It's committing to the story that best accounts for what we know and what we hope for, while remaining open to revision as understanding deepens.
 
@@ -110,7 +110,7 @@ These ideas didn't emerge from a single tradition. They arrived from multiple di
 
 **Yann Martel's *Life of Pi*** poses the question directly. After surviving months at sea, Pi tells investigators two versions of his story: one with animals, one without. Neither can be proven. He asks: "Since it makes no factual difference to you and you can't prove the question either way, which story do you prefer?" When the investigator chooses the story with animals, Pi responds: "And so it goes with God." The story we choose reveals who we are.
 
-**T.M. Scanlon's contractualism**, dramatized in *The Good Place*, reframes ethics from individual virtue to mutual obligation. The question isn't "what is right?" in the abstract but "what do we owe each other?" The choice to create isn't just about personal meaning; it's about the debt we carry to those who come after. The mentor owes the mentee orientation. The parent owes the child a foundation to stand on.
+**T.M. Scanlon's contractualism**, dramatized in *The Good Place*, reframes ethics from individual virtue to mutual obligation. It shifts from "what is right?" in the abstract to "what do we owe each other?" The choice to create isn't just about personal meaning; it's about the debt we carry to those who come after. The mentor owes the mentee orientation. The parent owes the child a foundation to stand on.
 
 **Jordan Peterson** argues that meaning comes from responsibility, not comfort. You find purpose by choosing to bear weight that matters. He also warns against ideological possession, where people stop searching and start assuming. The framework becomes a substitute for genuine inquiry, and regression begins even while the person believes they've arrived at truth.
 

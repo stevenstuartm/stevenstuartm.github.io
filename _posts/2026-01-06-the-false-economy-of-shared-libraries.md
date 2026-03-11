@@ -129,7 +129,7 @@ Shared libraries often emerge from a governance impulse: "Teams are doing things
 
 The instinct isn't wrong, and consistency matters. But shared libraries are governance theater. They create the appearance of consistency without addressing the underlying problem.
 
-If teams are building things inconsistently, the question is why. Usually it's because they don't share the same understanding of what matters, what the tradeoffs are, and what "good" looks like. That's an alignment problem. It requires conversation, documentation, and shared values.
+If teams are building things inconsistently, ask why. Usually it's because they don't share the same understanding of what matters, what the tradeoffs are, and what "good" looks like. That's an alignment problem. It requires conversation, documentation, and shared values.
 
 Forcing everyone to use the same library doesn't create alignment. It creates compliance. Teams will use your library and still build inconsistent systems because the library doesn't encode the thinking and testing.
 

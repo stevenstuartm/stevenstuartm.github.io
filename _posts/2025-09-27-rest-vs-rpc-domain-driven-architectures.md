@@ -63,7 +63,7 @@ Neither approach is universally better. The choice depends on how your domain na
 
 **RPC fits operation-driven systems.** Domain-driven architectures with bounded contexts and business workflows align better with explicit operations. Endpoints like `/orders/cancel`, `/orders/refund`, and `/orders/split-shipment` map directly to what the business actually does. There's no translation layer between domain language and API structure. Documentation becomes clearer because each endpoint serves a single purpose. Compare `POST /orders/cancel` with explicit parameters to `PUT /orders/{id}` which might update the order status, add line items, change shipping addresses, or trigger cancellation depending on the request body.
 
-The question isn't which style is more elegant. It's which style matches how your domain actually works. If your system manages entities with stable identities, use REST. If your system executes business operations across bounded contexts, stop forcing those operations into resource updates.
+Elegance doesn't matter here; what matters is which style matches how your domain actually works. If your system manages entities with stable identities, use REST. If your system executes business operations across bounded contexts, stop forcing those operations into resource updates.
 
 <blockquote class="pull-quote">
 <p>Match your API style to your domain model, not to industry conventions or resume-driven development.</p>

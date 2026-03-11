@@ -48,6 +48,8 @@ class ContentLinter:
             r"\bthe bottom line is\b",
             r"\bthe \w[\w -]* is real\b",
             r"\bthe \w[\w -]* is understandable\b",
+            r"\bthe question isn'?t\b",
+            r"\bthe question is\b",
         ]
 
         # AI-tell colon constructions

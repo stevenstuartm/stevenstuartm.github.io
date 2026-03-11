@@ -190,7 +190,7 @@ Shaped Kanban naturally supports the [AAA Cycle](/study-guides/sdlc/aaa-cycle.ht
 
 ## What About Multi-Team Coordination?
 
-**Multi-team coordination is hard. It has always been hard. Shaped Kanban doesn't pretend otherwise.** The question is whether timeboxes make it easier or just create the illusion of coordination while hiding the actual work.
+**Multi-team coordination is hard. It has always been hard. Shaped Kanban doesn't pretend otherwise.** Timeboxes don't make it easier; they create the illusion of coordination while hiding the actual work.
 
 Continuous flow across multiple teams does add real coordination complexity compared to synchronized sprints. That cost is genuine. But coordination complexity is a problem you can solve intentionally through project management. Shipping the wrong things because your process never tested whether they were right is a problem sprints cannot solve.
 

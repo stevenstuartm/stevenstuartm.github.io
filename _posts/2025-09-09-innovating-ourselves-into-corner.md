@@ -42,7 +42,7 @@ Major technology transitions often needed external forces to overcome switching 
 
 These catalysts overcame the switching cost problem by making inaction more expensive than migration. Without that forcing function, inertia wins. Companies continue maintaining what works rather than risking disruption for marginal improvements.
 
-The question is whether newer technology alone provides a sufficient forcing function. Does eliminating certain classes of bugs justify rewriting working systems? Do compile-time type checks warrant converting stable codebases? Do improved developer experiences justify disrupting working systems? Without external pressure, the answer is often no.
+Newer technology alone rarely provides a sufficient forcing function. Does eliminating certain classes of bugs justify rewriting working systems? Do compile-time type checks warrant converting stable codebases? Do improved developer experiences justify disrupting working systems? Without external pressure, the answer is often no.
 
 ## The Long-Term Consequences
 
@@ -58,7 +58,7 @@ Businesses need ways to quantify the cost of not migrating. That cost shows up a
 
 Adoption might accelerate if better technologies become accessible without full migration commitment. Gradual adoption paths work when they actually lead to completion rather than becoming permanent hybrid states. Companies that successfully migrated did so by setting concrete deadlines, allocating resources, and treating migration as a product feature rather than technical debt.
 
-Another path is greenfield displacement. New products and companies adopt better technologies while legacy systems slowly sunset. This is slow but inevitable if better technologies genuinely improve outcomes. The question is whether this happens fast enough or if we spend decades maintaining increasingly fragile systems.
+Another path is greenfield displacement. New products and companies adopt better technologies while legacy systems slowly sunset. This is slow but inevitable if better technologies genuinely improve outcomes. Whether this happens fast enough to avoid decades of maintaining increasingly fragile systems remains unclear.
 
 We're not headed for inevitable stagnation, but we're also not guaranteed automatic progress.
 

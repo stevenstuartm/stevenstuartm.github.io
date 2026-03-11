@@ -67,7 +67,7 @@ Could you build a radio if you needed to? Could you manufacture a car, synthesiz
 
 Every technological layer creates the same pattern: a new capability emerges, early adopters with pre-existing skills use it as force multiplier, the next generation learns with the tool rather than before it, and the underlying skill becomes specialized knowledge held by few. We don't mourn that most people can't forge steel or build semiconductors. We accept that specialists exist and the rest of us build on their work.
 
-AI is another layer in this stack. Some skills will atrophy; that's the trade. The question isn't whether we'll lose capabilities, because we will. The question is whether you're positioning yourself to provide value at the new layer, or holding onto skills being absorbed into the substrate.
+AI is another layer in this stack. Some skills will atrophy; that's the trade. We will lose capabilities; that's guaranteed. What matters is whether you're positioning yourself to provide value at the new layer, or holding onto skills being absorbed into the substrate.
 
 The people who thrived weren't the ones who could build radios. They were the ones who understood what to do with radios.
 
@@ -97,4 +97,4 @@ If you're drawn toward the human side of this bifurcation, the answer isn't to l
 
 **Become value-oriented, not tool-oriented.** Every technical decision exists in a business context. What are we trying to achieve? For whom? What does success look like? What's the cost of being wrong? These questions matter more than implementation elegance.
 
-This is the human work that AI cannot do. It requires empathy, judgment, relationship-building, and context that spans conversations, projects, and years. The middle is not a resting place; it's a transition zone, and it's narrowing. The tools will keep getting better. The question is whether you're wielding them toward value, or being replaced by someone who is.
+This is the human work that AI cannot do. It requires empathy, judgment, relationship-building, and context that spans conversations, projects, and years. The middle is not a resting place; it's a transition zone, and it's narrowing. The tools will keep getting better. Either you're wielding them toward value, or you're being replaced by someone who is.

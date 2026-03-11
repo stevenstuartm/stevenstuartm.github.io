@@ -307,6 +307,7 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - "at the end of the day", "the bottom line is"
 - "The [noun] is real" (e.g., "The cost is real", "The pressure is real", "The graveyard is real")
 - "The [noun] is understandable" (e.g., "The resistance is understandable", "The concern is understandable")
+- "The question isn't" / "The question is" (rhetorical framing that avoids direct statements)
 
 **AI-tell colon constructions (automatically detected)**:
 - "What's converging:", "A critical distinction:", "The difference:", "The key:", "The point:", "Here's why:"

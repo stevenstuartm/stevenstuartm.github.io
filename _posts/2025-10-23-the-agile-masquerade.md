@@ -30,7 +30,7 @@ Estimating based on untested assumptions is not planning. It's guessing. And whe
 
 The pattern is familiar: estimate based on assumptions, commit to the estimate, discover during implementation that the assumptions were wrong, then ship anyway because the timebox ends. Discovery gets reframed as scope creep rather than learning. The timebox becomes more important than the outcome.
 
-In the real world, implementation reveals hidden complexity. Edge cases emerge. Dependencies appear. The question is: do you have the discipline to pause and realign when discovery changes everything?
+In the real world, implementation reveals hidden complexity. Edge cases emerge. Dependencies appear. Most teams don't have the discipline to pause and realign when discovery changes everything.
 
 ### The Missing Discipline
 
@@ -82,7 +82,7 @@ This is a false dilemma. The choice isn't between doing nothing and doing everyt
 
 **This is about being actually agile.**
 
-True agility means adapting to changing priorities and changing understanding. Discovery is inevitable. The question is: do you have the discipline to incorporate what you discover, or do you ship anyway because the timebox ends?
+True agility means adapting to changing priorities and changing understanding. Discovery is inevitable. That means having the discipline to incorporate what you discover, not shipping anyway because the timebox ends.
 
 The discipline isn't perfect upfront requirements or endless discovery. It's simpler:
 1. Identify what you know vs. what you're assuming

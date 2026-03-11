@@ -32,7 +32,7 @@ This reframing should change what we measure, but not by replacing one test metr
 
 Coverage metrics can still provide useful insight into quality gaps, but think in terms of use case coverage rather than line coverage. Are the critical business scenarios tested? Are the edge cases stakeholders care about covered? That's a different question than "what percentage of lines have tests?"
 
-Tests are a tool, not an outcome. When teams treat coverage percentages as goals or count rewritten tests as waste, they've confused the means for the end. The question isn't "how many tests do we have?" or even "how many wrong assumptions did we catch?" The question is "did we deliver what users actually needed?"
+Tests are a tool, not an outcome. When teams treat coverage percentages as goals or count rewritten tests as waste, they've confused the means for the end. What matters isn't "how many tests do we have?" or "how many wrong assumptions did we catch?" but "did we deliver what users actually needed?"
 
 The test suite does have secondary value as documentation that new developers can read to understand system constraints without digging through old conversations and tickets. But that's a side effect, not a success metric.
 
