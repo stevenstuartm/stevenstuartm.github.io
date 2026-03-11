@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Production Owes Reporting the Data, Not the Schema"
-date: 2026-03-09
+title: "Reporting and Production Make Terrible Roommates"
+date: 2026-03-11
 description: "Reporting pressure gradually distorts production schemas until they serve two masters and compromise for both. Separating the workloads lets each model evolve for the consumers it was designed to serve."
 tags: [architecture, databases, design-patterns, distributed-systems, data-modeling, event-sourcing, cqrs]
 ---
