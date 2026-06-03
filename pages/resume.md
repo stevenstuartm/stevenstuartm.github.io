@@ -23,7 +23,21 @@ Software architect with 15 years of experience bringing clarity to complex syste
 
 ## Professional Experience
 
-### System Architect | True Market Insiders — St. Petersburg, FL | Feb 2023 – Present
+### Team Lead / Senior Software Developer | SafetyChain | March 2026 – Present
+
+Lead an engineering team responsible for rebuilding and maintaining a customer-facing Windows desktop application central to client record management. Collaborated with product and QA to keep the architecture aligned with evolving enterprise APIs and shared business logic across platforms.
+
+**Key Achievements:**
+- **Delivered in 4 months** what had been stalled for two years, rescuing a legacy codebase and shipping a production-ready desktop application under a compressed deadline
+- **Eliminated rework and plan drift** by building a custom AI skill that enforced assumption validation before coding, producing structured task documents that captured intent, tested assumptions, and tracked progress for both active and historical reference
+- **Cut AI coding costs and accelerated velocity** by decomposing the codebase into single-responsibility components with a precise directory map, improving model accuracy on every code generation task and automatically maintaining the application's technical guide as a byproduct
+- **Resolved systemic performance and stability issues** by migrating to a lightweight SQL data layer, fixing threading race conditions through a messaging pattern, and eliminating memory leaks through profiling and remediation
+- **Reduced cloud costs by logging less and gaining more context** by replacing blanket activity logging with deliberately authored observability, capturing only what mattered through structured logging and a local UI health indicator
+- **Built the application's first automated test suite from scratch** using a use-case driven approach across all application layers
+
+*Technologies: WinUI3, .NET, C#, MVVM, Dapper, SQLite, Serilog, AI Assistants*
+
+### System Architect | True Market Insiders — St. Petersburg, FL | Feb 2023 – March 2026
 
 Led modernization of cloud infrastructure and development operations for a financial research platform. Directed architecture strategy, mentored the engineering team, and delivered secure, scalable solutions aligned with business objectives.
 
@@ -36,7 +50,7 @@ Led modernization of cloud infrastructure and development operations for a finan
 - **Integrated AI-assisted code generation** into development workflow, accelerating code deliverables by roughly 70% and nearly eliminating production defects in new feature releases
 - **Accelerated deployment speed** with CI/CD pipelines and automated testing environments, reducing production deployment time from 30 minutes to 5 minutes
 
-*Technologies: .NET 8, ASP.NET Core, AWS EKS, GraphQL (HotChocolate), Aurora PostgreSQL, DynamoDB, Snowflake, EventBridge, CloudFront, WAF, CodeBuild, Vue.js, Claude AI
+*Technologies: .NET 8, ASP.NET Core, AWS EKS, GraphQL (HotChocolate), Aurora PostgreSQL, DynamoDB, Snowflake, EventBridge, CloudFront, WAF, CodeBuild, Vue.js, Claude AI*
 
 ### Senior Software Engineer II | Alkami Technology — Plano, TX | Jul 2018 – Jan 2023
 
