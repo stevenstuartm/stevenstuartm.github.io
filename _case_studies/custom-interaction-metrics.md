@@ -8,7 +8,6 @@ date: 2025-01-01
 headline_metric: "Custom Metrics Pipeline"
 headline_detail: "DynamoDB queue → background processor → MySQL summaries"
 category: "design"
-featured: true
 category_label: "Architecture & Design"
 technologies:
   - .NET
