@@ -6,7 +6,7 @@ subtitle: Practical insights on building software architectures that serve real 
 featured_items:
   - label: "Core Philosophy"
     title: "Seven Disciplines for Software Development"
-    description: "The values I hold onto when pressure mounts and shortcuts tempt. Informed by years of building systems, leading teams, and watching projects succeed and fail."
+    description: "Seven disciplines that guide how I approach software development, architecture, leadership, and career growth."
     cta: "Explore"
     url: "/philosophy.html"
     

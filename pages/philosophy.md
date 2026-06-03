@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Philosophy
-description: "Seven disciplines that guide how I approach software development, architecture, leadership, and career growth. Discipline over process. Value over velocity. Discovery over completion."
+description: "Seven disciplines that guide how I approach software development, architecture, leadership, and career growth."
 permalink: /philosophy.html
 ---
 
@@ -17,11 +17,9 @@ These disciplines represent my current understanding of what makes software deve
 <p>If you are not sincerely seeking truth, you will never accept it.</p>
 </blockquote>
 
-There's a difference between ten years of experience and one year repeated ten times. Accumulating experience means building new capabilities, taking on broader responsibilities, and establishing feedback loops that force growth. The discomfort signals learning.
+There's a difference between ten years of experience and one year repeated ten times. Real accumulation means building new capabilities, taking on broader responsibilities, and establishing feedback loops that expose what you don't know. Staying comfortable feels like progress but produces competence at yesterday's problems.
 
-Leadership emerges from behavior, not titles. Seek questions you don't yet know to ask; the most dangerous gaps are the unknown unknowns. Maintain quality independent of approval; just because no one flagged your code doesn't mean it's quality work. Build others to build better products.
-
-We learn by teaching. When you mentor less experienced developers, you create space for your own growth. As they learn to handle the work you do today, you create capacity to tackle the challenges your leaders face. This isn't delegation to save time; it's building organizational capability while advancing your own.
+Seek problems you can't yet solve and questions you don't yet know to ask. The most dangerous gaps are the ones you can't see. Maintain quality independent of approval; no one flagging your code doesn't mean the code is good.
 
 **Going deeper**: [What Engineering Leaders Ask That Others Don't](/blog/2025/06/11/characteristics-of-leaders-mentors-software-development.html){:target="_blank" rel="noopener noreferrer"} examines the questions that reveal leadership characteristics.
 
