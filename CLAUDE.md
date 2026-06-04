@@ -305,7 +305,8 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - "in conclusion", "in summary", "final version", "final conclusion"
 - "ultimately", "essentially", "fundamentally" (when used as filler)
 - "at the end of the day", "the bottom line is"
-- "The [noun] is real" (e.g., "The cost is real", "The pressure is real", "The graveyard is real")
+- "X is/are/was/were real" (predicate form, e.g., "that complexity is real", "the costs are real") — emphatic filler; describe specifically what you mean instead
+- "[verb] real [noun]" (e.g., "does real work", "adds real value", "creates real problems") — using "real" as emphasis is filler; state what it does specifically instead
 - "The [noun] is understandable" (e.g., "The resistance is understandable", "The concern is understandable")
 - "The question isn't" / "The question is" (rhetorical framing that avoids direct statements)
 

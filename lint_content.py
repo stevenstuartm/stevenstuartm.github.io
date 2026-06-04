@@ -46,7 +46,8 @@ class ContentLinter:
             r"\bfundamentally\b",
             r"\bat the end of the day\b",
             r"\bthe bottom line is\b",
-            r"\bthe \w[\w -]* is real\b",
+            r"\b(is|are|was|were)\s+real\b(?!-)",  # predicate "X is/are real" — filler; state specifically what that means
+            r"\b(does|doing|adds|provides|creates|has|carries|serves)\s+real\s+\w+\b",
             r"\bthe \w[\w -]* is understandable\b",
             r"\bthe question isn'?t\b",
             r"\bthe question is\b",
