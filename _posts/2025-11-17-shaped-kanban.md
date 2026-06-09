@@ -12,7 +12,7 @@ As an architect, a core part of my job is assessing viability and risk before co
 
 **Interval-based development organizes work around fixed time periods, not around completing features.** When timeboxes become the primary organizing principle, they corrupt even well-aligned teams.
 
-Timeboxes attempt to enforce through calendar boundaries what discipline should provide naturally. The intention is sound: prevent endless work, create rhythm, establish accountability.
+The intention is sound: prevent endless work, create rhythm, establish accountability. Yet timeboxes attempt to enforce through calendar boundaries what discipline should provide naturally.
 
 ### The Calendar Fills Itself
 
