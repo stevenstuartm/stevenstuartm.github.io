@@ -33,8 +33,10 @@ layout: default
         <div class="guide-header">
             <nav class="breadcrumb">
                 <a href="{{ '/study-guides.html' | relative_url }}">Study Guides</a>
+                {% if page.category %}
                 <span class="separator">/</span>
-                <a href="{{ '/study-guides.html' | relative_url }}#{{ page.category | slugify }}" class="category">{{ page.category }}</a>
+                <a href="{{ '/study-guides.html' | relative_url }}?category={{ page.category | slugify }}" class="category">{{ page.category }}</a>
+                {% endif %}
             </nav>
             <h1 class="guide-title">{{ page.title }}</h1>
             {% assign words = content | strip_html | number_of_words %}
@@ -76,7 +78,7 @@ layout: default
     {% include guide_navigation.html %}
 
     <footer class="guide-footer">
-        <a href="{{ '/study-guides.html' | relative_url }}" class="back-link">← Back to all study guides</a>
+        <a href="{{ '/study-guides.html' | relative_url }}{% if page.category %}?category={{ page.category | slugify }}{% endif %}" class="back-link">← Back to {% if page.category %}{{ page.category }}{% else %}all study guides{% endif %}</a>
     </footer>
 </article>
 
