@@ -34,21 +34,6 @@ Regardless of project size or methodology, application follows these steps:
 
 ## The Core Value: Honoring the Agreement While Learning
 
-<blockquote class="pull-quote">
-<p>Apply is not blind execution; it's disciplined delivery that honors the agreement while maintaining the courage to pause when discovery demands it.</p>
-</blockquote>
-
-Discovery during implementation is inevitable:
-- Implementation reveals hidden complexity
-- Building the first version surfaces better approaches
-- Edge cases emerge that invalidate assumptions
-- Dependencies appear that change timelines
-
-<div class="callout callout--note">
-<p class="callout__title">Discovery Is Not Failure</p>
-<p>This is the inevitable outcome of doing real work. Teams that ship based on broken assumptions, just to avoid "changing the plan," deliver work that misses the mark.</p>
-</div>
-
 The discipline of Apply is knowing when to:
 - **Continue**: Discovery confirms the approach; keep executing
 - **Adapt**: Minor adjustments within the agreed scope and architecture
@@ -128,16 +113,6 @@ External dependencies are a primary source of discovery during Apply. Other team
 
 ## Scope Negotiation
 
-### The Iron Triangle Reality
-
-When reality forces changes, something has to give. The classic constraints are scope, timeline, and cost.
-
-| Adjustable | Rarely Adjustable |
-|------------|-------------------|
-| **Scope**: Reduce features, defer to future phases | **Quality**: Cutting corners creates technical debt |
-| **Timeline**: Extend delivery date | **Fixed deadlines**: Regulatory, contractual, market-driven |
-| **Cost**: Add resources, buy vs. build | **Budget caps**: When resources truly aren't available |
-
 ### Scope Negotiation Framework
 
 1. **Quantify the gap**: How much are we short? (days, story points, effort)
@@ -187,8 +162,6 @@ At the implementation level, CI/CD pipelines operationalize the AAA discipline. 
 - **Code reviews verify alignment**: PR reviews confirm that the implementation matches shared understanding of intent.
 - **Security and quality gates verify standards**: Pipeline gates enforce the quality and security agreements established during Phase 2.
 
-When CI failures occur, ask "what agreement broke?" rather than just "how do I fix this build?" This question leads to root causes and process improvements, not just symptom fixes.
-
 See [CI/CD and Technical Agreement](/study-guides/sdlc/cicd.html#cicd-and-technical-agreement) for detailed guidance on how AAA operates at the code level.
 
 **Architecture Governance**:
@@ -213,8 +186,6 @@ See [Governance](/study-guides/architecture/governance.html){:target="_blank" re
 ### 2. Continuous Stakeholder Alignment
 
 **Maintain alignment throughout implementation as discovery happens.**
-
-The human connection established during Align must be maintained throughout Apply. As implementation reveals new information, the team and stakeholders must stay aligned on what's being built, why it matters, and what trade-offs are being made.
 
 **Regular Touchpoints**:
 - **Sprint/Iteration Reviews**: Demo working software, gather feedback

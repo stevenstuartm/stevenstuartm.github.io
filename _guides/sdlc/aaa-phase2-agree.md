@@ -13,10 +13,6 @@ tags: [sdlc, aaa-cycle, planning, architecture, collaboration, practical]
 
 **Transform aligned understanding into concrete, approved technical plans.** Design the solution, validate critical assumptions, and secure commitment on approach and resources.
 
-<blockquote class="pull-quote">
-<p>Agreement without understanding is not agreement; it's compliance waiting to fail.</p>
-</blockquote>
-
 ### The Universal Pattern
 
 Regardless of project size or methodology, agreement follows these steps:
@@ -110,10 +106,6 @@ During Agree, diagrams codify decisions and create shared commitment. Use docume
 - API specifications (OpenAPI/Swagger) for integration contracts
 - Trade-off tables for comparing alternatives
 
-<blockquote class="pull-quote">
-<p>If a diagram doesn't help someone commit to a specific decision, don't create it.</p>
-</blockquote>
-
 ---
 
 ### 3. Technical Proof of Concept
@@ -185,25 +177,15 @@ During Agree, diagrams codify decisions and create shared commitment. Use docume
 - Build in margin: SLO tighter than SLA
 - Make targets visible in dashboards
 
-<blockquote class="pull-quote">
-<p>99.9% availability sounds impressive until you realize it allows 43.8 minutes of downtime per month.</p>
-</blockquote>
-
 ---
 
 ### 6. Planning & Budget
 
 #### Appetite vs. Estimation
 
-Before diving into work breakdown, consider whether you're asking the right question.
+Rather than asking "How long will this take?", set an appetite: leadership decides how much time the problem is worth. If you can't shape a viable solution within that constraint, either expand the appetite or don't proceed. This forces scope decisions during Agree, not during Apply.
 
-**Bottom-up estimation** asks "How long will this take?" This produces guesses that become commitments.
-
-**Top-down appetite** asks "How much time is this problem worth?" This produces a constraint that forces scope decisions during Agree, not during Apply.
-
-Setting appetite means leadership decides: "This problem is worth 2 weeks, not more." If you can't shape a viable solution within the appetite, either the problem needs a bigger appetite or you shouldn't work on it yet.
-
-For more on this approach, see [Shaped Kanban](/blog/2025/11/17/shaped-kanban.html){:target="_blank" rel="noopener noreferrer"}.
+See [Shaped Kanban](/blog/2025/11/17/shaped-kanban.html){:target="_blank" rel="noopener noreferrer"} for more on this approach.
 
 #### Work Breakdown & Cost Analysis
 
@@ -227,14 +209,7 @@ For detailed TCO and ROI guidance, see [Total Cost of Ownership](/study-guides/a
 
 ## When Stakeholders Disagree
 
-### The Reality of Conflicting Priorities
-
-Genuine agreement requires stakeholders to agree with each other, not just with you. In practice, stakeholders often have conflicting priorities:
-- Marketing wants features fast; Security wants comprehensive review
-- Finance wants cost reduction; Operations wants redundancy
-- Product wants scope expansion; Engineering wants technical debt reduction
-
-These conflicts don't resolve themselves. If you proceed without addressing them, you're building on a foundation of hidden disagreement that will surface during Apply, usually at the worst possible moment.
+Genuine agreement requires stakeholders to agree with each other, not just with you. Conflicts that aren't resolved during Agree will surface during Apply.
 
 ### Surfacing Hidden Disagreements
 
@@ -269,8 +244,6 @@ When stakeholders disagree, your role is to facilitate resolution, not to pick a
 3. **Reduce scope to the agreed portion**: Find the subset where agreement exists
 4. **Recommend no-go**: If the conflict is fundamental enough that success is unlikely
 
-**Whatever you choose, don't pretend agreement exists when it doesn't.** Proceeding with false consensus leads to scope creep, rework, and blame when the hidden conflict surfaces.
-
 <div class="callout callout--warning">
 <p class="callout__title">Red Flags: Pseudo-Agreement</p>
 <ul>
@@ -284,14 +257,7 @@ When stakeholders disagree, your role is to facilitate resolution, not to pick a
 
 ## Securing Team Buy-In
 
-### Why Team Agreement Matters
-
-Stakeholder agreement is necessary but not sufficient. If the development team doesn't believe in the approach, execution will suffer:
-- Passive resistance manifests as slow progress
-- Technical concerns get suppressed until they become crises
-- The team builds what was specified, not what was intended
-
-**The team are stakeholders too.** Their genuine commitment is as essential as any business stakeholder's.
+The team are stakeholders too. Their genuine commitment is as essential as any business stakeholder's.
 
 ### Building Team Ownership
 
@@ -346,10 +312,3 @@ Sign-offs and approved documents don't guarantee genuine agreement. Before movin
 - [ ] Stakeholders agree with each other (conflicts resolved)
 - [ ] Dependencies are identified with contingency plans
 
-**You're NOT ready for Apply when**:
-- Stakeholders approved but can't explain what they approved
-- Technical concerns were raised but not resolved
-- POC results were concerning but got rationalized away
-- Team members privately express doubts about feasibility
-
-**When in doubt, stay in Agree.** The cost of additional validation is far lower than the cost of discovering false agreement during Apply.

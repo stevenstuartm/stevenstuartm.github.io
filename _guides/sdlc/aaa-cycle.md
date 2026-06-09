@@ -38,22 +38,7 @@ Nearly every failed project makes the same mistake: it starts with solutions, ju
 
 ### Not a Checklist, But a Discipline
 
-AAA presents specific activities, deliverables, and decision points, but these are **examples of the discipline in practice**, not rigid steps to follow. This discipline applies whether you're using Scrum sprints, Kanban flows, or waterfall phases. It transcends methodology because it addresses something deeper: **how architects think about and engage with the work itself**.
-
----
-
-## Trust Over Politics
-
-Strict frameworks like Scrum often function as defensive mechanisms: ways to protect yourself from stakeholders and vice versa. They create systems of politics rather than trust. Yes, these frameworks are based on truth and provide valuable starting points for organizing teams. But they can become rigid checklists that substitute for genuine human connection.
-
-<div class="callout callout--note">
-<p class="callout__title">When Structure Becomes a Shield</p>
-<p>The problem isn't having structure; it's when that structure becomes a shield instead of a bridge. When "following the process" matters more than solving the problem. When ceremonies become rituals emptied of meaning.</p>
-</div>
-
-AAA calls us back to something more fundamental: **focusing on what we value**. Not "Agile" the branded methodology with capital-A ceremonies, but "agile" the principle of being responsive to reality. Not defensive processes that protect territories, but disciplines that build trust.
-
-Yes, use frameworks. Use their ceremonies and practices. But stay open to discovery and change within each event, each schedule, each unique situation. The framework serves the values (connection, commitment, and honored agreements), not the other way around. When a framework ceremony stops serving those values, you adapt it. That's the discipline AAA represents: being flexible about *how* while remaining unwavering about *what matters*.
+AAA presents specific activities, deliverables, and decision points, but these are **examples of the discipline in practice**, not rigid steps to follow. This discipline applies whether you're using Scrum sprints, Kanban flows, or waterfall phases. When any framework starts functioning more like a defensive shield than a bridge to real collaboration, AAA calls you back to what matters: connection, commitment, and honored agreements. The framework serves those values, not the other way around.
 
 ---
 

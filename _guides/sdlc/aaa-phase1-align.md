@@ -91,7 +91,6 @@ The depth and formality scale with scope and risk, but these questions remain co
 - Probe for architectural characteristics explicitly—stakeholders often forget them
 - Push for measurable, testable criteria (not "it should be fast" but "page loads < 2 seconds")
 - Document acceptance criteria clearly so there's no ambiguity later
-- Think holistically about how requirements impact architecture
 
 <div class="callout callout--warning">
 <p class="callout__title">Red Flags</p>
@@ -122,12 +121,6 @@ The depth and formality scale with scope and risk, but these questions remain co
 - Business: Market timing, competitive pressure
 - Organizational: Stakeholder alignment, political challenges
 - Operational: Deployment complexity, support readiness
-
-**Risk Mitigation Approaches**:
-- **Avoid**: Change approach to eliminate risk
-- **Mitigate**: Reduce likelihood or impact
-- **Transfer**: Use vendors/insurance to shift risk
-- **Accept**: Acknowledge and plan contingency
 
 **How to Do This Well**:
 - Extract implicit constraints—stakeholders often assume you know their limitations
@@ -186,8 +179,6 @@ The depth and formality scale with scope and risk, but these questions remain co
 
 ## Visual Communication During Alignment
 
-### Purpose
-
 <blockquote class="pull-quote">
 <p>Use diagrams to build shared understanding, not to create documentation.</p>
 </blockquote>
@@ -200,33 +191,15 @@ During Align, visualization serves discovery. The goal is to ensure stakeholders
 - Shows the system boundary and external dependencies
 - Helps stakeholders understand what's in scope vs. out of scope
 - Clarifies which external systems, teams, or users are involved
-- Useful when: Multiple systems interact, scope boundaries are unclear, or stakeholders have different assumptions about what's included
 
 **Simple Box-and-Arrow Sketches**:
 - Whiteboard-level clarity for exploring ideas
 - No formal notation required—focus on communication
 - Easy to change as understanding evolves
-- Useful when: Exploring concepts collaboratively, testing different mental models, or facilitating stakeholder discussions
 
 **Data Flow Diagrams**:
 - Shows how information moves through the system
 - Identifies sources, destinations, and transformations
-- Useful when: The problem centers on data movement, integration points are unclear, or compliance requires data flow documentation
-
-### When to Create Diagrams
-
-**Create diagrams when**:
-- Stakeholders have different mental models of the system boundary
-- External dependencies or integrations are unclear
-- Multiple teams or systems are involved and roles need clarification
-- Compliance or governance requires visual documentation of scope
-- Verbal descriptions create confusion or misalignment
-
-**Skip diagrams when**:
-- Everyone already shares the same mental model
-- The system is simple enough to describe clearly in a few sentences
-- You're still discovering what the problem actually is (too early to diagram)
-- Creating the diagram would take longer than the value it provides
 
 <div class="callout callout--tip">
 <p class="callout__title">How to Do This Well</p>
@@ -235,7 +208,7 @@ During Align, visualization serves discovery. The goal is to ensure stakeholders
 <li><strong>Make it collaborative</strong>: Sketch together with stakeholders, don't present finished diagrams</li>
 <li><strong>Focus on boundaries</strong>: What's in scope? What's out? Who owns what?</li>
 <li><strong>Iterate quickly</strong>: Diagrams should evolve as understanding evolves</li>
-<li><strong>Don't over-invest</strong>: These are discovery tools, not deliverables</li>
+<li><strong>Don't over-invest</strong>: These are discovery tools, not deliverables—skip them when everyone already shares the same mental model or you're still discovering the problem</li>
 <li><strong>Test understanding</strong>: Ask stakeholders to explain the diagram back to you</li>
 </ul>
 </div>
@@ -364,7 +337,3 @@ Artifacts can be completed without genuine alignment. Before moving to Phase 2 (
 <li>Stakeholders say "just start and we'll figure out the details"</li>
 </ul>
 </div>
-
-### What Happens If You Proceed Too Early
-
-Moving to Agree without genuine alignment creates problems that surface later: architecture decisions made against misunderstood requirements, design work thrown away when real requirements emerge, stakeholder conflicts mid-implementation, and scope creep as stakeholders add requirements they "thought were obvious."
