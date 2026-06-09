@@ -6,7 +6,7 @@ tags: [tdd, testing, software-design, best-practices]
 description: "TDD's real value isn't code coverage, it's catching wrong assumptions before you deliver the wrong thing."
 ---
 
-The real problem in software development isn't buggy code; it's building the wrong thing. We should be focused on preventing the delivery of features that don't match what users need, implementing requirements that were misunderstood, or discovering halfway through that the domain model was wrong. Test-Driven Development (TDD) is one solution to this problem, but it's often a very poorly understood concept and even those who do understand it can still do TDD wrong.
+In software development, the more expensive mistake isn't buggy code; it's building the wrong thing. Teams should be focused on preventing the delivery of features that don't match what users need, implementing requirements that were misunderstood, or discovering halfway through that the domain model was wrong. Test-Driven Development (TDD) is one solution to this problem, but it's often a very poorly understood concept and even those who do understand it can still do TDD wrong.
 
 The promise of TDD is that tests guide design and catch bugs early. The reality, sometimes, is that teams write tests for features they don't yet understand, design interfaces around incomplete requirements, and spend hours on tests that get thrown away when understanding finally arrives. The resulting debate often gets heated. Advocates measure test coverage and celebrate red-green-refactor. Skeptics count rewritten tests as waste. Both sides miss what actually happened: when done right, those rewritten tests forced understanding before the wrong system got built and delivered. When done wrong, they were just ceremony.
 
@@ -58,7 +58,7 @@ Writing the test first forces a question: what should this code actually do? Tha
 
 When tests change during development, you're realigning based on discovery. When tests fail after changes, they're surfacing broken commitments that need attention. The discipline isn't about tests; it's about starting with understanding, securing genuine commitment to what you're building, and then honoring what was agreed.
 
-The real problem in software development is building the wrong thing. TDD addresses this by forcing clarity before code, but only when practiced as inquiry rather than compliance. Tests that surface wrong assumptions early are valuable even when they get rewritten. Tests written as ceremony produce waste without insight.
+Building the wrong thing is the most expensive mistake in software development. TDD addresses this by forcing clarity before code, but only when practiced as inquiry rather than compliance. Tests that surface wrong assumptions early are valuable even when they get rewritten. Tests written as ceremony produce waste without insight.
 
 Stop treating coverage as a goal. Stop counting rewritten tests as failure. If requirements are uncertain, write tests to validate assumptions and expect them to change. If requirements are clear, write tests to validate implementation. Either way, measure what matters: did you deliver what users actually needed?
 

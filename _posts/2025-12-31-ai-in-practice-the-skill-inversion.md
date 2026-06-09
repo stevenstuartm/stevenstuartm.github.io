@@ -61,7 +61,7 @@ Right now, senior engineers with decades of hard-won intuition can leverage AI a
 
 But every time AI handles something, you get a little worse at handling it yourself. Skills require practice to maintain. Outsource the practice and the skill decays. If AI stalls or regresses, will we still have the competence to engineer without it, or even to continue using it at our current level?
 
-This concern is real, but it's also not new.
+This concern is valid, but it's also not new.
 
 Could you build a radio if you needed to? Could you manufacture a car, synthesize medicine, or grow enough food to feed yourself for a month? Civilization is dependency. Specialization is the trade. We gave up self-sufficiency for leverage a long time ago.
 
@@ -81,9 +81,9 @@ This was always a trade-versus-theory problem. Traditional education and career 
 
 AI doesn't just hollow out the middle. It offers a way through.
 
-When coding takes a fraction of the time, you can redirect that effort toward what actually matters: the domain, the users, the constraints, the tradeoffs. You still need to understand security, architecture, and system thinking. But you can acquire that knowledge in context, while solving real problems, rather than stockpiling it in advance for scenarios that may never come.
+When coding takes a fraction of the time, you can redirect that effort toward what actually matters: the domain, the users, the constraints, the tradeoffs. You still need to understand security, architecture, and system thinking. But you can acquire that knowledge in context, while working on actual problems, rather than stockpiling it in advance for scenarios that may never come.
 
-Focus on *this* job, *this* problem, *this* domain. Generalist knowledge accumulates naturally from solving diverse real problems. It doesn't require years of abstract preparation.
+Focus on *this* job, *this* problem, *this* domain. Generalist knowledge accumulates naturally from working across diverse problems. It doesn't require years of abstract preparation.
 
 I say this as someone who took the long path. The grind taught me things, but it also taught me how much of it was unnecessary. That perspective is exactly what lets me tell you to skip what we went through. We know which parts mattered because we suffered through the parts that didn't.
 

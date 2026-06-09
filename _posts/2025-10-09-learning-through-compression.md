@@ -28,7 +28,7 @@ Then you go deep. You read and study and accumulate detail. The information gets
 
 Compression happens when you try to teach what you've learned. Teaching forces externalization; you have to convert internal, half-formed understanding into something another person can follow. When your explanation turns verbose, the pattern isn't clear yet. When you reach for jargon, you're avoiding precision rather than achieving it. But when you can explain something briefly while maintaining accuracy, that's when you actually understand it.
 
-Teaching and writing compress differently. Face-to-face, confused looks and follow-up questions reveal gaps in real time. Writing demands that you anticipate those questions without feedback. Both are useful, and they complement each other. Teaching reveals what you can't explain under pressure, while writing reveals what you can't structure without help.
+Teaching and writing compress differently. Face-to-face, confused looks and follow-up questions reveal gaps as you speak. Writing demands that you anticipate those questions without feedback. Both are useful, and they complement each other. Teaching reveals what you can't explain under pressure, while writing reveals what you can't structure without help.
 
 Teaching reveals new ignorance, like questions you couldn't answer, edge cases you hadn't considered, and connections you hadn't made. This new ignorance is more specific than where you started because it's informed by the depth you just explored. It becomes the next cycle's starting point, and each iteration produces tighter understanding and more targeted questions.
 

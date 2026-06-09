@@ -8,7 +8,7 @@ description: "The 'SEO is dead' narrative draws a false binary between SEO and s
 
 A few months ago, I read a post about how SEO is dead and that we need to let the past die and find greener pastures. I'm finally getting around to writing my thoughts on it. That contention was correct in many ways, but it also drew an undeserved binary between SEO and social media as two means to the same end. I think that framing misses the point.
 
-SEO does have a real problem. The timeline to build authority hasn't changed (it still takes 2-5 years), but the gap keeps widening. A startup in 2015 competed against sites with 5-10 years of accumulated authority. A startup in 2025 competes against sites with 15-25 years. Authority signals that once filtered spam now create insurmountable barriers for newcomers because incumbents have had decades to compound their advantages.
+SEO does have a structural problem. The timeline to build authority hasn't changed (it still takes 2-5 years), but the gap keeps widening. A startup in 2015 competed against sites with 5-10 years of accumulated authority. A startup in 2025 competes against sites with 15-25 years. Authority signals that once filtered spam now create insurmountable barriers for newcomers because incumbents have had decades to compound their advantages.
 
 And yet, SEO still works perfectly well for what it has become good at. Search for CNN, Mayo Clinic, or Amazon and established brands rank exactly as designed. When you need something tested and proven and you already know what you're looking for, SEO delivers authority and trust.
 
@@ -43,17 +43,17 @@ This mirrors pre-internet gatekeeping, when only established publishers could re
 
 ## What Comes Next
 
-The solution isn't "fix SEO" or "abandon SEO." SEO became constrained, but it still provides real value for authority and trust. The solution is treating discovery as genuinely multi-channel and funding it accordingly.
+The solution isn't "fix SEO" or "abandon SEO." SEO became constrained, but it still delivers genuine value for authority and trust. The solution is treating discovery as genuinely multi-channel and funding it accordingly.
 
 Many organizations still treat alternative platforms as afterthoughts. They produce content for SEO, then repurpose scraps for social media and community engagement. This inverts the reality: if SEO takes years and businesses need reach now, alternative channels deserve primary investment, not leftover budget.
 
 The web has already started routing around authority-based discovery. TikTok, Discord, and Reddit elevate content through engagement rather than accumulated authority. YouTube prioritizes watch time over channel age. Hacker News can surface a blog post from an unknown developer based on upvotes alone. The alternatives exist. What's missing is the budget allocation to use them properly.
 
-SEO's trajectory follows the natural lifecycle of human systems: innovation solves a real problem, adoption scales it, power consolidates, incentives shift toward self-preservation, and the system decays until disruption restarts the cycle. SEO now optimizes for protecting its own integrity more than for democratizing discovery. But it still delivers authority and trust for established sources, and that value doesn't disappear just because the system became constrained. Whatever eventually disrupts SEO will follow the same path. Engagement-based ranking will get gamed. New gatekeepers will emerge. The cycle continues.
+SEO's trajectory follows the natural lifecycle of human systems: innovation solves a problem, adoption scales it, power consolidates, incentives shift toward self-preservation, and the system decays until disruption restarts the cycle. SEO now optimizes for protecting its own integrity more than for democratizing discovery. But it still delivers authority and trust for established sources, and that value doesn't disappear just because the system became constrained. Whatever eventually disrupts SEO will follow the same path. Engagement-based ranking will get gamed. New gatekeepers will emerge. The cycle continues.
 
 ## What to Take From This
 
-SEO has a real problem: it became more about protecting its own integrity than providing the discovery service it promised. Authority signals that once filtered spam now exclude newcomers. But SEO still excels at what it has become: a system for surfacing established, authoritative sources when you need something proven and trustworthy.
+SEO has a specific problem: it became more about protecting its own integrity than providing the discovery service it promised. Authority signals that once filtered spam now exclude newcomers. But SEO still excels at what it has become: a system for surfacing established, authoritative sources when you need something proven and trustworthy.
 
 The "SEO is dead" narrative gets it wrong by framing this as a binary choice. Social channels and SEO serve different purposes: social platforms provide democratic reach and speed while SEO provides authority and trust.
 

@@ -30,7 +30,7 @@ Every decision that affects others carries three obligations. These aren't roles
 
 **The Servant** asks: who is this for? A dutiful decision is oriented toward others, not toward the actor's comfort, reputation, or power. The servant bears the weight of the obligation even when it costs something. Especially when it costs something. The servant may struggle, may question, may resist the weight of the obligation, but chooses to bear it anyway. Service without struggle is just convenience.
 
-**The Steward** asks: did something real change? A constructive decision leaves persons or circumstances materially different than before. The steward is entrusted with something that matters and held responsible for its condition. Stewardship isn't maintenance; it's cultivation. Things must be better for the steward's involvement, not merely preserved.
+**The Steward** asks: did anything actually change? A constructive decision leaves persons or circumstances materially different than before. The steward is entrusted with something that matters and held responsible for its condition. Stewardship isn't maintenance; it's cultivation. Things must be better for the steward's involvement, not merely preserved.
 
 ## The Simultaneous Constraint
 
@@ -40,7 +40,7 @@ Remove one and the act degrades into something recognizable:
 
 A decision that is just and constructive but not dutiful is **tyranny**. It may be grounded in truth and it may change circumstances, but it serves the actor. Empires are built this way.
 
-A decision that is dutiful and constructive but not just is **manipulation**. It may serve others and produce real change, but the change isn't grounded in truth. Propaganda works this way. So does enabling.
+A decision that is dutiful and constructive but not just is **manipulation**. It may serve others and produce meaningful change, but the change isn't grounded in truth. Propaganda works this way. So does enabling.
 
 A decision that is just and dutiful but not constructive is **ceremony**. It may be grounded in truth and oriented toward others, but nothing actually changes. This is where empty political decisions land. The language of justice and service is present, the substance is absent. Nothing is cultivated. Nothing is different afterward.
 

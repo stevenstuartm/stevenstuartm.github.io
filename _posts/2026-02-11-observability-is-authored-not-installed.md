@@ -16,7 +16,7 @@ Consider a payment processing system. A customer's card gets declined for insuff
 
 But this is the system working correctly. The card was declined because it should have been declined. Insufficient funds is a handled business case, not an exception. Because it's logged as an error, though, it shows up in error dashboards, triggers error-rate alerts, and adds to the ambient noise that operators learn to tune out.
 
-Over time, "payment errors" become background radiation. The team knows most of them are just declined cards, so they stop investigating. Then the gateway starts timing out, or a partner pushes a breaking change, and the real problem gets buried. Nobody notices because "payment errors are always high."
+Over time, "payment errors" become background radiation. The team knows most of them are just declined cards, so they stop investigating. Then the gateway starts timing out, or a partner pushes a breaking change, and the actual problem gets buried. Nobody notices because "payment errors are always high."
 
 The usual response is to blame the team for ignoring alerts. It is a discipline problem, yes, but the discipline that's missing is upstream, in the code that treats expected outcomes as errors. Alert fatigue is the predictable consequence.
 

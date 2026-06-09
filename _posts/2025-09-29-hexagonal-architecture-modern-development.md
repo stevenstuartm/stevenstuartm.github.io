@@ -14,7 +14,7 @@ This distinction matters, not as pedantry about pattern purity, but because unde
 
 In 2005, Alistair Cockburn described hexagonal architecture with a clear goal: "Allow an application to equally be driven by users, programs, automated test or batch scripts, and to be developed and tested in isolation from its eventual run-time devices and databases."
 
-This sounds exactly like what modern frameworks encourage through dependency injection, interface-based design, and built-in testing support. The goals resonate because they address real problems: tight coupling to infrastructure, difficulty testing business logic, and fragile dependencies on external systems.
+This sounds exactly like what modern frameworks encourage through dependency injection, interface-based design, and built-in testing support. The goals resonate because they address concrete challenges like tight coupling to infrastructure, difficulty testing business logic, and fragile dependencies on external systems.
 
 But Cockburn's implementation was specific. Hexagonal architecture treats the UI and database identically as external actors. It positions multiple driving mechanisms (REST endpoints, CLI tools, automated tests, batch scripts) as first-class equals, not as primary interface with secondary test harnesses. It defines ports as distinct boundaries with swappable adapters that can change at runtime or between deployments.
 

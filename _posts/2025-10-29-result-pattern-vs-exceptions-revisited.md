@@ -78,7 +78,7 @@ Both Rust and C# are pragmatic, multi-paradigm languages that evolved from diffe
 
 **Rust** emerged with strong functional influences and a systems programming focus. It enforces a clear split: expected failures return `Result<T, E>` types (compiler-enforced handling), while unexpected failures trigger panics that unwind the stack like exceptions.
 
-**C#** started heavily OOP-dominant and progressively adopted functional features (LINQ, pattern matching, immutability) to solve real problems. It historically used exceptions for all failures, both expected and unexpected.
+**C#** started heavily OOP-dominant and progressively adopted functional features (LINQ, pattern matching, immutability) to solve practical problems. It historically used exceptions for all failures, both expected and unexpected.
 
 Both ecosystems now support the same error handling split: Results for expected failures, exceptions or panics for programming errors.
 
@@ -222,7 +222,7 @@ Making it syntactically easy to handle errors inline encourages developers to sc
 <ul>
 <li>Documentation requires discipline to maintain (documentation rots in practice)</li>
 <li>Clean happy-path code hides what can fail (invisible failure modes)</li>
-<li>Performance overhead is real even if labeled "exceptional"</li>
+<li>Performance overhead accumulates even when failures are labeled "exceptional"</li>
 </ul>
 </div>
 </div>
@@ -231,7 +231,7 @@ Making it syntactically easy to handle errors inline encourages developers to sc
 
 The arguments that favor Results are structural, not cultural. When large portions of operations fail expectedly (cache misses, validation), treating these as exceptions creates measurable overhead at scale. Information disclosure through stack traces is default behavior with exceptions and requires active prevention. Type signatures (`Result<Order>`) are more reliable than documentation because XML comments rot. Iteration and parallelism work naturally with Results but require awkward patterns with exceptions.
 
-The exception camp's strongest argument is implicit propagation. Exceptions bubble naturally while Results require explicit threading through intermediate layers. This is real convenience, but it comes at a cost of invisible failure modes. When a method returns `Order`, the signature doesn't reveal whether it throws, what it throws, or why.
+The exception camp's strongest argument is implicit propagation. Exceptions bubble naturally while Results require explicit threading through intermediate layers. This is genuine convenience, but it comes at a cost of invisible failure modes. When a method returns `Order`, the signature doesn't reveal whether it throws, what it throws, or why.
 
 Results have valid concerns. C# doesn't enforce handling, scattered error logic is possible, and framework integration creates friction. But these are execution risks, not structural flaws. With discipline and static analyzers, Results provide better defaults for high-frequency expected failures.
 

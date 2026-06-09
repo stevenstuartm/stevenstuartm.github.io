@@ -76,7 +76,7 @@ There's something genuinely lost when we can always reference instead of recall.
 
 The person who offloads everything to documents can become lazy about understanding. They mistake having access to knowledge for possessing it. They can't reason on their feet because their reasoning lives in files they'd need to look up.
 
-Socrates couldn't be lazy. Every belief had to be held deeply enough to defend in real time. That pressure produced a different kind of rigor: knowledge that had become part of him.
+Socrates couldn't be lazy. Every belief had to be held deeply enough to defend on the spot. That pressure produced a different kind of rigor: knowledge that had become part of him.
 
 The turtle should aspire to this for what matters most. Not everything deserves deep internalization. But the things you value, the principles you build on, the reasoning behind your most important decisions: these should live in you, not just in your documents.
 

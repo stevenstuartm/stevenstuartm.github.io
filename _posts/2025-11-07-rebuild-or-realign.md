@@ -12,7 +12,7 @@ Business and technical minded people both tend to credit new technology for the 
 <p>The critical error is assuming the new runtime, framework, or platform created the success. Ignorance was the actual constraint, and rebuilding forced tech and business teams to confront it.</p>
 </blockquote>
 
-This misattribution creates dangerous organizational patterns. Teams propose rebuilds when the real problem is dysfunction, not technical limitations. The rebuild becomes a moving target that allows leadership to avoid accountability, celebrate "innovation" while making things worse, and mask problems that were never technical to begin with.
+This misattribution creates dangerous organizational patterns. Teams propose rebuilds when the underlying problem is dysfunction, not technical limitations. The rebuild becomes a moving target that allows leadership to avoid accountability, celebrate "innovation" while making things worse, and mask problems that were never technical to begin with.
 
 ## Common Examples of Misattributed Success
 
@@ -94,7 +94,7 @@ Most importantly, determine whether the problem is technical or organizational. 
 
 ### Agree: Get Real Commitment, Not Permission
 
-Once you understand reality, agree on what actually matters. State the real problem, not the symptom. "The platform is expensive" is a symptom, while "We have no operational accountability for cost management" is the problem. Define measurable success criteria with explicit tradeoffs that acknowledge what you're willing to sacrifice and what you're not.
+Once you understand reality, agree on what actually matters. State the actual problem, not the symptom. "The platform is expensive" is a symptom, while "We have no operational accountability for cost management" is the problem. Define measurable success criteria with explicit tradeoffs that acknowledge what you're willing to sacrifice and what you're not.
 
 Evaluate alternatives. What could you do besides rebuild? What would those approaches cost? Acknowledge actual constraints: time, budget, team capacity, acceptable risk. Rebuilds hide behind "strategic investment" language to avoid honest resource conversations.
 
@@ -102,9 +102,9 @@ Assign specific ownership. Not "the team" but specific people accountable for sp
 
 ### Apply: Execute with Integrity or Stop
 
-The Apply phase tests whether the agreement was real. Implement what you agreed to. If cost reduction was the priority, instrument cost tracking first. Track against the agreement continuously. When metrics diverge from commitments, pause and realign. Don't celebrate "completed migration" when you violated core commitments.
+The Apply phase tests whether the agreement was genuine. Implement what you agreed to. If cost reduction was the priority, instrument cost tracking first. Track against the agreement continuously. When metrics diverge from commitments, pause and realign. Don't celebrate "completed migration" when you violated core commitments.
 
-Recognize when agreements were wrong. If the rebuild isn't solving the real problem, stop. "We committed to this" isn't a valid reason to continue when reality invalidates the premise. Stopping a failed rebuild is success, not failure. Update ADRs and share learnings so the organization doesn't repeat the mistake.
+Recognize when agreements were wrong. If the rebuild isn't solving the actual problem, stop. "We committed to this" isn't a valid reason to continue when reality invalidates the premise. Stopping a failed rebuild is success, not failure. Update ADRs and share learnings so the organization doesn't repeat the mistake.
 
 The Apply phase makes accountability real. When rebuilds fail to deliver on commitments, AAA makes that failure visible instead of letting it hide behind "strategic transformation" language.
 
@@ -112,7 +112,7 @@ The Apply phase makes accountability real. When rebuilds fail to deliver on comm
 
 Rebuilds can solve the wrong problem. They succeed not because of new technology, but because they force teams to understand what they're building, align with business value, and apply best practices. That work could have happened without the rebuild.
 
-Use the AAA Cycle to test whether a rebuild addresses real problems:
+Use the AAA Cycle to test whether a rebuild addresses underlying problems:
 - **Align** on what matters and what the actual problems are
 - **Agree** on measurable success criteria and who owns the outcomes
 - **Apply** with integrity and recognize when agreements were wrong

@@ -67,7 +67,7 @@ But spikes create political and metric chaos in Scrum:
 Teams resort to absurdities: estimating the exploration itself (defeating the purpose), hiding spikes as "technical tasks" within stories (obscuring what's actually happening), or skipping spikes entirely and guessing (back to building on sand).
 
 <blockquote class="pull-quote">
-<p>Frameworks like Scrum optimize for predictable metrics while real work requires validated understanding. Discovery threatens the illusion of control.</p>
+<p>Frameworks like Scrum optimize for predictable metrics while actual work requires validated understanding. Discovery threatens the illusion of control.</p>
 </blockquote>
 
 The spike problem reveals a fundamental tension.

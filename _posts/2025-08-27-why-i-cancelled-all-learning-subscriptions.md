@@ -28,7 +28,7 @@ The deeper issue is that these platforms optimize for engagement and completion 
 
 **Read official documentation.** Framework creators document their tools better than third-party instructors. Modern documentation for React, Vue, .NET, and AWS is comprehensive, up-to-date, and free. The people who built the tools know them better than course creators scrambling to keep content current.
 
-**Study real code on GitHub.** Thousands of real-world examples, starter templates, and production codebases are available for free. Quality varies, but learning to evaluate code quality is itself a critical skill. You see how people structure projects, handle edge cases, and make tradeoffs. You also see mistakes, which teaches you what to avoid.
+**Browse production codebases on GitHub.** Thousands of examples, starter templates, and production codebases are available for free. Quality varies, but learning to evaluate code quality is itself a critical skill. You see how people structure projects, handle edge cases, and make tradeoffs. You also see mistakes, which teaches you what to avoid.
 
 **Use AI when you get stuck.** Instead of scrolling through forum posts from 2019 hoping someone had your exact problem, you can get unstuck in minutes. AI assistants work as a rubber duck that talks back and provides a rapid-feedback loop. They won't make you a better developer by themselves, but they remove friction from the learning process.
 
