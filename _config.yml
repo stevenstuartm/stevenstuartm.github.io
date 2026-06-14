@@ -36,14 +36,14 @@ data_dir: assets/data
 # Plugins
 plugins:
   - jekyll-sitemap
-  - jekyll-feed
+  # - jekyll-feed
   - jekyll-redirect-from
 
-# Feed settings
-feed:
-  path: feed-blog.xml
-  collections:
-    - posts
+# Feed settings (disabled — jekyll-feed slows builds significantly)
+# feed:
+#   path: feed-blog.xml
+#   collections:
+#     - posts
 
 # Collections
 collections:
