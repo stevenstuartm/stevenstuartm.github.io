@@ -100,6 +100,31 @@ These cannot be automated. Apply them thoughtfully during drafting and self-revi
 - Write as you think: natural internal narrative, not telegraphic fragments
 - Each sentence should carry one clear idea or two closely related ideas, not three or more
 
+### Section Structure and Header Hierarchy
+
+Each H2 section should cover one distinct topic, argument, or concept. When a section contains multiple distinct points, use H3 headers to name each one explicitly.
+
+**The outline test**: The full set of H2 and H3 headers should read as a complete outline of the post's argument. A reader skimming only headers should understand the structure and major claims without reading the body. If the headers don't tell the story, the structure needs work before the prose does.
+
+**When to add H3s**:
+- ✅ When an H2 section makes two or more distinct arguments or sub-claims
+- ✅ When different parts of a section address different aspects of the same topic
+- ✅ When a section runs long because it contains multiple ideas that each deserve treatment
+- ❌ Not every paragraph needs an H3 — only when the content beneath is a genuinely distinct, nameable point
+
+**Header quality**:
+- H3s should name the specific point, not just the general area
+  - ❌ "Ceremony" → ✅ "Ceremony Fuels Continuation Bias"
+  - ❌ "Limitations" → ✅ "The Representation Problem"
+- If you cannot write a clear, specific H3, that signals the point is not well-defined yet
+- Headers should enable informed skipping — readers jump to relevant sections, and good headers make that possible
+
+**Warning sign**: A long H2 section without H3s is almost always hiding multiple distinct points in undifferentiated prose. When reviewing a draft, long unmarked sections are the first place to look for structural problems.
+
+**Reference example**: `_posts/2025-11-17-shaped-kanban.md` demonstrates the pattern well. "The Timebox Problem" (H2) contains three H3s: "The Calendar Fills Itself," "Different Teams, Forced Cadence," and "Ceremony Fuels Continuation Bias." Each H3 names a distinct failure mode; the H2 names the category they share. The complete header tree tells the entire post's argument at a glance.
+
+---
+
 ### Title-Content Alignment
 
 - Section titles should clearly indicate what the section contains
