@@ -52,7 +52,7 @@ The costs show up predictably, and they compound as the system grows:
 - Infrastructure costs compound because you're running compute and paying for network traffic at every layer, sometimes several times per external request
 - Capacity planning is nonlinear because one unit of external load fans out to multiple internal calls, and the resource profile differs at each layer, making projections harder to get right and over-provisioning the common hedge
 
-## The Security Problem Nobody Talks About
+## The Asymmetric Security Posture of Layered Systems
 
 **The most serious cost of layered architecture is one that gets treated as a footnote: the security posture it creates is asymmetric by design.**
 
@@ -73,7 +73,7 @@ Flat, identity-oriented architecture inverts the default. Every service validate
 **In a flat architecture, no intermediary service layer sits between a consumer and the domain service it's calling.** Load balancers and firewalls handle edge concerns; that's true of any system. Flat architecture removes any service that exists only to intermediate the call. A consumer with appropriate authorization calls the domain service directly. The domain service validates, executes, and responds. That's the full path.
 
 <blockquote class="pull-quote">
-<p>The services are not hidden; they're protected. The distinction matters.</p>
+<p>The services are not hidden; they're protected.</p>
 </blockquote>
 
 Hiding services behind intermediary layers creates the soft interior problem. Protecting services through authorization means every caller proves who they are and what they're allowed to do, regardless of where the request originates.
@@ -120,21 +120,21 @@ Architects who have worked primarily in on-premises layered systems often bring 
 
 Putting async message handling and event processing in public-facing APIs is an availability and scaling problem. These concerns have different resource profiles and failure modes than synchronous request handling, and mixing them degrades both.
 
-### Workers vs Facades: A Structural Distinction
+### A Worker Is Not a Facade
 
-The answer is a private worker layer, and that phrase deserves a direct acknowledgment: this post argues against architectural layers while introducing one. The distinction is structural, not definitional.
+The async problem doesn't require a layer at all. Synchronous work belongs directly in the domain API, with no intermediary needed to reach it. Asynchronous work belongs in a worker, and a worker isn't the kind of layer this post has been arguing against, because it has no endpoint. Nothing calls it. It pulls events or messages off a queue or bus on its own schedule and calls into domain APIs as a client, the same way any other consumer does.
 
-A facade sits in the synchronous call path between a consumer and a domain service. It intercepts, translates, and passes through. Every call the consumer makes travels through the facade before reaching the service that owns the logic; the facade is a mandatory intermediary. A worker sits entirely outside the synchronous call path. It consumes events or messages from a queue or bus, executes logic on its own schedule, and calls into domain APIs as a client, not a proxy.
+That's the structural distinction that matters. A facade sits in the synchronous call path between a consumer and a domain service: every call a consumer makes travels through the facade before reaching the service that owns the logic, which makes the facade a mandatory intermediary, exactly the kind of soft interior the security section described. A worker sits entirely outside that call path. It's still an actor in the system, but no one calls it; it only calls out, and only when it has work pulled from its own queue.
 
-The domain API doesn't know or care whether the caller is a public consumer or a worker; it validates and responds the same way either way. Workers carry their own identity and call domain APIs with explicit authorization. There is no implicit trust and no soft interior because the worker presents credentials just like any other consumer. The security property that matters in layered systems (who is allowed to reach the internal layer without proving who they are) doesn't apply here, because there is no implicit bypass.
+The domain API doesn't know or care whether the caller is a public consumer or a worker; it validates and responds the same way either way. Workers carry their own identity and call domain APIs with explicit authorization. There is no implicit trust and no soft interior, because the worker presents credentials just like any other consumer and because there's no inbound surface on the worker itself for anything to reach.
 
-This also changes the scaling story for async work. Worker queue depth is a direct signal of processing backlog, completely independent of API latency. The two scale independently because they're different services with different resource profiles and different failure modes. When a batch job puts unusual pressure on the worker pool, the public API is unaffected. When a traffic spike hits the public API, workers continue processing their queue undisturbed.
+### Independent Scaling and Local Ownership
+
+Because a worker calls the domain API as an ordinary client rather than intercepting calls to it, async work scales and deploys independently of everything else. Worker queue depth is a direct signal of processing backlog, completely independent of API latency. The two scale independently because they're different services with different resource profiles and different failure modes. When a batch job puts unusual pressure on the worker pool, the public API is unaffected. When a traffic spike hits the public API, workers continue processing their queue undisturbed.
 
 Workers can also change without breaking changes because they have no external consumers. The team that owns the domain owns the workers. Deployment decisions are local.
 
 ## Team Ownership as a Structural Property
-
-**Technical discussions about API architecture rarely mention the organizational effect, but it's significant.**
 
 ### Layered Architecture Produces Horizontal Teams
 
@@ -166,15 +166,13 @@ A well-governed layered system beats an undisciplined flat one. Penetration test
 
 But the objection treats discipline as an architectural substitute, and it isn't. Both architectural styles require those disciplines. Security testing, observability, and contract management aren't optional in either model. The difference is what those disciplines cost when you add layers.
 
-In a layered system, discipline multiplies. Observability requires distributed tracing threaded through every hop, correlation IDs maintained across logging formats that differ at each layer, and aggregated visibility into a call chain that doesn't naturally surface as a single thing. Security coverage requires hardening the perimeter and verifying that implicit trust inside it doesn't create exposure. Testing requires coverage at each layer, contract testing between them, and integration testing across the full stack. Each discipline you apply has to be applied once per layer, not once per system.
+In a layered system, discipline doesn't just get applied more often; it gets applied across a dependency graph that's hard to reason about, because a change at any hop can ripple through every other hop connected to it, and the connections aren't visible without tracing the whole topology. Observability requires distributed tracing threaded through every hop, correlation IDs maintained across logging formats that differ at each layer, and aggregated visibility into a call chain that doesn't naturally surface as a single thing. Security coverage requires hardening the perimeter and verifying that implicit trust inside it doesn't create exposure. Testing requires coverage at each layer, contract testing between them, and integration testing across the full stack.
 
-Flat architecture doesn't remove the need for any of these. Authorization still needs testing. Observability still needs investment. The surface area is smaller and the cost of discipline stays proportional to the complexity of the problem rather than to the number of layers you've stacked on top of it.
+Flat architecture doesn't reduce that workload; each bounded-context service still owns its own observability, security, and testing investment, and "flat" doesn't mean "one thing." What changes is predictability. Domains share nothing: no shared packages, no shared proxies, no forcing function binding one team's release to another's. That makes the dependency graph a set of direct, declared calls between services that authenticate each other, rather than an implicit web of trust threaded through shared infrastructure. Governance happens through values and communication between teams, not through an architectural chokepoint everyone has to pass through and agree on. That's what lets domains evolve in parallel without breaking development tempo: the discipline a team applies to its own domain stays local instead of rippling unpredictably into work for every other team along the call chain.
 
-The argument "you can operate layered architecture well with enough discipline" is correct. The conclusion "therefore the architecture choice doesn't matter" doesn't follow from it. Both options require the same disciplines. One of them multiplies the cost of every discipline across every layer you've added. If you're going to invest in governance, testing, and observability anyway, the architecture that doesn't compound those investments is the better starting point.
+The argument "you can operate layered architecture well with enough discipline" is correct. The conclusion "therefore the architecture choice doesn't matter" doesn't follow from it. Both options require the same disciplines. One of them multiplies the cost of every discipline across a dependency graph that grows harder to reason about with every layer you add. If you're going to invest in governance, testing, and observability anyway, the architecture that keeps that dependency graph predictable is the better starting point.
 
 ## The Genuine Limitations
-
-**Flat architecture has specific limitations, and the most honest version of this argument names them.**
 
 ### The Representation Problem
 

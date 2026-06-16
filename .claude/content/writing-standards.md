@@ -119,6 +119,11 @@ Each H2 section should cover one distinct topic, argument, or concept. When a se
 - If you cannot write a clear, specific H3, that signals the point is not well-defined yet
 - Headers should enable informed skipping — readers jump to relevant sections, and good headers make that possible
 
+**Never use clickbait/listicle header or title phrasing**:
+- ❌ "...Nobody Talks About", "...Nobody Tells You", "What They Don't Want You to Know", "The Truth About...", "...You Need to Know", "...That Will Change How You..."
+- These phrases are tabloid framing, not analysis, and they undermine the credibility of a technical post
+- State the actual claim instead: ❌ "The Security Problem Nobody Talks About" → ✅ "The Asymmetric Security Posture of Layered Systems"
+
 **Warning sign**: A long H2 section without H3s is almost always hiding multiple distinct points in undifferentiated prose. When reviewing a draft, long unmarked sections are the first place to look for structural problems.
 
 **Reference example**: `_posts/2025-11-17-shaped-kanban.md` demonstrates the pattern well. "The Timebox Problem" (H2) contains three H3s: "The Calendar Fills Itself," "Different Teams, Forced Cadence," and "Ceremony Fuels Continuation Bias." Each H3 names a distinct failure mode; the H2 names the category they share. The complete header tree tells the entire post's argument at a glance.
