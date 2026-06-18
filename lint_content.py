@@ -51,6 +51,7 @@ class ContentLinter:
             r"\bthe \w[\w -]* is understandable\b",
             r"\bthe question isn'?t\b",
             r"\bthe question is\b",
+            r"\bworth\s+\w+ing\b",  # "worth noting/examining/sitting/stating/naming/investigating" — often meta-commentary; state the point directly
         ]
 
         # AI-tell colon constructions

@@ -23,6 +23,7 @@ The linter catches these violations automatically. Fix all flagged issues before
 - "[verb] real [noun]" (e.g., "does real work", "adds real value") — state what it does specifically instead
 - "The [noun] is understandable" (e.g., "The resistance is understandable")
 - "The question isn't" / "The question is" — rhetorical framing that avoids direct statements
+- "worth [gerund]" (e.g., "worth examining", "worth sitting with", "worth stating", "worth naming", "worth investigating") — often meta-commentary telling the reader what to pay attention to; state the point directly instead. Not always wrong, but there is usually a more direct way to make the same thought.
 
 **AI-tell colon constructions**:
 - "What's converging:", "A critical distinction:", "The difference:", "The key:", "The point:", "Here's why:"
