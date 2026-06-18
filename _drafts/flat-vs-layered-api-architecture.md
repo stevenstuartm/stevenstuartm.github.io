@@ -1,16 +1,75 @@
 ---
 layout: post
-title: "The Case for Flat API Architecture"
+title: "Is Your API Architecture Serving Your Product or Your Diagram?"
 date: 
-description: "Layered API architecture is enterprise software's unquestioned default, but the costs are rarely stated plainly before organizations commit to them. This post makes the case for flat, identity-oriented architecture and explains when layers actually earn their place."
+description: "Layered API architecture introduces network tiers as trust proxies, fragmenting domain authority across mandatory intermediaries. On security posture, change velocity, operational clarity, and team ownership, adding tiers makes things worse. This post examines why the evaluation that would reveal this almost never happens before the commitment is made."
 tags: [architecture, api-design, distributed-systems, security, design-patterns, microservices]
 ---
+
+Layered API architecture introduces network tiers as trust proxies between consumers and the services that own domain logic. Every tier fragments domain authority, weakens security, slows change, and blurs team ownership. For most systems, those tiers deliver nothing worth the cost. The evaluation that would establish this almost never happens before the commitment is made, because layered architecture is adopted rather than chosen, cargo-culted from systems that earned their complexity through years of demonstrated need.
 
 As an architect, the decisions that cost the most aren't the ones you debated carefully. They're the ones that never entered debate at all: inherited from a previous project, copied from a reference architecture, or adopted because it was what successful-looking systems appeared to be doing. Layered API architecture is that kind of decision.
 
 The question that almost never gets asked before the first intermediary layer is introduced is simple: what problem does this layer solve that a simpler design wouldn't? Not in principle, but in this system, with this team, in this domain, right now. Insulating consumers from internal churn is a benefit when internal churn is the actual problem you have. Separating internal routing from external ingress solves something when network resource contention at internal boundaries is actually present. But most teams that adopt layered architecture have never been asked these questions. The decision was made before anyone had enough information to make it.
 
-The costs of that unevaluated commitment get locked in early, when the system is small and the costs aren't yet visible. They surface years later, when you're debugging across six layers of indirection, when a translation layer introduces the breaking changes it was supposed to prevent, and when the soft interior your perimeter model created turns out to be exactly what attackers are looking for. I started with a flat, identity-oriented architecture building a company from scratch, then spent the better part of a decade inside layered systems across finance, banking, a full platform rebuild again with  flat, identity-oriented architecture, and eventually a hybrid arrangement that managed to carry the drawbacks of both approaches simultaneously. This post makes the case for flat architecture, but the more important argument is about evaluation. The structure of your API layer should follow from evidence about what your system needs, not from what successful-looking systems happen to look like.
+The costs of that unevaluated commitment get locked in early, when the system is small and the costs aren't yet visible. They surface years later, when you're debugging across six layers of indirection, when a translation layer introduces the breaking changes it was supposed to prevent, and when the soft interior your perimeter model created turns out to be exactly what attackers are looking for. I started with a flat, identity-oriented architecture building a company from scratch, then spent the better part of a decade inside layered systems across finance, banking, a full platform rebuild again with flat, identity-oriented architecture, and eventually a hybrid arrangement that managed to carry the drawbacks of both approaches simultaneously. Those systems taught me what the evaluation should have asked.
+
+## Two Models
+
+Before the argument, the terms. Every section that follows uses them, so they need to be precise.
+
+Two words that get conflated but are quite distinct and relevant here: *layer* and *tier*. A **tier** is a physical deployment boundary; a distinct infrastructure unit. A **layer** is a conceptual boundary — a level of abstraction, a concern, a responsibility assigned to a component.
+
+Flat architecture has tiers: an API tier that serves synchronous consumer requests, a worker tier that processes async jobs. But each tier holds clear, bounded authority. Neither is a mandatory intermediary in another tier's call path; conceptual concerns like validation, authorization, and representation live inside the service that owns them. Flat architecture can have many services and still be flat, because "flat" describes the call path, not the service count.
+
+Layered API architecture tends toward a 1:1 mapping between layers and tiers: the facade layer becomes a facade tier, the adapter layer becomes an adapter tier, the orchestration layer becomes an orchestration tier. When that happens, every conceptual boundary becomes a physical hop in the call path, with its own deployment, its own failure mode, and its own implicit authority claim. That 1:1 mapping is where all the costs examined in this post accumulate. If you cannot clearly name what distinct authority a tier holds — what it and only it decides — it has no reason to exist as a tier.
+
+**Layered API architecture** places intermediary components in the synchronous call path between consumers and the services that own domain logic. A consumer never calls a domain service directly; it calls a facade, gateway, or adapter that decides what to pass through, translate, or aggregate. Each intermediary is a mandatory hop.
+
+```
+Consumer
+    |
+    v
+External Facade / API Gateway
+    |
+    v
+Protocol Adapter / Orchestrator
+    |
+    v
+Domain Service --> Database
+```
+
+Every call travels the full path. Every hop is a component that must exist, be deployed, be monitored, and be authorized to call the next thing in the chain. Each hop is also an authority claim — and as the rest of this post argues, most of those claims are never examined.
+
+**Flat, identity-oriented API architecture** removes the mandatory intermediaries. Consumers call domain services directly, presenting their own identity credentials on every call. The domain service is the sole authority over its data and logic; nothing sits between it and its callers.
+
+```
+Consumer A \
+Consumer B  +----> Domain Service --> Database
+Consumer C /
+```
+
+Every caller authenticates directly. No component derives authority from its position in the network; authority comes from credentials verified by the domain service itself. Async work follows the same principle: a worker pulls from a queue and calls domain services as an authorized client, just like any other consumer, with no inbound endpoint of its own.
+
+## Authority Has Two Dimensions
+
+The distinction between flat and layered architecture runs deeper than style. Layered architecture uses network position as a trust proxy: a request that has passed through the right tiers is treated as legitimate by default, and the services behind those tiers apply little further scrutiny. Flat, identity-oriented architecture makes the opposite assumption: a request is legitimate only when the receiving service has verified the caller's identity directly, regardless of where the request originated in the network. That foundational difference in trust model determines where authority lives, how the system degrades under compromise, and how teams organize around what they build.
+
+Granularity is a separate question from whether you have tiers. A system with many fine-grained services can still be flat if every service is called directly by authorized consumers without intermediaries. A system with few large services can still be layered if mandatory tiers sit between every consumer and the service that owns the logic. Conflating the two questions is one of the ways the evaluation gets muddled before it reaches a conclusion.
+
+What the tier decision determines is how authority is structured across the system, and on both dimensions that matter, adding tiers makes things worse.
+
+**Authority granularity** is how finely authority is divided across services. A service that owns a broad domain has coarse granularity; many services each owning a narrow slice have fine granularity. Neither is inherently correct; granularity is a claim about where the domain's natural seams lie. Divide too coarsely and unrelated concerns couple together; divide too finely and you've drawn permanent boundaries before the domain has shown you where they belong.
+
+**Authority strength** is how complete and unambiguous a service's claim is over its domain. High authority strength means the service owns the data, the validation rules, the contract, and the canonical representation; nothing else reads its database, replicates its logic, or makes decisions on its behalf. Low authority strength means ownership is shared across components that each hold a piece of what should be a single, bounded claim. Shared authority doesn't stay quietly shared; it becomes a site of drift, where different components enforce subtly different rules and no one is certain which is correct.
+
+These dimensions are independent, and their interaction is where architectural styles diverge. Layered architecture tends toward low authority strength regardless of granularity, because every intermediary in the call path holds a piece of the authority that should belong to the domain service: the contract shape, the validation logic, the routing decision. Fine granularity amplifies this. A system with many small services each routing through multiple intermediary layers has fragmented authority at both levels simultaneously; the services are clear in isolation and ungovernable collectively.
+
+DDD's bounded context is the principled approach to finding the right granularity. A bounded context is a claim that a natural seam exists in the domain at this point, a seam that reflects how the business actually thinks about its concepts, and that crossing it requires deliberate translation. That claim should be earned through domain understanding, not assumed from a reference architecture. Starting with a smaller number of services and extracting boundaries as the domain reveals its seams is safer than committing to fine-grained decomposition before anyone has that understanding. Once a boundary is enforced through contracts, separate deployments, and team ownership, correcting it is expensive.
+
+High granularity combined with high authority strength, applied before the domain is understood, is the failure mode worth naming directly. A system decomposed into many services, each maintaining strict authority over its narrow slice, carries the full coordination cost of many contracts, many deployment dependencies, and many sources of breaking changes, all imposed on a domain structure that may not yet reflect how the business actually works. The system becomes expensive to operate and fragile in the face of any domain evolution. This isn't an argument against authority strength; it's an argument for earning granularity rather than presuming it.
+
+Flat, identity-oriented architecture and DDD address these two dimensions together. DDD provides the framework for finding the right granularity by driving boundaries from domain understanding rather than network topology. Flat architecture maximizes authority strength at whatever granularity the domain warrants by removing intermediaries that would otherwise dilute it. The bounded context becomes a service that owns everything in its domain, called directly by authorized consumers, evolving with the domain because no intermediate layer has hardened a claim against it.
 
 ## Adopted, Not Chosen
 
@@ -36,7 +95,21 @@ This is where monoliths earn their reputation, and it has nothing to do with pre
 
 Domain-Driven Design provides the principled framework for making that claim well. Its central proposition is that architecture should reflect the structure of the domain, not the structure of the network. Bounded contexts give you a basis for deciding where service boundaries belong and when extraction is warranted, but only after living with the domain long enough to understand where the real seams are. A boundary drawn from domain understanding stays aligned with how the business evolves. One drawn from a reference architecture, a team org chart, or a network topology diagram tends to calcify against the business, hardening into the wrong shape as the domain grows away from the structure that was imposed before anyone understood it.
 
-The consequence of that misalignment isn't technical debt that can be paid down incrementally. It's a system so far from the business reality it's meant to serve that fixing it requires a rebuild rather than a refactor. This is the most expensive version of the cargo cult failure: not paying for architectural complexity that wasn't needed, but paying for it so thoroughly and so early that the exit costs more than starting over. Flat, identity-oriented architecture is the natural implementation partner for DDD: each bounded context becomes a service accessible directly to authorized callers, owning its own data and its own contract, evolving with the domain rather than against a network layer that was committed to before the domain was understood.
+The consequence of that misalignment isn't technical debt that can be paid down incrementally. It's a system so far from the business reality it's meant to serve that fixing it requires a rebuild rather than a refactor. This is the most expensive version of the cargo cult failure: not paying for architectural complexity that wasn't needed, but paying for it so thoroughly and so early that the exit costs more than starting over. DDD answers the granularity question: it gives you the framework to earn boundary decisions from domain understanding rather than impose them from network topology. Flat, identity-oriented architecture answers the strength question by removing the intermediaries that would otherwise dilute whatever boundaries the domain warrants. Each bounded context becomes a service accessible directly to authorized callers, owning its own data and its own contract, evolving with the domain rather than against a network layer that was committed to before the domain was understood.
+
+## Authority: The Question Every Layer Must Answer
+
+Every architectural component makes a claim. The claim isn't always stated, but it is always present: this component has authority over something. Data, logic, a decision, a contract. The question that follows from this — what does this layer have authority over? — has to have a clear, self-describing answer, or the layer has no legitimate reason to exist.
+
+Authority here isn't about permissions or access control, though those are downstream of it. It's about ownership: who decides what is true, and why is that the right place for that decision to live? A domain service that owns a bounded context has authority because it owns the canonical representation of the data in that context, the validation rules that govern it, and the contract it exposes to callers. Anything that needs that data goes through the domain service; the domain service is the truth. A worker that consumes from a queue has authority over its own processing schedule and the side effects it produces. An external-facing API has authority over the consumer contract and the versioning decisions that protect it. In each case, the authority is bounded, named, and unambiguous.
+
+When a layer has unclear authority — when it translates but doesn't own, when it routes but doesn't decide, when it aggregates data from services that each consider themselves the source of truth — the layer exists to compensate for an architectural choice that was never examined. And unclear authority doesn't stay unclear quietly. It becomes a site of conflict.
+
+This maps directly to what plays out in teams when organizational authority isn't defined. When no one knows who owns a decision, it gets made by whoever has the most leverage in the moment, or it doesn't get made at all, or it gets made twice by different people with different assumptions. The same thing happens architecturally. A layer without clear authority becomes a place where logic drifts in because someone needed it somewhere and this was close enough. Where validation leaks because the domain service enforces one version of a rule and the facade enforces a subtly different one. Where a breaking change propagates unpredictably because nothing downstream knew the layer was authoritative and nothing upstream knew it wasn't.
+
+Layered systems make this structural. Every intermediary introduces a new authority claim that has to be clearly bounded, clearly justified, and clearly maintained as the system evolves. In practice, that clarity doesn't survive delivery pressure, team turnover, and the ordinary entropy of a codebase changing faster than its documentation. The layers accumulate. The authority claims blur. What started as a clear delegation of responsibility becomes a question that different engineers answer differently depending on which part of the codebase they know. The system doesn't announce when this happens; it expresses it in debugging sessions that take longer than expected, in changes that require more coordination than anyone anticipated, and in incidents where the blast radius was larger than the failure that caused them.
+
+DDD's bounded context is the principled answer to this problem: each context is the sole authority over its own data and its own language. No other context reads the same database, replicates the same logic, or makes decisions on its behalf. The boundary is the claim of authority made explicit and permanent. Flat, identity-oriented architecture is the implementation of that principle at the infrastructure level: every caller presents credentials, every service validates them, and the chain of authority is visible in every request because it has to be.
 
 ## What "Layered" Means in Practice
 
@@ -186,13 +259,9 @@ A modern variant worth naming explicitly is the Backend for Frontend (BFF) patte
 
 When external contracts genuinely require something more, thin facades are acceptable as a pragmatic concession rather than an architectural pattern. The key constraint is that these facades do one thing: translate. They carry no business logic, no validation, no data ownership.
 
-In practice, the right approach depends on context, and the options are few:
+In practice, the right approach depends on context, but the constraint is constant: whatever sits at the external boundary must call the domain service that owns the data, not reach past it. A component that talks directly to the database isn't a facade; it's a competing authority over the same data, and competing authority over data is exactly the problem the post has been arguing against. The domain service is the authority. Anything that bypasses it — for convenience, for read performance, for a specific consumer's preferred query shape — takes on ownership of something it was never supposed to own, and the boundary the domain was meant to enforce disappears.
 
-- New endpoints on an existing domain API when the representation belongs to the same domain and the team owns both
-- A BFF service per consumer type, calling domain APIs with its own authorization, owned by the team closest to that consumer
-- A GraphQL layer accessing the same database for read-only projections, with the explicit caveat that this bypasses domain-level authorization; the database itself must enforce access control (row-level security or equivalent) rather than relying on the domain service to do it
-- A shared library for cases where a facade needs to stay in parity with a domain model
-- A direct call from the facade to the domain API when none of the above fit
+The valid options at the external boundary are narrow: new endpoints on the domain API when the representation belongs to the same domain and the team owns both, or a BFF service per consumer type that calls domain APIs with its own authorization identity and is owned by the team closest to that consumer. Both preserve the chain of authority. Neither creates a second claimant on the data.
 
 None of these require revisiting the internal architecture. The flat core stays flat. The facade is a deliberate boundary concession, chosen with full awareness of its cost, not a pattern repeated throughout the system.
 
