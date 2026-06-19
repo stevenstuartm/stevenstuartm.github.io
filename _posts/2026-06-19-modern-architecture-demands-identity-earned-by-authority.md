@@ -16,7 +16,7 @@ The same distinction runs through how services claim authority. In a positional 
 
 **In one model, authority is earned by proven identity; in the other, it is granted by position.** These are not style preferences or security policies chosen in isolation. They are the same belief about what confers legitimacy, playing out at every level of the system. The choice determines where authority lives, how teams are organized, and whether a system can adapt as the domain evolves.
 
-The choice is often made before anyone had the context to make it: inherited from a previous system, copied from a reference architecture that looked credible, or grown from incremental decisions that collectively produced something no one designed.
+Authority within a system must be earned, not assigned and defined by position. Modern systems demand architectures which adapt to the product, not solutions which fulfill a predetermined diagram.
 
 ## Two Models
 
@@ -24,43 +24,38 @@ The services behind a checkout feature might be arranged like this in a larger e
 
 ```
 Checkout Client
-        |
+        │ ← identity verified here (edge)
         ▼
 CheckoutFacade          ← owned by the API team; shapes the response for this consumer
-        |
+        │ ← internal; trusted by position, not verified identity
         ▼
 CheckoutOrchestrator    ← owned by the platform team; coordinates the checkout flow
-        |               |
+        │               │
         ▼               ▼
-  OrderService     PaymentService    ← domain services that own the actual data and rules
-        |
+  OrderService     PaymentService    ← no credential check; trusted because internal
+        │
     orders DB
 ```
 
-This is **positional architecture**. The checkout client never calls the domain services directly; it calls a chain of intermediary services, each owned by a different team, each a separate deployment with its own logs and its own failure modes.
+This is **positional architecture**. The checkout client never calls the domain services directly; it calls a chain of intermediary services, each owned by a different team, each a separate deployment with its own logs and its own failure modes. Auth happens once, at the edge; everything behind it is trusted because it arrived from the right place.
 
 The same checkout feature built without the intermediaries:
 
 ```
 Checkout Client
-        |               |
-        ▼               ▼
-  OrderService ──► PaymentService    ← any authorized caller; each validates the caller's credentials
-        |
+        │ [checkout token]         │ [checkout token]
+        ▼                          ▼
+  OrderService ──[order-svc token]──► PaymentService
+[validates caller]                  [validates caller]
+        │
     orders DB
 ```
 
-This is **identity-oriented architecture**. The checkout client is an authorized caller that presents credentials each domain service validates directly. No dedicated orchestrator sits in the path; authorization comes from the credential, not from which service a request passed through.
+This is **identity-oriented architecture**. The checkout client is an authorized caller that presents credentials each domain service validates directly. No dedicated orchestrator sits in the path; authorization comes from the credential, not from which service a request passed through. When OrderService calls PaymentService, it presents its own service identity — the client's token is never forwarded.
 
-Before deciding which to build, or before accepting the one already in place, three questions:
+**Positional architecture** places intermediary components in the synchronous call path between consumers and the services that own domain logic. Every call travels the full path; every intermediary must exist, be deployed, be monitored, and be authorized.
 
-- When a payment fails at checkout, how many service logs do you check to find out why?
-- If `OrderService` adds a `discount_applied` field, how many other services and teams does exposing it to the client touch?
-- Which specific component in the positional diagram does your compliance framework actually require, and where does it say so?
-
-**Positional architecture** places intermediary components in the synchronous call path between consumers and the services that own domain logic. Every call travels the full path; every intermediary must exist, be deployed, be monitored, and be authorized. Each hop is also an authority claim, and as the rest of this post argues, most of those claims are never examined.
-
-**Identity-oriented architecture** removes the mandatory intermediaries. Consumers call domain services directly with their own credentials. The domain service is the sole authority over its data and logic; nothing sits between it and its callers, and no component derives trust from network position. A system can have many services and still be flat, because "flat" describes the call path, not the service count. If you cannot name what distinct authority a tier holds, what it and only it decides, it has no reason to exist as a tier.
+**Identity-oriented architecture** removes the mandatory intermediaries. Consumers call domain services directly with their own credentials. The domain service is the sole authority over its data and logic; nothing sits between it and its callers, and no component derives trust from network position.
 
 ## Bounded Authority
 
@@ -68,17 +63,15 @@ Authority isn't about permissions or access control, though those are downstream
 
 Shared authority doesn't stay quietly shared; it becomes a site of drift where different components enforce subtly different rules and no one is certain which is correct. A layer that translates but doesn't own, routes but doesn't decide, or aggregates from services that each claim to be the truth fragments authority in ways that need to be consciously bounded and justified; the goal is to decide those tradeoffs intentionally, not let them accumulate unexamined. That drift also plays out in teams: a layer without clear authority becomes a place where validation leaks because the domain service enforces one version of a rule and the facade a subtly different one, where a breaking change propagates unpredictably because nothing downstream knew the layer was authoritative and nothing upstream knew it wasn't.
 
-Identity-oriented architecture maximizes authority strength at whatever granularity the domain warrants by removing intermediaries that would otherwise dilute it. Starting with fewer services and extracting boundaries as the domain reveals its seams is safer than committing to fine-grained decomposition before that understanding exists. Once a boundary is enforced through contracts, separate deployments, and team ownership, correcting it is expensive. Whatever sits at the external boundary must call the domain service that owns the data; a component that reaches past it to the database isn't a facade, it's a competing authority over the same data.
+Identity-oriented architecture maximizes authority strength at whatever granularity the domain warrants by removing intermediaries that would otherwise dilute it. Starting with fewer services and extracting boundaries as the domain reveals its seams is safer than committing to fine-grained decomposition before that understanding exists. Once a boundary is enforced through contracts, separate deployments, and team ownership, correcting it is expensive. Whatever sits at the external boundary must call the domain service that owns the data; a component that reaches past it to the database isn't a facade, it's a competing authority over the same data. The same test applies to services called by many other services: an auth service that owns tokens, sessions, and identity records is a domain service whose consumers happen to be other services, not an intermediary. The question is whether the service holds authority over its own domain or exists only to access someone else's.
 
-## Adopted, Not Chosen
+## Accumulated, Not Designed
 
-Positional architecture is rarely chosen; it spreads from a sincere belief that structuring communication paths is what architecture is for. Drawing boxes first (facade, orchestration, domain service) and fitting the domain into them isn't incompetence; it's applying patterns that were correct answers to specific constraints at some point. The problem isn't the reasoning; it's that the question being answered is not the question the system has.
+Positional architecture can be a deliberate choice — and when it is, its trade-offs should be known and accepted. More often it arrives uninvited: a facade is added at the boundary for consumer shaping, an orchestrator grows to coordinate a flow no single service owned, an adapter appears for a protocol mismatch. Each decision is reasonable in isolation; the trust model they collectively imply is rarely examined. Drawing boxes first (facade, orchestration, domain service) and fitting the domain into them isn't incompetence; it's applying patterns that were correct answers to specific constraints at some point. The problem isn't the reasoning; it's that the question being answered is not the question the system has.
 
 Copying the form of something successful without understanding what made it successful compounds this. Netflix, Uber, and their peers arrived at architectural complexity through years of growth that created specific, observable problems. They earned those layers by living with the pain that justified adding them. Teams that copy the pattern have a new domain they don't fully understand yet, a team size that doesn't need those independence guarantees, and a system that hasn't yet revealed where the real scaling pressure will sit. SOA was a response to the monolith's inability to scale independent team ownership. Microservices were a response to SOA's heavyweight contracts. API gateways and orchestration layers were added to manage the complexity microservice proliferation introduced. Each solution created the conditions for the next problem, adding another layer of network-boundary decomposition on the last. The question that short-circuits this is almost never asked: what evidence do we have that this layer delivers value a simpler design wouldn't?
 
 The enterprise service bus is the clearest historical example. It was not primarily an orchestration pattern; it was a resource efficiency pattern. Organizations in the SOA era were operating expensive physical infrastructure where centralizing message routing let many services share costly computing capacity, and on-premises a single hardware gateway handled both internet ingress and internal service-to-service traffic. Orchestration was an artifact of that centralization. Cloud removes both constraints: per-service provisioning is economically trivial, and internal calls within a VPC never leave the virtual network. The coordination pattern remains, detached from the economics that justified it. An architect isn't trying to rebuild an ESB; they are incorrectly applying a coordination pattern learned when it was the correct answer to a real constraint.
-
-A monolith defers the structural commitment until evidence exists to support it. You learn what a service boundary should look like by living with domain logic in one place; you find out where the actual scaling pressure sits by running the system, not modeling it. Once you've extracted a service or built a coordination layer, you've made a claim about the domain's shape. Starting with a monolith means that claim has to be earned before it gets made permanent.
 
 ## What Positional Architecture Costs
 
@@ -110,7 +103,7 @@ The counter-argument is that service meshes like Istio and Linkerd can retrofit 
 
 The distinction is clearance versus need-to-know. A top secret clearance does not entitle the holder to read everything at or below that classification level. Access to a specific piece of information still requires a specific reason: a bounded, demonstrable need for this information in this context. Clearance is necessary but never sufficient. A service mesh cert that proves "authenticated internal service" is a clearance. It proves tier membership and nothing else; it says nothing about what the caller owns or why this specific access is legitimate for this operation. Positional architectures issue clearances and treat them as sufficient authorization. Identity-oriented architectures demand need-to-know: a specific, bounded authority claim that makes this access legitimate for this actor in this context, independent of where that actor sits in the network.
 
-Identity-oriented architecture inverts this at the root. Every service presents credentials that prove a specific bounded identity: not "I'm internal" but "I'm OrderService, authorized for these operations on order data." A compromised component can only act within its authorization scope. The security model and the architectural model are aligned because they share the same belief: legitimacy comes from what you are, not from where you sit.
+Identity-oriented architecture inverts this at the root. Every service presents credentials that prove a specific bounded identity: not "I'm internal" but "I'm OrderService, authorized for these operations on order data." A compromised component can only act within its authorization scope. The security model and the architectural model are aligned because they share the same belief: legitimacy comes from what you are, not from where you sit. In practice, a caller authenticates against an identity provider, receives a short-lived token scoped to its bounded authority, and presents it directly to the domain service; the service validates scope against the requested operation, with no intermediate hop in the path.
 
 ### The Attack Surface Objection Is Circular
 
@@ -123,20 +116,6 @@ In an identity-oriented system, rate limiting, IP flagging, geographic constrain
 <blockquote class="pull-quote">
 <p>Breach the perimeter once and the entire interior is yours. The architecture guarantees it.</p>
 </blockquote>
-
-## What Identity-Oriented Architecture Looks Like
-
-**In an identity-oriented architecture, no intermediary service sits between a consumer and the domain service it's calling.** Load balancers and firewalls are still there; that's true of any system. A consumer with appropriate authorization calls the domain service directly. The domain service validates, executes, and responds.
-
-<blockquote class="pull-quote">
-<p>The services are not hidden; they're protected.</p>
-</blockquote>
-
-In practice, this looks like a payment service that exposes an endpoint for processing a charge. A consumer (whether an internal checkout service, a mobile client, or an external partner) authenticates against an identity provider and receives a short-lived token scoped to what its authorization allows. That scope is the caller's identity; the token encodes what it owns and needs, not which network segment it came from. When it calls the payment service, it presents that token. The payment service validates the token, checks the scope against the requested operation, and executes. There is no intermediate service in that path.
-
-A service called by many other services isn't a problem to solve with an additional layer; it's a well-designed domain service. An auth service owns auth data: the tokens, the sessions, the identity records, the validation rules. Remove it and the system has no canonical source of truth for those concepts. That's not an intermediary; it's a domain service whose consumers happen to be other services. The distinction: does the service hold authority over its own domain, or does it exist to access someone else's? Async workers follow the same principle: they pull from a queue and call domain services with their own credentials, with no inbound surface of their own. Inbound third-party calls (webhooks, SSO callbacks) work the same way: the provider service owns that inbound surface directly, with no intermediary in front. Positional architecture creates structural pressure to add one, reproducing the CheckoutFacade problem at the infrastructure layer.
-
-A service is a unit of authority; a container is a unit of hosting, and these are independent choices. Multiple services can be co-hosted in a single deployed container while maintaining separate logical authority boundaries. Concern about deployment proliferation follows from the positional 1:1 assumption that every conceptual boundary becomes a physical hop. Without wrapping layers that accumulate for organizational reasons, identity-oriented architecture tends toward fewer services with stronger authority, and decomposition follows domain seams.
 
 ## Team Ownership
 
@@ -168,6 +147,6 @@ The problem is that almost no organization that uses positional architecture has
 
 Does legitimacy come from what you are, or from where you sit? Positional architecture defaults toward position as the answer; identity-oriented architecture answers with ownership, and communication structure follows from that rather than preceding it. A system built to control communication paths will keep needing to control them as the domain evolves, because the structure was never derived from the domain.
 
-Positional architecture produces layers, facades, and orchestrators that exist because the architecture needs them, not because the domain does. Those components create soft interiors that attackers exploit, organize teams around layers rather than outcomes, and make the system harder to reason about with every hop added. Most teams pay those costs without ever choosing to.
+Positional architecture produces layers, facades, and orchestrators that exist because the architecture needs them, not because the domain does. Those components create soft interiors that attackers exploit, organize teams around layers rather than outcomes, and make the system harder to reason about with every hop added. Most teams carrying those costs never made the explicit trade-off that would justify them.
 
 Identity earned its place through authority. Position was granted influence.
