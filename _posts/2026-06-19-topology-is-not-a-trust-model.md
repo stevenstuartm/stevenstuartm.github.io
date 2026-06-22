@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "Architecture Is a Belief About Where Authority Lives"
+title: "Topology Is Not a Trust Model"
 date: 2026-06-19
 description: "What makes a service request legitimate? Most teams treat it as an authentication question, but the answer is also an architectural one. One school of thought grants legitimacy by placement; the other demands it be earned through verified ownership. Both beliefs shape the credential model and the service structure simultaneously."
 tags: [architecture, api-design, distributed-systems, security, design-patterns, microservices]
 ---
 
-Every service request arrives with the same question: what makes this request legitimate? Most teams treat this soley as an authentication problem, but the answer reaches much further than that. It shapes how services are structured, where trust boundaries are drawn and defended, and how teams own their work.
+Every service request arrives with the same question: what makes this request legitimate? 
+
+Most teams treat this soley as an authentication problem, but the answer reaches much further than that. It shapes how services are structured, where trust boundaries are drawn and defended, and how teams own their work.
 
 Two schools of thought answer the question differently.
 
