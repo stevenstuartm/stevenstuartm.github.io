@@ -10,15 +10,14 @@ Every service request arrives with the same question: what makes this request le
 
 Most teams treat this soley as an authentication problem, but the answer reaches much further than that. It shapes how services are structured, where trust boundaries are drawn and defended, and how teams own their work.
 
-Two schools of thought answer the question differently.
+Two schools of thought answer the question differently:
 
-One answer is the claim of network position. A request is legitimate because it arrived from the right place: behind the perimeter, through the right intermediaries, or from a subnet the architecture trusts. This is **positional architecture**: legitimacy granted by placement.
-
-The other answer is verified identity and, as such, bounded authority. A request is legitimate because the caller has proven who it is and what it is authorized to do. Credentials name its bounded scope, not just its network address. This is **identity-oriented architecture**: legitimacy earned by ownership. Every service validates every caller the same way, and all services relate to each other as **peers** with clear, **bounded authority** over their own domains.
-
-In practice, a system's answer at the client boundary and its answer internally are independent choices. A system can be identity-oriented externally and positional internally, or vice versa. The underlying belief tends to be consistent even when the implementation differs. This post focuses on internal architecture, where that belief determines the most profound trade-offs.
+- One answer is the claim of relative position. A request is legitimate because it arrived from the right place, to the right place: from behind the perimeter, through the right intermediaries, from a subnet the architecture trusts, or toward a service that grants access on that same basis. This is **positional architecture**: legitimacy granted by placement.
+- The other answer is verified identity and, as such, bounded authority. A request is legitimate because the caller has proven who it is and what it is authorized to do. Credentials name its bounded scope, not just its network address. This is **identity-oriented architecture**: legitimacy earned by ownership. Every service validates every caller the same way, and all services relate to each other as **peers** with clear, **bounded authority** over their own domains.
 
 At the core of contention is the contrast between **Bounded Authority** and **Positional Claim**. This is not as simple as a separate authentication decision and a separate architecture decision. It tends to be one belief about where legitimacy comes from. That belief determines where authority lives in the system, how teams own their work, and whether the system can adapt as the domain evolves.
+
+In practice, a system's answer at the client boundary and its answer internally are independent choices. A system can be identity-oriented externally and positional internally, or vice versa. The underlying belief tends to be consistent even when the implementation differs. This post focuses on internal architecture, where that belief determines the most profound trade-offs.
 
 ## Two Models
 
@@ -94,6 +93,8 @@ At sufficient coupling depth, a true monolith is more defensible: it at least el
 A positional system built to its full specification is the most controlled environment available: mutual TLS on every hop, audit logging at every tier, explicit authorization at each layer. The security problem is not the model. It is the belief that sustains the model, and what that belief implies about where security effort should be concentrated.
 
 In a positional system, a service's authority comes from its layer placement. Its identity, such as it has one, is its tier: facade-tier service, orchestration-tier service, domain-tier service. When that service authenticates to call another, the most natural credential is one that proves it belongs to the trusted network: a cert granted by the internal CA, a service mesh identity that says "internal." That credential proves network citizenship, not bounded identity. It answers "are you one of us?" rather than "are you specifically OrderService with authority over orders?" The credential reflects the architecture's actual belief: legitimacy comes from position, not from ownership.
+
+The positional claim works symmetrically: a caller presents legitimacy by arriving from the right place, and a service grants it by sitting in the right place. Network membership is the credential in both directions.
 
 Teams in positional systems concentrate security effort at the edge because the edge is where external callers prove they belong. Everything behind it applies implicit trust, because belonging to the internal network already proved legitimacy. This is not a discipline failure; it is the architecture's trust model applied consistently.
 
