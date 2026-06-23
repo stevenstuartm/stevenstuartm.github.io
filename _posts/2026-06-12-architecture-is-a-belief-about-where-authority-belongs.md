@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Architecture Is a Belief About Where Authority Lives"
+title: "Architecture Is a Belief About Where Authority Belongs"
 date: 2026-06-12
-description: "SOLID, normalization, least privilege, and bounded contexts come from different traditions, but they share a structural claim that none of them explicitly name: where authority lives shapes every boundary, contract, and failure mode."
+description: "SOLID, normalization, least privilege, and bounded contexts come from different traditions, but they share a structural claim: that where authority lives shapes success and failure"
 tags: [architecture, design-patterns, solid, software-design, system-design, ddd]
 ---
 
-When I encounter a design decision I'm unsure about, one question cuts through faster than any rule: where does authority live, and how bounded is it?
+When I encounter a design decision I'm unsure about, one question cuts through faster than any rule: **where does authority live, and how bounded is it**?
 
-Software engineering has accumulated decades of best practices, each taught as its own rule with its own rationale: follow SOLID, normalize your database, apply least privilege, keep your services bounded. The rules come from different traditions and are argued about separately, but they are all answering that question. None of them name it explicitly, but it runs through all of them.
+Software engineering has accumulated decades of best practices, each taught as its own rule with its own rationale: follow SOLID, normalize your database, apply least privilege, keep your services bounded. The rules come from different traditions and are argued about separately, but they are all answering that same question.
 
 ## Where Authority Shows Up
 

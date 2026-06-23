@@ -5,10 +5,10 @@ subtitle: Practical insights on building software architectures that serve real 
 
 featured_items:
   - label: "Foundation"
-    title: "Architecture Is a Belief About Where Authority Lives"
-    description: "SOLID, normalization, least privilege, bounded contexts. Different traditions, different vocabularies, and the same structural claim runs through all of them."
+    title: "Architecture Is a Belief About Where Authority Belongs"
+    description: "SOLID, normalization, least privilege, and bounded contexts come from different traditions, but they share a structural claim that none of them explicitly name: where authority lives shapes every boundary, contract, and failure mode."
     cta: "Read Now"
-    url: "/blog/2026/06/12/architecture-is-a-belief-about-where-authority-lives.html"
+    url: "/blog/2026/06/12/architecture-is-a-belief-about-where-authority-belongs.html"
     
   - label: "Featured Guide"
     title: "The AAA Cycle: A Guiding Discipline for Architects"
