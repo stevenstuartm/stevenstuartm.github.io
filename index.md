@@ -6,7 +6,7 @@ subtitle: Practical insights on building software architectures that serve real 
 featured_items:
   - label: "Foundation"
     title: "Architecture Is a Belief About Where Authority Belongs"
-    description: "SOLID, normalization, least privilege, and bounded contexts come from different traditions, but they share a structural claim that none of them explicitly name: where authority lives shapes every boundary, contract, and failure mode."
+    description: "SOLID, normalization, least privilege, and bounded contexts come from different traditions, but they share a structural claim: that where authority lives shapes success and failure"
     cta: "Read Now"
     url: "/blog/2026/06/12/architecture-is-a-belief-about-where-authority-belongs.html"
     
