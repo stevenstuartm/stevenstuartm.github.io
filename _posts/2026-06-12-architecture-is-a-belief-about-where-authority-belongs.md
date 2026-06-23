@@ -10,7 +10,7 @@ When I encounter a design decision I'm unsure about, one question cuts through f
 
 Software engineering has accumulated decades of best practices, each taught as its own rule with its own rationale: follow SOLID, normalize your database, apply least privilege, keep your services bounded. The rules come from different traditions and are argued about separately, but they are all answering that same question.
 
-## Where Authority Shows Up
+## Where Authority Belongs
 
 Authority in a software system is the assignment of decision-making power. Something is authoritative over a piece of data when it is the canonical source of truth for that data, and authoritative over a behavior when it is the only thing that can legitimately change or enforce it.
 
@@ -20,15 +20,16 @@ These aren't separate concerns that happened to share a category. They are each 
 
 ## Measuring Authority Strength
 
-Before looking at what happens when authority is misplaced, it helps to have a way to assess it. Two dimensions describe authority strength.
+Authority placement alone isn't enough to evaluate an architecture. A system can name its authorities without enforcing them, or enforce boundaries without ever naming what they contain. To assess how well an authority claim holds, two properties matter independently: how precisely the authority is scoped, and how strongly its boundary is enforced.
 
-**Scope** is the precision of the authority claim. What decisions, facts, and behaviors fall within it? A well-scoped authority can be named without qualifications: "OrderService is authoritative over the lifecycle of an order from placement through fulfillment." A poorly-scoped authority cannot be named cleanly; the description requires edge cases, shared responsibilities, and carve-outs.
+This distinction matters because the failure modes differ. Vague authority and bypassed authority both produce inconsistent behavior and coordination friction, but they respond to different fixes. Sharpening scope without strengthening the bond makes the problem clearer without solving it. Strengthening the bond without sharpening scope enforces confusion more consistently. Getting the diagnosis right is what makes the fix productive.
 
-**Bond** is the enforcement strength of the boundary. Can the authority claim be bypassed? A strongly bonded authority has no known bypass; all interactions must go through its contract. A weakly bonded authority has routes around it such as direct database access, internal calls that skip validation, or shared state that circumvents the service layer.
+- **Scope** is the precision of the authority claim. What decisions, facts, and behaviors fall within it? A well-scoped authority can be named precisely, and that name carries the claim without further explanation: "CustomerFulfillmentsService" or "OrderCheckoutService" tells you what it owns. "OrderService" does not; it requires a follow-up sentence, and that need for qualification is itself the signal that scope is poor.
+- **Bond** is the enforcement strength of the boundary. Can the authority claim be bypassed? A strongly bonded authority has no known bypass; all interactions must go through its contract. A weakly bonded authority has routes around it such as direct database access, internal calls that skip validation, or shared state that circumvents the service layer.
 
 | | Strong Bond | Weak Bond |
 |---|---|---|
-| **Well-scoped** | Authority is named and enforced | Authority is named but bypassed |
+| **Well-scoped** | Named and enforced | Named but bypassed |
 | **Poorly-scoped** | Enforced without clarity | Neither named nor enforced |
 
 The most common failure mode is the bottom-right cell: authority that is neither named nor enforced, producing the drift that most refactoring efforts eventually uncover.
@@ -37,67 +38,81 @@ The most common failure mode is the bottom-right cell: authority that is neither
 
 An order workflow is a useful thread to follow because it touches most of the patterns where authority gets misplaced. Here is what happens to authority as a typical order system evolves.
 
-### The Monolith
+### No Authority Declared
 
 The system starts as a single application. Order management, payment processing, inventory tracking, and user accounts share a codebase and a database.
 
 ```text
-┌──────────────────────────────────────────────┐
-│               OrderApplication               │
-│                                              │
-│   Orders    Payments    Inventory    Users   │
-│                                              │
-│                  shared DB                   │
-└──────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────┐
+│                   OrderApplication                   │
+│                                                      │
+│   CheckoutController       AdminController           │
+│           │                       │                  │
+│           └───────────┬───────────┘                  │
+│                       │                              │
+│           ┌───────────┴───────────────────┐          │
+│           ▼                               ▼          │
+│    OrderPaymentMgr ◄──────────► InventoryUserMgr     │
+│           │                               │          │
+│           └───────────┬───────────────────┘          │
+│                       │                              │
+│                   Shared DB                          │
+└──────────────────────────────────────────────────────┘
 ```
 
-There is no declared authority over anything. Any part of the application can read or write any data. The order status can be updated by the order flow, the payment callback, the inventory check, or the customer service tool. If the payment module needs to know an order's shipping address, it reads the orders table directly.
+Both controllers reach into the entire manager layer. `CheckoutController` calls `OrderPaymentMgr` to initiate a purchase and `InventoryUserMgr` to check stock. `AdminController` calls the same managers to modify orders, adjust inventory, and update accounts. The managers cross-call each other when they need data the other holds.
 
-**Scope**: undefined. No named authority claim exists over any domain.
-**Bond**: none. No boundary exists to enforce.
+`OrderPaymentMgr` mixes order lifecycle logic with payment processing. `InventoryUserMgr` mixes stock management with user account concerns. Neither manager is scoped to a single domain; neither controller is scoped to a single workflow. And underneath all of it, a single database holds everything.
+
+**Scope**: undefined. Neither the entry points nor the managers carry a bounded domain claim.
+**Bond**: none. No layer enforces any boundary between what any component can access.
 
 This is not inherently wrong for an early-stage system. The problem is not the monolith; it is that authority was never considered. When the system grows, there is nothing to grow from.
 
 ### Decomposition Without Authority
 
-The team decomposes the monolith into services, one per domain. OrderService, PaymentService, and InventoryService each deploy independently and own their own code. They may even have separate schemas on the same database instance, or fully separate database instances. The infrastructure topology doesn't determine the authority structure; the data access patterns do.
+The team recognizes that `OrderPaymentMgr` and `InventoryUserMgr` are too broad and splits them into per-domain services. Each service deploys independently and owns its own code. They may even have separate schemas on the same database instance, or fully separate database instances. The infrastructure topology doesn't determine the authority structure; the data access patterns do.
 
 ```text
-  OrderService          PaymentService       InventoryService
-       │                      │                    │
-       ▼                      ▼                    ▼
-  [orders schema]       [payments schema]    [inventory schema]
-       ▲                      │
-       └──────────────────────┘
-         PaymentService reads orders
-         data directly across the
-         domain boundary
+┌──────────────────────────────────────────────────────┐
+│                   OrderApplication                   │
+│                                                      │
+│   CheckoutController       AdminController           │
+│                                                      │
+│    OrderService    PaymentService    InventorySvc    │
+│         │               │                │           │
+│    [orders DB]    [payments DB]    [inventory DB]    │
+│         ▲               │                            │
+│         └───────────────┘                            │
+│          PaymentService reads orders data            │
+│          directly across domain boundary             │
+└──────────────────────────────────────────────────────┘
 ```
 
-Scope has improved on paper: there are named services with named responsibilities. Bond has not improved at all. PaymentService still queries the orders schema directly. It doesn't matter whether that query crosses a network boundary or stays within the same database instance; what matters is that the Order domain's data is readable by anyone who knows the schema. A change to the order data model requires coordinating with every service that queries it, which turns out to be all of them.
+Scope has improved on paper: there are named services with named responsibilities. Bond has improved in structure but not in practice. Each service has its own schema, which declares a boundary. But PaymentService queries the orders schema directly, and that bypass exists for any service that knows the connection string. A change to the order data model requires coordinating with every service that queries it, which turns out to be all of them.
 
-**Scope**: named but shallow. The names exist; the boundaries don't.
-**Bond**: none. Direct cross-domain data access is a bypass path for every boundary that was declared.
+**Scope**: named but shallow. The names exist; the boundaries don't hold.
+**Bond**: declared but bypassed. The schema separation asserts a boundary; direct cross-schema access undermines it.
 
 This is the most common intermediate state: the full complexity of distributed services without the independence those services were supposed to deliver.
 
 ### Shared Authority Through a Facade
 
-The team recognizes the cross-domain data access problem and adds a facade to control what clients can see and do. The intent is reasonable: a single entry point that shapes responses and hides the internal service structure from consumers.
+With services now decomposed but `CheckoutController` and `AdminController` still reaching across all of them, the team consolidates the entry point into a single facade. The intent is reasonable: a unified consumer-facing API that shapes responses and hides the internal service structure from callers.
 
 ```text
-            Client
-               │
-               ▼
-         OrderFacade
-         [validates order here]
-         │              │
-         ▼              ▼
-    OrderService    PaymentService
-    [also validates     │
-     order here]    payments DB
-         │
-      orders DB
+┌──────────────────────────────────────────────────────┐
+│                   OrderApplication                   │
+│                                                      │
+│                      OrderFacade                     │
+│               [validates order here]                 │
+│                  │                │                  │
+│                  ▼                ▼                  │
+│            OrderService      PaymentService          │
+│         [also validates]          │                  │
+│                  │                │                  │
+│            [orders DB]       [payments DB]           │
+└──────────────────────────────────────────────────────┘
 ```
 
 The facade validates order requests before passing them to OrderService. But OrderService also validates orders at the domain level, as it must. The same business rules now live in two places. When a rule changes (say, orders above a certain value require a manual approval step), both the facade and the domain service need to update. One gets updated; the other doesn't. Now clients going through the facade see one behavior and any direct caller of OrderService sees another.
@@ -192,4 +207,3 @@ Every failure in this evolution was the consequence of a belief held without exa
 
 Architecture is not the diagram or the deployment topology. It is the answer a system has given to the question of where authority lives. That answer shapes every boundary, every contract, and nearly every failure mode the system will encounter.
 
-When a design decision resists resolution, tracing the authority question usually reveals why: either where authority should live is unclear, or a design that names authority doesn't enforce it. Both are fixable once the question is asked.
