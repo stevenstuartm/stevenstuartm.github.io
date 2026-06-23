@@ -4,11 +4,11 @@ title: Clarity from Complexity
 subtitle: Practical insights on building software architectures that serve real needs and deliver genuine value.
 
 featured_items:
-  - label: "Core Philosophy"
-    title: "Seven Disciplines for Software Development"
-    description: "Seven disciplines that guide how I approach software development, architecture, leadership, and career growth."
-    cta: "Explore"
-    url: "/philosophy.html"
+  - label: "Foundation"
+    title: "Architecture Is a Belief About Where Authority Lives"
+    description: "SOLID, normalization, least privilege, bounded contexts. Different traditions, different vocabularies, and the same structural claim runs through all of them."
+    cta: "Read Now"
+    url: "/blog/2026/06/12/architecture-is-a-belief-about-where-authority-lives.html"
     
   - label: "Featured Guide"
     title: "The AAA Cycle: A Guiding Discipline for Architects"

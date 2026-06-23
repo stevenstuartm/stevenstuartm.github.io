@@ -58,7 +58,7 @@ These are examples of the pure forms of each model. Real systems sometimes mix t
 
 ## Bounded Authority
 
-Authority isn't about permissions or access control, though those are downstream of it. It's about ownership: who decides what is true, and why is that the right place for the decision? A domain service owns the canonical representation of its data, the validation rules governing it, and the contract it exposes. In each case, the authority is bounded, named, and unambiguous.
+Authority isn't about permissions or access control, though those are downstream of it. It's about ownership: who decides what is true, and why is that the right place for the decision. A domain service owns the canonical representation of its data, the validation rules governing it, and the contract it exposes. In each case, the authority is bounded, named, and unambiguous.
 
 Shared authority doesn't stay quietly shared; it becomes a site of drift where different components enforce subtly different rules and no one is certain which is correct. A layer that translates but doesn't own, routes but doesn't decide, or aggregates from services that each claim to be the truth fragments authority in ways that need to be consciously bounded and justified; the goal is to decide those tradeoffs intentionally, not let them accumulate unexamined. That drift also plays out in teams: a layer without clear authority becomes a place where validation leaks because the domain service enforces one version of a rule and the facade a subtly different one, where a breaking change propagates unpredictably because nothing downstream knew the layer was authoritative and nothing upstream knew it wasn't.
 
