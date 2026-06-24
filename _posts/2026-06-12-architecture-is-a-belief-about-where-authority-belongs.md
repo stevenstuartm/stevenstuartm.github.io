@@ -133,13 +133,17 @@ What makes the Strangler pattern succeed is a clear definition of done: a point 
 When the migration completes, each domain exclusively owns its data. More importantly, each domain has modeled its own aggregate root: the object that controls all access to the entities within its boundary.
 
 ```text
-     Order Context               Payment Context
-  ┌───────────────────┐       ┌───────────────────┐
-  │  Order            │       │  Payment           │
-  │  Aggregate Root   │──────►│  Aggregate Root    │
-  │                   │       │                    │
-  │  orders DB        │       │  payments DB       │
-  └───────────────────┘       └───────────────────┘
+┌──────────────────────────────────────────────────────┐
+│                   OrderApplication                   │
+│                                                      │
+│  ┌──────────────────┐    ┌──────────────────┐        │
+│  │   Order Context  │    │  Payment Context │        │
+│  │                  │    │                  │        │
+│  │  OrderAggRoot    │───►│  PaymentAggRoot  │        │
+│  │                  │    │                  │        │
+│  │  [orders DB]     │    │  [payments DB]   │        │
+│  └──────────────────┘    └──────────────────┘        │
+└──────────────────────────────────────────────────────┘
 ```
 
 An order's state can only change through the Order aggregate root: `Order.Accept()`, `Order.Fulfill()`, `Order.Cancel()`. The aggregate root enforces the invariants that govern those transitions. PaymentService cannot read the orders table; if it needs order data, it calls the Order context's service boundary.
@@ -156,17 +160,20 @@ Authority is now in the right place, and the next evolution needs to keep it the
 The team adds event-driven architecture to decouple the services. A saga orchestrator coordinates the checkout flow by reacting to events and issuing commands.
 
 ```text
-     Order Context               Payment Context
-  ┌───────────────────┐       ┌───────────────────┐
-  │  Order            │       │  Payment           │
-  │  Aggregate Root ◄─┼───┐   │  Aggregate Root ◄─┼───┐
-  │                   │   │   │                    │   │
-  │  orders DB        │   │   │  payments DB       │   │
-  └───────────────────┘   │   └───────────────────┘   │
-                           │                            │
-                     Saga Orchestrator ─────────────────┘
-                     [reaches into each context
-                      to set state and issue commands]
+┌──────────────────────────────────────────────────────┐
+│                   OrderApplication                   │
+│                                                      │
+│  ┌──────────────────┐    ┌──────────────────┐        │
+│  │   Order Context  │    │  Payment Context │        │
+│  │                  │    │                  │        │
+│  │  OrderAggRoot    │    │  PaymentAggRoot  │        │
+│  │       ▲          │    │        ▲         │        │
+│  │  [orders DB]     │    │  [payments DB]   │        │
+│  └────────┬─────────┘    └────────┬─────────┘        │
+│           │                       │                  │
+│           └──── SagaOrchestrator ─┘                  │
+│                [sets state, issues commands]          │
+└──────────────────────────────────────────────────────┘
 ```
 
 The orchestrator coordinates the flow by reaching into each context and directing what happens next. It tells the Order aggregate root to update the order status. It tells the Payment aggregate root to charge the card. Events that were supposed to decouple the system have instead created a new central authority that sits outside any context and above any aggregate root.
@@ -181,17 +188,21 @@ The mistake is treating events as a coordination mechanism rather than a record 
 The corrected version gives the event log a precise authority claim and leaves state authority where it was.
 
 ```text
-     Order Context               Payment Context
-  ┌───────────────────┐       ┌───────────────────┐
-  │  Order            │       │  Payment           │
-  │  Aggregate Root   │       │  Aggregate Root    │
-  │                   │       │                    │
-  │  OrderPlaced ─────┼──────►│  reacts to fact;   │
-  │  OrderFulfilled   │       │  makes its own     │
-  │  OrderCancelled   │       │  decision          │
-  │                   │       │                    │
-  │  orders DB        │       │  payments DB       │
-  └───────────────────┘       └───────────────────┘
+┌──────────────────────────────────────────────────────┐
+│                   OrderApplication                   │
+│                                                      │
+│  ┌──────────────────┐    ┌──────────────────┐        │
+│  │   Order Context  │    │  Payment Context │        │
+│  │                  │    │                  │        │
+│  │  OrderAggRoot    │    │  PaymentAggRoot  │        │
+│  │                  │    │                  │        │
+│  │  OrderPlaced ────┼───►│  reacts to fact; │        │
+│  │  OrderFulfilled  │    │  makes its own   │        │
+│  │  OrderCancelled  │    │  decision        │        │
+│  │                  │    │                  │        │
+│  │  [orders DB]     │    │  [payments DB]   │        │
+│  └──────────────────┘    └──────────────────┘        │
+└──────────────────────────────────────────────────────┘
 ```
 
 The Order aggregate root emits events as facts: `OrderPlaced`, `OrderFulfilled`, `OrderCancelled`. These are records of decisions the aggregate root has already made; they are not instructions to other contexts. The Payment context reacts to `OrderPlaced` by initiating payment processing, but it makes that decision autonomously. No orchestrator tells it what to do.
