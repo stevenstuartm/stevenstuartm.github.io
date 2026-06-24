@@ -145,7 +145,7 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 - Uses kramdown markdown processor
 - Configured for GitHub Pages deployment via github-pages gem
 - Theme: Custom CSS with CSS variables for maintainability
-- Author: Steven Stuart (stevenstuartm@gmail.com)
+- Author: Steven Stuart
 - GitHub: stevenstuartm
 - LinkedIn: steven-stuart-2974978a
 

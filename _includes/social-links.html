@@ -2,12 +2,10 @@
   Social links component with optional parameter overrides
   Parameters:
     - linkedin_url: Override default LinkedIn URL (optional)
-    - email: Override default email address (optional)
-    - modifier: CSS class modifier for copy button (optional)
+    - modifier: CSS class modifier (optional)
 {% endcomment %}
 
 {% assign linkedin_url = include.linkedin_url | default: site.social.linkedin %}
-{% assign email = include.email | default: site.author.email %}
 
 <a href="{{ '/feed-blog.xml' | relative_url }}" target="_blank" rel="noopener noreferrer" aria-label="RSS Feed">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -41,18 +39,4 @@
         <path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6v4.36h.58c.37 0 .67-.08.87-.25.21-.19.31-.49.31-.95v-1.9c0-.47-.11-.78-.34-.99v-.04zM0 0v24h24V0H0zm8.1 15.01c-.4.44-.89.66-1.59.66H4.5V8.34h2.04c.68 0 1.18.22 1.56.66.39.44.58 1.07.58 1.87v2.27c0 .8-.2 1.43-.58 1.87zM15.18 9.7h-2.44v1.86h1.77v1.36h-1.77v1.72h2.44v1.37h-2.93c-.53 0-.96-.42-.96-.95V9.27c0-.52.43-.95.96-.95h2.93V9.7zm4.7 5.08c-.4.76-1.04 1.14-1.89 1.14-.36 0-.75-.09-1.02-.26-.29-.19-.52-.49-.68-.89-.16-.39-.24-.96-.24-1.69v-.82c0-.73.08-1.28.24-1.67.14-.38.37-.67.66-.86.27-.17.63-.26 1.04-.26.84 0 1.47.38 1.87 1.12l-.93.68c-.12-.26-.27-.45-.43-.56-.16-.12-.34-.17-.53-.17-.27 0-.48.12-.62.37-.15.24-.22.7-.22 1.37v.82c0 .67.07 1.13.22 1.37.14.25.35.37.62.37.39 0 .68-.22.91-.66l.98.59h.02z"/>
     </svg>
 </a>
-{% endif %}
-{% if email %}
-<a href="mailto:{{ email }}" aria-label="Email" title="Email: {{ email }}">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-        <polyline points="22,6 12,13 2,6"></polyline>
-    </svg>
-</a>
-<button class="copy-email-btn{{ include.modifier }}" data-email="{{ email }}" data-tooltip="Copy email" aria-label="Copy email address">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-    </svg>
-</button>
 {% endif %}

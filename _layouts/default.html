@@ -27,6 +27,24 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon-64x64.png' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
+    {% if page.layout == 'home' %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Steven Stuart",
+      "alternateName": "Steven M Stuart",
+      "url": "https://stevenstuartm.com",
+      "jobTitle": "Software Architect",
+      "sameAs": [
+        "https://github.com/stevenstuartm",
+        "https://linkedin.com/in/steven-stuart-2974978a",
+        "https://dev.to/stevenstuartm"
+      ]
+    }
+    </script>
+    {% endif %}
+
     <!-- Google Analytics 4 (Production only, delayed load for performance) -->
     {% if jekyll.environment == 'production' %}
     <script>

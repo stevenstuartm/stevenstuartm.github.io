@@ -1,6 +1,5 @@
 # Site settings
 title: Architecture Insights
-email: stevenstuartm@gmail.com
 description: Clarity from complexity. Practical insights on building software architectures that serve real needs and deliver genuine value.
 baseurl: ""
 url: "https://stevenstuartm.com"
@@ -9,7 +8,6 @@ version: 1.0.16
 # Author information
 author:
   name: Steven Stuart
-  email: stevenstuartm@gmail.com
   github: stevenstuartm
   linkedin: stevenstuartm
 

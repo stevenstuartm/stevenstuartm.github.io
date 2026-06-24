@@ -64,8 +64,8 @@ git cat-file -p HEAD
 # Output:
 # tree 4fd5ab1f2e3a12ec...
 # parent a8c76fa2b3d4e5f6...
-# author Steven Stuart <stevenstuartm@gmail.com> 1708467200 +0000
-# committer Steven Stuart <stevenstuartm@gmail.com> 1708467200 +0000
+# author Steven Stuart <abc@gmail.com> 1708467200 +0000
+# committer Steven Stuart <abc@gmail.com> 1708467200 +0000
 #
 # trying to fix the menu orientation for mobile
 ```
@@ -587,7 +587,6 @@ Git configuration follows a three-level hierarchy, where each level overrides th
 ```bash
 # Set your identity (required before committing)
 git config --global user.name "Steven Stuart"
-git config --global user.email "stevenstuartm@gmail.com"
 
 # Set the default editor for commit messages
 git config --global core.editor "code --wait"

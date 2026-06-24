@@ -113,26 +113,5 @@
                 });
             }
         });
-
-        // Copy email button handler
-        const copyBtn = document.querySelector('.copy-email-btn-header');
-        if (copyBtn) {
-            copyBtn.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent menu from closing
-                const email = this.getAttribute('data-email');
-                navigator.clipboard.writeText(email).then(() => {
-                    this.classList.add('copied');
-                    const originalTitle = this.getAttribute('title');
-                    this.setAttribute('title', 'Copied!');
-
-                    setTimeout(() => {
-                        this.classList.remove('copied');
-                        this.setAttribute('title', originalTitle);
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Failed to copy email:', err);
-                });
-            });
-        }
     })();
 </script>
