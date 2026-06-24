@@ -22,26 +22,15 @@ technologies:
 
 Over six years, a fintech company built three successive solutions to process millions of financial transaction events for real-time customer alerts. Each solution lasted approximately two years before stakeholders demanded change. Each failed for different technical reasons, but a common organizational pattern persisted throughout: development teams remained out of alignment with stakeholder needs, and that gap was never closed.
 
-I joined during Solution 2 as a developer and remained through Solution 3, eventually becoming a senior developer. My perspective on Solution 1 comes from inheriting its codebase and conversations with remaining team members; my perspective on Solutions 2 and 3 comes from direct involvement in design decisions, implementation, and operational support.
-
-This case study examines what went wrong technically and organizationally, why the third solution's architecture was mismatched to the problem, and what should have been built instead.
-
-**Key lessons:**
-- Distribution is an optimization, not a starting point
-- Don't abandon good designs because of bad implementations
-- Pattern selection requires trade-off analysis against actual requirements
-- Observability isn't optional for financial systems
-- Organizational alignment problems can't be solved with architecture changes alone
+I joined during Solution 2 and remained through Solution 3.
 
 ## Solutions at a Glance
 
-| Solution | Duration | Architecture | Why It Failed | Why It Was Abandoned |
-|----------|----------|--------------|---------------|----------------------|
-| **1. Monolith** | ~2 years | Legacy scheduler, non-containerized | Opaque, no extension points, manual scaling | Couldn't support multi-team extensibility |
-| **2. Coordinator** | ~2 years | Central coordinator + domain processors | Implementation bugs (deadlocks, scaling issues) | Deemed too expensive to refactor |
-| **3. Pipes & Filters** | ~2 years | Distributed actors, SQS, Akka | Pattern mismatch, no observability, message bloat | SLA violations, customer payouts |
-
-**The pattern**: Each solution lasted approximately two years. Each failed for different technical reasons. The same organizational misalignment persisted throughout.
+| Solution | Architecture | Why It Failed | Why It Was Abandoned |
+|----------|--------------|---------------|----------------------|
+| **1. Monolith** | Legacy scheduler, non-containerized | Opaque, no extension points, manual scaling | Couldn't support multi-team extensibility |
+| **2. Coordinator** | Central coordinator + domain processors | Implementation bugs (deadlocks, scaling issues) | Deemed too expensive to refactor |
+| **3. Pipes & Filters** | Distributed actors, SQS, Akka | Pattern mismatch, no observability, message bloat | SLA violations, customer payouts |
 
 ## The Business Context
 
@@ -102,18 +91,7 @@ Each processor registered its metadata with the coordinator, which the alert man
 - Queues were not used properly, creating resource exhaustion
 - A refactor was deemed too expensive
 
-**Why Solution 2 could have been redeemed:**
-
-The value of Solution 2 wasn't that it was "good" but that it started with fewer components and consistent abstraction layers. This created options:
-
-- When you wanted to bypass one layer for a new one, or go straight to a queue, you could do that incrementally
-- You might end up with two versions of the same platform running in parallel, which enabled incremental migration without breaking changes
-- The architecture supported gradual evolution rather than requiring wholesale replacement
-- A lightweight adapter or API gateway could have been used to "two-step" the migration to a new solution while preserving the single abstraction layer
-
-Solution 2 did have an event store in the central coordinator, but it was implemented as a simple queue rather than as durable storage with proper state management. It didn't support rollbacks or saga orchestration. Moving event persistence to the processor level (as proposed later in this case study) would have fixed that limitation while preserving the coordinator's architectural strengths.
-
-**The critical mistake:** Rather than investing in fixing the implementation while preserving these architectural strengths, the organization chose to start over with a completely different architecture. This pattern would prove costly.
+The architecture's value was that it hadn't overextended itself. A simpler design leaves room to evolve: you can fix the implementation, add layers incrementally, or migrate components without wholesale replacement. Rather than investing in that path, the organization chose to start over with something more complex. That decision proved costly.
 
 ## Solution 3: Pipes & Filters
 
@@ -175,77 +153,45 @@ Instead of using AWS EventBridge for fan-out, a custom solution was built to reg
 
 **What failed:**
 
-### Architecture Problems
+| Problem | Impact |
+|---------|--------|
+| **Message bloat**: Actors added entire new context to payloads instead of transforming them | Enormous network costs, bandwidth exhaustion |
+| **No centralized control**: Each actor operated independently with no coordination | Impossible to audit, conflicted with financial compliance needs |
+| **Custom fan-out**: Built parent/child registration instead of using EventBridge | Concurrency bugs during startup, unnecessary complexity |
+| **Shared infrastructure**: Actors ran on the same tier as UI APIs | Processing spikes caused UI unavailability |
+| **DLQs unused**: Dead letter queues were added but never monitored or processed | Lost events in a financial system |
+| **No observability**: No centralized monitoring or alerting | Weeks passed before critical problems were detected |
+| **Noisy neighbors**: One tenant could consume most of an actor's processing capacity | Unfair resource allocation, SLA violations |
+| **SQS visibility timeout games**: Constant tuning to account for processing latency | Fragile configuration, message reprocessing |
+| **Coupled deployments**: Any change required updating every actor simultaneously | Massive deployment cost, developer burnout |
+| **No rollback capability**: Pipes and filters provides no saga pattern | Failed workflows left partial state with no compensation |
 
-| Problem | Description | Impact |
-|---------|-------------|--------|
-| **Message bloat** | Actors didn't transform messages as intended; they added entire new context to payloads | Enormous network costs, bandwidth exhaustion |
-| **No centralized control** | Each actor operated independently with no coordination | Impossible to audit, conflicted with financial compliance needs |
-| **Custom fan-out** | Built custom parent/child registration instead of using EventBridge | Added complexity, introduced concurrency bugs during startup |
-| **Shared infrastructure** | Actors ran on the same tier as UI APIs | Processing spikes caused UI unavailability |
+After approximately two years, the accumulated failures led to SLA violations and significant customer payouts. Problems went undetected for weeks because there was no observability; by the time issues were discovered, the damage was done.
 
-### Operational Problems
-
-| Problem | Description | Impact |
-|---------|-------------|--------|
-| **DLQs unused** | Dead letter queues were added but never monitored or processed | Lost events in a financial system |
-| **No observability** | No centralized monitoring or alerting | Weeks passed before critical problems were detected |
-| **Per-actor scaling** | Each actor had its own Akka scaling behavior | Impossible to identify bottlenecks or predict capacity |
-| **In-memory metadata** | Central registration for processors used in-memory storage | Constant startup failures, single point of failure |
-
-### Data Problems
-
-| Problem | Description | Impact |
-|---------|-------------|--------|
-| **Stale DynamoDB data** | Decision-gate actors had configs that fell out of sync | Incorrect routing, inconsistent behavior |
-| **Noisy neighbors** | One tenant could consume most of an actor's processing capacity | Unfair resource allocation, SLA violations |
-| **SQS visibility timeout games** | Constant tuning to account for processing latency and tenant partitioning | Fragile configuration, message reprocessing |
-| **Component-specific config** | Configurations tied to components, not domains | Nightmare for support teams when components changed |
-
-### Developer Experience Problems
-
-| Problem | Description | Impact |
-|---------|-------------|--------|
-| **Coupled deployments** | Any change required updating every actor simultaneously | Massive deployment cost, developer burnout |
-| **API sprawl** | Teams created new APIs for every change | Fragmentation, inconsistency, maintenance burden |
-| **No rollback capability** | Pipes and filters provides no saga pattern | Failed workflows left partial state with no compensation |
-
-**The result:** After approximately two years, the accumulated failures led to SLA violations and significant customer payouts. The organization discovered problems weeks after they began because there was no observability, and by then the damage was done.
-
-## Pattern Analysis: Why Pipes & Filters Was Wrong
+## Why Pipes & Filters Was Wrong
 
 The pipes and filters pattern makes specific assumptions about how data flows through a system:
 
 | Pattern Assumption | Reality in This System |
 |--------------------|------------------------|
-| Each filter performs a stateless transformation | Actors added unrelated context, didn't transform |
+| Each filter performs a stateless transformation | Actors added unrelated context; they didn't transform |
 | Filters are independent and composable | Actors required access to shared concepts and integrations |
 | Scaling is per-filter based on throughput | Per-actor Akka scaling made bottlenecks invisible |
 | Failure handling is per-filter | No saga support meant partial failures couldn't roll back |
 
-The pattern was selected without formal trade-off analysis. Development teams weren't allowed to see the proposal, and no documentation existed explaining why this architecture was chosen over alternatives or what trade-offs were accepted.
+The pattern was selected without formal trade-off analysis. Development teams weren't allowed to see the proposal, and no documentation explained why this architecture was chosen or what trade-offs were accepted.
 
-**What should have triggered concern:**
-- Financial systems require audit trails; pipes and filters distributes control
-- The use case wasn't transformation; it was enrichment and routing
-- Multi-tenant systems need fair resource allocation; per-actor scaling can't provide this
-- Fan-out complexity suggested EventBridge, not custom registration
+Financial systems require audit trails; pipes and filters distributes control. The use case wasn't transformation but enrichment and routing. Multi-tenant systems need fair resource allocation; per-actor scaling can't provide it. Fan-out complexity pointed to EventBridge, not custom registration.
 
 ## The Organizational Pattern That Never Changed
 
-Across all three solutions, the same organizational dynamic persisted:
+Across all three solutions, the same dynamic persisted. Stakeholders demanded "change" every two years, but actual requirements were never crystallized in a way that could be validated. Each solution was a technical response to stakeholder frustration rather than a deliberate answer to clearly defined needs. Architecture decisions were made without documented rationale, and the teams building those systems weren't given visibility into the choices shaping their work.
 
-**Development teams remained out of alignment with stakeholder needs.** Stakeholders demanded "change" every two years, but the actual requirements were never crystallized in a way that could be validated. Each solution was a technical response to stakeholder frustration rather than a deliberate answer to clearly defined needs.
-
-**Architecture decisions were made without trade-off analysis.** Solution 3 was proposed without documented rationale, and the development teams building it weren't even allowed to see the proposal that mandated it.
-
-No architecture can fix an alignment problem, and the pattern persisted because the organizational issue was never addressed.
+No architecture can fix an alignment problem. The pattern persisted because the organizational issue was never addressed.
 
 ## What Should Have Been Built
 
-Based on the actual requirements and constraints, here's an architecture that would have addressed the real problems:
-
-### Principle 1: Separate Concerns Cleanly
+### Separate Concerns Cleanly
 
 ```
 ┌───────────────────────────────────────┐
@@ -285,123 +231,28 @@ Based on the actual requirements and constraints, here's an architecture that wo
 └──────────────────┘  └──────────────────┘  └──────────────────┘
 ```
 
-- **Alert feature metadata and subscriptions** live in a versioned database, updated via separate migration tasks. No deployed code changes needed for metadata updates. The UI reads what alerts are available, customers subscribe through this service, and processors query it to determine which customers to notify for a given event. The subscription service is a stable API that processors consume, not something processors register with.
-- **Event processing** is handled by async processors that just process. EventBridge routing rules are managed through infrastructure-as-code, tied to component versions rather than runtime registration. Processors don't self-register with internal coordinators or maintain UI metadata. When a processor receives an event, it queries the subscription service to find matching customers.
-- **Fan-out routing** uses AWS EventBridge's native capabilities, eliminating custom parent/child registration logic and the concurrency bugs that came with it.
+Alert feature metadata and subscriptions live in a versioned database, updated via separate migration tasks rather than code deployments. The UI reads what alerts are available, customers subscribe through this service, and processors query it to determine which customers to notify. The subscription service is a stable API that processors consume, not something processors register with.
 
-### Principle 2: Start with Domain Processors, Distribute When Proven
+EventBridge handles fan-out routing through infrastructure-as-code rules, eliminating custom parent/child registration and the concurrency bugs that came with it. Processors don't self-register on startup. When workflows span domains, eventful choreography replaces orchestration: each domain publishes events to EventBridge when its work completes, and other domains subscribe to what they care about.
 
-Solution 2 got this right: each domain/feature team owns their own processor. Distribution is an optimization to a proven need, and there was never any proven need for distributing work beyond single domain processors.
+### Distribute Only What Needs It
 
-- Use share-nothing architecture: domains handle themselves
-- No central coordinator needed
-- Add Kinesis or other streaming only when measurement proves necessity
+Solution 2 got the team ownership model right: each domain team owns their processor. Distribution is an optimization, not a starting point, and there was never a proven need to distribute work beyond single domain processors. Start simple, measure actual bottlenecks, then optimize.
 
-When workflows span multiple domains, use eventful choreography rather than orchestration. Each domain publishes events to EventBridge when its work completes, and other domains subscribe to events they care about. This adds documentation complexity (you need to track which domains produce and consume which events), but it's the correct trade-off for a high-agility, multi-team environment where teams need to evolve independently.
+### Queuing Strategy Depends on Ordering Requirements
 
-### Principle 3: Queuing Strategy Depends on Ordering Requirements
+For domains where events can be processed in any order, [SQS Fair Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-fair-queues.html){:target="_blank" rel="noopener noreferrer"} provide automatic noisy-neighbor mitigation by setting `MessageGroupId` to the tenant ID. This would have solved the noisy-neighbor problem in Solution 3 with zero implementation effort.
 
-The right queuing approach depends on whether strict ordering matters for your domain:
+For domains requiring strict ordering, SQS FIFO throughput constraints create back-pressure during spikes. The alternative is to persist events first (DynamoDB with TenantID as partition key and timestamp as sort key) and consume at a configurable rate per tenant. This gives FIFO semantics per tenant without FIFO queue constraints, makes backlogs visible for predictive scaling, and gives processors explicit control over tenant fairness rather than fighting queue configuration.
 
-**When ordering doesn't matter: SQS Fair Queues**
+### Domain-Centric Configuration and Observability
 
-For domains where events can be processed in any order, [SQS Fair Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-fair-queues.html){:target="_blank" rel="noopener noreferrer"} provide automatic noisy-neighbor mitigation. By setting `MessageGroupId` on messages (typically to the tenant ID), SQS automatically ensures fair resource allocation across tenants without custom code. This would have solved the noisy-neighbor problem in Solution 3 with zero implementation effort.
+Configuration should be tied to business domain concepts, not component deployments. When support teams work with domain concepts instead of topology, component architecture can change freely underneath without breaking their mental model or their tooling.
 
-Fair Queues work because they're Standard queues with fairness semantics: virtually unlimited throughput, no in-flight message limits per tenant, and automatic dwell-time fairness. The trade-off is no ordering guarantees.
-
-**When ordering matters: Persist-then-consume pattern**
-
-For domains requiring strict ordering (e.g., transaction sequences where order affects balance calculations), SQS FIFO has throughput constraints that create back-pressure during traffic spikes. The alternative is to persist events first and consume based on configurable rate and priority:
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                     Domain Processor                             │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌─────────────────┐    ┌─────────────────────────────────────┐ │
-│  │   Event Store   │───▶│         Processing Logic            │ │
-│  │   (DynamoDB)    │    │  • Partitioned by tenant            │ │
-│  │                 │    │  • Configurable consumption rate    │ │
-│  │  PK: TenantID   │    │  • Priority-based processing        │ │
-│  │  SK: Timestamp  │    │  • Claim Check for large payloads   │ │
-│  └─────────────────┘    └─────────────────────────────────────┘ │
-│           │                              │                       │
-│           ▼                              ▼                       │
-│  ┌─────────────────┐    ┌─────────────────────────────────────┐ │
-│  │   Audit Trail   │    │      Async Observability            │ │
-│  │   (per domain)  │    │   (aggregated centrally)            │ │
-│  └─────────────────┘    └─────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-**Ordering in DynamoDB**: DynamoDB maintains sort key order within a partition. By using `TenantID` as the partition key and a timestamp or sequence number as the sort key, you get ordered reads per tenant for free. The processor queries each tenant's partition in order, processes at a configurable rate, and marks items as processed. This gives you FIFO semantics per tenant without SQS FIFO's throughput constraints.
-
-**Fair consumption across tenants**: The processor controls the consumption rate per tenant, ensuring no single tenant monopolizes processing capacity. This is the configurable priority queue the system needed but never had. You can implement round-robin across tenants, weighted priority based on SLA tier, or burst allowances with rate limiting. All of this is controlled by your code rather than queue configuration.
-
-| SQS-Only Approach | Persist-then-Consume Approach |
-|--------------------|------------------------------|
-| Visibility timeouts constantly tuned | Persistent state eliminates timeout games |
-| Consumer memory pressure | Read what you need, when you need it |
-| FIFO throughput constraints (300-3000 msg/s per group) | DynamoDB scales to your write capacity |
-| Ordering only within message groups | Ordering within partitions with tenant isolation |
-| Can't see traffic patterns until consumed | Visible backlog enables predictive scaling |
-| "How many nodes?" = guess | "How many nodes?" = data-driven from backlog metrics |
-
-**Note on saga patterns**: The original Solution 3 had no rollback capability when workflows failed mid-stream. Saga orchestration addresses this, but it's orthogonal to the queuing strategy. Whether you use SQS or persist-then-consume, compensating transactions need to be designed into the workflow. The persist-then-consume approach makes saga state easier to manage because the event store already has the workflow history.
-
-### Principle 4: Domain-Centric Configuration
-
-| Component-Specific Config (What Was Built) | Domain-Specific Config (What Was Needed) |
-|--------------------------------------------|------------------------------------------|
-| Config tied to component deployment | Config tied to business domain concepts |
-| Component changes break config | Component architecture can change freely |
-| Support teams must understand topology | Support teams work with domain concepts |
-| SDK consumers coupled to implementation | SDK consumers work with stable abstractions |
-
-### Principle 5: Governance Through Async Observability
-
-- Each domain processor audits all activity properly, in an async manner
-- Governance ensures compliance without blocking processing
-- Support staff sees problems and traffic summaries as they occur
-- No more weeks-long blind spots
-
-The specifics of governance depend on team size and domain nature, but Architecture Decision Records (ADRs) are always a good starting point. This was something the organization never did across any of the three solutions. Documenting why decisions were made creates accountability and helps future teams understand constraints.
-
-### Principle 6: Claim Check for Actual Data Flow
-
-The processors weren't mutating a single payload through stages. Often they weren't even looking at the same data. The Claim Check pattern acknowledges this reality: store large or context-specific data separately and pass references.
-
-When processors need shared data, they query stable domain APIs (like the subscription service) rather than passing bloated payloads between stages. Each workflow is isolated, and all processors must be idempotent. This was another problem in Solution 3: SQS locking and visibility timeout issues meant the same work was sometimes processed more than once, causing duplicate notifications and inconsistent state. With a persisted event store at the processor level, idempotency is enforced by design. You can track which events have been processed and skip duplicates.
-
-### Principle 7: Tenant Isolation at the Processor Level
-
-EventBridge doesn't need to worry about tenants; that's the processor's responsibility. With a persisted event store, processors can implement custom priority and rate-limiting patterns to ensure fair resource allocation across tenants (as described in Principle 3). If traffic patterns demand it, the architecture can evolve: EventBridge rules can point to Kinesis, which manages tenant isolation through shards. The key is that tenant isolation is a processor concern with clear options for scaling, not a system-wide problem with no good answers.
-
-## Key Lessons
-
-### 1. Distribution is an optimization, not a starting point
-
-Solution 3 assumed distribution was necessary from day one, but there was never a proven need for distributing work beyond single domain processors. The better approach: start simple, measure actual bottlenecks, then optimize.
-
-### 2. Architectural flexibility matters more than initial correctness
-
-Solution 2 had significant problems, but it hadn't overextended itself. The simpler architecture left room to evolve: you could fix the implementation, add new layers incrementally, or migrate components without wholesale replacement. Solution 3's distributed complexity closed off those options.
-
-### 3. Pattern selection requires trade-off analysis
-
-Pipes and filters has well-known trade-offs, and those trade-offs conflicted directly with the requirements of this system. No formal analysis was performed, no documentation explained the choice, and development teams weren't even allowed to see the proposal.
-
-### 4. Observability isn't optional for financial systems
-
-Solution 3 had no centralized observability, so problems went undetected for weeks. By the time issues were discovered, SLA violations had already triggered significant customer payouts. In financial systems, you must know what's happening in real-time.
-
-### 5. Organizational alignment problems can't be solved with architecture changes
-
-The same misalignment between development teams and stakeholders persisted across all three solutions. Each architecture change was a technical response to an organizational problem. Until the alignment issue was addressed directly, no architecture would succeed.
+And observability cannot be optional in financial systems. Each domain processor should audit all activity asynchronously, feeding into centralized monitoring. Problems found weeks after they begin are problems that trigger SLA payouts first.
 
 ## Conclusion
 
-The cycle of build-fail-replace could have been broken at Solution 2. Not because Solution 2 was good, but because it hadn't painted itself into a corner. The architecture was simple enough to fix, extend, or partially replace. Instead, the organization invested in a more complex architecture that closed off those options.
+The cycle could have been broken at Solution 2, not because Solution 2 was good, but because it hadn't painted itself into a corner. A flawed but flexible architecture can be iteratively improved; an overextended one requires starting over.
 
-Technical excellence matters, and Solution 3 had clean code and good tests. But technical excellence in service of the wrong pattern still fails. A flawed but flexible architecture can be iteratively improved. An overextended architecture requires starting over.
-
-The path forward was always available: start with simple domain processors, measure actual needs, distribute only when proven necessary, and ensure observability from day one. Most importantly, address the organizational alignment that no architecture can fix.
+Technical excellence matters, and Solution 3 had clean code and good tests. But technical excellence in service of the wrong pattern still fails. The architectural answers were available from the start: simple domain processors, actual measurements before distributing anything, and observability built in from day one. What wasn't available was the organizational alignment to act on them, and no architecture could substitute for that.

@@ -41,17 +41,11 @@ The team evaluated alternatives before building custom, but in retrospect, the e
 
 **AppSync subscriptions** require the client to specify what it's subscribing to with enough specificity for the filter to work. The client would need to know its own product entitlements, which defeats the purpose of server-side resolution.
 
-These were reasonable rejections. None of these services are designed for the "subscribe to a topic, let the server figure out the rest" pattern.
-
 ### Managed Real-Time Services: The Gap in the Evaluation
 
-Where the evaluation fell short was in not seriously considering purpose-built real-time messaging services like Pusher or Ably. These services support exactly the pattern the team was trying to build.
-
-Pusher's private channels use an authorization callback where the server decides which channels a connection is allowed to join. The flow would have been: client subscribes to "News," Pusher calls the authorization endpoint, the endpoint looks up the user's product entitlements, and approves subscription to `private-news-CHLT` and `private-news-Sfc`. That authorization callback is maybe 50 lines of code sitting behind an endpoint the team already knew how to build.
+Where the evaluation fell short was in not seriously considering purpose-built real-time messaging services like Pusher or Ably. Pusher's private channels use an authorization callback where the server decides which channels a connection is allowed to join. The flow would have been: client subscribes to "News," Pusher calls the authorization endpoint, the endpoint looks up the user's product entitlements, and approves subscription to `private-news-CHLT` and `private-news-Sfc`. That authorization callback is maybe 50 lines of code sitting behind an endpoint the team already knew how to build.
 
 Ably provides a similar token-based authorization model, and both services offer message history (comparable to the lookback pattern) as a built-in feature. The per-message TTL, deduplication, and replay that required a custom DynamoDB table and fire-and-forget replay logic in the custom solution are standard capabilities in these platforms.
-
-AWS IoT Core also supports per-client topic policies based on identity claims, with MQTT topics that could map naturally to the product-scoped pattern. The topic structure `news/CHLT`, `news/Sfc` with IAM-style policies restricting which topics each user can subscribe to would achieve the same result.
 
 The honest reason these weren't evaluated seriously was that the team defaulted to building within the technology stack it already operated. The organization ran .NET services on ECS, had SignalR expertise, and had authorization infrastructure ready to use. The reflex was to compose from familiar components rather than evaluate whether a managed service could address the same requirements.
 
@@ -242,13 +236,11 @@ Publish Resolution:
 
 ### Symmetry Between Subscribe and Publish
 
-Both paths used the same channel resolution logic, which was a deliberate design choice. On subscribe, the user's entitlements became the scopes. On publish, the message's declared audience became the scopes. The same resolution applied in both directions, which meant the system was self-consistent: any channel a user was placed into could also be targeted by a message, and any channel a message was sent to would only contain users who were entitled to receive it.
+Both paths used the same channel resolution logic. On subscribe, the user's entitlements became the scopes. On publish, the message's declared audience became the scopes. Any channel a user was placed into could be targeted by a message, and any channel a message targeted would only contain users entitled to receive it.
 
 ## The Lookback Pattern
 
-WebSocket connections are ephemeral. A user might connect to the application after a message was published, or their connection might drop and reconnect. Without a catch-up mechanism, those users would miss messages that arrived while they were disconnected.
-
-The lookback pattern solved this by persisting recent messages to DynamoDB with configurable TTLs and replaying them to new connections during the subscribe handshake.
+WebSocket connections are ephemeral; users who connect late or reconnect will miss messages without a catch-up mechanism. The lookback pattern solved this by persisting recent messages to DynamoDB with configurable TTLs and replaying them to new connections during the subscribe handshake.
 
 ### How Lookback Works
 
@@ -342,15 +334,15 @@ SQS handled retries automatically: up to 3 attempts with a 30-second visibility 
 
 ### Co-located Processing
 
-The worker ran inside the same ECS container as the API, not as a separate service. The API was lightweight enough that processing overhead posed no measurable contention, so the team avoided the operational cost of a separate deployment. The organization had a proven pattern for extracting workers into dedicated nodes if processing ever needed its own scaling profile.
+The worker ran inside the same ECS container as the API, not as a separate service. The API was lightweight enough that processing overhead posed no measurable contention, so the team avoided the operational cost of a separate deployment.
 
 ## Infrastructure Decisions
 
-WebSocket connections impose infrastructure requirements that standard HTTP APIs don't. The team made several deliberate choices to support persistent connections reliably.
+## Infrastructure Decisions
 
 ### Dedicated Load Balancer and Cluster
 
-WebSocket connections require sticky sessions at the load balancer level, so the SignalR service couldn't share an ALB with other HTTP services that used round-robin routing. Each environment got its own ALB and ECS cluster dedicated to the SignalR service. This is a fundamental requirement of any WebSocket infrastructure, not a cost specific to the custom approach.
+WebSocket connections require sticky sessions at the load balancer level, so the SignalR service couldn't share an ALB with other HTTP services that used round-robin routing. Each environment got its own ALB and ECS cluster dedicated to the SignalR service.
 
 ### Transport and Protocol
 
@@ -360,7 +352,7 @@ Messages used MessagePack binary serialization over the WebSocket connection. Co
 
 ### Client Resilience
 
-The client implemented a custom retry policy with linear backoff: 1 second for the first retry, increasing by 1 second each attempt, capped at 30 seconds. The policy retried indefinitely, never giving up on reconnection. On successful reconnection, the client automatically re-invoked the subscribe method to rejoin SignalR groups and trigger lookback replay. This made connection drops transparent to the user: the client reconnected, resubscribed, received any missed messages through lookback, and continued receiving live updates.
+The client implemented a custom retry policy with linear backoff: 1 second for the first retry, increasing by 1 second each attempt, capped at 30 seconds. The policy retried indefinitely, never giving up on reconnection. On successful reconnection, the client automatically re-invoked the subscribe method to rejoin SignalR groups and trigger lookback replay.
 
 ```
 Connection Resilience:
@@ -400,19 +392,13 @@ Each channel configuration included an `IsPublishableByUser` flag. When a messag
 
 ## What Actually Happened
 
-The POC worked. The architecture was sound, the channel resolution performed well at moderate scale, the lookback pattern handled reconnection gracefully, and the configuration-driven topology made it easy to add new topics without code changes. As a proof-of-concept, it validated that the pattern was viable.
+The POC worked at moderate scale. It never shipped to production.
 
-It never shipped to production.
-
-While the POC was being built, the team found ways to improve the web application's data loading patterns through better lazy loading and caching strategies. The content that had been slow to load (and that motivated the push for real-time updates) became fast enough through smarter client-side data fetching that the urgency for WebSocket push evaporated. The polling-based approach, combined with better caching, delivered an acceptable user experience without the infrastructure complexity that WebSockets would have introduced.
+While the POC was being built, the team improved the web application's data loading patterns through better lazy loading and caching. The content that had been slow to load became fast enough that the urgency for WebSocket push evaporated. The polling-based approach, combined with better caching, delivered an acceptable user experience without the infrastructure complexity that WebSockets would have introduced.
 
 The real-time push feature was deprioritized, and the POC sat on the shelf.
 
 ## Honest Retrospective
-
-### Was the architecture good?
-
-Yes. The smart channel concept, where client-facing topics resolve to product-scoped SignalR groups through configuration-driven filters, is a clean pattern. The symmetry between subscribe and publish resolution, where both paths use the same scope-matching logic, made the system self-consistent and easy to reason about. The lookback pattern solved a real problem with WebSocket ephemerality. The thin hub, fat adapter separation made the business logic testable independent of SignalR's connection infrastructure. These are patterns worth documenting and reusing.
 
 ### Was building it the right call?
 
@@ -426,10 +412,10 @@ Two things were missing from the process.
 
 First, the requirement should have been validated before the infrastructure was built. The question wasn't "can we build real-time push with product-scoped routing?" It was "do our users actually need real-time push, or is the problem solvable with better data loading?" If the team had invested a sprint in lazy loading improvements first, the real-time push work might never have started.
 
-Second, the buy-vs-build evaluation should have included managed real-time services, not just AWS primitives. Pusher, Ably, and AWS IoT Core are purpose-built for this pattern. The team might have still chosen to build custom for legitimate reasons like in-process authorization, PAY_PER_REQUEST cost scaling, and full operational control. But that should have been a deliberate tradeoff decision with numbers attached, not a default.
+Second, the buy-vs-build evaluation should have included managed real-time services, not just AWS primitives. Pusher and Ably are purpose-built for this pattern. The team might have still chosen to build custom for legitimate reasons like in-process authorization, PAY_PER_REQUEST cost scaling, and full operational control. But that should have been a deliberate tradeoff decision with numbers attached, not a default.
 
 ### What made it a worthwhile exercise anyway?
 
-The POC validated architectural patterns that apply beyond this specific use case. The configuration-driven channel topology, the scope-based resolution algorithm, and the lookback replay pattern are reusable ideas. Building the POC also forced the team to think carefully about WebSocket infrastructure requirements like sticky sessions, reconnection handling, and connection-scoped state, knowledge that informed later infrastructure decisions even though this particular service didn't ship.
+The POC validated architectural patterns that apply beyond this specific use case. The configuration-driven channel topology, the scope-based resolution algorithm, and the lookback replay pattern are reusable ideas.
 
 It was a well-built solution to a problem that didn't need solving yet. The build-vs-buy question is genuinely close for this use case, with real advantages on both sides. But the more important question was never asked: does the problem exist? Good engineering applied to an unvalidated requirement is still wasted effort, regardless of whether the implementation is custom or off-the-shelf.

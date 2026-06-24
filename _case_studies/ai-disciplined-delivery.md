@@ -36,13 +36,13 @@ The institutional context had completely dissolved. What remained was the runnin
 
 Before any other decision, there was the question of how to proceed with the migration. Microsoft provides tooling for the UWP-to-WinUI3 path. That tooling migrates structure: it updates project references, adjusts some API calls, and attempts to rewrite XAML where the two platforms diverge. What it cannot handle is the full surface area of differences between the UWP and WinUI3 SDK sets. Wherever the platforms behave differently in ways the tool does not model, the output is broken in ways that require manual intervention. On an application with years of accumulated business logic, that surface area is large. The cost of repairing migration output was trending toward exceeding the cost of rebuilding from scratch.
 
-But even setting the migration tooling aside, a successful migration alone was not enough. Manual inspection and Claude-assisted code analysis had surfaced the scale of the technical debt: threading issues, memory leaks, blanket logging that produced noise without visibility, and a data access layer that had grown fragile. A clean migration would have carried all of that forward. The result would have been a new version number on a product that customers would still find painful to use, built on a foundation that could not accommodate a significant upcoming shift in the company's API layer without substantial rework. Customers needed more than a platform upgrade; they needed the accumulated pain points addressed. The API changes ahead required a codebase capable of adapting to them without the same fragility.
+But even setting the migration tooling aside, a successful migration alone was not enough. Manual inspection and Claude-assisted code analysis had surfaced the scale of the technical debt: threading issues, memory leaks, blanket logging that produced noise without visibility, and a data access layer that had grown fragile. A clean migration would have carried all of that forward. The result would have been a new version number on a product that customers would still find painful to use, built on a foundation that could not accommodate a significant upcoming shift in the company's API layer without substantial rework.
 
-The rebuild was the right choice for both reasons together. The legacy UWP application was not a liability in this context; it was a behavioral specification. It encoded what the application needed to do. The decision was to rebuild against it with the quality bar the new version actually required, not to carry those problems forward unchanged.
+The legacy UWP application was not a liability in this context; it was a behavioral specification. The decision was to rebuild against it with the quality bar the new version actually required, not to carry those problems forward unchanged.
 
 The data and business logic layers were retained as the foundation; the presentation layer was rebuilt in WinUI3 incrementally, feature by feature. Architectural and dependency changes were introduced across all layers as assumptions were tested and requirements clarified. Code that had not been identified as technical debt remained, often unchanged or lightly refined. The rebuild addressed what needed changing rather than discarding what still worked.
 
-Because the business and data layers were largely intact from the start, the structure of the application was already understood before any WinUI3 code was written. That upfront clarity is what separated this from a ground-up rewrite. Ground-up rewrites spend months recovering understanding of what they are rebuilding. Here, the code map was never lost, only extended. Each subsequent addition and change was faster because the context was always present, not something that had to be reconstructed.
+Because the business and data layers were largely intact from the start, the structure of the application was already understood before any WinUI3 code was written. That upfront clarity is what separated this from a ground-up rewrite. Ground-up rewrites spend months recovering understanding of what they are rebuilding. Here, the code map was never lost, only extended.
 
 ## What Unguided AI Looks Like
 
@@ -99,7 +99,7 @@ Applying this to the rebuild meant building concrete structures around each comp
 
 ## Delegation: Knowing the Boundary
 
-The context decay and assumption gap failures from the early sessions traced to the same root: work had been delegated before it was ready to be delegated. Requirements were ambiguous, scope was loose, and Claude filled the gaps with inference. The fix was not better prompting; it was a clearer line between what AI could own and what had to stay with a human.
+The context decay and assumption gap failures from the early sessions traced to the same root: work was delegated before it was ready. Requirements were ambiguous, scope was loose, and Claude filled the gaps with inference. The fix was not better prompting; it was a clearer line between what AI could own and what had to stay with a human.
 
 On this project, delegation was bounded deliberately:
 
@@ -150,7 +150,7 @@ Diligence in the 4D Framework is about responsibility: taking ownership of AI ou
 
 **Own what you ship.** The original logging approach captured everything and left someone to sort through it later. In practice, logs remained stranded on devices, users were unaware errors had occurred, and when errors were eventually reported the diagnostic context needed to investigate them was gone. Blanket logging created noise without creating visibility.
 
-The replacement was deliberately authored observability: each log entry captures only what requires investigation, includes structured session context and the specific IDs involved in any failure, and is treated by developers as a first-class responsibility rather than an afterthought. A UI health indicator surfaces application state directly so users know when something has gone wrong, without anyone needing to parse logs to find out. Taking responsibility for AI-generated code in production means taking responsibility for how that code communicates its own health.
+The replacement was deliberately authored observability: each log entry captures only what requires investigation, includes structured session context and the specific IDs involved in any failure, and is treated by developers as a first-class responsibility rather than an afterthought. A UI health indicator surfaces application state directly so users know when something has gone wrong, without anyone needing to parse logs to find out.
 
 ## Outcomes
 
@@ -174,7 +174,7 @@ A live App Map with explicit component ownership produces compounding returns ac
 
 ### 2. Atomic delegation prevents scope from compounding
 
-Controlling the unit of delegation is as important as controlling the type. One task at a time, human-sequenced, prevents a failure mode common in less-supervised workflows: AI-driven scope that grows beyond what anyone agreed to or can meaningfully review.
+Controlling the unit of delegation is as important as controlling the type. One task at a time, human-sequenced, keeps AI-driven scope within what anyone agreed to and can meaningfully review.
 
 ### 3. Front-loading assumptions is the highest-value intervention in the workflow
 
