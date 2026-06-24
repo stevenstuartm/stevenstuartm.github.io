@@ -39,7 +39,7 @@ Building a strong foundation requires deliberate study of fundamentals and moder
 
 ## 💬 Join the Conversation
 
-Learning in isolation is slower. Engaging with other practitioners surfaces failure modes and perspectives that books rarely capture, and being challenged to defend your thinking sharpens it.
+Learning in isolation is slower. Engaging with other practitioners surfaces failure and perspectives that books rarely capture, and being challenged to defend your thinking sharpens it.
 
 - [Rands Leadership Slack](https://randsinrepose.com/welcome-to-rands-leadership-slack/){:target="_blank" rel="noopener noreferrer"} - Engineering leadership community
 - [CoderLegion](https://coderlegion.com/){:target="_blank" rel="noopener noreferrer"} - Developer community for sharing articles and engaging with peers

@@ -18,7 +18,7 @@ JWTs are immutable by design. Once signed and issued, the claims inside cannot b
 
 ## Shortening Lifetimes Doesn't Solve It
 
-The typical response is to shorten JWT lifetimes to 5-15 minutes and refresh aggressively. This creates chatty network traffic with constant token refresh requests, adds complexity with more moving parts and failure modes, and doesn't even solve the core issue; there's still a delay window, just shorter. You're still working around the fundamental mismatch between immutable tokens and dynamic authorization.
+The typical response is to shorten JWT lifetimes to 5-15 minutes and refresh aggressively. This creates chatty network traffic with constant token refresh requests, adds complexity with more moving parts and new failure paths, and doesn't even solve the core issue; there's still a delay window, just shorter. You're still working around the fundamental mismatch between immutable tokens and dynamic authorization.
 
 ## Performance Is Not the Tradeoff
 
@@ -67,7 +67,7 @@ It's tempting to think internal systems can embed roles in JWTs because employee
 
 ## Operational Flexibility Matters
 
-JWT-based authorization can work for systems with simple, stable permission models. For MVPs or rarely-changing authorization, embedding claims in tokens is reasonable. But the moment your system needs to change quickly, the constraints become obvious.
+JWT-based authorization can work for systems with simple, stable permission models. For MVPs or rarely-changing authorization, embedding claims in tokens works well enough. But the moment your system needs to change quickly, the constraints become obvious.
 
 With session-based authorization, you can change system behavior for all in-flight tokens without deploying code or coordinating services. New permission model? Update the authorization service. Emergency capability revoke? Single database update. A/B test a feature gate? Flip a flag in the session store. Temporary elevated access? Grant expires automatically server-side. Fix a permission logic bug? Every request immediately uses new logic.
 

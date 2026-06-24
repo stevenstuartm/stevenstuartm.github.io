@@ -31,7 +31,7 @@ When someone says "the database is slow" or "the network is flaky" or "the deplo
 Start with these questions:
 - **When did it start?** Exact time, gradual or sudden onset
 - **What is the scope?** All users, specific regions, particular features, certain request types
-- **What are the symptoms?** Error rates, latency percentiles, failure modes, resource consumption
+- **What are the symptoms?** Error rates, latency percentiles, specific failures, resource consumption
 - **What changed?** Deployments, configuration updates, traffic pattern shifts, dependency changes
 
 Consider an API latency spike from 100ms to 2000ms. The facts reveal a pattern:

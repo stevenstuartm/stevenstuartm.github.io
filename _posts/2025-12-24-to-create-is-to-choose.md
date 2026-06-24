@@ -7,7 +7,7 @@ tags: [leadership, mentoring, philosophy, growth]
 ---
 
 <blockquote class="pull-quote">
-<p>"To create is to choose."<br>— Hadrian Marlowe, <em>Sun Eater</em> by Christopher Ruocchio</p>
+<p>"To create is to choose."<br>Hadrian Marlowe, <em>Sun Eater</em> by Christopher Ruocchio</p>
 </blockquote>
 
 The fictional character, Hadrian, speaks these words before sacrificing everything for a good he cannot prove. He cannot see the exact outcome. But across his centuries-long life, he has perceived a truth greater than himself, a highest good that has proven itself through experience and reasoning. And that truth demands sacrifice, not for itself, but for all of humanity. He doesn't have a perfect solution. He chooses anyway, because standing still in the current of causality isn't rest. It's dissolution. Creation is the only alternative.
@@ -104,7 +104,7 @@ This debt isn't abstract. It's the parent who shifts from "because I said so" to
 
 These ideas didn't emerge from a single tradition. They arrived from multiple directions at once, which is part of why I trust them.
 
-**Christopher Ruocchio's *Sun Eater*** gives this post its title. Hadrian Marlowe doesn't act from certainty; he acts from conviction. He perceives a good worth pursuing even though he cannot prove it will matter. He chooses anyway, because choosing is the only alternative to dissolution.
+**Christopher Ruocchio's *Sun Eater*** gives this post its title. Hadrian Marlowe doesn't act from certainty; he acts from conviction. He pursues a good he cannot prove will matter. He chooses anyway, because choosing is the only alternative to dissolution.
 
 **C.S. Lewis's *Screwtape Letters*** makes the fallacy of "real" versus "true" explicit. A senior demon advises: don't attack truth directly. Keep the human focused on "real life," the immediate, the mundane. Make truth feel abstract and impractical. The most effective corruption doesn't announce itself; it quietly replaces orientation toward truth with absorption in circumstance.
 
@@ -122,4 +122,4 @@ Then you pass it on. The next generation begins again, not from zero if you did 
 
 What is true often reveals itself through what we're willing to sacrifice for others. The selfless act, the choice made for future generations rather than for ourselves, is how truth becomes visible. It's how we know what we actually believe.
 
-That's the debt. That's the obligation. To create is to choose, and choosing to create for those who come after is how we provide hope to those yet to come as much as for ourselves now.
+That's the debt and the obligation. To create is to choose, and choosing to create for those who come after is how we provide hope to those yet to come as much as for ourselves now.

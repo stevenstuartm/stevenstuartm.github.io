@@ -54,6 +54,7 @@ class ContentLinter:
             r"\bworth\s+\w+ing\b",  # "worth noting/examining/sitting/stating/naming/investigating" — often meta-commentary; state the point directly
             r"\bis reasonable\b",  # vague filler; state specifically what makes it reasonable
             r"\bdistinction matters\b",  # announcement rather than stating the distinction directly
+            r"\bfailure modes?\b",  # AI tell; describe the specific failure instead
         ]
 
         # AI-tell colon constructions

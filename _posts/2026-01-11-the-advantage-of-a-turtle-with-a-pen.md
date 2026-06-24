@@ -62,7 +62,7 @@ There's a parallel pattern with attention. Someone who struggles to focus learns
 
 Someone who doesn't struggle tends to build everything at once. They hold the entire system in their head, optimizing locally across all components simultaneously. This produces impressive low-level work, but often with an overconfident view of scope. It's easy for them to build intricate code and hard for them to focus on business objectives and team dynamics.
 
-Both types are useful. But when it's time to train and mentor others, you hope the "slow" person was taking notes and making high-level decisions. The person who couldn't hold everything in their head had to decide what was worth holding. That constraint forced strategic thinking.
+Both types are useful. But when it's time to train and mentor others, you hope the "slow" person was taking notes and making high-level decisions. The person who couldn't hold everything in their head had to decide what to hold. That constraint forced strategic thinking.
 
 There's another advantage to moving slowly: turtles produce less waste. The turtle measures value and defines success criteria before building. The hare can write a lot of code very fast, but the turtle asks whether that code should exist at all.
 

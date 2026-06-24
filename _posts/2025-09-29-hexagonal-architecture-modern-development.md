@@ -8,7 +8,7 @@ description: "Most developers achieve hexagonal architecture's goals without imp
 
 I've noticed something curious after having read certain posts or having talked with certain teams about their architecture. Some describe themselves as "using hexagonal architecture" because they have repository interfaces and dependency injection. But when the conversation turns to symmetric treatment of UI and database as external actors, or how they swap adapters in production, the pattern doesn't quite match. They've achieved testability and decoupling (which were Cockburn's original goals) but through standard layered architecture and modern framework patterns rather than hexagonal structure.
 
-This distinction matters, not as pedantry about pattern purity, but because understanding what you're actually building helps when learning patterns, discussing architecture decisions, or interviewing for roles that mention specific architectural styles.
+Knowing what you're actually building matters, not as pedantry about pattern purity, but because it helps when learning patterns, discussing architecture decisions, or interviewing for roles that mention specific architectural styles.
 
 ## Cockburn's Vision vs. Modern Reality
 
@@ -42,9 +42,9 @@ More importantly, cross-cutting concerns that hexagonal architecture addressed t
 
 The "swappable adapters" benefit that justified hexagonal structure in 2005 doesn't materialize when you're deploying immutable infrastructure with externalized concerns. Modern frameworks achieve Cockburn's original goals (testability, decoupling, isolation from runtime dependencies) through dependency injection and interface-based design without requiring symmetric structural patterns.
 
-## When the Distinction Matters
+## When Precision Matters
 
-Hexagonal architecture appears in courses, certifications, and job requirements. The distinction between goals and structure matters in concrete situations:
+Hexagonal architecture appears in courses, certifications, and job requirements. Goals and structure diverge in concrete situations:
 
 **Learning accurately**: If you're studying architectural patterns, understanding that you're implementing layered architecture with DI rather than true hexagonal structure helps you learn what the patterns actually are, not just what they aim to achieve.
 

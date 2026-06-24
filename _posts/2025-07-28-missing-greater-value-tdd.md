@@ -28,7 +28,7 @@ TDD treated as a checklist rather than a discipline for understanding will produ
 
 ## Stop Measuring Success by Tests
 
-This reframing should change what we measure, but not by replacing one test metric with another. Using test coverage as a success metric is a distraction. Measuring "assumptions caught" would be too. The only thing worth measuring success by is value delivered.
+This reframing should change what we measure, but not by replacing one test metric with another. Using test coverage as a success metric is a distraction. Measuring "assumptions caught" would be too. Value delivered is the only meaningful measure of success.
 
 Coverage metrics can still provide useful insight into quality gaps, but think in terms of use case coverage rather than line coverage. Are the critical business scenarios tested? Are the edge cases stakeholders care about covered? That's a different question than "what percentage of lines have tests?"
 
@@ -44,12 +44,12 @@ Focus on testing assumptions that matter most. Not all assumptions carry equal r
 - **Edge cases stakeholders haven't considered** — What happens when the cart is empty? When the user has no purchase history?
 - **Data validity assumptions** — What "valid" input looks like, what formats are acceptable, what happens with missing fields
 
-If requirements are clear and stable, write tests to validate implementation. If requirements are uncertain, write tests to validate assumptions and expect them to change as understanding develops. This distinction matters more than any debate about test-first versus test-after.
+If requirements are clear and stable, write tests to validate implementation. If requirements are uncertain, write tests to validate assumptions and expect them to change as understanding develops. That question matters more than any debate about test-first versus test-after.
 
 The better question is what assumptions you're making about user needs and how to validate them fastest. Sometimes that's writing a test first, other times it's building a prototype first, and sometimes it's showing mockups to users first. The goal isn't perfect tests; it's validated understanding.
 
 <blockquote class="pull-quote">
-<p>The greatest value of TDD isn't in the tests that pass. It's in the tests that change because they revealed assumptions worth questioning.</p>
+<p>The greatest value of TDD isn't in the tests that pass. It's in the tests that change because they revealed flawed assumptions.</p>
 </blockquote>
 
 ## Start with Understanding

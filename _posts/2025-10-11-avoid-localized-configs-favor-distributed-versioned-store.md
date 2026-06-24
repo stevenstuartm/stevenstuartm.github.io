@@ -52,7 +52,7 @@ Component-oriented config creates problems at scale. With 50 APIs and 100 tenant
 
 Domain-oriented config inverts this relationship. Configuration organizes around business concepts like tenants, products, or integration partners rather than implementation details. The same tenant configuration applies to whichever services handle that tenant's requests. When architecture changes, the domain config stays stable while service-level mappings adjust. Ops personnel work with business concepts they understand rather than implementation details they shouldn't need to know.
 
-Component-specific configuration still exists, but only for genuinely component-specific concerns: performance tuning, networking behavior, resource limits, internal timeouts. These are implementation details that don't belong in domain configuration. The distinction matters: domain config answers "what does this tenant need?" while component config answers "how does this service behave?"
+Component-specific configuration still exists, but only for genuinely component-specific concerns: performance tuning, networking behavior, resource limits, internal timeouts. These are implementation details that don't belong in domain configuration. Domain config answers "what does this tenant need?" while component config answers "how does this service behave?"
 
 ## Hierarchical Config in Practice
 
@@ -130,7 +130,7 @@ Deployments simplify because the same artifact works everywhere. Build pipelines
 
 ## Making the Shift
 
-Local config files feel simple and convenient right up until they aren't. The pattern creates security risks that compound over time, deployment complexity that frustrates teams, and environment drift that causes mysterious production-only failures. External config stores trade familiar convenience for operational discipline, and that trade-off is worth making.
+Local config files feel simple and convenient right up until they aren't. The pattern creates security risks that compound over time, deployment complexity that frustrates teams, and environment drift that causes mysterious production-only failures. External config stores trade familiar convenience for operational discipline, and that trade-off is sound.
 
 The friction of external config management isn't overhead; it's the appropriate level of care for changes that can bring down production systems. Configuration errors cause outages as often as code bugs, and they deserve the same rigor: version control, change management, audit trails, and rollback procedures.
 

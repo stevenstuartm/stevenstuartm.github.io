@@ -24,7 +24,7 @@ The fix is upstream of your alerting platform:
 
 - **Expected success**: The happy path. Logged at DEBUG if at all.
 - **Expected failure**: Business logic correctly rejecting something, like declined payments, validation failures, or rate limiting. This is INFO, not ERROR.
-- **Degraded but functional**: The system recovered, but something is wearing thin. Retries succeeding after multiple attempts, response times approaching SLA thresholds, connection pools running hot. This is WARN: not broken yet, but worth watching before it becomes broken.
+- **Degraded but functional**: The system recovered, but something is wearing thin. Retries succeeding after multiple attempts, response times approaching SLA thresholds, connection pools running hot. This is WARN: not broken yet, but needing attention before it becomes broken.
 - **Unexpected failure**: Something genuinely went wrong that demands investigation. This is the only category that should be ERROR.
 
 When the system correctly declines a card for insufficient funds, it's tempting to log that as WARN because you want the metric reviewed often. But a correctly handled decline is the system working as designed, not degrading. Whether the decline rate is "concerning" is a business question that changes with strategy and context; log levels shouldn't encode that judgment. Leave business interpretation to reports and dashboards where it can evolve, not to code where it gets baked in and forgotten.
@@ -59,6 +59,6 @@ Developers who diagnose from observable behavior, whether testing locally agains
 
 The practical test is straightforward: when something breaks, can you diagnose it from the system's outputs alone? Or do you need to add logging, redeploy, and wait for it to happen again? If the answer is the latter, your code doesn't explain itself yet.
 
-That core discipline compounds when builders own what they operate. You don't log payment declines as errors when you're the one who gets paged for "high error rate on payment service." You don't dump verbose logs instead of authoring context when you're the one parsing them at 3 AM. The feedback loop between writing code and living with it in production is what makes classification honest, context intentional, and alerts worth waking up for.
+That core discipline compounds when builders own what they operate. You don't log payment declines as errors when you're the one who gets paged for "high error rate on payment service." You don't dump verbose logs instead of authoring context when you're the one parsing them at 3 AM. The feedback loop between writing code and living with it in production is what makes classification honest, context intentional, and alerts that justify the page.
 
 Better tooling alone won't create that loop; only ownership will.

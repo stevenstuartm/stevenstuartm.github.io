@@ -44,7 +44,7 @@ Enforce internal boundaries within the consolidated codebase using modular monol
 
 Align teams with the resulting topology. If three teams are working on what's now one service, you need either clear module boundaries for each team or a different team structure. Architecture and organization must support each other.
 
-Extract services again only when justified by concrete needs: different scaling requirements, independent release cycles, genuine functional independence, or bounded contexts with minimal data sharing. Extraction should be driven by problems worth solving, not abstract principles.
+Extract services again only when justified by concrete needs: different scaling requirements, independent release cycles, genuine functional independence, or bounded contexts with minimal data sharing. Extraction should be driven by concrete problems, not abstract principles.
 
 ## Prevention Through Documentation
 

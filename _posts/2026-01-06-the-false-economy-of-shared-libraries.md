@@ -60,7 +60,7 @@ Using mature, well-tested libraries for universal problems makes sense. Logging 
 
 Sharing your internal `CustomerDto` across services is different. Sharing your "standard" repository pattern is different. Sharing your domain models between bounded contexts is different. These aren't universal problems with stable solutions. They're your internal abstractions, and forcing them on other teams assumes those teams should think the same way you do.
 
-The distinction matters: external libraries abstract universal problems. Internal shared libraries impose your specific mental model on teams that might have legitimately different needs.
+External libraries abstract universal problems. Internal shared libraries impose your specific mental model on teams that might have legitimately different needs.
 
 ## SDKs Are Different
 
@@ -117,7 +117,7 @@ The pitch sounds reasonable: "We'll publish a client library so consumers don't 
 
 **Client libraries confuse application concerns with infrastructure concerns.** Teams building client libraries inevitably add caching strategies, retry policies, circuit breakers, and connection pooling configurations. These aren't client concerns. They're infrastructure concerns that belong in service meshes, sidecars, and API gateways where they can be configured, observed, and tuned without redeploying applications.
 
-A client library buries these decisions in application code where they're invisible to operations and impossible to change without a coordinated release across every consumer. The library author predicts traffic patterns and failure modes as if every consumer will behave identically. They won't.
+A client library buries these decisions in application code where they're invisible to operations and impossible to change without a coordinated release across every consumer. The library author predicts traffic patterns and failures as if every consumer will behave identically. They won't.
 
 **The absurdity becomes obvious with frontend consumers.** Nobody would publish an npm package for their React app to import API contracts, or a Swift package for iOS. Frontend teams read documentation, call endpoints, and map responses to whatever structures suit their application. Backend services have the same needs. The consumer's requirements don't change based on what language they're written in.
 

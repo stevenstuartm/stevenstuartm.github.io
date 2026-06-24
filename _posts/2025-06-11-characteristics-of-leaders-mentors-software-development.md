@@ -52,7 +52,7 @@ The most effective technical leaders understand something fundamental: we learn 
 
 This creates compound growth. As junior developers learn to handle the work you do today, you create space to tackle the challenges your leaders face. As they grow, you grow. You're not delegating to save time; you're building organizational capability while advancing your own.
 
-The distinction matters. Great engineers solve hard problems while great leaders create engineers who solve hard problems. One scales linearly with your own capacity, the other scales with the team's capacity. Mentorship isn't a nice-to-have activity you do when you have spare cycles; it's a core responsibility that determines whether you're writing code or building systems, working alone or multiplying impact.
+Great engineers solve hard problems. Great leaders create engineers who solve hard problems. One scales linearly with your own capacity, the other scales with the team's capacity. Mentorship isn't a nice-to-have activity you do when you have spare cycles; it's a core responsibility that determines whether you're writing code or building systems, working alone or multiplying impact.
 
 ## What Leadership Means
 

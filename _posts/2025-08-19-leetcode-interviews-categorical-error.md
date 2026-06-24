@@ -28,7 +28,7 @@ Even when performance optimization matters in typical production systems, it's u
 
 ## What Actually Needs Measurement
 
-The skills worth testing depend entirely on the role. For systems programming positions, algorithm optimization matters. For application development roles, different skills define success.
+The right skills to test depend entirely on the role. For systems programming positions, algorithm optimization matters. For application development roles, different skills define success.
 
 Most software engineering involves systems thinking applied to building products. That means understanding how components interact, how failures propagate, how changes impact users, and how technical decisions affect business outcomes. It means reading production metrics to diagnose issues, reviewing code to catch bugs before deployment, mentoring junior engineers to improve team capability, and collaborating with product teams to ensure what gets built actually solves user problems.
 

@@ -38,7 +38,7 @@ CheckoutOrchestrator    ← owned by the platform team; coordinates the checkout
     orders DB
 ```
 
-This is **positional architecture**. The checkout client never calls the domain services directly; it calls a chain of intermediary services, each owned by a different team, each a separate deployment with its own logs and its own failure modes. Auth happens once, at the edge; everything behind it is trusted because it arrived from the right place.
+This is **positional architecture**. The checkout client never calls the domain services directly; it calls a chain of intermediary services, each owned by a different team, each a separate deployment with its own logs and its own points of failure. Auth happens once, at the edge; everything behind it is trusted because it arrived from the right place.
 
 The same checkout feature built without the intermediaries:
 
@@ -89,7 +89,7 @@ The costs compound predictably as the system grows:
 - Infrastructure costs compound because you're running compute and paying for network traffic at every layer, sometimes several times per external request
 - Capacity planning is nonlinear because one unit of external load fans out to multiple internal calls with different resource profiles at each layer
 
-The most common failure mode is not shared code, but shared call chains: every consumer request travels through the same intermediary services in the same order, and every intermediary couples to the services below it. The layers are separate deployments with separate teams, but a change in any domain service propagates upward through every adapter and facade that depends on it, exactly as it would in a tightly coupled monolith. Every positional system carries the full cost of distributed architecture, including separate deployments, coordinated releases, and network hops, without the independence those costs were supposed to buy.
+The real coupling is not shared code but shared call chains: every consumer request travels through the same intermediary services in the same order, and every intermediary couples to the services below it. The layers are separate deployments with separate teams, but a change in any domain service propagates upward through every adapter and facade that depends on it, exactly as it would in a tightly coupled monolith. Every positional system carries the full cost of distributed architecture, including separate deployments, coordinated releases, and network hops, without the independence those costs were supposed to buy.
 
 Identity-oriented architecture enforces a discipline that prevents this. A consumer calls a domain service directly; that service may call one or more supporting services, but the chain ends there. Flatten the call chain to one hop and each service can be reasoned about, scaled, and deployed on its own terms.
 
