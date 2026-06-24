@@ -22,7 +22,7 @@ These aren't separate concerns that happened to share a category. They are each 
 
 Authority placement alone isn't enough to evaluate an architecture. A system can name its authorities without enforcing them, or enforce boundaries without ever naming what they contain. To assess how well an authority claim holds, two properties matter independently: how precisely the authority is scoped, and how strongly its boundary is enforced.
 
-This distinction matters because the failure modes differ. Vague authority and bypassed authority both produce inconsistent behavior and coordination friction, but they respond to different fixes. Sharpening scope without strengthening the bond makes the problem clearer without solving it. Strengthening the bond without sharpening scope enforces confusion more consistently. Getting the diagnosis right is what makes the fix productive.
+The failure modes differ. Vague authority and bypassed authority both produce inconsistent behavior and coordination friction, but they respond to different fixes. Sharpening scope without strengthening the bond makes the problem clearer without solving it. Strengthening the bond without sharpening scope enforces confusion more consistently. Getting the diagnosis right is what makes the fix productive.
 
 - **Scope** is the precision of the authority claim. What decisions, facts, and behaviors fall within it? A well-scoped authority can be named precisely, and that name carries the claim without further explanation: "CustomerFulfillmentsService" or "OrderCheckoutService" tells you what it owns. "OrderService" does not; it requires a follow-up sentence, and that need for qualification is itself the signal that scope is poor.
 - **Bond** is the enforcement strength of the boundary. Can the authority claim be bypassed? A strongly bonded authority has no known bypass; all interactions must go through its contract. A weakly bonded authority has routes around it such as direct database access, internal calls that skip validation, or shared state that circumvents the service layer.
@@ -98,7 +98,9 @@ This is the most common intermediate state: the full complexity of distributed s
 
 ### Shared Authority Through a Facade
 
-With services now decomposed but `CheckoutController` and `AdminController` still reaching across all of them, the team consolidates the entry point into a single facade. The intent is reasonable: a unified consumer-facing API that shapes responses and hides the internal service structure from callers.
+With services now decomposed but `CheckoutController` and `AdminController` still reaching across all of them, the team consolidates the entry point into a single facade: a unified consumer-facing API that shapes responses and hides the internal service structure from callers.
+
+The InventoryService follows the same decomposition pattern as Order and Payment; the remaining diagrams narrow to those two to keep the authority problem visible without adding a third context that contributes no new failure mode.
 
 ```text
 ┌──────────────────────────────────────────────────────┐

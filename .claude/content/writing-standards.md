@@ -24,6 +24,8 @@ The linter catches these violations automatically. Fix all flagged issues before
 - "The [noun] is understandable" (e.g., "The resistance is understandable")
 - "The question isn't" / "The question is" — rhetorical framing that avoids direct statements
 - "worth [gerund]" (e.g., "worth examining", "worth sitting with", "worth stating", "worth naming", "worth investigating") — often meta-commentary telling the reader what to pay attention to; state the point directly instead. Not always wrong, but there is usually a more direct way to make the same thought.
+- "is reasonable" (e.g., "this tradeoff is reasonable", "the approach is reasonable") — vague; state specifically what makes it acceptable or why it works
+- "distinction matters" — announces that a distinction is important without actually stating why; state the distinction and its consequence directly
 
 **AI-tell colon constructions**:
 - "What's converging:", "A critical distinction:", "The difference:", "The key:", "The point:", "Here's why:"
@@ -220,7 +222,7 @@ The linter detects three patterns automatically:
 ✅ Several trends are converging...
 
 ❌ A critical distinction:
-✅ The distinction matters because... (or just state it directly)
+✅ State the distinction directly (e.g., "X behaves differently from Y because...")
 
 ❌ Distributed systems made expected failures high-frequency
 ✅ Distributed systems made expected failures more frequent
