@@ -137,7 +137,7 @@ When the migration completes, each domain exclusively owns its data. More import
 │                   OrderApplication                   │
 │                                                      │
 │  ┌──────────────────┐    ┌──────────────────┐        │
-│  │   Order Context  │    │  Payment Context │        │
+│  │  OrderService    │    │  PaymentService  │        │
 │  │                  │    │                  │        │
 │  │  OrderAggRoot    │───►│  PaymentAggRoot  │        │
 │  │                  │    │                  │        │
@@ -164,7 +164,7 @@ The team adds event-driven architecture to decouple the services. A saga orchest
 │                   OrderApplication                   │
 │                                                      │
 │  ┌──────────────────┐    ┌──────────────────┐        │
-│  │   Order Context  │    │  Payment Context │        │
+│  │  OrderService    │    │  PaymentService  │        │
 │  │                  │    │                  │        │
 │  │  OrderAggRoot    │    │  PaymentAggRoot  │        │
 │  │       ▲          │    │        ▲         │        │
@@ -192,7 +192,7 @@ The corrected version gives the event log a precise authority claim and leaves s
 │                   OrderApplication                   │
 │                                                      │
 │  ┌──────────────────┐    ┌──────────────────┐        │
-│  │   Order Context  │    │  Payment Context │        │
+│  │  OrderService    │    │  PaymentService  │        │
 │  │                  │    │                  │        │
 │  │  OrderAggRoot    │    │  PaymentAggRoot  │        │
 │  │                  │    │                  │        │
