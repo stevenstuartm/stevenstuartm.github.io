@@ -48,6 +48,7 @@ class ContentLinter:
             r"\bthe bottom line is\b",
             r"\b(is|are|was|were)\s+real\b(?!-)",  # predicate "X is/are real" — filler; state specifically what that means
             r"\b\w+\s+real\s+(?:output|work|value|results?|impact|progress|problems?|issues?|cost|benefit|change|difference|data|code|tests?|features?|improvements?|gains?|savings?|performance|quality|effort|time|speed|scale)\b",
+            r"\bsomething (?:real|genuine|tangible|meaningful)\b",  # vague qualifier; state what it actually is
             r"\bthe \w[\w -]* is understandable\b",
             r"\bthe question isn'?t\b",
             r"\bthe question is\b",

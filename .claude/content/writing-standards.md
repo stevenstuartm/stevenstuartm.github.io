@@ -21,6 +21,7 @@ The linter catches these violations automatically. Fix all flagged issues before
 - "at the end of the day", "the bottom line is"
 - "X is/are/was/were real" (e.g., "the costs are real") — describe specifically what you mean instead
 - "[verb] real [noun]" (e.g., "does real work", "adds real value") — state what it does specifically instead
+- "something real/genuine/tangible/meaningful" (e.g., "owns something real") — vague qualifier; state what the thing actually is
 - "The [noun] is understandable" (e.g., "The resistance is understandable")
 - "The question isn't" / "The question is" — rhetorical framing that avoids direct statements
 - "worth [gerund]" (e.g., "worth examining", "worth sitting with", "worth stating", "worth naming", "worth investigating") — often meta-commentary telling the reader what to pay attention to; state the point directly instead. Not always wrong, but there is usually a more direct way to make the same thought.
