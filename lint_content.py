@@ -155,8 +155,9 @@ class ContentLinter:
             # Check for AI-tell colon constructions
             self._check_ai_tell_colons(line_num, line)
 
-            # Check for em-dashes in sentences (not in bullets/headers)
-            if not is_bullet and not is_header:
+            # Check for em-dashes in sentences (not in headers; bullets are checked
+            # because the em-dash character is distinct from the bullet hyphen)
+            if not is_header:
                 self._check_em_dashes(line_num, line)
 
             # Check for missing articles

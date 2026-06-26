@@ -2,15 +2,13 @@
 layout: post
 title: "Topology Is Not a Trust Model"
 date: 2026-06-19
-description: "What makes a service request legitimate? Most teams treat it as an authentication question, but the answer is also an architectural one. One school of thought grants legitimacy by placement; the other demands it be earned through verified ownership. Both beliefs shape the credential model and the service structure simultaneously."
+description: "Whether a service request is legitimate is treated as an authentication question, but the answer is also an architectural one: whether legitimacy comes from network position or from verified ownership. That distinction shapes service structure, security posture, and team dynamics in ways that compound as systems grow."
 tags: [architecture, api-design, distributed-systems, security, design-patterns, microservices]
 ---
 
-Every service request arrives with the same question: what makes this request legitimate?
+Every service request arrives with the same question: what makes this request legitimate? It is a question I return to often, because the answer almost always reveals a belief about architecture that was never made explicit.
 
-Most teams treat this solely as an authentication problem, but the answer reaches much further than that. It shapes how services are structured, where trust boundaries are drawn and defended, and how teams own their work.
-
-Two schools of thought answer the question differently.
+Most teams treat this as an authentication problem, but the answer shapes how services are structured, where trust boundaries sit, and how teams own their work.
 
 **Positional architecture**: legitimacy granted by placement.
 A request is legitimate because it arrived from the right place, to the right place: from behind the perimeter, through the right intermediaries, from a subnet the architecture trusts, or toward a service that grants access on that same basis.
@@ -20,7 +18,7 @@ A request is legitimate because the caller has proven who it is and what it is a
 
 The contrast between **Bounded Authority** and **Positional Claim** is not as simple as a separate authentication decision and a separate architecture decision. It typically reflects a single belief about where legitimacy comes from, and that belief determines where authority lives in the system, how teams own their work, and whether the system can adapt as the domain evolves.
 
-This post focuses on internal architecture, where that belief determines the most profound trade-offs.
+This post focuses on service-to-service communication, where that belief determines the most consequential trade-offs.
 
 ## Two Models
 
@@ -41,8 +39,6 @@ CheckoutOrchestrator    ← owned by the platform team; coordinates the checkout
     orders DB
 ```
 
-The checkout client calls through a chain of intermediary services; auth happens once at the edge, and everything behind it is trusted because it arrived from the right place.
-
 **Identity-oriented architecture** removes the intermediaries:
 
 ```
@@ -55,17 +51,17 @@ Checkout Client
     orders DB
 ```
 
-The checkout client presents credentials each domain service validates directly. No dedicated orchestrator sits in the path. When OrderService calls PaymentService, it presents its own service identity; the client's token is never forwarded.
+The checkout client presents credentials each domain service validates directly. When OrderService calls PaymentService, it presents its own service identity; the client's token is never forwarded.
 
 ## Bounded Authority
 
-### Ownership
+### Authority Is Canonical Ownership
 
 Authority is ownership: a domain service holds the canonical representation of its data, the validation rules governing it, and the contract it exposes. When multiple components claim authority over the same facts, each enforces subtly different rules. No component is the definitive answer, and the drift between them is slow, then sudden.
 
 ### The Coordination Objection
 
-The most compelling argument for adding an orchestration layer is avoiding the death star: an uncontrolled web of lateral calls between peer services where no component owns the full decision. Cascading call chains are a sound instinct; calls should flow down through the domain, not sideways across peer services. The problem is not the goal; it is the implementation. Positional architecture uses layer placement to enforce the cascade, but placement without authority creates pass-through components that fragment the very authority they were supposed to preserve. When authority has broken down, sideways calls become necessary because no single component owns the full decision.
+The most compelling argument for adding an orchestration layer is avoiding the death star: an uncontrolled web of lateral calls between peer services where no component owns the full decision. Cascading call chains are a sound instinct; a service should call domains it genuinely depends on, not reach sideways into peers that own unrelated concerns. Positional architecture uses layer placement to enforce the cascade, but placement without authority creates pass-through components that fragment the very authority they were supposed to preserve. When authority has broken down, sideways calls become necessary because no single component owns the full decision.
 
 Bounded authority inverts this: a service with tight, well-named scope has no need to reach sideways for decisions it already owns. When one bounded domain genuinely needs to coordinate with another, the call is direct and well-understood. The concern about sibling calls disappears when those siblings are precisely named and their authority is unambiguous. **The tangled dependencies of a death star emerge from many poorly bounded components, not from well-bounded ones communicating directly.**
 
@@ -109,16 +105,15 @@ Remove the coordinator and ask whether canonical state is lost. If yes, the serv
 
 A coordinator whose name reflects a process lifecycle has a genuine authority claim; one named for the services it coordinates, or for every concern it touches, does not. The name is a symptom; the underlying question is always what the service is the definitive source of truth for.
 
-The shallow call stack is a diagnostic, not a design target. It stays shallow not by design but as a consequence of services that own their decisions completely. What makes any composite structure legitimate is that every participant holds genuine authority over its own concern, not that it occupies the correct layer position.
+What makes any composite structure legitimate is that every participant holds genuine authority over its own concern, not that it occupies the correct layer position.
 
 ## Accumulated, Not Designed
 
 Positional architecture can be a deliberate choice; when it is, its trade-offs should be known and accepted. More often it arrives through one of a few recurring paths, each reasonable on its own terms, none of which examined the trust model they were collectively building.
 
 - **Organic accumulation**: a facade added for consumer shaping, an orchestrator grown to coordinate a flow no single service owned, an adapter added for a protocol mismatch. Each decision was reasonable when made; the architecture they collectively implied was not.
-- **Pattern cargo-culting**: Netflix and Uber earned their layers by living through the specific, observable problems that justified them. Teams that copy the pattern have a new domain, a smaller team, and a system that hasn't revealed where the real scaling pressure will sit.
-- **Historical misapplication**: the enterprise service bus was not an orchestration pattern; it was a resource efficiency pattern rooted in the economics of shared physical infrastructure. **Orchestration was an artifact of that centralization.** Cloud removes both constraints, but the coordination pattern persists in new systems, detached from the economics that justified it.
-- **Compliance overreach**: PCI-DSS mandates network isolation for the Cardholder Data Environment specifically, not for architectures generally. HIPAA, SOX, and GDPR impose no network topology requirements at all. The pressure comes from auditors trained on perimeter models, not from the text of the frameworks themselves.
+- **Pattern cargo-culting**: Companies like Netflix and Uber evolved their layers in response to specific scaling pressures visible in their public postmortems, pressures most teams haven't faced and won't. Teams that copy the pattern have a new domain, a smaller team, and a system that hasn't revealed where the real scaling pressure will sit.
+- **Compliance overreach**: PCI-DSS mandates network isolation for the Cardholder Data Environment specifically, not for service architectures generally. HIPAA, SOX, and GDPR prescribe access controls and data protection outcomes; none specify network topology. The pressure toward perimeter models typically comes from implementation guidance and audit practices, not from the frameworks' own text.
 
 The cases where positional architecture genuinely earns its cost are narrow. The one scenario that legitimately forces a specific boundary component is integration with systems outside your change control: acquisitions, partner APIs, and legacy systems that can't support identity-oriented calls. A facade at that boundary is a quarantine scoped to one boundary, not a commitment to positional architecture throughout the system. Almost every other use arrived through one of the paths above, and the controls that would justify it arrive later, applied unevenly, because delivery pressure consistently wins.
 
@@ -134,9 +129,13 @@ The costs compound predictably as the system grows:
 
 The real coupling is not shared code but shared call chains: every consumer request travels through the same intermediary services in the same order, and every intermediary couples to the services below it. The layers are separate deployments with separate teams, but a change in any domain service propagates upward through every adapter and facade that depends on it, exactly as it would in a tightly coupled monolith. Every positional system carries the full cost of distributed architecture, including separate deployments, coordinated releases, and network hops, without the independence those costs were supposed to buy.
 
-Identity-oriented architecture enforces a discipline that prevents this. A consumer calls a domain service directly; that service may call one or more supporting services, but the chain ends there. Flatten the call chain to one hop and each service can be reasoned about, scaled, and deployed on its own terms.
+In identity-oriented architecture, a consumer calls a domain service directly; that service may call one or more supporting services, but the chain ends there. Each service can be reasoned about, scaled, and deployed on its own terms.
 
 At sufficient coupling depth, a true monolith is more defensible: it at least eliminates network hops, serialization overhead, and the coordination cost of deploying multiple services to ship a single feature. Those costs are the price of independence. When independence was never achieved, the price is paid with nothing received in return.
+
+## What Identity-Oriented Architecture Costs
+
+Identity-oriented architecture carries its own operational costs. Every service credential requires a lifecycle: issuance, rotation, and revocation. Token expiry windows and revocation propagation require deliberate design rather than implicit trust. At scale, this becomes a distributed secrets management problem that positional architecture sidesteps by treating network membership as sufficient proof. The infrastructure for it, including workload identity systems and secrets managers, has matured, but the cost is front-loaded: teams pay it before the system is large enough for positional architecture's costs to become visible. That timing asymmetry is part of what makes the positional default durable.
 
 ## The Asymmetric Security Posture of Positional Systems
 
@@ -162,9 +161,9 @@ Identity-oriented architecture inverts this at the root. Every service presents 
 
 A common gut response is that identity-oriented architecture increases the attack surface by exposing domain services directly.
 
-Attack surface is a count of publicly reachable endpoints, and nothing about positional architecture bounds that count. A positional system can grow its public layer without end; every new consumer-facing feature adds endpoints regardless of whether intermediary tiers exist. Intermediary tiers sit behind those public endpoints, not instead of them; they add internal endpoints, not replace external ones.
+Attack surface is a count of publicly reachable endpoints, and nothing about positional architecture bounds that count. A positional system can grow its public layer without end; every new consumer-facing feature adds endpoints regardless of whether intermediary tiers exist.
 
-In an identity-oriented system, rate limiting, IP flagging, geographic constraints, and gateway-level checks apply everywhere without exception, because there is no interior to fall back on. There is no class of endpoint that gets lighter treatment because a perimeter supposedly already handled it. Positional architecture doesn't make the public layer more secure than a well-secured identity-oriented one; it adds internal layers that receive implicit trust, while the identity-oriented system applies the same controls to every surface.
+In an identity-oriented system, rate limiting, IP flagging, geographic constraints, and gateway-level checks apply everywhere without exception, because there is no interior to fall back on. Positional architecture doesn't make the public layer more secure than a well-secured identity-oriented one; it adds internal layers that receive implicit trust, while the identity-oriented system applies the same controls to every surface.
 
 ## Layer Boundaries Become Team Boundaries
 
@@ -176,10 +175,10 @@ This is Conway's Law expressed architecturally: organizations design systems tha
 
 The most common response is that teams with strong governance, comprehensive testing, and mature observability can operate positional systems effectively. A well-governed positional system beats an undisciplined identity-oriented one. Penetration testing, contract testing between layers, and distributed tracing across hops all work, and teams that apply them consistently can operate positional systems at scale.
 
-The objection treats discipline as an architectural substitute, and it isn't. Both styles require the same disciplines. The difference is what those disciplines cost when you add layers: in a positional system, a change at any hop can ripple through every connected hop, and the connections aren't visible without tracing the full topology. In an identity-oriented system, the discipline a team applies to its own domain stays local. Both options require the same investment; one multiplies the cost of that investment across a topology that grows with the system.
+The objection treats discipline as an architectural substitute, and it isn't. Both styles require the same disciplines. The difference is what those disciplines cost when you add layers: in a positional system, a change at any hop can ripple through every connected hop, and the connections aren't visible without tracing the full topology. In an identity-oriented system, the discipline a team applies to its own domain stays local. In a positional system, that discipline multiplies across a topology that grows with the system.
 
 ## Conclusion
 
 Does legitimacy come from who you are, or from where you sit? Positional architecture defaults toward position as the answer; identity-oriented architecture answers with ownership, and communication structure follows from that rather than preceding it. A system built to control communication paths will keep needing to control them as the domain evolves, because the structure was never derived from the domain.
 
-Positional architecture is not the wrong answer. It becomes the wrong answer when it arrives by default rather than by deliberate commitment, when teams inherit the cost without making the trade-off explicit. A system that earns its layers by living with the problems they solve is a different thing from one that inherits them from a diagram.
+Positional architecture becomes the wrong answer when it arrives by default rather than by deliberate commitment, when teams inherit the cost without making the trade-off explicit. A system that earns its layers by living with the problems they solve is a different thing from one that inherits them from a diagram.
