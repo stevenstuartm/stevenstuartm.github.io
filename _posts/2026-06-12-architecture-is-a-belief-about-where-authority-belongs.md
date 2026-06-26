@@ -6,15 +6,13 @@ description: "SOLID, normalization, least privilege, and bounded contexts share 
 tags: [architecture, design-patterns, solid, software-design, system-design, ddd]
 ---
 
-When I encounter a system or data design decision I'm unsure about, I endevour to ask the same thing: **where does authority live, and how bounded is it**? The domains differ; the principle doesn't.
-
-SOLID, database normalization, least privilege, and bounded contexts come from entirely different traditions. But if you trace the failures each one prevents, they all lead back to that question. Each best practice is a belief about where authority belongs: a structural position about which component owns which decisions. That belief shapes what the system can absorb when it changes and what it cannot.
+When I encounter a system or data design decision I'm unsure about, I endeavor to ask the same thing: **where does authority live, and how bounded is it**?
 
 ## Where Authority Belongs
 
-Authority in a software system is the assignment of decision-making power. Something is authoritative over data when it is the canonical source of truth, and authoritative over a behavior when it is the only thing that can legitimately enforce it.
+Authority in a software system is the assignment of decision-making power. Something is authoritative over data when it is the canonical source of truth, and authoritative over a behavior when it is the only thing that can legitimately enforce it. The belief of where authority belongs shapes what the system can absorb when it changes and what it cannot.
 
-The best practices across software engineering are each a response to a specific observed failure. SRP observed that a class holding authority over two concerns forces reasoning about both when either changes, producing behavioral drift at the class level. Database normalization observed that a fact stored in two places produces an inconsistency when one is updated, causing data drift. Least privilege observed that a process able to affect state beyond its concern eventually does, introducing state drift at the execution level. Bounded contexts observed that two teams sharing a term without shared authority over its meaning will diverge on that meaning, creating semantic drift at the domain level.
+The best practices across software engineering are each a response to a specific observed failure. The Single Responsibility Principle observed that a class holding authority over two concerns forces reasoning about both when either changes, producing behavioral drift at the class level. Database normalization observed that a fact stored in two places produces an inconsistency when one is updated, causing data drift. Least privilege observed that a process able to affect state beyond its concern eventually does, introducing state drift at the execution level. Bounded contexts observed that two teams sharing a term without shared authority over its meaning will diverge on that meaning, creating semantic drift at the domain level.
 
 These traditions emerged from different problems, in different decades, for different audiences, and converged on the same structural answer: distributed decision-making produces drift. When a component or even an actor holds decision-making power beyond what its concern requires, it makes decisions that other components or actors are also making, and those decisions diverge.
 
@@ -38,11 +36,6 @@ A well-contoured authority can be named precisely: "OrderCheckoutService" tells 
 Bond is the enforcement strength of the boundary, measured by the consequence of bypass: what breaks when the boundary fails.
 
 A strongly bonded authority has no known bypass; all interactions must go through its contract. A weakly bonded authority has routes around it such as direct database access, internal calls that skip validation, or shared state that circumvents the service layer. Bond strength is proportional to consequence. A payment processing boundary that is bypassed can produce corrupted financial state, while a read model that serves slightly stale data can tolerate a weaker bond.
-
-| | Strong Bond | Weak Bond |
-|---|---|---|
-| **Well-contoured** | Named and enforced | Named but bypassed |
-| **Poorly-contoured** | Enforced without clarity | Neither named nor enforced |
 
 Architecture style is a statement about where contour and bond balance for a given system. For example, a modular monolith bets differently on behavioral coherence and bypass consequence than a microservices architecture does.
 
@@ -236,4 +229,3 @@ The first four stages of that workflow represent authority misplaced at the outs
 The vocabulary of contour and bond are critical not just at design time but as a check at every point the architecture evolves.
 
 Architectural disagreements about service boundaries, consistency models, and pattern choice, traced far enough, are arguments about authority that the participants haven't recognized as such. Making the authority framing explicit doesn't resolve the argument automatically, but it changes what the argument is about: from aesthetic preference or pattern-matching to a structural position that can be examined, challenged, and shown to be wrong. Contour and bond give that examination tangible articulation.
-
