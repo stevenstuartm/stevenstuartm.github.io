@@ -8,4 +8,5 @@ vendor/
 Gemfile.lock
 .claude/*
 !.claude/content/
+!.claude/commands/
 .DS_Store
