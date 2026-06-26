@@ -104,6 +104,24 @@ Assess:
 - Is there filler — transitions, connective tissue, or section openings that exist to bridge structure rather than to say something?
 - Is there anything missing that the thesis implies but the body does not deliver?
 
+### Step 9 — Prose reduction pass
+
+After delivering the review report, make a direct editing pass on the file. The goal is to cut prose that exists for its own sake rather than to advance the argument. Apply edits to the file without asking for approval on individual cuts.
+
+Target these patterns:
+- **Restatements**: a sentence that repeats what the previous sentence already said in different words
+- **Announcement sentences**: sentences whose only function is to introduce what follows ("Here is what X does:", "The following section covers...")
+- **Redundant closers**: a sentence at the end of a paragraph that summarizes what was just established in that same paragraph
+- **Padded section openers**: opening sentences that only rephrase the section heading without adding content
+- **Implied conclusions**: "This is why X matters" when the preceding content already showed it
+
+Do not cut:
+- Transitions that carry structural argument (they move the reasoning forward, not just the reader)
+- Sentences that introduce a concept before defining it (setup that earns its place)
+- Closing sentences that land something the paragraph built toward rather than restate it
+
+After the pass, report how many sentences were removed or merged and the approximate before/after word count.
+
 ---
 
 ## Review Report Format
@@ -140,5 +158,8 @@ Pass / Fail — [1-2 sentences explaining why]
 Ready to publish / Needs revision / Major revision needed
 
 [2-4 sentences: the most important things to address before this publishes. Be direct. If the post has a thesis problem or a scholarly quality problem, say so plainly — these are not cosmetic issues.]
+
+**PROSE REDUCTION**
+[After the review report is delivered, perform the Step 9 pass and report here: sentences removed or merged, approximate before/after word count.]
 
 ---

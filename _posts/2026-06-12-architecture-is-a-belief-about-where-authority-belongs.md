@@ -2,21 +2,21 @@
 layout: post
 title: "Architecture Is a Belief About Where Authority Belongs"
 date: 2026-06-12
-description: "SOLID, normalization, least privilege, and bounded contexts come from different traditions, but they share a structural claim: that where authority lives shapes success and failure"
+description: "SOLID, normalization, least privilege, and bounded contexts share a structural belief: that where authority lives determines what the system can absorb. This post develops that into two measurable properties, contour and bond, and traces through an order workflow how authority correctly placed is quietly eroded by optimization."
 tags: [architecture, design-patterns, solid, software-design, system-design, ddd]
 ---
 
-SOLID, database normalization, least privilege, and bounded contexts come from entirely different traditions. They appear in different books, get argued about in separate communities, and are rarely taught together in the same breath. On the surface, they seem to address completely separate problems. Trace the failures each one prevents, though, and they all lead back to the same question.
+When I encounter a design decision I'm unsure about, I always ask the same thing: **where does authority live, and how bounded is it**? The domains differ; the principle doesn't.
 
-When I encounter a design decision I'm unsure about, I always ask the same thing: **where does authority live, and how bounded is it**? That's what all of them are answering. The domains differ; the principle doesn't.
+SOLID, database normalization, least privilege, and bounded contexts come from entirely different traditions. Trace the failures each one prevents, though, and they all lead back to that question. Each best practice is a belief about where authority belongs: a structural position about which component owns which decisions. That belief shapes what the system can absorb when it changes and what it cannot.
 
 ## Where Authority Belongs
 
-Authority in a software system is the assignment of decision-making power. Something is authoritative over a piece of data when it is the canonical source of truth for that data, and authoritative over a behavior when it is the only thing that can legitimately change or enforce it.
+Authority in a software system is the assignment of decision-making power. Something is authoritative over data when it is the canonical source of truth, and authoritative over a behavior when it is the only thing that can legitimately enforce it.
 
-The best practices across software engineering are measurements of this. The Single Responsibility Principle says a class should have one reason to change; the implied claim is that it should hold authority over exactly one concern. Database normalization says no fact should be authoritative in more than one place; each normal form tightens that rule one step further. Least privilege says a process should hold only the authority it can justify; anything beyond that is unbounded authority waiting to be exploited. Bounded contexts in domain-driven design name regions of authority explicitly; within a context, a term has one precise meaning and one authoritative representation.
+The best practices across software engineering are each a response to a specific observed failure. SRP observed that a class holding authority over two concerns forces reasoning about both when either changes, producing behavioral drift at the class level. Database normalization observed that a fact stored in two places produces an inconsistency when one is updated, causing data drift at the storage level. Least privilege observed that a process able to affect state beyond its concern eventually does, introducing state drift at the execution level. Bounded contexts observed that two teams sharing a term without shared authority over its meaning will diverge on that meaning, creating semantic drift at the domain level. These traditions emerged from different problems, in different decades, for different audiences, and converged on the same structural answer: distributed decision-making produces drift.
 
-These aren't separate concerns that happened to share a category. They are each saying the same thing: put authority in the right place, bound it tightly, and don't let it leak.
+When a component holds decision-making power beyond what its concern requires, it makes decisions that other components are also making, and those decisions diverge. A process with excess privilege is a security vulnerability, but the underlying architectural fact is that it can affect state it has no business affecting; the structural problem is the same as when two services independently enforce the same business rules, or when the same fact is stored in two tables.
 
 ## Measuring Authority Strength
 
@@ -29,13 +29,11 @@ Contour is the precision of the authority claim, calibrated by two conditions:
 - **Behavioral coherence**: the authority's decisions, facts, and behaviors change together for the same reasons
 - **Operational coherence**: no behavior inside the boundary needs to scale or fail independently of the others
 
-Contour is correctly calibrated when everything inside the boundary satisfies both. CQRS splits read and write models for the same domain not because they are behaviorally incoherent, but because their operational envelopes are incompatible; reads run at far higher volume than writes. A well-contoured authority can be named precisely without qualification: "CustomerFulfillmentsService" or "OrderCheckoutService" tells you what it owns, while "OrderService" does not. That need for a follow-up sentence is the signal that contour is misaligned.
+CQRS, for example, splits read and write models for the same domain not because they are behaviorally incoherent, but because their operational envelopes are incompatible; reads run at far higher volume than writes. A well-contoured authority can be named precisely: "CustomerFulfillmentsService" or "OrderCheckoutService" tells you what it owns, while "OrderService" does not. Needing a follow-up explanation is the signal that contour is misaligned.
 
 ### Bond
 
-Bond is the enforcement strength of the boundary, calibrated by:
-
-- **Consequence of bypass**: what breaks when the boundary fails
+Bond is the enforcement strength of the boundary, measured by the consequence of bypass: what breaks when the boundary fails.
 
 A strongly bonded authority has no known bypass; all interactions must go through its contract. A weakly bonded authority has routes around it such as direct database access, internal calls that skip validation, or shared state that circumvents the service layer. Bond strength is proportional to consequence: a payment processing boundary that is bypassed can produce corrupted financial state; a read model that serves slightly stale data can tolerate a weaker bond.
 
@@ -44,29 +42,29 @@ A strongly bonded authority has no known bypass; all interactions must go throug
 | **Well-contoured** | Named and enforced | Named but bypassed |
 | **Poorly-contoured** | Enforced without clarity | Neither named nor enforced |
 
-The bottom-left cell is less common but recognizable: a strictly enforced boundary around a module that conflates two unrelated concerns. The boundary holds; the wrong things are inside it. The most common outcome is the bottom-right cell: authority that is neither named nor enforced, producing the drift that most refactoring efforts eventually uncover. Architecture style is a statement about where contour and bond balance for a given system. A modular monolith makes a different bet about behavioral coherence and consequence of bypass than a microservices architecture does; neither is universally right, and both are answers to the same calibration question.
+The bottom-left cell is less common but recognizable: a strictly enforced boundary around a module that conflates two unrelated concerns. The boundary holds; the wrong things are inside it. The most common outcome is the bottom-right cell: authority that is neither named nor enforced, producing the drift that most refactoring efforts eventually uncover. Architecture style is a statement about where contour and bond balance for a given system; a modular monolith bets differently on behavioral coherence and bypass consequence than a microservices architecture does.
 
 ## Poor Contour Schedules Drift
 
 Poor contour doesn't create a risk of drift. Under any sustained change activity, it schedules it.
 
-When two components hold partial authority over the same concern, they evolve independently. Different teams touch them under different pressures and for different reasons, and neither has complete visibility into what the other owns. Given any sustained change activity, they will diverge; this is the mechanical consequence of splitting an authority claim without resolving the overlap.
+When two components hold partial authority over the same concern, they evolve independently. Different teams touch them under different pressures, and neither has complete visibility into what the other owns.
 
 ### Early Optimization Locks In Miscontoured Authority
 
-The most persistent version arrives through early optimization. Before a domain's behavioral coherence is understood, structural decisions get made: services get decomposed, schemas get separated, ownership gets assigned. These optimize for what is visible right now, like team size and deployment topology, rather than for behavioral coherence, which only becomes clear under change pressure. Once services are deployed with cross-cutting queries, the cost of realignment is high enough to defer indefinitely. The structure that was supposed to be provisional becomes load-bearing.
+The most persistent version arrives through early optimization. Before a domain's behavioral coherence is understood, structural decisions get made: services decomposed, schemas separated, ownership assigned. These optimize for what is visible right now, like team size and deployment topology, rather than for behavioral coherence, which only becomes clear under change pressure. Once deployed, the cost of realignment is high enough to defer indefinitely. The structure that was supposed to be provisional becomes load-bearing.
 
 ### The Correlation Between Decision and Consequence Is Hidden
 
 Architectural arguments often fail because the failure they predict arrives years after the decision that caused it, and the cost is rarely expressed in terms legible to the people who control the structure.
 
-When a facade's validation rules and a domain service's rules diverge, no one traces it back to the decision to put business logic in a routing layer; they trace it to human error. When a decomposed architecture becomes expensive to change, no one traces it back to service boundaries drawn before behavioral coherence was understood; they trace it to team coordination. The actual cause is invisible.
+When a facade's validation rules and a domain service's rules diverge, no one traces it back to the decision to put business logic in a routing layer; they trace it to human error. When a decomposed architecture becomes expensive to change, no one traces it back to service boundaries drawn before behavioral coherence was understood; they trace it to team coordination.
 
-The lag is measured in years, not sprints. By the time the drift is painful, the decision that caused it is no longer traceable to the people dealing with its consequences.
+The lag is measured in years; by the time the drift is painful, the decision that caused it is no longer traceable to the people dealing with its consequences.
 
 ## Authority in Practice: An Order Workflow
 
-An order workflow is a useful thread to follow because it touches most of the patterns where authority gets misplaced. Here is what happens to authority as a typical order system evolves.
+An order workflow is a useful thread to follow; it touches most of the patterns where authority gets misplaced.
 
 ### No Authority Declared
 
@@ -97,7 +95,7 @@ Both controllers reach into the entire manager layer. `CheckoutController` calls
 **Contour**: undefined. Behavioral coherence was never applied; `OrderPaymentMgr` conflates order lifecycle with payment processing, behaviors that change for entirely different reasons.
 **Bond**: none. With no boundaries declared, the consequence of bypass is invisible; there is nothing to bypass and nothing to break until the system is large enough that the cost becomes unavoidable.
 
-This is not inherently wrong for an early-stage system. The problem is not the monolith; it is that authority was never considered. When the system grows, there is nothing to grow from.
+This is not inherently wrong for an early-stage system; the problem is not the monolith but that authority was never considered. When the system grows, there is nothing to grow from.
 
 ### Decomposition Without Authority
 
@@ -119,7 +117,7 @@ The team recognizes that `OrderPaymentMgr` and `InventoryUserMgr` are too broad 
 └──────────────────────────────────────────────────────┘
 ```
 
-Contour has improved on paper: there are named services with named responsibilities. Bond has improved in structure but not in practice. Each service has its own schema, which declares a boundary. But PaymentService queries the orders schema directly, and that bypass exists for any service that knows the connection string. Each such query embeds the schema's shape into the consumer's code, so a data model change requires simultaneous updates across every service that queries it, which turns out to be all of them. That is the consequence of the bypass, and it surfaces not at the point of access but at the point of change.
+Contour has improved on paper: there are named services with named responsibilities. Bond has improved in structure but not in practice. Each service has its own schema, which declares a boundary. But PaymentService queries the orders schema directly, and that bypass exists for any service that knows the connection string. Each such query embeds the schema's shape into the consumer's code, so a data model change requires simultaneous updates across every service that queries it, which turns out to be all of them. The consequence surfaces not at the point of access but at the point of change.
 
 **Contour**: named but not coherent. The names exist, but the boundaries weren't drawn along behavioral coherence lines; PaymentService queries order data because order state and payment decisions are tightly coupled in practice, and the boundary didn't account for that.
 **Bond**: declared but bypassed. The consequence of cross-schema access was underestimated; it materializes the first time the order data model changes and every dependent service breaks with it.
@@ -128,7 +126,7 @@ This is the most common intermediate state: the full complexity of distributed s
 
 ### Shared Authority Through a Facade
 
-With services now decomposed but `CheckoutController` and `AdminController` still reaching across all of them, the team consolidates the entry point into a single facade: a unified consumer-facing API that shapes responses and hides the internal service structure from callers.
+With services now decomposed but `CheckoutController` and `AdminController` still reaching across all of them, the team consolidates the entry point into a facade: a consumer-facing API that shapes responses and hides internal service structure.
 
 ```text
 ┌──────────────────────────────────────────────────────┐
@@ -152,11 +150,11 @@ Neither layer is clearly the authority. Both claim to be.
 **Contour**: split across two behavioral concerns. Validation rules change when business requirements change; response shaping changes when clients change. Behavioral coherence says these belong to different authorities, but the facade holds both.
 **Bond**: split across two enforcement points. The consequence is inconsistent behavior; the rule a caller sees depends on which enforcement point their request path reaches first.
 
-A facade that shapes responses without making domain decisions holds clear, bounded authority over presentation concerns. The moment it acquires business logic, it becomes a second authority over the domain; divergence between the two isn't a risk to manage but the mechanical consequence of the split. The fix is not to remove the facade but to clarify what it owns: routing, shaping, and aggregating results are legitimate; deciding what constitutes a valid order is not.
+A facade holds clear authority over presentation concerns: routing, shaping, and aggregating results. The moment it acquires business logic, it becomes a second authority over the domain; divergence is not a risk to manage but the mechanical consequence of the split. The fix is not to remove the facade but to clarify what it owns.
 
 ### Domain-Driven Decomposition
 
-When the migration completes, each domain exclusively owns its data. More importantly, each domain has modeled its own aggregate root: the object that controls all access to the entities within its boundary.
+When the migration completes, each domain exclusively owns its data and has modeled its own aggregate root: the object that controls all access to entities within its boundary.
 
 ```text
 ┌──────────────────────────────────────────────────────┐
@@ -177,74 +175,64 @@ An order's state can only change through the Order aggregate root: `Order.Accept
 **Contour**: named and coherent. Order lifecycle, payment processing, and inventory management each change for different reasons; the boundaries reflect that behavioral coherence.
 **Bond**: strong, proportional to the consequence of bypass. State transitions through aggregate roots carry high consequence if violated; the aggregate root enforces accordingly.
 
-Authority is now in the right place, and the next evolution needs to keep it there.
+### Reporting Access Breaks the Bond
 
-### Events Added Incorrectly
-
-The team adds event-driven architecture to decouple the services. They need coordination visibility: a way to track where a checkout stands, sequence the steps, and handle failures across service boundaries. A saga orchestrator seems to solve this cleanly.
+The order system is performing well, but dashboard queries against order data are putting load on OrderService. The team grants the reporting service direct read access to the orders database: read-only, for dashboards only. Order state can still only change through the aggregate root.
 
 ```text
 ┌──────────────────────────────────────────────────────┐
 │                   OrderApplication                   │
 │                                                      │
 │  ┌──────────────────┐    ┌──────────────────┐        │
-│  │  OrderService    │    │  PaymentService  │        │
+│  │  OrderService    │    │ ReportingService  │        │
 │  │                  │    │                  │        │
-│  │  OrderAggRoot    │    │  PaymentAggRoot  │        │
-│  │       ▲          │    │        ▲         │        │
-│  │  [orders DB]     │    │  [payments DB]   │        │
-│  └────────┬─────────┘    └────────┬─────────┘        │
-│           │                       │                  │
-│           └──── SagaOrchestrator ─┘                  │
-│             [sequences commands, owns flow logic]     │
-└──────────────────────────────────────────────────────┘
-```
-
-The orchestrator calls each service through its API: it issues a command to PaymentService to charge the card, receives a reply, then issues a command to InventoryService to reserve stock. It does not bypass any contract. The authority problem accumulates quietly. The conditions under which payment proceeds, the sequence of operations, what to do when a step fails, the compensation logic when a later step needs to reverse an earlier one — all of this embeds business rules about the checkout flow, and all of it now lives in the orchestrator. The domains still control their own state transitions; the orchestrator controls what state transitions happen and when.
-
-**Contour**: the orchestrator has no behavioral coherence of its own. Sequencing, compensation, and retry logic all land in it because they span services, not because they belong together. These concerns change for different reasons, and none of them have a domain home inside the orchestrator.
-**Bond**: the orchestrator's authority over the flow is enforced by its position in the call path, not by any contract. The consequence is business logic with no domain home: rules about the checkout flow that belong to the domains but live nowhere near them.
-
-The orchestrator becomes what the shared database was two stages earlier: a gravitational center that pulls in concerns that should belong to the domains, without the structure to own them properly.
-
-### Events as Facts
-
-The corrected version gives the event log a precise authority claim and leaves state authority where it was.
-
-```text
-┌──────────────────────────────────────────────────────┐
-│                   OrderApplication                   │
-│                                                      │
-│  ┌──────────────────┐    ┌──────────────────┐        │
-│  │  OrderService    │    │  PaymentService  │        │
+│  │  OrderAggRoot    │    │                  │        │
 │  │                  │    │                  │        │
-│  │  OrderAggRoot    │    │  PaymentAggRoot  │        │
-│  │                  │    │                  │        │
-│  │  OrderPlaced ────┼───►│  reacts to fact; │        │
-│  │  OrderFulfilled  │    │  makes its own   │        │
-│  │  OrderCancelled  │    │  decision        │        │
-│  │                  │    │                  │        │
-│  │  [orders DB]     │    │  [payments DB]   │        │
+│  │  [orders DB]     │◄───│                  │        │
 │  └──────────────────┘    └──────────────────┘        │
+│   ReportingService reads orders DB directly;         │
+│   schema now serves two unrelated access patterns    │
 └──────────────────────────────────────────────────────┘
 ```
 
-The Order aggregate root emits events as facts: `OrderPlaced`, `OrderFulfilled`, `OrderCancelled`. These are records of decisions the aggregate root has already made; they are not instructions to other contexts. The Payment context reacts to `OrderPlaced` by initiating payment processing, but it makes that decision autonomously. No orchestrator tells it what to do.
+The contour is unchanged; OrderService still owns order lifecycle. The bond is weakened but the consequence of the bypass is low: a read cannot modify order state.
 
-This does not make the team's original concerns disappear; it moves them. The question of where a checkout currently stands can be tracked by a process manager: a component that listens to domain events and maintains a projection of the saga's position, without issuing commands or holding business logic. The question of what happens when payment fails is answered by each domain owning its own compensation: `PaymentFailed` is itself a fact that the Order context reacts to, triggering cancellation through its own aggregate root. The decisions stay in the domains. The coordination record is separate from the coordination authority.
+The `orders` table has grown large enough that query performance on the checkout flow degrades under load. The team designs a migration: split `orders` into `orders` (header: customer, status, timestamps) and `order_line_items` (per-item: SKU, quantity, price). The migration cannot proceed. The `order_summary` materialized view joins across columns that would be split into two tables, and the nightly export job selects from it in a pipeline the reporting team controls on a separate release schedule. Coordinating the schema change, the view update, and the export job across two teams and two release schedules stalls the migration for two quarters. The production schema cannot change freely because the reporting concern has an implicit claim on its shape.
 
-The event log holds authority over what happened. Each aggregate root holds authority over its own state transitions. Neither claims the other's authority.
+**Bond**: violated. The aggregate root can no longer change the schema it's supposed to own without coordinating with a consumer that was never declared an authority over it. The `orders` table now serves two unrelated access patterns, and neither can evolve without the other.
 
-**Contour**: coherent at every level. The event log owns the record of facts; each aggregate root owns the decisions it makes in response. These are genuinely distinct behavioral concerns, and each is sized to exactly what changes together.
-**Bond**: strong throughout, scaled to the consequence of bypass at each boundary. Event records are immutable; state changes only happen through aggregate roots.
+The bond wasn't broken in one decision; it eroded through a sequence of locally reasonable choices: a performance bypass, then a convenience view, then queries that took dependencies on both. The cost surfaced not at the point of access but at the point of change.
+
+### Reporting Access Through Contract
+
+The corrected version keeps the production schema exclusively in OrderService's authority. Reporting access comes through the service's contract, not through the schema.
+
+```text
+┌──────────────────────────────────────────────────────┐
+│                   OrderApplication                   │
+│                                                      │
+│  ┌──────────────────┐    ┌──────────────────┐        │
+│  │  OrderService    │    │ ReportingService  │        │
+│  │                  │    │                  │        │
+│  │  OrderAggRoot    │───►│  [reporting DB]  │        │
+│  │                  │    │                  │        │
+│  │  [orders DB]     │    │                  │        │
+│  └──────────────────┘    └──────────────────┘        │
+│   production schema belongs to OrderService alone;   │
+│   reporting store shaped for reporting access only   │
+└──────────────────────────────────────────────────────┘
+```
+
+OrderService publishes order data to a reporting store it controls, whether through events, a scheduled export, or a dedicated read model.
+
+**Contour**: coherent. OrderService owns order behavior and the production schema. ReportingService owns its read model.
+**Bond**: maintained. The `orders` schema has no bypass; the reporting store is a separate authority over reporting-shaped data.
 
 ## Conclusion
 
-The DDD stage is the moment the workflow actually worked. Each domain exclusively owned its data; aggregate roots enforced state transitions; no service bypassed another's contract. The authority question had been asked and answered correctly.
+The first four stages of that workflow represent authority misplaced at the outset: a system that was never sound. The reporting bypass is a different class of failure. Authority was correctly placed; the aggregate root enforced order state transitions, no service bypassed another's contract. Then it eroded through a sequence of locally reasonable decisions: a read bypass for performance, a convenience view, queries that took dependencies on both. The cost surfaced not when those decisions were made but when the schema needed to change.
 
-The events stage that followed broke it, not through bad implementation but through a genuine design pressure: the team needed coordination visibility and failure handling that the choreography model left unresolved. The orchestrator addressed those concerns by accumulating authority over what each domain does and when — sequencing, compensation, conditions for proceeding. The structure had been sound. The optimization silently dismantled it by making the orchestrator the place where business decisions about the checkout flow lived.
+Authority correctly placed and then quietly eroded produces a system that was sound until it wasn't, with no clear record of what changed. The vocabulary of contour and bond matters not just at design time but as a check at every point the architecture evolves: whether a given change preserves the authority structure or quietly weakens it.
 
-This is a different class of failure from the earlier stages. Authority misplaced at the outset produces a system that was never sound. Authority correctly placed and then silently reassigned by an optimization produces a system that was sound until it wasn't, with no trace of what changed. The orchestrator's original concerns were legitimate; the answer to them is ensuring that the component tracking coordination state holds authority only over what happened, not over what happens next. The vocabulary of contour and bond matters not just at design time but as a check at every point the architecture evolves: whether a given change preserves the authority structure or quietly reassigns it.
-
-Architectural disagreements about service boundaries, consistency models, and pattern choice, traced far enough, are arguments about authority that the participants haven't recognized as such. The surface argument is usually about pattern choice, service boundaries, or consistency models, but underneath, someone is making a claim about where decision-making power lives and what enforces it. Making that claim explicit doesn't resolve the argument automatically; it changes what the argument is about: from aesthetic preference or pattern-matching to a structural position that can be examined, challenged, and shown to be wrong. Contour and bond give that examination a vocabulary.
+Architectural disagreements about service boundaries, consistency models, and pattern choice, traced far enough, are arguments about authority that the participants haven't recognized as such. Teams debate whether to add a coordination layer; the underlying question is whether a new bounded owner should hold authority over the coordinated process, or whether that authority belongs distributed across peers. Teams argue about consistency models; the underlying question is which component is authoritative over the data in contention, and what bypass the weaker consistency model is silently permitting. Making the authority framing explicit doesn't resolve the argument automatically; it changes what the argument is about: from aesthetic preference or pattern-matching to a structural position that can be examined, challenged, and shown to be wrong. Contour and bond give that examination a vocabulary.
 

@@ -44,6 +44,18 @@ tags: [architecture, design-patterns]
 
 ---
 
+## CRITICAL: Never Cross-Reference Other Posts
+
+- ❌ NEVER add links to other posts on the site within post content
+- ❌ NEVER write "as explored in [post]", "see also [post]", "covered in [post]"
+- Each post must stand alone as a complete, self-contained argument
+- Cross-references imply the post is incomplete without reading the linked content — this is a quality failure
+- If a concept belongs to another post, the current post must either cover enough to be self-contained, or acknowledge the limit in prose without pointing elsewhere
+
+This rule is non-negotiable and applies to all blog post content.
+
+---
+
 ## CRITICAL: Never Fabricate Personal Experiences
 
 - ❌ NEVER write "I've watched...", "I've seen...", "I've observed..." unless the user explicitly provided those experiences
