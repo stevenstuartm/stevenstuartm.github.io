@@ -57,6 +57,18 @@ The linter catches these violations automatically. Fix all flagged issues before
 
 These cannot be automated. Apply them thoughtfully during drafting and self-review.
 
+### Epistemic Accuracy
+
+Avoid absolute claims when the reality is softer. Absolutes ("always", "never", "no one", "every") are easy to dismiss and often inaccurate.
+
+- ❌ "When this happens, no one traces it back to the root cause." → ✅ "People tend not to trace it back to the root cause."
+- ❌ "Which only becomes clear under change pressure." → ✅ "Which might only become clear under change pressure."
+- ❌ "I always ask the same question." → ✅ "I endeavour to ask the same question."
+
+Prefer "tend to", "might", "can", "often", "rarely" over absolute constructions. The hedged version is almost always both more accurate and harder to refute.
+
+---
+
 ### Clarity and Brevity
 
 - Cut unnecessary words that obscure the point
@@ -85,6 +97,11 @@ These cannot be automated. Apply them thoughtfully during drafting and self-revi
 - Stronger arguments cite specific sources rather than paraphrasing
 
 ### Sentence Flow and Punctuation
+
+**Semicolons are for parallel contrast; comma+and is for sequential cause.** Using a semicolon where "and" belongs creates a false equivalence:
+- ❌ "The lag is measured in years; by the time the drift is painful, the decision is untraceable." (the second clause is a consequence, not a parallel)
+- ✅ "The lag is measured in years, and by the time the drift is painful, the decision is untraceable."
+- ✅ "Reads are fast; writes are slow." (genuine parallel contrast — semicolon is correct)
 
 **Use semicolons and commas for natural flow**:
 - ❌ "Something is broken in production. You need to fix it." (choppy)
@@ -184,9 +201,17 @@ Every sentence must earn its place. The most common way sentences fail is by res
 
 **Cut scaffolding sentences.** Setup sentences that exist only to introduce the real point — "Teams debate X; the underlying question is Y" repeated twice — are scaffolding, not argument. Cut the scaffolding and let the point stand on its own.
 
+**Cut section-opening scaffolding.** When a section heading already signals the topic, don't open the section body with sentences that frame what's coming ("X alone isn't enough. Y also matters. Two things measure Z."). Jump straight to the operative claim ("Two things measure Z."). The heading is already doing the framing work.
+
+**Don't re-explain what a table already shows.** After rendering a table, cut any prose that walks through what each cell means. The table communicates those meanings itself. Add prose only for what the table cannot express — implications, caveats, or connections to surrounding argument.
+
 **Connect contrasting ideas with "but" rather than splitting into two sentences.** Two short sentences in close succession often signal a contrast that should be expressed as one:
 - ❌ "It doesn't resolve the argument automatically. It changes what the argument is about."
 - ✅ "It doesn't resolve the argument automatically, but it changes what the argument is about."
+
+"But" can also open a sentence when pivoting from a prior claim. Prefer this over awkward mid-clause pivots ("..., though, and they all lead back to"):
+- ❌ "These come from different traditions. Trace the failures each one prevents, though, and they converge."
+- ✅ "These come from different traditions. But if you trace the failures each one prevents, they converge."
 
 **The test**: After drafting, read each sentence and ask — does this add something the surrounding prose doesn't already say? If not, cut it.
 

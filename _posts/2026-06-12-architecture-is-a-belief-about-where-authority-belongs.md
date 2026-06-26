@@ -6,21 +6,21 @@ description: "SOLID, normalization, least privilege, and bounded contexts share 
 tags: [architecture, design-patterns, solid, software-design, system-design, ddd]
 ---
 
-When I encounter a design decision I'm unsure about, I always ask the same thing: **where does authority live, and how bounded is it**? The domains differ; the principle doesn't.
+When I encounter a system or data design decision I'm unsure about, I endevour to ask the same thing: **where does authority live, and how bounded is it**? The domains differ; the principle doesn't.
 
-SOLID, database normalization, least privilege, and bounded contexts come from entirely different traditions. Trace the failures each one prevents, though, and they all lead back to that question. Each best practice is a belief about where authority belongs: a structural position about which component owns which decisions. That belief shapes what the system can absorb when it changes and what it cannot.
+SOLID, database normalization, least privilege, and bounded contexts come from entirely different traditions. But if you trace the failures each one prevents, they all lead back to that question. Each best practice is a belief about where authority belongs: a structural position about which component owns which decisions. That belief shapes what the system can absorb when it changes and what it cannot.
 
 ## Where Authority Belongs
 
 Authority in a software system is the assignment of decision-making power. Something is authoritative over data when it is the canonical source of truth, and authoritative over a behavior when it is the only thing that can legitimately enforce it.
 
-The best practices across software engineering are each a response to a specific observed failure. SRP observed that a class holding authority over two concerns forces reasoning about both when either changes, producing behavioral drift at the class level. Database normalization observed that a fact stored in two places produces an inconsistency when one is updated, causing data drift at the storage level. Least privilege observed that a process able to affect state beyond its concern eventually does, introducing state drift at the execution level. Bounded contexts observed that two teams sharing a term without shared authority over its meaning will diverge on that meaning, creating semantic drift at the domain level. These traditions emerged from different problems, in different decades, for different audiences, and converged on the same structural answer: distributed decision-making produces drift.
+The best practices across software engineering are each a response to a specific observed failure. SRP observed that a class holding authority over two concerns forces reasoning about both when either changes, producing behavioral drift at the class level. Database normalization observed that a fact stored in two places produces an inconsistency when one is updated, causing data drift. Least privilege observed that a process able to affect state beyond its concern eventually does, introducing state drift at the execution level. Bounded contexts observed that two teams sharing a term without shared authority over its meaning will diverge on that meaning, creating semantic drift at the domain level.
 
-When a component holds decision-making power beyond what its concern requires, it makes decisions that other components are also making, and those decisions diverge. A process with excess privilege is a security vulnerability, but the underlying architectural fact is that it can affect state it has no business affecting; the structural problem is the same as when two services independently enforce the same business rules, or when the same fact is stored in two tables.
+These traditions emerged from different problems, in different decades, for different audiences, and converged on the same structural answer: distributed decision-making produces drift. When a component or even an actor holds decision-making power beyond what its concern requires, it makes decisions that other components or actors are also making, and those decisions diverge.
 
 ## Measuring Authority Strength
 
-Authority placement alone isn't enough to evaluate an architecture. A system can name its authorities without enforcing them, or enforce boundaries without ever naming what they contain. Two properties measure how well an authority claim holds: how well the authority is contoured, and how strongly its boundary is enforced.
+Two properties measure how well an authority claim holds: how well the authority is contoured, and how strongly its boundary is enforced.
 
 ### Contour
 
@@ -29,20 +29,22 @@ Contour is the precision of the authority claim, calibrated by two conditions:
 - **Behavioral coherence**: the authority's decisions, facts, and behaviors change together for the same reasons
 - **Operational coherence**: no behavior inside the boundary needs to scale or fail independently of the others
 
-CQRS, for example, splits read and write models for the same domain not because they are behaviorally incoherent, but because their operational envelopes are incompatible; reads run at far higher volume than writes. A well-contoured authority can be named precisely: "CustomerFulfillmentsService" or "OrderCheckoutService" tells you what it owns, while "OrderService" does not. Needing a follow-up explanation is the signal that contour is misaligned.
+CQRS, for example, splits read and write models for the same domain not because they are behaviorally incoherent, but because their operational envelopes are incompatible; reads run at far higher volume than writes.
+
+A well-contoured authority can be named precisely: "OrderCheckoutService" tells you what it owns, while "OrderService" does not. Needing a follow-up explanation is the signal that contour might be misaligned.
 
 ### Bond
 
 Bond is the enforcement strength of the boundary, measured by the consequence of bypass: what breaks when the boundary fails.
 
-A strongly bonded authority has no known bypass; all interactions must go through its contract. A weakly bonded authority has routes around it such as direct database access, internal calls that skip validation, or shared state that circumvents the service layer. Bond strength is proportional to consequence: a payment processing boundary that is bypassed can produce corrupted financial state; a read model that serves slightly stale data can tolerate a weaker bond.
+A strongly bonded authority has no known bypass; all interactions must go through its contract. A weakly bonded authority has routes around it such as direct database access, internal calls that skip validation, or shared state that circumvents the service layer. Bond strength is proportional to consequence. A payment processing boundary that is bypassed can produce corrupted financial state, while a read model that serves slightly stale data can tolerate a weaker bond.
 
 | | Strong Bond | Weak Bond |
 |---|---|---|
 | **Well-contoured** | Named and enforced | Named but bypassed |
 | **Poorly-contoured** | Enforced without clarity | Neither named nor enforced |
 
-The bottom-left cell is less common but recognizable: a strictly enforced boundary around a module that conflates two unrelated concerns. The boundary holds; the wrong things are inside it. The most common outcome is the bottom-right cell: authority that is neither named nor enforced, producing the drift that most refactoring efforts eventually uncover. Architecture style is a statement about where contour and bond balance for a given system; a modular monolith bets differently on behavioral coherence and bypass consequence than a microservices architecture does.
+Architecture style is a statement about where contour and bond balance for a given system. For example, a modular monolith bets differently on behavioral coherence and bypass consequence than a microservices architecture does.
 
 ## Poor Contour Schedules Drift
 
@@ -52,15 +54,15 @@ When two components hold partial authority over the same concern, they evolve in
 
 ### Early Optimization Locks In Miscontoured Authority
 
-The most persistent version arrives through early optimization. Before a domain's behavioral coherence is understood, structural decisions get made: services decomposed, schemas separated, ownership assigned. These optimize for what is visible right now, like team size and deployment topology, rather than for behavioral coherence, which only becomes clear under change pressure. Once deployed, the cost of realignment is high enough to defer indefinitely. The structure that was supposed to be provisional becomes load-bearing.
+The most persistent variation arrives through early optimization. Before a domain's behavioral coherence is understood, structural decisions get made. Such as, services decomposed, schemas separated, and ownership assigned. These optimize for what is visible right now, like team size and deployment topology, rather than for behavioral coherence, which might only become clear under change pressure. Once deployed, the cost of realignment is high enough to defer indefinitely. The structure that was supposed to be provisional becomes load-bearing.
 
 ### The Correlation Between Decision and Consequence Is Hidden
 
-Architectural arguments often fail because the failure they predict arrives years after the decision that caused it, and the cost is rarely expressed in terms legible to the people who control the structure.
+Architectural arguments often fail because the failure they predict for the current system, and examined from previous systems, arrives years after, and the cost is rarely expressed in terms legible to the people who make the final call.
 
-When a facade's validation rules and a domain service's rules diverge, no one traces it back to the decision to put business logic in a routing layer; they trace it to human error. When a decomposed architecture becomes expensive to change, no one traces it back to service boundaries drawn before behavioral coherence was understood; they trace it to team coordination.
+When a facade's validation rules and a domain service's rules diverge, people tend not to trace it back to the decision to put business logic in a routing layer (for example); they trace it to human error. When a decomposed architecture becomes expensive to change, no one traces it back to service boundaries drawn before behavioral coherence was understood; they trace it to team coordination.
 
-The lag is measured in years; by the time the drift is painful, the decision that caused it is no longer traceable to the people dealing with its consequences.
+The lag is measured in years, and by the time the drift is painful, the decision that caused it is no longer traceable to the people dealing with its consequences.
 
 ## Authority in Practice: An Order Workflow
 

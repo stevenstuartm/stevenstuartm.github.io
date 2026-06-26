@@ -16,11 +16,9 @@ A request is legitimate because it arrived from the right place, to the right pl
 **Identity-oriented architecture**: legitimacy earned by ownership.
 A request is legitimate because the caller has proven who it is and what it is authorized to do. Credentials name its bounded scope, not just its network address. Every service validates every caller the same way, and all services relate to each other as peers with clear, bounded authority over their own domains.
 
-The contrast between **Bounded Authority** and **Positional Claim** is not as simple as a separate authentication decision and a separate architecture decision. It typically reflects a single belief about where legitimacy comes from, and that belief determines where authority lives in the system, how teams own their work, and whether the system can adapt as the domain evolves.
+The choice typically reflects a single belief about where legitimacy comes from, and that belief determines where authority lives in the system, how teams own their work, and whether the system can adapt as the domain evolves.
 
-This post focuses on service-to-service communication, where that belief determines the most consequential trade-offs.
-
-## Two Models
+## Position vs. Identity in Practice
 
 **Positional architecture** would commonly arrange a checkout feature like this:
 
@@ -107,7 +105,7 @@ A coordinator whose name reflects a process lifecycle has a genuine authority cl
 
 What makes any composite structure legitimate is that every participant holds genuine authority over its own concern, not that it occupies the correct layer position.
 
-## Accumulated, Not Designed
+## How Positional Architecture Accumulates
 
 Positional architecture can be a deliberate choice; when it is, its trade-offs should be known and accepted. More often it arrives through one of a few recurring paths, each reasonable on its own terms, none of which examined the trust model they were collectively building.
 
@@ -175,7 +173,7 @@ This is Conway's Law expressed architecturally: organizations design systems tha
 
 The most common response is that teams with strong governance, comprehensive testing, and mature observability can operate positional systems effectively. A well-governed positional system beats an undisciplined identity-oriented one. Penetration testing, contract testing between layers, and distributed tracing across hops all work, and teams that apply them consistently can operate positional systems at scale.
 
-The objection treats discipline as an architectural substitute, and it isn't. Both styles require the same disciplines. The difference is what those disciplines cost when you add layers: in a positional system, a change at any hop can ripple through every connected hop, and the connections aren't visible without tracing the full topology. In an identity-oriented system, the discipline a team applies to its own domain stays local. In a positional system, that discipline multiplies across a topology that grows with the system.
+The objection treats discipline as an architectural substitute, and it isn't. Both styles require the same disciplines. The difference is what those disciplines cost when you add layers: in a positional system, a change at any hop can ripple through every connected hop, and the connections aren't visible without tracing the full topology. In an identity-oriented system, the discipline a team applies to its own domain stays local; in a positional system, that discipline multiplies across a topology that grows with the system.
 
 ## Conclusion
 
