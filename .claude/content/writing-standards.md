@@ -170,6 +170,26 @@ The linter detects three patterns automatically:
 - Setting up a formal enumeration ("Three factors matter: first, second, third")
 - After complete independent clauses that introduce what follows
 
+### Prose Economy
+
+Every sentence must earn its place. The most common way sentences fail is by restating what the surrounding prose already established.
+
+**Cut re-explanations of what the prose already showed.** If a worked example or prior paragraph demonstrated a point, don't restate it abstractly afterward. The reader saw it.
+
+**Cut abstract restatements after concrete sentences.** A sentence that summarizes the two sentences before it is redundant. If the concrete sentences made the point, the summary adds nothing.
+
+**Trim trailing clauses that over-explain.** When the main clause already implies the consequence, cut the subordinate clause spelling it out.
+- ❌ "at every point the architecture evolves: whether a given change preserves the authority structure or quietly weakens it"
+- ✅ "at every point the architecture evolves"
+
+**Cut scaffolding sentences.** Setup sentences that exist only to introduce the real point — "Teams debate X; the underlying question is Y" repeated twice — are scaffolding, not argument. Cut the scaffolding and let the point stand on its own.
+
+**Connect contrasting ideas with "but" rather than splitting into two sentences.** Two short sentences in close succession often signal a contrast that should be expressed as one:
+- ❌ "It doesn't resolve the argument automatically. It changes what the argument is about."
+- ✅ "It doesn't resolve the argument automatically, but it changes what the argument is about."
+
+**The test**: After drafting, read each sentence and ask — does this add something the surrounding prose doesn't already say? If not, cut it.
+
 ### Avoid Choppy and Generic Content
 
 - **Choppy openings**: Sentence fragments or noun-heavy constructions that lack natural flow
