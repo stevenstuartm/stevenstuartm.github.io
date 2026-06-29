@@ -37,7 +37,13 @@ Bond is the enforcement strength of the boundary, measured by the consequence of
 
 A strongly bonded authority has no known bypass; all interactions must go through its contract. A weakly bonded authority has routes around it such as direct database access, internal calls that skip validation, or shared state that circumvents the service layer. Bond strength is proportional to consequence. A payment processing boundary that is bypassed can produce corrupted financial state, while a read model that serves slightly stale data can tolerate a weaker bond.
 
-Architecture style is a statement about where contour and bond balance for a given system. For example, a modular monolith bets differently on behavioral coherence and bypass consequence than a microservices architecture does.
+## Style, Characteristics, and Team Topology
+
+We can often be so focused on code and "architecture" that we forget that there is a much broader puzzle to solve, with each aspect affecting the others.
+
+- **Architectural Characteristics** are the primary authority in any system design decision. They are the business priority values the system must honor: cost, security, availability, scalability, deployability, and the rest. Style and team topology are derived from them.
+- **Architectural Style** is the structural arrangement of the system, chosen to honor the characteristics. Contour and bond measure whether authority in the code is correctly placed: whether the right components own the right decisions, and whether those boundaries hold under the pressures the characteristics describe.
+- **Team Topology** is how the organization structures ownership and decision-making. We should measure authority here as well to see whether the teams have enough proximity to a domain to adapt: to draw and redraw the domain boundaries to sustain integrity and growth.
 
 ## Poor Contour Schedules Drift
 
@@ -225,7 +231,8 @@ OrderService publishes order data to a reporting store it controls, whether thro
 
 ## Conclusion
 
-The first four stages of that workflow represent authority misplaced at the outset. The reporting bypass is a different class of failure. It eroded through a sequence of locally reasonable decisions: a read bypass for performance, a convenience view, and queries that took dependencies on both. The cost surfaced not when those decisions were made but when the schema needed to change. 
+The first four stages of that workflow represent authority misplaced at the outset. The reporting bypass is a different class of failure. It eroded through a sequence of locally reasonable decisions: a read bypass for performance, a convenience view, and queries that took dependencies on both. The cost surfaced not when those decisions were made but when the schema needed to change.
+
 The vocabulary of contour and bond are critical not just at design time but as a check at every point the architecture evolves.
 
 Architectural disagreements about service boundaries, consistency models, and pattern choice, traced far enough, are arguments about authority that the participants haven't recognized as such. Making the authority framing explicit doesn't resolve the argument automatically, but it changes what the argument is about: from aesthetic preference or pattern-matching to a structural position that can be examined, challenged, and shown to be wrong. Contour and bond give that examination tangible articulation.
