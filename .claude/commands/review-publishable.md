@@ -104,7 +104,30 @@ Assess:
 - Is there filler — transitions, connective tissue, or section openings that exist to bridge structure rather than to say something?
 - Is there anything missing that the thesis implies but the body does not deliver?
 
-### Step 9 — Prose reduction pass
+### Step 9 — Practical artifact check
+
+A publishable post should leave the reader with something concrete they can apply — not just an argument they found interesting. This could be a decision framework ("use X when A, B, C; use Y when D, E, F"), a before/after diagram, a named principle stated as a testable rule, a checklist, or an annotated example with real consequences.
+
+Assess:
+- Does the post contain a practical artifact — something a reader could screenshot, quote, or directly apply?
+- If yes, is it clearly presented, or buried in the body prose where it's easy to miss?
+- If no, identify what artifact would best fit the post's thesis and suggest it. Be specific: name the format and describe the content it should contain.
+
+Do not add the artifact to the file during this step. Flag its presence or absence in the report.
+
+### Step 10 — Search-discoverable title
+
+The current title is written for a reader who already trusts the author. A search-optimized title serves a reader encountering the post cold via a query.
+
+Generate 2–3 alternative title options that:
+- Use phrasing a developer would actually type into a search engine
+- Include the key technical terms central to the post's thesis
+- Remain specific and honest — not keyword-stuffed, not clickbait
+- Could replace the current `title:` field in front matter without changing the file name
+
+**Important**: Changing the title field in front matter is safe and encouraged. Renaming the file is never done — it breaks existing links. State both the current title and the alternatives clearly in the report.
+
+### Step 11 — Prose reduction pass
 
 After delivering the review report, make a direct editing pass on the file. The goal is to cut prose that exists for its own sake rather than to advance the argument. Apply edits to the file without asking for approval on individual cuts.
 
@@ -154,12 +177,22 @@ Pass / Fail — [1-2 sentences explaining why]
 **LENGTH AND SCOPE**
 [Assessment: is the post the right length? Any padding, underdevelopment, or missing material?]
 
+**PRACTICAL ARTIFACT**
+Present / Missing — [If present: describe it and whether it's well-positioned. If missing: name the format and describe specifically what it should contain.]
+
+**SEARCH-DISCOVERABLE TITLE**
+Current: [existing title]
+Alternatives:
+1. [option 1]
+2. [option 2]
+3. [option 3]
+
 **VERDICT**
 Ready to publish / Needs revision / Major revision needed
 
 [2-4 sentences: the most important things to address before this publishes. Be direct. If the post has a thesis problem or a scholarly quality problem, say so plainly — these are not cosmetic issues.]
 
 **PROSE REDUCTION**
-[After the review report is delivered, perform the Step 9 pass and report here: sentences removed or merged, approximate before/after word count.]
+[After the review report is delivered, perform the Step 11 pass and report here: sentences removed or merged, approximate before/after word count.]
 
 ---
