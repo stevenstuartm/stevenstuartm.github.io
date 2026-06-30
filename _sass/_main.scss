@@ -28,7 +28,7 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.6;
     scroll-padding-top: 140px; /* Offset for sticky header + TOC toggle button */
 }
@@ -140,6 +140,7 @@ main {
     width: 64px;
     height: 64px;
     display: inline-block;
+    transform: scale(1.2);
 }
 
 /* Hamburger Menu Button */
@@ -678,6 +679,82 @@ main {
     color: var(--color-primary);
     font-weight: 600;
     text-decoration: none;
+}
+
+/* Partner Site Section */
+.partner-section {
+    background: #DFF0FA;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.partner-section-header {
+    margin-bottom: var(--spacing-md);
+}
+
+.partner-section-label {
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.partner-section-tagline {
+    font-size: 1.05rem;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+.partner-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.partner-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg);
+    border: 1px solid #B8D8EF;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.partner-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 90, 133, 0.15);
+    color: inherit;
+}
+
+.partner-card-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.4rem;
+}
+
+.partner-card-title {
+    font-size: 1.1rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.partner-card-description {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-sm);
+    flex-grow: 1;
+}
+
+.partner-card-cta {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-secondary);
 }
 
 @media (max-width: 768px) {

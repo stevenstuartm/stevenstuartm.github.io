@@ -1,6 +1,6 @@
 # Writing Standards
 
-These standards apply to ALL narrative content on the site: blog posts, study guides, page content, descriptions, and social media summaries. Content-type-specific rules live in the per-type guides; the rules here are universal.
+These standards apply to ALL narrative content on the site.
 
 After drafting any content, run the linter:
 ```bash

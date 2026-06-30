@@ -5,7 +5,7 @@ description: "A continuous learning framework for software architects and engine
 permalink: /study-routine.html
 ---
 
-Continuous learning in software engineering isn't a single habit; it's a system. This page documents that system: what I read, where I engage, how I practice, and the principles that keep it sustainable. The [study guides](/study-guides.html) on this site capture what I've synthesized from these resources.
+Continuous learning in software engineering isn't a single habit; it's a system. This page documents that system: what I read, where I engage, how I practice, and the principles that keep it sustainable. The [study guides](https://lucentowl.com/study-guides.html){:target="_blank" rel="noopener noreferrer"} on Lucent Owl capture what I've synthesized from these resources.
 
 ---
 
@@ -72,6 +72,6 @@ Algorithmic thinking improves more than interview performance; it sharpens day-t
 
 1. **Consistency over intensity**: Small, regular effort beats marathon sessions
 2. **Balance breadth and depth**: Survey widely, dive deep selectively
-3. **Practice in public**: Share learnings through [writing](/blog.html), talks, or open source
+3. **Practice in public**: Share learnings through [writing](https://lucentowl.com/blog.html){:target="_blank" rel="noopener noreferrer"}, talks, or open source
 4. **Connect the dots**: Link new knowledge to existing experience
 5. **Stay curious, stay humble**: There's always more to learn

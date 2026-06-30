@@ -10,13 +10,11 @@ layout: default
         {% endif %}
     </section>
 
-    {% include continue-reading-card.html %}
-
     <!-- Featured Cards Section -->
     {% if page.featured_items %}
     <section class="featured-cards">
         {% for item in page.featured_items %}
-        <a href="{{ item.url | relative_url }}" class="featured-card" aria-label="{{ item.title }}">
+        <a href="{{ item.url }}" class="featured-card" target="_blank" rel="noopener noreferrer" aria-label="{{ item.title }}">
             <div class="featured-card-label">{{ item.label }}</div>
             <h3 class="featured-card-title">{{ item.title }}</h3>
             <p class="featured-card-description">{{ item.description }}</p>
@@ -26,40 +24,37 @@ layout: default
     </section>
     {% endif %}
 
-    <!-- Content Type Cards Section -->
-    <section class="content-type-cards">
-
-        <!-- Case Studies Card -->
-        <a href="{{ '/case-studies.html' | relative_url }}" class="content-type-card" aria-label="View case studies">
-            <div class="content-type-icon" aria-hidden="true">💼</div>
-            <h3 class="content-type-title">Case Studies</h3>
-            <p class="content-type-description">{{ page.case_studies_description }}</p>
-            <span class="content-type-cta" aria-hidden="true">View All Cases →</span>
-        </a>
-        
-        <!-- Blog Card -->
-        <a href="{{ '/blog.html' | relative_url }}" class="content-type-card" aria-label="View all blog posts">
-            <div class="content-type-icon" aria-hidden="true">📝</div>
-            <h3 class="content-type-title">Blog</h3>
-            <p class="content-type-description">{{ page.blog_description }}</p>
-            <span class="content-type-cta" aria-hidden="true">View All Posts →</span>
-        </a>
-
-        <!-- Study Guides Card -->
-        <a href="{{ '/study-guides.html' | relative_url }}" class="content-type-card" aria-label="Browse study guides">
-            <div class="content-type-icon" aria-hidden="true">📚</div>
-            <h3 class="content-type-title">Study Guides</h3>
-            <p class="content-type-description">{{ page.guides_description }}</p>
-            <span class="content-type-cta" aria-hidden="true">Browse Guides →</span>
-        </a>
-
-        <!-- Tech Radar Card -->
-        <a href="{{ '/tech-radar.html' | relative_url }}" class="content-type-card" aria-label="Explore tech radar">
-            <div class="content-type-icon" aria-hidden="true">🎯</div>
-            <h3 class="content-type-title">Tech Radar</h3>
-            <p class="content-type-description">{{ page.radar_description }}</p>
-            <span class="content-type-cta" aria-hidden="true">Explore Radar →</span>
-        </a>
-
+    <!-- Partner Site Section -->
+    <section class="partner-section">
+        <div class="partner-section-header">
+            <p class="partner-section-label">Published on Lucent Owl</p>
+            <p class="partner-section-tagline">A partner site for technical publishing.</p>
+        </div>
+        <div class="partner-cards">
+            <a href="https://lucentowl.com/blog.html" class="partner-card" target="_blank" rel="noopener noreferrer">
+                <div class="partner-card-icon">📝</div>
+                <h3 class="partner-card-title">Blog</h3>
+                <p class="partner-card-description">{{ page.blog_description }}</p>
+                <span class="partner-card-cta">Read Posts →</span>
+            </a>
+            <a href="https://lucentowl.com/study-guides.html" class="partner-card" target="_blank" rel="noopener noreferrer">
+                <div class="partner-card-icon">📚</div>
+                <h3 class="partner-card-title">Study Guides</h3>
+                <p class="partner-card-description">{{ page.guides_description }}</p>
+                <span class="partner-card-cta">Browse Guides →</span>
+            </a>
+            <a href="https://lucentowl.com/tech-radar.html" class="partner-card" target="_blank" rel="noopener noreferrer">
+                <div class="partner-card-icon">🎯</div>
+                <h3 class="partner-card-title">Tech Radar</h3>
+                <p class="partner-card-description">{{ page.radar_description }}</p>
+                <span class="partner-card-cta">Explore Radar →</span>
+            </a>
+            <a href="https://lucentowl.com/case-studies.html" class="partner-card" target="_blank" rel="noopener noreferrer">
+                <div class="partner-card-icon">💼</div>
+                <h3 class="partner-card-title">Case Studies</h3>
+                <p class="partner-card-description">{{ page.case_studies_description }}</p>
+                <span class="partner-card-cta">View Cases →</span>
+            </a>
+        </div>
     </section>
 </div>

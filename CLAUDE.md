@@ -10,7 +10,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | --- | --- |
 | [`writing-standards.md`](.claude/content/writing-standards.md) | **Always** — universal linter rules, voice, flow, punctuation, bullet point usage |
 | [`blog-post-guide.md`](.claude/content/blog-post-guide.md) | Writing or editing blog posts, creating social media summaries |
-| [`study-guide-guide.md`](.claude/content/study-guide-guide.md) | Writing or editing study guides — format, tagging, organization, quality standards |
 
 After drafting content, run `python lint_content.py <filepath>` to catch mechanical violations.
 
@@ -18,7 +17,13 @@ After drafting content, run `python lint_content.py <filepath>` to catch mechani
 
 ## Project Overview
 
-This is a Jekyll-based GitHub Pages personal website for Steven Stuart, featuring a blog focused on software architecture, system design, and technology insights. The site is deployed directly to GitHub Pages.
+This is a Jekyll-based GitHub Pages personal website for Steven Stuart. Its purpose is **personal marketing and mentorship** — hiring pitch, philosophy, case studies, and Steven's own blog content. It is not a general publishing platform.
+
+Study guides, the tech radar, and general technical posts have moved to the partner site: **lucentowl.com**. The homepage and about page reference lucentowl.com for those resources. Inbound links to removed content hit a custom 404 page that directs users to lucentowl.com.
+
+See [REBRANDING.md](REBRANDING.md) for the full migration plan and status.
+
+The site is deployed directly to GitHub Pages.
 
 ## Development Commands
 
@@ -40,36 +45,30 @@ bundle exec jekyll build
 - **_config.yml**: Site configuration, author info, social links, and build settings
 - **_layouts/**: HTML templates that wrap content
   - `default.html`: Base template with header/footer includes
-  - `home.html`: Homepage layout (extends default) with recent posts section
+  - `home.html`: Homepage layout (extends default) with featured cards and partner site notice
   - `post.html`: Blog post template with metadata and tags
   - `page.html`: Generic page template
-  - `radar.html`: Tech radar page template with D3.js visualization
-  - `guide.html`: Study guide template with table of contents
-  - `guides.html`: Study guides listing page template
   - `blog-listing.html`: Blog listing page template
+  - `guide.html`, `guides.html`, `radar.html`: Legacy layouts kept in place; not used by active pages
 - **_includes/**: Reusable HTML partials (header.html, footer.html)
 - **_posts/**: Blog posts in Markdown with YAML front matter (format: YYYY-MM-DD-title.md)
-- **_guides/**: Study guides in Markdown organized by topic
+- **_drafts/**: Draft posts not yet published (includes posts migrated to lucentowl.com)
+- **_guides/**: Study guide files — kept intact but not navigable from this site; content lives on lucentowl.com
 - **_site/**: Generated static site (excluded from git)
-- **pages/**: Site pages (blog, resume, about, tech-radar, study-guides)
+- **pages/**: Site pages (blog, resume, about, philosophy, case-studies)
 - **assets/**: Static assets
   - `css/main.css`: Custom stylesheets with CSS variables for theming
-  - `js/`: JavaScript files including D3.js and radar visualization
-  - `data/radar-data.json`: Tech radar data (quadrants, rings, entries)
+  - `js/`: JavaScript files
   - `img/`: Images and favicon
 
 ### Content Files
 - **index.md**: Homepage content (uses home layout)
-- **pages/blog.md**: Blog listing page
 - **pages/resume.md**: Resume/CV page
 - **pages/about.md**: About page
-- **pages/tech-radar.md**: Interactive tech radar visualization (uses radar layout)
-- **pages/study-guides.md**: Study guides listing page
-- **pages/study-routine.md**: Study routine and learning methodology page
+- **pages/philosophy.md**: Philosophy page
 
 ### Permalinks
 - Posts use the permalink structure: `/blog/:year/:month/:day/:title.html`
-- Study guides use the permalink structure: `/study-guides/:path.html`
 
 **Important for SEO**: All URLs end with `.html` extension. When generating blog post URLs, always include the `.html` suffix.
 
@@ -100,46 +99,6 @@ tags: [architecture, design-patterns]
 
 For writing standards, required fields detail, and social media summaries, see [`.claude/content/blog-post-guide.md`](.claude/content/blog-post-guide.md).
 
-### Study Guide Format
-
-All study guides must:
-- Be placed in `_guides/` (organized in subdirectories by topic)
-- Include YAML front matter with: layout, title, category, subcategory, description, and tags
-- Use `layout: guide`
-
-```yaml
----
-title: "Guide Title"
-layout: guide
-category: Main Category
-subcategory: Subcategory
-description: "Brief description of the guide content"
-tags: [tag1, tag2, tag3, tag4]
----
-```
-
-**CRITICAL: Always update `assets/data/study_guides_config.json`** when adding or removing guides. Guides that exist in `_guides/` but aren't listed in this config file will not appear on the website. Always modify both files together.
-
-For format details, tag vocabulary, configuration requirements, organization patterns, and quality standards, see [`.claude/content/study-guide-guide.md`](.claude/content/study-guide-guide.md).
-
-## Tech Radar
-
-The site includes an interactive tech radar feature built with D3.js:
-- **Data Source**: `assets/data/radar-data.json` contains all radar entries
-- **Visualization**: Uses Zalando's tech radar visualization library
-- **Data Structure**:
-  - 4 quadrants: Languages & Frameworks, Platforms, Techniques, Tools
-  - 4 rings: ADOPT, TRIAL, ASSESS, HOLD
-  - Each entry includes: id, label, quadrant, ring, moved status, and description
-- **Features**: Dual view (radar/list), clickable items with detail modals, responsive design
-
-### Updating the Tech Radar
-
-To add/modify radar entries, edit `assets/data/radar-data.json`:
-- Quadrants are indexed 0-3
-- Rings are indexed 0-3 (0=ADOPT, 1=TRIAL, 2=ASSESS, 3=HOLD)
-- Movement indicators: 0=no change, 1=moved in, -1=moved out, 2=new entry
-
 ## Site Configuration
 
 - Uses kramdown markdown processor
@@ -160,10 +119,12 @@ To add/modify radar entries, edit `assets/data/radar-data.json`:
 
 **For internal links** (default behavior, stays in same tab):
 ```markdown
-[Link Text](/study-guides/some-guide.html)
+[Link Text](/about.html)
 ```
 
 Always include `rel="noopener noreferrer"` with `target="_blank"` to prevent security vulnerabilities.
+
+Links to lucentowl.com are external and must use `target="_blank"`.
 
 ## Best Practices
 
@@ -171,25 +132,10 @@ Always include `rel="noopener noreferrer"` with `target="_blank"` to prevent sec
 - Always read files before editing to understand context
 - Maintain consistent formatting and indentation
 - Test changes locally with `bundle exec jekyll serve` before committing
-- Keep radar data JSON properly formatted and validated
 
 ### Code Examples
 - **Default to C# for programming examples** unless the subject is language-specific
 - Use the appropriate language when the topic requires it (e.g., Terraform uses HCL, CloudFormation uses YAML/JSON, Python for data science)
-
-### Content Discovery Features
-
-**Tagging system** (implemented):
-- All 105+ study guides have been tagged with 4-8 tags each
-- Tags enable cross-category discovery (e.g., find all "decision-making" content regardless of category)
-- Tag vocabulary is standardized — see [`.claude/content/study-guide-guide.md`](.claude/content/study-guide-guide.md) for the full vocabulary
-- Blog posts already have tags in place
-
-**Filtering UI** (planned):
-- Client-side JavaScript filtering for study guides page (filter by category, subcategory, tags)
-- Client-side JavaScript filtering for blog page (filter by tags)
-- Optional: Unified "Browse by Tag" page showing all content with specific tags
-- No backend required; filters operate on existing JSON data and front matter
 
 ## Maintaining This File
 

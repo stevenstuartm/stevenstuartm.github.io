@@ -72,6 +72,8 @@ Architecture doesn't exist in a vacuum. Success requires negotiating with busine
 
 I'm always interested in connecting with fellow engineers, architects, and technical leaders. Whether you want to discuss architecture patterns, share experiences, or explore collaboration opportunities, I'd love to hear from you.
 
+Looking for study guides, the tech radar, or broader technical resources? Much of that content lives on [LucentOwl](https://lucentowl.com){:target="_blank" rel="noopener noreferrer"}, a partner site for multi-author technical publishing.
+
 <div style="margin: 20px 0; display: flex; gap: 15px; align-items: center;">
 {% include social-links.html %}
 </div>

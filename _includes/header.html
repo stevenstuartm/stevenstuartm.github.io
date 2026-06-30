@@ -13,33 +13,10 @@
             </button>
             <div class="header-right">
                 <nav class="site-nav">
-
-                    <div class="nav-dropdown">
-                        <button class="nav-dropdown-toggle" aria-expanded="false">
-                            Insights <span class="dropdown-arrow">▾</span>
-                        </button>
-                        <div class="nav-dropdown-menu">
-                            <a href="{{ '/case-studies.html' | relative_url }}">Case Studies</a>
-                            <a href="{{ '/blog.html' | relative_url }}">Blog</a>
-                            <a href="{{ '/tech-radar.html' | relative_url }}">Tech Radar</a>
-                            <a href="{{ '/philosophy.html' | relative_url }}">Philosophy</a>
-                        </div>
-                    </div>
-
-                    <div class="nav-dropdown">
-                        <button class="nav-dropdown-toggle" aria-expanded="false">
-                            Learning <span class="dropdown-arrow">▾</span>
-                        </button>
-                        <div class="nav-dropdown-menu">
-                            <a href="{{ '/study-guides.html' | relative_url }}">Study Guides</a>
-                            <a href="{{ '/study-routine.html' | relative_url }}">Study Routine</a>
-                            <a href="{{ '/blog/2025/10/09/learning-through-compression.html' | relative_url }}">The Learning Cycle</a>
-                        </div>
-                    </div>
-
                     <a href="{{ '/about.html' | relative_url }}">About</a>
                     <a href="{{ '/resume.html' | relative_url }}">Resume</a>
-                    
+                    <a href="{{ '/philosophy.html' | relative_url }}">Software Philosophy</a>
+                    <a href="{{ '/study-routine.html' | relative_url }}">Study Routine</a>
                 </nav>
                 <div class="header-social">
                     {% include social-links.html modifier="-header" %}
@@ -61,56 +38,19 @@
             headerRight.classList.toggle('active');
         });
 
-        // Dropdown functionality
-        const dropdownToggles = document.querySelectorAll('.nav-dropdown-toggle');
-        dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                const dropdown = this.parentElement;
-
-                // Close other dropdowns
-                document.querySelectorAll('.nav-dropdown').forEach(d => {
-                    if (d !== dropdown) {
-                        d.classList.remove('active');
-                        d.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
-                    }
-                });
-
-                // Toggle current dropdown
-                dropdown.classList.toggle('active');
-                this.setAttribute('aria-expanded', !isExpanded);
-            });
-        });
-
-        // Close menu when clicking a nav link
-        const navLinks = document.querySelectorAll('.site-nav a');
-        navLinks.forEach(link => {
+        document.querySelectorAll('.site-nav a').forEach(function(link) {
             link.addEventListener('click', function() {
                 hamburger.classList.remove('active');
                 headerRight.classList.remove('active');
                 hamburger.setAttribute('aria-expanded', 'false');
-                // Close dropdowns
-                document.querySelectorAll('.nav-dropdown').forEach(d => {
-                    d.classList.remove('active');
-                    d.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
-                });
             });
         });
 
-        // Close menu and dropdowns when clicking outside
         document.addEventListener('click', function(event) {
             if (!event.target.closest('.header-content')) {
                 hamburger.classList.remove('active');
                 headerRight.classList.remove('active');
                 hamburger.setAttribute('aria-expanded', 'false');
-            }
-            // Close dropdowns when clicking outside
-            if (!event.target.closest('.nav-dropdown')) {
-                document.querySelectorAll('.nav-dropdown').forEach(d => {
-                    d.classList.remove('active');
-                    d.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
-                });
             }
         });
     })();

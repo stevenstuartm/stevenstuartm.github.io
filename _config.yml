@@ -17,8 +17,10 @@ social:
   linkedin: https://linkedin.com/in/steven-stuart-2974978a
   coderlegion: https://coderlegion.com/user/Steven+Stuart
   devto: https://dev.to/stevenstuartm
+  lucentowl: https://lucentowl.com
 
 # Build settings
+port: 4001
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title.html
 excerpt_separator: "<!--more-->"
@@ -84,3 +86,4 @@ exclude:
   - vendor
   - README.md
   - CLAUDE.md
+  - REBRANDING.md

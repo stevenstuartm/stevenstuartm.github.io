@@ -4,36 +4,38 @@ title: Page Not Found
 permalink: /404.html
 ---
 
-<script>
-    // Redirect extensionless URLs to .html version (one attempt only)
-    (function() {
-        let path = window.location.pathname;
-
-        // Skip if path already contains .html (already tried or valid)
-        if (path.includes('.html')) {
-            return;
-        }
-
-        // Handle trailing slash: remove it and add .html (but not for root "/")
-        if (path.length > 1 && path.endsWith('/')) {
-            path = path.slice(0, -1);
-            window.location.replace(path + '.html' + window.location.search + window.location.hash);
-            return;
-        }
-
-        // Only redirect if URL has no file extension at all
-        if (!/\.[a-zA-Z0-9]+$/.test(path)) {
-            window.location.replace(path + '.html' + window.location.search + window.location.hash);
-        }
-    })();
-</script>
-
 <div class="page">
     <div class="page-header">
-        <h1>404 - Page Not Found</h1>
+        <h1>Page Moved</h1>
     </div>
     <div class="page-content">
-        <p>Sorry, the page you're looking for doesn't exist.</p>
+        <div id="partner-hint" style="display:none; margin: 1.5rem 0; padding: 1rem 1.25rem; border-left: 3px solid var(--accent-color, #555); background: var(--subtle-bg, #f9f9f9);">
+            <p style="margin: 0 0 0.5rem;">Much of the content from this site has moved to our partner site, <strong>Lucent Owl</strong>. The equivalent page may be at:</p>
+            <p style="margin: 0; word-break: break-all;"><a id="partner-link" href="#" target="_blank" rel="noopener noreferrer"></a></p>
+        </div>
+
         <p><a href="{{ '/' | relative_url }}">Return to home page</a></p>
     </div>
 </div>
+
+<script>
+    (function() {
+        var path = window.location.pathname;
+
+        // Try extensionless → .html redirect (one attempt only)
+        if (!path.includes('.html')) {
+            var cleaned = (path.length > 1 && path.endsWith('/')) ? path.slice(0, -1) : path;
+            if (!/\.[a-zA-Z0-9]+$/.test(cleaned)) {
+                window.location.replace(cleaned + '.html' + window.location.search + window.location.hash);
+                return;
+            }
+        }
+
+        // Construct the equivalent lucentowl.com URL and display it
+        var partnerUrl = 'https://lucentowl.com' + path + window.location.search + window.location.hash;
+        var linkEl = document.getElementById('partner-link');
+        linkEl.href = partnerUrl;
+        linkEl.textContent = partnerUrl;
+        document.getElementById('partner-hint').style.display = 'block';
+    })();
+</script>

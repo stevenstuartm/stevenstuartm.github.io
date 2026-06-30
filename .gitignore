@@ -10,3 +10,5 @@ Gemfile.lock
 !.claude/content/
 !.claude/commands/
 .DS_Store
+__pycache__/
+*.pyc
