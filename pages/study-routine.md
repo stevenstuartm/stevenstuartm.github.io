@@ -1,77 +1,55 @@
 ---
 layout: page
-title: Study Routine
-description: "A continuous learning framework for software architects and engineers; my approach to staying sharp and growing in the field."
+title: Reading List
+description: "Books and sites I recommend for software architecture and engineering leadership"
 permalink: /study-routine.html
 ---
+## Books
 
-Continuous learning in software engineering isn't a single habit; it's a system. This page documents that system: what I read, where I engage, how I practice, and the principles that keep it sustainable. The [study guides](https://lucentowl.com/study-guides.html){:target="_blank" rel="noopener noreferrer"} on Lucent Owl capture what I've synthesized from these resources.
+**Fundamentals of Software Architecture** by Mark Richards and Neal Ford
 
----
+Start here if you're an engineer moving toward architecture. It covers architecture characteristics, component thinking, and the major styles like layered, microkernel, event-driven, and microservices. The breadth is the point; it's a map of the territory rather than a manual for any one destination, so don't expect it to settle the decision in front of you.
 
-## 📚 Read Deeply
+**Software Architecture: The Hard Parts** by Neal Ford, Mark Richards, Pramod Sadalage, and Zhamak Dehghani
 
-### Books
+The sequel, and it assumes you already have the fundamentals. The subject is distributed systems trade-offs like service granularity, pulling data apart, distributed transactions, and contracts. What makes it useful is that it refuses to hand you answers, working instead through trade-off analyses that show what each choice costs you. Read it when you're facing a decomposition decision, not before.
 
-Building a strong foundation requires deliberate study of fundamentals and modern practices.
+**The Software Architect Elevator** by Gregor Hohpe
 
-- **Fundamentals of Software Architecture** by Mark Richards & Neal Ford
-  *A comprehensive guide to architectural thinking and decision-making*
-
-- **Software Architecture: The Hard Parts** by Neal Ford, Mark Richards, et al.
-  *Modern trade-off analyses for distributed architectures*
-
-- **The Software Architect Elevator: Redefining the Architect's Role in the Digital Enterprise** by Gregor Hohpe
-  *Bridging the gap between technical teams and executive leadership*
-
-### Online Resources
-
-- [Martin Fowler's Blog](https://martinfowler.com/){:target="_blank" rel="noopener noreferrer"} - Timeless patterns and practices
-- [Developer to Architect](https://developertoarchitect.com/lessons/){:target="_blank" rel="noopener noreferrer"} - Mark Richards' architectural lessons
-- [Dometrain](https://dometrain.com/courses/){:target="_blank" rel="noopener noreferrer"} - High-quality .NET and software engineering courses
-- [ThoughtWorks Technology Radar](https://www.thoughtworks.com/en-us/radar){:target="_blank" rel="noopener noreferrer"} - Quarterly industry trends and emerging tech
-- [InfoQ](https://www.infoq.com/){:target="_blank" rel="noopener noreferrer"} - Software development news and deep dives
-- [AWS Architecture Blog](https://aws.amazon.com/blogs/architecture/){:target="_blank" rel="noopener noreferrer"} - Cloud architecture patterns
-- [.NET Blog](https://devblogs.microsoft.com/dotnet/){:target="_blank" rel="noopener noreferrer"} - Latest from the .NET team
-- [Microsoft Learning](https://learn.microsoft.com/en-us/training/){:target="_blank" rel="noopener noreferrer"} - Microsoft product documentation and training
+Architecture rarely gets taught as an organizational skill, and this book treats it as one. Hohpe's premise is that the architect's job is riding between the executive floor and the engine room, translating in both directions. If your technical judgment is sound but your recommendations keep dying in rooms you aren't in, this covers what's missing.
 
 ---
 
-## 💬 Join the Conversation
+## Sites and Newsletters
 
-Learning in isolation is slower. Engaging with other practitioners surfaces failure and perspectives that books rarely capture, and being challenged to defend your thinking sharpens it.
+**[Jeremy Utley](https://www.jeremyutley.com/){:target="_blank" rel="noopener noreferrer"}**
 
-- [Rands Leadership Slack](https://randsinrepose.com/welcome-to-rands-leadership-slack/){:target="_blank" rel="noopener noreferrer"} - Engineering leadership community
-- [CoderLegion](https://coderlegion.com/){:target="_blank" rel="noopener noreferrer"} - Developer community for sharing articles and engaging with peers
-- [DEV Community](https://dev.to){:target="_blank" rel="noopener noreferrer"} - Developer community and technical writing platform
-- Technical conferences and meetups (virtual and in-person)
+Utley ran Stanford's d.school and now writes and speaks on AI adoption and creative practice. His central argument is that teams should treat AI as a teammate they coach rather than a tool they operate, and that the gap between what AI can do and what most organizations get from it is a behavior problem rather than a technical one. Start with the *Beyond the Prompt* podcast or the *Methods of the Masters* newsletter, and read *Ideaflow* if the thinking lands.
 
----
+**[Martin Fowler's Blog](https://martinfowler.com/){:target="_blank" rel="noopener noreferrer"}**
 
-## 🛠️ Practice with POCs and Open Source
+Two decades of patterns and essays that haven't aged much. Fowler publishes when he has something to say rather than on a schedule, so the archive rewards browsing more than the feed rewards subscribing.
 
-Theory without practice is incomplete. Building POCs for technologies on your radar is the fastest way to expose gaps in your understanding; you discover in an afternoon what a book might not make clear in a chapter. Contributing to open source, experimenting with new patterns in side projects, and improving your own development workflows keeps skills from atrophying between major projects.
+**[Developer to Architect](https://developertoarchitect.com/lessons/){:target="_blank" rel="noopener noreferrer"}**
 
-The goal is shipping something every month, even if small. Consistent practice outperforms sporadic intensive bursts.
+Mark Richards' free video lessons, each narrow enough to watch over lunch. A good companion to the two Richards and Ford books if you'd rather be talked through a topic than read it.
 
----
+**[Dometrain](https://dometrain.com/courses/){:target="_blank" rel="noopener noreferrer"}**
 
-## 🧮 Practice Data Structures & Algorithms
+Paid .NET and software engineering courses, taught by practitioners rather than career instructors.
 
-[LeetCode](https://leetcode.com/){:target="_blank" rel="noopener noreferrer"} practice keeps problem-solving instincts active:
+**[ThoughtWorks Technology Radar](https://www.thoughtworks.com/en-us/radar){:target="_blank" rel="noopener noreferrer"}**
 
-- **Weekly practice:** 2-3 problems minimum
-- **Focus areas:** System design, algorithms, optimization
-- **Review patterns:** Common approaches for efficiency
+A quarterly assessment of what's emerging, what's proven, and what to stop using. The "hold" ring is the part I read first, since almost nobody else publishes what they'd walk away from.
 
-Algorithmic thinking improves more than interview performance; it sharpens day-to-day planning and problem decomposition.
+**[InfoQ](https://www.infoq.com/){:target="_blank" rel="noopener noreferrer"}**
 
----
+News and deep dives, with a good hit rate on conference talk writeups that save you the hour of video.
 
-## 💡 Principles for Sustainable Learning
+**[AWS Architecture Blog](https://aws.amazon.com/blogs/architecture/){:target="_blank" rel="noopener noreferrer"}**
 
-1. **Consistency over intensity**: Small, regular effort beats marathon sessions
-2. **Balance breadth and depth**: Survey widely, dive deep selectively
-3. **Practice in public**: Share learnings through [writing](https://lucentowl.com/blog.html){:target="_blank" rel="noopener noreferrer"}, talks, or open source
-4. **Connect the dots**: Link new knowledge to existing experience
-5. **Stay curious, stay humble**: There's always more to learn
+Cloud patterns from the people who operate the services, which beats the secondhand version.
+
+**[.NET Blog](https://devblogs.microsoft.com/dotnet/){:target="_blank" rel="noopener noreferrer"} and [Microsoft Learn](https://learn.microsoft.com/en-us/training/){:target="_blank" rel="noopener noreferrer"}**
+
+Framework creators document their own tools better than third-party instructors do. When I need to learn a .NET feature, this is the first stop and usually the only one.

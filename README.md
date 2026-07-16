@@ -16,7 +16,7 @@ Personal site for [Steven Stuart](https://stevenstuartm.com) — a personal mark
 | About | Background, mentorship, and philosophy |
 | Resume | Full CV with downloadable PDF/DOCX |
 | Software Philosophy | Engineering principles |
-| Study Routine | Continuous learning framework |
+| Reading List | Recommended books and sites, with reasoning (path stays `/study-routine.html`) |
 
 ---
 
